@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akwire | Interactive Cybersecurity Training Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="labs-page">
+    <div class="lab-wrapper">
+    
+    <aside class="lab-sidebar">
+        <div class="lab-header">
+            <a href="index.html" class="back-btn">← Exit Lab</a>
+            <h2>Lab 01: Log Analysis</h2>
+        </div>
+
+        <div class="lab-selector-container" style="margin-bottom: 20px;">
+            <label>SELECT PRACTICE LAB:</label>
+            <select id="lab-select" onchange="fetchLabFromBackend(this.value)">
+            </select>
+        </div>
+
+        <div class="mission-briefing">
+            <h2 class="briefing-title" id="briefing-header">OPERATION: GHOST ACCESS</h2>
+            <div class="clearance-badge">CLEARANCE: LEVEL 2</div>
+            <p class="briefing-text" id="briefing-body">
+                Intelligence reports indicate a rogue actor is attempting to breach the 
+                <strong>Production Database</strong>. Our IDS flagged suspicious activity.
+            </p>
+        </div>
+        
+        <div class="lab-instructions">
+            <h3>Objective</h3>
+            <p id="objective-text">Identify a Brute Force attack within the SSH logs.</p>
+        </div>
+
+        <div class="lab-hints">
+            <button id="hint-btn" class="btn-secondary">Get Intel Hint</button>
+            <p id="hint-text"></p>
+        </div>
+    
+    </aside>
+
+        <main class="lab-main">
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+                    <span class="terminal-title">root@akwire-sec:~#</span>
+                </div>
+                <div class="terminal-body" id="lab-terminal">
+                    <div class="log-entry">System boot complete...</div>
+                    <div class="log-entry">You must login to begin labs</div>
+                    <div class="terminal-input-line">
+                        <span class="prompt">#</span>
+                        <input type="text" id="terminal-input" autofocus>
+                    </div>
+                </div>
+             
+                <div class="terminal-status-bar">
+                    <div class="status-left">
+                        <span class="status-node">NODE: akwire-sec-lab-01</span>
+                        <span class="status-ip">IP: 10.0.0.45</span>
+                    </div>
+                    <div class="top-bar-stats">
+                        <span id="system-clock">00:00 AM</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <h3>Level Completed</h3>
+                <div class="task-item">
+                    <input type="checkbox" id="task-logs"> <label>Identify Brute Force IP</label>
+                </div>
+                <div class="task-item">
+                    <input type="checkbox" id="task-scan" disabled>
+                    <label>Scan for Vulnerable Ports (nmap)</label>
+                </div>
+                <div class="task-item">
+                    <input type="checkbox" id="task-grep" disabled>
+                    <label>Find Leaked Credentials (grep)</label>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">AKWIRE<span>_SEC</span></div>
+                    <p>Advanced preparation for CompTIA SY0-701. Building the next generation of security professionals.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Training</h4>
+                    <ul>
+                        <li><a href="exam.html">Exam Engine</a></li>
+                        <li><a href="labs.html">Interactive Labs</a></li>
+                        <li><a href="Courses.html">Course Modules</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Security Status</h4>
+                    <div class="status-indicator">
+                        <span class="dot pulse"></span>
+                        <span class="status-text">NETWORK_OPERATIONAL</span>
+                    </div>
+                    <p style="font-size: 0.75rem; margin-top: 10px; color: #64748b;">// Last Scan: Feb 2026</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Akwire Cybersecurity. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/labs.js"></script>
+
+</body>
+</html>

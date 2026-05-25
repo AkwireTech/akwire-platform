@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Akwire | Interactive Cybersecurity Training Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="#"><img src="images/logo.png" alt="Akwire Logo"></a></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li><a href="labs.html">Labs</a></li>
+            <li><a href="exam.html">Exam</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+    </nav>
+
+    <div class="login-page">
+        <div class="login-container">
+            <h2>Login</h2>
+            <p>Enter your credentials to access the secure terminal.</p>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="email" placeholder="example@gmail.com" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                
+                <button type="submit" class="btn-primary" style="width: 100%;">Submit</button>
+            </form>
+            
+            <div class="login-footer">
+                <a href="forgot-password.html">Forgot Access Key</a>
+                <span> | </span>
+                <a href="register.html">Request New Account</a>
+            </div>
+        </div>
+    </div>
+
+   <script src="js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,98 @@
+{
+  "info": {
+    "name": "Akwire Platform API",
+    "_postman_id": "akwire-collection-001",
+    "description": "Postman collection for testing Akwire backend (auth, courses, labs)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"adminuser\",\n  \"email\": \"admin@example.com\",\n  \"password\": \"SecurePass123!\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/auth/register", "host": ["{{baseUrl}}"], "path": ["api", "auth", "register"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Login User",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"admin@example.com\",\n  \"password\": \"SecurePass123!\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Courses",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+        ],
+        "url": { "raw": "{{baseUrl}}/api/courses", "host": ["{{baseUrl}}"], "path": ["api", "courses"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Course (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Domain 6: Cloud Security\",\n  \"category\": \"Architecture\",\n  \"lessons\": [\"Cloud Models\", \"Container Security\"]\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/courses", "host": ["{{baseUrl}}"], "path": ["api", "courses"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Labs",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+        ],
+        "url": { "raw": "{{baseUrl}}/api/labs", "host": ["{{baseUrl}}"], "path": ["api", "labs"] }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Lab (Admin)",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{jwtToken}}" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Lab 3: Network Scanning\",\n  \"clearance\": \"LEVEL 2\",\n  \"briefing\": \"Scan the network for vulnerabilities\",\n  \"objective\": \"Identify open ports and services\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/api/labs", "host": ["{{baseUrl}}"], "path": ["api", "labs"] }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "jwtToken", "value": "" }
+  ]
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akwire | Interactive Cybersecurity Training Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="profile-page">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="#"><img src="images/logo.png" alt="Akwire Logo"></a>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Courses.html">Courses</a></li>
+            <li><a href="labs.html">Labs</a></li>
+            <li><a href="exam.html">Exam</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="profile.html" class="active">Profile</a></li>
+        </ul>
+    </nav>
+    
+    <div class="dashboard-wrapper">
+        <nav class="sidebar">
+            <div class="sidebar-logo">SEC_PLUS</div>
+        </nav>
+
+        <main class="main-content">
+            <div class="profile-header">
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div class="avatar-placeholder">UP</div>
+                    <div>
+                        <h1>User Profile</h1>
+                        <p class="clearance-tag">Clearance: Level 2 Analyst</p>
+                    </div>
+                </div>
+
+                <div class="theme-switch-wrapper">
+                    <span class="mode-label">BLUE_PILL</span>
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                    <span class="mode-label">MATRIX_MODE</span>
+                </div>
+            </div>
+
+            <div class="profile-details-grid">
+                <div class="stat-card chart-span">
+                    <h3>Cybersecurity Readiness</h3>
+                    <div class="chart-container" style="position: relative; height:300px; width:100%;">
+                        <canvas id="readinessChart"></canvas>
+                    </div>
+                    <div id="stats-output" style="margin-top: 20px; width: 100%;"></div>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Badges Earned</h3>
+                    <div class="badge-container">
+                        <span class="badge">🛡️ Network+</span>
+                        <span class="badge">🔑 A+</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Account Metadata</h3>
+                    <p style="font-size: 1rem; color: #94a3b8;">Email: analyst@agency.com</p>
+                    <p style="font-size: 1rem; color: #94a3b8;">Joined: 2024.12.31</p>
+                    
+                    <div style="margin-top: 20px; display: flex; gap: 10px;">
+                        <button onclick="exportProgress()" class="btn-secondary">Export Dossier</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">AKWIRE<span>_SEC</span></div>
+                    <p>
+                        Interactive cybersecurity training platform focused on hands-on labs,
+                        analyst workflows, and certification readiness.
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Training</h4>
+                    <ul>
+                        <li><a href="exam.html">Exam Engine</a></li>
+                        <li><a href="labs.html">Interactive Labs</a></li>
+                        <li><a href="Courses.html">Course Modules</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Security Status</h4>
+                    <div class="status-indicator">
+                        <span class="dot pulse"></span>
+                        <span class="status-text">NETWORK_OPERATIONAL</span>
+                    </div>
+                    <p style="font-size: 0.75rem; margin-top: 10px; color: #64748b;">// Last Scan: Feb 2026</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Akwire Cybersecurity. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

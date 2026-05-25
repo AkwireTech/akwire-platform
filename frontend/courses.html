@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akwire | Interactive Cybersecurity Training Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="#"><img src="images/logo.png" alt="Akwire Logo"></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Courses.html" class="active">Courses</a></li>
+            <li><a href="labs.html">Labs</a></li>
+            <li><a href="exam.html">Exam</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+    </nav>
+
+  <div class="container">
+    <header style="margin-bottom: 20px;">
+        <h1>My Learning Path</h1>
+        <p>Select a domain to start studying.</p>
+    </header>
+
+    <div class="progress-section" style="background: white; padding: 20px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+        <span style="font-weight: bold; color: #475569;">Overall Course Completion</span>
+        <span id="progress-text" style="font-weight: bold; color: var(--primary);">0%</span>
+    </div>
+    <div style="width: 100%; height: 12px; background: #e2e8f0; border-radius: 10px; overflow: hidden;">
+        <div id="progress-fill" style="width: 0%; height: 100%; background: var(--primary); transition: width 0.5s ease;"></div>
+    </div>
+</div>
+
+    <div class="search-container" style="margin-bottom: 30px;">
+        <input type="text" id="course-search" placeholder="Search topics (e.g. Malware, Risk, Cloud)..." 
+               style="width: 97%; padding: 15px; border-radius: 8px; border: 2px solid #e2e8f0; font-size: 1rem;">
+    </div>
+
+    <div class="filter-group" style="margin-bottom: 25px; display: flex; gap: 10px; flex-wrap: wrap;">
+    <button class="filter-btn active" onclick="filterByCategory('all')">All Domains</button>
+    <button class="filter-btn" onclick="filterByCategory('Threats')">Threats</button>
+    <button class="filter-btn" onclick="filterByCategory('Architecture')">Architecture</button>
+    <button class="filter-btn" onclick="filterByCategory('Operations')">Operations</button>
+    <button class="filter-btn" onclick="filterByCategory('Management')">Management</button>
+</div>
+
+
+    <div id="course-list" style="display: grid; gap: 20px;">
+        </div>
+</div>
+
+    <div id="course-list" style="display: grid; gap: 20px;">
+        </div>
+
+        <div id="course-list" style="display: grid; gap: 20px;"></div>
+
+        <hr style="margin: 40px 0; border: 0; border-top: 1px solid #e2e8f0;">
+
+        <section style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div class="module-card" style="flex: 1; min-width: 300px; text-align: center;">
+                <h3>Practice Exam</h3>
+                <a href="exam.html" class="btn-primary" style="margin-top: 15px;">Start Exam</a>
+            </div>
+            <div class="module-card" style="flex: 1; min-width: 300px; text-align: center;">
+                <h3>Hands-on Labs</h3>
+                <a href="labs.html" class="btn-primary" style="margin-top: 15px;">Launch Labs</a>
+            </div>
+        </section>
+    </div>
+
+    <script src="js/courses.js"></script>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">AKWIRE<span>_SEC</span></div>
+                    <p>
+                        Interactive cybersecurity training platform focused on hands-on labs,
+                        analyst workflows, and certification readiness.
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Training</h4>
+                    <ul>
+                        <li><a href="exam.html">Exam Engine</a></li>
+                        <li><a href="labs.html">Interactive Labs</a></li>
+                        <li><a href="Courses.html">Course Modules</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Security Status</h4>
+                    <div class="status-indicator">
+                        <span class="dot pulse"></span>
+                        <span class="status-text">NETWORK_OPERATIONAL</span>
+                    </div>
+                    <p style="font-size: 0.75rem; margin-top: 10px; color: #64748b;">// Last Scan: Feb 2026</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Akwire. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
