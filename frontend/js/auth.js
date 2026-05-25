@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
 
                 const res = await fetch(
-                    "http://localhost:5000/api/auth/login",
+                    "https://akwire-api.onrender.com/api/auth/login",
                     {
                         method: "POST",
 
@@ -115,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
             try {
 
                 const res = await fetch(
-                    "http://localhost:5000/api/auth/register",
+                    "https://akwire-api.onrender.com/api/auth/register",
                     {
                         method: "POST",
 

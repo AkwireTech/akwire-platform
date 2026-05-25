@@ -164,7 +164,7 @@ try{
 
 const token = localStorage.getItem("token");
 
-const res = await fetch("http://localhost:5000/api/exam/history",{
+const res = await fetch("https://akwire-api.onrender.com/api/exam/history",{
 headers:{
 "Authorization":"Bearer "+token
 }
@@ -242,7 +242,7 @@ console.error("Dashboard history error:",err);
 
 async function loadDashboard(userId) {
     try {
-        const res = await fetch(`http://localhost:5000/api/dashboard/lab-dashboard/${userId}`);
+        const res = await fetch(`https://akwire-api.onrender.com/api/dashboard/lab-dashboard/${userId}`);
         const data = await res.json();
 
         console.log("Dashboard data:", data);
@@ -432,7 +432,7 @@ function generateInsights(data) {
 
 async function loadLabProgress(userId) {
     try {
-        const labsRes = await fetch("http://localhost:5000/api/labs", {
+        const labsRes = await fetch("https://akwire-api.onrender.com/api/labs", {
             headers: {
                 "Authorization": `Bearer ${localStorage.getItem("token")}`
             }
@@ -440,7 +440,7 @@ async function loadLabProgress(userId) {
 
         const labs = await labsRes.json();
 
-        const resultsRes = await fetch(`http://localhost:5000/api/dashboard/lab-dashboard/${userId}`);
+        const resultsRes = await fetch(`https://akwire-api.onrender.com/api/dashboard/lab-dashboard/${userId}`);
         const data = await resultsRes.json();
 
         const completedLabIds = [

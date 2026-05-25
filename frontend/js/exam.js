@@ -56,7 +56,7 @@ async function fetchExam() {
             return;
         }
 
-        const res = await fetch("http://localhost:5000/api/exam", {
+        const res = await fetch("https://akwire-api.onrender.com/api/exam", {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token,
@@ -408,7 +408,7 @@ console.log("Submitting exam:");
 console.log("Answers:", userAnswers);
 console.log("First Question:", questions[0]);
 
-const res = await fetch("http://localhost:5000/api/exam/submit", {
+const res = await fetch("https://akwire-api.onrender.com/api/exam/submit", {
 method: "POST",
 headers: {
 "Content-Type": "application/json",

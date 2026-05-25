@@ -34,7 +34,7 @@ async function fetchLabFromBackend(labID) {
 
     const token = localStorage.getItem("token");
 
-    const res = await fetch(`http://localhost:5000/api/labs/${labID}`, {
+    const res = await fetch(`https://akwire-api.onrender.com/api/labs/${labID}`, {
         headers: {
             "Authorization": "Bearer " + token
         }
@@ -58,7 +58,7 @@ async function loadLabMenu() {
 
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:5000/api/labs", {
+    const res = await fetch("https://akwire-api.onrender.com/api/labs", {
         headers: {
             "Authorization": "Bearer " + token
         }
@@ -227,7 +227,7 @@ async function saveLabResult(totalTasks) {
     console.log("Saving lab result...");
 
     try {
-        const res = await fetch("http://localhost:5000/api/labs/complete", {
+        const res = await fetch("https://akwire-api.onrender.com/api/labs/complete", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -252,7 +252,7 @@ async function saveLabResult(totalTasks) {
 
 async function loadDashboard(userId) {
     try {
-        const res = await fetch(`http://localhost:5000/api/dashboard/lab-dashboard/${userId}`)
+        const res = await fetch(`https://akwire-api.onrender.com/api/dashboard/lab-dashboard/${userId}`)
         const data = await res.json();
 
         console.log("Dashboard data:", data);
