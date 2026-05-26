@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    loadExamHistory();
 
     // ==========================
     // 1. THEME INITIALIZATION
@@ -557,16 +556,23 @@ function toggleSidebar() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user || !user._id) {
-        console.error("User not found in localStorage");
 
-        // TEMP fallback (use your real MongoDB userId)
-        loadDashboard("PASTE_YOUR_USER_ID_HERE");
+        console.error("User not found");
+
+        window.location.href = "login.html";
+
         return;
+
     }
 
     loadDashboard(user._id);
+
     loadLabProgress(user._id);
+
+    loadLatestScore();
+
 });
