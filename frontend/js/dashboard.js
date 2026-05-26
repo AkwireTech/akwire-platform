@@ -18,50 +18,75 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. USER DATA
     // ==========================
 
-    const user = JSON.parse(localStorage.getItem('currentUser')) || { lastExamScore: 0 };
+    const user = JSON.parse(localStorage.getItem('user')) || { lastExamScore: 0 };
 
     const scoreText = document.getElementById("dash-score");
     const scoreBar = document.getElementById("dash-score-bar");
     const statusText = document.getElementById("status-text");
 
-    if (scoreText && scoreBar && statusText) {
+    async function loadLatestScore() {
 
-        const score = user.lastExamScore || 0;
+        try {
 
-        scoreText.innerText = score + "%";
-        scoreBar.style.width = score + "%";
+            const token = localStorage.getItem("token");
 
+            const res = await fetch(
+                "https://akwire-api.onrender.com/api/exam/history",
+                {
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    }
+                }
+            );
 
-        // ==========================
-        // 3. STATUS LOGIC
-        // ==========================
+            const data = await res.json();
 
-        if (score >= 85) {
+            const attempts = data.attempts || [];
 
-            statusText.innerText = "MISSION_READY";
-            statusText.style.color = "#10b981";
+            const latestScore =
+                attempts.length > 0
+                    ? attempts[attempts.length - 1].score
+                    : 0;
 
-        }
-        else if (score >= 70) {
+            if (scoreText && scoreBar && statusText) {
 
-            statusText.innerText = "OPERATIONAL";
-            statusText.style.color = "#38bdf8";
+                scoreText.innerText = latestScore + "%";
 
-        }
-        else if (score > 0) {
+                scoreBar.style.width = latestScore + "%";
 
-            statusText.innerText = "REMEDIATION_REQUIRED";
-            statusText.style.color = "#f59e0b";
+                if (latestScore >= 85) {
 
-        }
-        else {
+                    statusText.innerText = "MISSION_READY";
+                    statusText.style.color = "#10b981";
 
-            statusText.innerText = "AWAITING_DEPLOYMENT";
-            statusText.style.color = "#94a3b8";
+                } else if (latestScore >= 70) {
+
+                    statusText.innerText = "OPERATIONAL";
+                    statusText.style.color = "#38bdf8";
+
+                } else if (latestScore > 0) {
+
+                    statusText.innerText = "REMEDIATION_REQUIRED";
+                    statusText.style.color = "#f59e0b";
+
+                } else {
+
+                    statusText.innerText = "AWAITING_DEPLOYMENT";
+                    statusText.style.color = "#94a3b8";
+
+                }
+
+            }
+
+        } catch(err) {
+
+            console.error("Latest score error:", err);
 
         }
 
     }
+
+    loadLatestScore();
 
 
     // ==========================
@@ -247,23 +272,23 @@ async function loadDashboard(userId) {
 
         console.log("Dashboard data:", data);
 
-        // 🔥 STATS
+        // STATS
         document.getElementById('totalLabs').textContent = data.totalLabs;
         document.getElementById('avgScore').textContent = data.avgScore.toFixed(1);
         document.getElementById('completedLabs').textContent = data.completedLabs;
         document.getElementById('progress').textContent = Math.round(data.progress) + "%";
 
-        // 🔥 PROGRESS BAR
+        // PROGRESS BAR
         const progressPercent = Math.round(data.progress || 0);
 
         document.getElementById("overallProgressBar").style.width = progressPercent + "%";
         document.getElementById("progressText").textContent =
             `${progressPercent}% (${data.completedLabs}/${data.totalLabs} Labs)`;
 
-        // 🔥 LOAD LAB CARDS
+        // LOAD LAB CARDS
         loadLabProgress(userId);
 
-        // 🔥 FIX: ADD RECOMMENDATIONS HERE
+        // FIX: ADD RECOMMENDATIONS HERE
         generateInsights(data);
 
     } catch (err) {
@@ -446,7 +471,7 @@ async function loadLabProgress(userId) {
         const completedLabIds = [
             ...new Set(
                 data.results
-                    .filter(r => r.score >= 70) // ✅ ONLY completed labs
+                    .filter(r => r.score >= 70) // ONLY completed labs
                     .map(r => r.labId)
             )
         ];
@@ -476,13 +501,13 @@ labs.forEach((lab, index) => {
     let status = "";
     let statusClass = "";
 
-    // 🔥 Get BEST score for this lab
+    // Get BEST score for this lab
     const labResults = (data.results || []).filter(r => r.labId === lab.labId);
     const bestScore = labResults.length > 0
         ? Math.max(...labResults.map(r => r.score))
         : 0;
 
-    // 🔥 Sequential logic
+    // Sequential logic
     if (bestScore >= 70 && index === sequentialCompletedCount) {
         status = "Completed";
         statusClass = "status-complete";
@@ -505,7 +530,7 @@ labs.forEach((lab, index) => {
 
     container.appendChild(card);
 
-    // 🔥 Only clickable if available
+    // Only clickable if available
     if (status === "Available") {
         card.style.cursor = "pointer";
 
@@ -537,7 +562,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!user || !user._id) {
         console.error("User not found in localStorage");
 
-        // 🔥 TEMP fallback (use your real MongoDB userId)
+        // TEMP fallback (use your real MongoDB userId)
         loadDashboard("PASTE_YOUR_USER_ID_HERE");
         return;
     }
