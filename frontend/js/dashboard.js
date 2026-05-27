@@ -576,7 +576,8 @@ function renderLabProgress(labs, data) {
             card.addEventListener("click", () => {
 
                 window.location.href =
-                    \`labs.html?labId=\${lab.labId}\`;
+                   window.location.href =
+                `labs.html?labId=${lab.labId}`;
 
             });
 
