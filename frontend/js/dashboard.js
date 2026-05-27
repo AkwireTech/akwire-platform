@@ -85,8 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    loadLatestScore();
-
 
     // ==========================
     // 4. THREAT INTEL FEED
@@ -504,9 +502,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!user || !user._id) {
+    const token = localStorage.getItem("token");
 
-        console.error("User not found");
+    if (!user || !user._id || !token) {
+
+        console.error("User not authenticated");
 
         window.location.href = "login.html";
 
@@ -514,10 +514,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    // Load dashboard data
     loadDashboard(user._id);
 
+    // Load lab progress
     loadLabProgress(user._id);
 
-    loadLatestScore();
+    // Load exam history chart
+    loadExamHistory();
 
 });
