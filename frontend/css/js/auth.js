@@ -1,80 +1,226 @@
-// 1. Registration Logic
-function registerUser(e) {
-    e.preventDefault(); // Stop the page from refreshing
+console.log("AUTH JS LOADED");
 
-    const username = document.getElementById('reg-user').value;
-    const email = document.getElementById('reg-email').value;
-    const password = document.getElementById('reg-pass').value;
+document.addEventListener("DOMContentLoaded", () => {
 
-    // Check if the user already exists
-    if (localStorage.getItem('user_' + email)) {
-        alert("An account with this email already exists. Please login.");
-        window.location.href = 'login.html';
-        return;
+    // =========================
+    // LOGIN
+    // =========================
+
+    const loginForm = document.getElementById("login-form");
+
+    if (loginForm) {
+
+        loginForm.addEventListener("submit", async (e) => {
+
+            e.preventDefault();
+
+            const email = loginForm
+                .querySelector('input[type="email"]')
+                .value
+                .trim();
+
+            const password = loginForm
+                .querySelector('input[type="password"]')
+                .value
+                .trim();
+
+            try {
+
+                const res = await fetch(
+                    "https://akwire-api.onrender.com/api/auth/login",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            email,
+                            password
+                        })
+                    }
+                );
+
+                const data = await res.json();
+
+                console.log("LOGIN RESPONSE:", data);
+
+                if (!res.ok) {
+
+                    alert(data.message || "Login failed");
+
+                    return;
+
+                }
+
+                // =========================
+                // FIXED USER EXTRACTION
+                // =========================
+
+                const userData = data.user || data;
+
+                localStorage.setItem(
+                    "user",
+                    JSON.stringify({
+                        _id: userData._id,
+                        email: userData.email,
+                        role: userData.role || "student"
+                    })
+                );
+
+                localStorage.setItem(
+                    "token",
+                    data.token
+                );
+
+                console.log("Login successful");
+
+                window.location.href =
+                    "dashboard.html";
+
+            } catch (err) {
+
+                console.error("Login error:", err);
+
+                alert("Server error");
+
+            }
+
+        });
+
     }
 
-    // Create the User Object (Our "Database" entry)
-    const newUser = {
-        username: username,
-        email: email,
-        password: password, // Note: In a real app, this would be hashed/encrypted
-        progress: [],
-        lastExamScore: 0
-    };
+    // =========================
+    // REGISTER
+    // =========================
 
-    // Save to LocalStorage
-    localStorage.setItem('user_' + email, JSON.stringify(newUser));
-    
-    alert("Account created successfully! Redirecting to login...");
-    window.location.href = 'login.html';
-}
+    const registerForm =
+        document.getElementById("register-form");
 
-// 2. Login Logic
-function loginUser(e) {
-    e.preventDefault();
+    if (registerForm) {
 
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
+        registerForm.addEventListener(
+            "submit",
+            async (e) => {
 
-    // Retrieve user from LocalStorage
-    const storedUser = JSON.parse(localStorage.getItem('user_' + email));
+                e.preventDefault();
 
-    if (storedUser && storedUser.password === password) {
-        // Set the "Session" (tells the site who is currently logged in)
-        localStorage.setItem('currentUser', JSON.stringify(storedUser));
-        window.location.href = 'dashboard.html';
-    } else {
-        alert("Invalid email or password. Please try again.");
+                const inputs =
+                    registerForm.querySelectorAll("input");
+
+                const firstName =
+                    inputs[0].value.trim();
+
+                const lastName =
+                    inputs[1].value.trim();
+
+                const email =
+                    inputs[2].value.trim();
+
+                const password =
+                    inputs[3].value.trim();
+
+                const confirmPassword =
+                    inputs[4].value.trim();
+
+                if (password !== confirmPassword) {
+
+                    alert("Passwords do not match");
+
+                    return;
+
+                }
+
+                try {
+
+                    const res = await fetch(
+                        "https://akwire-api.onrender.com/api/auth/register",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+
+                                username:
+                                    `${firstName}${lastName}`
+                                        .toLowerCase(),
+
+                                name:
+                                    `${firstName} ${lastName}`,
+
+                                email,
+
+                                password
+
+                            })
+
+                        }
+                    );
+
+                    const data = await res.json();
+
+                    console.log(
+                        "REGISTER RESPONSE:",
+                        data
+                    );
+
+                    if (!res.ok) {
+
+                        alert(
+                            data.message ||
+                            "Registration failed"
+                        );
+
+                        return;
+
+                    }
+
+                    // =========================
+                    // FIXED USER EXTRACTION
+                    // =========================
+
+                    const userData = data.user || data;
+
+                    localStorage.setItem(
+                        "user",
+                        JSON.stringify({
+                            _id: userData._id,
+                            email: userData.email,
+                            role: userData.role || "student"
+                        })
+                    );
+
+                    localStorage.setItem(
+                        "token",
+                        data.token
+                    );
+
+                    alert(
+                        "Registration successful"
+                    );
+
+                    window.location.href =
+                        "dashboard.html";
+
+                } catch (err) {
+
+                    console.error(
+                        "Register error:",
+                        err
+                    );
+
+                    alert("Server error");
+
+                }
+
+            }
+        );
+
     }
-}
 
-// 3. Logout Logic
-function logout() {
-    localStorage.removeItem('currentUser');
-    window.location.href = 'index.html';
-}
-
-// 4. Session Check (Runs on every page to show "Welcome User")
-document.addEventListener('DOMContentLoaded', () => {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const authNav = document.getElementById('auth-link'); // Make sure your nav has this ID
-
-    if (currentUser && authNav) {
-        authNav.innerHTML = `<span>Hi, ${currentUser.username}</span> | <a href="#" onclick="logout()">Logout</a>`;
-    }
 });
-
-const recoveryForm = document.getElementById('recovery-form');
-const recoveryMessage = document.getElementById('recovery-message');
-
-if (recoveryForm) {
-    recoveryForm.addEventListener('submit', (e) => {
-        e.preventDefault(); // Stop the page from refreshing
-        
-        // Hide the form and show the success message
-        recoveryForm.style.display = 'none';
-        recoveryMessage.style.display = 'block';
-        
-        console.log("Recovery protocol initiated for: " + document.getElementById('recovery-email').value);
-    });
-}
