@@ -146,22 +146,26 @@ export const createExam = async (req, res) => {
   }
 };
 
-export const getExamHistory = async (req,res)=>{
+import ExamResult from "../models/ExamResult.js";
 
-try{
+export const getExamHistory = async (req, res) => {
 
-const user = await User.findById(req.user._id);
+    try {
 
-res.json({
-attempts:user.examAttempts
-});
+        const attempts = await ExamResult.find({
+            userId: req.user._id
+        }).sort({ createdAt: 1 });
 
-}catch(error){
+        res.json({ attempts });
 
-res.status(500).json({
-message:"Failed to load exam history"
-});
+    } catch (error) {
 
-}
+        console.error("Exam history error:", error);
+
+        res.status(500).json({
+            message: "Failed to load exam history"
+        });
+
+    }
 
 };
