@@ -1,3 +1,4 @@
+console.log("DASHBOARD JS LOADED");
 document.addEventListener("DOMContentLoaded", async () => {
 
     // ==========================
@@ -166,6 +167,7 @@ function startMatrixRain() {
 async function loadExamHistory() {
 
     try {
+        console.log("loadDashboard running");
 
         const token = localStorage.getItem("token");
 
@@ -177,6 +179,8 @@ async function loadExamHistory() {
                 }
             }
         );
+
+        console.log(data);
 
         const data = await res.json();
 
