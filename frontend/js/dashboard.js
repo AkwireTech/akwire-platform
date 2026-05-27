@@ -1,6 +1,16 @@
 console.log("dashboard js loaded");
 document.addEventListener("DOMContentLoaded", async () => {
 
+    console.log("STEP 1");
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    console.log("USER:", user);
+
+    const token = localStorage.getItem("token");
+    console.log("TOKEN:", token);
+
+    console.log("STEP 2");
+
     // ==========================
     // AUTH CHECK
     // ==========================
@@ -77,7 +87,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     // LOAD DASHBOARD DATA
     // ==========================
 
+    console.log("STEP 3");
+
     await loadDashboard(user._id);
+    console.log("STEP 4");
 
     await loadLabProgress(user._id);
 
@@ -167,6 +180,7 @@ function startMatrixRain() {
 async function loadExamHistory() {
 
     try {
+        console.log("STEP 6");
 
         const token = localStorage.getItem("token");
 
@@ -181,6 +195,7 @@ async function loadExamHistory() {
 
 
         const data = await res.json();
+        console.log("STEP 5", data);
 
         const attempts =
             data.attempts || data.examAttempts || [];
