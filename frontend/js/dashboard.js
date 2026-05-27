@@ -1,4 +1,4 @@
-console.log("DASHBOARD JS LOADED");
+alert("dashboard js loaded");
 document.addEventListener("DOMContentLoaded", async () => {
 
     // ==========================
