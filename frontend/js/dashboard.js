@@ -1,15 +1,6 @@
 console.log("dashboard js loaded");
+
 document.addEventListener("DOMContentLoaded", async () => {
-
-    console.log("STEP 1");
-
-    const user = JSON.parse(localStorage.getItem("user"));
-    console.log("USER:", user);
-
-    const token = localStorage.getItem("token");
-    console.log("TOKEN:", token);
-
-    console.log("STEP 2");
 
     // ==========================
     // AUTH CHECK
@@ -18,6 +9,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     const token = localStorage.getItem("token");
+
+    console.log("USER:", user);
+    console.log("TOKEN:", token);
 
     if (!user || !user._id || !token) {
 
@@ -84,13 +78,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // ==========================
-    // LOAD DASHBOARD DATA
+    // LOAD DASHBOARD
     // ==========================
 
-    console.log("STEP 3");
-
     await loadDashboard(user._id);
-    console.log("STEP 4");
 
     await loadLabProgress(user._id);
 
@@ -180,7 +171,6 @@ function startMatrixRain() {
 async function loadExamHistory() {
 
     try {
-        console.log("STEP 6");
 
         const token = localStorage.getItem("token");
 
@@ -193,9 +183,9 @@ async function loadExamHistory() {
             }
         );
 
-
         const data = await res.json();
-        console.log("STEP 5", data);
+
+        console.log("Exam history:", data);
 
         const attempts =
             data.attempts || data.examAttempts || [];
@@ -220,42 +210,11 @@ async function loadExamHistory() {
         const scoreBar =
             document.getElementById("dash-score-bar");
 
-        const statusText =
-            document.getElementById("status-text");
-
-        if (scoreText && scoreBar && statusText) {
+        if (scoreText && scoreBar) {
 
             scoreText.innerText = latestScore + "%";
 
             scoreBar.style.width = latestScore + "%";
-
-            if (latestScore >= 85) {
-
-                statusText.innerText = "MISSION_READY";
-
-                statusText.style.color = "#10b981";
-
-            } else if (latestScore >= 70) {
-
-                statusText.innerText = "OPERATIONAL";
-
-                statusText.style.color = "#38bdf8";
-
-            } else if (latestScore > 0) {
-
-                statusText.innerText =
-                    "REMEDIATION_REQUIRED";
-
-                statusText.style.color = "#f59e0b";
-
-            } else {
-
-                statusText.innerText =
-                    "AWAITING_DEPLOYMENT";
-
-                statusText.style.color = "#94a3b8";
-
-            }
 
         }
 
@@ -296,6 +255,8 @@ async function loadExamHistory() {
                 },
 
                 options: {
+
+                    responsive: true,
 
                     scales: {
 
@@ -359,6 +320,8 @@ async function loadExamHistory() {
 async function loadDashboard(userId) {
 
     try {
+
+        console.log("Loading dashboard for:", userId);
 
         const res = await fetch(
             `https://akwire-api.onrender.com/api/dashboard/lab-dashboard/${userId}`
@@ -613,7 +576,7 @@ function renderLabProgress(labs, data) {
             card.addEventListener("click", () => {
 
                 window.location.href =
-                    `labs.html?labId=${lab.labId}`;
+                    \`labs.html?labId=\${lab.labId}\`;
 
             });
 
