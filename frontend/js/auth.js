@@ -6,77 +6,105 @@ document.addEventListener("DOMContentLoaded", () => {
     // LOGIN
     // =========================
 
-    const loginForm = document.getElementById("login-form");
+    const loginForm =
+        document.getElementById("login-form");
 
     if (loginForm) {
 
-        loginForm.addEventListener("submit", async (e) => {
+        loginForm.addEventListener(
+            "submit",
+            async (e) => {
 
-            e.preventDefault();
+                e.preventDefault();
 
-            const email = loginForm
-                .querySelector('input[type="email"]')
-                .value
-                .trim();
+                const email =
+                    loginForm
+                        .querySelector('input[type="email"]')
+                        .value
+                        .trim();
 
-            const password = loginForm
-                .querySelector('input[type="password"]')
-                .value
-                .trim();
+                const password =
+                    loginForm
+                        .querySelector('input[type="password"]')
+                        .value
+                        .trim();
 
-            try {
+                try {
 
-                const res = await fetch(
-                    "https://akwire-api.onrender.com/api/auth/login",
-                    {
-                        method: "POST",
+                    const res = await fetch(
+                        "https://akwire-api.onrender.com/api/auth/login",
+                        {
+                            method: "POST",
 
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
 
-                        body: JSON.stringify({
-                            email,
-                            password
-                        })
+                            body: JSON.stringify({
+                                email,
+                                password
+                            })
+
+                        }
+                    );
+
+                    const data = await res.json();
+
+                    console.log("LOGIN:", data);
+
+                    if (!res.ok) {
+
+                        alert(
+                            data.message ||
+                            "Login failed"
+                        );
+
+                        return;
+
                     }
-                );
 
-                const data = await res.json();
+                    // =========================
+                    // SAVE USER
+                    // =========================
 
-                if (!res.ok) {
+                    const userData =
+                        data.user || data;
 
-                    alert(data.message || "Login failed");
+                    localStorage.setItem(
+                        "user",
+                        JSON.stringify({
+                            _id: userData._id,
+                            email: userData.email,
+                            role: userData.role || "student"
+                        })
+                    );
 
-                    return;
+                    localStorage.setItem(
+                        "token",
+                        data.token
+                    );
+
+                    console.log(
+                        "User saved successfully"
+                    );
+
+                    window.location.href =
+                        "dashboard.html";
+
+                } catch (err) {
+
+                    console.error(
+                        "Login error:",
+                        err
+                    );
+
+                    alert("Server error");
 
                 }
 
-                // Save token
-                localStorage.setItem("token", data.token);
-
-                // Save user
-                localStorage.setItem(
-                    "user",
-                    JSON.stringify({
-                        _id: data._id,
-                        email: data.email
-                    })
-                );
-
-                alert("Login successful");
-
-                window.location.href = "dashboard.html";
-
-            } catch (err) {
-
-                console.error("Login error:", err);
-
-                alert("Server error");
-
             }
-
-        });
+        );
 
     }
 
@@ -84,93 +112,123 @@ document.addEventListener("DOMContentLoaded", () => {
     // REGISTER
     // =========================
 
-    const registerForm = document.getElementById("register-form");
+    const registerForm =
+        document.getElementById("register-form");
 
     if (registerForm) {
 
-        registerForm.addEventListener("submit", async (e) => {
+        registerForm.addEventListener(
+            "submit",
+            async (e) => {
 
-            e.preventDefault();
+                e.preventDefault();
 
-            const inputs = registerForm.querySelectorAll("input");
+                const inputs =
+                    registerForm.querySelectorAll("input");
 
-            const firstName = inputs[0].value.trim();
+                const firstName =
+                    inputs[0].value.trim();
 
-            const lastName = inputs[1].value.trim();
+                const lastName =
+                    inputs[1].value.trim();
 
-            const email = inputs[2].value.trim();
+                const email =
+                    inputs[2].value.trim();
 
-            const password = inputs[3].value.trim();
+                const password =
+                    inputs[3].value.trim();
 
-            const confirmPassword = inputs[4].value.trim();
+                const confirmPassword =
+                    inputs[4].value.trim();
 
-            if (password !== confirmPassword) {
+                if (password !== confirmPassword) {
 
-                alert("Passwords do not match");
-
-                return;
-
-            }
-
-            try {
-
-                const res = await fetch(
-                    "https://akwire-api.onrender.com/api/auth/register",
-                    {
-                        method: "POST",
-
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-
-                        body: JSON.stringify({ 
-                                username: `${firstName}${lastName}`.toLowerCase(),
-                                name: `${firstName} ${lastName}`,
-                                email,
-                                password
-                        
-                        })
-                    }
-                );
-
-                const data = await res.json();
-
-                console.log("REGISTER RESPONSE:", data);
-
-                if (!res.ok) {
-
-                    alert(data.message || "Registration failed");
+                    alert(
+                        "Passwords do not match"
+                    );
 
                     return;
 
                 }
 
-                // Save token
-                localStorage.setItem("token", data.token);
+                try {
 
-                // Save user
-                localStorage.setItem(
-                    "user",
-                    JSON.stringify({
-                        _id: data._id,
-                        email: data.email
-                    })
-                );
+                    const res = await fetch(
+                        "https://akwire-api.onrender.com/api/auth/register",
+                        {
+                            method: "POST",
 
-                alert("Registration successful");
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
 
-                // Auto login
-                window.location.href = "dashboard.html";
+                            body: JSON.stringify({
 
-            } catch (err) {
+                                username:
+                                    `${firstName}${lastName}`
+                                        .toLowerCase(),
 
-                console.error("Register error:", err);
+                                name:
+                                    `${firstName} ${lastName}`,
 
-                alert("Server error");
+                                email,
+
+                                password
+
+                            })
+
+                        }
+                    );
+
+                    const data = await res.json();
+
+                    console.log("REGISTER:", data);
+
+                    if (!res.ok) {
+
+                        alert(
+                            data.message ||
+                            "Registration failed"
+                        );
+
+                        return;
+
+                    }
+
+                    const userData =
+                        data.user || data;
+
+                    localStorage.setItem(
+                        "user",
+                        JSON.stringify({
+                            _id: userData._id,
+                            email: userData.email,
+                            role: userData.role || "student"
+                        })
+                    );
+
+                    localStorage.setItem(
+                        "token",
+                        data.token
+                    );
+
+                    window.location.href =
+                        "dashboard.html";
+
+                } catch (err) {
+
+                    console.error(
+                        "Register error:",
+                        err
+                    );
+
+                    alert("Server error");
+
+                }
 
             }
-
-        });
+        );
 
     }
 
