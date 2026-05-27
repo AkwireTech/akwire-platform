@@ -2692,9 +2692,9 @@ div {
 
     display: flex;
 
-    gap: 15px;
+    flex-wrap: wrap;
 
-    overflow-x: auto;
+    gap: 15px;
 
     padding-top: 10px;
 
@@ -2702,14 +2702,12 @@ div {
 
 .lab-progress-horizontal .lab-card {
 
-    min-width: 180px;
+    width: 180px;
 
     background: #1f2937;
 
     border-radius: 12px;
 
     padding: 15px;
-
-    flex-shrink: 0;
 
 }
