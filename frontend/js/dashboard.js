@@ -399,61 +399,6 @@ function generateInsights(data) {
 }
 
 
-    // 📈 Trend (last vs first)
-    const trend = scores[scores.length - 1] - scores[0];
-    let trendText = trend > 5 ? "Improving 📈" :
-                    trend < -5 ? "Declining 📉" :
-                    "Stable ➖";
-
-    // 📊 Consistency (standard deviation)
-    const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
-    const variance = scores.reduce((sum, s) => sum + Math.pow(s - avg, 2), 0) / scores.length;
-    const stdDev = Math.sqrt(variance);
-
-    let consistency = stdDev < 10 ? "Very Consistent" :
-                      stdDev < 20 ? "Moderate" :
-                      "Inconsistent";
-
-    // 🤖 Recommendation (simple AI logic)
-    let recommendation = "";
-
-    if (weak.length > 0) {
-        recommendation = `Focus on improving: ${weak[0]}`;
-    } else if (trend < 0) {
-        recommendation = "Review previous labs to stabilize performance";
-    } else {
-        recommendation = "Try a more advanced lab 🚀";
-    }
-
-    document.getElementById('insights').innerHTML = `
-    <h3>AI Insights</h3>
-    <div class="recommendation-card">
-        <h4>Strong Areas</h4>
-        <p>${strong.join(', ') || 'None'}</p>
-    </div>
-
-    <div class="recommendation-card">
-        <h4>Needs Improvement</h4>
-        <p>${weak.join(', ') || 'None'}</p>
-    </div>
-
-    <div class="recommendation-card">
-        <h4>Trend</h4>
-        <p>${trendText}</p>
-    </div>
-
-    <div class="recommendation-card">
-        <h4>Consistency</h4>
-        <p>${consistency}</p>
-    </div>
-
-    <div class="recommendation-card">
-        <h4>Next Recommendation</h4>
-        <p>${recommendation}</p>
-    </div>
-`;
-
-
 async function loadLabProgress(userId) {
     try {
         const labsRes = await fetch("https://akwire-api.onrender.com/api/labs", {
