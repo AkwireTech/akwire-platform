@@ -46,13 +46,26 @@ document.addEventListener("DOMContentLoaded", async () => {
         // OVERALL PROGRESS BAR
         // ==========================
 
+        const progressPercent =
+            Math.round(dashboardData.progress || 0);
+
         const overallBar =
             document.getElementById("overallProgressBar");
 
         if (overallBar) {
 
             overallBar.style.width =
-                Math.round(dashboardData.progress || 0) + "%";
+                progressPercent + "%";
+
+        }
+
+        const progressText =
+            document.getElementById("progressText");
+
+        if (progressText) {
+
+            progressText.textContent =
+                `${progressPercent}% Complete`;
 
         }
 
