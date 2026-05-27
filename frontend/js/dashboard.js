@@ -69,6 +69,51 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         }
 
+        const labContainer =
+            document.getElementById("labProgressContainer");
+
+        if (labContainer) {
+
+            labContainer.innerHTML = "";
+
+            const completed =
+                dashboardData.completedLabs || 0;
+
+            const total =
+                dashboardData.totalLabs || 0;
+
+            for (let i = 1; i <= total; i++) {
+
+                const card =
+                    document.createElement("div");
+
+                card.classList.add("lab-card");
+
+                let status = "Locked";
+
+                if (i <= completed) {
+
+                    status = "Completed";
+
+                } else if (i === completed + 1) {
+
+                    status = "Available";
+
+                }
+
+                card.innerHTML = `
+                    <span>Lab ${i}</span>
+                    <span class="lab-status">
+                        ${status}
+                    </span>
+                `;
+
+                labContainer.appendChild(card);
+
+            }
+
+        }
+
         // ==========================
         // EXAM HISTORY
         // ==========================
