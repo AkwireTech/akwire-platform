@@ -2711,3 +2711,86 @@ div {
     padding: 15px;
 
 }
+
+
+/* ==========================
+   ADMIN PANEL
+========================== */
+
+.dashboard-container {
+
+    display: flex;
+
+    min-height: 100vh;
+
+    background: #0f172a;
+
+    color: white;
+
+}
+
+.sidebar {
+
+    width: 250px;
+
+    background: #111827;
+
+    padding: 20px;
+
+}
+
+.sidebar h2 {
+
+    margin-bottom: 20px;
+
+    color: #38bdf8;
+
+}
+
+.sidebar ul {
+
+    list-style: none;
+
+    padding: 0;
+
+}
+
+.sidebar ul li {
+
+    margin-bottom: 15px;
+
+}
+
+.sidebar ul li a {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    transition: 0.3s;
+
+}
+
+.sidebar ul li a:hover {
+
+    color: #38bdf8;
+
+}
+
+.main-content {
+
+    flex: 1;
+
+    padding: 40px;
+
+}
+
+.main-content h1 {
+
+    margin-bottom: 20px;
+
+    color: #38bdf8;
+
+}
