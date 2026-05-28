@@ -1,5 +1,6 @@
 import Exam from "../models/Exam.js";
 import User from "../models/User.js";
+import ExamResult from "../models/ExamResult.js";
 import { generateExam } from "../services/examService.js";
 import { generateRecommendations } from "../services/adaptiveTraining.js";
 
@@ -28,7 +29,6 @@ export const getExam = async (req, res) => {
 //=====================================
 // Adaptive Learning
 //=====================================
-import ExamResult from "../models/ExamResult.js";
 
 export const getRecommendations = async (req, res) => {
 
