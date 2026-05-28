@@ -28,30 +28,54 @@ export const getExam = async (req, res) => {
 //=====================================
 // Adaptive Learning
 //=====================================
-export const getRecommendations = async (req,res)=>{
+import ExamResult from "../models/ExamResult.js";
 
-try{
+export const getRecommendations = async (req, res) => {
 
-const user = await User.findById(req.user._id);
+    try {
 
-if(!user.domainScores){
-return res.json({recommendations:[]});
-}
+        const latestExam = await ExamResult.findOne({
+            userId: req.user._id
+        }).sort({ createdAt: -1 });
 
-const recommendations = generateRecommendations(user.domainScores);
+        if (!latestExam || !latestExam.domainScores) {
 
-res.json({
-domainScores:user.domainScores,
-recommendations
-});
+            return res.json({
+                domainScores: {},
+                recommendations: []
+            });
 
-}catch(error){
+        }
 
-res.status(500).json({
-message:"Failed to generate recommendations"
-});
+        const recommendations =
+            generateRecommendations(
+                latestExam.domainScores
+            );
 
-}
+        res.json({
+
+            domainScores:
+                latestExam.domainScores,
+
+            recommendations
+
+        });
+
+    } catch (error) {
+
+        console.error(
+            "Recommendation error:",
+            error
+        );
+
+        res.status(500).json({
+
+            message:
+                "Failed to generate recommendations"
+
+        });
+
+    }
 
 };
 
