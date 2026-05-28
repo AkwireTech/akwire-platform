@@ -170,8 +170,6 @@ export const createExam = async (req, res) => {
   }
 };
 
-import ExamResult from "../models/ExamResult.js";
-
 export const getExamHistory = async (req, res) => {
 
     try {
