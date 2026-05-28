@@ -249,6 +249,70 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         }
 
+    // ==========================
+    // RECOMMENDATIONS
+    // ==========================
+
+    const recRes = await fetch(
+        "https://akwire-api.onrender.com/api/exam/recommendations",
+        {
+            headers: {
+                Authorization: "Bearer " + token
+            }
+        }
+    );
+
+    const recData = await recRes.json();
+
+    console.log("Recommendations:", recData);
+
+    const recContainer =
+        document.getElementById(
+            "recommendationsContainer"
+        );
+
+    if (recContainer) {
+
+        recContainer.innerHTML = "";
+
+        if (
+            !recData.recommendations ||
+            recData.recommendations.length === 0
+        ) {
+
+            recContainer.innerHTML = `
+                <div class="recommendation-card">
+                    <h4>Excellent Progress</h4>
+                    <p>
+                        No weak domains detected.
+                    </p>
+                </div>
+            `;
+
+        } else {
+
+            recData.recommendations.forEach(rec => {
+
+                const card =
+                    document.createElement("div");
+
+                card.classList.add(
+                    "recommendation-card"
+                );
+
+                card.innerHTML = `
+                    <h4>${rec.domain}</h4>
+                    <p>${rec.message}</p>
+                `;
+
+                recContainer.appendChild(card);
+
+            });
+
+        }
+
+    }
+
     } catch (err) {
 
         console.error("Dashboard error:", err);
