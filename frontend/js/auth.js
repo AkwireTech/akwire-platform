@@ -203,7 +203,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         "user",
                         JSON.stringify({
                             _id: userData._id,
-                            email: userData.email,
                             role: userData.role || "student"
                         })
                     );
