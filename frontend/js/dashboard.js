@@ -4,6 +4,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("token");
+
+    // ==========================
+    // ADMIN VISIBILITY
+    // ==========================
+
+    if (user.role !== "admin") {
+
+        const adminLinks =
+            document.querySelectorAll(".admin-only");
+
+        adminLinks.forEach(link => {
+
+            link.style.display = "none";
+
+        });
+
+    }
 
     console.log("USER:", user);
 
