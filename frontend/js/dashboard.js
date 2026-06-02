@@ -164,56 +164,156 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (attempts.length > 0) {
 
-            const latestScore =
-                attempts[attempts.length - 1].score;
+            const latestAttempt =
+                attempts[attempts.length - 1];
 
-            // SCORE
+            const latestScore =
+                latestAttempt.score || 0;
+
+            console.log(
+                "Latest Score:",
+                latestScore
+            );
+
+            // ==========================
+            // LATEST EXAM SCORE
+            // ==========================
 
             const scoreText =
-                document.getElementById("dash-score");
+                document.getElementById(
+                    "dash-score"
+                );
 
-            const scoreBar =
-                document.getElementById("dash-score-bar");
+            if (scoreText) {
 
-            if (scoreText)
                 scoreText.textContent =
                     latestScore + "%";
 
-            if (scoreBar)
+            }
+
+            const scoreBar =
+                document.getElementById(
+                    "dash-score-bar"
+                );
+
+            if (scoreBar) {
+
                 scoreBar.style.width =
                     latestScore + "%";
 
-            // READINESS
+            }
+
+            // ==========================
+            // READINESS SCORE
+            // ==========================
 
             const avgReadiness =
                 Math.round(
 
                     attempts.reduce(
-                        (sum, a) => sum + a.score,
+                        (sum, a) =>
+                            sum + (a.score || 0),
                         0
                     ) / attempts.length
 
                 );
+
+            console.log(
+                "Readiness:",
+                avgReadiness
+            );
 
             const readinessText =
                 document.getElementById(
                     "readiness-score"
                 );
 
+            if (readinessText) {
+
+                readinessText.textContent =
+                    avgReadiness + "%";
+
+            }
+
             const readinessBar =
                 document.getElementById(
                     "readiness-bar"
                 );
 
-            if (readinessText)
-                readinessText.textContent =
-                    avgReadiness + "%";
+            if (readinessBar) {
 
-            if (readinessBar)
                 readinessBar.style.width =
                     avgReadiness + "%";
 
+            }
+
+            // ==========================
+            // CHART
+            // ==========================
+
+            const chartCanvas =
+                document.getElementById(
+                    "progressChart"
+                );
+
+            if (chartCanvas) {
+
+                new Chart(chartCanvas, {
+
+                    type: "line",
+
+                    data: {
+
+                        labels: attempts.map(
+                            (_, i) =>
+                                `Attempt ${i + 1}`
+                        ),
+
+                        datasets: [{
+
+                            label: "Exam Score",
+
+                            data: attempts.map(
+                                a => a.score || 0
+                            ),
+
+                            borderColor:
+                                "#38bdf8",
+
+                            backgroundColor:
+                                "rgba(56,189,248,0.2)",
+
+                            fill: true,
+
+                            tension: 0.3
+
+                        }]
+
+                    },
+
+                    options: {
+
+                        responsive: true,
+
+                        scales: {
+
+                            y: {
+
+                                beginAtZero: true,
+                                max: 100
+
+                            }
+
+                        }
+
+                    }
+
+                });
+
+            }
+
         }
+
 
         // ==========================
         // RECOMMENDATIONS
