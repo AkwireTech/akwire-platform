@@ -1,12 +1,11 @@
-
 /* ==========================================
-   js/courses.js - Original UI Preserved
+   js/courses.js - Bulletproof Version
    ========================================== */
 
 let domains = [];
 
 // ==========================================
-// LOAD COURSES FROM BACKEND
+// LOAD COURSES
 // ==========================================
 
 async function loadCourses() {
@@ -51,8 +50,6 @@ async function loadCourses() {
 
         renderCourses();
 
-        updateProgressBar();
-
     } catch (error) {
 
         console.error(
@@ -82,7 +79,7 @@ function renderCourses() {
     if (!courseList) {
 
         console.error(
-            "ERROR: Missing course-list"
+            "ERROR: Could not find course-list"
         );
 
         return;
@@ -131,9 +128,7 @@ function renderCourses() {
                 <span
                     id="icon-${domain.id}"
 
-                    style="
-                        font-weight:bold;
-                    "
+                    style="font-weight:bold;"
                 >
                     +
                 </span>
@@ -210,10 +205,6 @@ function renderCourses() {
         courseList.appendChild(card);
 
     });
-
-    console.log(
-        "Courses rendered successfully!"
-    );
 
 }
 
