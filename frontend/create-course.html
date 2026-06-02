@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Create Course | Akwire</title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body class="dashboard-page">
+
+    <div class="dashboard-wrapper">
+
+        <nav class="sidebar">
+
+            <h1 style="color:white;">
+                ADMIN PANEL
+            </h1>
+
+            <ul>
+
+                <li>
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="create-course.html"
+                       class="active">
+                        Create Course
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+        <main class="main-content">
+
+            <div class="content-header">
+
+                <h1>Create Course</h1>
+
+            </div>
+
+            <div class="recommendations-panel">
+
+                <form id="courseForm">
+
+                    <input
+                        type="text"
+                        id="title"
+                        placeholder="Course Title"
+                        required
+                    >
+
+                    <textarea
+                        id="description"
+                        placeholder="Course Description"
+                        required
+                    ></textarea>
+
+                    <input
+                        type="text"
+                        id="domain"
+                        placeholder="Domain"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        id="thumbnail"
+                        placeholder="Thumbnail URL"
+                    >
+
+                    <button
+                        type="submit"
+                        class="submit-feedback-btn"
+                    >
+                        Create Course
+                    </button>
+
+                </form>
+
+                <p id="statusMessage"></p>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <script src="js/create-course.js"></script>
+
+</body>
+
+</html>
