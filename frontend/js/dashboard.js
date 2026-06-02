@@ -1,9 +1,23 @@
+
 console.log("dashboard js loaded");
 
 document.addEventListener("DOMContentLoaded", async () => {
 
-const user = JSON.parse(localStorage.getItem("user"));
-const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("token");
+
+    console.log("USER:", user);
+
+    // ==========================
+    // AUTH CHECK
+    // ==========================
+
+    if (!user || !user._id || !token) {
+
+        window.location.href = "login.html";
+        return;
+
+    }
 
     // ==========================
     // ADMIN VISIBILITY
@@ -19,15 +33,6 @@ const token = localStorage.getItem("token");
             link.style.display = "none";
 
         });
-
-    }
-
-    console.log("USER:", user);
-
-    if (!user || !user._id || !token) {
-
-        window.location.href = "login.html";
-        return;
 
     }
 
@@ -86,6 +91,10 @@ const token = localStorage.getItem("token");
 
         }
 
+        // ==========================
+        // LAB PROGRESS
+        // ==========================
+
         const labContainer =
             document.getElementById("labProgressContainer");
 
@@ -139,28 +148,26 @@ const token = localStorage.getItem("token");
             "https://akwire-api.onrender.com/api/exam/history",
             {
                 headers: {
-                    Authorization: "Bearer " + token
+                    Authorization:
+                        "Bearer " + token
                 }
             }
         );
 
-        const examData = await examRes.json();
+        const examData =
+            await examRes.json();
 
         console.log("Exam:", examData);
 
         const attempts =
-            examData.attempts ||
-            examData.examAttempts ||
-            [];
+            examData.attempts || [];
 
         if (attempts.length > 0) {
 
             const latestScore =
                 attempts[attempts.length - 1].score;
 
-            // ==========================
             // SCORE
-            // ==========================
 
             const scoreText =
                 document.getElementById("dash-score");
@@ -176,24 +183,27 @@ const token = localStorage.getItem("token");
                 scoreBar.style.width =
                     latestScore + "%";
 
-            // ==========================
             // READINESS
-            // ==========================
 
-            const avgReadiness = Math.round(
+            const avgReadiness =
+                Math.round(
 
-                attempts.reduce(
-                    (sum, a) => sum + a.score,
-                    0
-                ) / attempts.length
+                    attempts.reduce(
+                        (sum, a) => sum + a.score,
+                        0
+                    ) / attempts.length
 
-            );
+                );
 
             const readinessText =
-                document.getElementById("readiness-score");
+                document.getElementById(
+                    "readiness-score"
+                );
 
             const readinessBar =
-                document.getElementById("readiness-bar");
+                document.getElementById(
+                    "readiness-bar"
+                );
 
             if (readinessText)
                 readinessText.textContent =
@@ -203,62 +213,70 @@ const token = localStorage.getItem("token");
                 readinessBar.style.width =
                     avgReadiness + "%";
 
-            // ==========================
-            // CHART
-            // ==========================
+        }
 
-            const ctx =
-                document.getElementById("progressChart");
+        // ==========================
+        // RECOMMENDATIONS
+        // ==========================
 
-            if (ctx) {
+        const recRes = await fetch(
+            "https://akwire-api.onrender.com/api/exam/recommendations",
+            {
+                headers: {
+                    Authorization:
+                        "Bearer " + token
+                }
+            }
+        );
 
-                new Chart(ctx, {
+        const recData =
+            await recRes.json();
 
-                    type: "line",
+        console.log(
+            "Recommendations:",
+            recData
+        );
 
-                    data: {
+        const recContainer =
+            document.getElementById(
+                "recommendationsContainer"
+            );
 
-                        labels: attempts.map(
-                            (_, i) => `Attempt ${i + 1}`
-                        ),
+        if (recContainer) {
 
-                        datasets: [{
+            recContainer.innerHTML = "";
 
-                            label: "Exam Score",
+            if (
+                !recData.recommendations ||
+                recData.recommendations.length === 0
+            ) {
 
-                            data: attempts.map(
-                                a => a.score
-                            ),
+                recContainer.innerHTML = `
+                    <div class="recommendation-card">
+                        <h4>Excellent Progress</h4>
+                        <p>
+                            No weak domains detected.
+                        </p>
+                    </div>
+                `;
 
-                            borderColor: "#38bdf8",
+            } else {
 
-                            backgroundColor:
-                                "rgba(56,189,248,0.2)",
+                recData.recommendations.forEach(rec => {
 
-                            fill: true,
+                    const card =
+                        document.createElement("div");
 
-                            tension: 0.3
+                    card.classList.add(
+                        "recommendation-card"
+                    );
 
-                        }]
+                    card.innerHTML = `
+                        <h4>${rec.domain}</h4>
+                        <p>${rec.message}</p>
+                    `;
 
-                    },
-
-                    options: {
-
-                        responsive: true,
-
-                        scales: {
-
-                            y: {
-
-                                beginAtZero: true,
-                                max: 100
-
-                            }
-
-                        }
-
-                    }
+                    recContainer.appendChild(card);
 
                 });
 
@@ -266,73 +284,12 @@ const token = localStorage.getItem("token");
 
         }
 
-    // ==========================
-    // RECOMMENDATIONS
-    // ==========================
-
-    const recRes = await fetch(
-        "https://akwire-api.onrender.com/api/exam/recommendations",
-        {
-            headers: {
-                Authorization: "Bearer " + token
-            }
-        }
-    );
-
-    const recData = await recRes.json();
-
-    console.log("Recommendations:", recData);
-
-    const recContainer =
-        document.getElementById(
-            "recommendationsContainer"
-        );
-
-    if (recContainer) {
-
-        recContainer.innerHTML = "";
-
-        if (
-            !recData.recommendations ||
-            recData.recommendations.length === 0
-        ) {
-
-            recContainer.innerHTML = `
-                <div class="recommendation-card">
-                    <h4>Excellent Progress</h4>
-                    <p>
-                        No weak domains detected.
-                    </p>
-                </div>
-            `;
-
-        } else {
-
-            recData.recommendations.forEach(rec => {
-
-                const card =
-                    document.createElement("div");
-
-                card.classList.add(
-                    "recommendation-card"
-                );
-
-                card.innerHTML = `
-                    <h4>${rec.domain}</h4>
-                    <p>${rec.message}</p>
-                `;
-
-                recContainer.appendChild(card);
-
-            });
-
-        }
-
-    }
-
     } catch (err) {
 
-        console.error("Dashboard error:", err);
+        console.error(
+            "Dashboard error:",
+            err
+        );
 
     }
 
