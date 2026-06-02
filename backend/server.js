@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
-import courseRoutes from "./routes/courses.js";
 import labRoutes from "./routes/labs.js";
 import dashboardRoutes from "./routes/dashboard.js";
 import progressRoutes from "./routes/progress.js";
@@ -11,6 +10,7 @@ import examRoutes from "./routes/exam.js";
 import userRoutes from "./routes/users.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import courseRoutes from "./routes/courseRoutes.js";
 
 dotenv.config();
 connectDB();

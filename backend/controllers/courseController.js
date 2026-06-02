@@ -1,57 +1,34 @@
-import {getCache,setCache} from "../utils/cache.js";
+import express from "express";
 
-export const getCourses = async(req,res)=>{
+import {
 
-const cached = getCache("courses");
+    getCourses,
+    getCourse,
+    createCourse
 
-if(cached){
-return res.json(cached);
-}
+} from "../controllers/courseController.js";
 
-const courses = await Course.find({});
+import { protect }
+from "../middleware/authMiddleware.js";
 
-setCache("courses",courses);
+const router = express.Router();
 
-res.json(courses);
+// ==========================
+// PUBLIC ROUTES
+// ==========================
 
-};
+router.get("/", getCourses);
 
-// Create a new course (admin only)
-export const createCourse = async (req, res, next) => {
-  try {
-    const { title, category, lessons } = req.body;
-    const course = await Course.create({ title, category, lessons });
-    res.status(201).json(course);
-  } catch (error) {
-    next(error);
-  }
-};
+router.get("/:id", getCourse);
 
-// Update an existing course (admin only)
-export const updateCourse = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const { title, category, lessons } = req.body;
-    const course = await Course.findByIdAndUpdate(
-      id,
-      { title, category, lessons },
-      { new: true }
-    );
-    if (!course) return res.status(404).json({ message: "Course not found" });
-    res.json(course);
-  } catch (error) {
-    next(error);
-  }
-};
+// ==========================
+// ADMIN ROUTES
+// ==========================
 
-// Delete a course (admin only)
-export const deleteCourse = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    const course = await Course.findByIdAndDelete(id);
-    if (!course) return res.status(404).json({ message: "Course not found" });
-    res.json({ message: "Course deleted" });
-  } catch (error) {
-    next(error);
-  }
-};
+router.post(
+    "/",
+    protect,
+    createCourse
+);
+
+export default router;
