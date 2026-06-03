@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akwire | Interactive Cybersecurity Training Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo"><a href="#"><img src="images/logo.png" alt="Akwire Logo"></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="courses.html" class="active">Courses</a></li>
+            <li><a href="labs.html">Labs</a></li>
+            <li><a href="exam.html">Exam</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+        </ul>
+    </nav>
+
+
+    <main class="course-view-container">
+
+        <!-- =========================
+            COURSE HEADER
+        ========================= -->
+
+        <section class="course-header">
+
+            <h1 id="courseTitle">
+                Loading Course...
+            </h1>
+
+            <p id="courseDescription">
+                Please wait while course content loads.
+            </p>
+
+        </section>
+
+        <!-- =========================
+            MODULES
+        ========================= -->
+
+        <section
+            id="courseModules"
+            class="course-modules"
+        >
+
+            <div class="academy-card">
+
+                <h3>
+                    Loading modules...
+                </h3>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="js/course-view.js"></script>
+
+
+     <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">AKWIRE<span>_SEC</span></div>
+                    <p>
+                        Interactive cybersecurity training platform focused on hands-on labs,
+                        analyst workflows, and certification readiness.
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Training</h4>
+                    <ul>
+                        <li><a href="exam.html">Exam Engine</a></li>
+                        <li><a href="labs.html">Interactive Labs</a></li>
+                        <li><a href="courses.html">Course Modules</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Security Status</h4>
+                    <div class="status-indicator">
+                        <span class="dot pulse"></span>
+                        <span class="status-text">NETWORK_OPERATIONAL</span>
+                    </div>
+                    <p style="font-size: 0.75rem; margin-top: 10px; color: #64748b;">// Last Scan: Feb 2026</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Akwire. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
