@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ADMIN PROTECTION
     // ==========================
 
-    if (
+    /*if (
         !user ||
         user.role !== "admin"
     ) {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         return;
 
-    }
+    }*/
 
     // ==========================
     // CREATE COURSE
