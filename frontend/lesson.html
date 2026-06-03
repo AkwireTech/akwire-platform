@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Lesson Viewer | Akwire
+    </title>
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <a href="#">
+
+                <img
+                    src="images/logo.png"
+                    alt="Akwire Logo"
+                >
+
+            </a>
+
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="academy.html"
+                   class="active">
+                    Academy
+                </a>
+            </li>
+
+            <li>
+                <a href="labs.html">
+                    Labs
+                </a>
+            </li>
+
+            <li>
+                <a href="exam.html">
+                    Exam
+                </a>
+            </li>
+
+            <li>
+                <a href="dashboard.html">
+                    Dashboard
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+    <!-- =========================
+         LESSON CONTENT
+    ========================= -->
+
+    <main class="lesson-container">
+
+        <section class="lesson-header">
+
+            <h1 id="lessonTitle">
+                Loading Lesson...
+            </h1>
+
+            <p id="lessonDescription">
+                Please wait while lesson content loads.
+            </p>
+
+        </section>
+
+        <!-- =========================
+             VIDEO
+        ========================= -->
+
+        <section
+            id="videoSection"
+            class="lesson-video"
+        >
+
+        </section>
+
+        <!-- =========================
+             CONTENT
+        ========================= -->
+
+        <section
+            id="lessonContent"
+            class="lesson-content-box"
+        >
+
+        </section>
+
+        <!-- =========================
+             COMPLETE BUTTON
+        ========================= -->
+
+        <button
+            id="completeLessonBtn"
+            class="academy-btn"
+        >
+            Mark Lesson Complete
+        </button>
+
+    </main>
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer class="main-footer">
+
+        <div class="footer-container">
+
+            <div class="footer-grid">
+
+                <div class="footer-col">
+
+                    <div class="footer-logo">
+                        AKWIRE<span>_SEC</span>
+                    </div>
+
+                    <p>
+
+                        Interactive cybersecurity
+                        training platform focused
+                        on hands-on labs,
+                        analyst workflows,
+                        and certification readiness.
+
+                    </p>
+
+                </div>
+
+                <div class="footer-col">
+
+                    <h4>
+                        Training
+                    </h4>
+
+                    <ul>
+
+                        <li>
+                            <a href="exam.html">
+                                Exam Engine
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="labs.html">
+                                Interactive Labs
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="academy.html">
+                                Academy
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="footer-col">
+
+                    <h4>
+                        Security Status
+                    </h4>
+
+                    <div class="status-indicator">
+
+                        <span class="dot pulse"></span>
+
+                        <span class="status-text">
+                            NETWORK_OPERATIONAL
+                        </span>
+
+                    </div>
+
+                    <p style="
+                        font-size:0.75rem;
+                        margin-top:10px;
+                        color:#64748b;
+                    ">
+                        // Last Scan: Jun 2026
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+
+                <p>
+                    &copy; 2026 Akwire.
+                    All Rights Reserved.
+                </p>
+
+                <div class="footer-legal">
+
+                    <a href="#">
+                        Privacy Policy
+                    </a>
+
+                    <a href="#">
+                        Terms of Use
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script src="js/lesson.js"></script>
+
+</body>
+
+</html>

@@ -90,7 +90,7 @@ async function loadCourse() {
 
         }
 
-        course.modules.forEach(module => {
+        course.modules.forEach( (module, moduleIndex) => {
 
             const card =
                 document.createElement("div");
@@ -107,7 +107,8 @@ async function loadCourse() {
 
                 <div>
 
-                    ${module.lessons.map(lesson => `
+                    ${module.lessons.map((lesson, lessonIndex) => `
+
 
                         <div class="lesson-item">
 
@@ -120,9 +121,11 @@ async function loadCourse() {
 
                                 onclick="
                                     openLesson(
-                                        '${lesson.title}'
+                                        ${moduleIndex},
+                                        ${lessonIndex}
                                     )
                                 "
+
                             >
                                 Start Lesson
                             </button>
@@ -166,11 +169,17 @@ async function loadCourse() {
 // OPEN LESSON
 // ==========================================
 
-function openLesson(title) {
 
-    alert(
-        `Opening lesson: ${title}`
-    );
+function openLesson(
+
+    moduleIndex,
+    lessonIndex
+
+) {
+
+    window.location.href =
+
+        `lesson.html?course=${courseId}&module=${moduleIndex}&lesson=${lessonIndex}`;
 
 }
 
