@@ -2,13 +2,62 @@
    js/courses.js - Bulletproof Version
    ========================================== */
 
-const domains = [
-    { id: 1, title: "Domain 1: General Security Concepts", category: "Architecture", lessons: ["CIA Triad", "Security Controls", "Auth vs Auth"] },
-    { id: 2, title: "Domain 2: Threats, Vulnerabilities, and Mitigations", category: "Threats", lessons: ["Malware", "Social Engineering", "Vulnerability Mgmt"] },
-    { id: 3, title: "Domain 3: Security Architecture", category: "Architecture", lessons: ["Cloud Models", "Zero Trust", "Cryptography"] },
-    { id: 4, title: "Domain 4: Security Operations", category: "Operations", lessons: ["Incident Response", "Forensics", "Logging"] },
-    { id: 5, title: "Domain 5: Security Program Management", category: "Management", lessons: ["Risk Assessment", "Privacy/GDPR", "Auditing"] }
-];
+let domains = [];
+
+async function loadCourses() {
+
+    try {
+
+        const response =
+            await fetch(
+                "https://akwire-api.onrender.com/api/courses"
+            );
+
+        const courses =
+            await response.json();
+
+        console.log(
+            "Loaded Courses:",
+            courses
+        );
+
+        domains = courses.map((course, index) => ({
+
+            id: index + 1,
+
+            title: course.title,
+
+            category:
+                course.domain || "General",
+
+            lessons:
+
+                course.modules?.flatMap(
+                    module =>
+
+                        module.lessons?.map(
+                            lesson =>
+                                lesson.title
+                        ) || []
+
+                ) || []
+
+        }));
+
+        renderCourses();
+
+        updateProgressBar();
+
+    } catch (error) {
+
+        console.error(
+            "Course load error:",
+            error
+        );
+
+    }
+
+}
 
 function renderCourses() {
     console.log("Starting to render courses...");
@@ -96,8 +145,18 @@ function setupSearch() {
 }
 
 // Launch
-document.addEventListener('DOMContentLoaded', () => {
-    renderCourses();
-    setupSearch();
-    updateProgressBar();
-});
+
+document.addEventListener(
+    'DOMContentLoaded',
+
+    async () => {
+
+        await loadCourses();
+
+        setupSearch();
+
+        updateProgressBar();
+
+    }
+
+);
