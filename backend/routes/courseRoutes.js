@@ -11,7 +11,7 @@ import {
 const router = express.Router();
 
 // Public route — view courses
-router.get("/", protect, getCourses);
+router.get("/", getCourses);
 
 // Admin-only routes
 router.post("/", protect, createCourse);
