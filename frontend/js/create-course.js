@@ -86,7 +86,45 @@ document.addEventListener("DOMContentLoaded", () => {
                                     "thumbnail"
                                 ).value,
 
-                            modules: []
+
+            modules: [
+
+                {
+
+                    title:
+                        document.getElementById(
+                            "moduleTitle"
+                        ).value,
+
+                    lessons: [
+
+                        {
+
+                            title:
+                                document.getElementById(
+                                    "lessonTitle"
+                                ).value,
+
+                            content:
+                                document.getElementById(
+                                    "lessonContent"
+                                ).value,
+
+                            videoUrl:
+                                document.getElementById(
+                                    "videoUrl"
+                                ).value,
+
+                            resources: []
+
+                        }
+
+                    ]
+
+                }
+
+            ]
+
 
                         })
 
