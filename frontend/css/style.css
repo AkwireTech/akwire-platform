@@ -279,8 +279,8 @@ body.matrix-mode .pulse-icon {
 .logo img {
     display: inline-block;
     justify-content: first baseline;
-    width: 220px;
-    height:100px;
+    width: 180px;
+    height:65px;
     border-radius: 10px;
 }
 
