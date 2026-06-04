@@ -163,13 +163,13 @@ function convertYoutubeUrl(url) {
 // LESSON COMPLETE
 // ==========================================
 
-document.getElementById(
-    "completeLessonBtn"
-).addEventListener(
+    document.getElementById(
+        "completeLessonBtn"
+    ).addEventListener(
 
-    "click",
+        "click",
 
-    () => {
+        async () => {
 
         let completed =
             JSON.parse(
