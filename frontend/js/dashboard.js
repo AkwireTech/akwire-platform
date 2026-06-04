@@ -9,6 +9,60 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.log("USER:", user);
 
     // ==========================
+    // ACADEMY PROGRESS
+    // ==========================
+
+    try {
+
+        const academyRes =
+            await fetch(
+
+                "https://akwire-api.onrender.com/api/progress",
+
+                {
+
+                    headers: {
+
+                        Authorization:
+                            "Bearer " + token
+
+                    }
+
+                }
+
+            );
+
+        const academyData =
+            await academyRes.json();
+
+        console.log(
+            "Academy Progress:",
+            academyData
+        );
+
+        const academyCompleted =
+            document.getElementById(
+                "academyCompleted"
+            );
+
+        if (academyCompleted) {
+
+            academyCompleted.textContent =
+                academyData.length || 0;
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Academy progress error:",
+            error
+        );
+
+    }
+
+
+    // ==========================
     // AUTH CHECK
     // ==========================
 
