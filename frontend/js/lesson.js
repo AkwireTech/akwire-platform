@@ -206,13 +206,48 @@ document.getElementById(
 
         }
 
+        const token =
+            localStorage.getItem(
+                "token"
+            );
+
+        try {
+
+            await fetch(
+
+                `https://akwire-api.onrender.com/api/progress/${courseId}`,
+
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        Authorization:
+                            "Bearer " + token
+
+                    }
+
+                }
+
+            );
+
+        } catch (error) {
+
+            console.error(
+                "Progress update failed:",
+                error
+            );
+
+        }
+
         alert(
             "Lesson completed!"
         );
 
-    }
+            }
 
-);
+        );
 
 // ==========================================
 // START
