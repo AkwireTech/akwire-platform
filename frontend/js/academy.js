@@ -186,11 +186,17 @@ function renderCourses(courses) {
 
             </p>
 
+
         ${isCompleted ? `
 
             <button
                 class="academy-btn"
-                disabled
+
+                onclick="
+                    openCourse(
+                        '${course._id}'
+                    )
+                "
             >
                 ✓ Completed
             </button>
