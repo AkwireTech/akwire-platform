@@ -5,6 +5,8 @@
 
 let allCourses = [];
 
+let completedCourses = [];
+
 // ==========================================
 // LOAD COURSES
 // ==========================================
@@ -62,6 +64,57 @@ async function loadCourses() {
 
 }
 
+
+async function loadProgress() {
+
+    const token =
+        localStorage.getItem(
+            "token"
+        );
+
+    if (!token) return;
+
+    try {
+
+        const response =
+            await fetch(
+
+                "https://akwire-api.onrender.com/api/progress",
+
+                {
+
+                    headers: {
+
+                        Authorization:
+                            "Bearer " + token
+
+                    }
+
+                }
+
+            );
+
+        completedCourses =
+            await response.json();
+
+        console.log(
+            "Completed Courses:",
+            completedCourses
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Progress Error:",
+            error
+        );
+
+    }
+
+}
+
+
+
 // ==========================================
 // RENDER COURSES
 // ==========================================
@@ -95,6 +148,17 @@ function renderCourses(courses) {
 
     courses.forEach(course => {
 
+        const isCompleted =
+
+            completedCourses.some(
+
+                completed =>
+
+                    completed._id === course._id
+
+        );
+
+
         const card =
             document.createElement("div");
 
@@ -122,6 +186,17 @@ function renderCourses(courses) {
 
             </p>
 
+        ${isCompleted ? `
+
+            <button
+                class="academy-btn"
+                disabled
+            >
+                ✓ Completed
+            </button>
+
+        ` : `
+
             <button
                 class="academy-btn"
 
@@ -133,6 +208,8 @@ function renderCourses(courses) {
             >
                 Open Course
             </button>
+
+        `}
 
         `;
 
@@ -205,6 +282,9 @@ document.addEventListener(
     "DOMContentLoaded",
 
     async () => {
+
+
+        await loadProgress();
 
         await loadCourses();
 
