@@ -31,6 +31,11 @@ async function loadCourse() {
             "courseDescription"
         );
 
+    const progress =
+        document.getElementById(
+            "courseProgress"
+        );
+
     const modulesContainer =
         document.getElementById(
             "courseModules"
@@ -94,6 +99,62 @@ async function loadCourse() {
                     "completedLessons"
                 )
             ) || [];
+
+
+        let totalLessons = 0;
+
+        let completedCount = 0;
+
+        course.modules.forEach(
+
+            (module, moduleIndex) => {
+
+                module.lessons.forEach(
+
+                    (lesson, lessonIndex) => {
+
+                        totalLessons++;
+
+                        const lessonKey =
+
+                            `${courseId}-${moduleIndex}-${lessonIndex}`;
+
+                        if (
+
+                            completedLessons.includes(
+                                lessonKey
+                            )
+
+                        ) {
+
+                            completedCount++;
+
+                        }
+
+                    }
+
+                );
+
+            }
+
+        );
+
+        const percentage =
+
+            totalLessons > 0
+
+                ? Math.round(
+                    (completedCount / totalLessons) * 100
+                )
+
+                : 0;
+
+        if (progress) {
+
+            progress.textContent =
+                `Progress: ${percentage}% Complete`;
+
+        }
 
 
         course.modules.forEach(
