@@ -40,9 +40,7 @@ async function loadCourse() {
 
         const response =
             await fetch(
-
                 `https://akwire-api.onrender.com/api/courses/${courseId}`
-
             );
 
         const course =
@@ -90,57 +88,110 @@ async function loadCourse() {
 
         }
 
-        course.modules.forEach( (module, moduleIndex) => {
+        const completedLessons =
+            JSON.parse(
+                localStorage.getItem(
+                    "completedLessons"
+                )
+            ) || [];
 
-            const card =
-                document.createElement("div");
+        console.log(
+            "Completed Lessons:",
+            completedLessons
+        );
 
-            card.classList.add(
-                "module-view-card"
-            );
+        course.modules.forEach(
 
-            card.innerHTML = `
+            (module, moduleIndex) => {
 
-                <h3>
-                    ${module.title}
-                </h3>
+                const card =
+                    document.createElement(
+                        "div"
+                    );
 
-                <div>
+                card.classList.add(
+                    "module-view-card"
+                );
 
-                    ${module.lessons.map((lesson, lessonIndex) => `
+                card.innerHTML = `
 
+                    <h3>
+                        ${module.title}
+                    </h3>
 
-                        <div class="lesson-item">
+                    <div>
 
-                            <span>
-                                ${lesson.title}
-                            </span>
+                        ${module.lessons.map(
 
-                            <button
-                                class="lesson-btn"
+                            (lesson, lessonIndex) => {
 
-                                onclick="
-                                    openLesson(
-                                        ${moduleIndex},
-                                        ${lessonIndex}
-                                    )
-                                "
+                                const lessonKey =
 
-                            >
-                                Start Lesson
-                            </button>
+                                    `${courseId}-${moduleIndex}-${lessonIndex}`;
 
-                        </div>
+                                const isCompleted =
 
-                    `).join("")}
+                                    completedLessons.includes(
+                                        lessonKey
+                                    );
 
-                </div>
+                                return `
 
-            `;
+                                console.log(
+                                    "Lesson Key:",
+                                    lessonKey
+                                );
 
-            modulesContainer.appendChild(card);
+                                console.log(
+                                    "Is Completed:",
+                                    isCompleted
+                                );
 
-        });
+                                    <div class="lesson-item">
+
+                                        <span>
+
+                                            ${isCompleted ? "✓" : "○"}
+
+                                            ${lesson.title}
+
+                                        </span>
+
+                                        <button
+                                            class="lesson-btn"
+
+                                            onclick="
+                                                openLesson(
+                                                    ${moduleIndex},
+                                                    ${lessonIndex}
+                                                )
+                                            "
+                                        >
+                                            ${isCompleted
+                                                ? "Review Lesson"
+                                                : "Start Lesson"}
+
+                                        </button>
+
+                                    </div>
+
+                                `;
+
+                            }
+
+                        ).join("")}
+
+                    </div>
+
+                `;
+
+                modulesContainer.appendChild(
+                    card
+                );
+
+            }
+
+        );
 
     } catch (error) {
 
@@ -168,7 +219,6 @@ async function loadCourse() {
 // ==========================================
 // OPEN LESSON
 // ==========================================
-
 
 function openLesson(
 
