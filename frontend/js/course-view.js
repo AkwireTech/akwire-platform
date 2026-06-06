@@ -95,10 +95,6 @@ async function loadCourse() {
                 )
             ) || [];
 
-        console.log(
-            "Completed Lessons:",
-            completedLessons
-        );
 
         course.modules.forEach(
 
@@ -136,16 +132,6 @@ async function loadCourse() {
                                     );
 
                                 return `
-
-                                console.log(
-                                    "Lesson Key:",
-                                    lessonKey
-                                );
-
-                                console.log(
-                                    "Is Completed:",
-                                    isCompleted
-                                );
 
                                     <div class="lesson-item">
 
