@@ -1,5 +1,13 @@
 import express from "express";
-import { completeCourse, getProgress } from "../controllers/progressController.js";
+import {
+
+  completeCourse,
+  getProgress,
+
+  markLessonComplete,
+  getLessonProgress
+
+} from "../controllers/progressController.js";
 import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
