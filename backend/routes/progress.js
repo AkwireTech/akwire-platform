@@ -15,6 +15,18 @@ const router = express.Router();
 // View progress
 router.get("/", protect, getProgress);
 
+router.get(
+  "/lessons",
+  protect,
+  getLessonProgress
+);
+
+router.post(
+  "/lesson",
+  protect,
+  markLessonComplete
+);
+
 // Mark course complete
 router.post("/:courseId", protect, completeCourse);
 

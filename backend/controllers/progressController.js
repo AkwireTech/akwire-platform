@@ -38,11 +38,15 @@ export const getProgress = async (req, res) => {
 // ==========================================
 
 export const markLessonComplete = async (req, res) => {
+  console.log("LESSON REQUEST:", req.body);
 
   try {
 
     const user =
       await User.findById(req.user._id);
+
+      console.log("USER FOUND:", !!user);
+      console.log("LESSON PROGRESS:", user.lessonProgress);
 
     const {
       courseId,
