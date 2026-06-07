@@ -211,35 +211,76 @@ function convertYoutubeUrl(url) {
                 "token"
             );
 
-        try {
 
-            await fetch(
+    try {
 
-                `https://akwire-api.onrender.com/api/progress/${courseId}`,
+        // ==========================
+        // SAVE LESSON PROGRESS
+        // ==========================
 
-                {
+        await fetch(
 
-                    method: "POST",
+            "https://akwire-api.onrender.com/api/progress/lesson",
 
-                    headers: {
+            {
 
-                        Authorization:
-                            "Bearer " + token
+                method: "POST",
 
-                    }
+                headers: {
+
+                    "Content-Type":
+                        "application/json",
+
+                    Authorization:
+                        "Bearer " + token
+
+                },
+
+                body: JSON.stringify({
+
+                    courseId,
+
+                    lessonKey
+
+                })
+
+            }
+
+        );
+
+        // ==========================
+        // MARK COURSE COMPLETE
+        // ==========================
+
+        await fetch(
+
+            `https://akwire-api.onrender.com/api/progress/${courseId}`,
+
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    Authorization:
+                        "Bearer " + token
 
                 }
 
-            );
+            }
 
-        } catch (error) {
+        );
 
-            console.error(
-                "Progress update failed:",
-                error
-            );
+    } catch (error) {
 
-        }
+        console.error(
+            "Progress update failed:",
+            error
+        );
+
+    }
+
+
 
         alert(
             "Lesson completed!"
