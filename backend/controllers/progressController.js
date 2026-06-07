@@ -45,6 +45,10 @@ export const markLessonComplete = async (req, res) => {
     const user =
       await User.findById(req.user._id);
 
+      if (!user.lessonProgress) {
+      user.lessonProgress = [];
+    }
+
       console.log("USER FOUND:", !!user);
       console.log("LESSON PROGRESS:", user.lessonProgress);
 
