@@ -57,14 +57,26 @@ export const markLessonComplete = async (req, res) => {
       lessonKey
     } = req.body;
 
+
+    console.log("COURSE ID:", courseId);
+    console.log("LESSON KEY:", lessonKey);
+    console.log("USER LESSON PROGRESS:", user.lessonProgress);
+
+
+
+
     let courseProgress =
 
       user.lessonProgress.find(
 
         p =>
+
+          p.courseId &&
+
           p.courseId.toString() === courseId
 
       );
+
 
     if (!courseProgress) {
 
@@ -132,9 +144,16 @@ export const getLessonProgress = async (req, res) => {
 
   } catch (error) {
 
-    res.status(500).json({
-      message: error.message
-    });
+
+  console.error(
+    "MARK LESSON COMPLETE ERROR:",
+    error
+  );
+
+  res.status(500).json({
+    message: error.message
+  });
+
 
   }
 
