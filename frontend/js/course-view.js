@@ -43,6 +43,10 @@ async function loadCourse() {
 
     try {
 
+        // ==========================
+        // LOAD COURSE
+        // ==========================
+
         const response =
             await fetch(
                 `https://akwire-api.onrender.com/api/courses/${courseId}`
@@ -56,19 +60,11 @@ async function loadCourse() {
             course
         );
 
-        // ==========================
-        // COURSE INFO
-        // ==========================
-
         title.textContent =
             course.title;
 
         description.textContent =
             course.description;
-
-        // ==========================
-        // MODULES
-        // ==========================
 
         modulesContainer.innerHTML = "";
 
@@ -93,14 +89,18 @@ async function loadCourse() {
 
         }
 
+        // ==========================
+        // LOAD LESSON PROGRESS
+        // ==========================
+
         const token =
             localStorage.getItem(
-            "token"
+                "token"
             );
 
-            let completedLessons = [];
+        let completedLessons = [];
 
-            try {
+        try {
 
             const progressResponse =
                 await fetch(
@@ -119,6 +119,11 @@ async function loadCourse() {
             const lessonProgress =
                 await progressResponse.json();
 
+            console.log(
+                "Lesson Progress:",
+                lessonProgress
+            );
+
             const courseProgress =
                 lessonProgress.find(
 
@@ -134,18 +139,56 @@ async function loadCourse() {
 
                 || [];
 
-
-            } catch (error) {
-
+        } catch (error) {
 
             console.error(
                 "Failed to load lesson progress:",
                 error
             );
 
+        }
+
+        // ==========================
+        // CALCULATE PROGRESS
+        // ==========================
+
+        let totalLessons = 0;
+
+        let completedCount = 0;
+
+        course.modules.forEach(
+
+            (module, moduleIndex) => {
+
+                module.lessons.forEach(
+
+                    (lesson, lessonIndex) => {
+
+                        totalLessons++;
+
+                        const lessonKey =
+
+                            `${courseId}-${moduleIndex}-${lessonIndex}`;
+
+                        if (
+
+                            completedLessons.includes(
+                                lessonKey
+                            )
+
+                        ) {
+
+                            completedCount++;
+
+                        }
+
+                    }
+
+                );
 
             }
 
+        );
 
         const percentage =
 
@@ -164,6 +207,9 @@ async function loadCourse() {
 
         }
 
+        // ==========================
+        // RENDER MODULES
+        // ==========================
 
         course.modules.forEach(
 
