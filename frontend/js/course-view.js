@@ -93,51 +93,59 @@ async function loadCourse() {
 
         }
 
-        const completedLessons =
-            JSON.parse(
-                localStorage.getItem(
-                    "completedLessons"
-                )
-            ) || [];
+        const token =
+            localStorage.getItem(
+            "token"
+            );
 
+            let completedLessons = [];
 
-        let totalLessons = 0;
+            try {
 
-        let completedCount = 0;
+            const progressResponse =
+                await fetch(
 
-        course.modules.forEach(
+                    "https://akwire-api.onrender.com/api/progress/lessons",
 
-            (module, moduleIndex) => {
-
-                module.lessons.forEach(
-
-                    (lesson, lessonIndex) => {
-
-                        totalLessons++;
-
-                        const lessonKey =
-
-                            `${courseId}-${moduleIndex}-${lessonIndex}`;
-
-                        if (
-
-                            completedLessons.includes(
-                                lessonKey
-                            )
-
-                        ) {
-
-                            completedCount++;
-
+                    {
+                        headers: {
+                            Authorization:
+                                "Bearer " + token
                         }
-
                     }
 
                 );
 
+            const lessonProgress =
+                await progressResponse.json();
+
+            const courseProgress =
+                lessonProgress.find(
+
+                    p =>
+                        p.courseId === courseId
+
+                );
+
+            completedLessons =
+
+                courseProgress
+                    ?.completedLessons
+
+                || [];
+
+
+            } catch (error) {
+
+
+            console.error(
+                "Failed to load lesson progress:",
+                error
+            );
+
+
             }
 
-        );
 
         const percentage =
 
