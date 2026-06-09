@@ -182,9 +182,8 @@ export const getLessonProgress = async (req, res) => {
 
   } catch (error) {
 
-
   console.error(
-    "MARK LESSON COMPLETE ERROR:",
+    "GET LESSON PROGRESS ERROR:",
     error
   );
 
@@ -192,7 +191,6 @@ export const getLessonProgress = async (req, res) => {
     message: error.message
   });
 
-
-  }
+}
 
 };
