@@ -171,40 +171,9 @@ function convertYoutubeUrl(url) {
 
         async () => {
 
-        let completed =
-            JSON.parse(
-
-                localStorage.getItem(
-                    "completedLessons"
-                )
-
-            ) || [];
-
         const lessonKey =
 
-            `${courseId}-${moduleIndex}-${lessonIndex}`;
-
-        if (
-            !completed.includes(
-                lessonKey
-            )
-        ) {
-
-            completed.push(
-                lessonKey
-            );
-
-            localStorage.setItem(
-
-                "completedLessons",
-
-                JSON.stringify(
-                    completed
-                )
-
-            );
-
-        }
+        `${courseId}-${moduleIndex}-${lessonIndex}`;
 
         const token =
             localStorage.getItem(
