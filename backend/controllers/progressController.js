@@ -71,14 +71,29 @@ export const completeCourse = async (req, res) => {
 };
 
 // Get user progress
-export const getProgress = async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id).populate("progress");
 
-    res.json(user.progress);
+export const getProgress = async (req, res) => {
+
+  try {
+
+    const user = await User.findById(
+      req.user._id
+    ).populate(
+      "completedCourses.courseId"
+    );
+
+    res.json(
+      user.completedCourses || []
+    );
+
   } catch (error) {
-    res.status(500).json({ message: error.message });
+
+    res.status(500).json({
+      message: error.message
+    });
+
   }
+
 };
 
 
