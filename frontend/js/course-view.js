@@ -382,6 +382,19 @@ function downloadCertificate() {
         new Date()
         .toLocaleDateString();
 
+    const certificateId =
+
+    "AKW-" +
+
+    new Date().getFullYear() +
+
+    "-" +
+
+    Math.floor(
+        10000 +
+        Math.random() * 90000
+    );
+
     const certificateWindow =
 
         window.open(
@@ -395,81 +408,184 @@ function downloadCertificate() {
 
         <head>
 
-            <title>
-                Certificate of Completion
-            </title>
+        <title>
+        Akwire Certificate
+        </title>
 
-            <style>
+        <style>
 
-                body {
+        body {
 
-                    font-family:
-                        Arial,
-                        sans-serif;
+            font-family:
+                Georgia,
+                serif;
 
-                    text-align:
-                        center;
+            background:
+                #f8fafc;
 
-                    padding:
-                        60px;
+            padding:
+                40px;
 
-                }
+        }
 
-                .certificate {
+        .certificate {
 
-                    border:
-                        8px solid #2563eb;
+            max-width:
+                1000px;
 
-                    padding:
-                        50px;
+            margin:
+                auto;
 
-                }
+            background:
+                white;
 
-                h1 {
+            border:
+                12px solid #2563eb;
 
-                    color:
-                        #2563eb;
+            padding:
+                60px;
 
-                }
+            text-align:
+                center;
 
-            </style>
+        }
+
+        .logo {
+
+            font-size:
+                2rem;
+
+            font-weight:
+                bold;
+
+            color:
+                #2563eb;
+
+        }
+
+        .title {
+
+            font-size:
+                3rem;
+
+            margin-top:
+                20px;
+
+        }
+
+        .student {
+
+            font-size:
+                2rem;
+
+            margin:
+                25px 0;
+
+            font-weight:
+                bold;
+
+        }
+
+        .course {
+
+            font-size:
+                1.6rem;
+
+            color:
+                #1e293b;
+
+        }
+
+        .footer {
+
+            margin-top:
+                50px;
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+        }
+
+        .signature {
+
+            border-top:
+                2px solid #000;
+
+            width:
+                250px;
+
+            padding-top:
+                10px;
+
+        }
+
+        .id {
+
+            margin-top:
+                30px;
+
+            color:
+                #64748b;
+
+        }
+
+        </style>
 
         </head>
 
         <body>
 
-            <div class="certificate">
+        <div class="certificate">
 
-                <h1>
-                    Certificate of Completion
-                </h1>
+        <div class="logo">
+        AKWIRE ACADEMY
+        </div>
 
-                <h2>
-                    Akwire Academy
-                </h2>
+        <h1 class="title">
+        Certificate of Completion
+        </h1>
 
-                <p>
-                    This certifies that
-                </p>
+        <p>
+        This certificate is proudly awarded to
+        </p>
 
-                <h2>
-                    ${studentName}
-                </h2>
+        <div class="student">
+        ${studentName}
+        </div>
 
-                <p>
-                    has successfully completed
-                </p>
+        <p>
+        for successfully completing
+        </p>
 
-                <h2>
-                    ${title}
-                </h2>
+        <div class="course">
+        ${title}
+        </div>
 
-                <p>
-                    Completion Date:
-                    ${date}
-                </p>
+        <p>
+        Issued on ${date}
+        </p>
 
-            </div>
+        <div class="id">
+        Certificate ID:
+        ${certificateId}
+        </div>
+
+        <div class="footer">
+
+        <div class="signature">
+        Training Director
+        </div>
+
+        <div class="signature">
+        Akwire Academy
+        </div>
+
+        </div>
+
+        </div>
 
         </body>
 
