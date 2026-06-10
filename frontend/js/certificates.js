@@ -69,17 +69,36 @@ async function loadCertificates() {
                 "academy-card"
             );
 
-            card.innerHTML = `
 
-                <h3>
-                    ${course.title}
-                </h3>
+        card.innerHTML = `
 
-                <p>
+            <h3>
+                🏆 ${course.title}
+            </h3>
 
-                    Certificate Earned
+            <p>
 
-                </p>
+                Successfully completed
+                through Akwire Academy
+
+            </p>
+
+            <p>
+
+                Status:
+                <strong>
+                    Certified
+                </strong>
+
+            </p>
+
+            <div
+                style="
+                    display:flex;
+                    gap:10px;
+                    margin-top:15px;
+                "
+            >
 
                 <button
                     class="academy-btn"
@@ -93,7 +112,9 @@ async function loadCertificates() {
 
                 </button>
 
-            `;
+            </div>
+
+        `;
 
             container.appendChild(
                 card
