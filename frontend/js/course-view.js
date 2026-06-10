@@ -207,6 +207,23 @@ async function loadCourse() {
 
         }
 
+        if (percentage === 100) {
+
+            document.getElementById(
+                "certificateSection"
+            ).innerHTML = `
+
+                <button
+                    class="academy-btn"
+                    onclick="downloadCertificate()"
+                >
+                    🏆 Download Certificate
+                </button>
+
+            `;
+
+        }
+
         // ==========================
         // RENDER MODULES
         // ==========================
@@ -331,6 +348,138 @@ function openLesson(
     window.location.href =
 
         `lesson.html?course=${courseId}&module=${moduleIndex}&lesson=${lessonIndex}`;
+
+}
+
+
+// ==========================================
+// DOWNLOAD CERTIFICATE
+// ==========================================
+
+function downloadCertificate() {
+
+    const title =
+
+        document.getElementById(
+            "courseTitle"
+        ).textContent;
+
+    const user =
+
+        JSON.parse(
+            localStorage.getItem(
+                "user"
+            )
+        );
+
+    const studentName =
+
+        user?.username ||
+        "Student";
+
+    const date =
+
+        new Date()
+        .toLocaleDateString();
+
+    const certificateWindow =
+
+        window.open(
+            "",
+            "_blank"
+        );
+
+    certificateWindow.document.write(`
+
+        <html>
+
+        <head>
+
+            <title>
+                Certificate of Completion
+            </title>
+
+            <style>
+
+                body {
+
+                    font-family:
+                        Arial,
+                        sans-serif;
+
+                    text-align:
+                        center;
+
+                    padding:
+                        60px;
+
+                }
+
+                .certificate {
+
+                    border:
+                        8px solid #2563eb;
+
+                    padding:
+                        50px;
+
+                }
+
+                h1 {
+
+                    color:
+                        #2563eb;
+
+                }
+
+            </style>
+
+        </head>
+
+        <body>
+
+            <div class="certificate">
+
+                <h1>
+                    Certificate of Completion
+                </h1>
+
+                <h2>
+                    Akwire Academy
+                </h2>
+
+                <p>
+                    This certifies that
+                </p>
+
+                <h2>
+                    ${studentName}
+                </h2>
+
+                <p>
+                    has successfully completed
+                </p>
+
+                <h2>
+                    ${title}
+                </h2>
+
+                <p>
+                    Completion Date:
+                    ${date}
+                </p>
+
+            </div>
+
+        </body>
+
+        </html>
+
+    `);
+
+    certificateWindow.document.close();
+
+    certificateWindow.print();
 
 }
 
