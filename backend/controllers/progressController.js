@@ -21,15 +21,26 @@ export const completeCourse = async (req, res) => {
 
       );
 
+
     if (!alreadyCompleted) {
 
       user.progress.push(
         courseId
       );
 
+      user.completedCourses.push({
+
+        courseId,
+
+        completedAt:
+          new Date()
+
+      });
+
       await user.save();
 
     }
+
 
     res.json({
 

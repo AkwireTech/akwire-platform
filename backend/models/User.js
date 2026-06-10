@@ -9,6 +9,26 @@ password:{type:String,required:true},
 
 progress:[{type:mongoose.Schema.Types.ObjectId,ref:"Course"}],
 
+
+completedCourses: [
+
+  {
+
+    courseId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course"
+    },
+
+    completedAt: {
+      type: Date,
+      default: Date.now
+    }
+
+  }
+
+],
+
+
 lessonProgress: [
 
   {
