@@ -559,7 +559,7 @@ function downloadCertificate() {
         </h1>
 
         <p>
-        This certificate is proudly awarded to
+        This certificate is awarded to
         </p>
 
         <div class="student">
@@ -605,9 +605,13 @@ function downloadCertificate() {
 
     certificateWindow.document.close();
 
-    certificateWindow.print();
+    setTimeout(() => {
 
-}
+        certificateWindow.print();
+
+    }, 1500);
+
+    }
 
 // ==========================================
 // START
