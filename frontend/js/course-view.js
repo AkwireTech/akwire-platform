@@ -541,7 +541,17 @@ function downloadCertificate() {
         <div class="certificate">
 
         <div class="logo">
-        AKWIRE ACADEMY
+
+            <img
+                src="images/logo.png"
+                alt="Akwire Logo"
+                style="
+                    width:220px;
+                    height:auto;
+                    margin-bottom:20px;
+                "
+            >
+
         </div>
 
         <h1 class="title">
