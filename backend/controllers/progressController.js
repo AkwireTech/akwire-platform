@@ -202,6 +202,7 @@ export const markLessonComplete = async (req, res) => {
 
 };
 
+
 // ==========================================
 // GET LESSON PROGRESS
 // ==========================================
@@ -219,16 +220,22 @@ export const getLessonProgress = async (req, res) => {
 
   } catch (error) {
 
-  console.error(
-    "GET LESSON PROGRESS ERROR:",
-    error
-  );
+    console.error(
+      "GET LESSON PROGRESS ERROR:",
+      error
+    );
 
-  res.status(500).json({
-    message: error.message
-  });
+    res.status(500).json({
+      message: error.message
+    });
 
-}
+  }
+
+};
+
+// ==========================================
+// GET CERTIFICATES
+// ==========================================
 
 export const getCertificates = async (req, res) => {
 
@@ -247,12 +254,15 @@ export const getCertificates = async (req, res) => {
 
   } catch (error) {
 
+    console.error(
+      "GET CERTIFICATES ERROR:",
+      error
+    );
+
     res.status(500).json({
       message: error.message
     });
 
   }
-
-};
 
 };
