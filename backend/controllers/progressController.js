@@ -28,6 +28,21 @@ export const completeCourse = async (req, res) => {
         courseId
       );
 
+    }
+
+    const certificateExists =
+
+      user.completedCourses.some(
+
+        item =>
+
+          item.courseId &&
+          item.courseId.toString() === courseId
+
+      );
+
+    if (!certificateExists) {
+
       user.completedCourses.push({
 
         courseId,
@@ -37,9 +52,9 @@ export const completeCourse = async (req, res) => {
 
       });
 
-      await user.save();
-
     }
+
+    await user.save();
 
 
     res.json({
