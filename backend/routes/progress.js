@@ -15,6 +15,18 @@ import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
+router.get(
+  "/test-cert",
+  (req, res) => {
+
+    res.json({
+      message:
+        "test route working"
+    });
+
+  }
+);
+
 // View progress
 router.get("/", protect, getProgress);
 
