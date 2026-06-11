@@ -230,4 +230,29 @@ export const getLessonProgress = async (req, res) => {
 
 }
 
+export const getCertificates = async (req, res) => {
+
+  try {
+
+    const user =
+      await User.findById(
+        req.user._id
+      ).populate(
+        "completedCourses.courseId"
+      );
+
+    res.json(
+      user.completedCourses || []
+    );
+
+  } catch (error) {
+
+    res.status(500).json({
+      message: error.message
+    });
+
+  }
+
+};
+
 };

@@ -5,9 +5,12 @@ import {
   getProgress,
 
   markLessonComplete,
-  getLessonProgress
+  getLessonProgress,
+
+  getCertificates
 
 } from "../controllers/progressController.js";
+
 import { protect } from "../middleware/authMiddleware.js";
 
 const router = express.Router();
@@ -19,6 +22,12 @@ router.get(
   "/lessons",
   protect,
   getLessonProgress
+);
+
+router.get(
+  "/certificates",
+  protect,
+  getCertificates
 );
 
 router.post(
