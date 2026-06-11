@@ -19,7 +19,7 @@ async function loadCertificates() {
         const response =
             await fetch(
 
-                "https://akwire-api.onrender.com/api/progress",
+                "https://akwire-api.onrender.com/api/progress/certificates",
 
                 {
                     headers: {
@@ -30,12 +30,17 @@ async function loadCertificates() {
 
             );
 
-        const courses =
+        const certificates =
             await response.json();
+
+        console.log(
+            "Certificates:",
+            certificates
+        );
 
         container.innerHTML = "";
 
-        if (!courses.length) {
+        if (!certificates.length) {
 
             container.innerHTML = `
 
@@ -58,7 +63,16 @@ async function loadCertificates() {
 
         }
 
-        courses.forEach(course => {
+        certificates.forEach(cert => {
+
+            const course =
+                cert.courseId;
+
+            const completedDate =
+
+                new Date(
+                    cert.completedAt
+                ).toLocaleDateString();
 
             const card =
                 document.createElement(
@@ -69,36 +83,38 @@ async function loadCertificates() {
                 "academy-card"
             );
 
+            card.innerHTML = `
 
-        card.innerHTML = `
+                <h3>
+                    🏆 ${course.title}
+                </h3>
 
-            <h3>
-                🏆 ${course.title}
-            </h3>
+                <p>
 
-            <p>
+                    Successfully completed
+                    through Akwire Academy
 
-                Successfully completed
-                through Akwire Academy
+                </p>
 
-            </p>
+                <p>
 
-            <p>
+                    <strong>
+                        Completed:
+                    </strong>
 
-                Status:
-                <strong>
+                    ${completedDate}
+
+                </p>
+
+                <p>
+
+                    <strong>
+                        Status:
+                    </strong>
+
                     Certified
-                </strong>
 
-            </p>
-
-            <div
-                style="
-                    display:flex;
-                    gap:10px;
-                    margin-top:15px;
-                "
-            >
+                </p>
 
                 <button
                     class="academy-btn"
@@ -112,9 +128,7 @@ async function loadCertificates() {
 
                 </button>
 
-            </div>
-
-        `;
+            `;
 
             container.appendChild(
                 card
@@ -125,8 +139,21 @@ async function loadCertificates() {
     } catch (error) {
 
         console.error(
+            "Certificate Error:",
             error
         );
+
+        container.innerHTML = `
+
+            <div class="academy-card">
+
+                <h3>
+                    Failed to load certificates
+                </h3>
+
+            </div>
+
+        `;
 
     }
 
