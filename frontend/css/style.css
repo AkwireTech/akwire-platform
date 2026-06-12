@@ -3574,3 +3574,37 @@ div {
     margin-top: 30px;
 
 }
+
+.labs-showcase {
+
+    background: #071224;
+
+    border-top: 1px solid #1e293b;
+
+    border-bottom: 1px solid #1e293b;
+
+}
+
+.labs-showcase h2 {
+
+    color: white;
+
+    font-size: 2.5rem;
+
+    text-align: center;
+
+    margin-bottom: 15px;
+
+}
+
+.labs-showcase .section-header-centered p {
+
+    color: #94a3b8;
+
+    text-align: center;
+
+    font-size: 1.1rem;
+
+    margin-bottom: 50px;
+
+}
