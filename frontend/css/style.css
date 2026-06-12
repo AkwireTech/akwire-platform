@@ -3386,22 +3386,26 @@ div {
 
 }
 
+
 /* ==========================================
    SAAS HERO
 ========================================== */
+
+.hero {
+
+    padding: 40px 20px;
+
+}
 
 .hero-saas {
 
     max-width: 1400px;
 
-    margin: auto;
-
-    padding: 80px 20px;
+    margin: 0 auto;
 
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 60px;
 
@@ -3411,11 +3415,11 @@ div {
 
 .hero-left h1 {
 
-    font-size: 3.8rem;
-
-    color: white;
+    font-size: 4rem;
 
     line-height: 1.1;
+
+    color: white;
 
     margin: 20px 0;
 
@@ -3433,12 +3437,9 @@ div {
 
 .hero-badge {
 
-    background: rgba(
-        56,
-        189,
-        248,
-        0.15
-    );
+    display: inline-block;
+
+    background: rgba(56,189,248,0.15);
 
     color: #38bdf8;
 
@@ -3458,13 +3459,9 @@ div {
 
     gap: 15px;
 
+    flex-wrap: wrap;
+
     margin-top: 30px;
-
-}
-
-.hero-right {
-
-    position: relative;
 
 }
 
@@ -3476,37 +3473,8 @@ div {
 
     border: 1px solid #1e293b;
 
-}
-
-.hero-small-image {
-
-    position: absolute;
-
-    width: 220px;
-
-    border-radius: 14px;
-
-    border: 1px solid #1e293b;
-
     box-shadow:
-        0 20px 40px
-        rgba(0,0,0,0.4);
-
-}
-
-.hero-top {
-
-    top: -30px;
-
-    right: -40px;
-
-}
-
-.hero-bottom {
-
-    bottom: -30px;
-
-    left: -40px;
+        0 30px 60px rgba(0,0,0,0.4);
 
 }
 
@@ -3520,13 +3488,7 @@ div {
 
     .hero-left h1 {
 
-        font-size: 2.5rem;
-
-    }
-
-    .hero-small-image {
-
-        display: none;
+        font-size: 2.8rem;
 
     }
 
