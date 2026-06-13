@@ -76,11 +76,15 @@ async function loadLesson() {
             "lessonContent"
         ).innerHTML = `
 
-            <p>
+            <div class="lesson-content-card">
 
-                ${lesson.content}
+                <p>
 
-            </p>
+                    ${lesson.content}
+
+                </p>
+
+            </div>
 
         `;
 

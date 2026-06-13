@@ -3608,3 +3608,31 @@ div {
     margin-bottom: 50px;
 
 }
+
+.lesson-content-card {
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    background: #0f172a;
+
+    border: 1px solid #1e293b;
+
+    border-radius: 16px;
+
+    padding: 40px;
+
+    line-height: 1.9;
+
+    color: #e2e8f0;
+
+    font-size: 1.05rem;
+
+}
+
+.lesson-content-card p {
+
+    margin-bottom: 20px;
+
+}
