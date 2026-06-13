@@ -3636,3 +3636,13 @@ div {
     margin-bottom: 20px;
 
 }
+
+.lesson-header {
+
+    max-width: 900px;
+
+    margin: 0 auto 30px auto;
+
+    text-align: center;
+
+}
