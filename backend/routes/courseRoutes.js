@@ -44,6 +44,7 @@ router.get(
 router.post(
     "/",
     protect,
+    admin,
     createCourse
 );
 
@@ -51,6 +52,7 @@ router.post(
 router.put(
     "/:id",
     protect,
+    admin,
     updateCourse
 );
 
@@ -58,6 +60,7 @@ router.put(
 router.delete(
     "/:id",
     protect,
+    admin,
     deleteCourse
 );
 
