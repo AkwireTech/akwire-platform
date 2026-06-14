@@ -49,6 +49,38 @@ async function loadLesson() {
         const lesson =
             module.lessons[lessonIndex];
 
+        const totalLessons =
+            module.lessons.length;
+
+        const currentLesson =
+            Number(lessonIndex) + 1;
+
+        const percent =
+
+            Math.round(
+
+                (currentLesson / totalLessons) * 100
+
+            );
+
+        document.getElementById(
+            "lessonPosition"
+        ).textContent =
+
+            `Lesson ${currentLesson} of ${totalLessons}`;
+
+        document.getElementById(
+            "lessonPercent"
+        ).textContent =
+
+            `${percent}%`;
+
+        document.getElementById(
+            "lessonProgressFill"
+        ).style.width =
+
+            `${percent}%`;
+
         // ==========================
         // TITLE
         // ==========================
@@ -274,6 +306,65 @@ document.addEventListener(
     async () => {
 
         await loadLesson();
+
+    }
+
+);
+
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    () => {
+
+        const prevBtn =
+            document.getElementById(
+                "prevLessonBtn"
+            );
+
+        const nextBtn =
+            document.getElementById(
+                "nextLessonBtn"
+            );
+
+        prevBtn.addEventListener(
+
+            "click",
+
+            () => {
+
+                const prev =
+                    Number(lessonIndex) - 1;
+
+                if (prev >= 0) {
+
+                    window.location.href =
+
+                        `lesson.html?course=${courseId}&module=${moduleIndex}&lesson=${prev}`;
+
+                }
+
+            }
+
+        );
+
+        nextBtn.addEventListener(
+
+            "click",
+
+            () => {
+
+                const next =
+                    Number(lessonIndex) + 1;
+
+                window.location.href =
+
+                    `lesson.html?course=${courseId}&module=${moduleIndex}&lesson=${next}`;
+
+            }
+
+        );
 
     }
 
