@@ -3646,3 +3646,73 @@ div {
     text-align: center;
 
 }
+
+/* ==========================================
+   LESSON HEADER
+========================================== */
+
+.lesson-header {
+
+    max-width: 900px;
+
+    margin: 0 auto 40px auto;
+
+    text-align: center;
+
+}
+
+#lessonTitle {
+
+    color: white;
+
+    font-size: 2.5rem;
+
+    margin-bottom: 15px;
+
+}
+
+#lessonDescription {
+
+    color: #94a3b8;
+
+    font-size: 1.1rem;
+
+}
+
+/* ==========================================
+   LESSON PAGE LAYOUT
+========================================== */
+
+.lesson-container {
+
+    max-width: 1200px;
+
+    margin: 50px auto;
+
+    padding: 0 20px;
+
+}
+
+.lesson-video {
+
+    max-width: 900px;
+
+    margin: 0 auto 40px auto;
+
+}
+
+.lesson-content-box {
+
+    max-width: 900px;
+
+    margin: 0 auto 40px auto;
+
+}
+
+#completeLessonBtn {
+
+    display: block;
+
+    margin: 40px auto;
+
+}
