@@ -3613,6 +3613,8 @@ div {
 
     max-width: 900px;
 
+    min-height: 350px;
+
     margin: 0 auto;
 
     background: #0f172a;
@@ -3684,6 +3686,8 @@ div {
 ========================================== */
 
 .lesson-container {
+
+    background: #020617;
 
     max-width: 1200px;
 
