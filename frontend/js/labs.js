@@ -1,8 +1,7 @@
 // ==============================
 // GLOBAL STATE
 // ==============================
-console.log("DASHBOARD JS LOADED");
-document.body.insertAdjacentHTML("beforeend", "<h1 style='color:red'>TEST</h1>");
+
 let masterLabs = {};
 let currentLabID = '';
 let score = 100;
@@ -264,7 +263,6 @@ async function loadDashboard(userId) {
         document.getElementById('progress').textContent = data.progress.toFixed(1) + "%";
 
         // 🔥 DEBUG (to prove it's working)
-        document.getElementById('totalLabs').style.color = "red";
 
         if (data.results && data.results.length > 0) {
             renderCharts(data.results);
