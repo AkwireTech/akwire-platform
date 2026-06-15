@@ -3785,3 +3785,37 @@ div {
     justify-content: space-between;
 
 }
+
+.lesson-lab-section {
+
+    max-width: 900px;
+
+    margin: 30px auto;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background: #0f172a;
+
+    border: 1px solid #1e293b;
+
+    border-radius: 16px;
+
+}
+
+.lesson-lab-section h3 {
+
+    color: white;
+
+    margin-bottom: 15px;
+
+}
+
+.lesson-lab-section p {
+
+    color: #94a3b8;
+
+    margin-bottom: 20px;
+
+}
