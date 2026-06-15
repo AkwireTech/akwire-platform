@@ -56,7 +56,7 @@ async function fetchExam() {
             return;
         }
 
-        const res = await fetch("https://akwire-api.onrender.com/api/exam", {
+        const res = await fetch("https://akwire-api.onrender.com/api/exam/module/1", {
             method: "GET",
             headers: {
                 "Authorization": "Bearer " + token,
