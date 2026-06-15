@@ -437,6 +437,7 @@ console.error("Submit failed:", err);
 // =============================
 
 function showFinalScore(result) {
+
     // Save score to user profile
     let user = JSON.parse(localStorage.getItem("currentUser")) || {};
 
@@ -481,13 +482,17 @@ function showFinalScore(result) {
     localStorage.removeItem("examProgress");
     localStorage.removeItem("currentQuestionIndex");
 
+    const passed = result.score >= 80;
+
     const quizBox = document.getElementById("quiz-box");
 
     quizBox.innerHTML = `
     <div style="text-align:center;padding:40px;background:#0f172a;
     border-radius:12px;border:1px solid #1e293b;">
 
-        <h2 style="color:white;margin-bottom:10px;">Exam Results</h2>
+        <h2 style="color:${passed ? '#22c55e' : '#ef4444'};margin-bottom:10px;">
+        ${passed ? "MODULE PASSED" : "RETRY REQUIRED"}
+        </h2>
 
         <h1 style="font-size:4rem;color:#38bdf8;margin:0;">
         ${result.score}%
@@ -501,6 +506,7 @@ function showFinalScore(result) {
             <button class="btn-primary" onclick="location.reload()">Retake Exam</button>
             <button class="btn-secondary" onclick="showReview()">Review Errors</button>
             <button class="btn-secondary" onclick="goToDashboard()">Dashboard</button>
+            <button onclick="window.location.href='academy.html'"class="btn-primary">Return To Academy</button>
         </div>
 
         <div id="review-area"
