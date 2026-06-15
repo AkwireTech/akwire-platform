@@ -491,7 +491,10 @@ function showFinalScore(result) {
     border-radius:12px;border:1px solid #1e293b;">
 
         <h2 style="color:${passed ? '#22c55e' : '#ef4444'};margin-bottom:10px;">
-        ${passed ? "MODULE PASSED" : "RETRY REQUIRED"}
+        ${passed
+        ? 'MODULE 1 PASSED'
+        : 'RETRY REQUIRED'}
+
         </h2>
 
         <h1 style="font-size:4rem;color:#38bdf8;margin:0;">
