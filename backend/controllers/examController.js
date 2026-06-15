@@ -191,3 +191,38 @@ export const getExamHistory = async (req, res) => {
     }
 
 };
+
+export const getModuleQuiz = async (req, res) => {
+
+  try {
+
+    const exam = await Exam.findOne({
+
+      title:
+      "Security+ Fundamentals - Module 1 Quiz"
+
+    });
+
+    if (!exam) {
+
+      return res.status(404).json({
+
+        message: "Quiz not found"
+
+      });
+
+    }
+
+    res.json(exam);
+
+  } catch (error) {
+
+    res.status(500).json({
+
+      message: error.message
+
+    });
+
+  }
+
+};

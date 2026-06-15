@@ -1,8 +1,19 @@
 import Exam from "../models/Exam.js";
 
-export const generateExam = async () => {
+export const generateExam = async (examTitle = null) => {
 
-  const exam = await Exam.findOne();
+  let exam;
+
+  if (examTitle) {
+
+    exam = await Exam.findOne({
+      title: examTitle
+    });
+
+  } else {
+
+    exam = await Exam.findOne();
+  }
 
   if (!exam || !exam.questions || exam.questions.length === 0) {
     throw new Error("No exam questions found");

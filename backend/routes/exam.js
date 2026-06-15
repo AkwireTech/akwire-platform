@@ -1,5 +1,14 @@
 import express from "express";
-import { getExam, createExam, getExamHistory, getRecommendations } from "../controllers/examController.js";
+
+import {
+  getExam,
+  getModuleQuiz,
+  submitExam,
+  createExam,
+  getExamHistory,
+  getRecommendations
+}
+from "../controllers/examController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { admin } from "../middleware/adminMiddleware.js";
 import ExamResult from "../models/ExamResult.js";
@@ -7,7 +16,15 @@ import ExamResult from "../models/ExamResult.js";
 const router = express.Router();
 
 // Get exam questions
+
+router.get(
+  "/module/1",
+  protect,
+  getModuleQuiz
+);
+
 router.get("/", protect, getExam);
+
 
 // Submit exam answers + save result
 router.post("/submit", protect, async (req, res) => {
