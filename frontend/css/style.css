@@ -3819,3 +3819,38 @@ div {
     margin-bottom: 20px;
 
 }
+
+
+.lesson-content-card h2 {
+
+    color: white;
+
+    margin-top: 25px;
+
+    margin-bottom: 15px;
+
+}
+
+.lesson-content-card ul {
+
+    padding-left: 25px;
+
+    margin-bottom: 20px;
+
+}
+
+.lesson-content-card li {
+
+    color: #cbd5e1;
+
+    margin-bottom: 10px;
+
+}
+
+.lesson-content-card p {
+
+    color: #cbd5e1;
+
+    line-height: 1.9;
+
+}
