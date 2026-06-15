@@ -408,7 +408,7 @@ console.log("Submitting exam:");
 console.log("Answers:", userAnswers);
 console.log("First Question:", questions[0]);
 
-const res = await fetch("https://akwire-api.onrender.com/api/exam/module/1", {
+const res = await fetch("https://akwire-api.onrender.com/api/exam/submit", {
 method: "POST",
 headers: {
 "Content-Type": "application/json",
