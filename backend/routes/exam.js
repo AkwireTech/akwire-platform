@@ -18,7 +18,7 @@ const router = express.Router();
 // Get exam questions
 
 router.get(
-  "/module/1",
+  "/module/:id",
   protect,
   getModuleQuiz
 );

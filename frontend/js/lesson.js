@@ -103,18 +103,13 @@ async function loadLesson() {
         // ==========================
         // CONTENT
         // ==========================
-
         document.getElementById(
             "lessonContent"
         ).innerHTML = `
 
             <div class="lesson-content-card">
 
-                <p>
-
-                    ${lesson.content}
-
-                </p>
+                ${lesson.content}
 
             </div>
 

@@ -196,10 +196,12 @@ export const getModuleQuiz = async (req, res) => {
 
   try {
 
+    const moduleId = req.params.id;
+
     const exam = await Exam.findOne({
 
       title:
-      "Security+ Fundamentals - Module 1 Quiz"
+      `Security+ Fundamentals - Module ${moduleId} Quiz`
 
     });
 
@@ -217,9 +219,11 @@ export const getModuleQuiz = async (req, res) => {
 
   } catch (error) {
 
+    console.error(error);
+
     res.status(500).json({
 
-      message: error.message
+      message: "Failed to load quiz"
 
     });
 
