@@ -56,13 +56,29 @@ async function fetchExam() {
             return;
         }
 
-        const res = await fetch("https://akwire-api.onrender.com/api/exam/module/2", {
-            method: "GET",
-            headers: {
-                "Authorization": "Bearer " + token,
-                "Content-Type": "application/json"
+        const params =
+            new URLSearchParams(
+                window.location.search
+            );
+
+        const moduleId =
+            params.get("module") || "1";
+
+        const res = await fetch(
+
+            `https://akwire-api.onrender.com/api/exam/module/${moduleId}`,
+
+            {
+                method: "GET",
+                headers: {
+                    "Authorization":
+                        "Bearer " + token,
+                    "Content-Type":
+                        "application/json"
+                }
             }
-        });
+
+        );
 
         if (!res.ok) {
             console.error("Server returned:", res.status);
