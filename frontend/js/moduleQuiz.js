@@ -64,6 +64,8 @@ async function fetchExam() {
         const moduleId =
             params.get("module") || "1";
 
+            console.log("Module ID:", moduleId);
+
         const res = await fetch(
 
             `https://akwire-api.onrender.com/api/exam/module/${moduleId}`,
