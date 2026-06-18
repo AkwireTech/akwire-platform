@@ -17,6 +17,24 @@ const courseId =
 const moduleIndex =
     params.get("module");
 
+const quizBtn =
+    document.getElementById(
+        "quizBtn"
+    );
+
+if (quizBtn) {
+
+    const quizNumber =
+        Number(moduleIndex) + 1;
+
+    quizBtn.href =
+        `module-quiz.html?module=${quizNumber}`;
+
+    quizBtn.textContent =
+        `Take Quiz ${quizNumber} →`;
+
+}
+
 const lessonIndex =
     params.get("lesson");
 
