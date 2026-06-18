@@ -3577,6 +3577,8 @@ div {
 
 .labs-showcase {
 
+    justify-content: center;
+
     align-items: center;
 
     max-width: 1200px;
