@@ -3312,7 +3312,7 @@ div {
 
 .soc-content h2 {
 
-    color: white;
+    color: #1e293b;
 
     margin-bottom: 20px;
 
@@ -3340,7 +3340,7 @@ div {
 
 .soc-content li {
 
-    color: #38bdf8;
+    color: #1e293b;
 
     margin-bottom: 12px;
 
@@ -3576,6 +3576,8 @@ div {
 }
 
 .labs-showcase {
+
+    max-width: 1200px;
 
     background: #071224;
 
