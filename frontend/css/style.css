@@ -3521,6 +3521,8 @@ div {
 
 .lab-preview-card {
 
+    display: flex;
+
     background: #0f172a;
 
     border: 1px solid #1e293b;
@@ -3577,7 +3579,7 @@ div {
 
 .labs-showcase {
 
-    display: flex;
+    max-width: 1200px;
 
     justify-content: center;
 
