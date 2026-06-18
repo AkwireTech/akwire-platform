@@ -3577,11 +3577,11 @@ div {
 
 .labs-showcase {
 
+    display: flex;
+
     justify-content: center;
 
-    align-items: center;
-
-    max-width: 1200px;
+    flex-wrap: wrap;
 
     background: #071224;
 
