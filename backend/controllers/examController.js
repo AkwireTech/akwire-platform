@@ -230,3 +230,39 @@ export const getModuleQuiz = async (req, res) => {
   }
 
 };
+
+export const getFinalExam = async (req, res) => {
+
+  try {
+
+    const exam = await Exam.findOne({
+
+      title: "Security+ Fundamentals Final Exam"
+
+    });
+
+    if (!exam) {
+
+      return res.status(404).json({
+
+        message: "Final exam not found"
+
+      });
+
+    }
+
+    res.json(exam);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+
+      message: "Server Error"
+
+    });
+
+  }
+
+};

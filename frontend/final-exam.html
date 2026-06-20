@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akwire | Interactive Cybersecurity Training Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+     <nav class="navbar">
+        <div class="logo"><a href="#"><img src="images/logo.png" alt="Akwire Logo"></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="academy.html">Academy</a></li>
+            <li><a href="labs.html">Labs</a></li>
+            <li><a href="exam.html" class="active">Exam</a></li>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="certificates.html">Certificates</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div id="question-nav" class="question-nav"></div>
+        <div class="quiz-container" id="quiz-box">
+            <div class="quiz-header">
+                <h2>Security+ Practice Simulation</h2>
+                <p>Select the best answer for each situational question.</p>
+            </div>
+
+            <hr>
+
+        <div class="question-section">
+            <h3 id="question-number">Question 1</h3>
+            <p id="question-text"></p>
+        
+        <div id="options-container"></div>
+
+        <div id="feedback-box" style="display:none; margin-top:20px; padding:15px; border-radius:8px; border-left:5px solid;">
+            <strong id="feedback-result"></strong>
+            <p id="feedback-explanation" style="margin-top:5px;"></p>
+        </div>
+
+        <div class="exam-timer-container">
+            <span>Time Remaining:</span>
+            <span id="exam-timer">30:00</span>
+        </div>
+
+        <div class="exam-controls">
+            <button id="prev-btn" class="btn-secondary">Previous</button>
+            <button id="flag-btn" class="btn-primary">Flag Question</button>
+            <button id="next-btn" class="btn-primary">Next</button>
+        </div>
+        </div>
+
+            <div class="quiz-footer" style="margin-top: 30px; font-size: 0.9rem; color: #797878;">
+                <p>Tip: CompTIA exams often have "distractors"—wrong answers that look plausible. Read carefully!</p>
+            </div>
+        </div>
+
+        <div id="certificate-print-area">
+        <div class="cert-border">
+            <div class="cert-content">
+                <h1 class="cert-title">CERTIFICATE OF COMPLETION</h1>
+                <p class="cert-subtitle">This recognizes that</p>
+                <h2 id="cert-user-name">OPERATOR_LOGGED_IN</h2>
+                <p class="cert-text">has successfully mastered the protocols of</p>
+                <h3 class="cert-course">CompTIA Security+ Mastery Exam</h3>
+                <div class="cert-footer">
+                    <div class="signature">
+                        <p id="cert-date">DATE_STAMP</p>
+                        <span>DATE</span>
+                    </div>
+                    <div class="seal">
+                        <div class="seal-inner">SEC+</div>
+                    </div>
+                    <div class="signature">
+                        <p>Akwire Systems</p>
+                        <span>AUTHORIZED_BY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo"><a href="index.html"><img src="images/logo.png" alt="Akwire Logo"></a></div>
+                    <p>
+                        Interactive cybersecurity training platform focused on hands-on labs,
+                        analyst workflows, and certification readiness.
+                    </p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Training</h4>
+                    <ul>
+                        <li><a href="exam.html">Exam Engine</a></li>
+                        <li><a href="labs.html">Interactive Labs</a></li>
+                        <li><a href="academy.html">Academy</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Security Status</h4>
+                    <div class="status-indicator">
+                        <span class="dot pulse"></span>
+                        <span class="status-text">NETWORK_OPERATIONAL</span>
+                    </div>
+                    <p style="font-size: 0.75rem; margin-top: 10px; color: #64748b;">// Last Scan: Feb 2026</p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Akwire Cybersecurity. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/finalExam.js"></script>
+    
+</body>
+</html>

@@ -3,17 +3,28 @@ import express from "express";
 import {
   getExam,
   getModuleQuiz,
+  getFinalExam,
   submitExam,
   createExam,
   getExamHistory,
   getRecommendations
 }
+
 from "../controllers/examController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { admin } from "../middleware/adminMiddleware.js";
 import ExamResult from "../models/ExamResult.js";
 
+
 const router = express.Router();
+
+router.get("/module/:id", protect, getModuleQuiz);
+
+router.get(
+  "/final",
+  protect,
+  getFinalExam
+);
 
 // Get exam questions
 
