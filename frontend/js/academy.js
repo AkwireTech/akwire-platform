@@ -223,6 +223,37 @@ function renderCourses(courses) {
 
     });
 
+
+    const finalExamCard =
+    document.createElement("div");
+
+finalExamCard.classList.add(
+    "academy-card"
+);
+
+finalExamCard.innerHTML = `
+
+    <h3>
+        Security+ Final Exam
+    </h3>
+
+    <p>
+        Comprehensive assessment covering all Security+ Fundamentals modules.
+    </p>
+
+    <a
+        href="final-exam.html"
+        class="academy-btn"
+    >
+        Launch Final Exam →
+    </a>
+
+`;
+
+container.appendChild(
+    finalExamCard
+);
+
 }
 
 // ==========================================
