@@ -60,6 +60,7 @@ async function fetchExam() {
 
             "https://akwire-api.onrender.com/api/exam/final",
 
+         console.log("Response Status:", res.status),
             {
                 method: "GET",
                 headers: {
@@ -81,6 +82,8 @@ async function fetchExam() {
         }
 
         const data = await res.json();
+
+        console.log("Final Exam Data:", data);
 
         if (!data || !data.questions) {
             console.error("No exam questions found.");
