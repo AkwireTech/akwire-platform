@@ -284,6 +284,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "coursesCertified"
                 );
 
+                console.log(
+                    "Courses Certified Element:",
+                    certifiedElement
+                );
+
+                console.log(
+                    "Certificate Count:",
+                    certData.length
+                );
+
             if (certifiedElement) {
 
                 certifiedElement.textContent =
