@@ -74,13 +74,6 @@ async function fetchExam() {
 
 console.log("Status:", res.status);
 
-const data = await res.json();
-
-console.log("Final Exam:", data);
-
-            console.log("Module ID:", moduleId);
-
-
         if (!res.ok) {
             console.error("Server returned:", res.status);
             return;
