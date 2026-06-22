@@ -278,24 +278,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                 latestScore
             );
 
-            const passedExams =
-
-                attempts.filter(
-
-                    a => a.score >= 80
-
-                ).length;
-
-            const passedElement =
+            const certifiedElement =
 
                 document.getElementById(
-                    "passedExams"
+                    "coursesCertified"
                 );
 
-            if (passedElement) {
+            if (certifiedElement) {
 
-                passedElement.textContent =
-                    passedExams;
+                certifiedElement.textContent =
+                    certData.length || 0;
 
             }
 
