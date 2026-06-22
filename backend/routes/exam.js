@@ -14,6 +14,7 @@ from "../controllers/examController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { admin } from "../middleware/adminMiddleware.js";
 import ExamResult from "../models/ExamResult.js";
+import Course from "../models/Course.js";
 
 
 const router = express.Router();
@@ -65,6 +66,49 @@ router.post("/submit", protect, async (req, res) => {
     });
 
     const score = Math.round((correct / questions.length) * 100);
+
+    // Award certificate only if final exam passed
+
+    if (score >= 80) {
+
+      const user = req.user;
+
+      const course = await Course.findOne({
+
+        title: "Security+ Fundamentals"
+
+      });
+
+      if (course) {
+
+        const alreadyCertified =
+
+          user.certifiedCourses?.some(
+
+            cert =>
+
+              cert.toString() ===
+              course._id.toString()
+
+          );
+
+        if (!alreadyCertified) {
+
+          user.certifiedCourses.push(
+            course._id
+          );
+
+          await user.save();
+
+          console.log(
+            "Certificate awarded"
+          );
+
+        }
+
+      }
+
+    }
 
     // Convert domain scores to %
     for (const domain in domainScores) {

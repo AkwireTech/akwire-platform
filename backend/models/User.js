@@ -28,6 +28,13 @@ completedCourses: [
 
 ],
 
+certifiedCourses: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course"
+  }
+],
+
 
 lessonProgress: [
 
