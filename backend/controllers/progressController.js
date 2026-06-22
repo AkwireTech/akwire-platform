@@ -244,12 +244,26 @@ export const getCertificates = async (req, res) => {
     const user =
       await User.findById(
         req.user._id
-      ).populate(
-        "completedCourses.courseId"
+      )
+      .populate(
+        "certifiedCourses"
+      );
+
+    const certificates =
+
+      user.certifiedCourses.map(
+        course => ({
+
+          courseId: course,
+
+          completedAt:
+            new Date()
+
+        })
       );
 
     res.json(
-      user.completedCourses || []
+      certificates
     );
 
   } catch (error) {
@@ -260,7 +274,10 @@ export const getCertificates = async (req, res) => {
     );
 
     res.status(500).json({
-      message: error.message
+
+      message:
+        error.message
+
     });
 
   }
