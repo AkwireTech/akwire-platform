@@ -61,6 +61,55 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     }
 
+    // ==========================
+    // CERTIFICATES EARNED
+    // ==========================
+
+    try {
+
+        const certRes =
+            await fetch(
+
+                "https://akwire-api.onrender.com/api/progress/certificates",
+
+                {
+                    headers: {
+                        Authorization:
+                            "Bearer " + token
+                    }
+                }
+
+            );
+
+        const certs =
+            await certRes.json();
+
+        console.log(
+            "Certificates:",
+            certs
+        );
+
+        const certCount =
+            document.getElementById(
+                "certificatesEarned"
+            );
+
+        if (certCount) {
+
+            certCount.textContent =
+                certs.length || 0;
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "Certificate Count Error:",
+            error
+        );
+
+    }
+
 
     // ==========================
     // AUTH CHECK
@@ -228,6 +277,27 @@ document.addEventListener("DOMContentLoaded", async () => {
                 "Latest Score:",
                 latestScore
             );
+
+            const passedExams =
+
+                attempts.filter(
+
+                    a => a.score >= 80
+
+                ).length;
+
+            const passedElement =
+
+                document.getElementById(
+                    "passedExams"
+                );
+
+            if (passedElement) {
+
+                passedElement.textContent =
+                    passedExams;
+
+            }
 
             // ==========================
             // LATEST EXAM SCORE
