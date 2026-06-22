@@ -85,36 +85,55 @@ async function loadCertificates() {
 
             card.innerHTML = `
 
-                <h3>
-                    🏆 ${course.title}
-                </h3>
+            <h3>
+                🏆 ${course.title}
+            </h3>
 
-                <p>
+            <p>
 
-                    Successfully completed
-                    through Akwire Academy
+                Successfully completed
+                through Akwire Academy
 
-                </p>
+            </p>
 
-                <p>
+            <p>
 
-                    <strong>
-                        Completed:
-                    </strong>
+                <strong>
+                    Completed:
+                </strong>
 
-                    ${completedDate}
+                ${completedDate}
 
-                </p>
+            </p>
 
-                <p>
+            <p>
 
-                    <strong>
-                        Status:
-                    </strong>
+                <strong>
+                    Status:
+                </strong>
 
-                    Certified
+                Certified
 
-                </p>
+            </p>
+
+            <p>
+
+                <strong>
+                    Certificate ID:
+                </strong>
+
+                AKW-${course._id.slice(-6).toUpperCase()}
+
+            </p>
+
+            <div
+                style="
+                    display:flex;
+                    gap:10px;
+                    flex-wrap:wrap;
+                    margin-top:15px;
+                "
+            >
 
                 <button
                     class="academy-btn"
@@ -128,7 +147,21 @@ async function loadCertificates() {
 
                 </button>
 
-            `;
+                <button
+                    class="academy-btn"
+
+                    onclick="
+                        window.location.href='certificate-view.html?course=${course._id}'
+                    "
+                >
+
+                    View Certificate
+
+                </button>
+
+            </div>
+
+        `;
 
             container.appendChild(
                 card
