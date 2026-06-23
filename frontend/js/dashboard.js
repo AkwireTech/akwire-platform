@@ -84,6 +84,19 @@ document.addEventListener("DOMContentLoaded", async () => {
         const certs =
             await certRes.json();
 
+        const certifiedElement =
+
+            document.getElementById(
+                "coursesCertified"
+            );
+
+        if (certifiedElement) {
+
+            certifiedElement.textContent =
+                certData.length || 0;
+
+        }
+
         console.log(
             "Certificates:",
             certs
@@ -284,23 +297,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "coursesCertified"
                 );
 
-                console.log(
-                    "Courses Certified Element:",
-                    certifiedElement
-                );
-
-                console.log(
-                    "Certificate Count:",
-                    certData.length
-                );
-
-            if (certifiedElement) {
-
-                certifiedElement.textContent =
-                    certData.length || 0;
-
-            }
-
+                
             // ==========================
             // LATEST EXAM SCORE
             // ==========================
