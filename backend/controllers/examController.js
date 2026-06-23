@@ -239,6 +239,15 @@ export const getFinalExam = async (req, res) => {
       req.user._id
     );
 
+    console.log(
+      "Completed Courses:",
+      JSON.stringify(
+        user.completedCourses,
+        null,
+        2
+      )
+    );
+
     const securityCourse =
 
       user.completedCourses.find(
