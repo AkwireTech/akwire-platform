@@ -250,6 +250,14 @@ export const getFinalExam = async (req, res) => {
 
       );
 
+      console.log(
+      JSON.stringify(
+        user.completedCourses,
+        null,
+        2
+      )
+    );
+
     if (!securityCourse) {
 
       return res.status(403).json({
