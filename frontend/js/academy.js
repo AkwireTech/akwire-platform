@@ -231,24 +231,54 @@ finalExamCard.classList.add(
     "academy-card"
 );
 
-finalExamCard.innerHTML = `
+const securityCompleted =
 
-    <h3>
-        Security+ Final Exam
-    </h3>
+    completedCourses.some(
 
-    <p>
-        Comprehensive assessment covering all Security+ Fundamentals modules.
-    </p>
+        course =>
 
-    <a
-        href="final-exam.html"
-        class="academy-btn"
-    >
-        Launch Final Exam →
-    </a>
+            course.title ===
+            "Security+ Fundamentals"
 
-`;
+    );
+
+    finalExamCard.innerHTML = `
+
+        <h3>
+            Security+ Final Exam
+        </h3>
+
+        <p>
+            Comprehensive assessment covering all Security+ Fundamentals modules.
+        </p>
+
+        ${securityCompleted ? `
+
+            <a
+                href="final-exam.html"
+                class="academy-btn"
+            >
+                Launch Final Exam →
+            </a>
+
+        ` : `
+
+            <div
+                style="
+                    margin-top:15px;
+                    color:#f59e0b;
+                    font-weight:600;
+                "
+            >
+
+                🔒 Complete Security+ Fundamentals
+                to unlock the Final Exam
+
+            </div>
+
+        `}
+
+    `;
 
 container.appendChild(
     finalExamCard

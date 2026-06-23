@@ -283,3 +283,49 @@ export const getCertificates = async (req, res) => {
   }
 
 };
+
+export const getStatus = async (req, res) => {
+
+  try {
+
+    const user =
+      await User.findById(
+        req.user._id
+      );
+
+    res.json({
+
+      coursesCompleted:
+        user.completedCourses?.length || 0,
+
+      certificatesEarned:
+        user.certifiedCourses?.length || 0,
+
+      coursesCertified:
+        user.certifiedCourses?.length || 0,
+
+      finalExamUnlocked:
+        (user.completedCourses?.length || 0) > 0,
+
+      finalExamPassed:
+        (user.certifiedCourses?.length || 0) > 0,
+
+      completedLessons:
+        user.lessonProgress?.length || 0
+
+    });
+
+  } catch (error) {
+
+    console.error(
+      "STATUS ERROR:",
+      error
+    );
+
+    res.status(500).json({
+      message: error.message
+    });
+
+  }
+
+};

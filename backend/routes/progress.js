@@ -3,11 +3,10 @@ import {
 
   completeCourse,
   getProgress,
-
   markLessonComplete,
   getLessonProgress,
-
-  getCertificates
+  getCertificates,
+  getStatus
 
 } from "../controllers/progressController.js";
 
@@ -34,6 +33,12 @@ router.get(
   "/lessons",
   protect,
   getLessonProgress
+);
+
+router.get(
+  "/status",
+  protect,
+  getStatus
 );
 
 router.get(
