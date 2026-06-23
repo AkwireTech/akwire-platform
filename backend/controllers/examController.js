@@ -235,9 +235,28 @@ export const getFinalExam = async (req, res) => {
 
   try {
 
+    const user = await User.findById(
+      req.user._id
+    );
+
+    if (
+      !user.completedCourses ||
+      user.completedCourses.length === 0
+    ) {
+
+      return res.status(403).json({
+
+        message:
+          "Complete the course before taking the Final Exam"
+
+      });
+
+    }
+
     const exam = await Exam.findOne({
 
-      title: "Security+ Fundamentals Final Exam"
+      title:
+        "Security+ Fundamentals Final Exam"
 
     });
 
@@ -245,7 +264,8 @@ export const getFinalExam = async (req, res) => {
 
       return res.status(404).json({
 
-        message: "Final exam not found"
+        message:
+          "Final exam not found"
 
       });
 
@@ -259,7 +279,8 @@ export const getFinalExam = async (req, res) => {
 
     res.status(500).json({
 
-      message: "Server Error"
+      message:
+        "Server Error"
 
     });
 
