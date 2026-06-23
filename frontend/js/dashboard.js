@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (certifiedElement) {
 
             certifiedElement.textContent =
-                certData.length || 0;
+                certs.length || 0;
 
         }
 
@@ -297,7 +297,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "coursesCertified"
                 );
 
-                
+
             // ==========================
             // LATEST EXAM SCORE
             // ==========================
