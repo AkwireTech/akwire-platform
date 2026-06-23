@@ -248,24 +248,27 @@ export const getFinalExam = async (req, res) => {
       )
     );
 
-    const securityCourse =
+    const securityCompleted =
 
-      user.completedCourses.find(
+      user.completedCourses.some(
 
-        c =>
+        course =>
 
-          c.courseId?.toString() ===
+          course.courseId.toString() ===
           "6a2d0788ddb079f4875ee58a"
 
       );
 
-      console.log(
-      JSON.stringify(
-        user.completedCourses,
-        null,
-        2
-      )
-    );
+    if (!securityCompleted) {
+
+      return res.status(403).json({
+
+        message:
+          "Complete Security+ Fundamentals before taking the Final Exam"
+
+      });
+
+    }
 
     if (!securityCourse) {
 
