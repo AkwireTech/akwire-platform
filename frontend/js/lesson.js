@@ -270,26 +270,26 @@ function convertYoutubeUrl(url) {
         // MARK COURSE COMPLETE
         // ==========================
 
-        await fetch(
+ //       await fetch(
 
-            `https://akwire-api.onrender.com/api/progress/${courseId}`,
+ //           `https://akwire-api.onrender.com/api/progress/${courseId}`,
 
-            {
+  //          {
 
-                method: "POST",
+   //             method: "POST",
 
-                headers: {
+  //              headers: {
 
-                    Authorization:
-                        "Bearer " + token
+  //                  Authorization:
+  //                      "Bearer " + token
 
-                }
+    //            }
 
-            }
+      //      }
 
-        );
+//        );
 
-    } catch (error) {
+   } catch (error) {
 
         console.error(
             "Progress update failed:",
