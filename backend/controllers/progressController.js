@@ -1,4 +1,5 @@
 import User from "../models/User.js";
+import Course from "../models/Course.js";
 
 // Mark course as completed
 
@@ -311,7 +312,17 @@ export const getStatus = async (req, res) => {
         (user.certifiedCourses?.length || 0) > 0,
 
       completedLessons:
-        user.lessonProgress?.length || 0
+        user.lessonProgress?.length || 0,
+      
+      totalLessons:
+        user.lessonProgress?.length || 0,
+
+      completedLessons:
+        user.lessonProgress?.length || 0,
+
+      progressPercent:
+        user.completedLessons?.length || 0,
+
 
     });
 
@@ -327,5 +338,34 @@ export const getStatus = async (req, res) => {
     });
 
   }
+
+  const courses =
+  await Course.find();
+
+  let totalLessons = 0;
+
+  courses.forEach(course => {
+
+    course.modules.forEach(module => {
+
+      totalLessons +=
+        module.lessons.length;
+
+    });
+
+  });
+
+  const completedLessons =
+    user.lessonProgress?.length || 0;
+
+  const progressPercent =
+
+    totalLessons > 0
+
+      ? Math.round(
+          (completedLessons / totalLessons) * 100
+        )
+
+      : 0;
 
 };
