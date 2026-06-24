@@ -314,14 +314,11 @@ export const getStatus = async (req, res) => {
       completedLessons:
         user.lessonProgress?.length || 0,
       
-      totalLessons:
-        user.lessonProgress?.length || 0,
+      totalLessons,
 
-      completedLessons:
-        user.lessonProgress?.length || 0,
+      completedLessons,
 
-      progressPercent:
-        user.completedLessons?.length || 0,
+      progressPercent
 
 
     });
