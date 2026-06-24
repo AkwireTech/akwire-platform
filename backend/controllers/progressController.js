@@ -294,6 +294,35 @@ export const getStatus = async (req, res) => {
         req.user._id
       );
 
+    const courses =
+    await Course.find();
+
+    let totalLessons = 0;
+
+    courses.forEach(course => {
+
+      course.modules.forEach(module => {
+
+        totalLessons +=
+          module.lessons.length;
+
+      });
+
+    });
+
+    const completedLessons =
+      user.lessonProgress?.length || 0;
+
+    const progressPercent =
+
+      totalLessons > 0
+
+        ? Math.round(
+            (completedLessons / totalLessons) * 100
+          )
+
+        : 0;
+
     res.json({
 
       coursesCompleted:
@@ -335,34 +364,5 @@ export const getStatus = async (req, res) => {
     });
 
   }
-
-  const courses =
-  await Course.find();
-
-  let totalLessons = 0;
-
-  courses.forEach(course => {
-
-    course.modules.forEach(module => {
-
-      totalLessons +=
-        module.lessons.length;
-
-    });
-
-  });
-
-  const completedLessons =
-    user.lessonProgress?.length || 0;
-
-  const progressPercent =
-
-    totalLessons > 0
-
-      ? Math.round(
-          (completedLessons / totalLessons) * 100
-        )
-
-      : 0;
 
 };
