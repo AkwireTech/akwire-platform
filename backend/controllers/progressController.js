@@ -15,21 +15,15 @@ export const completeCourse = async (req, res) => {
 
     const alreadyCompleted =
 
-      user.progress.some(
+      user.completedCourses.some(
 
-        id =>
-          id.toString() === courseId
+        item =>
+
+          item.courseId &&
+          item.courseId.toString() === courseId
 
       );
-
-
-    if (!alreadyCompleted) {
-
-      user.progress.push(
-        courseId
-      );
-
-    }
+      
 
     const certificateExists =
 
@@ -57,16 +51,15 @@ export const completeCourse = async (req, res) => {
 
     await user.save();
 
+res.json({
 
-    res.json({
+  message:
+    "Course marked as completed",
 
-      message:
-        "Course marked as completed",
+  completedCourses:
+    user.completedCourses
 
-      progress:
-        user.progress
-
-    });
+});
 
   } catch (error) {
 
@@ -89,14 +82,17 @@ export const completeCourse = async (req, res) => {
 // Get user progress
 
 export const getProgress = async (req, res) => {
+
   try {
 
     const user =
       await User.findById(req.user._id)
-      .populate("progress");
+      .populate(
+        "completedCourses.courseId"
+      );
 
     res.json(
-      user.progress
+      user.completedCourses || []
     );
 
   } catch (error) {
@@ -106,6 +102,7 @@ export const getProgress = async (req, res) => {
     });
 
   }
+
 };
 
 
@@ -311,7 +308,11 @@ export const getStatus = async (req, res) => {
     });
 
     const completedLessons =
-      user.lessonProgress?.length || 0;
+      user.lessonProgress.reduce(
+        (total, course) =>
+          total + (course.completedLessons?.length || 0),
+        0
+      );
 
     const progressPercent =
 
