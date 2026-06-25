@@ -266,28 +266,6 @@ function convertYoutubeUrl(url) {
 
         );
 
-        // ==========================
-        // MARK COURSE COMPLETE
-        // ==========================
-
- //       await fetch(
-
- //           `https://akwire-api.onrender.com/api/progress/${courseId}`,
-
-  //          {
-
-   //             method: "POST",
-
-  //              headers: {
-
-  //                  Authorization:
-  //                      "Bearer " + token
-
-    //            }
-
-      //      }
-
-//        );
 
    } catch (error) {
 
