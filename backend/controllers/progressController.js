@@ -12,19 +12,7 @@ export const completeCourse = async (req, res) => {
 
     const courseId =
       req.params.courseId;
-
-    const alreadyCompleted =
-
-      user.completedCourses.some(
-
-        item =>
-
-          item.courseId &&
-          item.courseId.toString() === courseId
-
-      );
       
-
     const certificateExists =
 
       user.completedCourses.some(
@@ -51,33 +39,69 @@ export const completeCourse = async (req, res) => {
 
     await user.save();
 
-res.json({
+    const course = await Course.findById(courseId);
 
-  message:
-    "Course marked as completed",
+    let totalLessons = 0;
 
-  completedCourses:
-    user.completedCourses
+    course.modules.forEach(module => {
+      totalLessons += module.lessons.length;
+    });
 
-});
+    const updatedProgress =
+      user.lessonProgress.find(
+        p => p.courseId.toString() === courseId
+      );
 
-  } catch (error) {
+    const completedCount =
+      updatedProgress?.completedLessons?.length || 0;
 
-    console.error(
-      "COMPLETE COURSE ERROR:",
-      error
-    );
+    if (completedCount === totalLessons) {
 
-    res.status(500).json({
+      const alreadyCompleted =
+        user.completedCourses.some(
+          item =>
+            item.courseId &&
+            item.courseId.toString() === courseId
+        );
+
+      if (!alreadyCompleted) {
+
+        user.completedCourses.push({
+          courseId,
+          completedAt: new Date()
+        });
+
+        await user.save();
+      }
+    }
+
+    res.json({
 
       message:
-        error.message
+        "Course marked as completed",
+
+      completedCourses:
+        user.completedCourses
 
     });
 
-  }
+      } catch (error) {
 
-};
+        console.error(
+          "COMPLETE COURSE ERROR:",
+          error
+        );
+
+        res.status(500).json({
+
+          message:
+            error.message
+
+        });
+
+      }
+
+    };
 
 // Get user progress
 
@@ -340,9 +364,6 @@ export const getStatus = async (req, res) => {
 
       finalExamPassed:
         (user.certifiedCourses?.length || 0) > 0,
-
-      completedLessons:
-        user.lessonProgress?.length || 0,
       
       totalLessons,
 
