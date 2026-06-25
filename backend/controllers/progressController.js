@@ -135,95 +135,82 @@ export const getProgress = async (req, res) => {
 // ==========================================
 
 export const markLessonComplete = async (req, res) => {
-  console.log("LESSON REQUEST:", req.body);
-
   try {
+    const user = await User.findById(req.user._id);
 
-    const user =
-      await User.findById(req.user._id);
-
-      if (!user.lessonProgress) {
+    if (!user.lessonProgress) {
       user.lessonProgress = [];
     }
 
-      console.log("USER FOUND:", !!user);
-      console.log("LESSON PROGRESS:", user.lessonProgress);
+    const { courseId, lessonKey } = req.body;
 
-    const {
-      courseId,
-      lessonKey
-    } = req.body;
-
-
-    console.log("COURSE ID:", courseId);
-    console.log("LESSON KEY:", lessonKey);
-    console.log("USER LESSON PROGRESS:", user.lessonProgress);
-
-
-
-
-    let courseProgress =
-
-      user.lessonProgress.find(
-
-        p =>
-
-          p.courseId &&
-
-          p.courseId.toString() === courseId
-
-      );
-
+    let courseProgress = user.lessonProgress.find(
+      p =>
+        p.courseId &&
+        p.courseId.toString() === courseId
+    );
 
     if (!courseProgress) {
-
       user.lessonProgress.push({
-
         courseId,
-
-        completedLessons: [
-          lessonKey
-        ]
-
+        completedLessons: [lessonKey]
       });
 
+      courseProgress = user.lessonProgress[user.lessonProgress.length - 1];
     } else {
-
-      if (
-
-        !courseProgress.completedLessons.includes(
-          lessonKey
-        )
-
-      ) {
-
-        courseProgress.completedLessons.push(
-          lessonKey
-        );
-
+      if (!courseProgress.completedLessons.includes(lessonKey)) {
+        courseProgress.completedLessons.push(lessonKey);
       }
-
     }
 
+    // Save lesson progress
     await user.save();
 
+    // Get course
+    const course = await Course.findById(courseId);
+
+    let totalLessons = 0;
+
+    course.modules.forEach(module => {
+      totalLessons += module.lessons.length;
+    });
+
+    const completedCount =
+      courseProgress.completedLessons.length;
+
+    // Mark course complete only when all lessons are finished
+    if (completedCount === totalLessons) {
+      const alreadyCompleted =
+        user.completedCourses.some(
+          item =>
+            item.courseId &&
+            item.courseId.toString() === courseId
+        );
+
+      if (!alreadyCompleted) {
+        user.completedCourses.push({
+          courseId,
+          completedAt: new Date()
+        });
+
+        await user.save();
+      }
+    }
+
     res.json({
-
-      message:
-        "Lesson progress saved"
-
+      message: "Lesson progress saved",
+      completedLessons: completedCount,
+      totalLessons
     });
 
   } catch (error) {
+    console.error("MARK LESSON COMPLETE ERROR:", error);
 
     res.status(500).json({
       message: error.message
     });
-
   }
-
 };
-
 
 // ==========================================
 // GET LESSON PROGRESS
