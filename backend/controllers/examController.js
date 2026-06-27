@@ -231,6 +231,22 @@ export const getModuleQuiz = async (req, res) => {
 
 };
 
+console.log("========== FINAL EXAM ==========");
+console.log("User:", req.user._id);
+console.log("Completed Courses:", user.completedCourses);
+
+const securityCompleted = user.completedCourses.some(course => {
+  const id = course.courseId._id
+    ? course.courseId._id.toString()
+    : course.courseId.toString();
+
+  console.log("Checking:", id);
+
+  return id === "6a2d0788ddb079f4875ee58a";
+});
+
+console.log("Security Completed:", securityCompleted);
+
 export const getFinalExam = async (req, res) => {
 
   try {
