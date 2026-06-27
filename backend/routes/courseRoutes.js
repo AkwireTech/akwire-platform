@@ -13,9 +13,31 @@ import {
     getCourse,
     createCourse,
     updateCourse,
-    deleteCourse
+    deleteCourse,
+    addModule,
+    addLesson
 
 } from "../controllers/courseController.js";
+
+// ==========================================
+// COURSE BUILDER
+// ==========================================
+
+// Add Module
+router.post(
+    "/:courseId/modules",
+    protect,
+    admin,
+    addModule
+);
+
+// Add Lesson
+router.post(
+    "/:courseId/modules/:moduleId/lessons",
+    protect,
+    admin,
+    addLesson
+);
 
 const router =
     express.Router();

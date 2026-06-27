@@ -179,3 +179,76 @@ export const deleteCourse = async (req, res) => {
     }
 
 };
+
+
+export const addModule = async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.courseId);
+
+    if (!course) {
+      return res.status(404).json({
+        message: "Course not found"
+      });
+    }
+
+    course.modules.push({
+      title: req.body.title,
+      lessons: []
+    });
+
+    await course.save();
+
+    res.json(course);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to add module"
+    });
+
+  }
+};
+
+
+export const addLesson = async (req, res) => {
+  try {
+
+    const course = await Course.findById(req.params.courseId);
+
+    if (!course) {
+      return res.status(404).json({
+        message: "Course not found"
+      });
+    }
+
+    const module = course.modules.id(req.params.moduleId);
+
+    if (!module) {
+      return res.status(404).json({
+        message: "Module not found"
+      });
+    }
+
+    module.lessons.push({
+      title: req.body.title,
+      content: req.body.content || "",
+      videoUrl: req.body.videoUrl || "",
+      resources: req.body.resources || []
+    });
+
+    await course.save();
+
+    res.json(course);
+
+  } catch (error) {
+
+    console.error(error);
+
+    res.status(500).json({
+      message: "Failed to add lesson"
+    });
+
+  }
+};
