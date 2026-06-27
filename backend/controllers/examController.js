@@ -248,26 +248,25 @@ export const getFinalExam = async (req, res) => {
       )
     );
 
-    const securityCompleted =
+   const securityCourse = await Course.findOne({
+      title: "Security+ Fundamentals"
+    });
 
-      user.completedCourses.some(
+    if (!securityCourse) {
+      return res.status(404).json({
+        message: "Security+ Fundamentals course not found"
+      });
+    }
 
-        course =>
-
-          course.courseId.toString() ===
-          "6a2d0788ddb079f4875ee58a"
-
-      );
+    const securityCompleted = user.completedCourses.some(
+      course =>
+        course.courseId.toString() === securityCourse._id.toString()
+    );
 
     if (!securityCompleted) {
-
       return res.status(403).json({
-
-        message:
-          "Complete Security+ Fundamentals before taking the Final Exam"
-
+        message: "Complete Security+ Fundamentals before taking the Final Exam"
       });
-
     }
 
     if (!securityCourse) {
