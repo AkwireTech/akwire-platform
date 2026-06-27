@@ -75,7 +75,14 @@ async function fetchExam() {
 console.log("Status:", res.status);
 
         if (!res.ok) {
-            console.error("Server returned:", res.status);
+
+            const error = await res.json();
+
+            console.log("Status:", res.status);
+            console.log("Backend Error:", error);
+
+            alert(error.message);
+
             return;
         }
 
