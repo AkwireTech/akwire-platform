@@ -212,6 +212,7 @@ export const markLessonComplete = async (req, res) => {
   }
 };
 
+
 // ==========================================
 // GET LESSON PROGRESS
 // ==========================================
