@@ -148,14 +148,10 @@ function renderCourses(courses) {
 
     courses.forEach(course => {
 
-        const isCompleted =
-
-            completedCourses.some(
-
-                completed =>
-
-                    completed._id === course._id
-
+        const isCompleted = completedCourses.some(
+            completed =>
+                completed.courseId &&
+                completed.courseId._id === course._id
         );
 
 
@@ -227,19 +223,14 @@ function renderCourses(courses) {
     const finalExamCard =
     document.createElement("div");
 
-finalExamCard.classList.add(
-    "academy-card"
-);
+    finalExamCard.classList.add(
+        "academy-card"
+    );
 
-const securityCompleted =
-
-    completedCourses.some(
-
-        course =>
-
-            course.title ===
-            "Security+ Fundamentals"
-
+    const securityCompleted = completedCourses.some(
+        item =>
+            item.courseId &&
+            item.courseId.title === "Security+ Fundamentals"
     );
 
     finalExamCard.innerHTML = `
