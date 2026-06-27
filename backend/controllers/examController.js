@@ -255,6 +255,22 @@ export const getFinalExam = async (req, res) => {
       req.user._id
     );
 
+    console.log("========== FINAL EXAM ==========");
+    console.log("req.user._id:", req.user._id);
+    console.log("completedCourses:", JSON.stringify(user.completedCourses, null, 2));
+
+    const securityCompleted = user.completedCourses.some(course => {
+      const id = course.courseId._id
+        ? course.courseId._id.toString()
+        : course.courseId.toString();
+
+      console.log("Comparing:", id);
+
+      return id === "6a2d0788ddb079f4875ee58a";
+    });
+
+    console.log("securityCompleted:", securityCompleted);
+
     console.log(
       "Completed Courses:",
       JSON.stringify(
