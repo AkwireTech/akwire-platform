@@ -28,11 +28,6 @@ async function loadCourses() {
         const courses =
             await response.json();
 
-        console.log(
-            "Academy Courses:",
-            courses
-        );
-
         allCourses = courses;
 
         renderCourses(courses);
@@ -153,7 +148,6 @@ function renderCourses(courses) {
                 completed.courseId &&
                 completed.courseId._id === course._id
         );
-
 
         const card =
             document.createElement("div");

@@ -1,12 +1,8 @@
-
-console.log("dashboard js loaded");
-
 document.addEventListener("DOMContentLoaded", async () => {
 
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
 
-    console.log("USER:", user);
 
     // ==========================
     // ACADEMY PROGRESS
@@ -34,11 +30,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         const academyData =
             await academyRes.json();
-
-        console.log(
-            "Academy Progress:",
-            academyData
-        );
 
         const academyCompleted =
             document.getElementById(
@@ -96,11 +87,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                 certs.length || 0;
 
         }
-
-        console.log(
-            "Certificates:",
-            certs
-        );
 
         const certCount =
             document.getElementById(
@@ -163,8 +149,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         );
 
         const dashboardData = await dashboardRes.json();
-
-        console.log("Dashboard:", dashboardData);
 
         document.getElementById("totalLabs").textContent =
             dashboardData.totalLabs || 0;
@@ -273,8 +257,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const examData =
             await examRes.json();
 
-        console.log("Exam:", examData);
-
         const attempts =
             examData.attempts || [];
 
@@ -285,11 +267,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const latestScore =
                 latestAttempt.score || 0;
-
-            console.log(
-                "Latest Score:",
-                latestScore
-            );
 
             const certifiedElement =
 
@@ -341,10 +318,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
                 );
 
-            console.log(
-                "Readiness:",
-                avgReadiness
-            );
 
             const readinessText =
                 document.getElementById(
@@ -455,10 +428,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const recData =
             await recRes.json();
 
-        console.log(
-            "Recommendations:",
-            recData
-        );
 
         const recContainer =
             document.getElementById(
