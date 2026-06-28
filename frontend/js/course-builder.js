@@ -50,9 +50,9 @@ async function loadCourse() {
 
     } catch (error) {
 
-        console.error(error);
+        console.error("ADD MODULE ERROR:", error);
 
-        alert("Unable to load course.");
+        alert(error.message);
 
     }
 
@@ -143,7 +143,9 @@ async function addModule() {
 
         if (!response.ok) {
 
-            throw new Error("Failed to add module");
+            const error = await response.json();
+
+            throw new Error(error.message);
 
         }
 
