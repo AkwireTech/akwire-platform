@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+/*document.addEventListener("DOMContentLoaded", () => {
 
     const user =
         JSON.parse(
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // CREATE COURSE
     // ==========================
 
-    document.getElementById(
+ /*   document.getElementById(
         "courseForm"
     ).addEventListener(
         "submit",
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         `course-builder.html?id=${data._id}`;
 
                 }, 1000);
-                
+
             } catch (error) {
 
                 console.error(error);
@@ -168,4 +168,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-});
+});*/
