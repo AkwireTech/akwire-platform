@@ -1,4 +1,3 @@
-
 import express from "express";
 
 import { protect }
@@ -19,28 +18,7 @@ import {
 
 } from "../controllers/courseController.js";
 
-// ==========================================
-// COURSE BUILDER
-// ==========================================
-
-// Add Module
-router.post(
-    "/:courseId/modules",
-    protect,
-    admin,
-    addModule
-);
-
-// Add Lesson
-router.post(
-    "/:courseId/modules/:moduleId/lessons",
-    protect,
-    admin,
-    addLesson
-);
-
-const router =
-    express.Router();
+const router = express.Router();
 
 // ==========================================
 // PUBLIC ROUTES
@@ -84,6 +62,26 @@ router.delete(
     protect,
     admin,
     deleteCourse
+);
+
+// ==========================================
+// COURSE BUILDER
+// ==========================================
+
+// Add Module
+router.post(
+    "/:courseId/modules",
+    protect,
+    admin,
+    addModule
+);
+
+// Add Lesson
+router.post(
+    "/:courseId/modules/:moduleId/lessons",
+    protect,
+    admin,
+    addLesson
 );
 
 export default router;
