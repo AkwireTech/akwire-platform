@@ -147,10 +147,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 status.style.color =
                     "#22c55e";
 
-                document.getElementById(
-                    "courseForm"
-                ).reset();
+                setTimeout(() => {
 
+                    window.location.href =
+                        `course-builder.html?id=${data._id}`;
+
+                }, 1000);
+                
             } catch (error) {
 
                 console.error(error);
