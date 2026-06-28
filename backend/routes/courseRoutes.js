@@ -84,4 +84,11 @@ router.post(
     addLesson
 );
 
+
+router.get("/test", (req, res) => {
+    res.json({
+        message: "Course routes are working"
+    });
+});
+
 export default router;
