@@ -1,4 +1,4 @@
-/*document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
 
     const user =
         JSON.parse(
@@ -30,7 +30,7 @@
     // CREATE COURSE
     // ==========================
 
- /*   document.getElementById(
+   document.getElementById(
         "courseForm"
     ).addEventListener(
         "submit",
@@ -66,69 +66,29 @@
 
                         body: JSON.stringify({
 
-                            title:
-                                document.getElementById(
-                                    "title"
-                                ).value,
+                        title:
+                            document.getElementById(
+                                "title"
+                            ).value,
 
-                            description:
-                                document.getElementById(
-                                    "description"
-                                ).value,
+                        description:
+                            document.getElementById(
+                                "description"
+                            ).value,
 
-                            domain:
-                                document.getElementById(
-                                    "domain"
-                                ).value,
+                        domain:
+                            document.getElementById(
+                                "domain"
+                            ).value,
 
-                            thumbnail:
-                                document.getElementById(
-                                    "thumbnail"
-                                ).value,
+                        thumbnail:
+                            document.getElementById(
+                                "thumbnail"
+                            ).value
 
+                    })
 
-            modules: [
-
-                {
-
-                    title:
-                        document.getElementById(
-                            "moduleTitle"
-                        ).value,
-
-                    lessons: [
-
-                        {
-
-                            title:
-                                document.getElementById(
-                                    "lessonTitle"
-                                ).value,
-
-                            content:
-                                document.getElementById(
-                                    "lessonContent"
-                                ).value,
-
-                            videoUrl:
-                                document.getElementById(
-                                    "videoUrl"
-                                ).value,
-
-                            resources: []
-
-                        }
-
-                    ]
-
-                }
-
-            ]
-
-
-                        })
-
-                    });
+         });
 
                 const data =
                     await response.json();
@@ -168,4 +128,4 @@
 
         });
 
-});*/
+});
