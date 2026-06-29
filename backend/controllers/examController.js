@@ -231,30 +231,27 @@ export const getModuleQuiz = async (req, res) => {
 
 };
 
-
-const securityCompleted = user.completedCourses.some(course => {
-  const id = course.courseId._id
-    ? course.courseId._id.toString()
-    : course.courseId.toString();
-
-
-  return id === "6a2d0788ddb079f4875ee58a";
-});
-
-
 export const getFinalExam = async (req, res) => {
 
   try {
 
-    const user = await User.findById(
-      req.user._id
-    );
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found"
+      });
+    }
 
     console.log("========== FINAL EXAM ==========");
     console.log("req.user._id:", req.user._id);
-    console.log("completedCourses:", JSON.stringify(user.completedCourses, null, 2));
+    console.log(
+      "completedCourses:",
+      JSON.stringify(user.completedCourses, null, 2)
+    );
 
     const securityCompleted = user.completedCourses.some(course => {
+
       const id = course.courseId._id
         ? course.courseId._id.toString()
         : course.courseId.toString();
@@ -262,37 +259,23 @@ export const getFinalExam = async (req, res) => {
       console.log("Comparing:", id);
 
       return id === "6a2d0788ddb079f4875ee58a";
-    });
 
-
-    console.log(
-      "Completed Courses:",
-      JSON.stringify(
-        user.completedCourses,
-        null,
-        2
-      )
-    );
-
-   const securityCompleted = user.completedCourses.some(course => {
-      const id =
-        course.courseId._id
-          ? course.courseId._id.toString()
-          : course.courseId.toString();
-
-      return id === "6a2d0788ddb079f4875ee58a";
     });
 
     if (!securityCompleted) {
+
       return res.status(403).json({
-        message: "Complete Security+ Fundamentals before taking the Final Exam"
+
+        message:
+          "Complete Security+ Fundamentals before taking the Final Exam"
+
       });
+
     }
 
     const exam = await Exam.findOne({
 
-      title:
-        "Security+ Fundamentals Final Exam"
+      title: "Security+ Fundamentals Final Exam"
 
     });
 
@@ -300,8 +283,7 @@ export const getFinalExam = async (req, res) => {
 
       return res.status(404).json({
 
-        message:
-          "Final exam not found"
+        message: "Final exam not found"
 
       });
 
@@ -315,8 +297,7 @@ export const getFinalExam = async (req, res) => {
 
     res.status(500).json({
 
-      message:
-        "Server Error"
+      message: "Server Error"
 
     });
 
