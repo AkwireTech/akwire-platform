@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     const data = await res.json();
 
-                    console.log("LOGIN:", data);
+                    console.log("LOGIN RESPONSE:", JSON.stringify(data, null, 2));
 
                     if (!res.ok) {
 
