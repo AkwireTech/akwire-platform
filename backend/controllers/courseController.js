@@ -182,6 +182,10 @@ export const deleteCourse = async (req, res) => {
 
 
 export const addModule = async (req, res) => {
+
+    console.log("✅ addModule reached");
+    console.log(req.params);
+    console.log(req.body);
   try {
     const course = await Course.findById(req.params.courseId);
 
