@@ -1,0 +1,121 @@
+/* ===============================
+   AKWIRE DESIGN SYSTEM
+================================ */
+
+:root{
+
+/* COLORS */
+
+--primary:#2563EB;
+--primary-dark:#1D4ED8;
+
+--success:#22C55E;
+--warning:#F59E0B;
+--danger:#EF4444;
+
+--sidebar:#0F172A;
+
+--background:#F8FAFC;
+
+--card:#FFFFFF;
+
+--border:#E2E8F0;
+
+--text:#0F172A;
+--text-light:#64748B;
+
+
+/* SHADOWS */
+
+--shadow:
+0 8px 24px rgba(15,23,42,.08);
+
+--shadow-hover:
+0 16px 40px rgba(37,99,235,.18);
+
+
+/* RADIUS */
+
+--radius:18px;
+
+--radius-small:10px;
+
+
+/* TRANSITIONS */
+
+--transition:.3s ease;
+
+}
+
+
+/* ===============================
+   RESET
+================================ */
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+body{
+
+background:var(--background);
+
+font-family:
+Inter,
+Segoe UI,
+Arial,
+sans-serif;
+
+color:var(--text);
+
+}
+
+
+/* ===============================
+   LINKS
+================================ */
+
+a{
+
+text-decoration:none;
+
+color:inherit;
+
+}
+
+
+/* ===============================
+   HEADINGS
+================================ */
+
+h1{
+
+font-size:40px;
+font-weight:700;
+
+}
+
+h2{
+
+font-size:30px;
+font-weight:700;
+
+}
+
+h3{
+
+font-size:22px;
+
+}
+
+p{
+
+color:var(--text-light);
+
+line-height:1.6;
+
+}
