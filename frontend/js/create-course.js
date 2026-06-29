@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // CREATE COURSE
     // ==========================
 
-   document.getElementById(
+    document.getElementById(
         "courseForm"
     ).addEventListener(
         "submit",
@@ -66,29 +66,69 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         body: JSON.stringify({
 
-                        title:
-                            document.getElementById(
-                                "title"
-                            ).value,
+                            title:
+                                document.getElementById(
+                                    "title"
+                                ).value,
 
-                        description:
-                            document.getElementById(
-                                "description"
-                            ).value,
+                            description:
+                                document.getElementById(
+                                    "description"
+                                ).value,
 
-                        domain:
-                            document.getElementById(
-                                "domain"
-                            ).value,
+                            domain:
+                                document.getElementById(
+                                    "domain"
+                                ).value,
 
-                        thumbnail:
-                            document.getElementById(
-                                "thumbnail"
-                            ).value
+                            thumbnail:
+                                document.getElementById(
+                                    "thumbnail"
+                                ).value,
 
-                    })
 
-         });
+            modules: [
+
+                {
+
+                    title:
+                        document.getElementById(
+                            "moduleTitle"
+                        ).value,
+
+                    lessons: [
+
+                        {
+
+                            title:
+                                document.getElementById(
+                                    "lessonTitle"
+                                ).value,
+
+                            content:
+                                document.getElementById(
+                                    "lessonContent"
+                                ).value,
+
+                            videoUrl:
+                                document.getElementById(
+                                    "videoUrl"
+                                ).value,
+
+                            resources: []
+
+                        }
+
+                    ]
+
+                }
+
+            ]
+
+
+                        })
+
+                    });
 
                 const data =
                     await response.json();
@@ -107,12 +147,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 status.style.color =
                     "#22c55e";
 
-                setTimeout(() => {
-
-                    window.location.href =
-                        `course-builder.html?id=${data._id}`;
-
-                }, 1000);
+                document.getElementById(
+                    "courseForm"
+                ).reset();
 
             } catch (error) {
 

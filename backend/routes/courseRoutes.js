@@ -1,54 +1,44 @@
+
 import express from "express";
 
-import { protect } from "../middleware/authMiddleware.js";
-import { admin } from "../middleware/adminMiddleware.js";
+import { protect }
+from "../middleware/authMiddleware.js";
+
+import { admin }
+from "../middleware/adminMiddleware.js";
 
 import {
+
     getCourses,
     getCourse,
     createCourse,
     updateCourse,
-    deleteCourse,
-    addModule,
-    addLesson
+    deleteCourse
+
 } from "../controllers/courseController.js";
 
-const router = express.Router();
+const router =
+    express.Router();
 
-console.log("✅ courseRoutes loaded");
 // ==========================================
 // PUBLIC ROUTES
 // ==========================================
 
 // Get all courses
-router.get("/", getCourses);
-
-// ==========================================
-// COURSE BUILDER ROUTES
-// ==========================================
-
-// Add Module
-router.post(
-    "/:courseId/modules",
-    protect,
-    admin,
-    addModule
+router.get(
+    "/",
+    getCourses
 );
-
-// Add Lesson
-router.post(
-    "/:courseId/modules/:moduleId/lessons",
-    protect,
-    admin,
-    addLesson
-);
-
-// ==========================================
-// COURSE CRUD
-// ==========================================
 
 // Get single course
-router.get("/:id", getCourse);
+router.get(
+    "/:id",
+    getCourse
+);
+
+// ==========================================
+// PROTECTED ROUTES
+// ==========================================
 
 // Create course
 router.post(
