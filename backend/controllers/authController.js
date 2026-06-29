@@ -88,8 +88,7 @@ export const loginUser = async (req, res, next) => {
       });
     }
 
-    const passwordMatch =
-      await user.matchPassword(password);
+    const passwordMatch = await user.matchPassword(password);
 
     if (!passwordMatch) {
       return res.status(401).json({
@@ -97,17 +96,14 @@ export const loginUser = async (req, res, next) => {
       });
     }
 
-    res.json({
-
+    return res.json({
       user: {
         _id: user._id.toString(),
         username: user.username,
         email: user.email,
         role: user.role
       },
-
       token: generateToken(user._id)
-
     });
 
   } catch (error) {
