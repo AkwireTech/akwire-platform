@@ -60,12 +60,14 @@ export const loginUser = async (req, res, next) => {
 
     if (user && (await user.matchPassword(password))) {
       res.json({
-      user: {
-        _id: user._id.toString(), // 🔥 IMPORTANT
-        email: user.email
-      },
-      token: generateToken(user._id)
-    });
+        user: {
+          _id: user._id.toString(),
+          username: user.username,
+          email: user.email,
+          role: user.role
+        },
+        token: generateToken(user._id)
+      });
     } else {
       res.status(401).json({ message: "Invalid credentials" });
     }
