@@ -4,11 +4,13 @@
 
 .dashboard-wrapper{
 
-    display:flex;
+    display:grid;
 
-    min-height:100vh;
+    grid-template-columns:270px 1fr;
 
-    background:#f8fafc;
+    margin-top:75px;
+
+    min-height:calc(100vh - 75px);
 
 }
 
@@ -18,8 +20,6 @@
 =========================== */
 
 .sidebar{
-
-    width:260px;
 
     background:#0f172a;
 
@@ -31,9 +31,15 @@
 
     justify-content:space-between;
 
-    padding:30px 20px;
+    padding:25px;
 
-    box-shadow:5px 0 25px rgba(0,0,0,.12);
+    position:sticky;
+
+    top:75px;
+
+    height:calc(100vh - 75px);
+
+    overflow-y:auto;
 
 }
 
@@ -120,13 +126,9 @@
 
 .main-content{
 
-    margin-left:270px;
-
-    margin-top:75px;
-
     padding:40px;
 
-    flex:1;
+    overflow-x:hidden;
 
 }
 
