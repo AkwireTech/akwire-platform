@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/cards.css">
     <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <title>Akwire | Interactive Cybersecurity Training Platform</title>
 </head>
 <body class="dashboard-page">
@@ -29,28 +30,109 @@
 
 
     <div class="dashboard-wrapper">
-        <nav class="sidebar">
 
-            <h1 style="color: #fff;">Important Info</h1>
+    <!-- SIDEBAR -->
 
-            <ul>
+    <aside class="sidebar">
 
-                <li class="admin-only">
-                    <a href="admin-dashboard.html">
-                        Admin Panel
-                    </a>
-                </li>
+        <div class="logo-section">
 
+            <img
+                src="images/logo.png"
+                class="logo"
+                alt="Akwire Logo"
+            >
 
-            </ul>
+            <h2>Akwire</h2>
+
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a
+                href="dashboard.html"
+                class="active"
+            >
+                🏠 Dashboard
+            </a>
+
+            <a href="academy.html">
+                🎓 Academy
+            </a>
+
+            <a href="labs.html">
+                🧪 Labs
+            </a>
+
+            <a href="exam.html">
+                📝 Exams
+            </a>
+
+            <a href="certificates.html">
+                🏆 Certificates
+            </a>
+
+            <a href="profile.html">
+                👤 Profile
+            </a>
+
+            <a
+                href="admin-dashboard.html"
+                class="admin-only"
+            >
+                ⚙ Admin Panel
+            </a>
 
         </nav>
 
-        <main class="main-content">
-            <header class="content-header">
-                <h1>Performance Dashboard</h1>
-            </header>
-            
+        <div class="sidebar-footer">
+
+            <button
+                class="btn"
+                onclick="logout()"
+            >
+                Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+
+    <main class="main-content">
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <h1>
+                    Performance Dashboard
+                </h1>
+
+                <p>
+
+                    Welcome back.
+
+                    Track your learning,
+                    labs,
+                    exams
+                    and certifications.
+
+                </p>
+
+            </div>
+
+            <button
+                class="btn"
+                onclick="location.href='academy.html'"
+            >
+
+                Continue Learning
+
+            </button>
+
+        </header>            
             
                 <div class="chart-container">
 
