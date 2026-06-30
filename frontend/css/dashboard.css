@@ -343,3 +343,44 @@ canvas{
     min-width:180px;
 
 }
+
+
+.logo-subtitle{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#94a3b8;
+
+    font-size:13px;
+
+    letter-spacing:.5px;
+
+}
+
+.sidebar-nav a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.sidebar-nav a span:first-child{
+
+    width:28px;
+
+    text-align:center;
+
+    font-size:20px;
+
+}
+
+.sidebar-nav a:hover{
+
+    padding-left:24px;
+
+}
