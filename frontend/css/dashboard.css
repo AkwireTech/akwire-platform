@@ -4,13 +4,11 @@
 
 .dashboard-wrapper{
 
-    display:grid;
+    display:flex;
 
-    grid-template-columns:270px 1fr;
+    min-height:100vh;
 
-    margin-top:75px;
-
-    min-height:calc(100vh - 75px);
+    background:#f8fafc;
 
 }
 
@@ -20,6 +18,8 @@
 =========================== */
 
 .sidebar{
+
+    width:260px;
 
     background:#0f172a;
 
@@ -31,15 +31,9 @@
 
     justify-content:space-between;
 
-    padding:25px;
+    padding:30px 20px;
 
-    position:sticky;
-
-    top:75px;
-
-    height:calc(100vh - 75px);
-
-    overflow-y:auto;
+    box-shadow:5px 0 25px rgba(0,0,0,.12);
 
 }
 
@@ -128,7 +122,7 @@
 
     padding:40px;
 
-    overflow-x:hidden;
+    flex:1;
 
 }
 
@@ -395,8 +389,6 @@ canvas{
 
 
 .sidebar{
-
-    position:fixed;
 
     top:75px;
 
