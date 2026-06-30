@@ -384,3 +384,92 @@ canvas{
     padding-left:24px;
 
 }
+
+
+/* ===========================
+   STAT ICONS
+=========================== */
+
+.stat-icon{
+
+    width:60px;
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    border-radius:16px;
+
+    margin-bottom:18px;
+
+    background:#dbeafe;
+
+}
+
+.stat-card:nth-child(2) .stat-icon{
+
+    background:#dcfce7;
+
+}
+
+.stat-card:nth-child(3) .stat-icon{
+
+    background:#fef3c7;
+
+}
+
+.stat-card:nth-child(4) .stat-icon{
+
+    background:#ede9fe;
+
+}
+
+.stat-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.stat-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:0;
+
+    width:5px;
+
+    height:100%;
+
+    background:#2563eb;
+
+}
+
+.stat-card:nth-child(2)::before{
+
+    background:#22c55e;
+
+}
+
+.stat-card:nth-child(3)::before{
+
+    background:#f59e0b;
+
+}
+
+.stat-card:nth-child(4)::before{
+
+    background:#8b5cf6;
+
+}
