@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>User Management | Akwire</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/cards.css">
+    <link rel="stylesheet" href="css/buttons.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>User Management</h1>
+
+    <p>
+        Manage students and administrators.
+    </p>
+
+    <br>
+
+    <input
+        type="text"
+        id="searchUser"
+        placeholder="Search users..."
+        style="width:100%;padding:12px;margin-bottom:20px;"
+    >
+
+    <table
+        style="width:100%;border-collapse:collapse;"
+    >
+
+        <thead>
+
+            <tr>
+
+                <th>Name</th>
+
+                <th>Email</th>
+
+                <th>Role</th>
+
+                <th>Actions</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="usersTable">
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<script src="js/admin-users.js"></script>
+
+</body>
+
+</html>
