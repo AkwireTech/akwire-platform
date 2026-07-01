@@ -2837,7 +2837,7 @@ div {
 
     padding:0;
 
-    margin:35px 0 0 0;
+    margin:20px 0 0 0;
 
 }
 
@@ -4056,13 +4056,15 @@ table{
 
 .sidebar a i{
 
-    width:24px;
+    width:22px;
 
-    margin-right:12px;
+    margin-right:14px;
 
     text-align:center;
 
     font-size:16px;
+
+    flex-shrink:0;
 
 }
 
