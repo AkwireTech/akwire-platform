@@ -1186,10 +1186,25 @@ background:#3b82f6;
 
 /* Sidebar Styling */
 .sidebar {
-    width: 260px;
-    background: #0f172a;
-    border-right: 1px solid #1e293b;
-    padding: 2rem;
+
+    width:260px;
+
+    min-height:100vh;
+
+    background:#0f172a;
+
+    border-right:1px solid #1e293b;
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    position:sticky;
+
+    top:0;
+
 }
 
 .sidebar-logo {
@@ -2812,35 +2827,59 @@ div {
 
 }
 
-.sidebar ul {
+/* =====================================
+   ADMIN SIDEBAR NAVIGATION
+===================================== */
 
-    list-style: none;
+.sidebar ul{
 
-    padding: 0;
+    list-style:none;
 
-}
+    padding:0;
 
-.sidebar ul li {
-
-    margin-bottom: 15px;
-
-}
-
-.sidebar ul li a {
-
-    color: white;
-
-    text-decoration: none;
-
-    font-weight: 500;
-
-    transition: 0.3s;
+    margin:35px 0 0 0;
 
 }
 
-.sidebar ul li a:hover {
+.sidebar ul li{
 
-    color: #38bdf8;
+    margin-bottom:10px;
+
+}
+
+.sidebar ul li a{
+
+    display:block;
+
+    padding:14px 18px;
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    border-radius:10px;
+
+    font-weight:500;
+
+    transition:all .25s ease;
+
+}
+
+.sidebar ul li a:hover{
+
+    background:#1e293b;
+
+    color:#38bdf8;
+
+}
+
+.sidebar ul li a.active{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+    font-weight:600;
 
 }
 
