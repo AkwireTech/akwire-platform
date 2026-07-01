@@ -3928,3 +3928,71 @@ div {
     line-height: 1.9;
 
 }
+
+/* ===========================
+   USER MANAGEMENT TABLE
+=========================== */
+
+#usersTable td{
+
+    color:#1e293b;
+
+    padding:16px 12px;
+
+    vertical-align:middle;
+
+}
+
+#usersTable th{
+
+    color:#0f172a;
+
+    padding:16px 12px;
+
+    font-weight:700;
+
+}
+
+#usersTable tr{
+
+    border-bottom:1px solid #e5e7eb;
+
+}
+
+#usersTable button{
+
+    min-width:100px;
+
+    padding:10px 18px;
+
+}
+
+#usersTable td:last-child{
+
+    padding-top:18px;
+
+    padding-bottom:18px;
+
+}
+
+#usersTable{
+
+    width:100%;
+
+}
+
+table{
+
+    border-collapse:collapse;
+
+    width:100%;
+
+}
+
+.container{
+
+    max-width:1200px;
+
+    margin:auto;
+
+}
