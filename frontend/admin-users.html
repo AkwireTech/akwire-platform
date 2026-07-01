@@ -19,54 +19,94 @@
 
 </head>
 
-<body>
+<body class="dashboard-page">
 
-<div class="container">
+    <div class="dashboard-wrapper">
 
-    <h1>User Management</h1>
+        <aside class="sidebar">
 
-    <p>
-        Manage students and administrators.
-    </p>
+            <div class="logo">
 
-    <br>
+                <img
+                    src="images/logo.png"
+                    alt="Akwire"
+                >
 
-    <input
-        type="text"
-        id="searchUser"
-        placeholder="Search users..."
-        style="width:100%;padding:12px;margin-bottom:20px;"
-    >
+                <h2>Akwire</h2>
 
-    <table
-        style="width:100%;border-collapse:collapse;"
-    >
+                <p>Administrator</p>
 
-        <thead>
+            </div>
 
-            <tr>
+            <ul>
 
-                <th>Name</th>
+                <li><a href="admin-dashboard.html">Dashboard</a></li>
 
-                <th>Email</th>
+                <li><a href="create-course.html">Course Management</a></li>
 
-                <th>Role</th>
+                <li><a href="create-exam.html">Exam Management</a></li>
 
-                <th>Actions</th>
+                <li><a href="create-lab.html">Lab Management</a></li>
 
-            </tr>
+                <li><a href="admin-users.html" class="active">User Management</a></li>
 
-        </thead>
+                <li><a href="reports.html">Reports</a></li>
 
-        <tbody id="usersTable">
+                <li><a href="settings.html">Settings</a></li>
 
-        </tbody>
+            </ul>
 
-    </table>
+        </aside>
 
-</div>
+    <main class="main-content">
 
-<script src="js/admin-users.js"></script>
+        <div class="container">
+
+                <h1>User Management</h1>
+
+                    <p>
+                        Manage students and administrators.
+                    </p>
+
+                    <br>
+
+                    <input
+                        type="text"
+                        id="searchUser"
+                        placeholder="Search users..."
+                        style="width:100%;padding:12px;margin-bottom:20px;"
+                    >
+
+                <table
+                    style="width:100%;border-collapse:collapse;"
+                >
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Name</th>
+
+                            <th>Email</th>
+
+                            <th>Role</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="usersTable"></tbody>
+
+                </table>
+
+            </div>
+
+            <script src="js/admin-users.js"></script>
+
+        </div>
+    </main>
 
 </body>
 
