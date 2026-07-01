@@ -276,13 +276,14 @@ body.matrix-mode .pulse-icon {
     color: var(--primary);
 }
 
-.logo img {
-    display: inline-block;
-    justify-content: first baseline;
-    width: 150px;
+.logo img{
+
+    width:140px;
+
     height:auto;
-    border-radius: 8px;
-    margin-bottom:12px;
+
+    margin-bottom:8px;
+
 }
 
 
@@ -292,9 +293,11 @@ body.matrix-mode .pulse-icon {
 
     flex-direction:column;
 
-    align-items:flex-start;
+    align-items:center;
 
-    margin-bottom:10px;
+    text-align:center;
+
+    margin-bottom:20px;
 
 }
 
@@ -303,7 +306,7 @@ body.matrix-mode .pulse-icon {
 
     margin:0;
 
-    font-size:18px;
+    font-size:26px;
 
     color:#38bdf8;
 
@@ -315,9 +318,9 @@ body.matrix-mode .pulse-icon {
 
     margin-top:4px;
 
-    color:#94a3b8;
-
     font-size:14px;
+
+    color:#94a3b8;
 
 }
 
@@ -2845,7 +2848,7 @@ div {
 
 .sidebar {
 
-    width: 250px;
+    width: 220px;
 
     background: #111827;
 
@@ -2871,7 +2874,7 @@ div {
 
     padding:0;
 
-    margin:0;
+    margin:15px 0 0 0;
 
 }
 
