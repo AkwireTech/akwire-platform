@@ -8,3 +8,13 @@ if (!user || user.role !== "admin") {
     window.location.href = "dashboard.html";
 
 }
+
+function logout() {
+
+    localStorage.removeItem("token");
+
+    localStorage.removeItem("user");
+
+    window.location.href = "login.html";
+
+}

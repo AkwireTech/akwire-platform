@@ -4035,3 +4035,17 @@ table{
     margin:auto;
 
 }
+
+/* ================================
+   SIDEBAR LOGOUT
+================================ */
+
+.logout-link{
+
+    margin-top:auto;
+
+    padding-top:30px;
+
+    border-top:1px solid #334155;
+
+}
