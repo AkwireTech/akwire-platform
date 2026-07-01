@@ -4049,3 +4049,29 @@ table{
     border-top:1px solid #334155;
 
 }
+
+/* ==========================================
+   FONT AWESOME SIDEBAR ICONS
+========================================== */
+
+.sidebar a i{
+
+    width:24px;
+
+    margin-right:12px;
+
+    text-align:center;
+
+    font-size:16px;
+
+}
+
+.sidebar a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
