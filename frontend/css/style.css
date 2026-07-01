@@ -2336,6 +2336,59 @@ line-height:1.4;
     margin-bottom: 24px;
 }
 
+.dashboard-card{
+
+    background:#ffffff;
+
+    border-radius:16px;
+
+    padding:24px;
+
+    min-height:220px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(37,99,235,.15);
+
+}
+
+.dashboard-card h3{
+
+    color:#0f172a;
+
+    margin-bottom:12px;
+
+}
+
+.dashboard-card p{
+
+    color:#64748b;
+
+    flex:1;
+
+}
+
+.dashboard-card .academy-btn{
+
+    align-self:flex-start;
+
+}
+
+
 /* Unified cards */
 .stat-card,
 .recommendations-panel,
