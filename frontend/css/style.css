@@ -2843,21 +2843,14 @@ div {
 
 }
 
-.sidebar {
 
-    width: 250px;
+.sidebar h2{
 
-    background: #111827;
+    margin:8px 0 4px;
 
-    padding: 20px;
+    font-size:22px;
 
-}
-
-.sidebar h2 {
-
-    margin-bottom: 20px;
-
-    color: #38bdf8;
+    color:#38bdf8;
 
 }
 
@@ -2871,7 +2864,7 @@ div {
 
     padding:0;
 
-    margin:8px 0 0 0;
+    margin:12px 0 0;
 
 }
 
