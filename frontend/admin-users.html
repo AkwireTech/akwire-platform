@@ -19,11 +19,10 @@
     <link rel="stylesheet" href="css/buttons.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
-<body class="dashboard-page admin-page">
+<body class="admin-page">
 
     <div class="dashboard-wrapper">
 
@@ -121,56 +120,41 @@
 
     <main class="main-content">
 
-        <div class="container">
-
+        <div class="content-header">
+            <div>
                 <h1>User Management</h1>
-
-                    <p>
-                        Manage students and administrators.
-                    </p>
-
-                    <br>
-
-                    <div class="table-card">
-
-                <input
-                    type="text"
-                    id="searchUser"
-                    placeholder="Search users..."
-                    class="search-input"
-                >
-
-                <table class="users-table">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>Name</th>
-
-                            <th>Email</th>
-
-                            <th>Role</th>
-
-                            <th>Actions</th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody id="usersTable"></tbody>
-
-                </table>
-
-                </div>
-
+                <p>Manage students and administrators.</p>
             </div>
+        </div>
 
-            <script src="js/admin-users.js"></script>
+        <div class="table-card">
+
+            <input
+                type="text"
+                id="searchUser"
+                placeholder="Search users..."
+                class="search-input"
+            >
+
+            <table class="users-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="usersTable"></tbody>
+            </table>
 
         </div>
+
     </main>
 
+    <script src="js/admin-users.js"></script>
+    
 </body>
 
 </html>
