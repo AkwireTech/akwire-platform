@@ -24,7 +24,11 @@
 
     flex-shrink:0;
 
-    align-self:stretch;
+    min-height:100vh;
+
+    height:auto;
+
+    overflow:visible;
 
 }
 
@@ -164,7 +168,7 @@
 
     display:flex;
 
-    align-items:stretch;
+    align-items:flex-start;
 
     min-height:100vh;
 
@@ -386,5 +390,19 @@
     .admin-page .dashboard-grid{
         grid-template-columns:1fr;
     }
+
+}
+
+.admin-page .sidebar ul{
+
+    flex:0 0 auto;
+
+    overflow:visible;
+
+}
+
+.admin-page .logout-link{
+
+    margin-top:20px;
 
 }
