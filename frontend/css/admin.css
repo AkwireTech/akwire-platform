@@ -1,8 +1,8 @@
 /* ==========================================
-   ADMIN LAYOUT / SIDEBAR
+   ADMIN SIDEBAR — scoped to admin pages only
 ========================================== */
 
-.sidebar{
+.admin-page .sidebar{
 
     width:230px;
 
@@ -24,7 +24,7 @@
 
 }
 
-.logo{
+.admin-page .logo{
 
     display:flex;
 
@@ -38,7 +38,7 @@
 
 }
 
-.logo img{
+.admin-page .logo img{
 
     width:140px;
 
@@ -48,7 +48,7 @@
 
 }
 
-.logo h2{
+.admin-page .logo h2{
 
     margin:0;
 
@@ -60,7 +60,7 @@
 
 }
 
-.logo p{
+.admin-page .logo p{
 
     margin-top:4px;
 
@@ -70,7 +70,7 @@
 
 }
 
-.sidebar ul{
+.admin-page .sidebar ul{
 
     list-style:none;
 
@@ -80,13 +80,13 @@
 
 }
 
-.sidebar ul li{
+.admin-page .sidebar ul li{
 
     margin-bottom:10px;
 
 }
 
-.sidebar ul li a{
+.admin-page .sidebar ul li a{
 
     display:flex;
 
@@ -108,7 +108,7 @@
 
 }
 
-.sidebar ul li a:hover{
+.admin-page .sidebar ul li a:hover{
 
     background:#1e293b;
 
@@ -116,7 +116,7 @@
 
 }
 
-.sidebar ul li a.active{
+.admin-page .sidebar ul li a.active{
 
     background:#2563eb;
 
@@ -126,7 +126,7 @@
 
 }
 
-.sidebar a i{
+.admin-page .sidebar a i{
 
     width:22px;
 
@@ -140,7 +140,7 @@
 
 }
 
-.logout-link{
+.admin-page .logout-link{
 
     margin-top:auto;
 
@@ -151,10 +151,10 @@
 }
 
 /* ==========================================
-   ADMIN PAGE WRAPPER / MAIN CONTENT
+   ADMIN PAGE LAYOUT
 ========================================== */
 
-.dashboard-wrapper{
+.admin-page .dashboard-wrapper{
 
     display:flex;
 
@@ -164,7 +164,7 @@
 
 }
 
-.main-content{
+.admin-page .main-content{
 
     flex:1;
 
@@ -172,7 +172,7 @@
 
 }
 
-.content-header{
+.admin-page .content-header{
 
     max-width:1200px;
 
@@ -180,7 +180,7 @@
 
 }
 
-.content-header h1{
+.admin-page .content-header h1{
 
     margin-bottom:8px;
 
@@ -188,17 +188,17 @@
 
 }
 
-.content-header p{
+.admin-page .content-header p{
 
     color:#64748b;
 
 }
 
 /* ==========================================
-   USER MANAGEMENT TABLE CARD
+   USER MANAGEMENT TABLE
 ========================================== */
 
-.table-card{
+.admin-page .table-card{
 
     background:#ffffff;
 
@@ -212,7 +212,7 @@
 
 }
 
-.search-input{
+.admin-page .search-input{
 
     width:100%;
 
@@ -228,7 +228,7 @@
 
 }
 
-.users-table{
+.admin-page .users-table{
 
     width:100%;
 
@@ -236,13 +236,13 @@
 
 }
 
-.users-table thead{
+.admin-page .users-table thead{
 
     background:#f8fafc;
 
 }
 
-.users-table th{
+.admin-page .users-table th{
 
     color:#0f172a;
 
@@ -254,7 +254,7 @@
 
 }
 
-.users-table td{
+.admin-page .users-table td{
 
     padding:18px 16px;
 
@@ -266,13 +266,13 @@
 
 }
 
-.users-table tr:hover{
+.admin-page .users-table tr:hover{
 
     background:#f8fbff;
 
 }
 
-.users-table button{
+.admin-page .users-table button{
 
     min-width:100px;
 

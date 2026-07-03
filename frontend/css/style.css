@@ -269,6 +269,14 @@ body.matrix-mode .pulse-icon {
     color: var(--primary);
 }
 
+.logo img {
+    display: inline-block;
+    justify-content: first baseline;
+    width: 150px;
+    height:auto;
+    border-radius: 8px;
+    margin-bottom:12px;
+}
 
 
 .nav-links { list-style: none; display: flex; gap: 25px; }
@@ -1376,11 +1384,12 @@ background:#3b82f6;
 }
 
 /* Dashboard ONLY Styles */
-.dashboard-page .sidebar {
-    display: flex; /* Sidebar shows only on Dashboard/Profile */
+/* Student dashboard sidebar only */
+.dashboard-page:not(.admin-page) .sidebar {
+    display: flex;
     width: 300px;
     height: auto !important;
-    margin-bottom: 0%;
+    margin-bottom: 0;
     z-index: 1000;
 }
 
