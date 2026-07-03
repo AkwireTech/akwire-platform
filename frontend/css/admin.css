@@ -24,11 +24,7 @@
 
     flex-shrink:0;
 
-    min-height:100vh;
-
-    height:auto;
-
-    overflow:visible;
+    min-height:100%;
 
 }
 
@@ -168,7 +164,7 @@
 
     display:flex;
 
-    align-items:flex-start;
+    align-items:stretch;
 
     min-height:100vh;
 
@@ -405,4 +401,12 @@
 
     margin-top:20px;
 
+}
+
+.admin-page .main-content{
+    min-height:100vh;
+}
+
+.admin-page .sidebar{
+    align-self:stretch;
 }
