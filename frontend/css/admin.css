@@ -10,8 +10,6 @@
 
     max-width:270px;
 
-    min-height:100vh;
-
     background:#0f172a;
 
     border-right:1px solid #1e293b;
@@ -22,13 +20,11 @@
 
     flex-direction:column;
 
-    position:sticky;
-
-    top:0;
-
     box-sizing:border-box;
 
     flex-shrink:0;
+
+    align-self:stretch;
 
 }
 
@@ -167,6 +163,8 @@
 .admin-page .dashboard-wrapper{
 
     display:flex;
+
+    align-items:stretch;
 
     min-height:100vh;
 
