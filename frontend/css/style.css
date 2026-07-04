@@ -35,10 +35,10 @@ body.matrix-mode #matrix-canvas {
 }
 
 /* --- 4. DASHBOARD LAYOUT (The Sidebar Engine) --- */
-.dashboard-wrapper {
+/*.dashboard-wrapper {
     display: flex;
     min-height: 100vh;
-}
+}*/
 
 
 .main-content {
@@ -1132,12 +1132,12 @@ margin-bottom:10px;
 }
 
 /* Dashboard Layout */
-.dashboard-wrapper {
-    display: flex;
-    position: relative;
-    z-index: 1; /* Sits above the canvas */
-    background: transparent; /* Allows rain to show through */
-}
+/*.dashboard-wrapper {*/
+ /*   display: flex;*/
+   /* position: relative;*/
+   /* z-index: 1;*/ /* Sits above the canvas */
+  /*  background: transparent; /* Allows rain to show through */
+/*}*/
 
 .main-content {
     background: var(--bg-dark);
@@ -1383,19 +1383,25 @@ background:#3b82f6;
     text-transform: uppercase;
 }
 
-/* Dashboard ONLY Styles */
-/* Student dashboard sidebar only */
-.dashboard-page:not(.admin-page) .sidebar {
-    display: flex;
-    width: 300px;
-    height: auto !important;
-    margin-bottom: 0;
-    z-index: 1000;
+/* ==========================================
+   NON-ADMIN DASHBOARD LAYOUT ONLY
+========================================== */
+
+.dashboard-page:not(.admin-page) .dashboard-wrapper{
+    display:flex;
+    min-height:100vh;
 }
 
-.dashboard-page .main-content {
-    margin-left: 0px; /* Makes room for sidebar */
+.dashboard-page:not(.admin-page) .sidebar{
+    width:300px;
+    flex-shrink:0;
 }
+
+.dashboard-page:not(.admin-page) .main-content{
+    flex:1;
+    min-width:0;
+}
+
 
 /* Course/Exam ONLY Styles */
 .course-page .main-content {
