@@ -24,25 +24,17 @@
 
 <body class="admin-page">
 
-    <div class="dashboard-wrapper">
+    <div class="admin-layout">
 
-        <aside class="sidebar">
+        <aside class="admin-sidebar">
 
-            <div class="logo">
-
-                <img
-                    src="images/logo.png"
-                    alt="Akwire"
-                >
-
+            <div class="admin-logo">
+                <img src="images/logo.png" alt="Akwire">
                 <h2>Administrator</h2>
-
                 <p>Control Panel</p>
-
-
             </div>
 
-            <ul>
+            <ul class="admin-nav">
 
                 <li>
                     <a href="admin-dashboard.html">
@@ -107,7 +99,7 @@
                     </a>
                 </li>
 
-                <li class="logout-link">
+                <li class="admin-logout">
                     <a href="#" onclick="logout()">
                         <i class="fas fa-right-from-bracket"></i>
                         Logout
@@ -118,43 +110,43 @@
 
         </aside>
 
-    <main class="main-content">
+        <main class="admin-main">
 
-        <div class="content-header">
-            <div>
-                <h1>User Management</h1>
-                <p>Manage students and administrators.</p>
+            <div class="admin-header">
+                <div>
+                    <h1>User Management</h1>
+                    <p>Manage students and administrators.</p>
+                </div>
             </div>
-        </div>
 
-        <div class="table-card">
+            <div class="admin-table-card">
 
-            <input
-                type="text"
-                id="searchUser"
-                placeholder="Search users..."
-                class="search-input"
-            >
+                <input
+                    type="text"
+                    id="searchUser"
+                    placeholder="Search users..."
+                    class="admin-search-input"
+                >
 
-            <table class="users-table">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Role</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
+                <table class="admin-users-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTable"></tbody>
+                </table>
 
-                <tbody id="usersTable"></tbody>
-            </table>
+            </div>
 
-        </div>
+        </main>
 
-    </main>
+    </div>
 
     <script src="js/admin-users.js"></script>
-
 </body>
 
 </html>
