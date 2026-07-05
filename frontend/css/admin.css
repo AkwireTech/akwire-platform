@@ -1,66 +1,57 @@
 /* ==========================================
-   ADMIN APP LAYOUT
+   ADMIN PAGE LAYOUT
 ========================================== */
 
 .admin-page{
-    margin:0;
-    background:#f1f5f9;
+    background:#f8fafc;
     overflow-x:hidden;
 }
 
-.admin-layout{
+.admin-page .dashboard-wrapper{
     display:flex;
     min-height:100vh;
     width:100%;
-    background:#f1f5f9;
+    overflow-x:hidden;
 }
 
-/* ==========================================
-   ADMIN SIDEBAR
-========================================== */
-
-.admin-sidebar{
-    width:270px;
-    min-width:270px;
+.admin-page .sidebar{
+    width:250px;
+    min-width:250px;
     background:#0f172a;
     border-right:1px solid #1e293b;
-    padding:18px 16px 24px;
-    box-sizing:border-box;
+    padding:18px 14px;
     display:flex;
     flex-direction:column;
+    min-height:100vh;
     flex-shrink:0;
 }
 
-.admin-logo{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
+.admin-page .logo{
     margin-bottom:18px;
 }
 
-.admin-logo img{
-    width:120px;
+.admin-page .logo img{
+    width:110px;
     height:auto;
     display:block;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
-.admin-logo h2{
-    margin:0 0 4px 0;
-    font-size:18px;
-    line-height:1.2;
+.admin-page .logo h2{
+    margin:0;
+    font-size:16px;
     color:#38bdf8;
     font-weight:700;
+    line-height:1.2;
 }
 
-.admin-logo p{
-    margin:0;
+.admin-page .logo p{
+    margin:4px 0 0;
     font-size:13px;
-    line-height:1.35;
     color:#94a3b8;
 }
 
-.admin-nav{
+.admin-page .sidebar ul{
     list-style:none;
     padding:0;
     margin:0;
@@ -70,43 +61,48 @@
     flex:1;
 }
 
-.admin-nav li{
+.admin-page .sidebar ul li{
     margin:0;
 }
 
-.admin-nav li a{
+.admin-page .sidebar ul li a{
     display:flex;
     align-items:center;
     gap:10px;
-    padding:14px 16px;
-    border-radius:12px;
-    text-decoration:none;
+    padding:12px 14px;
     color:#e2e8f0;
-    font-weight:500;
-    transition:all .2s ease;
-}
-
-.admin-nav li a:hover{
-    background:#1e293b;
-    color:#ffffff;
-}
-
-.admin-nav li a.active{
-    background:#2563eb;
-    color:#ffffff;
+    text-decoration:none;
+    border-radius:12px;
     font-weight:600;
+    transition:.2s ease;
 }
 
-.admin-nav li a i{
+.admin-page .sidebar ul li a:hover{
+    background:#1e293b;
+    color:#38bdf8;
+}
+
+.admin-page .sidebar ul li a.active{
+    background:#2563eb;
+    color:#fff;
+}
+
+.admin-page .sidebar a i{
     width:18px;
     text-align:center;
     flex-shrink:0;
 }
 
-.admin-logout{
+.admin-page .logout-link{
     margin-top:auto;
-    padding-top:18px;
+    padding-top:16px;
     border-top:1px solid #334155;
+}
+
+.admin-page .main-content{
+    flex:1;
+    min-width:0;
+    padding:30px;
 }
 
 /* ==========================================
