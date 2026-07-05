@@ -405,70 +405,54 @@ canvas{
 }
 
 
-.logo-subtitle{
+/* ==========================================
+   STUDENT DASHBOARD SIDEBAR ONLY
+   This must NOT affect admin pages
+========================================== */
 
+.dashboard-page:not(.admin-page) .logo-subtitle{
     display:block;
-
     margin-top:8px;
-
     color:#94a3b8;
-
     font-size:13px;
-
     letter-spacing:.5px;
-
 }
 
-
-.sidebar{
-
+.dashboard-page:not(.admin-page) .sidebar{
     top:75px;
-
     left:0;
-
     width:270px;
-
     height:calc(100vh - 75px);
-
     background:#0f172a;
-
     display:flex;
-
     flex-direction:column;
-
     justify-content:space-between;
-
     padding:25px;
-
     overflow-y:auto;
-
+    box-sizing:border-box;
 }
 
-
-.sidebar-nav a{
-
+.dashboard-page:not(.admin-page) .sidebar-nav a{
     display:flex;
-
     align-items:center;
-
-    gap:12px;
-
+    gap:14px;
 }
 
+.dashboard-page:not(.admin-page) .sidebar-nav a span:first-child{
+    width:28px;
+    text-align:center;
+    font-size:20px;
+}
 
-
-.sidebar-nav a:hover{
-
+.dashboard-page:not(.admin-page) .sidebar-nav a:hover{
     padding-left:24px;
-
 }
 
-.sidebar-nav a i{
-    width:20px;
+.dashboard-page:not(.admin-page) .sidebar-nav a i{
+    width:18px;
     text-align:center;
     flex-shrink:0;
-    font-size:16px;
-    color:inherit;
+    font-size:15px;
 }
 
 /* ===========================
