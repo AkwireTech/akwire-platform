@@ -119,6 +119,12 @@
 
 }
 
+.sidebar-nav .logout-link{
+    margin-top:auto;
+    padding-top:16px;
+    border-top:1px solid #334155;
+}
+
 .sidebar-nav a:hover{
 
     background:#2563eb;
@@ -483,6 +489,11 @@ canvas{
     text-align:center;
     flex-shrink:0;
     font-size:15px;
+}
+
+.general-perf{
+    color:#070f1b;
+    font-size:16px;
 }
 
 
