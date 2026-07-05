@@ -451,20 +451,11 @@ canvas{
 
     align-items:center;
 
-    gap:14px;
+    gap:12px;
 
 }
 
 
-.sidebar-nav a span:first-child{
-
-    width:28px;
-
-    text-align:center;
-
-    font-size:20px;
-
-}
 
 .sidebar-nav a:hover{
 
@@ -472,6 +463,13 @@ canvas{
 
 }
 
+.sidebar-nav a i{
+    width:20px;
+    text-align:center;
+    flex-shrink:0;
+    font-size:16px;
+    color:inherit;
+}
 
 /* ===========================
    STAT ICONS
