@@ -1132,12 +1132,12 @@ margin-bottom:10px;
 }
 
 /* Dashboard Layout */
-/* .dashboard-wrapper {
-   /* display: flex;
-  /*  position: relative;
-  /*  z-index: 1; /* Sits above the canvas */
-   /* background: transparent; /* Allows rain to show through */
-/*} */
+.dashboard-wrapper {
+    display: flex;
+    position: relative;
+    z-index: 1; /* Sits above the canvas */
+    background: transparent; /* Allows rain to show through */
+}
 
 .main-content {
     background: var(--bg-dark);
@@ -1172,6 +1172,7 @@ background:#f59e0b;
 .nav-btn.current{
 background:#3b82f6;
 }
+
 
 
 .nav-links {
@@ -1293,7 +1294,22 @@ background:#3b82f6;
     font-weight: bold;
 }
 
+/*.progress-container-profile {
+    background: #1e293b;
+    height: 8px;
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+}
 
+.progress-bar-profile {
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    height: 100%;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
+    transition: width 1s ease-in-out;
+}*/
+
+/* Ensure the grid handles the chart card correctly */
 .profile-details-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1369,30 +1385,29 @@ background:#3b82f6;
 }
 
 /* Dashboard ONLY Styles */
-/* Student dashboard sidebar only */
-/*.dashboard-page:not(.admin-page) .sidebar {
-    display: flex;
+.dashboard-page .sidebar {
+    display: flex; /* Sidebar shows only on Dashboard/Profile */
     width: 300px;
     height: auto !important;
-    margin-bottom: 0;
+    margin-bottom: 0%;
     z-index: 1000;
 }
 
 .dashboard-page .main-content {
     margin-left: 0px; /* Makes room for sidebar */
-/*}
+}
 
 /* Course/Exam ONLY Styles */
-/*.course-page .main-content {
+.course-page .main-content {
     margin-left: 0; /* No sidebar, center the exam */
- /*   max-width: 800px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 50px 20px;
 }
 
 .course-page .sidebar {
     display: none; /* Hide sidebar on the actual exam for focus */
-/*}
+}
 
 /* Hidden by default in the browser */
 #certificate-print-area { display: none; }
@@ -2254,7 +2269,7 @@ line-height:1.4;
 ========================= */
 
 /* Main dashboard spacing */
-/*.dashboard-content,
+.dashboard-content,
 .main-content {
     padding: 24px;
 }
@@ -2570,7 +2585,7 @@ body {
 }
 
 /* Main dashboard wrapper */
-/*.main-content,
+.main-content,
 .dashboard-content {
     background: #e3e4e6;
     min-height: 100vh;
@@ -2711,7 +2726,7 @@ div {
    ADMIN PANEL
 ========================== */
 
-/*.dashboard-container {
+.dashboard-container {
 
     display: flex;
 
@@ -3875,21 +3890,4 @@ table{
 
     margin:auto;
 
-}
-
-/* ==========================================
-   GLOBAL BASE ONLY
-   No sidebar/dashboard layout rules here
-========================================== */
-
-*{
-    box-sizing:border-box;
-}
-
-html,
-body{
-    margin:0;
-    padding:0;
-    width:100%;
-    overflow-x:hidden;
 }
