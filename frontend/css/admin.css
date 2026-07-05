@@ -303,3 +303,25 @@
         grid-template-columns:1fr;
     }
 }
+
+/* ==========================================
+   FIX: ADMIN SIDEBAR STRETCHES WITH PAGE CONTENT
+   Add this at the VERY BOTTOM of admin.css
+========================================== */
+
+.admin-page .dashboard-wrapper{
+    display:flex;
+    align-items:stretch;
+    min-height:100vh;
+}
+
+.admin-page .sidebar{
+    align-self:stretch;
+    min-height:100%;
+    height:auto;
+}
+
+.admin-page .main-content{
+    flex:1;
+    min-width:0;
+}
