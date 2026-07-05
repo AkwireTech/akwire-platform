@@ -14,6 +14,10 @@
     overflow-x:hidden;
 }
 
+/* ==========================================
+   ADMIN SIDEBAR
+========================================== */
+
 .admin-page .sidebar{
     width:250px;
     min-width:250px;
@@ -24,6 +28,7 @@
     flex-direction:column;
     min-height:100vh;
     flex-shrink:0;
+    box-sizing:border-box;
 }
 
 .admin-page .logo{
@@ -99,17 +104,11 @@
     border-top:1px solid #334155;
 }
 
-.admin-page .main-content{
-    flex:1;
-    min-width:0;
-    padding:30px;
-}
-
 /* ==========================================
-   ADMIN MAIN AREA
+   ADMIN MAIN CONTENT
 ========================================== */
 
-.admin-main{
+.admin-page .main-content{
     flex:1;
     min-width:0;
     padding:32px;
@@ -117,7 +116,7 @@
     background:#f1f5f9;
 }
 
-.admin-header{
+.admin-page .content-header{
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
@@ -126,49 +125,85 @@
     margin-bottom:28px;
 }
 
-.admin-header h1{
+.admin-page .content-header h1{
     margin:0 0 8px 0;
     font-size:28px;
     color:#0f172a;
 }
 
-.admin-header p{
+.admin-page .content-header p{
     margin:0;
     color:#64748b;
 }
 
 /* ==========================================
-   DASHBOARD CARDS
+   ADMIN DASHBOARD CARDS
 ========================================== */
 
-.admin-grid{
+.admin-page .dashboard-grid{
     display:grid;
     grid-template-columns:repeat(3, minmax(0, 1fr));
     gap:28px;
 }
 
-.admin-card{
+.admin-page .dashboard-card{
     background:#ffffff;
     border-radius:20px;
     padding:28px;
     box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
-.admin-card h3{
+.admin-page .dashboard-card h3{
     margin:0 0 18px 0;
     color:#0f172a;
+    font-size:20px;
 }
 
-.admin-card p{
+.admin-page .dashboard-card p{
     margin:0 0 24px 0;
     color:#64748b;
+    line-height:1.6;
+}
+
+/* admin dashboard buttons only */
+.admin-page .dashboard-card .academy-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 20px;
+    background:#2563eb;
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+    transition:.2s ease;
+}
+
+.admin-page .dashboard-card .academy-btn:hover{
+    background:#1d4ed8;
 }
 
 /* ==========================================
    USER MANAGEMENT
 ========================================== */
 
-.admin-table-card{
+.admin-page .container{
+    width:100%;
+    max-width:100%;
+}
+
+.admin-page .container > h1{
+    margin:0 0 8px 0;
+    font-size:28px;
+    color:#0f172a;
+}
+
+.admin-page .container > p{
+    margin:0 0 24px 0;
+    color:#64748b;
+}
+
+.admin-page .table-card{
     background:#ffffff;
     border-radius:20px;
     padding:28px;
@@ -176,7 +211,7 @@
     overflow-x:auto;
 }
 
-.admin-search-input{
+.admin-page .search-input{
     width:100%;
     padding:14px 16px;
     border:1px solid #dbe3ef;
@@ -186,31 +221,57 @@
     box-sizing:border-box;
 }
 
-.admin-users-table{
+.admin-page .users-table{
     width:100%;
     border-collapse:collapse;
 }
 
-.admin-users-table thead{
+.admin-page .users-table thead{
     background:#f8fafc;
 }
 
-.admin-users-table th{
+.admin-page .users-table th{
     text-align:left;
     padding:16px;
     color:#0f172a;
     font-size:15px;
 }
 
-.admin-users-table td{
+.admin-page .users-table td{
     padding:18px 16px;
     border-bottom:1px solid #e5e7eb;
     color:#334155;
     vertical-align:middle;
 }
 
-.admin-users-table tr:hover{
+.admin-page .users-table tr:hover{
     background:#f8fbff;
+}
+
+/* role dropdown inside user table */
+.admin-page .users-table select{
+    padding:8px 12px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    background:#fff;
+    font-size:14px;
+}
+
+/* delete button inside user table */
+.admin-page .users-table button{
+    min-width:90px;
+    padding:10px 16px;
+    border:none;
+    border-radius:12px;
+    background:#2563eb;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.admin-page .users-table button:hover{
+    background:#1d4ed8;
 }
 
 /* ==========================================
@@ -218,26 +279,27 @@
 ========================================== */
 
 @media (max-width: 1200px){
-    .admin-grid{
+    .admin-page .dashboard-grid{
         grid-template-columns:repeat(2, minmax(0, 1fr));
     }
 }
 
 @media (max-width: 900px){
-    .admin-layout{
+    .admin-page .dashboard-wrapper{
         flex-direction:column;
     }
 
-    .admin-sidebar{
+    .admin-page .sidebar{
         width:100%;
         min-width:100%;
+        min-height:auto;
     }
 
-    .admin-main{
+    .admin-page .main-content{
         padding:24px 18px;
     }
 
-    .admin-grid{
+    .admin-page .dashboard-grid{
         grid-template-columns:1fr;
     }
 }
