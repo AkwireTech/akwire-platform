@@ -1,146 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Create Course | Akwire</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Builder | Akwire</title>
 
     <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
 
-    <link rel="stylesheet"
-          href="css/style.css">
-
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="dashboard-page">
+<body class="admin-page">
 
     <div class="dashboard-wrapper">
 
-        <nav class="sidebar">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
 
-            <h1 style="color:white;">
-                ADMIN PANEL
-            </h1>
-
-            <ul>
-
-                <li>
-                    <a href="dashboard.html">
-                        Dashboard
-                    </a>
-                </li>
-
-                <li>
-                    <a href="create-course.html"
-                       class="active">
-                        Create Course
-                    </a>
-                </li>
-
-            </ul>
-
-        </nav>
-
-        <main class="main-content">
-
-            <div class="content-header">
-
-                <h1>Create Course</h1>
-
+            <div class="logo-section">
+                <img src="images/logo.png" class="logo" alt="Akwire Logo" />
+                <h2>Administrator</h2>
+                <span class="logo-subtitle">Control Panel</span>
             </div>
 
-            <div class="recommendations-panel">
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <span>Dashboard</span>
+                </a>
 
-                <form id="courseForm">
+                <a href="dashboard.html">
+                    <i class="fa-solid fa-user-graduate"></i>
+                    <span>Student Dashboard</span>
+                </a>
 
-                    <input
-                        type="text"
-                        id="title"
-                        placeholder="Course Title"
-                        required
-                    >
+                <a href="index.html">
+                    <i class="fa-solid fa-house"></i>
+                    <span>Home</span>
+                </a>
 
-                    <textarea
-                        id="description"
-                        placeholder="Course Description"
-                        required
-                    ></textarea>
+                <a href="create-course.html" class="active">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Course Management</span>
+                </a>
 
-                    <input
-                        type="text"
-                        id="domain"
-                        placeholder="Domain"
-                        required
-                    >
+                <a href="admin-exams.html">
+                    <i class="fa-solid fa-file-circle-check"></i>
+                    <span>Exam Management</span>
+                </a>
 
-                    <input
-                        type="text"
-                        id="thumbnail"
-                        placeholder="Thumbnail URL"
-                    >
+                <a href="admin-labs.html">
+                    <i class="fa-solid fa-flask"></i>
+                    <span>Lab Management</span>
+                </a>
 
+                <a href="admin-users.html">
+                    <i class="fa-solid fa-users"></i>
+                    <span>User Management</span>
+                </a>
 
-        <hr style="margin:30px 0;">
+                <a href="reports.html">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Reports</span>
+                </a>
 
-        <h3>
-            First Module
-        </h3>
+                <a href="admin-settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Settings</span>
+                </a>
+            </nav>
 
-        <input
-            type="text"
-            id="moduleTitle"
-            placeholder="Module Title"
-            required
-        >
+            <div class="sidebar-footer">
+                <a href="#" onclick="logout()">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
 
-        <h3>
-            First Lesson
-        </h3>
+        <!-- MAIN CONTENT -->
+        <main class="main-content admin-main course-builder-page">
 
-        <input
-            type="text"
-            id="lessonTitle"
-            placeholder="First Lesson Title"
-            required
-        >
+            <div class="admin-header">
+                <div>
+                    <h1 id="courseTitle">Course Builder</h1>
+                    <p>Add modules and lessons to this course.</p>
+                </div>
+            </div>
 
-        <textarea
-            id="lessonContent"
-            placeholder="Lesson Content"
-        ></textarea>
+            <div class="admin-table-card builder-card">
 
-        <input
-            type="text"
-            id="videoUrl"
-            placeholder="Video URL"
-        >
+                <!-- ADD MODULE -->
+                <section class="builder-section">
+                    <h2>Add Module</h2>
 
+                    <div class="builder-row">
+                        <input
+                            type="text"
+                            id="moduleTitle"
+                            class="admin-search-input"
+                            placeholder="Module Title"
+                        />
 
-                    <button
-                        type="submit"
-                        class="submit-feedback-btn"
-                    >
-                        Create Course
-                    </button>
+                        <button
+                            id="addModuleBtn"
+                            class="btn"
+                            type="button"
+                        >
+                            Add Module
+                        </button>
+                    </div>
+                </section>
 
-                </form>
+                <hr class="builder-divider" />
 
-                <p id="statusMessage"></p>
+                <!-- MODULES LIST -->
+                <section class="builder-section">
+                    <h2>Modules & Lessons</h2>
+                    <div id="modulesContainer" class="modules-container"></div>
+                </section>
 
             </div>
 
         </main>
-
     </div>
 
     <script src="js/create-course.js"></script>
-
 </body>
-
 </html>
