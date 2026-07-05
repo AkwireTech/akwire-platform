@@ -24,146 +24,202 @@
 
 <body class="admin-page">
 
-    <div class="admin-layout">
+<div class="dashboard-wrapper">
 
-        <aside class="admin-sidebar">
+    <aside class="sidebar">
 
-            <div class="admin-logo">
-                <img src="images/logo.png" alt="Akwire">
-                <h2>Administrator</h2>
-                <p>Control Panel</p>
-            </div>
+        <div class="logo">
 
-            <ul class="admin-nav">
+            <img
+                src="images/logo.png"
+                alt="Akwire"
+            >
 
-                <li>
-                    <a href="admin-dashboard.html" class="active">
-                        <i class="fas fa-chart-line"></i>
-                        Dashboard
-                    </a>
-                </li>
+            <h2>Administrator</h2>
 
-                <li>
-                    <a href="dashboard.html">
-                        <i class="fas fa-user-graduate"></i>
-                        Student Dashboard
-                    </a>
-                </li>
+        </div>
 
-                <li>
-                    <a href="index.html">
-                        <i class="fas fa-house"></i>
-                        Home
-                    </a>
-                </li>
+        <ul>
 
-                <li>
-                    <a href="create-course.html">
-                        <i class="fas fa-book"></i>
-                        Course Management
-                    </a>
-                </li>
+            <li>
+                <a href="admin-dashboard.html" class="active">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </a>
+            </li>
 
-                <li>
-                    <a href="create-exam.html">
-                        <i class="fas fa-file-pen"></i>
-                        Exam Management
-                    </a>
-                </li>
+            <li>
+                <a href="dashboard.html">
+                    <i class="fas fa-user-graduate"></i>
+                    Student Dashboard
+                </a>
+            </li>
 
-                <li>
-                    <a href="create-lab.html">
-                        <i class="fas fa-flask"></i>
-                        Lab Management
-                    </a>
-                </li>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-house"></i>
+                    Home
+                </a>
+            </li>
 
-                <li>
-                    <a href="admin-users.html">
-                        <i class="fas fa-users"></i>
-                        User Management
-                    </a>
-                </li>
+            <li>
+                <a href="create-course.html">
+                    <i class="fas fa-book"></i>
+                    Course Management
+                </a>
+            </li>
 
-                <li>
-                    <a href="reports.html">
-                        <i class="fas fa-chart-column"></i>
-                        Reports
-                    </a>
-                </li>
+            <li>
+                <a href="create-exam.html">
+                    <i class="fas fa-file-pen"></i>
+                    Exam Management
+                </a>
+            </li>
 
-                <li>
-                    <a href="settings.html">
-                        <i class="fas fa-gear"></i>
-                        Settings
-                    </a>
-                </li>
+            <li>
+                <a href="create-lab.html">
+                    <i class="fas fa-flask"></i>
+                    Lab Management
+                </a>
+            </li>
 
-                <li class="admin-logout">
-                    <a href="#" onclick="logout()">
-                        <i class="fas fa-right-from-bracket"></i>
-                        Logout
-                    </a>
-                </li>
+            <li>
+                <a href="admin-users.html">
+                    <i class="fas fa-users"></i>
+                    User Management
+                </a>
+            </li>
 
-            </ul>
+            <li>
+                <a href="reports.html">
+                    <i class="fas fa-chart-column"></i>
+                    Reports
+                </a>
+            </li>
 
-        </aside>
+            <li>
+                <a href="settings.html">
+                    <i class="fas fa-gear"></i>
+                    Settings
+                </a>
+            </li>
 
-        <main class="admin-main">
+            <li class="logout-link">
 
-            <div class="admin-header">
-                <div>
-                    <h1>Administrator Dashboard</h1>
-                    <p>Manage courses, exams, labs, users and reports.</p>
-                </div>
-            </div>
+                <a href="#"
+                onclick="logout()">
+                    <i class="fas fa-right-from-bracket"></i>
+                    Logout
+                </a>
 
-            <div class="admin-grid">
+            </li>
 
-                <div class="admin-card">
-                    <h3>Course Management</h3>
-                    <p>Create and manage courses.</p>
-                    <a href="create-course.html" class="academy-btn">Open</a>
-                </div>
+        </ul>
 
-                <div class="admin-card">
-                    <h3>Exam Management</h3>
-                    <p>Create module quizzes and exams.</p>
-                    <a href="create-exam.html" class="academy-btn">Open</a>
-                </div>
+    </aside>
 
-                <div class="admin-card">
-                    <h3>Lab Management</h3>
-                    <p>Create and manage labs.</p>
-                    <a href="create-lab.html" class="academy-btn">Open</a>
-                </div>
+    <main class="main-content">
 
-                <div class="admin-card">
-                    <h3>Reports</h3>
-                    <p>View platform analytics and export reports.</p>
-                    <a href="reports.html" class="academy-btn">Open</a>
-                </div>
-
-                <div class="admin-card">
-                    <h3>Settings</h3>
-                    <p>Configure platform settings and preferences.</p>
-                    <a href="settings.html" class="academy-btn">Open</a>
-                </div>
-
-                <div class="admin-card">
-                    <h3>User Management</h3>
-                    <p>Manage students, administrators and user roles.</p>
-                    <a href="admin-users.html" class="academy-btn">Open</a>
-                </div>
-
-            </div>
-
-        </main>
-
+       <div class="content-header">
+        <div>
+            <h1>Administrator Dashboard</h1>
+            <p>Manage courses, exams, labs, users and reports.</p>
+        </div>
     </div>
 
-    <script src="js/admin.js"></script>
+        <div class="dashboard-grid">
+
+            <div class="dashboard-card">
+                <h3>Course Management</h3>
+                <p>Create and manage courses.</p>
+
+                <a href="create-course.html"
+                   class="academy-btn">
+                    Open
+                </a>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Exam Management</h3>
+                <p>Create module quizzes and exams.</p>
+
+                <a href="create-exam.html"
+                   class="academy-btn">
+                    Open
+                </a>
+            </div>
+
+            <div class="dashboard-card">
+                <h3>Lab Management</h3>
+                <p>Create and manage labs.</p>
+
+                <a href="create-lab.html"
+                   class="academy-btn">
+                    Open
+                </a>
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h3>Reports</h3>
+
+                <p>
+                    View platform analytics and export reports.
+                </p>
+
+                <a href="reports.html"
+                class="academy-btn">
+
+                    Open
+
+                </a>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h3>Settings</h3>
+
+                <p>
+                    Configure platform settings and preferences.
+                </p>
+
+                <a
+                    href="settings.html"
+                    class="academy-btn"
+                >
+                    Open
+                </a>
+
+            </div>
+            
+
+           <div class="dashboard-card">
+
+                <h3>User Management</h3>
+
+                <p>
+                    Manage students, administrators and user roles.
+                </p>
+
+                <a
+                    href="admin-users.html"
+                    class="academy-btn"
+                >
+                    Open
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/admin.js"></script>
+
 </body>
 
 </html>
