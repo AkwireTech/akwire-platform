@@ -44,21 +44,32 @@ async function createCourse(e) {
         );
 
         const data = await response.json();
+        console.log("CREATE COURSE RESPONSE:", data);
 
         if (!response.ok) {
             throw new Error(data.message || "Failed to create course");
+        }
+
+        const newCourseId =
+            data._id ||
+            data.course?._id ||
+            data.newCourse?._id ||
+            data.id;
+
+        if (!newCourseId) {
+            throw new Error("Course was created, but no course ID was returned by the API.");
         }
 
         status.textContent = "Course created successfully. Redirecting to builder...";
         status.style.color = "#22c55e";
 
         setTimeout(() => {
-            window.location.href = `course-builder.html?id=${data._id}`;
-        }, 1000);
+            window.location.href = `course-builder.html?id=${newCourseId}`;
+        }, 800);
 
     } catch (error) {
         console.error("CREATE COURSE ERROR:", error);
-        status.textContent = error.message || "Failed to create course";
+        status.textContent = error.message || "Failed to create course.";
         status.style.color = "#ef4444";
     }
 }
