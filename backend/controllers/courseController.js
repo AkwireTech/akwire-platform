@@ -179,3 +179,45 @@ export const deleteCourse = async (req, res) => {
     }
 
 };
+
+
+// ==========================================
+// ADD MODULE TO COURSE
+// ==========================================
+export const addModuleToCourse = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { title } = req.body;
+
+        if (!title || !title.trim()) {
+            return res.status(400).json({
+                message: "Module title is required"
+            });
+        }
+
+        const course = await Course.findById(id);
+
+        if (!course) {
+            return res.status(404).json({
+                message: "Course not found"
+            });
+        }
+
+        course.modules.push({
+            title: title.trim(),
+            lessons: []
+        });
+
+        await course.save();
+
+        res.status(201).json({
+            message: "Module added successfully",
+            course
+        });
+    } catch (error) {
+        console.error("ADD MODULE ERROR:", error);
+        res.status(500).json({
+            message: "Server error while adding module"
+        });
+    }
+};
