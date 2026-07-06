@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Course Builder | Akwire</title>
+    <title>Create Course | Akwire</title>
 
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
@@ -15,7 +15,6 @@
 
     <div class="dashboard-wrapper">
 
-        <!-- SIDEBAR -->
         <aside class="sidebar">
 
             <div class="logo">
@@ -98,47 +97,68 @@
 
         </aside>
 
-        <!-- MAIN CONTENT -->
-        <main class="main-content admin-main course-builder-page">
+        <main class="main-content admin-main">
 
             <div class="admin-header">
                 <div>
-                    <h1 id="courseTitle">Course Builder</h1>
-                    <p>Add modules and lessons to this course.</p>
+                    <h1>Create Course</h1>
+                    <p>Create a new course, then continue to the course builder.</p>
                 </div>
             </div>
 
             <div class="admin-table-card builder-card">
 
-                <!-- ADD MODULE -->
-                <section class="builder-section">
-                    <h2>Add Module</h2>
+                <form id="courseForm" class="course-form">
 
-                    <div class="builder-row">
+                    <div class="form-group">
+                        <label for="title">Course Title</label>
                         <input
                             type="text"
-                            id="moduleTitle"
+                            id="title"
                             class="admin-search-input"
-                            placeholder="Module Title"
+                            placeholder="e.g. Security+ Core Concepts"
+                            required
                         />
-
-                        <button
-                            id="addModuleBtn"
-                            class="btn"
-                            type="button"
-                        >
-                            Add Module
-                        </button>
                     </div>
-                </section>
 
-                <hr class="builder-divider" />
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea
+                            id="description"
+                            class="course-textarea"
+                            placeholder="Write a short description of the course"
+                            required
+                        ></textarea>
+                    </div>
 
-                <!-- MODULES LIST -->
-                <section class="builder-section">
-                    <h2>Modules & Lessons</h2>
-                    <div id="modulesContainer" class="modules-container"></div>
-                </section>
+                    <div class="form-group">
+                        <label for="domain">Domain</label>
+                        <input
+                            type="text"
+                            id="domain"
+                            class="admin-search-input"
+                            placeholder="e.g. Threats, Attacks and Vulnerabilities"
+                            required
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="thumbnail">Thumbnail URL</label>
+                        <input
+                            type="text"
+                            id="thumbnail"
+                            class="admin-search-input"
+                            placeholder="https://..."
+                        />
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn">Create Course</button>
+                    </div>
+
+                    <p id="statusMessage" class="status-message"></p>
+
+                </form>
 
             </div>
 

@@ -4070,3 +4070,51 @@ table{
         width:100%;
     }
 }
+
+/* ==========================================
+   CREATE COURSE FORM
+========================================== */
+
+.course-form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.form-group label{
+    font-weight:600;
+    color:#0f172a;
+}
+
+.course-textarea{
+    min-height:140px;
+    resize:vertical;
+    padding:14px 16px;
+    border:1px solid #dbe3ef;
+    border-radius:14px;
+    font-size:15px;
+    outline:none;
+    box-sizing:border-box;
+}
+
+.course-textarea:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 4px rgba(37, 99, 235, 0.10);
+}
+
+.form-actions{
+    display:flex;
+    justify-content:flex-start;
+    margin-top:8px;
+}
+
+.status-message{
+    margin-top:8px;
+    font-weight:600;
+}
