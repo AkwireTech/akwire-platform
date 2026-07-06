@@ -31,7 +31,6 @@ async function loadCourse() {
         );
 
         const text = await response.text();
-        console.log("LOAD COURSE RAW RESPONSE:", text);
 
         let course;
         try {
@@ -72,17 +71,78 @@ function renderModules(modules) {
     }
 
     modules.forEach((module, index) => {
+        const lessonCount = module.lessons?.length || 0;
+
+        const lessonsHtml = lessonCount
+            ? module.lessons.map((lesson, lessonIndex) => `
+                <div class="lesson-item">
+                    <h4>Lesson ${lessonIndex + 1}: ${lesson.title}</h4>
+                    <p>${lesson.content || "No lesson content added yet."}</p>
+                    ${lesson.videoUrl ? `
+                        <a href="${lesson.videoUrl}" target="_blank">
+                            Watch Video
+                        </a>
+                    ` : ""}
+                </div>
+            `).join("")
+            : `
+                <div class="empty-state" style="margin-top:12px;">
+                    <p>No lessons yet in this module.</p>
+                </div>
+            `;
+
         const card = document.createElement("div");
         card.className = "course-item";
-
         card.innerHTML = `
             <div class="course-item-info">
                 <h3>Module ${index + 1}: ${module.title}</h3>
-                <p>${module.lessons?.length || 0} lesson(s)</p>
+                <p>${lessonCount} lesson(s)</p>
+            </div>
+
+            <div class="builder-lesson-form">
+                <input
+                    type="text"
+                    id="lessonTitle-${index}"
+                    class="admin-search-input"
+                    placeholder="Lesson Title"
+                />
+
+                <textarea
+                    id="lessonContent-${index}"
+                    class="course-textarea"
+                    placeholder="Lesson Content"
+                ></textarea>
+
+                <input
+                    type="text"
+                    id="lessonVideo-${index}"
+                    class="admin-search-input"
+                    placeholder="Video URL (optional)"
+                />
+
+                <button
+                    class="btn add-lesson-btn"
+                    data-module-index="${index}"
+                    type="button"
+                >
+                    Add Lesson
+                </button>
+            </div>
+
+            <div class="module-lessons-list">
+                ${lessonsHtml}
             </div>
         `;
 
         container.appendChild(card);
+    });
+
+    // attach lesson buttons after cards are rendered
+    document.querySelectorAll(".add-lesson-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const moduleIndex = button.dataset.moduleIndex;
+            addLesson(moduleIndex);
+        });
     });
 }
 
@@ -116,15 +176,12 @@ async function addModule() {
         );
 
         const rawText = await response.text();
-        console.log("ADD MODULE RAW RESPONSE:", rawText);
 
         let data;
         try {
             data = JSON.parse(rawText);
         } catch {
-            throw new Error(
-                "Add module API did not return JSON. Check the backend route /api/courses/:id/modules."
-            );
+            throw new Error("Add module API did not return JSON.");
         }
 
         if (!response.ok) {
@@ -133,9 +190,67 @@ async function addModule() {
 
         document.getElementById("moduleTitle").value = "";
         await loadCourse();
-
     } catch (error) {
         console.error("ADD MODULE ERROR:", error);
         alert(error.message || "Failed to add module.");
+    }
+}
+
+// ==========================================
+// ADD LESSON
+// ==========================================
+async function addLesson(moduleIndex) {
+    const titleInput = document.getElementById(`lessonTitle-${moduleIndex}`);
+    const contentInput = document.getElementById(`lessonContent-${moduleIndex}`);
+    const videoInput = document.getElementById(`lessonVideo-${moduleIndex}`);
+
+    const title = titleInput.value.trim();
+    const content = contentInput.value.trim();
+    const videoUrl = videoInput.value.trim();
+
+    if (!title) {
+        alert("Enter a lesson title.");
+        return;
+    }
+
+    if (!token) {
+        alert("No token found. Please log in again.");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
+                },
+                body: JSON.stringify({
+                    title,
+                    content,
+                    videoUrl
+                })
+            }
+        );
+
+        const rawText = await response.text();
+
+        let data;
+        try {
+            data = JSON.parse(rawText);
+        } catch {
+            throw new Error("Add lesson API did not return JSON.");
+        }
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to add lesson.");
+        }
+
+        await loadCourse();
+    } catch (error) {
+        console.error("ADD LESSON ERROR:", error);
+        alert(error.message || "Failed to add lesson.");
     }
 }

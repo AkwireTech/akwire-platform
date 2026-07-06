@@ -9,7 +9,8 @@ import {
     createCourse,
     updateCourse,
     deleteCourse,
-    addModuleToCourse
+    addModuleToCourse,
+    addLessonToModule
 } from "../controllers/courseController.js";
 
 const router = express.Router();
@@ -17,27 +18,16 @@ const router = express.Router();
 // ==========================================
 // PUBLIC ROUTES
 // ==========================================
-
-// Get all courses
 router.get("/", getCourses);
-
-// Get single course
 router.get("/:id", getCourse);
 
 // ==========================================
 // PROTECTED ROUTES
 // ==========================================
-
-// Create course
 router.post("/", protect, admin, createCourse);
-
-// Add module to course
 router.post("/:id/modules", protect, admin, addModuleToCourse);
-
-// Update course
+router.post("/:id/modules/:moduleIndex/lessons", protect, admin, addLessonToModule);
 router.put("/:id", protect, admin, updateCourse);
-
-// Delete course
 router.delete("/:id", protect, admin, deleteCourse);
 
 export default router;

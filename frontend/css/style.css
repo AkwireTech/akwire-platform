@@ -4203,3 +4203,54 @@ table{
 .error-text{
     color:#ef4444;
 }
+
+/* ==========================================
+   COURSE BUILDER MODULE / LESSON UI
+========================================== */
+
+.builder-lesson-form{
+    margin-top:18px;
+    padding:20px;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    background:#f8fafc;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.module-lessons-list{
+    margin-top:18px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.lesson-item{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:14px;
+    padding:18px;
+}
+
+.lesson-item h4{
+    margin:0 0 10px 0;
+    color:#0f172a;
+    font-size:18px;
+}
+
+.lesson-item p{
+    margin:0 0 10px 0;
+    color:#475569;
+    line-height:1.6;
+}
+
+.lesson-item a{
+    color:#2563eb;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.lesson-item a:hover{
+    text-decoration:underline;
+}
