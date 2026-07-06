@@ -3894,99 +3894,6 @@ table{
 
 
 /* ==========================================
-   COURSE BUILDER PAGE
-========================================== */
-
-.course-builder-page{
-    flex:1;
-    min-width:0;
-}
-
-.builder-card{
-    background:#ffffff;
-    border-radius:20px;
-    padding:28px;
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
-}
-
-.builder-section h2{
-    margin:0 0 18px 0;
-    color:#0f172a;
-    font-size:22px;
-}
-
-.builder-row{
-    display:flex;
-    gap:16px;
-    align-items:center;
-    flex-wrap:wrap;
-}
-
-.builder-row .admin-search-input{
-    flex:1;
-    min-width:280px;
-    margin-bottom:0;
-}
-
-.builder-divider{
-    border:none;
-    border-top:1px solid #e2e8f0;
-    margin:30px 0;
-}
-
-.modules-container{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
-
-/* module cards rendered by JS */
-.module-card{
-    background:#f8fafc;
-    border:1px solid #e2e8f0;
-    border-radius:16px;
-    padding:20px;
-}
-
-.module-card h3{
-    margin:0 0 14px 0;
-    color:#0f172a;
-    font-size:20px;
-}
-
-.lesson-card{
-    background:#ffffff;
-    border:1px solid #e2e8f0;
-    border-radius:14px;
-    padding:16px;
-    margin-top:14px;
-}
-
-.lesson-card h4{
-    margin:0 0 10px 0;
-    color:#0f172a;
-    font-size:17px;
-}
-
-.lesson-card p{
-    margin:0;
-    color:#64748b;
-    line-height:1.6;
-}
-
-@media (max-width: 768px){
-    .builder-row{
-        flex-direction:column;
-        align-items:stretch;
-    }
-
-    .builder-row .btn{
-        width:100%;
-    }
-}
-
-
-/* ==========================================
    ADMIN SIDEBAR FIX
 ========================================== */
 
@@ -4086,4 +3993,80 @@ table{
     margin-top:auto;
     padding-top:16px;
     border-top:1px solid #334155;
+}
+
+/* ==========================================
+   COURSE BUILDER PAGE
+========================================== */
+
+.course-builder-page{
+    flex:1;
+    min-width:0;
+}
+
+.builder-card{
+    background:#ffffff;
+    border-radius:20px;
+    padding:28px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+}
+
+.builder-section h2{
+    margin:0 0 18px 0;
+    color:#0f172a;
+    font-size:22px;
+}
+
+.builder-row{
+    display:flex;
+    gap:16px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.builder-row .admin-search-input{
+    flex:1;
+    min-width:280px;
+    margin-bottom:0;
+}
+
+.builder-divider{
+    border:none;
+    border-top:1px solid #e2e8f0;
+    margin:30px 0;
+}
+
+.modules-container{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.module-card{
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    padding:20px;
+}
+
+.module-card h3{
+    margin:0 0 10px 0;
+    color:#0f172a;
+    font-size:20px;
+}
+
+.module-card p{
+    margin:0;
+    color:#64748b;
+}
+
+@media (max-width: 768px){
+    .builder-row{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .builder-row .btn{
+        width:100%;
+    }
 }

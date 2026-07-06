@@ -3,20 +3,11 @@ const token = localStorage.getItem("token");
 const params = new URLSearchParams(window.location.search);
 const courseId = params.get("id");
 
-// ==========================================
-// START
-// ==========================================
-
 document.addEventListener("DOMContentLoaded", () => {
-
     if (!courseId) {
-
         alert("Course not found.");
-
         window.location.href = "create-course.html";
-
         return;
-
     }
 
     loadCourse();
@@ -24,141 +15,89 @@ document.addEventListener("DOMContentLoaded", () => {
     document
         .getElementById("addModuleBtn")
         .addEventListener("click", addModule);
-
 });
 
-// ==========================================
-// LOAD COURSE
-// ==========================================
-
 async function loadCourse() {
-
     try {
-
         const response = await fetch(
-
             `https://akwire-api.onrender.com/api/courses/${courseId}`
-
         );
 
         const course = await response.json();
 
-        document.getElementById("courseTitle").textContent =
-            course.title;
+        if (!response.ok) {
+            throw new Error(course.message || "Failed to load course");
+        }
 
-        renderModules(course.modules);
+        document.getElementById("courseTitle").textContent = course.title;
+        renderModules(course.modules || []);
 
     } catch (error) {
-
-        console.error("ADD MODULE ERROR:", error);
-
-        alert(error.message);
-
+        console.error("LOAD COURSE ERROR:", error);
+        alert(error.message || "Failed to load course.");
     }
-
 }
 
-// ==========================================
-// RENDER MODULES
-// ==========================================
-
 function renderModules(modules) {
-
-    const container =
-        document.getElementById("modulesContainer");
-
+    const container = document.getElementById("modulesContainer");
     container.innerHTML = "";
 
-    modules.forEach(module => {
+    if (!modules.length) {
+        container.innerHTML = `
+            <div class="module-card">
+                <h3>No modules yet</h3>
+                <p>Add your first module for this course.</p>
+            </div>
+        `;
+        return;
+    }
 
-        const card =
-            document.createElement("div");
-
-        card.className =
-            "recommendations-panel";
+    modules.forEach((module, index) => {
+        const card = document.createElement("div");
+        card.className = "module-card";
 
         card.innerHTML = `
-
-            <h3>${module.title}</h3>
-
-            <p>
-                Lessons:
-                ${module.lessons.length}
-            </p>
-
+            <h3>Module ${index + 1}: ${module.title}</h3>
+            <p>${module.lessons?.length || 0} lesson(s)</p>
         `;
 
         container.appendChild(card);
-
     });
-
 }
 
-// ==========================================
-// ADD MODULE
-// ==========================================
-
 async function addModule() {
+    const input = document.getElementById("moduleTitle");
+    const title = input.value.trim();
 
-    const title =
-        document.getElementById("moduleTitle").value;
-
-    if (!title.trim()) {
-
+    if (!title) {
         alert("Enter a module title.");
-
         return;
-
     }
 
     try {
-
         const response = await fetch(
-
             `https://akwire-api.onrender.com/api/courses/${courseId}/modules`,
-
             {
-
                 method: "POST",
-
                 headers: {
-
-                    "Content-Type":
-                        "application/json",
-
-                    Authorization:
-                        "Bearer " + token
-
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
                 },
-
-                body: JSON.stringify({
-
-                    title
-
-                })
-
+                body: JSON.stringify({ title })
             }
-
         );
 
+        const data = await response.json();
+
         if (!response.ok) {
-
-            const error = await response.json();
-
-            throw new Error(error.message);
-
+            throw new Error(data.message || "Failed to add module");
         }
 
-        document.getElementById("moduleTitle").value = "";
-
+        input.value = "";
         loadCourse();
 
     } catch (error) {
-
-        console.error(error);
-
-        alert("Failed to add module.");
-
+        console.error("ADD MODULE ERROR:", error);
+        alert(error.message || "Failed to add module.");
     }
-
 }

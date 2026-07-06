@@ -1,168 +1,64 @@
-document.addEventListener("DOMContentLoaded", () => {
+const token = localStorage.getItem("token");
 
-    const user =
-        JSON.parse(
-            localStorage.getItem("user")
+document.addEventListener("DOMContentLoaded", () => {
+    const courseForm = document.getElementById("courseForm");
+
+    if (!courseForm) return;
+
+    courseForm.addEventListener("submit", createCourse);
+});
+
+async function createCourse(e) {
+    e.preventDefault();
+
+    const status = document.getElementById("statusMessage");
+
+    const title = document.getElementById("title").value.trim();
+    const description = document.getElementById("description").value.trim();
+    const domain = document.getElementById("domain").value.trim();
+    const thumbnail = document.getElementById("thumbnail").value.trim();
+
+    if (!title || !description || !domain) {
+        status.textContent = "Please fill in title, description, and domain.";
+        status.style.color = "#ef4444";
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            "https://akwire-api.onrender.com/api/courses",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
+                },
+                body: JSON.stringify({
+                    title,
+                    description,
+                    domain,
+                    thumbnail,
+                    modules: []
+                })
+            }
         );
 
-    const token =
-        localStorage.getItem("token");
+        const data = await response.json();
 
-    // ==========================
-    // ADMIN PROTECTION
-    // ==========================
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to create course");
+        }
 
-    /*if (
-        !user ||
-        user.role !== "admin"
-    ) {
+        status.textContent = "Course created successfully. Redirecting to builder...";
+        status.style.color = "#22c55e";
 
-        alert("Access denied");
+        setTimeout(() => {
+            window.location.href = `course-builder.html?id=${data._id}`;
+        }, 1000);
 
-        window.location.href =
-            "dashboard.html";
-
-        return;
-
-    }*/
-
-    // ==========================
-    // CREATE COURSE
-    // ==========================
-
-    document.getElementById(
-        "courseForm"
-    ).addEventListener(
-        "submit",
-        async (e) => {
-
-            e.preventDefault();
-
-            const status =
-                document.getElementById(
-                    "statusMessage"
-                );
-
-            try {
-
-                const response =
-                    await fetch(
-
-                    "https://akwire-api.onrender.com/api/courses",
-
-                    {
-
-                        method: "POST",
-
-                        headers: {
-
-                            "Content-Type":
-                                "application/json",
-
-                            Authorization:
-                                "Bearer " + token
-
-                        },
-
-                        body: JSON.stringify({
-
-                            title:
-                                document.getElementById(
-                                    "title"
-                                ).value,
-
-                            description:
-                                document.getElementById(
-                                    "description"
-                                ).value,
-
-                            domain:
-                                document.getElementById(
-                                    "domain"
-                                ).value,
-
-                            thumbnail:
-                                document.getElementById(
-                                    "thumbnail"
-                                ).value,
-
-
-            modules: [
-
-                {
-
-                    title:
-                        document.getElementById(
-                            "moduleTitle"
-                        ).value,
-
-                    lessons: [
-
-                        {
-
-                            title:
-                                document.getElementById(
-                                    "lessonTitle"
-                                ).value,
-
-                            content:
-                                document.getElementById(
-                                    "lessonContent"
-                                ).value,
-
-                            videoUrl:
-                                document.getElementById(
-                                    "videoUrl"
-                                ).value,
-
-                            resources: []
-
-                        }
-
-                    ]
-
-                }
-
-            ]
-
-
-                        })
-
-                    });
-
-                const data =
-                    await response.json();
-
-                if (!response.ok) {
-
-                    throw new Error(
-                        data.message
-                    );
-
-                }
-
-                status.innerHTML =
-                    "✅ Course created successfully";
-
-                status.style.color =
-                    "#22c55e";
-
-                document.getElementById(
-                    "courseForm"
-                ).reset();
-
-            } catch (error) {
-
-                console.error(error);
-
-                status.innerHTML =
-                    "❌ Failed to create course";
-
-                status.style.color =
-                    "#ef4444";
-
-            }
-
-        });
-
-});
+    } catch (error) {
+        console.error("CREATE COURSE ERROR:", error);
+        status.textContent = error.message || "Failed to create course";
+        status.style.color = "#ef4444";
+    }
+}
