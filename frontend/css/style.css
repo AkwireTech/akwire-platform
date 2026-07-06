@@ -3984,3 +3984,46 @@ table{
         width:100%;
     }
 }
+
+
+/* ==========================================
+   FORCE ADMIN SIDEBAR STYLING ON CREATE COURSE
+========================================== */
+
+.admin-page .sidebar ul{
+    list-style:none;
+    padding:0;
+    margin:18px 0 0 0;
+}
+
+.admin-page .sidebar ul li{
+    margin-bottom:10px;
+}
+
+.admin-page .sidebar ul li a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:12px 14px;
+    color:#e2e8f0;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+    transition:.2s ease;
+}
+
+.admin-page .sidebar ul li a:hover{
+    background:#1e293b;
+    color:#38bdf8;
+}
+
+.admin-page .sidebar ul li a.active{
+    background:#2563eb;
+    color:#fff;
+}
+
+.admin-page .sidebar a i{
+    width:18px;
+    text-align:center;
+    flex-shrink:0;
+}
