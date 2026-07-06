@@ -4118,3 +4118,88 @@ table{
     margin-top:8px;
     font-weight:600;
 }
+
+/* ==========================================
+   COURSE MANAGEMENT LIST
+========================================== */
+
+.section-title{
+    margin:0 0 20px 0;
+    color:#0f172a;
+    font-size:24px;
+}
+
+.course-list-card{
+    margin-top:28px;
+}
+
+.course-list-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:16px;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+}
+
+.courses-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.course-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:20px;
+    padding:20px;
+    border:1px solid #e2e8f0;
+    border-radius:16px;
+    background:#f8fafc;
+    flex-wrap:wrap;
+}
+
+.course-item-info{
+    flex:1;
+    min-width:260px;
+}
+
+.course-item-info h3{
+    margin:0 0 10px 0;
+    color:#0f172a;
+    font-size:20px;
+}
+
+.course-item-info p{
+    margin:0 0 12px 0;
+    color:#64748b;
+    line-height:1.6;
+}
+
+.course-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    color:#334155;
+    font-size:14px;
+}
+
+.course-item-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.empty-state{
+    margin:0;
+    padding:18px;
+    border:1px dashed #cbd5e1;
+    border-radius:14px;
+    background:#f8fafc;
+    color:#64748b;
+}
+
+.error-text{
+    color:#ef4444;
+}

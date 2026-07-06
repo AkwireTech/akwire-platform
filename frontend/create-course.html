@@ -101,12 +101,15 @@
 
             <div class="admin-header">
                 <div>
-                    <h1>Create Course</h1>
-                    <p>Create a new course, then continue to the course builder.</p>
+                    <h1>Course Management</h1>
+                    <p>Create a new course, then open its builder to add modules and lessons.</p>
                 </div>
             </div>
 
+            <!-- CREATE COURSE CARD -->
             <div class="admin-table-card builder-card">
+
+                <h2 class="section-title">Create Course</h2>
 
                 <form id="courseForm" class="course-form">
 
@@ -159,6 +162,22 @@
                     <p id="statusMessage" class="status-message"></p>
 
                 </form>
+
+            </div>
+
+            <!-- EXISTING COURSES CARD -->
+            <div class="admin-table-card builder-card course-list-card">
+
+                <div class="course-list-header">
+                    <h2 class="section-title">Existing Courses</h2>
+                    <button id="refreshCoursesBtn" class="btn" type="button">
+                        Refresh
+                    </button>
+                </div>
+
+                <div id="coursesList" class="courses-list">
+                    <p class="empty-state">Loading courses...</p>
+                </div>
 
             </div>
 
