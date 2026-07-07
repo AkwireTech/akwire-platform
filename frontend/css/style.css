@@ -4552,36 +4552,31 @@ table{
 }
 
 /* Preserve builder lesson line breaks */
-.lesson-content-card{
-    white-space: pre-line;
-}
-
-
 .lesson-content-card h2{
-    font-size: 1.25rem;
-    font-weight: 600;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: #ffffff;
-    margin: 12px 0 8px;
+    margin: 28px 0 12px;
 }
 
 .lesson-content-card h3{
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.25rem;
+    font-weight: 700;
     color: #ffffff;
-    margin: 12px 0 8px;
+    margin: 22px 0 10px;
 }
 
 .lesson-content-card p{
-    margin-bottom: 10px;
-    line-height: 1.7;
+    margin-bottom: 16px;
+    line-height: 1.9;
 }
 
 .lesson-content-card ul{
-    margin: 0 0 12px 16px;
+    margin: 0 0 18px 22px;
     padding-left: 18px;
 }
 
 .lesson-content-card li{
-    margin-bottom: 8px;
-    line-height: 1.6;
+    margin-bottom: 10px;
+    line-height: 1.8;
 }
