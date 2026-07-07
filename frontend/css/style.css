@@ -4549,3 +4549,36 @@ table{
     border-radius:6px;
     font-size:13px;
 }
+
+
+/* ==========================================
+   BUILDER LESSON FORMAT HELPER
+========================================== */
+
+.lesson-structured-textarea{
+    min-height:220px;
+    line-height:1.7;
+}
+
+.builder-format-note{
+    margin-top:-4px;
+    margin-bottom:6px;
+    padding:12px 14px;
+    border-radius:12px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    color:#475569;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.builder-format-note strong{
+    color:#0f172a;
+}
+
+.builder-format-note code{
+    background:#e2e8f0;
+    padding:2px 6px;
+    border-radius:6px;
+    font-size:13px;
+}

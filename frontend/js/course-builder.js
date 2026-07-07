@@ -124,18 +124,18 @@ function renderModules(modules) {
                     class="course-textarea lesson-structured-textarea"
                     placeholder="Use this format:
 
-            What Is Phishing?
-            Phishing is a cyberattack that tricks users into revealing sensitive information.
+What Is Phishing?
+Phishing is a cyberattack that tricks users into revealing sensitive information.
 
-            Common Phishing Techniques:
-            - Email Phishing
-            - Spear Phishing
-            - Whaling
+Common Phishing Techniques:
+- Email Phishing
+- Spear Phishing
+- Whaling
 
-            Warning Signs:
-            - Urgent requests
-            - Suspicious links
-            - Poor grammar"
+Warning Signs:
+- Urgent requests
+- Suspicious links
+- Poor grammar"
                 ></textarea>
 
                 <div class="builder-format-note">
@@ -580,6 +580,9 @@ async function deleteLesson(moduleIndex, lessonIndex) {
     }
 }
 
+// ==========================================
+// LESSON TEMPLATE
+// ==========================================
 function insertLessonTemplate(moduleIndex) {
     const contentInput = document.getElementById(`lessonContent-${moduleIndex}`);
 
@@ -591,27 +594,27 @@ function insertLessonTemplate(moduleIndex) {
     }
 
     contentInput.value = `What Is This Topic?
-    Write a short explanation of the lesson topic here.
+Write a short explanation of the lesson topic here.
 
-    Key Concepts:
-    - Concept 1
-    - Concept 2
-    - Concept 3
+Key Concepts:
+- Concept 1
+- Concept 2
+- Concept 3
 
-    How It Works:
-    Explain how the process, tool, or security concept works.
+How It Works:
+Explain how the process, tool, or security concept works.
 
-    Why It Matters:
-    Explain why this topic matters in cybersecurity or networking.
+Why It Matters:
+Explain why this topic matters in cybersecurity or networking.
 
-    Examples:
-    - Example 1
-    - Example 2
+Examples:
+- Example 1
+- Example 2
 
-    Best Practices:
-    - Best practice 1
-    - Best practice 2`;
-    }
+Best Practices:
+- Best practice 1
+- Best practice 2`;
+}
 
 // ==========================================
 // HELPERS
