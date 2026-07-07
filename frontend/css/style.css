@@ -4582,3 +4582,8 @@ table{
     border-radius:6px;
     font-size:13px;
 }
+
+/* Preserve builder lesson line breaks */
+.lesson-content-card{
+    white-space: pre-line;
+}
