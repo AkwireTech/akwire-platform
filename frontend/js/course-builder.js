@@ -5,6 +5,9 @@ const courseId = params.get("id");
 
 let currentCourse = null;
 
+// store collapsed/expanded state per module
+const moduleOpenState = {};
+
 // ==========================================
 // START
 // ==========================================
@@ -79,16 +82,33 @@ function renderModules(modules) {
             ? module.lessons.length
             : 0;
 
+        // default = collapsed
+        if (moduleOpenState[moduleIndex] === undefined) {
+            moduleOpenState[moduleIndex] = false;
+        }
+
+        const isOpen = moduleOpenState[moduleIndex];
+
         const card = document.createElement("div");
         card.className = "module-builder-card";
 
         card.innerHTML = `
             <div class="module-builder-header">
-                <div class="module-builder-title">
-                    <div class="module-builder-badge">Module ${moduleIndex + 1}</div>
-                    <h3>${escapeHtml(module.title || "Untitled Module")}</h3>
-                    <p>${lessonCount} lesson(s)</p>
-                </div>
+                <button
+                    class="module-toggle-btn"
+                    data-module-index="${moduleIndex}"
+                    type="button"
+                >
+                    <span class="module-toggle-icon">
+                        ${isOpen ? "−" : "+"}
+                    </span>
+
+                    <div class="module-builder-title">
+                        <div class="module-builder-badge">Module ${moduleIndex + 1}</div>
+                        <h3>${escapeHtml(module.title || "Untitled Module")}</h3>
+                        <p>${lessonCount} lesson(s)</p>
+                    </div>
+                </button>
 
                 <div class="module-builder-actions">
                     <button
@@ -109,122 +129,111 @@ function renderModules(modules) {
                 </div>
             </div>
 
-            <div class="builder-lesson-form">
-                <h4 class="builder-subtitle">Add Lesson</h4>
+            <div class="module-builder-body ${isOpen ? "open" : ""}">
+                <div class="builder-lesson-form">
+                    <h4 class="builder-subtitle">Add Lesson</h4>
 
-                <input
-                    type="text"
-                    id="lessonTitle-${moduleIndex}"
-                    class="admin-search-input"
-                    placeholder="Lesson Title"
-                />
+                    <input
+                        type="text"
+                        id="lessonTitle-${moduleIndex}"
+                        class="admin-search-input"
+                        placeholder="Lesson Title"
+                    />
 
-                <textarea
-                    id="lessonContent-${moduleIndex}"
-                    class="course-textarea lesson-structured-textarea"
-                    placeholder="Use this format:
+                    <textarea
+                        id="lessonContent-${moduleIndex}"
+                        class="course-textarea lesson-structured-textarea"
+                        placeholder="Paste lesson content here"
+                    ></textarea>
 
-What Is Phishing?
-Phishing is a cyberattack that tricks users into revealing sensitive information.
+                    <div class="builder-format-note">
+                        <strong>Tip:</strong> Use HTML lesson content for headings, paragraphs, and bullet points so lessons match the styled course layout.
+                    </div>
 
-Common Phishing Techniques:
-- Email Phishing
-- Spear Phishing
-- Whaling
+                    <input
+                        type="text"
+                        id="lessonVideo-${moduleIndex}"
+                        class="admin-search-input"
+                        placeholder="Video URL (optional)"
+                    />
 
-Warning Signs:
-- Urgent requests
-- Suspicious links
-- Poor grammar"
-                ></textarea>
+                    <div class="builder-inline-actions">
+                        <button
+                            class="btn add-lesson-btn"
+                            data-module-index="${moduleIndex}"
+                            type="button"
+                        >
+                            Add Lesson
+                        </button>
 
-                <div class="builder-format-note">
-                    <strong>Lesson format:</strong> Use section headings, short paragraphs, and bullets with <code>-</code> just like the Security+ lessons.
+                        <button
+                            class="btn btn-secondary builder-template-btn"
+                            data-module-index="${moduleIndex}"
+                            type="button"
+                        >
+                            Insert Lesson Template
+                        </button>
+                    </div>
                 </div>
 
-                <input
-                    type="text"
-                    id="lessonVideo-${moduleIndex}"
-                    class="admin-search-input"
-                    placeholder="Video URL (optional)"
-                />
-
-                <div class="builder-inline-actions">
-                    <button
-                        class="btn add-lesson-btn"
-                        data-module-index="${moduleIndex}"
-                        type="button"
-                    >
-                        Add Lesson
-                    </button>
-
-                    <button
-                        class="btn btn-secondary builder-template-btn"
-                        data-module-index="${moduleIndex}"
-                        type="button"
-                    >
-                        Insert Lesson Template
-                    </button>
-                </div>
-            </div>
-
-            <div class="module-lessons-list">
-                ${
-                    lessonCount
-                        ? module.lessons.map((lesson, lessonIndex) => `
-                            <div class="builder-lesson-card">
-                                <div class="builder-lesson-top">
-                                    <div>
-                                        <div class="builder-lesson-label">
-                                            Lesson ${lessonIndex + 1}
+                <div class="module-lessons-list">
+                    ${
+                        lessonCount
+                            ? module.lessons.map((lesson, lessonIndex) => `
+                                <div class="builder-lesson-card">
+                                    <div class="builder-lesson-top">
+                                        <div>
+                                            <div class="builder-lesson-label">
+                                                Lesson ${lessonIndex + 1}
+                                            </div>
+                                            <h4>${escapeHtml(lesson.title || "Untitled Lesson")}</h4>
                                         </div>
-                                        <h4>${escapeHtml(lesson.title || "Untitled Lesson")}</h4>
-                                    </div>
 
-                                    <div class="builder-lesson-actions">
-                                        <button
-                                            class="btn btn-secondary edit-lesson-btn"
-                                            data-module-index="${moduleIndex}"
-                                            data-lesson-index="${lessonIndex}"
-                                            type="button"
-                                        >
-                                            Edit
-                                        </button>
-
-                                        <button
-                                            class="btn builder-danger-btn delete-lesson-btn"
-                                            data-module-index="${moduleIndex}"
-                                            data-lesson-index="${lessonIndex}"
-                                            type="button"
-                                        >
-                                            Delete
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <p>${escapeHtml(lesson.content || "No lesson content added yet.")}</p>
-
-                                ${
-                                    lesson.videoUrl
-                                        ? `
-                                            <a
-                                                href="${lesson.videoUrl}"
-                                                target="_blank"
-                                                class="builder-lesson-link"
+                                        <div class="builder-lesson-actions">
+                                            <button
+                                                class="btn btn-secondary edit-lesson-btn"
+                                                data-module-index="${moduleIndex}"
+                                                data-lesson-index="${lessonIndex}"
+                                                type="button"
                                             >
-                                                Watch Video
-                                            </a>
-                                        `
-                                        : ""
-                                }
-                            </div>
-                        `).join("")
-                        : `
-                            <div class="empty-state builder-inner-empty">
-                                <p>No lessons yet in this module.</p>
-                            </div>
-                        `
-                }
+                                                Edit
+                                            </button>
+
+                                            <button
+                                                class="btn builder-danger-btn delete-lesson-btn"
+                                                data-module-index="${moduleIndex}"
+                                                data-lesson-index="${lessonIndex}"
+                                                type="button"
+                                            >
+                                                Delete
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <p>${escapeHtml(lesson.content || "No lesson content added yet.")}</p>
+
+                                    ${
+                                        lesson.videoUrl
+                                            ? `
+                                                <a
+                                                    href="${lesson.videoUrl}"
+                                                    target="_blank"
+                                                    class="builder-lesson-link"
+                                                >
+                                                    Watch Video
+                                                </a>
+                                            `
+                                            : ""
+                                    }
+                                </div>
+                            `).join("")
+                            : `
+                                <div class="empty-state builder-inner-empty">
+                                    <p>No lessons yet in this module.</p>
+                                </div>
+                            `
+                    }
+                </div>
             </div>
         `;
 
@@ -238,6 +247,14 @@ Warning Signs:
 // BIND ACTIONS
 // ==========================================
 function bindBuilderActions() {
+    document.querySelectorAll(".module-toggle-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const moduleIndex = button.dataset.moduleIndex;
+            moduleOpenState[moduleIndex] = !moduleOpenState[moduleIndex];
+            renderModules(currentCourse?.modules || []);
+        });
+    });
+
     document.querySelectorAll(".add-lesson-btn").forEach(button => {
         button.addEventListener("click", () => {
             const moduleIndex = button.dataset.moduleIndex;
@@ -476,6 +493,7 @@ async function addLesson(moduleIndex) {
             throw new Error(data.message || "Failed to add lesson.");
         }
 
+        moduleOpenState[moduleIndex] = true;
         await loadCourse();
     } catch (error) {
         console.error("ADD LESSON ERROR:", error);
@@ -532,6 +550,7 @@ async function openEditLesson(moduleIndex, lessonIndex) {
             throw new Error(data.message || "Failed to update lesson.");
         }
 
+        moduleOpenState[moduleIndex] = true;
         await loadCourse();
     } catch (error) {
         console.error("EDIT LESSON ERROR:", error);
@@ -573,6 +592,7 @@ async function deleteLesson(moduleIndex, lessonIndex) {
             throw new Error(data.message || "Failed to delete lesson.");
         }
 
+        moduleOpenState[moduleIndex] = true;
         await loadCourse();
     } catch (error) {
         console.error("DELETE LESSON ERROR:", error);
@@ -593,27 +613,28 @@ function insertLessonTemplate(moduleIndex) {
         if (!overwrite) return;
     }
 
-    contentInput.value = `What Is This Topic?
-Write a short explanation of the lesson topic here.
+    contentInput.value = `<h2>Lesson Overview</h2>
+<p>
+Write a short introduction for this lesson here.
+</p>
 
-Key Concepts:
-- Concept 1
-- Concept 2
-- Concept 3
+<h2>Main Concepts</h2>
+<ul>
+    <li>Concept 1</li>
+    <li>Concept 2</li>
+    <li>Concept 3</li>
+</ul>
 
-How It Works:
-Explain how the process, tool, or security concept works.
+<h2>Why It Matters</h2>
+<p>
+Explain why this lesson matters in networking or cybersecurity.
+</p>
 
-Why It Matters:
-Explain why this topic matters in cybersecurity or networking.
-
-Examples:
-- Example 1
-- Example 2
-
-Best Practices:
-- Best practice 1
-- Best practice 2`;
+<h2>Key Takeaways</h2>
+<ul>
+    <li>Takeaway 1</li>
+    <li>Takeaway 2</li>
+</ul>`;
 }
 
 // ==========================================
