@@ -4516,3 +4516,70 @@ table{
         width:100%;
     }
 }
+
+/* ================================
+   LESSON VIEW FORMATTER
+=================================== */
+
+.formatted-lesson-content{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    color:#e2e8f0;
+    line-height:1.85;
+    font-size:1rem;
+}
+
+.formatted-lesson-content h2,
+.formatted-lesson-content h3,
+.formatted-lesson-content h4{
+    margin:10px 0 2px;
+    color:#ffffff;
+    font-weight:700;
+    line-height:1.35;
+}
+
+.formatted-lesson-content h3{
+    font-size:1.8rem;
+    margin-top:14px;
+}
+
+.formatted-lesson-content p{
+    margin:0;
+    color:#e2e8f0;
+    font-size:1.02rem;
+    line-height:1.9;
+}
+
+.lesson-bullet-list{
+    margin:0;
+    padding-left:26px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    color:#e2e8f0;
+}
+
+.lesson-bullet-list li{
+    color:#e2e8f0;
+    line-height:1.8;
+    padding-left:2px;
+}
+
+.lesson-content-card.formatted-lesson-content{
+    background:#111a2e;
+    border:1px solid rgba(148,163,184,.15);
+    border-radius:18px;
+    padding:32px;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+
+@media (max-width: 768px){
+    .lesson-content-card.formatted-lesson-content{
+        padding:22px;
+    }
+
+    .formatted-lesson-content h3{
+        font-size:1.45rem;
+    }
+}
