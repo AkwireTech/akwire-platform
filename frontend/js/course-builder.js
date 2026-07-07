@@ -121,9 +121,26 @@ function renderModules(modules) {
 
                 <textarea
                     id="lessonContent-${moduleIndex}"
-                    class="course-textarea"
-                    placeholder="Lesson Content"
+                    class="course-textarea lesson-structured-textarea"
+                    placeholder="Use this format:
+
+            What Is Phishing?
+            Phishing is a cyberattack that tricks users into revealing sensitive information.
+
+            Common Phishing Techniques:
+            - Email Phishing
+            - Spear Phishing
+            - Whaling
+
+            Warning Signs:
+            - Urgent requests
+            - Suspicious links
+            - Poor grammar"
                 ></textarea>
+
+                <div class="builder-format-note">
+                    <strong>Lesson format:</strong> Use section headings, short paragraphs, and bullets with <code>-</code> just like the Security+ lessons.
+                </div>
 
                 <input
                     type="text"
@@ -139,6 +156,14 @@ function renderModules(modules) {
                         type="button"
                     >
                         Add Lesson
+                    </button>
+
+                    <button
+                        class="btn btn-secondary builder-template-btn"
+                        data-module-index="${moduleIndex}"
+                        type="button"
+                    >
+                        Insert Lesson Template
                     </button>
                 </div>
             </div>
@@ -217,6 +242,13 @@ function bindBuilderActions() {
         button.addEventListener("click", () => {
             const moduleIndex = button.dataset.moduleIndex;
             addLesson(moduleIndex);
+        });
+    });
+
+    document.querySelectorAll(".builder-template-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const moduleIndex = button.dataset.moduleIndex;
+            insertLessonTemplate(moduleIndex);
         });
     });
 
@@ -547,6 +579,39 @@ async function deleteLesson(moduleIndex, lessonIndex) {
         alert(error.message || "Failed to delete lesson.");
     }
 }
+
+function insertLessonTemplate(moduleIndex) {
+    const contentInput = document.getElementById(`lessonContent-${moduleIndex}`);
+
+    if (!contentInput) return;
+
+    if (contentInput.value.trim()) {
+        const overwrite = confirm("Replace the current lesson content with the lesson template?");
+        if (!overwrite) return;
+    }
+
+    contentInput.value = `What Is This Topic?
+    Write a short explanation of the lesson topic here.
+
+    Key Concepts:
+    - Concept 1
+    - Concept 2
+    - Concept 3
+
+    How It Works:
+    Explain how the process, tool, or security concept works.
+
+    Why It Matters:
+    Explain why this topic matters in cybersecurity or networking.
+
+    Examples:
+    - Example 1
+    - Example 2
+
+    Best Practices:
+    - Best practice 1
+    - Best practice 2`;
+    }
 
 // ==========================================
 // HELPERS
