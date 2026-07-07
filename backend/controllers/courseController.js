@@ -159,6 +159,91 @@ export const addModuleToCourse = async (req, res) => {
 };
 
 // ==========================================
+// UPDATE MODULE
+// ==========================================
+export const updateModule = async (req, res) => {
+    try {
+        const { id, moduleIndex } = req.params;
+        const { title } = req.body;
+
+        if (!title || !title.trim()) {
+            return res.status(400).json({
+                message: "Module title is required"
+            });
+        }
+
+        const course = await Course.findById(id);
+
+        if (!course) {
+            return res.status(404).json({
+                message: "Course not found"
+            });
+        }
+
+        const module = course.modules[moduleIndex];
+
+        if (!module) {
+            return res.status(404).json({
+                message: "Module not found"
+            });
+        }
+
+        module.title = title.trim();
+
+        await course.save();
+
+        res.json({
+            message: "Module updated successfully",
+            course
+        });
+    } catch (error) {
+        console.error("UPDATE MODULE ERROR:", error);
+
+        res.status(500).json({
+            message: "Server error while updating module"
+        });
+    }
+};
+
+// ==========================================
+// DELETE MODULE
+// ==========================================
+export const deleteModule = async (req, res) => {
+    try {
+        const { id, moduleIndex } = req.params;
+
+        const course = await Course.findById(id);
+
+        if (!course) {
+            return res.status(404).json({
+                message: "Course not found"
+            });
+        }
+
+        if (!course.modules[moduleIndex]) {
+            return res.status(404).json({
+                message: "Module not found"
+            });
+        }
+
+        course.modules.splice(Number(moduleIndex), 1);
+
+        await course.save();
+
+        res.json({
+            message: "Module deleted successfully",
+            course
+        });
+    } catch (error) {
+        console.error("DELETE MODULE ERROR:", error);
+
+        res.status(500).json({
+            message: "Server error while deleting module"
+        });
+    }
+};
+
+// ==========================================
 // ADD LESSON TO MODULE
 // ==========================================
 export const addLessonToModule = async (req, res) => {
@@ -206,6 +291,109 @@ export const addLessonToModule = async (req, res) => {
 
         res.status(500).json({
             message: "Server error while adding lesson"
+        });
+    }
+};
+
+// ==========================================
+// UPDATE LESSON
+// ==========================================
+export const updateLesson = async (req, res) => {
+    try {
+        const { id, moduleIndex, lessonIndex } = req.params;
+        const { title, content, videoUrl } = req.body;
+
+        if (!title || !title.trim()) {
+            return res.status(400).json({
+                message: "Lesson title is required"
+            });
+        }
+
+        const course = await Course.findById(id);
+
+        if (!course) {
+            return res.status(404).json({
+                message: "Course not found"
+            });
+        }
+
+        const module = course.modules[moduleIndex];
+
+        if (!module) {
+            return res.status(404).json({
+                message: "Module not found"
+            });
+        }
+
+        const lesson = module.lessons[lessonIndex];
+
+        if (!lesson) {
+            return res.status(404).json({
+                message: "Lesson not found"
+            });
+        }
+
+        lesson.title = title.trim();
+        lesson.content = content || "";
+        lesson.videoUrl = videoUrl || "";
+
+        await course.save();
+
+        res.json({
+            message: "Lesson updated successfully",
+            course
+        });
+    } catch (error) {
+        console.error("UPDATE LESSON ERROR:", error);
+
+        res.status(500).json({
+            message: "Server error while updating lesson"
+        });
+    }
+};
+
+// ==========================================
+// DELETE LESSON
+// ==========================================
+export const deleteLesson = async (req, res) => {
+    try {
+        const { id, moduleIndex, lessonIndex } = req.params;
+
+        const course = await Course.findById(id);
+
+        if (!course) {
+            return res.status(404).json({
+                message: "Course not found"
+            });
+        }
+
+        const module = course.modules[moduleIndex];
+
+        if (!module) {
+            return res.status(404).json({
+                message: "Module not found"
+            });
+        }
+
+        if (!module.lessons[lessonIndex]) {
+            return res.status(404).json({
+                message: "Lesson not found"
+            });
+        }
+
+        module.lessons.splice(Number(lessonIndex), 1);
+
+        await course.save();
+
+        res.json({
+            message: "Lesson deleted successfully",
+            course
+        });
+    } catch (error) {
+        console.error("DELETE LESSON ERROR:", error);
+
+        res.status(500).json({
+            message: "Server error while deleting lesson"
         });
     }
 };

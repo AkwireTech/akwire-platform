@@ -3,6 +3,8 @@ const token = localStorage.getItem("token");
 const params = new URLSearchParams(window.location.search);
 const courseId = params.get("id");
 
+let currentCourse = null;
+
 // ==========================================
 // START
 // ==========================================
@@ -13,12 +15,12 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    loadCourse();
-
     const addBtn = document.getElementById("addModuleBtn");
     if (addBtn) {
         addBtn.addEventListener("click", addModule);
     }
+
+    loadCourse();
 });
 
 // ==========================================
@@ -42,6 +44,8 @@ async function loadCourse() {
         if (!response.ok) {
             throw new Error(course.message || "Failed to load course.");
         }
+
+        currentCourse = course;
 
         document.getElementById("courseTitle").textContent =
             course.title || "Course Builder";
@@ -70,78 +74,179 @@ function renderModules(modules) {
         return;
     }
 
-    modules.forEach((module, index) => {
-        const lessonCount = module.lessons?.length || 0;
-
-        const lessonsHtml = lessonCount
-            ? module.lessons.map((lesson, lessonIndex) => `
-                <div class="lesson-item">
-                    <h4>Lesson ${lessonIndex + 1}: ${lesson.title}</h4>
-                    <p>${lesson.content || "No lesson content added yet."}</p>
-                    ${lesson.videoUrl ? `
-                        <a href="${lesson.videoUrl}" target="_blank">
-                            Watch Video
-                        </a>
-                    ` : ""}
-                </div>
-            `).join("")
-            : `
-                <div class="empty-state" style="margin-top:12px;">
-                    <p>No lessons yet in this module.</p>
-                </div>
-            `;
+    modules.forEach((module, moduleIndex) => {
+        const lessonCount = Array.isArray(module.lessons)
+            ? module.lessons.length
+            : 0;
 
         const card = document.createElement("div");
-        card.className = "course-item";
+        card.className = "module-builder-card";
+
         card.innerHTML = `
-            <div class="course-item-info">
-                <h3>Module ${index + 1}: ${module.title}</h3>
-                <p>${lessonCount} lesson(s)</p>
+            <div class="module-builder-header">
+                <div class="module-builder-title">
+                    <div class="module-builder-badge">Module ${moduleIndex + 1}</div>
+                    <h3>${escapeHtml(module.title || "Untitled Module")}</h3>
+                    <p>${lessonCount} lesson(s)</p>
+                </div>
+
+                <div class="module-builder-actions">
+                    <button
+                        class="btn btn-secondary builder-action-btn edit-module-btn"
+                        data-module-index="${moduleIndex}"
+                        type="button"
+                    >
+                        Edit Module
+                    </button>
+
+                    <button
+                        class="btn builder-danger-btn delete-module-btn"
+                        data-module-index="${moduleIndex}"
+                        type="button"
+                    >
+                        Delete Module
+                    </button>
+                </div>
             </div>
 
             <div class="builder-lesson-form">
+                <h4 class="builder-subtitle">Add Lesson</h4>
+
                 <input
                     type="text"
-                    id="lessonTitle-${index}"
+                    id="lessonTitle-${moduleIndex}"
                     class="admin-search-input"
                     placeholder="Lesson Title"
                 />
 
                 <textarea
-                    id="lessonContent-${index}"
+                    id="lessonContent-${moduleIndex}"
                     class="course-textarea"
                     placeholder="Lesson Content"
                 ></textarea>
 
                 <input
                     type="text"
-                    id="lessonVideo-${index}"
+                    id="lessonVideo-${moduleIndex}"
                     class="admin-search-input"
                     placeholder="Video URL (optional)"
                 />
 
-                <button
-                    class="btn add-lesson-btn"
-                    data-module-index="${index}"
-                    type="button"
-                >
-                    Add Lesson
-                </button>
+                <div class="builder-inline-actions">
+                    <button
+                        class="btn add-lesson-btn"
+                        data-module-index="${moduleIndex}"
+                        type="button"
+                    >
+                        Add Lesson
+                    </button>
+                </div>
             </div>
 
             <div class="module-lessons-list">
-                ${lessonsHtml}
+                ${
+                    lessonCount
+                        ? module.lessons.map((lesson, lessonIndex) => `
+                            <div class="builder-lesson-card">
+                                <div class="builder-lesson-top">
+                                    <div>
+                                        <div class="builder-lesson-label">
+                                            Lesson ${lessonIndex + 1}
+                                        </div>
+                                        <h4>${escapeHtml(lesson.title || "Untitled Lesson")}</h4>
+                                    </div>
+
+                                    <div class="builder-lesson-actions">
+                                        <button
+                                            class="btn btn-secondary edit-lesson-btn"
+                                            data-module-index="${moduleIndex}"
+                                            data-lesson-index="${lessonIndex}"
+                                            type="button"
+                                        >
+                                            Edit
+                                        </button>
+
+                                        <button
+                                            class="btn builder-danger-btn delete-lesson-btn"
+                                            data-module-index="${moduleIndex}"
+                                            data-lesson-index="${lessonIndex}"
+                                            type="button"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <p>${escapeHtml(lesson.content || "No lesson content added yet.")}</p>
+
+                                ${
+                                    lesson.videoUrl
+                                        ? `
+                                            <a
+                                                href="${lesson.videoUrl}"
+                                                target="_blank"
+                                                class="builder-lesson-link"
+                                            >
+                                                Watch Video
+                                            </a>
+                                        `
+                                        : ""
+                                }
+                            </div>
+                        `).join("")
+                        : `
+                            <div class="empty-state builder-inner-empty">
+                                <p>No lessons yet in this module.</p>
+                            </div>
+                        `
+                }
             </div>
         `;
 
         container.appendChild(card);
     });
 
-    // attach lesson buttons after cards are rendered
+    bindBuilderActions();
+}
+
+// ==========================================
+// BIND ACTIONS
+// ==========================================
+function bindBuilderActions() {
     document.querySelectorAll(".add-lesson-btn").forEach(button => {
         button.addEventListener("click", () => {
             const moduleIndex = button.dataset.moduleIndex;
             addLesson(moduleIndex);
+        });
+    });
+
+    document.querySelectorAll(".edit-module-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const moduleIndex = button.dataset.moduleIndex;
+            openEditModule(moduleIndex);
+        });
+    });
+
+    document.querySelectorAll(".delete-module-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const moduleIndex = button.dataset.moduleIndex;
+            deleteModule(moduleIndex);
+        });
+    });
+
+    document.querySelectorAll(".edit-lesson-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const moduleIndex = button.dataset.moduleIndex;
+            const lessonIndex = button.dataset.lessonIndex;
+            openEditLesson(moduleIndex, lessonIndex);
+        });
+    });
+
+    document.querySelectorAll(".delete-lesson-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const moduleIndex = button.dataset.moduleIndex;
+            const lessonIndex = button.dataset.lessonIndex;
+            deleteLesson(moduleIndex, lessonIndex);
         });
     });
 }
@@ -193,6 +298,97 @@ async function addModule() {
     } catch (error) {
         console.error("ADD MODULE ERROR:", error);
         alert(error.message || "Failed to add module.");
+    }
+}
+
+// ==========================================
+// EDIT MODULE
+// ==========================================
+async function openEditModule(moduleIndex) {
+    const module = currentCourse?.modules?.[moduleIndex];
+
+    if (!module) {
+        alert("Module not found.");
+        return;
+    }
+
+    const newTitle = prompt("Edit module title:", module.title || "");
+
+    if (newTitle === null) return;
+
+    const trimmed = newTitle.trim();
+
+    if (!trimmed) {
+        alert("Module title cannot be empty.");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
+                },
+                body: JSON.stringify({
+                    title: trimmed
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to update module.");
+        }
+
+        await loadCourse();
+    } catch (error) {
+        console.error("EDIT MODULE ERROR:", error);
+        alert(error.message || "Failed to update module.");
+    }
+}
+
+// ==========================================
+// DELETE MODULE
+// ==========================================
+async function deleteModule(moduleIndex) {
+    const module = currentCourse?.modules?.[moduleIndex];
+
+    if (!module) {
+        alert("Module not found.");
+        return;
+    }
+
+    const confirmed = confirm(
+        `Delete module "${module.title}" and all its lessons?`
+    );
+
+    if (!confirmed) return;
+
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + token
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to delete module.");
+        }
+
+        await loadCourse();
+    } catch (error) {
+        console.error("DELETE MODULE ERROR:", error);
+        alert(error.message || "Failed to delete module.");
     }
 }
 
@@ -253,4 +449,113 @@ async function addLesson(moduleIndex) {
         console.error("ADD LESSON ERROR:", error);
         alert(error.message || "Failed to add lesson.");
     }
+}
+
+// ==========================================
+// EDIT LESSON
+// ==========================================
+async function openEditLesson(moduleIndex, lessonIndex) {
+    const lesson = currentCourse?.modules?.[moduleIndex]?.lessons?.[lessonIndex];
+
+    if (!lesson) {
+        alert("Lesson not found.");
+        return;
+    }
+
+    const title = prompt("Edit lesson title:", lesson.title || "");
+    if (title === null) return;
+
+    const trimmedTitle = title.trim();
+    if (!trimmedTitle) {
+        alert("Lesson title cannot be empty.");
+        return;
+    }
+
+    const content = prompt("Edit lesson content:", lesson.content || "");
+    if (content === null) return;
+
+    const videoUrl = prompt("Edit lesson video URL (optional):", lesson.videoUrl || "");
+    if (videoUrl === null) return;
+
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons/${lessonIndex}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
+                },
+                body: JSON.stringify({
+                    title: trimmedTitle,
+                    content: content.trim(),
+                    videoUrl: videoUrl.trim()
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to update lesson.");
+        }
+
+        await loadCourse();
+    } catch (error) {
+        console.error("EDIT LESSON ERROR:", error);
+        alert(error.message || "Failed to update lesson.");
+    }
+}
+
+// ==========================================
+// DELETE LESSON
+// ==========================================
+async function deleteLesson(moduleIndex, lessonIndex) {
+    const lesson = currentCourse?.modules?.[moduleIndex]?.lessons?.[lessonIndex];
+
+    if (!lesson) {
+        alert("Lesson not found.");
+        return;
+    }
+
+    const confirmed = confirm(
+        `Delete lesson "${lesson.title}"?`
+    );
+
+    if (!confirmed) return;
+
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons/${lessonIndex}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + token
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to delete lesson.");
+        }
+
+        await loadCourse();
+    } catch (error) {
+        console.error("DELETE LESSON ERROR:", error);
+        alert(error.message || "Failed to delete lesson.");
+    }
+}
+
+// ==========================================
+// HELPERS
+// ==========================================
+function escapeHtml(value = "") {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
