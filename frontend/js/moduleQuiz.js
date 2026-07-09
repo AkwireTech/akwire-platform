@@ -61,14 +61,13 @@ async function fetchExam() {
                 window.location.search
             );
 
-        const moduleId =
-            params.get("module") || "1";
+        const moduleId = params.get("module") || "1";
+        const courseId = params.get("course");
 
             console.log("Module ID:", moduleId);
 
         const res = await fetch(
-
-            `https://akwire-api.onrender.com/api/exam/module/${moduleId}`,
+            `https://akwire-api.onrender.com/api/exam/module/${moduleId}?course=${courseId}`,
 
             {
                 method: "GET",
@@ -317,8 +316,8 @@ if(index === currentQ){
 btn.classList.add("current");
 }
 
-if(userAnswers[index]){
-btn.classList.add("answered");
+if (userAnswers[index] !== null && userAnswers[index] !== undefined) {
+    btn.classList.add("answered");
 }
 
 if(flaggedQuestions.includes(index)){

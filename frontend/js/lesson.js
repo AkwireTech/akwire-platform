@@ -23,16 +23,13 @@ const quizBtn =
     );
 
 if (quizBtn) {
-
-    const quizNumber =
-        Number(moduleIndex) + 1;
+    const quizNumber = Number(moduleIndex) + 1;
 
     quizBtn.href =
-        `module-quiz.html?module=${quizNumber}`;
+        `module-quiz.html?course=${courseId}&module=${quizNumber}`;
 
     quizBtn.textContent =
         `Take Quiz ${quizNumber} →`;
-
 }
 
 const lessonIndex =

@@ -1,6 +1,7 @@
 import Exam from "../models/Exam.js";
 import User from "../models/User.js";
 import ExamResult from "../models/ExamResult.js";
+import Course from "../models/Course.js";
 import { generateExam } from "../services/examService.js";
 import { generateRecommendations } from "../services/adaptiveTraining.js";
 
@@ -193,42 +194,45 @@ export const getExamHistory = async (req, res) => {
 };
 
 export const getModuleQuiz = async (req, res) => {
-
   try {
-
     const moduleId = req.params.id;
+    const courseId = req.query.course;
+
+    if (!courseId) {
+      return res.status(400).json({
+        message: "Course ID is required"
+      });
+    }
+
+    const course = await Course.findById(courseId);
+
+    if (!course) {
+      return res.status(404).json({
+        message: "Course not found"
+      });
+    }
+
+    const examTitle = `${course.title} - Module ${moduleId} Quiz`;
 
     const exam = await Exam.findOne({
-
-      title:
-      `Security+ Fundamentals - Module ${moduleId} Quiz`
-
+      title: examTitle
     });
 
     if (!exam) {
-
       return res.status(404).json({
-
-        message: "Quiz not found"
-
+        message: `Quiz not found for ${course.title} module ${moduleId}`
       });
-
     }
 
     res.json(exam);
 
   } catch (error) {
-
-    console.error(error);
+    console.error("GET MODULE QUIZ ERROR:", error);
 
     res.status(500).json({
-
       message: "Failed to load quiz"
-
     });
-
   }
-
 };
 
 export const getFinalExam = async (req, res) => {
