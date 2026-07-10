@@ -141,6 +141,81 @@
         </main>
     </div>
 
+        <!-- EDIT MODAL -->
+    <div id="builderEditModal" class="builder-modal hidden">
+        <div class="builder-modal-backdrop" id="builderModalBackdrop"></div>
+
+        <div class="builder-modal-content">
+            <div class="builder-modal-header">
+                <h2 id="builderModalTitle">Edit</h2>
+                <button
+                    id="builderModalClose"
+                    class="builder-modal-close"
+                    type="button"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <div class="builder-modal-body">
+                <!-- MODULE EDIT -->
+                <div id="moduleEditFields" class="builder-modal-fields hidden">
+                    <label for="editModuleTitle">Module Title</label>
+                    <input
+                        type="text"
+                        id="editModuleTitle"
+                        class="admin-search-input"
+                        placeholder="Module Title"
+                    />
+                </div>
+
+                <!-- LESSON EDIT -->
+                <div id="lessonEditFields" class="builder-modal-fields hidden">
+                    <label for="editLessonTitle">Lesson Title</label>
+                    <input
+                        type="text"
+                        id="editLessonTitle"
+                        class="admin-search-input"
+                        placeholder="Lesson Title"
+                    />
+
+                    <label for="editLessonContent">Lesson Content</label>
+                    <textarea
+                        id="editLessonContent"
+                        class="course-textarea lesson-structured-textarea builder-modal-textarea"
+                        placeholder="Lesson Content"
+                    ></textarea>
+
+                    <label for="editLessonVideo">Video URL</label>
+                    <input
+                        type="text"
+                        id="editLessonVideo"
+                        class="admin-search-input"
+                        placeholder="Video URL (optional)"
+                    />
+                </div>
+            </div>
+
+            <div class="builder-modal-footer">
+                <button
+                    id="builderModalCancel"
+                    class="btn btn-secondary"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    id="builderModalSave"
+                    class="btn"
+                    type="button"
+                >
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/course-builder.js"></script>
 </body>
 </html>

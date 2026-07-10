@@ -8,6 +8,13 @@ let currentCourse = null;
 // store collapsed/expanded state per module
 const moduleOpenState = {};
 
+// modal state
+let editState = {
+    type: null,
+    moduleIndex: null,
+    lessonIndex: null
+};
+
 // ==========================================
 // START
 // ==========================================
@@ -23,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         addBtn.addEventListener("click", addModule);
     }
 
+    bindModalActions();
     loadCourse();
 });
 
@@ -82,7 +90,6 @@ function renderModules(modules) {
             ? module.lessons.length
             : 0;
 
-        // default = collapsed
         if (moduleOpenState[moduleIndex] === undefined) {
             moduleOpenState[moduleIndex] = false;
         }
@@ -301,6 +308,48 @@ function bindBuilderActions() {
 }
 
 // ==========================================
+// MODAL BINDINGS
+// ==========================================
+function bindModalActions() {
+    const closeBtn = document.getElementById("builderModalClose");
+    const cancelBtn = document.getElementById("builderModalCancel");
+    const backdrop = document.getElementById("builderModalBackdrop");
+    const saveBtn = document.getElementById("builderModalSave");
+
+    if (closeBtn) closeBtn.addEventListener("click", closeBuilderModal);
+    if (cancelBtn) cancelBtn.addEventListener("click", closeBuilderModal);
+    if (backdrop) backdrop.addEventListener("click", closeBuilderModal);
+    if (saveBtn) saveBtn.addEventListener("click", saveBuilderEdit);
+}
+
+function openBuilderModal() {
+    const modal = document.getElementById("builderEditModal");
+    if (modal) {
+        modal.classList.remove("hidden");
+    }
+}
+
+function closeBuilderModal() {
+    const modal = document.getElementById("builderEditModal");
+    if (modal) {
+        modal.classList.add("hidden");
+    }
+
+    editState = {
+        type: null,
+        moduleIndex: null,
+        lessonIndex: null
+    };
+
+    hideAllModalFields();
+}
+
+function hideAllModalFields() {
+    document.getElementById("moduleEditFields")?.classList.add("hidden");
+    document.getElementById("lessonEditFields")?.classList.add("hidden");
+}
+
+// ==========================================
 // ADD MODULE
 // ==========================================
 async function addModule() {
@@ -353,7 +402,7 @@ async function addModule() {
 // ==========================================
 // EDIT MODULE
 // ==========================================
-async function openEditModule(moduleIndex) {
+function openEditModule(moduleIndex) {
     const module = currentCourse?.modules?.[moduleIndex];
 
     if (!module) {
@@ -361,43 +410,19 @@ async function openEditModule(moduleIndex) {
         return;
     }
 
-    const newTitle = prompt("Edit module title:", module.title || "");
+    editState = {
+        type: "module",
+        moduleIndex,
+        lessonIndex: null
+    };
 
-    if (newTitle === null) return;
+    hideAllModalFields();
 
-    const trimmed = newTitle.trim();
+    document.getElementById("builderModalTitle").textContent = "Edit Module";
+    document.getElementById("moduleEditFields").classList.remove("hidden");
+    document.getElementById("editModuleTitle").value = module.title || "";
 
-    if (!trimmed) {
-        alert("Module title cannot be empty.");
-        return;
-    }
-
-    try {
-        const response = await fetch(
-            `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token
-                },
-                body: JSON.stringify({
-                    title: trimmed
-                })
-            }
-        );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || "Failed to update module.");
-        }
-
-        await loadCourse();
-    } catch (error) {
-        console.error("EDIT MODULE ERROR:", error);
-        alert(error.message || "Failed to update module.");
-    }
+    openBuilderModal();
 }
 
 // ==========================================
@@ -504,7 +529,7 @@ async function addLesson(moduleIndex) {
 // ==========================================
 // EDIT LESSON
 // ==========================================
-async function openEditLesson(moduleIndex, lessonIndex) {
+function openEditLesson(moduleIndex, lessonIndex) {
     const lesson = currentCourse?.modules?.[moduleIndex]?.lessons?.[lessonIndex];
 
     if (!lesson) {
@@ -512,50 +537,22 @@ async function openEditLesson(moduleIndex, lessonIndex) {
         return;
     }
 
-    const title = prompt("Edit lesson title:", lesson.title || "");
-    if (title === null) return;
+    editState = {
+        type: "lesson",
+        moduleIndex,
+        lessonIndex
+    };
 
-    const trimmedTitle = title.trim();
-    if (!trimmedTitle) {
-        alert("Lesson title cannot be empty.");
-        return;
-    }
+    hideAllModalFields();
 
-    const content = prompt("Edit lesson content:", lesson.content || "");
-    if (content === null) return;
+    document.getElementById("builderModalTitle").textContent = "Edit Lesson";
+    document.getElementById("lessonEditFields").classList.remove("hidden");
 
-    const videoUrl = prompt("Edit lesson video URL (optional):", lesson.videoUrl || "");
-    if (videoUrl === null) return;
+    document.getElementById("editLessonTitle").value = lesson.title || "";
+    document.getElementById("editLessonContent").value = lesson.content || "";
+    document.getElementById("editLessonVideo").value = lesson.videoUrl || "";
 
-    try {
-        const response = await fetch(
-            `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons/${lessonIndex}`,
-            {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization: "Bearer " + token
-                },
-                body: JSON.stringify({
-                    title: trimmedTitle,
-                    content: content.trim(),
-                    videoUrl: videoUrl.trim()
-                })
-            }
-        );
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || "Failed to update lesson.");
-        }
-
-        moduleOpenState[moduleIndex] = true;
-        await loadCourse();
-    } catch (error) {
-        console.error("EDIT LESSON ERROR:", error);
-        alert(error.message || "Failed to update lesson.");
-    }
+    openBuilderModal();
 }
 
 // ==========================================
@@ -597,6 +594,105 @@ async function deleteLesson(moduleIndex, lessonIndex) {
     } catch (error) {
         console.error("DELETE LESSON ERROR:", error);
         alert(error.message || "Failed to delete lesson.");
+    }
+}
+
+// ==========================================
+// SAVE MODAL EDIT
+// ==========================================
+async function saveBuilderEdit() {
+    if (!editState.type) return;
+
+    if (editState.type === "module") {
+        await saveModuleEdit();
+        return;
+    }
+
+    if (editState.type === "lesson") {
+        await saveLessonEdit();
+    }
+}
+
+async function saveModuleEdit() {
+    const moduleIndex = editState.moduleIndex;
+    const title = document.getElementById("editModuleTitle").value.trim();
+
+    if (!title) {
+        alert("Module title cannot be empty.");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
+                },
+                body: JSON.stringify({
+                    title
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to update module.");
+        }
+
+        closeBuilderModal();
+        await loadCourse();
+    } catch (error) {
+        console.error("EDIT MODULE ERROR:", error);
+        alert(error.message || "Failed to update module.");
+    }
+}
+
+async function saveLessonEdit() {
+    const moduleIndex = editState.moduleIndex;
+    const lessonIndex = editState.lessonIndex;
+
+    const title = document.getElementById("editLessonTitle").value.trim();
+    const content = document.getElementById("editLessonContent").value.trim();
+    const videoUrl = document.getElementById("editLessonVideo").value.trim();
+
+    if (!title) {
+        alert("Lesson title cannot be empty.");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons/${lessonIndex}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
+                },
+                body: JSON.stringify({
+                    title,
+                    content,
+                    videoUrl
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to update lesson.");
+        }
+
+        moduleOpenState[moduleIndex] = true;
+        closeBuilderModal();
+        await loadCourse();
+    } catch (error) {
+        console.error("EDIT LESSON ERROR:", error);
+        alert(error.message || "Failed to update lesson.");
     }
 }
 
