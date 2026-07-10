@@ -184,6 +184,77 @@
         </main>
     </div>
 
+        <!-- EDIT COURSE MODAL -->
+    <div id="editCourseModal" class="builder-modal hidden">
+        <div class="builder-modal-backdrop" id="editCourseModalBackdrop"></div>
+
+        <div class="builder-modal-content">
+            <div class="builder-modal-header">
+                <h2>Edit Course</h2>
+                <button
+                    id="editCourseModalClose"
+                    class="builder-modal-close"
+                    type="button"
+                >
+                    &times;
+                </button>
+            </div>
+
+            <div class="builder-modal-body">
+                <div class="builder-modal-fields">
+                    <label for="editCourseTitle">Course Title</label>
+                    <input
+                        type="text"
+                        id="editCourseTitle"
+                        class="admin-search-input"
+                        placeholder="Course Title"
+                    />
+
+                    <label for="editCourseDescription">Description</label>
+                    <textarea
+                        id="editCourseDescription"
+                        class="course-textarea builder-modal-textarea"
+                        placeholder="Course description"
+                    ></textarea>
+
+                    <label for="editCourseDomain">Domain</label>
+                    <input
+                        type="text"
+                        id="editCourseDomain"
+                        class="admin-search-input"
+                        placeholder="Domain"
+                    />
+
+                    <label for="editCourseThumbnail">Thumbnail URL</label>
+                    <input
+                        type="text"
+                        id="editCourseThumbnail"
+                        class="admin-search-input"
+                        placeholder="https://..."
+                    />
+                </div>
+            </div>
+
+            <div class="builder-modal-footer">
+                <button
+                    id="editCourseCancelBtn"
+                    class="btn btn-secondary"
+                    type="button"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    id="editCourseSaveBtn"
+                    class="btn"
+                    type="button"
+                >
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="js/create-course.js"></script>
 </body>
 </html>

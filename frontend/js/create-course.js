@@ -1,5 +1,10 @@
 const token = localStorage.getItem("token");
 
+let editingCourseId = null;
+
+// ==========================================
+// START
+// ==========================================
 document.addEventListener("DOMContentLoaded", () => {
     const courseForm = document.getElementById("courseForm");
     const refreshBtn = document.getElementById("refreshCoursesBtn");
@@ -12,9 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
         refreshBtn.addEventListener("click", loadCourses);
     }
 
+    bindCourseModalActions();
     loadCourses();
 });
 
+// ==========================================
+// CREATE COURSE
+// ==========================================
 async function createCourse(e) {
     e.preventDefault();
 
@@ -85,6 +94,9 @@ async function createCourse(e) {
     }
 }
 
+// ==========================================
+// LOAD COURSES
+// ==========================================
 async function loadCourses() {
     const coursesList = document.getElementById("coursesList");
 
@@ -120,6 +132,9 @@ async function loadCourses() {
     }
 }
 
+// ==========================================
+// RENDER COURSES
+// ==========================================
 function renderCourses(courses) {
     const coursesList = document.getElementById("coursesList");
 
@@ -141,11 +156,11 @@ function renderCourses(courses) {
         return `
             <div class="course-item">
                 <div class="course-item-info">
-                    <h3>${course.title || "Untitled Course"}</h3>
-                    <p>${course.description || "No description provided."}</p>
+                    <h3>${escapeHtml(course.title || "Untitled Course")}</h3>
+                    <p>${escapeHtml(course.description || "No description provided.")}</p>
 
                     <div class="course-meta">
-                        <span><strong>Domain:</strong> ${course.domain || "N/A"}</span>
+                        <span><strong>Domain:</strong> ${escapeHtml(course.domain || "N/A")}</span>
                         <span><strong>Modules:</strong> ${moduleCount}</span>
                     </div>
                 </div>
@@ -154,8 +169,205 @@ function renderCourses(courses) {
                     <a href="course-builder.html?id=${courseId}" class="btn">
                         Open Builder
                     </a>
+
+                    <button
+                        class="btn btn-secondary edit-course-btn"
+                        type="button"
+                        data-course='${encodeCourseData(course)}'
+                    >
+                        Edit Course
+                    </button>
+
+                    <button
+                        class="btn builder-danger-btn delete-course-btn"
+                        type="button"
+                        data-course-id="${courseId}"
+                        data-course-title="${escapeHtml(course.title || "Untitled Course")}"
+                    >
+                        Delete Course
+                    </button>
                 </div>
             </div>
         `;
     }).join("");
+
+    bindCourseActions();
+}
+
+// ==========================================
+// COURSE ACTIONS
+// ==========================================
+function bindCourseActions() {
+    document.querySelectorAll(".edit-course-btn").forEach(button => {
+        button.addEventListener("click", () => {
+            const raw = button.dataset.course;
+            if (!raw) return;
+
+            try {
+                const course = JSON.parse(decodeURIComponent(raw));
+                openEditCourseModal(course);
+            } catch (error) {
+                console.error("Failed to parse course data:", error);
+                alert("Could not open course editor.");
+            }
+        });
+    });
+
+    document.querySelectorAll(".delete-course-btn").forEach(button => {
+        button.addEventListener("click", async () => {
+            const courseId = button.dataset.courseId;
+            const courseTitle = button.dataset.courseTitle || "this course";
+
+            if (!courseId) return;
+
+            const confirmed = confirm(
+                `Delete "${courseTitle}"?\n\nThis will also remove all modules and lessons inside it.`
+            );
+
+            if (!confirmed) return;
+
+            await deleteCourse(courseId);
+        });
+    });
+}
+
+// ==========================================
+// DELETE COURSE
+// ==========================================
+async function deleteCourse(courseId) {
+    if (!token) {
+        alert("No token found. Please log in again.");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/courses/${courseId}`,
+            {
+                method: "DELETE",
+                headers: {
+                    Authorization: "Bearer " + token
+                }
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to delete course.");
+        }
+
+        await loadCourses();
+    } catch (error) {
+        console.error("DELETE COURSE ERROR:", error);
+        alert(error.message || "Failed to delete course.");
+    }
+}
+
+// ==========================================
+// EDIT COURSE MODAL
+// ==========================================
+function bindCourseModalActions() {
+    const closeBtn = document.getElementById("editCourseModalClose");
+    const cancelBtn = document.getElementById("editCourseCancelBtn");
+    const saveBtn = document.getElementById("editCourseSaveBtn");
+    const backdrop = document.getElementById("editCourseModalBackdrop");
+
+    if (closeBtn) closeBtn.addEventListener("click", closeEditCourseModal);
+    if (cancelBtn) cancelBtn.addEventListener("click", closeEditCourseModal);
+    if (backdrop) backdrop.addEventListener("click", closeEditCourseModal);
+    if (saveBtn) saveBtn.addEventListener("click", saveCourseEdit);
+}
+
+function openEditCourseModal(course) {
+    editingCourseId = course._id || course.id || null;
+
+    if (!editingCourseId) {
+        alert("Course ID not found.");
+        return;
+    }
+
+    document.getElementById("editCourseTitle").value = course.title || "";
+    document.getElementById("editCourseDescription").value = course.description || "";
+    document.getElementById("editCourseDomain").value = course.domain || "";
+    document.getElementById("editCourseThumbnail").value = course.thumbnail || "";
+
+    document.getElementById("editCourseModal").classList.remove("hidden");
+}
+
+function closeEditCourseModal() {
+    editingCourseId = null;
+    document.getElementById("editCourseModal").classList.add("hidden");
+}
+
+async function saveCourseEdit() {
+    if (!editingCourseId) return;
+
+    if (!token) {
+        alert("No token found. Please log in again.");
+        return;
+    }
+
+    const title = document.getElementById("editCourseTitle").value.trim();
+    const description = document.getElementById("editCourseDescription").value.trim();
+    const domain = document.getElementById("editCourseDomain").value.trim();
+    const thumbnail = document.getElementById("editCourseThumbnail").value.trim();
+
+    if (!title || !description || !domain) {
+        alert("Title, description, and domain are required.");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/courses/${editingCourseId}`,
+            {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
+                },
+                body: JSON.stringify({
+                    title,
+                    description,
+                    domain,
+                    thumbnail
+                })
+            }
+        );
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Failed to update course.");
+        }
+
+        closeEditCourseModal();
+        await loadCourses();
+    } catch (error) {
+        console.error("EDIT COURSE ERROR:", error);
+        alert(error.message || "Failed to update course.");
+    }
+}
+
+// ==========================================
+// HELPERS
+// ==========================================
+function encodeCourseData(course) {
+    return encodeURIComponent(JSON.stringify({
+        _id: course._id || course.id || "",
+        title: course.title || "",
+        description: course.description || "",
+        domain: course.domain || "",
+        thumbnail: course.thumbnail || ""
+    }));
+}
+
+function escapeHtml(value = "") {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 }
