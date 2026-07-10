@@ -1,17 +1,21 @@
 // =============================
 // 1. STATE
 // =============================
-let examTime = 30 * 60; // 30 minutes
+let examTime = 30 * 60;
 let timerInterval;
 let questions = [];
 let currentQ = 0;
 let userAnswers = [];
 let flaggedQuestions = [];
 
+let currentCourseId = "";
+let currentModuleId = "1";
+let currentCourseTitle = "Course";
+let currentQuizTitle = "Module Quiz";
+
 // =============================
 // 2. HELPERS
 // =============================
-
 function shuffleArray(array) {
     const arr = [...array];
 
@@ -25,7 +29,10 @@ function shuffleArray(array) {
 
 function prepareQuestions(rawQuestions) {
     const normalized = rawQuestions.map(q => {
-        const originalOptions = Array.isArray(q.options) ? [...q.options] : [];
+        const originalOptions = Array.isArray(q.options)
+            ? [...q.options]
+            : [];
+
         const shuffledOptions = shuffleArray(originalOptions);
 
         return {
@@ -40,11 +47,42 @@ function prepareQuestions(rawQuestions) {
     return shuffleArray(normalized);
 }
 
+function updateQuizHeader() {
+    const headerTitle = document.querySelector(".quiz-header h2");
+    const headerText = document.querySelector(".quiz-header p");
+
+    if (headerTitle) {
+        headerTitle.textContent = currentQuizTitle;
+    }
+
+    if (headerText) {
+        headerText.textContent =
+            `Module ${currentModuleId} assessment for ${currentCourseTitle}. Select the best answer for each question.`;
+    }
+}
+
+function resetQuizState() {
+    clearInterval(timerInterval);
+
+    examTime = 30 * 60;
+    questions = [];
+    currentQ = 0;
+    userAnswers = [];
+    flaggedQuestions = [];
+
+    const timerElement = document.getElementById("exam-timer");
+    if (timerElement) {
+        timerElement.innerText = "30:00";
+    }
+}
+
 // =============================
 // EXAM TIMER
 // =============================
 function startExamTimer() {
     const timerElement = document.getElementById("exam-timer");
+
+    clearInterval(timerInterval);
 
     timerInterval = setInterval(() => {
         const minutes = Math.floor(examTime / 60);
@@ -77,13 +115,13 @@ async function fetchExam() {
         }
 
         const params = new URLSearchParams(window.location.search);
-        const moduleId = params.get("module") || "1";
-        const courseId = params.get("course");
+        currentModuleId = params.get("module") || "1";
+        currentCourseId = params.get("course") || "";
 
-        console.log("Module ID:", moduleId);
+        console.log("Module ID:", currentModuleId);
 
         const res = await fetch(
-            `https://akwire-api.onrender.com/api/exam/module/${moduleId}?course=${courseId}`,
+            `https://akwire-api.onrender.com/api/exam/module/${currentModuleId}?course=${currentCourseId}`,
             {
                 method: "GET",
                 headers: {
@@ -105,9 +143,17 @@ async function fetchExam() {
             return;
         }
 
-        questions = prepareQuestions(data.questions);
+        currentQuizTitle =
+            data.title || `Module ${currentModuleId} Quiz`;
 
-        console.log("Loaded randomized first question:", questions[0]);
+        currentCourseTitle =
+            data.title
+                ? data.title.replace(` - Module ${currentModuleId} Quiz`, "")
+                : "Course";
+
+        updateQuizHeader();
+
+        questions = prepareQuestions(data.questions);
 
         userAnswers = new Array(questions.length).fill(null);
         currentQ = 0;
@@ -201,7 +247,6 @@ function toggleFlag() {
 function selectAnswer(opt) {
     if (userAnswers[currentQ] !== null) return;
 
-    // Store selected ANSWER TEXT, not index
     userAnswers[currentQ] = opt;
 
     showFeedback(opt);
@@ -254,7 +299,7 @@ function showFeedback(opt) {
 }
 
 // =============================
-// QUESTION NAVIGATION
+// QUESTION NAV
 // =============================
 function buildQuestionNav() {
     const nav = document.getElementById("question-nav");
@@ -282,13 +327,12 @@ function buildQuestionNav() {
         }
 
         btn.onclick = () => goToQuestion(index);
-
         nav.appendChild(btn);
     });
 }
 
 // =============================
-// QUESTION NAVIGATION BUTTONS
+// QUESTION NAVIGATION
 // =============================
 function changeQuestion(step) {
     currentQ += step;
@@ -325,7 +369,7 @@ function showReviewScreen() {
     });
 
     quizBox.innerHTML = `
-        <h2>Review Your Exam</h2>
+        <h2>Review Your ${currentQuizTitle}</h2>
         ${reviewHTML}
         <button onclick="submitExam()">Submit Exam</button>
     `;
@@ -340,7 +384,7 @@ function goToQuestion(index) {
 }
 
 // =============================
-// SUBMIT EXAM TO BACKEND
+// SUBMIT EXAM
 // =============================
 async function submitExam() {
     try {
@@ -353,10 +397,6 @@ async function submitExam() {
             }),
             questions: questions
         };
-
-        console.log("Submitting exam:");
-        console.log("Answers:", payload.answers);
-        console.log("First Question:", questions[0]);
 
         const res = await fetch(
             "https://akwire-api.onrender.com/api/exam/submit",
@@ -371,7 +411,8 @@ async function submitExam() {
         );
 
         const result = await res.json();
-        console.log("SERVER RESULT:", result);
+
+        clearInterval(timerInterval);
 
         showFinalScore(result);
 
@@ -423,12 +464,16 @@ function showFinalScore(result) {
     const passed = result.score >= 80;
     const quizBox = document.getElementById("quiz-box");
 
+    const resultTitle = passed
+        ? `${currentCourseTitle} — Module ${currentModuleId} Passed`
+        : `${currentCourseTitle} — Module ${currentModuleId} Retry Required`;
+
     quizBox.innerHTML = `
         <div style="text-align:center;padding:40px;background:#0f172a;
         border-radius:12px;border:1px solid #1e293b;">
 
             <h2 style="color:${passed ? "#22c55e" : "#ef4444"};margin-bottom:10px;">
-                ${passed ? "MODULE PASSED" : "RETRY REQUIRED"}
+                ${resultTitle}
             </h2>
 
             <h1 style="font-size:4rem;color:#38bdf8;margin:0;">
@@ -440,7 +485,7 @@ function showFinalScore(result) {
             </p>
 
             <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
-                <button class="btn-primary" onclick="location.reload()">Retake Exam</button>
+                <button class="btn-primary" onclick="retakeCurrentQuiz()">Retake Exam</button>
                 <button class="btn-secondary" onclick="showReview()">Review Errors</button>
                 <button class="btn-secondary" onclick="goToDashboard()">Dashboard</button>
                 <button onclick="window.location.href='academy.html'" class="btn-primary">Return To Academy</button>
@@ -455,6 +500,69 @@ function showFinalScore(result) {
             </div>
         </div>
     `;
+}
+
+// =============================
+// RETAKE QUIZ
+// =============================
+async function retakeCurrentQuiz() {
+    const quizBox = document.getElementById("quiz-box");
+
+    quizBox.innerHTML = `
+        <div class="quiz-header">
+            <h2>${currentQuizTitle}</h2>
+            <p>Reloading quiz...</p>
+        </div>
+
+        <hr>
+
+        <div class="question-section">
+            <h3 id="question-number">Question 1</h3>
+            <p id="question-text"></p>
+
+            <div id="options-container"></div>
+
+            <div id="feedback-box" style="display:none; margin-top:20px; padding:15px; border-radius:8px; border-left:5px solid;">
+                <strong id="feedback-result"></strong>
+                <p id="feedback-explanation" style="margin-top:5px;"></p>
+            </div>
+
+            <div class="exam-timer-container">
+                <span>Time Remaining:</span>
+                <span id="exam-timer">30:00</span>
+            </div>
+
+            <div class="exam-controls">
+                <button id="prev-btn" class="btn-secondary">Previous</button>
+                <button id="flag-btn" class="btn-primary">Flag Question</button>
+                <button id="next-btn" class="btn-primary">Next</button>
+            </div>
+        </div>
+
+        <div class="quiz-footer" style="margin-top: 30px; font-size: 0.9rem; color: #797878;">
+            <p>Tip: Read each answer carefully before selecting the best choice.</p>
+        </div>
+    `;
+
+    resetQuizState();
+    await fetchExam();
+    startExamTimer();
+
+    const nextBtn = document.getElementById("next-btn");
+    const prevBtn = document.getElementById("prev-btn");
+    const flagBtn = document.getElementById("flag-btn");
+
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => changeQuestion(1));
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => changeQuestion(-1));
+    }
+
+    if (flagBtn) {
+        flagBtn.addEventListener("click", toggleFlag);
+    }
 }
 
 // =============================
