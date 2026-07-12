@@ -1,23 +1,22 @@
 // =============================
-// 1. STATE
+// FINAL EXAM ENGINE
 // =============================
-let examTime = 30 * 60; // 30 minutes
+
+let examTime = 30 * 60;
 let timerInterval;
 let questions = [];
 let currentQ = 0;
 let userAnswers = [];
 let flaggedQuestions = [];
 
-//==============================
-//Exam Timer
-//==============================
-
+// =============================
+// TIMER
+// =============================
 function startExamTimer() {
-
     const timerElement = document.getElementById("exam-timer");
+    if (!timerElement) return;
 
     timerInterval = setInterval(() => {
-
         const minutes = Math.floor(examTime / 60);
         const seconds = examTime % 60;
 
@@ -27,469 +26,348 @@ function startExamTimer() {
         examTime--;
 
         if (examTime < 0) {
-
             clearInterval(timerInterval);
-
-            alert("Time is up! Submitting exam.");
-
+            alert("Time is up! Submitting final exam.");
             submitExam();
-
         }
-
     }, 1000);
-
 }
 
 // =============================
-// 2. LOAD EXAM FROM BACKEND
+// LOAD FINAL EXAM
 // =============================
-
 async function fetchExam() {
-
     try {
-
         const token = localStorage.getItem("token");
 
         if (!token) {
-            console.error("No token found. Please login.");
             window.location.href = "login.html";
             return;
         }
 
         const res = await fetch(
-
             "https://akwire-api.onrender.com/api/exam/final",
-
             {
                 method: "GET",
                 headers: {
-                    "Authorization":
-                        "Bearer " + token,
-                    "Content-Type":
-                        "application/json"
+                    Authorization: "Bearer " + token,
+                    "Content-Type": "application/json"
                 }
             }
-
         );
 
-console.log("Status:", res.status);
-
         if (!res.ok) {
-
             const error = await res.json();
-
-            console.log("Status:", res.status);
-            console.log("Backend Error:", error);
-
-            alert(error.message);
-
+            alert(error.message || "Failed to load final exam.");
             return;
         }
 
         const data = await res.json();
 
-        console.log("Final Exam Data:", data);
-
-        if (!data || !data.questions) {
-            console.error("No exam questions found.");
+        if (!data || !Array.isArray(data.questions)) {
+            console.error("No final exam questions found.");
             return;
         }
 
-questions = data.questions.map(q => ({
-
-    q: q.question || q.q,
-
-    options: q.options,
-
-    answer: q.answer,
-
-    explanation: q.explanation,
-
-    domain: q.domain || "General Security Concepts"
-
-}));
-
-console.log("Loaded Question:", questions[0]);
+        questions = data.questions.map(q => ({
+            q: q.question || q.q || "",
+            options: Array.isArray(q.options) ? q.options : [],
+            answer: q.answer || "",
+            explanation: q.explanation || "",
+            domain: q.domain || "General Security Concepts"
+        }));
 
         userAnswers = new Array(questions.length).fill(null);
 
         loadQuestion();
-
     } catch (err) {
-
-        console.error("Exam fetch error:", err);
-
+        console.error("Final exam fetch error:", err);
     }
 }
 
-
 // =============================
-// 3. LOAD QUESTION
+// LOAD QUESTION
 // =============================
-
 function loadQuestion() {
+    if (!questions.length) return;
 
     buildQuestionNav();
 
     const qData = questions[currentQ];
-
     if (!qData) return;
 
     document.getElementById("question-number").innerText =
         `Question ${currentQ + 1} of ${questions.length}`;
 
     document.getElementById("question-text").innerHTML = `
-
         <div class="question-domain">
-            ${qData.domain || "General Security Concepts"}
+            ${qData.domain}
         </div>
 
         <div class="question-title">
             ${qData.q}
         </div>
-
     `;
 
     const feedbackBox = document.getElementById("feedback-box");
-
-    if (feedbackBox)
+    if (feedbackBox) {
         feedbackBox.style.display = "none";
+    }
 
     const optionsDiv = document.getElementById("options-container");
-
     optionsDiv.innerHTML = "";
 
-    qData.options.forEach(opt => {
-
+    qData.options.forEach((opt, index) => {
         const btn = document.createElement("button");
-
         btn.className = "option-btn";
-
-        if (userAnswers[currentQ] === opt) {
-
-            btn.classList.add(
-                opt === qData.answer ? "correct" : "wrong"
-            );
-
-            showFeedback(opt);
-
-        }
-
         btn.innerText = opt;
 
-        btn.onclick = () => selectAnswer(opt);
+        if (userAnswers[currentQ] === index) {
+            btn.classList.add("selected");
+        }
 
+        btn.onclick = () => selectAnswer(index);
         optionsDiv.appendChild(btn);
-
     });
 
     const prevBtn = document.getElementById("prev-btn");
-
     const nextBtn = document.getElementById("next-btn");
 
-    if (prevBtn)
-        prevBtn.style.visibility =
-            currentQ === 0 ? "hidden" : "visible";
+    if (prevBtn) {
+        prevBtn.style.visibility = currentQ === 0 ? "hidden" : "visible";
+    }
 
-    if (nextBtn)
+    if (nextBtn) {
         nextBtn.innerText =
             currentQ === questions.length - 1
-                ? "Finish Exam"
+                ? "Review Exam"
                 : "Next";
-
-}
-
-//=================================
-//Flagged Questions
-//=================================
-
-function toggleFlag(){
-
-if(flaggedQuestions.includes(currentQ)){
-
-flaggedQuestions = flaggedQuestions.filter(q => q !== currentQ);
-
-alert("Flag removed");
-
-}else{
-
-flaggedQuestions.push(currentQ);
-
-alert("Question flagged for review");
-
-}
-
+    }
 }
 
 // =============================
-// 4. SELECT ANSWER
+// SELECT ANSWER
 // =============================
-
-function selectAnswer(opt) {
-
-if (userAnswers[currentQ] !== null) return;
-
-const index = questions[currentQ].options.indexOf(opt);
-
-userAnswers[currentQ] = index;
-
-showFeedback(opt);
-
+function selectAnswer(answerIndex) {
+    userAnswers[currentQ] = answerIndex;
 
     localStorage.setItem("examProgress", JSON.stringify(userAnswers));
 
     const buttons = document.querySelectorAll(".option-btn");
 
-    buttons.forEach(btn => {
-
-        if (btn.innerText === opt) {
-
-            btn.classList.add(
-                opt === questions[currentQ].answer
-                    ? "correct"
-                    : "wrong"
-            );
-
+    buttons.forEach((btn, index) => {
+        btn.classList.remove("selected");
+        if (index === answerIndex) {
+            btn.classList.add("selected");
         }
-
     });
 
+    buildQuestionNav();
 }
 
-
 // =============================
-// 5. FEEDBACK
+// FLAG QUESTION
 // =============================
-
-function showFeedback(opt) {
-
-    const qData = questions[currentQ];
-
-    const feedbackBox = document.getElementById("feedback-box");
-    const feedbackResult = document.getElementById("feedback-result");
-    const feedbackExp = document.getElementById("feedback-explanation");
-
-    if (!feedbackBox) return;
-
-    feedbackBox.style.display = "block";
-
-    if (opt === qData.answer) {
-
-        feedbackResult.innerText = "Correct!";
-        feedbackResult.style.color = "#065f46";
-
-        feedbackBox.style.backgroundColor = "#d1fae5";
-        feedbackBox.style.borderColor = "#10b981";
-
+function toggleFlag() {
+    if (flaggedQuestions.includes(currentQ)) {
+        flaggedQuestions = flaggedQuestions.filter(q => q !== currentQ);
+        alert("Flag removed");
     } else {
-
-        feedbackResult.innerText = "Incorrect";
-        feedbackResult.style.color = "#991b1b";
-
-        feedbackBox.style.backgroundColor = "#fee2e2";
-        feedbackBox.style.borderColor = "#ef4444";
-
+        flaggedQuestions.push(currentQ);
+        alert("Question flagged for review");
     }
 
-    feedbackExp.innerText = qData.explanation;
-    feedbackExp.style.color = "#000206";
-
+    buildQuestionNav();
 }
-
-//=================================
-// Question Navigation
-//=================================
-
-function buildQuestionNav(){
-
-const nav = document.getElementById("question-nav");
-
-nav.innerHTML = "";
-
-questions.forEach((q,index)=>{
-
-const btn = document.createElement("button");
-
-btn.innerText = index + 1;
-
-btn.classList.add("nav-btn");
-
-if(index === currentQ){
-btn.classList.add("current");
-}
-
-if(userAnswers[index]){
-btn.classList.add("answered");
-}
-
-if(flaggedQuestions.includes(index)){
-btn.classList.add("flagged");
-}
-
-btn.onclick = () => goToQuestion(index);
-
-nav.appendChild(btn);
-
-});
-
-}
-
 
 // =============================
-// 6. QUESTION NAVIGATION
+// QUESTION NAV
 // =============================
+function buildQuestionNav() {
+    const nav = document.getElementById("question-nav");
+    if (!nav) return;
 
+    nav.innerHTML = "";
+
+    questions.forEach((q, index) => {
+        const btn = document.createElement("button");
+        btn.innerText = index + 1;
+        btn.classList.add("nav-btn");
+
+        if (index === currentQ) {
+            btn.classList.add("current");
+        }
+
+        if (userAnswers[index] !== null && userAnswers[index] !== undefined) {
+            btn.classList.add("answered");
+        }
+
+        if (flaggedQuestions.includes(index)) {
+            btn.classList.add("flagged");
+        }
+
+        btn.onclick = () => goToQuestion(index);
+        nav.appendChild(btn);
+    });
+}
+
+// =============================
+// CHANGE QUESTION
+// =============================
 function changeQuestion(step) {
+    const nextIndex = currentQ + step;
 
-    currentQ += step;
+    if (nextIndex >= questions.length) {
+        showReviewScreen();
+        return;
+    }
 
-    if(currentQ >= questions.length){
-
-    showReviewScreen();
-
-    } else if (currentQ < 0) {
-
+    if (nextIndex < 0) {
         currentQ = 0;
-
     } else {
-
-        loadQuestion();
-
+        currentQ = nextIndex;
     }
 
     localStorage.setItem("currentQuestionIndex", currentQ);
-
-}
-
-//================================
-// Create Review Screen
-//================================
-
-function showReviewScreen(){
-
-const quizBox = document.getElementById("quiz-box");
-
-let reviewHTML = "";
-
-questions.forEach((q,index)=>{
-
-const flagged = flaggedQuestions.includes(index) ? "⚑" : "";
-
-reviewHTML += `
-<div style="margin:10px;padding:10px;border:1px solid #1e293b;">
-Question ${index+1} ${flagged}
-<button onclick="goToQuestion(${index})">Review</button>
-</div>
-`;
-
-});
-
-quizBox.innerHTML = `
-
-<h2>Review Your Exam</h2>
-
-${reviewHTML}
-
-<button onclick="submitExam()">Submit Exam</button>
-
-`;
-
-}
-
-//===========================
-// Jump Back To Questions
-//===========================
-
-function goToQuestion(index){
-
-currentQ = index;
-
-loadQuestion();
-
+    loadQuestion();
 }
 
 // =============================
-// 7. SUBMIT EXAM TO BACKEND
+// GO TO QUESTION
 // =============================
+function goToQuestion(index) {
+    currentQ = index;
+    loadQuestion();
+}
 
+// =============================
+// REVIEW SCREEN
+// =============================
+function showReviewScreen() {
+    const quizBox = document.getElementById("quiz-box");
+    if (!quizBox) return;
+
+    let reviewHTML = "";
+
+    questions.forEach((q, index) => {
+        const flagged = flaggedQuestions.includes(index) ? "⚑ " : "";
+        const answered =
+            userAnswers[index] !== null && userAnswers[index] !== undefined
+                ? "Answered"
+                : "Not Answered";
+
+        reviewHTML += `
+            <div style="margin:10px;padding:12px;border:1px solid #1e293b;border-radius:8px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+                <div>
+                    <strong>Question ${index + 1}</strong>
+                    <span style="margin-left:8px;color:#94a3b8;">${flagged}${answered}</span>
+                </div>
+
+                <button class="btn-secondary" onclick="goToQuestion(${index})">
+                    Review
+                </button>
+            </div>
+        `;
+    });
+
+    quizBox.innerHTML = `
+        <div style="padding:20px;">
+            <h2 style="margin-bottom:10px;">Review Your Final Exam</h2>
+            <p style="color:#94a3b8;margin-bottom:20px;">
+                Review flagged or unanswered questions before submitting.
+            </p>
+
+            ${reviewHTML}
+
+            <div style="margin-top:25px;display:flex;gap:12px;flex-wrap:wrap;">
+                <button class="btn-primary" onclick="submitExam()">Submit Final Exam</button>
+            </div>
+        </div>
+    `;
+}
+
+// =============================
+// SUBMIT EXAM
+// =============================
 async function submitExam() {
+    try {
+        clearInterval(timerInterval);
 
-try {
+        const token = localStorage.getItem("token");
 
-const token = localStorage.getItem("token");
+        const payload = {
+            answers: userAnswers,
+            questions: questions
+        };
 
-const payload = {
-answers: userAnswers,
-questions: questions
-};
+        const res = await fetch(
+            "https://akwire-api.onrender.com/api/exam/submit",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + token
+                },
+                body: JSON.stringify(payload)
+            }
+        );
 
-const res = await fetch("https://akwire-api.onrender.com/api/exam/submit", {
-method: "POST",
-headers: {
-"Content-Type": "application/json",
-"Authorization": "Bearer " + token
-},
-body: JSON.stringify(payload)
-});
+        const result = await res.json();
 
-const result = await res.json();
+        if (!res.ok) {
+            throw new Error(result.message || result.error || "Final exam submission failed");
+        }
 
-showFinalScore(result);
-
-} catch (err) {
-
-console.error("Submit failed:", err);
-
+        showFinalScore(result);
+    } catch (err) {
+        console.error("Submit failed:", err);
+        alert(err.message || "Failed to submit final exam.");
+    }
 }
 
-}
-
-
 // =============================
-// 8. SHOW FINAL SCORE
+// RESULTS
 // =============================
-
 function showFinalScore(result) {
-
-    // Save score to user profile
     let user = JSON.parse(localStorage.getItem("currentUser")) || {};
-
     user.lastExamScore = result.score;
-
     localStorage.setItem("currentUser", JSON.stringify(user));
 
     let reviewHTML = "";
 
     questions.forEach((q, index) => {
+        const selectedIndex = userAnswers[index];
+        const selectedAnswer =
+            selectedIndex !== null && selectedIndex !== undefined
+                ? q.options[selectedIndex]
+                : null;
 
-        if (userAnswers[index] !== q.answer) {
+        const isCorrect = selectedAnswer === q.answer;
 
+        if (!isCorrect) {
             reviewHTML += `
-            <div class="review-item"
-            style="margin-bottom:20px;padding:15px;background:rgba(239,68,68,0.1);
-            border-left:4px solid #ef4444;text-align:left;">
+                <div class="review-item"
+                    style="margin-bottom:20px;padding:15px;background:rgba(239,68,68,0.1);
+                    border-left:4px solid #ef4444;text-align:left;">
 
-            <p style="font-weight:bold;color:white;margin:0;">
-            Question ${index + 1}: ${q.q}
-            </p>
+                    <p style="font-weight:bold;color:white;margin:0;">
+                        Question ${index + 1}: ${q.q}
+                    </p>
 
-            <p style="color:#ef4444;margin:5px 0;">
-            Your Answer: ${userAnswers[index] || "Skipped"}
-            </p>
+                    <p style="color:#ef4444;margin:5px 0;">
+                        Your Answer: ${selectedAnswer || "Skipped"}
+                    </p>
 
-            <p style="color:#10b981;margin:5px 0;">
-            Correct Answer: ${q.answer}
-            </p>
+                    <p style="color:#10b981;margin:5px 0;">
+                        Correct Answer: ${q.answer}
+                    </p>
 
-            <p style="font-style:italic;color:#94a3b8;font-size:.85rem;margin-top:5px;">
-            Rationale: ${q.explanation}
-            </p>
-
-            </div>
+                    <p style="font-style:italic;color:#94a3b8;font-size:.85rem;margin-top:5px;">
+                        Rationale: ${q.explanation}
+                    </p>
+                </div>
             `;
-
         }
-
     });
 
     localStorage.removeItem("examProgress");
@@ -500,95 +378,77 @@ function showFinalScore(result) {
     const quizBox = document.getElementById("quiz-box");
 
     quizBox.innerHTML = `
-    <div style="text-align:center;padding:40px;background:#0f172a;
-    border-radius:12px;border:1px solid #1e293b;">
+        <div style="text-align:center;padding:40px;background:#0f172a;
+        border-radius:12px;border:1px solid #1e293b;">
 
-        <h2 style="color:${passed ? '#22c55e' : '#ef4444'};margin-bottom:10px;">
-        ${passed
-        ? 'MODULE 1 PASSED'
-        : 'RETRY REQUIRED'}
+            <h2 style="color:${passed ? "#22c55e" : "#ef4444"};margin-bottom:10px;">
+                ${passed ? "FINAL EXAM PASSED" : "FINAL EXAM FAILED"}
+            </h2>
 
-        </h2>
+            <h1 style="font-size:4rem;color:#38bdf8;margin:0;">
+                ${result.score}%
+            </h1>
 
-        <h1 style="font-size:4rem;color:#38bdf8;margin:0;">
-        ${result.score}%
-        </h1>
+            <p style="color:#94a3b8;margin-bottom:30px;">
+                You answered ${result.correct} out of ${result.total} correctly.
+            </p>
 
-        <p style="color:#94a3b8;margin-bottom:30px;">
-        You answered ${result.correct} out of ${result.total} correctly.
-        </p>
+            <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
+                <button class="btn-primary" onclick="location.reload()">Retake Exam</button>
+                <button class="btn-secondary" onclick="showReview()">Review Errors</button>
+                <button class="btn-secondary" onclick="goToDashboard()">Dashboard</button>
+                <button class="btn-primary" onclick="window.location.href='academy.html'">Return To Academy</button>
+            </div>
 
-        <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
-            <button class="btn-primary" onclick="location.reload()">Retake Exam</button>
-            <button class="btn-secondary" onclick="showReview()">Review Errors</button>
-            <button class="btn-secondary" onclick="goToDashboard()">Dashboard</button>
-            <button onclick="window.location.href='academy.html'"class="btn-primary">Return To Academy</button>
+            <div id="review-area"
+                style="display:none;margin-top:30px;border-top:1px solid #1e293b;padding-top:20px;">
+
+                <h3 style="color:#94a3b8;margin-bottom:15px;">Error Log:</h3>
+
+                ${reviewHTML || "<p style='color:#10b981;'>No errors detected.</p>"}
+            </div>
         </div>
-
-        <div id="review-area"
-        style="display:none;margin-top:30px;border-top:1px solid #1e293b;padding-top:20px;">
-
-        <h3 style="color:#94a3b8;margin-bottom:15px;">Error Log:</h3>
-
-        ${reviewHTML || "<p style='color:#10b981;'>No errors detected.</p>"}
-
-        </div>
-
-    </div>
     `;
-
 }
 
-
 // =============================
-// 9. REVIEW TOGGLE
+// REVIEW TOGGLE
 // =============================
-
 function showReview() {
-
     const reviewArea = document.getElementById("review-area");
+    if (!reviewArea) return;
 
     reviewArea.style.display =
-        reviewArea.style.display === "none"
-            ? "block"
-            : "none";
-
+        reviewArea.style.display === "none" ? "block" : "none";
 }
 
-
 // =============================
-// 10. DASHBOARD
+// DASHBOARD
 // =============================
-
 function goToDashboard() {
-
     window.location.href = "dashboard.html";
-
 }
 
-
 // =============================
-// 11. START EXAM
+// START
 // =============================
-
 document.addEventListener("DOMContentLoaded", () => {
-
     fetchExam();
-
     startExamTimer();
 
     const nextBtn = document.getElementById("next-btn");
     const prevBtn = document.getElementById("prev-btn");
     const flagBtn = document.getElementById("flag-btn");
 
-    if (nextBtn)
+    if (nextBtn) {
         nextBtn.addEventListener("click", () => changeQuestion(1));
+    }
 
-    if (prevBtn)
+    if (prevBtn) {
         prevBtn.addEventListener("click", () => changeQuestion(-1));
+    }
 
-    if(flagBtn)
-       flagBtn.addEventListener("click", toggleFlag);
-    
-
+    if (flagBtn) {
+        flagBtn.addEventListener("click", toggleFlag);
+    }
 });

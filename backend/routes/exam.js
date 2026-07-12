@@ -8,40 +8,29 @@ import {
   createExam,
   getExamHistory,
   getRecommendations
-}
+} from "../controllers/examController.js";
 
-from "../controllers/examController.js";
 import { protect } from "../middleware/authMiddleware.js";
 import { admin } from "../middleware/adminMiddleware.js";
 import ExamResult from "../models/ExamResult.js";
 import Course from "../models/Course.js";
 
-
 const router = express.Router();
 
+// =====================================
+// EXAM LOAD ROUTES
+// =====================================
+router.get("/", protect, getExam);
+router.get("/final", protect, getFinalExam);
 router.get("/module/:id", protect, getModuleQuiz);
 
-router.get(
-  "/final",
-  protect,
-  getFinalExam
-);
-
-// Get exam questions
-
-router.get(
-  "/module/:id",
-  protect,
-  getModuleQuiz
-);
-
-router.get("/", protect, getExam);
-
-
-// Submit exam answers + save result
+// =====================================
+// SUBMIT EXAM
+// =====================================
 router.post("/submit", protect, async (req, res) => {
   try {
     console.log("🔥 CUSTOM EXAM SUBMIT ROUTE HIT");
+
     const { answers, questions } = req.body;
 
     let correct = 0;
@@ -49,7 +38,12 @@ router.post("/submit", protect, async (req, res) => {
     const domainCounts = {};
 
     questions.forEach((q, index) => {
-      const selectedAnswerText = q.options[answers[index]];
+      const selectedIndex = answers[index];
+      const selectedAnswerText =
+        selectedIndex !== null && selectedIndex !== undefined
+          ? q.options[selectedIndex]
+          : null;
+
       const isCorrect = selectedAnswerText === q.answer;
 
       if (isCorrect) correct++;
@@ -68,49 +62,27 @@ router.post("/submit", protect, async (req, res) => {
     const score = Math.round((correct / questions.length) * 100);
 
     // Award certificate only if final exam passed
-
     if (score >= 80) {
-
       const user = req.user;
 
       const course = await Course.findOne({
-
         title: "Security+ Fundamentals"
-
       });
 
       if (course) {
-
-        const alreadyCertified =
-
-          user.certifiedCourses?.some(
-
-            cert =>
-
-              cert.toString() ===
-              course._id.toString()
-
-          );
+        const alreadyCertified = user.certifiedCourses?.some(
+          cert => cert.toString() === course._id.toString()
+        );
 
         if (!alreadyCertified) {
-
-          user.certifiedCourses.push(
-            course._id
-          );
-
+          user.certifiedCourses.push(course._id);
           await user.save();
-
-          console.log(
-            "Certificate awarded"
-          );
-
+          console.log("Certificate awarded");
         }
-
       }
-
     }
 
-    // Convert domain scores to %
+    // Convert domain scores to percentages
     for (const domain in domainScores) {
       domainScores[domain] = Math.round(
         (domainScores[domain] / domainCounts[domain]) * 100
@@ -139,8 +111,15 @@ router.post("/submit", protect, async (req, res) => {
   }
 });
 
-// History / recommendations
+// =====================================
+// HISTORY / RECOMMENDATIONS
+// =====================================
 router.get("/history", protect, getExamHistory);
 router.get("/recommendations", protect, getRecommendations);
+
+// =====================================
+// ADMIN
+// =====================================
+router.post("/", protect, admin, createExam);
 
 export default router;
