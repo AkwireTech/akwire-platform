@@ -383,15 +383,7 @@ export default class ExamEngine {
 
         }
 
-        if (
-
-            confirm(
-
-                "Resume previous exam?"
-
-            )
-
-        ) {
+        if (true) {
 
             this.answers =
                 session.answers || [];
@@ -1006,21 +998,15 @@ export default class ExamEngine {
 
     returnToQuestion(index) {
 
-        this.currentQuestion =
-            index;
+    this.currentQuestion = index;
 
-        this.reviewMode =
-            false;
+    this.reviewMode = false;
 
-        this.cacheElements();
+    // Restore the original exam page
 
-        this.attachEvents();
+    location.reload();
 
-        this.renderQuestion();
-
-        this.startTimer();
-
-    }
+}
 
     /* ==========================================
        RESUME EXAM
