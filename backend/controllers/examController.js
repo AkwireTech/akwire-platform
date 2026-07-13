@@ -295,6 +295,34 @@ export const getFinalExam = async (req, res) => {
 
     res.json(exam);
 
+    // =====================================
+// Shuffle Final Exam Questions
+// =====================================
+
+const shuffledQuestions = [...exam.questions];
+
+for (
+    let i = shuffledQuestions.length - 1;
+    i > 0;
+    i--
+) {
+
+    const j = Math.floor(
+        Math.random() * (i + 1)
+    );
+
+    [
+        shuffledQuestions[i],
+        shuffledQuestions[j]
+    ] = [
+        shuffledQuestions[j],
+        shuffledQuestions[i]
+    ];
+
+}
+
+exam.questions = shuffledQuestions;
+
   } catch (error) {
 
     console.error(error);
