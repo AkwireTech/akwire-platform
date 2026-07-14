@@ -237,129 +237,109 @@ export const getModuleQuiz = async (req, res) => {
 
 export const getFinalExam = async (req, res) => {
 
-  try {
+    try {
 
-    const user = await User.findById(req.user._id);
+        const user = await User.findById(req.user._id);
 
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found"
-      });
-    }
+        if (!user) {
 
-    console.log("========== FINAL EXAM ==========");
-    console.log("req.user._id:", req.user._id);
-    console.log(
-      "completedCourses:",
-      JSON.stringify(user.completedCourses, null, 2)
-    );
+            return res.status(404).json({
+                message: "User not found"
+            });
 
-    const securityCompleted = user.completedCourses.some(course => {
+        }
 
-      const id = course.courseId._id
-        ? course.courseId._id.toString()
-        : course.courseId.toString();
+        const securityCompleted = user.completedCourses.some(course => {
 
-      console.log("Comparing:", id);
+            const id = course.courseId._id
+                ? course.courseId._id.toString()
+                : course.courseId.toString();
 
-      return id === "6a2d0788ddb079f4875ee58a";
+            return id === "6a2d0788ddb079f4875ee58a";
 
-    });
+        });
 
-    if (!securityCompleted) {
+        if (!securityCompleted) {
 
-      return res.status(403).json({
+            return res.status(403).json({
+                message: "Complete Security+ Fundamentals before taking the Final Exam"
+            });
 
-        message:
-          "Complete Security+ Fundamentals before taking the Final Exam"
+        }
 
-      });
+        const exam = await Exam.findOne({
 
-    }
+            title: "Security+ Fundamentals Final Exam"
 
-    const exam = await Exam.findOne({
+        }).lean();
 
-      title: "Security+ Fundamentals Final Exam"
+        if (!exam) {
 
-    });
+            return res.status(404).json({
+                message: "Final exam not found"
+            });
 
-    if (!exam) {
+        }
 
-      return res.status(404).json({
+        // ==========================================
+        // Shuffle Questions
+        // ==========================================
 
-        message: "Final exam not found"
+        const questions = [...exam.questions];
 
-      });
+        for (let i = questions.length - 1; i > 0; i--) {
 
-    }
+            const j = Math.floor(Math.random() * (i + 1));
 
-    res.json(exam);
+            [questions[i], questions[j]] = [
+                questions[j],
+                questions[i]
+            ];
 
-    // =====================================
-// Shuffle Final Exam Questions
-// =====================================
+        }
 
-// =====================================
-// Randomize Question Order
-// =====================================
+        // ==========================================
+        // Shuffle Answer Choices
+        // ==========================================
 
-const shuffledQuestions = [...exam.questions];
+        questions.forEach(question => {
 
-for (let i = shuffledQuestions.length - 1; i > 0; i--) {
+            const options = [...question.options];
 
-    const j = Math.floor(Math.random() * (i + 1));
+            for (let i = options.length - 1; i > 0; i--) {
 
-    [
-        shuffledQuestions[i],
-        shuffledQuestions[j]
-    ] = [
-        shuffledQuestions[j],
-        shuffledQuestions[i]
-    ];
+                const j = Math.floor(Math.random() * (i + 1));
 
-}
+                [options[i], options[j]] = [
+                    options[j],
+                    options[i]
+                ];
 
-// =====================================
-// Randomize Answer Choices
-// =====================================
+            }
 
-shuffledQuestions.forEach(question => {
+            question.options = options;
 
-    const options = [...question.options];
+            question.explanation =
+                question.explanation || "";
 
-    for (let i = options.length - 1; i > 0; i--) {
+        });
 
-        const j = Math.floor(Math.random() * (i + 1));
+        exam.questions = questions;
 
-        [options[i], options[j]] = [
-            options[j],
-            options[i]
-        ];
+        return res.json(exam);
 
     }
 
-    question.options = options;
+    catch (error) {
 
-    // Keep explanation from becoming undefined
-    question.explanation =
-        question.explanation || "";
+        console.error(error);
 
-});
+        res.status(500).json({
 
-exam.questions = shuffledQuestions;
+            message: "Server Error"
 
-res.json(exam);
+        });
 
-  } catch (error) {
-
-    console.error(error);
-
-    res.status(500).json({
-
-      message: "Server Error"
-
-    });
-
-  }
+    }
 
 };
