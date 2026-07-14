@@ -299,17 +299,15 @@ export const getFinalExam = async (req, res) => {
 // Shuffle Final Exam Questions
 // =====================================
 
+// =====================================
+// Randomize Question Order
+// =====================================
+
 const shuffledQuestions = [...exam.questions];
 
-for (
-    let i = shuffledQuestions.length - 1;
-    i > 0;
-    i--
-) {
+for (let i = shuffledQuestions.length - 1; i > 0; i--) {
 
-    const j = Math.floor(
-        Math.random() * (i + 1)
-    );
+    const j = Math.floor(Math.random() * (i + 1));
 
     [
         shuffledQuestions[i],
@@ -321,7 +319,36 @@ for (
 
 }
 
+// =====================================
+// Randomize Answer Choices
+// =====================================
+
+shuffledQuestions.forEach(question => {
+
+    const options = [...question.options];
+
+    for (let i = options.length - 1; i > 0; i--) {
+
+        const j = Math.floor(Math.random() * (i + 1));
+
+        [options[i], options[j]] = [
+            options[j],
+            options[i]
+        ];
+
+    }
+
+    question.options = options;
+
+    // Keep explanation from becoming undefined
+    question.explanation =
+        question.explanation || "";
+
+});
+
 exam.questions = shuffledQuestions;
+
+res.json(exam);
 
   } catch (error) {
 
