@@ -229,9 +229,7 @@ function selectAnswer(opt) {
 
 if (userAnswers[currentQ] !== null) return;
 
-const index = questions[currentQ].options.indexOf(opt);
-
-userAnswers[currentQ] = index;
+userAnswers[currentQ] = opt;
 
 showFeedback(opt);
 
@@ -318,7 +316,7 @@ if(index === currentQ){
 btn.classList.add("current");
 }
 
-if(userAnswers[index]){
+if (userAnswers[index] !== null){
 btn.classList.add("answered");
 }
 
@@ -341,29 +339,31 @@ nav.appendChild(btn);
 
 function changeQuestion(step) {
 
-    if (currentQ === questions.length - 1) {
+    // Last question
 
-        const confirmed = confirm(
+    if (
 
-            "Submit Final Exam?\n\n" +
-            "Click OK to submit.\n" +
-            "Click Cancel to continue reviewing."
+        currentQ === questions.length - 1 &&
 
-        );
+        step > 0
 
-        if (confirmed) {
+    ) {
 
-            submitExam();
-
-            return;
-
-        }
+        showReviewScreen();
 
         return;
 
     }
 
-    currentQ++;
+    currentQ += step;
+
+    if (currentQ < 0)
+
+        currentQ = 0;
+
+    if (currentQ >= questions.length)
+
+        currentQ = questions.length - 1;
 
     loadQuestion();
 
@@ -375,47 +375,35 @@ function changeQuestion(step) {
 
 function showReviewScreen() {
 
-    const unanswered = [];
+    let review = "";
 
-    for (let i = 0; i < questions.length; i++) {
+    questions.forEach((q, index) => {
 
-        if (userAnswers[i] === null) {
+        const status =
 
-            unanswered.push(i + 1);
+            flaggedQuestions.includes(index)
 
-        }
+            ? "🚩 Flagged"
 
-    }
+            : userAnswers[index] === null
 
-    let message = "";
+                ? "⬜ Unanswered"
 
-    if (flaggedQuestions.length) {
+                : "✅ Answered";
 
-        message +=
-            "Flagged Questions: " +
-            flaggedQuestions.map(i => i + 1).join(", ") +
-            "\n\n";
+        review +=
 
-    }
+            `Question ${index + 1} - ${status}\n`;
 
-    if (unanswered.length) {
+    });
 
-        message +=
-            "Unanswered Questions: " +
-            unanswered.join(", ") +
-            "\n\n";
+    review +=
+        "\nPress OK to continue reviewing.\n";
 
-    }
+    review +=
+        "Press Finish Exam again to submit.";
 
-    message +=
-        "Press OK to continue reviewing.\n\n" +
-        "When finished, press Finish Exam again to submit.";
-
-    alert(message);
-
-    currentQ = 0;
-
-    loadQuestion();
+    alert(review);
 
 }
 
