@@ -341,23 +341,31 @@ nav.appendChild(btn);
 
 function changeQuestion(step) {
 
-    currentQ += step;
+    if (currentQ === questions.length - 1) {
 
-    if(currentQ >= questions.length){
+        const confirmed = confirm(
 
-    showReviewScreen();
+            "Submit Final Exam?\n\n" +
+            "Click OK to submit.\n" +
+            "Click Cancel to continue reviewing."
 
-    } else if (currentQ < 0) {
+        );
 
-        currentQ = 0;
+        if (confirmed) {
 
-    } else {
+            submitExam();
 
-        loadQuestion();
+            return;
+
+        }
+
+        return;
 
     }
 
-    localStorage.setItem("currentQuestionIndex", currentQ);
+    currentQ++;
+
+    loadQuestion();
 
 }
 
@@ -365,34 +373,49 @@ function changeQuestion(step) {
 // Create Review Screen
 //================================
 
-function showReviewScreen(){
+function showReviewScreen() {
 
-const quizBox = document.getElementById("quiz-box");
+    const unanswered = [];
 
-let reviewHTML = "";
+    for (let i = 0; i < questions.length; i++) {
 
-questions.forEach((q,index)=>{
+        if (userAnswers[i] === null) {
 
-const flagged = flaggedQuestions.includes(index) ? "⚑" : "";
+            unanswered.push(i + 1);
 
-reviewHTML += `
-<div style="margin:10px;padding:10px;border:1px solid #1e293b;">
-Question ${index+1} ${flagged}
-<button onclick="goToQuestion(${index})">Review</button>
-</div>
-`;
+        }
 
-});
+    }
 
-quizBox.innerHTML = `
+    let message = "";
 
-<h2>Review Your Exam</h2>
+    if (flaggedQuestions.length) {
 
-${reviewHTML}
+        message +=
+            "Flagged Questions: " +
+            flaggedQuestions.map(i => i + 1).join(", ") +
+            "\n\n";
 
-<button onclick="submitExam()">Submit Exam</button>
+    }
 
-`;
+    if (unanswered.length) {
+
+        message +=
+            "Unanswered Questions: " +
+            unanswered.join(", ") +
+            "\n\n";
+
+    }
+
+    message +=
+        "Press OK to continue reviewing.\n\n" +
+        "When finished, press Finish Exam again to submit.";
+
+    alert(message);
+
+    currentQ = 0;
+
+    loadQuestion();
 
 }
 
