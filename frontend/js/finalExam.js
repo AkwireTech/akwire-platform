@@ -133,6 +133,8 @@ function loadQuestion() {
 
     const qData = questions[currentQ];
 
+    console.log(qData);
+
     if (!qData) return;
 
     document.getElementById("question-number").innerText =
