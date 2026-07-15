@@ -145,15 +145,16 @@ function loadQuestion() {
         </div>
 
         <div class="question-title">
-            ${qData.q}
+            ${qData.question}
         </div>
 
     `;
 
     const feedbackBox = document.getElementById("feedback-box");
 
-    if (feedbackBox)
+    if (feedbackBox) {
         feedbackBox.style.display = "none";
+    }
 
     const optionsDiv = document.getElementById("options-container");
 
@@ -184,18 +185,44 @@ function loadQuestion() {
     });
 
     const prevBtn = document.getElementById("prev-btn");
-
     const nextBtn = document.getElementById("next-btn");
 
-    if (prevBtn)
+    // Previous button
+    if (prevBtn) {
+
         prevBtn.style.visibility =
             currentQ === 0 ? "hidden" : "visible";
 
-    if (nextBtn)
-        nextBtn.innerText =
-            currentQ === questions.length - 1
-                ? "Finish Exam"
-                : "Next";
+        prevBtn.onclick = () => changeQuestion(-1);
+
+    }
+
+    // Next / Finish button
+    if (nextBtn) {
+
+        if (currentQ === questions.length - 1) {
+
+            nextBtn.innerText = "Finish Exam";
+
+            nextBtn.onclick = () => {
+
+                showReviewScreen();
+
+            };
+
+        } else {
+
+            nextBtn.innerText = "Next";
+
+            nextBtn.onclick = () => {
+
+                changeQuestion(1);
+
+            };
+
+        }
+
+    }
 
 }
 
@@ -339,71 +366,162 @@ nav.appendChild(btn);
 
 function changeQuestion(step) {
 
-    // Last question
+    // Previous
+    if (step < 0) {
 
-    if (
+        if (currentQ > 0) {
 
-        currentQ === questions.length - 1 &&
+            currentQ--;
 
-        step > 0
+            loadQuestion();
 
-    ) {
-
-        showReviewScreen();
+        }
 
         return;
 
     }
 
-    currentQ += step;
+    // Next / Finish
+    if (currentQ < questions.length - 1) {
 
-    if (currentQ < 0)
+        currentQ++;
 
-        currentQ = 0;
+        loadQuestion();
 
-    if (currentQ >= questions.length)
+        return;
 
-        currentQ = questions.length - 1;
+    }
 
-    loadQuestion();
+    // Last question reached
+    showReviewScreen();
 
 }
-
 //================================
 // Create Review Screen
 //================================
 
 function showReviewScreen() {
 
-    let review = "";
+    // Hide exam
 
-    questions.forEach((q, index) => {
+    document.getElementById("quiz-box").style.display = "none";
 
-        const status =
+    // Show review panel
 
-            flaggedQuestions.includes(index)
+    document.getElementById("review-panel").style.display = "block";
 
-            ? "🚩 Flagged"
+    // Statistics
 
-            : userAnswers[index] === null
+    const answered =
+        userAnswers.filter(answer => answer !== null).length;
 
-                ? "⬜ Unanswered"
+    const remaining =
+        questions.length - answered;
 
-                : "✅ Answered";
+    document.getElementById("answered-count").innerText = answered;
 
-        review +=
+    document.getElementById("remaining-count").innerText = remaining;
 
-            `Question ${index + 1} - ${status}\n`;
+    document.getElementById("flagged-count").innerText =
+        flaggedQuestions.length;
+
+    const reviewList =
+        document.getElementById("review-list");
+
+    reviewList.innerHTML = "";
+
+    questions.forEach((question, index) => {
+
+        const answeredQuestion =
+            userAnswers[index] !== null;
+
+        const flagged =
+            flaggedQuestions.includes(index);
+
+        const row =
+            document.createElement("div");
+
+        row.className = "review-item";
+
+        row.innerHTML = `
+
+            <div class="review-item-left">
+
+                <div class="review-question">
+
+                    Question ${index + 1}
+
+                </div>
+
+                <div class="review-status ${
+
+                    flagged
+
+                        ? "flagged"
+
+                        : answeredQuestion
+
+                            ? "answered"
+
+                            : "unanswered"
+
+                }">
+
+                    ${
+
+                        flagged
+
+                            ? "🚩 Flagged"
+
+                            : answeredQuestion
+
+                                ? "✓ Answered"
+
+                                : "○ Unanswered"
+
+                    }
+
+                </div>
+
+            </div>
+
+            <button
+
+                class="review-btn"
+
+                onclick="reviewQuestion(${index})"
+
+            >
+
+                Review
+
+            </button>
+
+        `;
+
+        reviewList.appendChild(row);
 
     });
 
-    review +=
-        "\nPress OK to continue reviewing.\n";
+}
 
-    review +=
-        "Press Finish Exam again to submit.";
+function reviewQuestion(index){
 
-    alert(review);
+    currentQ = index;
+
+    document.getElementById("review-panel").style.display = "none";
+
+    document.getElementById("quiz-box").style.display = "block";
+
+    loadQuestion();
+
+}
+
+function continueExam(){
+
+    document.getElementById("review-panel").style.display = "none";
+
+    document.getElementById("quiz-box").style.display = "block";
 
 }
 
@@ -588,18 +706,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     startExamTimer();
 
-    const nextBtn = document.getElementById("next-btn");
-    const prevBtn = document.getElementById("prev-btn");
     const flagBtn = document.getElementById("flag-btn");
 
-    if (nextBtn)
-        nextBtn.addEventListener("click", () => changeQuestion(1));
+    if (flagBtn) {
 
-    if (prevBtn)
-        prevBtn.addEventListener("click", () => changeQuestion(-1));
+        flagBtn.addEventListener("click", toggleFlag);
 
-    if(flagBtn)
-       flagBtn.addEventListener("click", toggleFlag);
-    
+    }
 
 });
+
+const continueBtn =
+    document.getElementById("continue-exam-btn");
+
+if (continueBtn){
+
+    continueBtn.onclick = continueExam;
+
+}
+
+const submitBtn =
+    document.getElementById("submit-final-btn");
+
+if (submitBtn){
+
+    submitBtn.onclick = submitExam;
+
+}
