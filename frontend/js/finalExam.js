@@ -133,8 +133,6 @@ function loadQuestion() {
 
     const qData = questions[currentQ];
 
-    console.log(qData);
-
     if (!qData) return;
 
     document.getElementById("question-number").innerText =
@@ -147,7 +145,7 @@ function loadQuestion() {
         </div>
 
         <div class="question-title">
-            ${qData.question}
+            ${qData.q}
         </div>
 
     `;
