@@ -543,33 +543,54 @@ loadQuestion();
 
 async function submitExam() {
 
-try {
+    try {
 
-const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
 
-const payload = {
-answers: userAnswers,
-questions: questions
-};
+        const payload = {
+            answers: userAnswers,
+            questions: questions
+        };
 
-const res = await fetch("https://akwire-api.onrender.com/api/exam/submit", {
-method: "POST",
-headers: {
-"Content-Type": "application/json",
-"Authorization": "Bearer " + token
-},
-body: JSON.stringify(payload)
-});
+        console.log("Submitting Exam:", payload);
 
-const result = await res.json();
+        const res = await fetch(
+            "https://akwire-api.onrender.com/api/exam/submit",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + token
+                },
+                body: JSON.stringify(payload)
+            }
+        );
 
-showFinalScore(result);
+        const result = await res.json();
 
-} catch (err) {
+        console.log("Submit Response:", result);
 
-console.error("Submit failed:", err);
+        if (!res.ok) {
 
-}
+            alert(result.message || result.error || "Failed to submit exam.");
+
+            return;
+
+        }
+
+        // Hide the review panel
+        document.getElementById("review-panel").style.display = "none";
+
+        // Show the final results
+        showFinalScore(result);
+
+    } catch (err) {
+
+        console.error("Submit failed:", err);
+
+        alert("An unexpected error occurred while submitting the exam.");
+
+    }
 
 }
 
