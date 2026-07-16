@@ -58,42 +58,50 @@ router.post("/submit", protect, async (req, res) => {
 
         questions.forEach((q, index) => {
 
-            const selectedAnswer = answers[index];
+    const submitted = answers[index];
 
-            const isCorrect =
-                selectedAnswer === q.answer;
+    let selectedAnswer;
 
-            if (isCorrect) {
+    // Backward compatibility:
+    // Old exams send option indexes.
+    // New exams may send answer text.
 
-                correct++;
+    if (typeof submitted === "number") {
 
-            }
+        selectedAnswer = q.options[submitted];
 
-            const domain =
-                q.domain || "General";
+    } else {
 
-            if (!domainScores[domain]) {
+        selectedAnswer = submitted;
 
-                domainScores[domain] = 0;
-                domainCounts[domain] = 0;
+    }
 
-            }
+    const isCorrect = selectedAnswer === q.answer;
 
-            if (isCorrect) {
+    if (isCorrect) {
 
-                domainScores[domain]++;
+        correct++;
 
-            }
+    }
 
-            domainCounts[domain]++;
+    const domain = q.domain || "General";
 
-        });
+    if (!domainScores[domain]) {
 
-        const score = Math.round(
+        domainScores[domain] = 0;
+        domainCounts[domain] = 0;
 
-            (correct / questions.length) * 100
+    }
 
-        );
+    if (isCorrect) {
+
+        domainScores[domain]++;
+
+    }
+
+    domainCounts[domain]++;
+
+});
 
         // ===========================
         // Update User Record
