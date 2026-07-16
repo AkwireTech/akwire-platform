@@ -27,88 +27,194 @@ router.get("/module/:id", protect, getModuleQuiz);
 // =====================================
 // SUBMIT EXAM
 // =====================================
+// =====================================
+// SUBMIT EXAM
+// =====================================
 router.post("/submit", protect, async (req, res) => {
-  try {
-    console.log("🔥 CUSTOM EXAM SUBMIT ROUTE HIT");
 
-    const { answers, questions } = req.body;
+    try {
 
-    let correct = 0;
-    const domainScores = {};
-    const domainCounts = {};
+        console.log("🔥 CUSTOM EXAM SUBMIT ROUTE HIT");
 
-    questions.forEach((q, index) => {
-      const selectedIndex = answers[index];
-      const selectedAnswerText =
-        selectedIndex !== null && selectedIndex !== undefined
-          ? q.options[selectedIndex]
-          : null;
+        const { answers, questions } = req.body;
 
-      const isCorrect = selectedAnswerText === q.answer;
+        if (!answers || !questions) {
 
-      if (isCorrect) correct++;
+            return res.status(400).json({
+                message: "Invalid exam submission"
+            });
 
-      const domain = q.domain || "General";
+        }
 
-      if (!domainScores[domain]) {
-        domainScores[domain] = 0;
-        domainCounts[domain] = 0;
-      }
+        let correct = 0;
 
-      if (isCorrect) domainScores[domain]++;
-      domainCounts[domain]++;
-    });
+        const domainScores = {};
 
-    const score = Math.round((correct / questions.length) * 100);
+        const domainCounts = {};
 
-    // Award certificate only if final exam passed
-    if (score >= 80) {
-      const user = req.user;
+        // ===========================
+        // Calculate Score
+        // ===========================
 
-      const course = await Course.findOne({
-        title: "Security+ Fundamentals"
-      });
+        questions.forEach((q, index) => {
 
-      if (course) {
-        const alreadyCertified = user.certifiedCourses?.some(
-          cert => cert.toString() === course._id.toString()
+            const selectedAnswer = answers[index];
+
+            const isCorrect =
+                selectedAnswer === q.answer;
+
+            if (isCorrect) {
+
+                correct++;
+
+            }
+
+            const domain =
+                q.domain || "General";
+
+            if (!domainScores[domain]) {
+
+                domainScores[domain] = 0;
+                domainCounts[domain] = 0;
+
+            }
+
+            if (isCorrect) {
+
+                domainScores[domain]++;
+
+            }
+
+            domainCounts[domain]++;
+
+        });
+
+        const score = Math.round(
+
+            (correct / questions.length) * 100
+
         );
 
-        if (!alreadyCertified) {
-          user.certifiedCourses.push(course._id);
-          await user.save();
-          console.log("Certificate awarded");
+        // ===========================
+        // Update User Record
+        // ===========================
+
+        const user = req.user;
+
+        user.lastExamScore = score;
+
+        if (!user.examAttempts) {
+
+            user.examAttempts = [];
+
         }
-      }
+
+        user.examAttempts.push({
+
+            score,
+
+            date: new Date()
+
+        });
+
+        // ===========================
+        // Award Certificate
+        // ===========================
+
+        if (score >= 80) {
+
+            const course = await Course.findOne({
+
+                title: "Security+ Fundamentals"
+
+            });
+
+            if (course) {
+
+                const alreadyCertified =
+
+                    user.certifiedCourses?.some(
+
+                        cert =>
+
+                            cert.toString() ===
+                            course._id.toString()
+
+                    );
+
+                if (!alreadyCertified) {
+
+                    user.certifiedCourses.push(
+
+                        course._id
+
+                    );
+
+                }
+
+            }
+
+        }
+
+        await user.save();
+
+        // ===========================
+        // Convert Domain Scores
+        // ===========================
+
+        for (const domain in domainScores) {
+
+            domainScores[domain] = Math.round(
+
+                (domainScores[domain] /
+                 domainCounts[domain]) * 100
+
+            );
+
+        }
+
+        // ===========================
+        // Save Exam Result
+        // ===========================
+
+        const savedResult = await ExamResult.create({
+
+            userId: user._id,
+
+            score,
+
+            domainScores
+
+        });
+
+        console.log("Exam saved:", savedResult);
+
+        res.json({
+
+            score,
+
+            correct,
+
+            total: questions.length,
+
+            domainScores
+
+        });
+
     }
 
-    // Convert domain scores to percentages
-    for (const domain in domainScores) {
-      domainScores[domain] = Math.round(
-        (domainScores[domain] / domainCounts[domain]) * 100
-      );
+    catch (err) {
+
+        console.error("Exam submit error:", err);
+
+        res.status(500).json({
+
+            error: err.message
+
+        });
+
     }
 
-    // Save exam result
-    const savedResult = await ExamResult.create({
-      userId: req.user._id,
-      score,
-      domainScores
-    });
-
-    console.log("Exam saved:", savedResult);
-
-    res.json({
-      score,
-      correct,
-      total: questions.length,
-      domainScores
-    });
-
-  } catch (err) {
-    console.error("Exam submit error:", err);
-    res.status(500).json({ error: err.message });
-  }
 });
 
 // =====================================
