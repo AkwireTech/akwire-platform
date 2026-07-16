@@ -166,7 +166,11 @@ function loadQuestion() {
 
         btn.className = "option-btn";
 
-        if (userAnswers[currentQ] === opt) {
+        if (
+                questions[currentQ].options[
+                    userAnswers[currentQ]
+                ] === opt
+            ) {
 
             btn.classList.add(
                 opt === qData.answer ? "correct" : "wrong"
@@ -254,25 +258,36 @@ alert("Question flagged for review");
 
 function selectAnswer(opt) {
 
-if (userAnswers[currentQ] !== null) return;
+    if (userAnswers[currentQ] !== null) return;
 
-userAnswers[currentQ] = opt;
+    // Save the OPTION INDEX instead of the answer text
+    const optionIndex =
+        questions[currentQ].options.indexOf(opt);
 
-showFeedback(opt);
+    userAnswers[currentQ] = optionIndex;
 
+    localStorage.setItem(
+        "examProgress",
+        JSON.stringify(userAnswers)
+    );
 
-    localStorage.setItem("examProgress", JSON.stringify(userAnswers));
+    showFeedback(opt);
 
-    const buttons = document.querySelectorAll(".option-btn");
+    const buttons =
+        document.querySelectorAll(".option-btn");
 
     buttons.forEach(btn => {
 
         if (btn.innerText === opt) {
 
             btn.classList.add(
+
                 opt === questions[currentQ].answer
+
                     ? "correct"
+
                     : "wrong"
+
             );
 
         }
