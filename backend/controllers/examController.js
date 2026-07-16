@@ -4,6 +4,7 @@ import ExamResult from "../models/ExamResult.js";
 import Course from "../models/Course.js";
 import { generateExam } from "../services/examService.js";
 import { generateRecommendations } from "../services/adaptiveTraining.js";
+import { gradeExam } from "../services/examGrader.js";
 
 // =============================
 // GET EXAM (Random 20 Questions)
@@ -86,62 +87,84 @@ export const getRecommendations = async (req, res) => {
 // =============================
 export const submitExam = async (req, res) => {
 
-try {
+    try {
 
-const { answers, questions } = req.body;
+        const { answers, questions } = req.body;
 
-if (!answers || !questions) {
-return res.status(400).json({ message: "Invalid exam submission" });
-}
+        if (!answers || !questions) {
 
-let score = 0;
+            return res.status(400).json({
 
-questions.forEach((q, index) => {
+                message: "Invalid exam submission"
 
-const selectedIndex = answers[index];
+            });
 
-if (selectedIndex === undefined) return;
+        }
 
-const selectedAnswer = q.options[selectedIndex];
+        const {
 
-if (selectedAnswer === q.answer) {
-score++;
-}
+            score,
+            correct,
+            total,
+            domainScores
 
-});
+        } = gradeExam(questions, answers);
 
-const percent = Math.round((score / questions.length) * 100);
+        const user = await User.findById(req.user._id);
 
-const user = await User.findById(req.user._id);
+        user.lastExamScore = score;
 
-user.lastExamScore = percent;
+        if (!user.examAttempts) {
 
-if (!user.examAttempts) {
-user.examAttempts = [];
-}
+            user.examAttempts = [];
 
-user.examAttempts.push({
-score: percent,
-date: new Date()
-});
+        }
 
-await user.save();
+        user.examAttempts.push({
 
-res.json({
-score: percent,
-correct: score,
-total: questions.length
-});
+            score,
 
-} catch (error) {
+            date: new Date()
 
-console.error("Submit exam error:", error);
+        });
 
-res.status(500).json({
-message: "Server error while submitting exam"
-});
+        await user.save();
 
-}
+        await ExamResult.create({
+
+            userId: user._id,
+
+            score,
+
+            domainScores
+
+        });
+
+        res.json({
+
+            score,
+
+            correct,
+
+            total,
+
+            domainScores
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error("Submit exam error:", error);
+
+        res.status(500).json({
+
+            message: "Server error while submitting exam"
+
+        });
+
+    }
 
 };
 
