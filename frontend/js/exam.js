@@ -122,8 +122,10 @@ function loadQuestion() {
         btn.innerText = opt;
 
         if (userAnswers[currentQ] === index) {
+
             btn.classList.add("selected");
-        }
+
+    }
 
         btn.onclick = () => selectAnswer(index);
         optionsDiv.appendChild(btn);
@@ -148,20 +150,35 @@ function loadQuestion() {
 // SELECT ANSWER
 // =============================
 function selectAnswer(answerIndex) {
+
     userAnswers[currentQ] = answerIndex;
 
-    localStorage.setItem("examProgress", JSON.stringify(userAnswers));
+    localStorage.setItem(
+        "examProgress",
+        JSON.stringify(userAnswers)
+    );
 
-    const buttons = document.querySelectorAll(".option-btn");
+    const buttons =
+        document.querySelectorAll(".option-btn");
 
     buttons.forEach((btn, index) => {
-        btn.classList.remove("selected");
+
+        btn.classList.remove(
+            "selected",
+            "correct",
+            "wrong"
+        );
+
         if (index === answerIndex) {
+
             btn.classList.add("selected");
+
         }
+
     });
 
     buildQuestionNav();
+
 }
 
 // =============================

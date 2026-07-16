@@ -692,6 +692,30 @@ body.matrix-mode .pulse-icon {
     cursor: pointer;
 }
 
+.option-btn.selected {
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+    border-color: #2563eb;
+
+    font-weight: 600;
+
+    transform: translateX(4px);
+
+    transition: all 0.2s ease;
+
+}
+
+.option-btn:hover {
+
+    background: #dbeafe;
+
+    border-color: #2563eb;
+
+}
+
 /* Correct/Wrong Logic */
 .correct { background-color: #d1fae5 !important; border-color: #10b981 !important; }
 .wrong { background-color: #fee2e2 !important; border-color: #ef4444 !important; }
