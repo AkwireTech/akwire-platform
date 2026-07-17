@@ -260,6 +260,126 @@ document.addEventListener("DOMContentLoaded", async () => {
         const attempts =
             examData.attempts || [];
 
+            // ==========================
+            // EXAM ANALYTICS
+            // ==========================
+
+            const practiceAttempts =
+                examData.practiceAttempts || [];
+
+            const moduleAttempts =
+                examData.moduleAttempts || [];
+
+            const latestFinal =
+                examData.latestFinal;
+
+            const practiceAttemptsEl =
+                document.getElementById("practiceAttempts");
+
+            if (practiceAttemptsEl) {
+
+                practiceAttemptsEl.textContent =
+                    practiceAttempts.length;
+
+            }
+
+            const practiceAverageEl =
+                document.getElementById("practiceAverage");
+
+            if (practiceAverageEl) {
+
+                practiceAverageEl.textContent =
+                    (examData.practiceAverage || 0) + "%";
+
+            }
+
+            const practiceHighestEl =
+                document.getElementById("practiceHighest");
+
+            if (practiceHighestEl) {
+
+                practiceHighestEl.textContent =
+                    (examData.practiceHighest || 0) + "%";
+
+            }
+
+            // --------------------------
+
+            const moduleAttemptsEl =
+                document.getElementById("moduleAttempts");
+
+            if (moduleAttemptsEl) {
+
+                moduleAttemptsEl.textContent =
+                    moduleAttempts.length;
+
+            }
+
+            const moduleAverageEl =
+                document.getElementById("moduleAverage");
+
+            if (moduleAverageEl) {
+
+                moduleAverageEl.textContent =
+                    (examData.moduleAverage || 0) + "%";
+
+            }
+
+            const moduleHighestEl =
+                document.getElementById("moduleHighest");
+
+            if (moduleHighestEl) {
+
+                moduleHighestEl.textContent =
+                    (examData.moduleHighest || 0) + "%";
+
+            }
+
+            // --------------------------
+
+            const finalScoreEl =
+                document.getElementById("finalScore");
+
+            const finalStatusEl =
+                document.getElementById("finalStatus");
+
+            if (latestFinal) {
+
+                if (finalScoreEl) {
+
+                    finalScoreEl.textContent =
+                        latestFinal.score + "%";
+
+                }
+
+                if (finalStatusEl) {
+
+                    finalStatusEl.textContent =
+                        examData.finalPassed
+                            ? "PASSED"
+                            : "FAILED";
+
+                }
+
+            }
+            else {
+
+                if (finalScoreEl) {
+
+                    finalScoreEl.textContent =
+                        "Not Taken";
+
+                }
+
+                if (finalStatusEl) {
+
+                    finalStatusEl.textContent =
+                        "Not Attempted";
+
+                }
+
+            }
+
         if (attempts.length > 0) {
 
             const latestAttempt =

@@ -210,14 +210,110 @@ export const getExamHistory = async (req, res) => {
             userId: req.user._id
         }).sort({ createdAt: 1 });
 
-        res.json({ attempts });
+        // --------------------------
+        // Separate by exam type
+        // --------------------------
 
-    } catch (error) {
+        const practiceAttempts = attempts.filter(
+            a => a.type === "practice"
+        );
 
-        console.error("Exam history error:", error);
+        const moduleAttempts = attempts.filter(
+            a => a.type === "module"
+        );
+
+        const finalAttempts = attempts.filter(
+            a => a.type === "final"
+        );
+
+        // --------------------------
+        // Average helper
+        // --------------------------
+
+        const average = (list) => {
+
+            if (!list.length) return 0;
+
+            return Math.round(
+
+                list.reduce(
+                    (sum, item) => sum + (item.score || 0),
+                    0
+                ) / list.length
+
+            );
+
+        };
+
+        // --------------------------
+        // Highest helper
+        // --------------------------
+
+        const highest = (list) => {
+
+            if (!list.length) return 0;
+
+            return Math.max(
+                ...list.map(a => a.score || 0)
+            );
+
+        };
+
+        // --------------------------
+        // Latest Final Exam
+        // --------------------------
+
+        const latestFinal =
+            finalAttempts.length > 0
+                ? finalAttempts[finalAttempts.length - 1]
+                : null;
+
+        res.json({
+
+            // Existing response (keeps dashboard working)
+            attempts,
+
+            // New grouped data
+            practiceAttempts,
+            moduleAttempts,
+            finalAttempts,
+
+            // Statistics
+            practiceAverage:
+                average(practiceAttempts),
+
+            moduleAverage:
+                average(moduleAttempts),
+
+            practiceHighest:
+                highest(practiceAttempts),
+
+            moduleHighest:
+                highest(moduleAttempts),
+
+            latestFinal,
+
+            finalPassed:
+                latestFinal
+                    ? latestFinal.score >= 70
+                    : false
+
+        });
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Exam history error:",
+            error
+        );
 
         res.status(500).json({
-            message: "Failed to load exam history"
+
+            message:
+                "Failed to load exam history"
+
         });
 
     }
