@@ -312,8 +312,9 @@ async function submitExam() {
         const token = localStorage.getItem("token");
 
         const payload = {
+            type: "practice",
             answers: userAnswers,
-            questions: questions
+            questions
         };
 
         const res = await fetch(

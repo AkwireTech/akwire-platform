@@ -563,8 +563,9 @@ async function submitExam() {
         const token = localStorage.getItem("token");
 
         const payload = {
+            type: "final",
             answers: userAnswers,
-            questions: questions
+            questions
         };
 
         console.log("Submitting Exam:", payload);

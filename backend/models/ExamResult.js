@@ -1,22 +1,65 @@
 import mongoose from "mongoose";
 
-const examResultSchema = new mongoose.Schema({
-  userId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true
-  },
-  score: {
-    type: Number,
-    required: true
-  },
-  domainScores: {
-    type: Object, // { networking: 80, linux: 60, security: 90 }
-    required: true
-  }
-}, {
-  timestamps: true
-});
+const examResultSchema = new mongoose.Schema(
 
-const ExamResult = mongoose.model("ExamResult", examResultSchema);
+    {
 
-export default ExamResult;
+        userId: {
+
+            type: mongoose.Schema.Types.ObjectId,
+
+            ref: "User",
+
+            required: true
+
+        },
+
+        // practice | module | final
+        type: {
+
+            type: String,
+
+            enum: [
+
+                "practice",
+
+                "module",
+
+                "final"
+
+            ],
+
+            default: "practice"
+
+        },
+
+        score: {
+
+            type: Number,
+
+            required: true
+
+        },
+
+        domainScores: {
+
+            type: Object,
+
+            default: {}
+
+        }
+
+    },
+
+    {
+
+        timestamps: true
+
+    }
+
+);
+
+export default mongoose.model(
+    "ExamResult",
+    examResultSchema
+);

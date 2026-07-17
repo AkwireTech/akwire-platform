@@ -417,8 +417,9 @@ try {
 const token = localStorage.getItem("token");
 
 const payload = {
-answers: userAnswers,
-questions: questions
+    type: "module",
+    answers: userAnswers,
+    questions
 };
 
 console.log("Submitting exam:");

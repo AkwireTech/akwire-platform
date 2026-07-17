@@ -89,7 +89,15 @@ export const submitExam = async (req, res) => {
 
     try {
 
-        const { answers, questions } = req.body;
+        const {
+
+                answers,
+
+                questions,
+
+                type = "practice"
+
+            } = req.body;
 
         if (!answers || !questions) {
 
@@ -128,11 +136,11 @@ export const submitExam = async (req, res) => {
 
         });
 
-        await user.save();
-
         await ExamResult.create({
 
             userId: user._id,
+
+            type,
 
             score,
 
@@ -247,6 +255,8 @@ export const getModuleQuiz = async (req, res) => {
       });
     }
 
+    exam.type = "module";
+
     res.json(exam);
 
   } catch (error) {
@@ -348,6 +358,8 @@ export const getFinalExam = async (req, res) => {
         });
 
         exam.questions = questions;
+
+        exam.type = "final";
 
         return res.json(exam);
 
