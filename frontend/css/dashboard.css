@@ -828,3 +828,128 @@ canvas{
     margin:40px 0 30px;
 
 }
+
+
+/* =====================================================
+   EXAM ANALYTICS V2
+===================================================== */
+
+.dashboard-section{
+
+    margin-top:40px;
+
+}
+
+.dashboard-section h2{
+
+    font-size:28px;
+
+    color:#0f172a;
+
+    margin-bottom:25px;
+
+}
+
+.dashboard-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:25px;
+
+}
+
+.dashboard-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:30px;
+
+    border:1px solid #e2e8f0;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 45px rgba(37,99,235,.18);
+
+}
+
+.dashboard-card h3{
+
+    color:#2563eb;
+
+    margin-bottom:25px;
+
+    font-size:22px;
+
+}
+
+.dashboard-card p{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:18px 0;
+
+    color:#475569;
+
+    font-size:16px;
+
+}
+
+.dashboard-card strong{
+
+    font-size:22px;
+
+    color:#0f172a;
+
+}
+
+.status-pass{
+
+    background:#16a34a;
+
+    color:white;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+}
+
+.status-fail{
+
+    background:#dc2626;
+
+    color:white;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+}
+
+.status-none{
+
+    background:#64748b;
+
+    color:white;
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+}

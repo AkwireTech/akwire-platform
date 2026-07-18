@@ -3,44 +3,29 @@ document.addEventListener("DOMContentLoaded", async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const token = localStorage.getItem("token");
 
-
     // ==========================
     // ACADEMY PROGRESS
     // ==========================
 
     try {
 
-        const academyRes =
-            await fetch(
-
-                "https://akwire-api.onrender.com/api/progress",
-
-                {
-
-                    headers: {
-
-                        Authorization:
-                            "Bearer " + token
-
-                    }
-
+        const academyRes = await fetch(
+            "https://akwire-api.onrender.com/api/progress",
+            {
+                headers: {
+                    Authorization: "Bearer " + token
                 }
+            }
+        );
 
-            );
-
-        const academyData =
-            await academyRes.json();
+        const academyData = await academyRes.json();
 
         const academyCompleted =
-            document.getElementById(
-                "academyCompleted"
-            );
+            document.getElementById("academyCompleted");
 
         if (academyCompleted) {
-
             academyCompleted.textContent =
                 academyData.length || 0;
-
         }
 
     } catch (error) {
@@ -53,51 +38,36 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     // ==========================
-    // CERTIFICATES EARNED
+    // CERTIFICATES
     // ==========================
 
     try {
 
-        const certRes =
-            await fetch(
-
-                "https://akwire-api.onrender.com/api/progress/certificates",
-
-                {
-                    headers: {
-                        Authorization:
-                            "Bearer " + token
-                    }
+        const certRes = await fetch(
+            "https://akwire-api.onrender.com/api/progress/certificates",
+            {
+                headers: {
+                    Authorization: "Bearer " + token
                 }
+            }
+        );
 
-            );
-
-        const certs =
-            await certRes.json();
+        const certs = await certRes.json();
 
         const certifiedElement =
-
-            document.getElementById(
-                "coursesCertified"
-            );
+            document.getElementById("coursesCertified");
 
         if (certifiedElement) {
-
             certifiedElement.textContent =
                 certs.length || 0;
-
         }
 
         const certCount =
-            document.getElementById(
-                "certificatesEarned"
-            );
+            document.getElementById("certificatesEarned");
 
         if (certCount) {
-
             certCount.textContent =
                 certs.length || 0;
-
         }
 
     } catch (error) {
@@ -108,7 +78,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         );
 
     }
-
 
     // ==========================
     // AUTH CHECK
@@ -127,14 +96,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (user.role !== "admin") {
 
-        const adminLinks =
-            document.querySelectorAll(".admin-only");
+        document
+            .querySelectorAll(".admin-only")
+            .forEach(link => {
 
-        adminLinks.forEach(link => {
+                link.style.display = "none";
 
-            link.style.display = "none";
-
-        });
+            });
 
     }
 
@@ -148,25 +116,22 @@ document.addEventListener("DOMContentLoaded", async () => {
             `https://akwire-api.onrender.com/api/dashboard/lab-dashboard/${user._id}`
         );
 
-        const dashboardData = await dashboardRes.json();
+        const dashboardData =
+            await dashboardRes.json();
 
         document.getElementById("totalLabs").textContent =
             dashboardData.totalLabs || 0;
+
+        document.getElementById("completedLabs").textContent =
+            dashboardData.completedLabs || 0;
 
         document.getElementById("avgScore").textContent =
             dashboardData.avgScore
                 ? dashboardData.avgScore.toFixed(1)
                 : "0";
 
-        document.getElementById("completedLabs").textContent =
-            dashboardData.completedLabs || 0;
-
         document.getElementById("progress").textContent =
             Math.round(dashboardData.progress || 0) + "%";
-
-        // ==========================
-        // OVERALL PROGRESS BAR
-        // ==========================
 
         const progressPercent =
             Math.round(dashboardData.progress || 0);
@@ -175,20 +140,16 @@ document.addEventListener("DOMContentLoaded", async () => {
             document.getElementById("overallProgressBar");
 
         if (overallBar) {
-
             overallBar.style.width =
                 progressPercent + "%";
-
         }
 
         const progressText =
             document.getElementById("progressText");
 
         if (progressText) {
-
             progressText.textContent =
                 `${progressPercent}% Complete`;
-
         }
 
         // ==========================
@@ -260,125 +221,137 @@ document.addEventListener("DOMContentLoaded", async () => {
         const attempts =
             examData.attempts || [];
 
-            // ==========================
-            // EXAM ANALYTICS
-            // ==========================
+        
+                // ==========================
+        // EXAM ANALYTICS
+        // ==========================
 
-            const practiceAttempts =
-                examData.practiceAttempts || [];
+        const practiceAttempts =
+            examData.practiceAttempts || [];
 
-            const moduleAttempts =
-                examData.moduleAttempts || [];
+        const moduleAttempts =
+            examData.moduleAttempts || [];
 
-            const latestFinal =
-                examData.latestFinal;
+        const latestFinal =
+            examData.latestFinal;
 
-            const practiceAttemptsEl =
-                document.getElementById("practiceAttempts");
+        const practiceAttemptsEl =
+            document.getElementById("practiceAttempts");
 
-            if (practiceAttemptsEl) {
+        if (practiceAttemptsEl) {
 
-                practiceAttemptsEl.textContent =
-                    practiceAttempts.length;
+            practiceAttemptsEl.textContent =
+                practiceAttempts.length;
+
+        }
+
+        const practiceAverageEl =
+            document.getElementById("practiceAverage");
+
+        if (practiceAverageEl) {
+
+            practiceAverageEl.textContent =
+                (examData.practiceAverage || 0) + "%";
+
+        }
+
+        const practiceHighestEl =
+            document.getElementById("practiceHighest");
+
+        if (practiceHighestEl) {
+
+            practiceHighestEl.textContent =
+                (examData.practiceHighest || 0) + "%";
+
+        }
+
+        const moduleAttemptsEl =
+            document.getElementById("moduleAttempts");
+
+        if (moduleAttemptsEl) {
+
+            moduleAttemptsEl.textContent =
+                moduleAttempts.length;
+
+        }
+
+        const moduleAverageEl =
+            document.getElementById("moduleAverage");
+
+        if (moduleAverageEl) {
+
+            moduleAverageEl.textContent =
+                (examData.moduleAverage || 0) + "%";
+
+        }
+
+        const moduleHighestEl =
+            document.getElementById("moduleHighest");
+
+        if (moduleHighestEl) {
+
+            moduleHighestEl.textContent =
+                (examData.moduleHighest || 0) + "%";
+
+        }
+
+        const finalScoreEl =
+            document.getElementById("finalScore");
+
+        const finalStatusEl =
+            document.getElementById("finalStatus");
+
+        if (latestFinal) {
+
+            if (finalScoreEl) {
+
+                finalScoreEl.textContent =
+                    latestFinal.score + "%";
 
             }
 
-            const practiceAverageEl =
-                document.getElementById("practiceAverage");
+            if (finalStatusEl) {
 
-            if (practiceAverageEl) {
-
-                practiceAverageEl.textContent =
-                    (examData.practiceAverage || 0) + "%";
-
-            }
-
-            const practiceHighestEl =
-                document.getElementById("practiceHighest");
-
-            if (practiceHighestEl) {
-
-                practiceHighestEl.textContent =
-                    (examData.practiceHighest || 0) + "%";
-
-            }
-
-            // --------------------------
-
-            const moduleAttemptsEl =
-                document.getElementById("moduleAttempts");
-
-            if (moduleAttemptsEl) {
-
-                moduleAttemptsEl.textContent =
-                    moduleAttempts.length;
-
-            }
-
-            const moduleAverageEl =
-                document.getElementById("moduleAverage");
-
-            if (moduleAverageEl) {
-
-                moduleAverageEl.textContent =
-                    (examData.moduleAverage || 0) + "%";
-
-            }
-
-            const moduleHighestEl =
-                document.getElementById("moduleHighest");
-
-            if (moduleHighestEl) {
-
-                moduleHighestEl.textContent =
-                    (examData.moduleHighest || 0) + "%";
-
-            }
-
-            // --------------------------
-
-            const finalScoreEl =
-                document.getElementById("finalScore");
-
-            const finalStatusEl =
-                document.getElementById("finalStatus");
-
-            if (latestFinal) {
-
-                if (finalScoreEl) {
-
-                    finalScoreEl.textContent =
-                        latestFinal.score + "%";
-
-                }
-
-                if (finalStatusEl) {
+                if (examData.finalPassed) {
 
                     finalStatusEl.textContent =
-                        examData.finalPassed
-                            ? "PASSED"
-                            : "FAILED";
+                        "PASSED";
 
-                }
+                    finalStatusEl.className =
+                        "status-pass";
 
-            }
-            else {
-
-                if (finalScoreEl) {
-
-                    finalScoreEl.textContent =
-                        "Not Taken";
-
-                }
-
-                if (finalStatusEl) {
+                } else {
 
                     finalStatusEl.textContent =
-                        "Not Attempted";
+                        "FAILED";
+
+                    finalStatusEl.className =
+                        "status-fail";
 
                 }
 
             }
+
+        } else {
+
+            if (finalScoreEl) {
+
+                finalScoreEl.textContent =
+                    "Not Taken";
+
+            }
+
+            if (finalStatusEl) {
+
+                finalStatusEl.textContent =
+                    "Not Attempted";
+
+                finalStatusEl.className =
+                    "status-none";
+
+            }
+
+        }
 
         if (attempts.length > 0) {
 
@@ -387,17 +360,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             const latestScore =
                 latestAttempt.score || 0;
-
-            const certifiedElement =
-
-                document.getElementById(
-                    "coursesCertified"
-                );
-
-
-            // ==========================
-            // LATEST EXAM SCORE
-            // ==========================
 
             const scoreText =
                 document.getElementById(
@@ -423,10 +385,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             }
 
-            // ==========================
-            // READINESS SCORE
-            // ==========================
-
             const avgReadiness =
                 Math.round(
 
@@ -437,7 +395,6 @@ document.addEventListener("DOMContentLoaded", async () => {
                     ) / attempts.length
 
                 );
-
 
             const readinessText =
                 document.getElementById(
@@ -463,8 +420,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             }
 
-            // ==========================
-            // CHART
+
+                        // ==========================
+            // EXAM CHART
             // ==========================
 
             const chartCanvas =
@@ -485,25 +443,28 @@ document.addEventListener("DOMContentLoaded", async () => {
                                 `Attempt ${i + 1}`
                         ),
 
-                        datasets: [{
+                        datasets: [
 
-                            label: "Exam Score",
+                            {
 
-                            data: attempts.map(
-                                a => a.score || 0
-                            ),
+                                label: "Exam Score",
 
-                            borderColor:
-                                "#38bdf8",
+                                data: attempts.map(
+                                    a => a.score || 0
+                                ),
 
-                            backgroundColor:
-                                "rgba(56,189,248,0.2)",
+                                borderColor: "#38bdf8",
 
-                            fill: true,
+                                backgroundColor:
+                                    "rgba(56,189,248,0.2)",
 
-                            tension: 0.3
+                                fill: true,
 
-                        }]
+                                tension: 0.3
+
+                            }
+
+                        ]
 
                     },
 
@@ -516,6 +477,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                             y: {
 
                                 beginAtZero: true,
+
                                 max: 100
 
                             }
@@ -529,7 +491,6 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
         }
-
 
         // ==========================
         // RECOMMENDATIONS
@@ -548,7 +509,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         const recData =
             await recRes.json();
 
-
         const recContainer =
             document.getElementById(
                 "recommendationsContainer"
@@ -566,9 +526,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 recContainer.innerHTML = `
                     <div class="recommendation-card">
                         <h4>Excellent Progress</h4>
-                        <p>
-                            No weak domains detected.
-                        </p>
+                        <p>No weak domains detected.</p>
                     </div>
                 `;
 
