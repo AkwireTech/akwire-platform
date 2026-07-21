@@ -721,6 +721,10 @@ async function saveLessonEdit() {
     summary,
     videoUrl
 });
+
+console.log(
+    `PUT https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons/${lessonIndex}`
+);
         const response = await fetch(
             `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons/${lessonIndex}`,
             {
@@ -743,6 +747,8 @@ async function saveLessonEdit() {
                 })
             }
         );
+
+        console.log("Response status:", response.status);
 
         const data = await response.json();
 
