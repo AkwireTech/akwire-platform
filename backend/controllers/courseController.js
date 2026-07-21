@@ -392,6 +392,10 @@ export const updateLesson = async (req, res) => {
         lesson.videoUrl = videoUrl;
         lesson.resources = resources;
 
+        console.log("========== BEFORE SAVE ==========");
+console.log(JSON.stringify(lesson.toObject(), null, 2));
+console.log("================================");
+
         await course.save();
 
 console.log("Lesson before save:");
