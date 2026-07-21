@@ -208,8 +208,9 @@ async function loadLesson() {
 
         }
 
-        
+
         // Summary
+
         if (lesson.summary) {
 
             html += `
