@@ -618,6 +618,9 @@ async function deleteLesson(moduleIndex, lessonIndex) {
 // SAVE MODAL EDIT
 // ==========================================
 async function saveBuilderEdit() {
+
+    console.log("saveBuilderEdit() called");
+    
     if (!editState.type) return;
 
     if (editState.type === "module") {
