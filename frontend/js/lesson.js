@@ -208,6 +208,7 @@ async function loadLesson() {
 
         }
 
+        
         // Summary
         if (lesson.summary) {
 
@@ -227,9 +228,96 @@ async function loadLesson() {
 
         }
 
+        // ======================================
+        // KNOWLEDGE CHECK
+        // ======================================
+
+        if (
+            lesson.knowledgeCheck &&
+            lesson.knowledgeCheck.length
+        ) {
+
+            html += `
+
+                <div class="lesson-content-card">
+
+                    <h2>
+                        Knowledge Check
+                    </h2>
+
+            `;
+
+            lesson.knowledgeCheck.forEach(
+
+                (question, index) => {
+
+                    html += `
+
+                        <div class="knowledge-question">
+
+                            <p>
+
+                                <strong>
+
+                                    ${index + 1}. ${question.question}
+
+                                </strong>
+
+                            </p>
+
+                    `;
+
+                    question.options.forEach(
+
+                        option => {
+
+                            html += `
+
+                                <label
+                                    class="knowledge-option"
+                                >
+
+                                    <input
+                                        type="radio"
+                                        name="question${index}"
+                                    >
+
+                                    ${option}
+
+                                </label>
+
+                                <br>
+
+                            `;
+
+                        }
+
+                    );
+
+                    html += `
+
+                        </div>
+
+                        <hr>
+
+                    `;
+
+                }
+
+            );
+
+            html += `
+
+                </div>
+
+            `;
+
+        }
+
         document.getElementById(
             "lessonContent"
         ).innerHTML = html;
+
 
         // ==========================
         // VIDEO
