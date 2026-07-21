@@ -711,9 +711,20 @@ async function saveLessonEdit() {
     }
 
     try {
+
+        console.log({
+    title,
+    overview,
+    objectives,
+    content,
+    keyTerms,
+    summary,
+    videoUrl
+});
         const response = await fetch(
             `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons/${lessonIndex}`,
             {
+                
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
