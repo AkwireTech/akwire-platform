@@ -548,12 +548,29 @@ function openEditLesson(moduleIndex, lessonIndex) {
     document.getElementById("builderModalTitle").textContent = "Edit Lesson";
     document.getElementById("lessonEditFields").classList.remove("hidden");
 
-    document.getElementById("editLessonTitle").value = lesson.title || "";
-    document.getElementById("editLessonContent").value = lesson.content || "";
-    document.getElementById("editLessonVideo").value = lesson.videoUrl || "";
+    document.getElementById("editLessonTitle").value =
+    lesson.title || "";
 
-    openBuilderModal();
-}
+    document.getElementById("editLessonOverview").value =
+        lesson.overview || "";
+
+    document.getElementById("editLessonObjectives").value =
+        (lesson.objectives || []).join("\n");
+
+    document.getElementById("editLessonContent").value =
+        lesson.content || "";
+
+    document.getElementById("editLessonKeyTerms").value =
+        (lesson.keyTerms || []).join("\n");
+
+    document.getElementById("editLessonSummary").value =
+        lesson.summary || "";
+
+    document.getElementById("editLessonVideo").value =
+        lesson.videoUrl || "";
+
+        openBuilderModal();
+    }
 
 // ==========================================
 // DELETE LESSON
@@ -655,9 +672,36 @@ async function saveLessonEdit() {
     const moduleIndex = editState.moduleIndex;
     const lessonIndex = editState.lessonIndex;
 
-    const title = document.getElementById("editLessonTitle").value.trim();
-    const content = document.getElementById("editLessonContent").value.trim();
-    const videoUrl = document.getElementById("editLessonVideo").value.trim();
+    const title =
+        document.getElementById("editLessonTitle").value.trim();
+
+    const overview =
+        document.getElementById("editLessonOverview").value.trim();
+
+    const objectives =
+        document
+            .getElementById("editLessonObjectives")
+            .value
+            .split("\n")
+            .map(item => item.trim())
+            .filter(Boolean);
+
+    const content =
+        document.getElementById("editLessonContent").value.trim();
+
+    const keyTerms =
+        document
+            .getElementById("editLessonKeyTerms")
+            .value
+            .split("\n")
+            .map(item => item.trim())
+            .filter(Boolean);
+
+    const summary =
+        document.getElementById("editLessonSummary").value.trim();
+
+    const videoUrl =
+        document.getElementById("editLessonVideo").value.trim();
 
     if (!title) {
         alert("Lesson title cannot be empty.");
@@ -674,9 +718,15 @@ async function saveLessonEdit() {
                     Authorization: "Bearer " + token
                 },
                 body: JSON.stringify({
+
                     title,
+                    overview,
+                    objectives,
                     content,
+                    keyTerms,
+                    summary,
                     videoUrl
+
                 })
             }
         );
