@@ -1,16 +1,77 @@
 
 import mongoose from "mongoose";
 
-const lessonSchema = new mongoose.Schema({
+const LessonSchema = new mongoose.Schema({
 
     title: {
         type: String,
         required: true
     },
 
+    overview: {
+        type: String,
+        default: ""
+    },
+
+    objectives: [{
+        type: String
+    }],
+
     content: {
         type: String,
         default: ""
+    },
+
+    summary: {
+        type: String,
+        default: ""
+    },
+
+    keyTerms: [{
+        term: String,
+        definition: String
+    }],
+
+    knowledgeCheck: [{
+        question: String,
+        options: [String],
+        answer: Number,
+        explanation: String
+    }],
+
+    lab: {
+        title: {
+            type: String,
+            default: ""
+        },
+        instructions: {
+            type: String,
+            default: ""
+        },
+        solution: {
+            type: String,
+            default: ""
+        }
+    },
+
+    flashcards: [{
+        front: String,
+        back: String
+    }],
+
+    aiTutor: {
+        type: String,
+        default: ""
+    },
+
+    studyGuide: {
+        type: String,
+        default: ""
+    },
+
+    estimatedTime: {
+        type: Number,
+        default: 15
     },
 
     videoUrl: {
@@ -19,7 +80,8 @@ const lessonSchema = new mongoose.Schema({
     },
 
     resources: [{
-        type: String
+        title: String,
+        url: String
     }]
 
 });

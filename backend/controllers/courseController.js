@@ -249,7 +249,23 @@ export const deleteModule = async (req, res) => {
 export const addLessonToModule = async (req, res) => {
     try {
         const { id, moduleIndex } = req.params;
-        const { title, content, videoUrl } = req.body;
+
+        const {
+            title,
+            overview = "",
+            objectives = [],
+            content = "",
+            summary = "",
+            keyTerms = [],
+            knowledgeCheck = [],
+            lab = {},
+            flashcards = [],
+            aiTutor = "",
+            studyGuide = "",
+            estimatedTime = 15,
+            videoUrl = "",
+            resources = []
+        } = req.body;
 
         if (!title || !title.trim()) {
             return res.status(400).json({
@@ -275,9 +291,19 @@ export const addLessonToModule = async (req, res) => {
 
         module.lessons.push({
             title: title.trim(),
-            content: content || "",
-            videoUrl: videoUrl || "",
-            resources: []
+            overview,
+            objectives,
+            content,
+            summary,
+            keyTerms,
+            knowledgeCheck,
+            lab,
+            flashcards,
+            aiTutor,
+            studyGuide,
+            estimatedTime,
+            videoUrl,
+            resources
         });
 
         await course.save();
@@ -286,6 +312,7 @@ export const addLessonToModule = async (req, res) => {
             message: "Lesson added successfully",
             course
         });
+
     } catch (error) {
         console.error("ADD LESSON ERROR:", error);
 
@@ -300,8 +327,25 @@ export const addLessonToModule = async (req, res) => {
 // ==========================================
 export const updateLesson = async (req, res) => {
     try {
+
         const { id, moduleIndex, lessonIndex } = req.params;
-        const { title, content, videoUrl } = req.body;
+
+        const {
+            title,
+            overview = "",
+            objectives = [],
+            content = "",
+            summary = "",
+            keyTerms = [],
+            knowledgeCheck = [],
+            lab = {},
+            flashcards = [],
+            aiTutor = "",
+            studyGuide = "",
+            estimatedTime = 15,
+            videoUrl = "",
+            resources = []
+        } = req.body;
 
         if (!title || !title.trim()) {
             return res.status(400).json({
@@ -334,8 +378,19 @@ export const updateLesson = async (req, res) => {
         }
 
         lesson.title = title.trim();
-        lesson.content = content || "";
-        lesson.videoUrl = videoUrl || "";
+        lesson.overview = overview;
+        lesson.objectives = objectives;
+        lesson.content = content;
+        lesson.summary = summary;
+        lesson.keyTerms = keyTerms;
+        lesson.knowledgeCheck = knowledgeCheck;
+        lesson.lab = lab;
+        lesson.flashcards = flashcards;
+        lesson.aiTutor = aiTutor;
+        lesson.studyGuide = studyGuide;
+        lesson.estimatedTime = estimatedTime;
+        lesson.videoUrl = videoUrl;
+        lesson.resources = resources;
 
         await course.save();
 
@@ -343,6 +398,7 @@ export const updateLesson = async (req, res) => {
             message: "Lesson updated successfully",
             course
         });
+
     } catch (error) {
         console.error("UPDATE LESSON ERROR:", error);
 
