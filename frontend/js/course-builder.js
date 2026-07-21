@@ -619,8 +619,6 @@ async function deleteLesson(moduleIndex, lessonIndex) {
 // ==========================================
 async function saveBuilderEdit() {
 
-    console.log("saveBuilderEdit() called");
-    
     if (!editState.type) return;
 
     if (editState.type === "module") {
@@ -672,6 +670,7 @@ async function saveModuleEdit() {
 }
 
 async function saveLessonEdit() {
+    console.log("saveLessonEdit() called");
     const moduleIndex = editState.moduleIndex;
     const lessonIndex = editState.lessonIndex;
 
