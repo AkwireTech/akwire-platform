@@ -394,6 +394,9 @@ export const updateLesson = async (req, res) => {
 
         await course.save();
 
+console.log("Lesson before save:");
+console.log(lesson);
+
         res.json({
             message: "Lesson updated successfully",
             course
