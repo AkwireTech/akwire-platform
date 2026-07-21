@@ -12,6 +12,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import courseRoutes from "./routes/courseRoutes.js";
 
+console.log(LessonSchema.obj);
+
 dotenv.config();
 connectDB();
 
