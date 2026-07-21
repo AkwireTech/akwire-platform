@@ -63,6 +63,7 @@ async function loadLesson() {
 
         const lesson =
             module.lessons[lessonIndex];
+            console.log(lesson);
 
         const totalLessons =
             module.lessons.length;
