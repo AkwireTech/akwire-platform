@@ -401,10 +401,11 @@ console.log("================================");
 console.log("Lesson before save:");
 console.log(lesson);
 
-        res.json({
-            message: "AKWIRE V2 UPDATE",
-            course
-        });
+       res.json({
+        message: "AKWIRE_BACKEND_V2",
+        test: "If you can read this, the new backend is deployed.",
+        course
+    });
 
     } catch (error) {
         console.error("UPDATE LESSON ERROR:", error);
