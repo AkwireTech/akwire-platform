@@ -401,9 +401,8 @@ console.log("================================");
 console.log("Lesson before save:");
 console.log(lesson);
 
-       res.json({
-        message: "AKWIRE_BACKEND_V2",
-        test: "If you can read this, the new backend is deployed.",
+      res.json({
+        message: "AKWIRE UPDATE TEST 12345",
         course
     });
 
