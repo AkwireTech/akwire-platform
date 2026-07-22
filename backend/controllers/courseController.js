@@ -399,7 +399,6 @@ console.log(JSON.stringify(lesson.toObject(), null, 2));
 
 await course.save();
 
-await course.populate("modules.lessons");
 
 console.log("Lesson after save:");
 console.log(JSON.stringify(course.modules[moduleIndex].lessons[lessonIndex].toObject(), null, 2));
