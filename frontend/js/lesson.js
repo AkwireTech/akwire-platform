@@ -120,116 +120,62 @@ async function loadLesson() {
         // CONTENT
         // ==========================
     
-        let html = "";
+  let html = "";
 
-        // Overview
-        if (lesson.overview) {
+console.log("overview value =", lesson.overview);
 
-            html += `
-                <div class="lesson-content-card">
+html += `
+<div style="background:red;color:white;padding:10px;margin-bottom:10px;">
+TEST BLOCK
+</div>
+`;
 
-                    <h2>
-                        Overview
-                    </h2>
+if (lesson.overview) {
 
-                    <p>
-                        ${lesson.overview}
-                    </p>
+    console.log("Overview block executed");
 
-                </div>
-            `;
+    html += `
+    <div class="lesson-content-card">
+        <h2>Overview</h2>
+        <p>${lesson.overview}</p>
+    </div>
+    `;
+}
 
-        }
+if (lesson.objectives?.length) {
 
-        // Learning Objectives
-        if (
-            lesson.objectives &&
-            lesson.objectives.length
-        ) {
+    console.log("Objectives block executed");
 
-            html += `
-                <div class="lesson-content-card">
+    html += `
+    <div class="lesson-content-card">
+        <h2>Learning Objectives</h2>
+        <ul>
+            ${lesson.objectives.map(o => `<li>${o}</li>`).join("")}
+        </ul>
+    </div>
+    `;
+}
 
-                    <h2>
-                        Learning Objectives
-                    </h2>
+html += `
+<div class="lesson-content-card">
+    <h2>Lesson</h2>
+    ${lesson.content}
+</div>
+`;
 
-                    <ul>
-                        ${lesson.objectives
-                            .map(
-                                objective =>
-                                    `<li>${objective}</li>`
-                            )
-                            .join("")}
-                    </ul>
+if (lesson.summary) {
 
-                </div>
-            `;
+    console.log("Summary block executed");
 
-        }
+    html += `
+    <div class="lesson-content-card">
+        <h2>Lesson Summary</h2>
+        <p>${lesson.summary}</p>
+    </div>
+    `;
+}
 
-        // Main Lesson Content
-
-        html += `
-            <div class="lesson-content-card">
-
-                <h2>
-                    Lesson
-                </h2>
-
-                ${lesson.content}
-
-            </div>
-        `;
-
-
-       // Key Terms
-        if (lesson.keyTerms && lesson.keyTerms.length) {
-
-            html += `
-                <div class="lesson-content-card">
-
-                    <h2>Key Terms</h2>
-
-                    <ul>
-                        ${lesson.keyTerms
-                            .map(
-                                item => `
-                                    <li>
-                                        <strong>${item.term}</strong>
-                                        ${item.definition ? ` - ${item.definition}` : ""}
-                                    </li>
-                                `
-                            )
-                            .join("")}
-                    </ul>
-
-                </div>
-            `;
-
-        }
-
-
-        // Summary
-
-        if (lesson.summary) {
-
-            html += `
-                <div class="lesson-content-card">
-
-                    <h2>
-                        Lesson Summary
-                    </h2>
-
-                    <p>
-                        ${lesson.summary}
-                    </p>
-
-                </div>
-            `;
-
-        }
-
+console.log(html);
         // ======================================
         // KNOWLEDGE CHECK
         // ======================================
