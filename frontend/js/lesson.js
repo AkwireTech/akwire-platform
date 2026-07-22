@@ -316,12 +316,14 @@ async function loadLesson() {
 
         }
 
-        console.log("Generated lesson HTML:");
+        console.log("Overview:", lesson.overview);
+        console.log("Objectives:", lesson.objectives);
+        console.log("Summary:", lesson.summary);
+
+        console.log("Final HTML:");
         console.log(html);
 
-        document.getElementById(
-            "lessonContent"
-        ).innerHTML = html;
+document.getElementById("lessonContent").innerHTML = html;
 
 
         // ==========================
