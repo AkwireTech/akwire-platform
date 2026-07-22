@@ -377,31 +377,20 @@ export const updateLesson = async (req, res) => {
             });
         }
 
-        lesson.set({
-    title: title.trim(),
-    overview,
-    objectives,
-    content,
-    summary,
-    keyTerms,
-    knowledgeCheck,
-    lab,
-    flashcards,
-    aiTutor,
-    studyGuide,
-    estimatedTime,
-    videoUrl,
-    resources
-});
-
-console.log("Lesson after lesson.set():");
-console.log(JSON.stringify(lesson.toObject(), null, 2));
-
-await course.save();
-
-
-console.log("Lesson after save:");
-console.log(JSON.stringify(course.modules[moduleIndex].lessons[lessonIndex].toObject(), null, 2));
+        lesson.title = title.trim();
+        lesson.overview = overview;
+        lesson.objectives = objectives;
+        lesson.content = content;
+        lesson.summary = summary;
+        lesson.keyTerms = keyTerms;
+        lesson.knowledgeCheck = knowledgeCheck;
+        lesson.lab = lab;
+        lesson.flashcards = flashcards;
+        lesson.aiTutor = aiTutor;
+        lesson.studyGuide = studyGuide;
+        lesson.estimatedTime = estimatedTime;
+        lesson.videoUrl = videoUrl;
+        lesson.resources = resources;
 
         res.json({
             message: "Lesson updated successfully",

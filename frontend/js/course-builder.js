@@ -697,7 +697,11 @@ async function saveLessonEdit() {
             .value
             .split("\n")
             .map(item => item.trim())
-            .filter(Boolean);
+            .filter(Boolean)
+            .map(term => ({
+                term,
+                definition: ""
+            }));
 
     const summary =
         document.getElementById("editLessonSummary").value.trim();
