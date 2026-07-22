@@ -328,6 +328,8 @@ export const addLessonToModule = async (req, res) => {
 export const updateLesson = async (req, res) => {
     try {
 
+        console.log(">>> updateLesson V2 <<<");
+
         const { id, moduleIndex, lessonIndex } = req.params;
 
         const {
@@ -392,19 +394,10 @@ export const updateLesson = async (req, res) => {
         lesson.videoUrl = videoUrl;
         lesson.resources = resources;
 
-        console.log("========== BEFORE SAVE ==========");
-console.log(JSON.stringify(lesson.toObject(), null, 2));
-console.log("================================");
-
-        await course.save();
-
-console.log("Lesson before save:");
-console.log(lesson);
-
-      res.json({
-        message: "AKWIRE UPDATE TEST 12345",
-        course
-    });
+        res.json({
+            message: "Lesson updated successfully",
+            course
+        });
 
     } catch (error) {
         console.error("UPDATE LESSON ERROR:", error);
