@@ -63,8 +63,8 @@ async function loadLesson() {
 
         const lesson =
             module.lessons[lessonIndex];
-            console.log(lesson);
-
+            console.log("Lesson object:");
+            console.log(JSON.stringify(lesson, null, 2));
         const totalLessons =
             module.lessons.length;
 
@@ -182,24 +182,24 @@ async function loadLesson() {
             </div>
         `;
 
-        // Key Terms
-        if (
-            lesson.keyTerms &&
-            lesson.keyTerms.length
-        ) {
+
+       // Key Terms
+        if (lesson.keyTerms && lesson.keyTerms.length) {
 
             html += `
                 <div class="lesson-content-card">
 
-                    <h2>
-                        Key Terms
-                    </h2>
+                    <h2>Key Terms</h2>
 
                     <ul>
                         ${lesson.keyTerms
                             .map(
-                                term =>
-                                    `<li>${term}</li>`
+                                item => `
+                                    <li>
+                                        <strong>${item.term}</strong>
+                                        ${item.definition ? ` - ${item.definition}` : ""}
+                                    </li>
+                                `
                             )
                             .join("")}
                     </ul>
@@ -315,6 +315,9 @@ async function loadLesson() {
             `;
 
         }
+
+        console.log("Generated lesson HTML:");
+        console.log(html);
 
         document.getElementById(
             "lessonContent"
