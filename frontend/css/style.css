@@ -4978,8 +4978,8 @@ table{
     padding:0;
     background:#020617;
     color:#fff;
-    overflow:hidden;
-    font-family:Inter,Segoe UI,sans-serif;
+    overflow-x:hidden;
+    overflow-y:auto;
 }
 
 .lab-layout{
@@ -4992,7 +4992,7 @@ table{
 
     width:100%;
 
-    height:100vh;
+    min-height:100vh;
 
     padding:20px;
 
@@ -5012,14 +5012,10 @@ table{
 }
 
 .lab-main{
-
     display:flex;
-
     flex-direction:column;
-
     min-width:0;
-
-    overflow:hidden;
+    overflow:visible;
 }
 
 .panel-card{
@@ -5081,25 +5077,28 @@ table{
     padding:10px;
 }
 
+.briefing-title h2{
+    color: #b91c1c;
+}
+
+.clearance-badge{
+    color: #000;
+    background-color: #f59e0b;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+
 /* ==========================
    TERMINAL
    ========================== */
 
 .terminal-container{
-
     display:flex;
-
     flex-direction:column;
-
     flex:1;
-
-    background:#0b1020;
-
-    border:1px solid #334155;
-
-    border-radius:12px;
-
-    overflow:hidden;
+    min-height:700px;
 }
 
 .terminal-header{
