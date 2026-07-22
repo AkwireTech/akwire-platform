@@ -402,7 +402,7 @@ console.log("Lesson before save:");
 console.log(lesson);
 
         res.json({
-            message: "Lesson updated successfully",
+            message: "AKWIRE V2 UPDATE",
             course
         });
 
