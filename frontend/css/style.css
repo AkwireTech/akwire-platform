@@ -5215,3 +5215,268 @@ table{
     color:white;
 
 }
+
+
+/* =====================================================
+   AKWIRE LAB ENGINE V2
+   ===================================================== */
+
+.lab-layout{
+    display:grid;
+    grid-template-columns:320px 1fr 320px;
+    gap:24px;
+
+    min-height:100vh;
+
+    background:#020617;
+
+    padding:20px;
+}
+
+.lab-sidebar,
+.lab-right-sidebar{
+
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.panel-card{
+
+    background:#0f172a;
+
+    border:1px solid #1e293b;
+
+    border-radius:12px;
+
+    padding:18px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.panel-card h3{
+
+    margin-bottom:15px;
+
+    color:#38bdf8;
+
+    font-size:.95rem;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+
+}
+
+.lab-main{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.terminal-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    flex:1;
+
+    min-height:750px;
+
+    background:#0f172a;
+
+    border:1px solid #334155;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+.terminal-body{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:20px;
+
+    font-family:Consolas, monospace;
+
+    color:#22c55e;
+
+    background:#020617;
+
+}
+
+.terminal-input-line{
+
+    display:flex;
+
+    align-items:center;
+
+    margin-top:10px;
+
+}
+
+.prompt{
+
+    color:#38bdf8;
+
+    margin-right:10px;
+
+}
+
+#terminal-input{
+
+    width:100%;
+
+    background:transparent;
+
+    border:none;
+
+    color:white;
+
+    outline:none;
+
+    font-family:inherit;
+
+    font-size:1rem;
+
+}
+
+.progress-bar{
+
+    width:100%;
+
+    height:12px;
+
+    background:#1e293b;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    margin:12px 0;
+
+}
+
+.progress-fill{
+
+    width:0%;
+
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        #10b981,
+        #38bdf8
+    );
+
+    transition:.5s;
+
+}
+
+#progress-percent{
+
+    color:#94a3b8;
+
+    font-size:.9rem;
+
+}
+
+.mentor-placeholder{
+
+    color:#94a3b8;
+
+    line-height:1.5;
+
+    margin-bottom:20px;
+
+}
+
+.coming-soon{
+
+    color:#64748b;
+
+    text-align:center;
+
+    padding:25px;
+
+    border:1px dashed #334155;
+
+    border-radius:8px;
+
+}
+
+.lab-selector-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.lab-selector-container label{
+
+    color:#94a3b8;
+
+    font-size:.8rem;
+
+}
+
+.lab-selector-container select{
+
+    background:#020617;
+
+    color:white;
+
+    border:1px solid #334155;
+
+    border-radius:8px;
+
+    padding:10px;
+
+}
+
+@media(max-width:1400px){
+
+.lab-layout{
+
+grid-template-columns:300px 1fr;
+
+}
+
+.lab-right-sidebar{
+
+grid-column:1 / span 2;
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:900px){
+
+.lab-layout{
+
+grid-template-columns:1fr;
+
+}
+
+.lab-right-sidebar{
+
+grid-template-columns:1fr;
+
+}
+
+}

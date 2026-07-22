@@ -10,122 +10,247 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="labs-page">
-    <div class="lab-wrapper">
-    
-    <aside class="lab-sidebar">
-        <div class="lab-header">
-            <a href="index.html" class="back-btn">← Exit Lab</a>
-            <h2>Lab 01: Log Analysis</h2>
-        </div>
 
-        <div class="lab-selector-container" style="margin-bottom: 20px;">
-            <label>SELECT PRACTICE LAB:</label>
-            <select id="lab-select" onchange="fetchLabFromBackend(this.value)">
+<div class="lab-layout">
+
+    <!-- ================= LEFT PANEL ================= -->
+
+    <aside class="lab-sidebar">
+
+        <a href="index.html" class="back-btn">
+            ← Exit Lab
+        </a>
+
+        <div class="lab-selector-container">
+            <label>Select Practice Lab</label>
+
+            <select
+                id="lab-select"
+                onchange="fetchLabFromBackend(this.value)">
             </select>
         </div>
 
-        <div class="mission-briefing">
-            <h2 class="briefing-title" id="briefing-header">OPERATION: GHOST ACCESS</h2>
-            <div class="clearance-badge">CLEARANCE: LEVEL 2</div>
-            <p class="briefing-text" id="briefing-body">
-                Intelligence reports indicate a rogue actor is attempting to breach the 
-                <strong>Production Database</strong>. Our IDS flagged suspicious activity.
-            </p>
-        </div>
-        
-        <div class="lab-instructions">
-            <h3>Objective</h3>
-            <p id="objective-text">Identify a Brute Force attack within the SSH logs.</p>
-        </div>
+        <section class="panel-card">
 
-        <div class="lab-hints">
-            <button id="hint-btn" class="btn-secondary">Get Intel Hint</button>
+            <h3>
+                Mission Brief
+            </h3>
+
+            <h2
+                id="briefing-header"
+                class="briefing-title">
+            </h2>
+
+            <div class="clearance-badge">
+                Clearance Level 2
+            </div>
+
+            <p
+                id="briefing-body"
+                class="briefing-text">
+            </p>
+
+        </section>
+
+        <section class="panel-card">
+
+            <h3>
+                Current Objective
+            </h3>
+
+            <p id="objective-text"></p>
+
+        </section>
+
+        <section class="panel-card">
+
+            <h3>
+                AI Mentor
+            </h3>
+
+            <p class="mentor-placeholder">
+
+                AI Mentor will guide you through
+                difficult investigations without
+                giving away the solution.
+
+            </p>
+
+            <button
+                id="hint-btn"
+                class="btn-secondary">
+
+                Get Intel Hint
+
+            </button>
+
             <p id="hint-text"></p>
-        </div>
-    
+
+        </section>
+
     </aside>
 
-        <main class="lab-main">
-            <div class="terminal-container">
-                <div class="terminal-header">
-                    <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
-                    <span class="terminal-title">root@akwire-sec:~#</span>
-                </div>
-                <div class="terminal-body" id="lab-terminal">
-                    <div class="log-entry">System boot complete...</div>
-                    <div class="log-entry">You must login to begin labs</div>
-                    <div class="terminal-input-line">
-                        <span class="prompt">#</span>
-                        <input type="text" id="terminal-input" autofocus>
-                    </div>
-                </div>
-             
-                <div class="terminal-status-bar">
-                    <div class="status-left">
-                        <span class="status-node">NODE: akwire-sec-lab-01</span>
-                        <span class="status-ip">IP: 10.0.0.45</span>
-                    </div>
-                    <div class="top-bar-stats">
-                        <span id="system-clock">00:00 AM</span>
-                    </div>
-                </div>
+
+    <!-- ================= CENTER ================= -->
+
+    <main class="lab-main">
+
+        <div class="terminal-container">
+
+            <div class="terminal-header">
+
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+
+                <span class="terminal-title">
+
+                    root@akwire-sec:~#
+
+                </span>
+
             </div>
+
+            <div
+                id="lab-terminal"
+                class="terminal-body">
+
+                <div class="log-entry">
+
+                    Mission initialized...
+
+                </div>
+
+                <div class="terminal-input-line">
+
+                    <span class="prompt">#</span>
+
+                    <input
+                        id="terminal-input"
+                        autocomplete="off"
+                        autofocus>
+
+                </div>
+
+            </div>
+
+            <div class="terminal-status-bar">
+
+                <div>
+
+                    <span class="status-node">
+
+                        NODE:
+                        akwire-sec-01
+
+                    </span>
+
+                    <span class="status-ip">
+
+                        IP:
+                        10.0.0.45
+
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <span id="system-clock"></span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= RIGHT PANEL ================= -->
+
+    <aside class="lab-right-sidebar">
+
+        <section class="panel-card">
+
+            <h3>
+
+                Mission Progress
+
+            </h3>
+
+            <div class="progress-bar">
+
+                <div
+                    class="progress-fill"
+                    id="mission-progress">
+
+                </div>
+
+            </div>
+
+            <span id="progress-percent">
+
+                0%
+
+            </span>
+
+        </section>
+
+
+        <section class="panel-card">
+
+            <h3>
+
+                Mission Objectives
+
+            </h3>
 
             <div class="task-card">
-                <h3>Level Completed</h3>
-                <div class="task-item">
-                    <input type="checkbox" id="task-logs"> <label>Identify Brute Force IP</label>
-                </div>
-                <div class="task-item">
-                    <input type="checkbox" id="task-scan" disabled>
-                    <label>Scan for Vulnerable Ports (nmap)</label>
-                </div>
-                <div class="task-item">
-                    <input type="checkbox" id="task-grep" disabled>
-                    <label>Find Leaked Credentials (grep)</label>
-                </div>
-            </div>
-        </main>
-    </div>
 
-    <footer class="main-footer">
-        <div class="footer-container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <div class="footer-logo">AKWIRE<span>_SEC</span></div>
-                    <p>Advanced preparation for CompTIA SY0-701. Building the next generation of security professionals.</p>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>Training</h4>
-                    <ul>
-                        <li><a href="exam.html">Exam Engine</a></li>
-                        <li><a href="labs.html">Interactive Labs</a></li>
-                        <li><a href="courses.html">Course Modules</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Security Status</h4>
-                    <div class="status-indicator">
-                        <span class="dot pulse"></span>
-                        <span class="status-text">NETWORK_OPERATIONAL</span>
-                    </div>
-                    <p style="font-size: 0.75rem; margin-top: 10px; color: #64748b;">// Last Scan: Feb 2026</p>
-                </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 Akwire Cybersecurity. All Rights Reserved.</p>
-                <div class="footer-legal">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Use</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+        </section>
 
-    <script src="js/labs.js"></script>
+
+        <section class="panel-card">
+
+            <h3>
+
+                Network Diagram
+
+            </h3>
+
+            <div class="coming-soon">
+
+                Coming in Sprint 2
+
+            </div>
+
+        </section>
+
+
+        <section class="panel-card">
+
+            <h3>
+
+                Mission Timeline
+
+            </h3>
+
+            <div class="coming-soon">
+
+                Coming in Sprint 2
+
+            </div>
+
+        </section>
+
+    </aside>
+
+</div>
+
+<script src="js/labs.js"></script>
 
 </body>
 </html>
