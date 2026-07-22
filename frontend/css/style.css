@@ -5223,22 +5223,36 @@ table{
 
 .lab-layout{
     display:grid;
-    grid-template-columns:320px 1fr 320px;
-    gap:24px;
 
-    min-height:100vh;
+    grid-template-columns:minmax(300px,320px) minmax(0,1fr) minmax(300px,320px);
 
-    background:#020617;
+    gap:20px;
+
+    width:100%;
+
+    max-width:1900px;
+
+    margin:0 auto;
 
     padding:20px;
+
+    box-sizing:border-box;
+
+    align-items:start;
 }
 
 .lab-sidebar,
 .lab-right-sidebar{
 
     display:flex;
+
     flex-direction:column;
+
     gap:20px;
+
+    min-width:0;
+
+    overflow:hidden;
 }
 
 .panel-card{
@@ -5275,6 +5289,8 @@ table{
 
     flex-direction:column;
 
+    min-width:0;
+
 }
 
 .terminal-container{
@@ -5283,17 +5299,11 @@ table{
 
     flex-direction:column;
 
+    width:100%;
+
     flex:1;
 
     min-height:750px;
-
-    background:#0f172a;
-
-    border:1px solid #334155;
-
-    border-radius:12px;
-
-    overflow:hidden;
 
 }
 
