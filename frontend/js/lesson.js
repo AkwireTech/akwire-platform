@@ -65,6 +65,8 @@ async function loadLesson() {
             module.lessons[lessonIndex];
             console.log("Lesson object:");
             console.log(JSON.stringify(lesson, null, 2));
+            console.log("Course ID:", courseId);
+
         const totalLessons =
             module.lessons.length;
 
@@ -120,62 +122,116 @@ async function loadLesson() {
         // CONTENT
         // ==========================
     
-  let html = "";
+        let html = "";
 
-console.log("overview value =", lesson.overview);
+        // Overview
+        if (lesson.overview) {
 
-html += `
-<div style="background:red;color:white;padding:10px;margin-bottom:10px;">
-TEST BLOCK
-</div>
-`;
+            html += `
+                <div class="lesson-content-card">
 
-if (lesson.overview) {
+                    <h2>
+                        Overview
+                    </h2>
 
-    console.log("Overview block executed");
+                    <p>
+                        ${lesson.overview}
+                    </p>
 
-    html += `
-    <div class="lesson-content-card">
-        <h2>Overview</h2>
-        <p>${lesson.overview}</p>
-    </div>
-    `;
-}
+                </div>
+            `;
 
-if (lesson.objectives?.length) {
+        }
 
-    console.log("Objectives block executed");
+        // Learning Objectives
+        if (
+            lesson.objectives &&
+            lesson.objectives.length
+        ) {
 
-    html += `
-    <div class="lesson-content-card">
-        <h2>Learning Objectives</h2>
-        <ul>
-            ${lesson.objectives.map(o => `<li>${o}</li>`).join("")}
-        </ul>
-    </div>
-    `;
-}
+            html += `
+                <div class="lesson-content-card">
 
-html += `
-<div class="lesson-content-card">
-    <h2>Lesson</h2>
-    ${lesson.content}
-</div>
-`;
+                    <h2>
+                        Learning Objectives
+                    </h2>
 
-if (lesson.summary) {
+                    <ul>
+                        ${lesson.objectives
+                            .map(
+                                objective =>
+                                    `<li>${objective}</li>`
+                            )
+                            .join("")}
+                    </ul>
 
-    console.log("Summary block executed");
+                </div>
+            `;
 
-    html += `
-    <div class="lesson-content-card">
-        <h2>Lesson Summary</h2>
-        <p>${lesson.summary}</p>
-    </div>
-    `;
-}
+        }
 
-console.log(html);
+        // Main Lesson Content
+
+        html += `
+            <div class="lesson-content-card">
+
+                <h2>
+                    Lesson
+                </h2>
+
+                ${lesson.content}
+
+            </div>
+        `;
+
+
+       // Key Terms
+        if (lesson.keyTerms && lesson.keyTerms.length) {
+
+            html += `
+                <div class="lesson-content-card">
+
+                    <h2>Key Terms</h2>
+
+                    <ul>
+                        ${lesson.keyTerms
+                            .map(
+                                item => `
+                                    <li>
+                                        <strong>${item.term}</strong>
+                                        ${item.definition ? ` - ${item.definition}` : ""}
+                                    </li>
+                                `
+                            )
+                            .join("")}
+                    </ul>
+
+                </div>
+            `;
+
+        }
+
+
+        // Summary
+
+        if (lesson.summary) {
+
+            html += `
+                <div class="lesson-content-card">
+
+                    <h2>
+                        Lesson Summary
+                    </h2>
+
+                    <p>
+                        ${lesson.summary}
+                    </p>
+
+                </div>
+            `;
+
+        }
+
         // ======================================
         // KNOWLEDGE CHECK
         // ======================================

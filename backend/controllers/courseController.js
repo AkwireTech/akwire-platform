@@ -392,6 +392,9 @@ export const updateLesson = async (req, res) => {
         lesson.videoUrl = videoUrl;
         lesson.resources = resources;
 
+        course.markModified("modules");
+        await course.save();
+
         res.json({
             message: "Lesson updated successfully",
             course
