@@ -520,10 +520,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                         tBody.insertBefore(resp, tInput.parentElement);
 
+                        console.log("Scenario displayed");
+
                         lab.tasks.forEach(t => {
 
-                            console.log("User entered:", clean);
-                            console.log("Task command:", t.cmd);
+                            console.log("Checking task:", t.label);
+                            console.log("Task cmd:", t.cmd);
 
                             const commands = Array.isArray(t.cmd)
                                 ? t.cmd
@@ -533,13 +535,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 clean === command.toLowerCase()
                             );
 
+                            console.log("Matched:", matched);
+
                             if (matched) {
+
+                                console.log("Calling markComplete");
 
                                 markComplete(t);
 
                             }
 
                         });
+
 
                     } else {
 
