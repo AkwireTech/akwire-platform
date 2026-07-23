@@ -5079,6 +5079,7 @@ table{
 
 .briefing-title{
     color: #b91c1c;
+    font-size: medium;
 }
 
 .clearance-badge{
@@ -5086,7 +5087,8 @@ table{
     background-color: #f59e0b;
     border-radius: 5px;
     padding: 10px;
-    max-width: 40%;
+    max-width: 60%;
+    border: 1px solid #9498a021;
 }
 
 
