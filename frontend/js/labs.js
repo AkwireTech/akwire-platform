@@ -280,7 +280,12 @@ function loadLab(labID) {
 
 function markComplete(task) {
 
+        console.log("markComplete called");
+        console.log("Task ID:", task.id);
+
     const cb = document.getElementById(task.id);
+
+        console.log("Checkbox:", cb);
 
     if (cb && !cb.checked) {
 
@@ -516,18 +521,25 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                     lab.tasks.forEach(t => {
 
+                        console.log("Task:", t);
+                        console.log("Command(s):", t.cmd);
+
                         const commands = Array.isArray(t.cmd)
                             ? t.cmd
                             : [t.cmd];
 
-                        const matched = commands.some(command =>
-                            clean === command.toLowerCase()
-                        );
+                        console.log("Normalized commands:", commands);
+
+                        const matched = commands.some(command => {
+                            console.log("Comparing:", `"${clean}"`, "==", `"${command.toLowerCase()}"`);
+                            return clean === command.toLowerCase();
+                        });
+
+                        console.log("Matched:", matched);
 
                         if (matched) {
-
+                            console.log(">>> markComplete called");
                             markComplete(t);
-
                         }
 
                     });
