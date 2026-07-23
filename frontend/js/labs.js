@@ -514,6 +514,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                         lab.tasks.forEach(t => {
 
+                            console.log("User entered:", clean);
+                            console.log("Task command:", t.cmd);
+
                             const commands = Array.isArray(t.cmd)
                                 ? t.cmd
                                 : [t.cmd];
