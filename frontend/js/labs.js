@@ -116,26 +116,25 @@ function loadMissionObjectives(tasks) {
 
 function renderObjectives() {
 
-    const container =
-        document.querySelector(".task-card");
+    const container = document.querySelector(".task-card");
 
     container.innerHTML = "";
 
     missionObjectives.forEach((task, index) => {
 
-        const row =
-            document.createElement("div");
-
+        const row = document.createElement("div");
         row.className = "task-item";
 
         row.innerHTML = `
-
-            ${index < currentObjectiveIndex
-                ? "✅"
-                : "⬜"}
-
-            ${task.label}
-
+            <label style="display:flex;align-items:center;gap:8px;">
+                <input
+                    type="checkbox"
+                    id="${task.id}"
+                    disabled
+                    ${index < currentObjectiveIndex ? "checked" : ""}
+                >
+                <span>${task.label}</span>
+            </label>
         `;
 
         container.appendChild(row);
@@ -143,7 +142,6 @@ function renderObjectives() {
     });
 
 }
-
 
 function updateMissionProgress() {
 
@@ -291,6 +289,12 @@ function markComplete(task) {
 
         cb.checked = true;
         cb.parentElement.style.color = "#22c55e";
+
+    const span = cb.parentElement.querySelector("span");
+    if (span) {
+        span.style.color = "#22c55e";
+        span.style.fontWeight = "600";
+    }
 
         completedTasks++;
 
