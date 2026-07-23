@@ -52,15 +52,16 @@ const progressPercent =
 function printTerminal(text) {
 
     const line = document.createElement("div");
-
     line.className = "log-entry";
-
     line.textContent = text;
 
-    terminal.insertBefore(
-        line,
-        document.querySelector(".terminal-input-line")
-    );
+    const inputLine = terminal.querySelector(".terminal-input-line");
+
+    if (inputLine) {
+        terminal.insertBefore(line, inputLine);
+    } else {
+        terminal.appendChild(line);
+    }
 
     terminal.scrollTop = terminal.scrollHeight;
 }
@@ -98,42 +99,6 @@ async function bootSequence() {
         );
     }
 
-    addInputPrompt();
-}
-
-
-function addInputPrompt() {
-
-    const inputLine =
-        document.createElement("div");
-
-    inputLine.className =
-        "terminal-input-line";
-
-    inputLine.innerHTML = `
-
-        <span class="prompt">
-            root@akwire-sec:~#
-        </span>
-
-        <input
-            id="terminal-input"
-            autocomplete="off"
-            autofocus>
-
-    `;
-
-    terminal.appendChild(inputLine);
-
-    const input =
-        inputLine.querySelector("input");
-
-    input.focus();
-
-    input.addEventListener(
-        "keydown",
-        handleCommand
-    );
 }
 
 
@@ -234,6 +199,9 @@ async function fetchLabFromBackend(labID) {
     masterLabs[labID] = data;
 
     loadLab(labID);
+
+    loadMissionObjectives(data.tasks);
+
 }
 
 
@@ -296,19 +264,14 @@ function loadLab(labID) {
     document.getElementById('briefing-header').innerText = `OPERATION: ${lab.title.toUpperCase()}`;
     document.getElementById('briefing-body').innerHTML = lab.briefing;
     document.getElementById('objective-text').innerText = lab.objective;
+    
+    currentObjectiveIndex = 0;
+
+    updateMissionProgress();
 
     const taskCard = document.querySelector('.task-card');
 
     if (taskCard) {
-        taskCard.innerHTML = '<h3>Level Completed</h3>';
-
-        lab.tasks.forEach(t => {
-            taskCard.innerHTML += `
-                <div class="task-item">
-                    <input type="checkbox" id="${t.id}" disabled>
-                    <label>${t.label}</label>
-                </div>`;
-        });
     }
 
     const tBody = document.getElementById('lab-terminal');
