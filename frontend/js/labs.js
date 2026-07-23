@@ -504,9 +504,14 @@ document.addEventListener('DOMContentLoaded', async () => {
                     tBody.insertBefore(line, tInput.parentElement);
 
                     const lab = masterLabs[currentLabID];
+                    console.log("Current Lab:", lab);
+                    console.log("Current Lab ID:", currentLabID);
                     const clean = cmd.toLowerCase();
 
-                
+                    console.log("Scenarios:", lab.scenarios);
+                    console.log("Lookup:", lab.scenarios[clean]);
+
+                console.log("BEFORE SCENARIO");
                 }else if (lab.scenarios && lab.scenarios[clean]) {
 
                         const resp = document.createElement('div');
