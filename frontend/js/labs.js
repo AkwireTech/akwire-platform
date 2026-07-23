@@ -25,6 +25,194 @@ function startSystemClock() {
 }
 
 
+// ===============================
+// Lab UI State
+// ===============================
+
+let currentObjectiveIndex = 0;
+
+let missionObjectives = [];
+
+let missionProgress = 0;
+
+const terminal =
+    document.getElementById("lab-terminal");
+
+const progressFill =
+    document.getElementById("mission-progress");
+
+const progressPercent =
+    document.getElementById("progress-percent");
+
+
+// ===============================
+// Terminal Output
+// ===============================
+
+function printTerminal(text) {
+
+    const line = document.createElement("div");
+
+    line.className = "log-entry";
+
+    line.textContent = text;
+
+    terminal.insertBefore(
+        line,
+        document.querySelector(".terminal-input-line")
+    );
+
+    terminal.scrollTop = terminal.scrollHeight;
+}
+
+// ===============================
+// Boot Sequence
+// ===============================
+
+async function bootSequence() {
+
+    terminal.innerHTML = "";
+
+    const bootMessages = [
+
+        "====================================================",
+        " AKWIRE CYBER RANGE v2.0",
+        " Secure Operations Environment",
+        "====================================================",
+        "",
+        "Loading secure environment...",
+        "Initializing virtual network...",
+        "Connecting to Security Operations Center...",
+        "Loading mission...",
+        "Mission Ready.",
+        ""
+
+    ];
+
+    for (const msg of bootMessages) {
+
+        printTerminal(msg);
+
+        await new Promise(resolve =>
+            setTimeout(resolve, 300)
+        );
+    }
+
+    addInputPrompt();
+}
+
+
+function addInputPrompt() {
+
+    const inputLine =
+        document.createElement("div");
+
+    inputLine.className =
+        "terminal-input-line";
+
+    inputLine.innerHTML = `
+
+        <span class="prompt">
+            root@akwire-sec:~#
+        </span>
+
+        <input
+            id="terminal-input"
+            autocomplete="off"
+            autofocus>
+
+    `;
+
+    terminal.appendChild(inputLine);
+
+    const input =
+        inputLine.querySelector("input");
+
+    input.focus();
+
+    input.addEventListener(
+        "keydown",
+        handleCommand
+    );
+}
+
+
+function loadMissionObjectives(tasks) {
+
+    missionObjectives = tasks;
+
+    currentObjectiveIndex = 0;
+
+    renderObjectives();
+
+    updateMissionProgress();
+}
+
+
+function renderObjectives() {
+
+    const container =
+        document.querySelector(".task-card");
+
+    container.innerHTML = "";
+
+    missionObjectives.forEach((task, index) => {
+
+        const row =
+            document.createElement("div");
+
+        row.className = "task-item";
+
+        row.innerHTML = `
+
+            ${index < currentObjectiveIndex
+                ? "✅"
+                : "⬜"}
+
+            ${task.label}
+
+        `;
+
+        container.appendChild(row);
+
+    });
+
+}
+
+
+function updateMissionProgress() {
+
+    if (missionObjectives.length === 0)
+        return;
+
+    missionProgress = Math.round(
+
+        (currentObjectiveIndex /
+            missionObjectives.length) * 100
+
+    );
+
+    progressFill.style.width =
+        missionProgress + "%";
+
+    progressPercent.textContent =
+        missionProgress + "%";
+
+}
+
+
+function completeObjective() {
+
+    currentObjectiveIndex++;
+
+    renderObjectives();
+
+    updateMissionProgress();
+
+}
+
+
+
 // ==============================
 // FETCH LAB FROM BACKEND
 // ==============================
@@ -361,11 +549,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const lab = masterLabs[currentLabID];
                     const clean = cmd.toLowerCase();
 
-                    if (clean === 'clear') {
-
-                        tBody.querySelectorAll('.log-entry, div:not(.terminal-input-line)').forEach(el => el.remove());
-
-                    } else if (lab.scenarios && lab.scenarios[clean]) {
+                
+                }else if (lab.scenarios && lab.scenarios[clean]) {
 
                         const resp = document.createElement('div');
                         resp.className = 'log-entry';
@@ -374,9 +559,25 @@ document.addEventListener('DOMContentLoaded', async () => {
                         tBody.insertBefore(resp, tInput.parentElement);
 
                         lab.tasks.forEach(t => {
-                            if (clean === t.cmd.toLowerCase()) {
+
+                            const commands = Array.isArray(t.cmd)
+                                ? t.cmd
+                                : [t.cmd];
+
+                            const matched = commands.some(command =>
+                                clean === command.toLowerCase()
+                            );
+
+                            if (matched) {
+
+                                printTerminal("✔ Objective Completed");
+
+                                completeObjective();
+
                                 markComplete(t);
+
                             }
+
                         });
 
                     } else {
@@ -387,7 +588,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
                         tBody.insertBefore(error, tInput.parentElement);
                     }
-                }
+                
 
                 tInput.value = '';
                 tBody.scrollTop = tBody.scrollHeight;
