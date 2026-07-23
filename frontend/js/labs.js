@@ -267,21 +267,10 @@ function loadLab(labID) {
     
     currentObjectiveIndex = 0;
 
+    missionProgress = 0;
+
     updateMissionProgress();
 
-    const taskCard = document.querySelector('.task-card');
-
-    if (taskCard) {
-    }
-
-    const tBody = document.getElementById('lab-terminal');
-
-    if (tBody) {
-        tBody.querySelectorAll('.log-entry, div:not(.terminal-input-line)').forEach(el => el.remove());
-    }
-
-    const hintText = document.getElementById('hint-text');
-    if (hintText) hintText.style.display = 'none';
 }
 
 
@@ -299,6 +288,8 @@ function markComplete(task) {
         cb.parentElement.style.color = "#22c55e";
 
         completedTasks++;
+
+        completeObjective();
 
         document.getElementById('objective-text').innerText = task.nextObjective;
 
@@ -532,10 +523,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                             );
 
                             if (matched) {
-
-                                printTerminal("✔ Objective Completed");
-
-                                completeObjective();
 
                                 markComplete(t);
 
