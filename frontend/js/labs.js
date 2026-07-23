@@ -488,11 +488,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     // TERMINAL ENGINE
     // ==========================
     if (tInput) {
+
         tInput.addEventListener('keydown', (e) => {
 
             if (e.key === 'Enter') {
+                console.log("ENTER PRESSED");
 
                 const cmd = tInput.value.trim();
+                console.log(cmd);
 
                 if (cmd) {
 
