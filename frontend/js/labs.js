@@ -497,65 +497,52 @@ document.addEventListener('DOMContentLoaded', async () => {
                 const cmd = tInput.value.trim();
                 console.log(cmd);
 
-                if (cmd) {
+            if (cmd) {
 
-                    const line = document.createElement('div');
-                    line.innerHTML = `<span class="prompt">#</span> ${cmd}`;
-                    tBody.insertBefore(line, tInput.parentElement);
+                const line = document.createElement("div");
+                line.innerHTML = `<span class="prompt">#</span> ${cmd}`;
+                tBody.insertBefore(line, tInput.parentElement);
 
-                    const lab = masterLabs[currentLabID];
-                    console.log("Current Lab:", lab);
-                    console.log("Current Lab ID:", currentLabID);
-                    const clean = cmd.toLowerCase();
+                const lab = masterLabs[currentLabID];
+                const clean = cmd.toLowerCase();
 
-                    console.log("Scenarios:", lab.scenarios);
-                    console.log("Lookup:", lab.scenarios[clean]);
+                if (lab.scenarios && lab.scenarios[clean]) {
 
-                console.log("BEFORE SCENARIO");
-                }else if (lab.scenarios && lab.scenarios[clean]) {
+                    const resp = document.createElement("div");
+                    resp.className = "log-entry";
+                    resp.innerHTML = lab.scenarios[clean].replace(/\n/g, "<br>");
 
-                        const resp = document.createElement('div');
-                        resp.className = 'log-entry';
-                        resp.innerHTML = lab.scenarios[clean].replace(/\n/g, '<br>');
+                    tBody.insertBefore(resp, tInput.parentElement);
 
-                        tBody.insertBefore(resp, tInput.parentElement);
+                    lab.tasks.forEach(t => {
 
-                        console.log("Scenario displayed");
+                        const commands = Array.isArray(t.cmd)
+                            ? t.cmd
+                            : [t.cmd];
 
-                        lab.tasks.forEach(t => {
+                        const matched = commands.some(command =>
+                            clean === command.toLowerCase()
+                        );
 
-                            console.log("Checking task:", t.label);
-                            console.log("Task cmd:", t.cmd);
+                        if (matched) {
 
-                            const commands = Array.isArray(t.cmd)
-                                ? t.cmd
-                                : [t.cmd];
+                            markComplete(t);
 
-                            const matched = commands.some(command =>
-                                clean === command.toLowerCase()
-                            );
+                        }
 
-                            console.log("Matched:", matched);
+                    });
 
-                            if (matched) {
+                } else {
 
-                                console.log("Calling markComplete");
+                    const error = document.createElement("div");
+                    error.style.color = "#ef4444";
+                    error.innerText = `bash: ${cmd}: command not found`;
 
-                                markComplete(t);
+                    tBody.insertBefore(error, tInput.parentElement);
 
-                            }
+                }
 
-                        });
-
-
-                    } else {
-
-                        const error = document.createElement('div');
-                        error.style.color = "#ef4444";
-                        error.innerText = `bash: ${cmd}: command not found`;
-
-                        tBody.insertBefore(error, tInput.parentElement);
-                    }
+            }
                 
 
                 tInput.value = '';
