@@ -5077,7 +5077,7 @@ table{
     padding:10px;
 }
 
-.briefing-title h2{
+.briefing-title{
     color: #b91c1c;
 }
 
@@ -5086,6 +5086,7 @@ table{
     background-color: #f59e0b;
     border-radius: 5px;
     padding: 10px;
+    max-width: 40%;
 }
 
 
