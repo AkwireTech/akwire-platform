@@ -1,3 +1,13 @@
+import { VirtualFileSystem } from "./labs/lab-filesystem.js";
+import { fileSystems } from "./labs/lab-filesystems.js";
+import { TerminalEngine } from "./labs/lab-terminal.js";
+import { CommandHistory } from "./labs/lab-history.js";
+import { MissionScoring } from "./labs/lab-scoring.js";
+import { AIMentor } from "./labs/lab-ai.js";
+import { NetworkMap } from "./labs/lab-network.js";
+import { LabUtils } from "./labs/lab-utils.js";
+
+
 // ==============================
 // GLOBAL STATE
 // ==============================
@@ -7,6 +17,23 @@ let currentLabID = '';
 let score = 100;
 let completedTasks = 0;
 let hintIndex = 0;
+
+
+// ===================================
+// LAB ENGINE MODULES
+// ===================================
+
+const vfs = new VirtualFileSystem();
+
+const history = new CommandHistory();
+
+const scoring = new MissionScoring();
+
+const mentor = new AIMentor();
+
+const network = new NetworkMap();
+
+let terminalEngine = null;
 
 
 // ==============================
@@ -196,9 +223,21 @@ async function fetchLabFromBackend(labID) {
 
     masterLabs[labID] = data;
 
-    loadLab(labID);
+// ------------------------------
+// Initialize Lab Modules
+// ------------------------------
 
-    loadMissionObjectives(data.tasks);
+    if (fileSystems[labID]) {
+        vfs.load(fileSystems[labID]);
+    }
+
+    mentor.loadLab(data);
+
+    if (data.network) {
+        network.load(data.network);
+    }
+
+    scoring.start(data.tasks.length);
 
 }
 
@@ -351,6 +390,8 @@ function finalizeLab() {
 
     const tBody = document.getElementById('lab-terminal');
 
+    terminalEngine = new TerminalEngine(vfs, tBody);
+
     const lab = masterLabs[currentLabID];
     const totalTasks = lab.tasks.length;
 
@@ -478,6 +519,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (hintIndex >= lab.hints.length) {
                 hintIndex = 0;
+
+                // ===================================
+                // NEW LAB ENGINE MODULES
+                // ===================================
+
+                const vfs = new VirtualFileSystem();
+
+                let terminalEngine = null;
             }
 
             hText.innerHTML = `
