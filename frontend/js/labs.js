@@ -480,8 +480,19 @@ async function loadDashboard(userId) {
 
         // 🔥 DEBUG (to prove it's working)
 
-        if (data.results && data.results.length > 0) {
+        if (
+            data.results &&
+            data.results.length > 0 &&
+            typeof renderCharts === "function"
+        ) {
             renderCharts(data.results);
+        }
+
+        if (
+            data.results &&
+            data.results.length > 0 &&
+            typeof generateInsights === "function"
+        ) {
             generateInsights(data.results);
         }
 
