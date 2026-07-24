@@ -449,10 +449,34 @@ async function loadDashboard(userId) {
         console.log("Dashboard data:", data);
 
         // 🔥 FORCE UPDATE (VISIBLE CHANGE)
-        document.getElementById('totalLabs').textContent = data.totalLabs;
-        document.getElementById('avgScore').textContent = data.avgScore.toFixed(1);
-        document.getElementById('completedLabs').textContent = data.completedLabs;
-        document.getElementById('progress').textContent = data.progress.toFixed(1) + "%";
+        const totalLabsEl = document.getElementById("totalLabs");
+        const avgScoreEl = document.getElementById("avgScore");
+        const completedLabsEl = document.getElementById("completedLabs");
+        const progressEl = document.getElementById("progress");
+
+        console.log({
+            totalLabsEl,
+            avgScoreEl,
+            completedLabsEl,
+            progressEl
+        });
+
+        if (totalLabsEl) {
+            totalLabsEl.textContent = data.totalLabs;
+        }
+
+        if (avgScoreEl) {
+            avgScoreEl.textContent = data.avgScore.toFixed(1);
+        }
+
+        if (completedLabsEl) {
+            completedLabsEl.textContent = data.completedLabs;
+        }
+
+        if (progressEl) {
+            progressEl.textContent =
+                data.progress.toFixed(1) + "%";
+        }
 
         // 🔥 DEBUG (to prove it's working)
 
