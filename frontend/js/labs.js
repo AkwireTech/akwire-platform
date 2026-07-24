@@ -222,6 +222,7 @@ async function fetchLabFromBackend(labID) {
     console.log("LAB DATA:", data);
 
     masterLabs[labID] = data;
+    currentLabID = labID;
 
 // ------------------------------
 // Initialize Lab Modules
