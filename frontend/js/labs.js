@@ -596,6 +596,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 line.innerHTML = `<span class="prompt">#</span> ${cmd}`;
                 tBody.insertBefore(line, tInput.parentElement);
 
+                console.log("currentLabID:", currentLabID);
+                console.log("masterLabs:", masterLabs);
+                console.log("masterLabs[currentLabID]:", masterLabs[currentLabID]);
+
                 const lab = masterLabs[currentLabID];
                 const clean = cmd.toLowerCase();
 
