@@ -500,7 +500,7 @@ async function loadDashboard(userId) {
         console.error("Dashboard error:", err);
     }
 }
-console.log("Akwire");
+
 // ==============================
 // MAIN INIT (FIXED + HINT FIX)
 // ==============================
@@ -655,6 +655,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+
+    const totalLabs = document.getElementById("totalLabs");
+
+    // Only run dashboard code on pages that have dashboard cards
+    if (!totalLabs) {
+        return;
+    }
+
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user) {
@@ -663,4 +671,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadDashboard(user._id);
+
 });
