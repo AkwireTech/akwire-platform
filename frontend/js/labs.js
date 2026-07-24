@@ -489,7 +489,7 @@ async function loadDashboard(userId) {
         console.error("Dashboard error:", err);
     }
 }
-
+console.log("Akwire");
 // ==============================
 // MAIN INIT (FIXED + HINT FIX)
 // ==============================
