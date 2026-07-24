@@ -223,6 +223,9 @@ async function fetchLabFromBackend(labID) {
     masterLabs[labID] = data;
     currentLabID = labID;
 
+    // Render the lab after it has been loaded
+    loadLab(labID);
+
 // ------------------------------
 // Initialize Lab Modules
 // ------------------------------
