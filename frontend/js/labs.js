@@ -356,42 +356,78 @@ function loadLab(labID) {
 
 function markComplete(task) {
 
-        console.log("markComplete called");
-        console.log("Task ID:", task.id);
+    console.log("markComplete:", task.id);
 
-    const cb = document.getElementById(task.id);
+    const lab = masterLabs[currentLabID];
 
-        console.log("Checkbox:", cb);
+    const taskIndex = lab.tasks.findIndex(t => t.id === task.id);
 
-    if (cb && !cb.checked) {
+    const item = document.getElementById(`objective-${taskIndex}`);
 
-        cb.checked = true;
-        cb.parentElement.style.color = "#22c55e";
-
-    const span = cb.parentElement.querySelector("span");
-    if (span) {
-        span.style.color = "#22c55e";
-        span.style.fontWeight = "600";
+    if (!item || item.dataset.completed === "true") {
+        return;
     }
 
-        completedTasks++;
+    item.dataset.completed = "true";
 
-        completeObjective();
+    const check = item.querySelector(".objective-check");
 
-        document.getElementById('objective-text').innerText = task.nextObjective;
-
-        const lab = masterLabs[currentLabID];
-        const briefingBody = document.getElementById('briefing-body');
-
-        briefingBody.innerHTML = `
-            <p>${lab.briefing}</p>
-            <div style="background: rgba(250, 204, 21, 0.1); padding: 10px; border: 1px solid #facc15; margin-top: 10px;">
-                <strong style="color: #facc15;">[ANALYSIS QUESTION]:</strong><br>${task.question}<br>
-                <input type="text" id="analysis-ans" style="background:#000; color:#fff; border:1px solid #444; margin-top:5px; padding:5px;">
-                <button onclick="checkAns('${task.answer}')">SUBMIT</button>
-                <div id="ans-feedback"></div>
-            </div>`;
+    if (check) {
+        check.textContent = "☑";
+        check.style.color = "#22c55e";
     }
+
+    item.style.color = "#22c55e";
+
+    completedTasks++;
+
+    updateMissionProgress();
+
+    if (task.nextObjective) {
+        document.getElementById("objective-text").textContent =
+            task.nextObjective;
+    }
+
+    const briefingBody = document.getElementById("briefing-body");
+
+    briefingBody.innerHTML = `
+        <p>${lab.briefing}</p>
+
+        <div style="
+            background: rgba(250,204,21,.1);
+            border:1px solid #facc15;
+            padding:10px;
+            margin-top:10px;
+        ">
+
+            <strong style="color:#facc15">
+                ANALYSIS QUESTION
+            </strong>
+
+            <br><br>
+
+            ${task.question}
+
+            <br><br>
+
+            <input
+                id="analysis-ans"
+                type="text"
+                style="
+                    background:#000;
+                    color:#fff;
+                    border:1px solid #555;
+                    padding:6px;
+                ">
+
+            <button onclick="checkAns('${task.answer}')">
+                Submit
+            </button>
+
+            <div id="ans-feedback"></div>
+
+        </div>
+    `;
 }
 
 
