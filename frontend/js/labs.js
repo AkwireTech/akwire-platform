@@ -172,22 +172,21 @@ function renderObjectives() {
 
 function updateMissionProgress() {
 
-    if (missionObjectives.length === 0)
-        return;
+    const percent =
+        masterLabs[currentLabID]
+            ? (completedTasks / masterLabs[currentLabID].tasks.length) * 100
+            : 0;
 
-    missionProgress = Math.round(
+    const bar = document.getElementById("mission-progress");
+    const text = document.getElementById("progress-percent");
 
-        (currentObjectiveIndex /
-            missionObjectives.length) * 100
+    if (bar) {
+        bar.style.width = percent + "%";
+    }
 
-    );
-
-    progressFill.style.width =
-        missionProgress + "%";
-
-    progressPercent.textContent =
-        missionProgress + "%";
-
+    if (text) {
+        text.textContent = Math.round(percent) + "%";
+    }
 }
 
 
@@ -301,7 +300,43 @@ function loadLab(labID) {
 
     document.getElementById('briefing-header').innerText = `OPERATION: ${lab.title.toUpperCase()}`;
     document.getElementById('briefing-body').innerHTML = lab.briefing;
-    document.getElementById('objective-text').innerText = lab.objective;
+    const objectiveText = document.getElementById("objective-text");
+
+        if (objectiveText) {
+            objectiveText.innerText =
+                lab.tasks.length > 0
+                    ? lab.tasks[0].label
+                    : lab.objective;
+        }
+
+// ===============================
+// Render Mission Objectives
+// ===============================
+
+    const objectivesContainer =
+        document.getElementById("mission-objectives");
+
+    if (objectivesContainer) {
+
+        objectivesContainer.innerHTML = "";
+
+        lab.tasks.forEach((task, index) => {
+
+            objectivesContainer.innerHTML += `
+                <div
+                    id="objective-${index}"
+                    class="objective-item">
+
+                    <span class="objective-check">☐</span>
+
+                    <span>${task.label}</span>
+
+                </div>
+            `;
+
+        });
+
+    }
     
     currentObjectiveIndex = 0;
 
