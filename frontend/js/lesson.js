@@ -6,6 +6,10 @@
 // GET URL PARAMS
 // ==========================================
 
+let currentCourse = null;
+let currentModule = null;
+let currentLesson = null;
+
 const params =
     new URLSearchParams(
         window.location.search
@@ -66,6 +70,11 @@ async function loadLesson() {
             console.log("Lesson object:");
             console.log(JSON.stringify(lesson, null, 2));
             console.log("Course ID:", courseId);
+
+            currentCourse = course;
+            currentModule = module;
+            currentLesson = lesson;
+
 
         const totalLessons =
             module.lessons.length;
@@ -555,3 +564,111 @@ document.addEventListener(
     }
 
 );
+
+const askBtn =
+    document.getElementById("askMentorBtn");
+
+if (askBtn) {
+
+    askBtn.addEventListener(
+
+        "click",
+
+        async () => {
+
+            const question =
+                document
+                    .getElementById("aiQuestion")
+                    .value
+                    .trim();
+
+            if (!question) {
+
+                alert("Enter a question.");
+
+                return;
+
+            }
+
+            const responseBox =
+                document.getElementById(
+                    "mentorResponse"
+                );
+
+            responseBox.innerHTML =
+                "<p>Thinking...</p>";
+
+            try {
+
+                const response =
+                    await fetch(
+
+                        "https://akwire-api.onrender.com/api/ai/mentor",
+
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json"
+
+                            },
+
+                            body: JSON.stringify({
+
+                                mode: "lesson",
+
+                                course:
+                                    currentCourse?.title,
+
+                                module:
+                                    currentModule?.title,
+
+                                lesson:
+                                    currentLesson?.title,
+
+                                progress:
+                                    document.getElementById(
+                                        "lessonPercent"
+                                    ).textContent,
+
+                                message: question
+
+                            })
+
+                        }
+
+                    );
+
+                const data =
+                    await response.json();
+
+                responseBox.innerHTML = `
+
+                    <div class="mentor-answer">
+
+                        ${data.answer}
+
+                    </div>
+
+                `;
+
+            }
+
+            catch (err) {
+
+                responseBox.innerHTML =
+
+                    "<p>Unable to contact AI Mentor.</p>";
+
+                console.error(err);
+
+            }
+
+        }
+
+    );
+
+}
