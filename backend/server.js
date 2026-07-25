@@ -11,6 +11,7 @@ import userRoutes from "./routes/users.js";
 import path from "path";
 import { fileURLToPath } from "url";
 import courseRoutes from "./routes/courseRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
 
 dotenv.config();
 connectDB();
@@ -34,6 +35,7 @@ app.use("/api/progress", progressRoutes);
 app.use("/api/exam", examRoutes);
 app.use("/api/users", userRoutes);
 app.use(express.static("public"));
+app.use("/api/ai", aiRoutes);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
