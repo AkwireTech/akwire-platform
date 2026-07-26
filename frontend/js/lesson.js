@@ -6,9 +6,9 @@
 // GET URL PARAMS
 // ==========================================
 
-let currentCourse = null;
-let currentModule = null;
-let currentLesson = null;
+let aiCourse = null;
+let aiModule = null;
+let aiLesson = null;
 
 const params =
     new URLSearchParams(
@@ -71,9 +71,9 @@ async function loadLesson() {
             console.log(JSON.stringify(lesson, null, 2));
             console.log("Course ID:", courseId);
 
-            currentCourse = course;
-            currentModule = module;
-            currentLesson = lesson;
+            aiCourse = course;
+            aiModule = module;
+            aiLesson = lesson;
 
 
         const totalLessons =
@@ -331,8 +331,6 @@ async function loadLesson() {
         console.log("Objectives:", lesson.objectives);
         console.log("Summary:", lesson.summary);
 
-        console.log("Final HTML:");
-        console.log(html);
 
 document.getElementById("lessonContent").innerHTML = html;
 
@@ -620,14 +618,9 @@ if (askBtn) {
 
                                 mode: "lesson",
 
-                                course:
-                                    currentCourse?.title,
-
-                                module:
-                                    currentModule?.title,
-
-                                lesson:
-                                    currentLesson?.title,
+                                course: aiCourse?.title,
+                                module: aiModule?.title,
+                                lesson: aiLesson?.title,
 
                                 progress:
                                     document.getElementById(
