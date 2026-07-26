@@ -5,7 +5,6 @@
 // ==========================================
 // GET URL PARAMS
 // ==========================================
-import { marked } from "marked";
 
 let aiCourse = null;
 let aiModule = null;
