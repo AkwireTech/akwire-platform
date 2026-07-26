@@ -573,6 +573,23 @@ const askBtn =
         "askMentorBtn"
     );
 
+const input =
+    document.getElementById(
+    "aiQuestion"
+    );
+
+    input.addEventListener(
+    "input",
+    () => {
+
+    input.style.height = "auto";
+
+    input.style.height =
+    input.scrollHeight + "px";
+
+    }
+);
+
 askBtn.addEventListener(
 
     "click",
@@ -619,26 +636,43 @@ async function askMentor() {
 
     mentorChat.innerHTML += `
 
-        <div class="mentor-message user">
+    <div class="mentor-message user">
 
-            ${question}
+    ${question}
 
-        </div>
+    </div>
+
+    <div class="message-time">
+
+    ${new Date().toLocaleTimeString([],{
+    hour:"2-digit",
+    minute:"2-digit"
+    })}
+
+    </div>
 
     `;
 
     input.value = "";
 
-    mentorChat.innerHTML += `
+   mentorChat.innerHTML += `
 
-        <div
-            class="mentor-message ai typing"
-            id="typing"
-        >
+    <div
+    class="mentor-message ai"
+    id="typing"
+    >
 
-            Thinking...
+    <div class="typing-indicator">
 
-        </div>
+    <span></span>
+
+    <span></span>
+
+    <span></span>
+
+    </div>
+
+    </div>
 
     `;
 
@@ -696,15 +730,26 @@ async function askMentor() {
             .getElementById("typing")
             .remove();
 
+
         mentorChat.innerHTML += `
 
-            <div class="mentor-message ai">
+        <div class="mentor-message ai">
 
-                ${data.answer.replace(/\n/g,"<br>")}
+        ${data.answer.replace(/\n/g,"<br>")}
 
-            </div>
+        </div>
+
+        <div class="message-time">
+
+        ${new Date().toLocaleTimeString([],{
+        hour:"2-digit",
+        minute:"2-digit"
+        })}
+
+        </div>
 
         `;
+
 
         mentorChat.scrollTop =
             mentorChat.scrollHeight;
