@@ -5367,3 +5367,119 @@ grid-template-columns:1fr;
 }
 
 }
+
+/* ==========================================
+   AI MENTOR
+========================================== */
+
+.ai-mentor-card {
+
+    background: #111827;
+
+    border: 1px solid #1f2937;
+
+    border-radius: 16px;
+
+    padding: 30px;
+
+    margin: 40px 0;
+
+}
+
+.ai-mentor-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+
+}
+
+.ai-mentor-header i {
+
+    color: #3b82f6;
+
+    font-size: 1.5rem;
+
+}
+
+.ai-mentor-header h2 {
+
+    color: white;
+
+    margin: 0;
+
+}
+
+.ai-mentor-subtitle {
+
+    color: #94a3b8;
+
+    margin-bottom: 20px;
+
+}
+
+#aiQuestion {
+
+    width: 100%;
+
+    min-height: 120px;
+
+    background: #0f172a;
+
+    color: white;
+
+    border: 1px solid #334155;
+
+    border-radius: 10px;
+
+    padding: 15px;
+
+    font-size: 1rem;
+
+    resize: vertical;
+
+    margin-bottom: 15px;
+
+}
+
+#aiQuestion::placeholder {
+
+    color: #64748b;
+
+}
+
+#askMentorBtn {
+
+    margin-bottom: 25px;
+
+}
+
+.mentor-response {
+
+    margin-top: 25px;
+
+}
+
+.mentor-answer {
+
+    background: #1e293b;
+
+    border-left: 4px solid #3b82f6;
+
+    padding: 20px;
+
+    border-radius: 10px;
+
+    color: #f8fafc;
+
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+
+    font-size: 1rem;
+
+}

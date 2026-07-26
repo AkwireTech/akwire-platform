@@ -639,11 +639,8 @@ if (askBtn) {
                     await response.json();
 
                 responseBox.innerHTML = `
-
                     <div class="mentor-answer">
-
-                        ${data.answer}
-
+                    ${data.answer.replace(/\n/g, "<br>")}
                     </div>
 
                 `;
