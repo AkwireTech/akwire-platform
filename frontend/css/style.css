@@ -5802,3 +5802,54 @@ opacity:1;
     margin-top:4px;
     padding:0 8px;
 }
+
+/* ==========================================
+   MARKDOWN
+========================================== */
+
+.mentor-message h1,
+.mentor-message h2,
+.mentor-message h3,
+.mentor-message h4 {
+    color: #ffffff;
+    margin: 16px 0 10px;
+}
+
+.mentor-message p {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+.mentor-message ul,
+.mentor-message ol {
+    margin: 12px 0 12px 24px;
+}
+
+.mentor-message li {
+    margin-bottom: 6px;
+}
+
+.mentor-message strong {
+    color: #60a5fa;
+}
+
+.mentor-message code {
+    background: #0f172a;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: Consolas, monospace;
+}
+
+.mentor-message pre {
+    background: #020617;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 16px;
+    overflow-x: auto;
+    margin: 16px 0;
+}
+
+.mentor-message pre code {
+    background: transparent;
+    padding: 0;
+}

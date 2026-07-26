@@ -5,6 +5,7 @@
 // ==========================================
 // GET URL PARAMS
 // ==========================================
+import { marked } from "marked";
 
 let aiCourse = null;
 let aiModule = null;
@@ -740,7 +741,7 @@ async function askMentor() {
 
         <div class="mentor-message ai">
 
-        ${data.answer.replace(/\n/g,"<br>")}
+        ${marked.parse(data.answer)}
 
         </div>
 
