@@ -657,20 +657,21 @@ async function askMentor() {
 
    mentorChat.innerHTML += `
 
-    <div
-    class="mentor-message ai"
-    id="typing"
-    >
+    <div class="message-group ai" id="typingGroup">
 
-    <div class="typing-indicator">
+        <div class="mentor-message ai">
 
-    <span></span>
+            <div class="typing-indicator">
 
-    <span></span>
+                <span></span>
 
-    <span></span>
+                <span></span>
 
-    </div>
+                <span></span>
+
+            </div>
+
+        </div>
 
     </div>
 
@@ -727,8 +728,8 @@ async function askMentor() {
             await response.json();
 
         document
-            .getElementById("typing")
-            .remove();
+            .getElementById("typingGroup")
+            ?.remove();
 
 
         mentorChat.innerHTML += `
@@ -759,8 +760,8 @@ async function askMentor() {
     catch {
 
         document
-            .getElementById("typing")
-            .remove();
+            .getElementById("typingGroup")
+            ?.remove();
 
         mentorChat.innerHTML += `
 
