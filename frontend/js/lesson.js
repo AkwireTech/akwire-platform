@@ -563,102 +563,170 @@ document.addEventListener(
 
 );
 
+const mentorChat =
+    document.getElementById(
+        "mentorChat"
+    );
+
 const askBtn =
-    document.getElementById("askMentorBtn");
+    document.getElementById(
+        "askMentorBtn"
+    );
 
-if (askBtn) {
+askBtn.addEventListener(
 
-    askBtn.addEventListener(
+    "click",
 
-        "click",
+    askMentor
 
-        async () => {
+);
 
-            const question =
-                document
-                    .getElementById("aiQuestion")
-                    .value
-                    .trim();
+document
+    .getElementById("aiQuestion")
+    .addEventListener(
 
-            if (!question) {
+        "keydown",
 
-                alert("Enter a question.");
+        e => {
 
-                return;
+            if (
+                e.key === "Enter" &&
+                !e.shiftKey
+            ) {
 
-            }
+                e.preventDefault();
 
-            const responseBox =
-                document.getElementById(
-                    "mentorResponse"
-                );
-
-            responseBox.innerHTML =
-                "<p>Thinking...</p>";
-
-            try {
-
-                const response =
-                    await fetch(
-
-                        "https://akwire-api.onrender.com/api/ai/mentor",
-
-                        {
-
-                            method: "POST",
-
-                            headers: {
-
-                                "Content-Type":
-                                    "application/json"
-
-                            },
-
-                            body: JSON.stringify({
-
-                                mode: "lesson",
-
-                                course: aiCourse?.title,
-                                module: aiModule?.title,
-                                lesson: aiLesson?.title,
-
-                                progress:
-                                    document.getElementById(
-                                        "lessonPercent"
-                                    ).textContent,
-
-                                message: question
-
-                            })
-
-                        }
-
-                    );
-
-                const data =
-                    await response.json();
-
-                responseBox.innerHTML = `
-                    <div class="mentor-answer">
-                    ${data.answer.replace(/\n/g, "<br>")}
-                    </div>
-
-                `;
-
-            }
-
-            catch (err) {
-
-                responseBox.innerHTML =
-
-                    "<p>Unable to contact AI Mentor.</p>";
-
-                console.error(err);
+                askMentor();
 
             }
 
         }
 
     );
+
+async function askMentor() {
+
+    const input =
+        document.getElementById(
+            "aiQuestion"
+        );
+
+    const question =
+        input.value.trim();
+
+    if (!question)
+        return;
+
+    mentorChat.innerHTML += `
+
+        <div class="mentor-message user">
+
+            ${question}
+
+        </div>
+
+    `;
+
+    input.value = "";
+
+    mentorChat.innerHTML += `
+
+        <div
+            class="mentor-message ai typing"
+            id="typing"
+        >
+
+            Thinking...
+
+        </div>
+
+    `;
+
+    mentorChat.scrollTop =
+        mentorChat.scrollHeight;
+
+    try {
+
+        const response =
+            await fetch(
+
+                "https://akwire-api.onrender.com/api/ai/mentor",
+
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        mode: "lesson",
+
+                        course:
+                            aiCourse.title,
+
+                        module:
+                            aiModule.title,
+
+                        lesson:
+                            aiLesson.title,
+
+                        progress:
+                            document.getElementById(
+                                "lessonPercent"
+                            ).textContent,
+
+                        message: question
+
+                    })
+
+                }
+
+            );
+
+        const data =
+            await response.json();
+
+        document
+            .getElementById("typing")
+            .remove();
+
+        mentorChat.innerHTML += `
+
+            <div class="mentor-message ai">
+
+                ${data.answer.replace(/\n/g,"<br>")}
+
+            </div>
+
+        `;
+
+        mentorChat.scrollTop =
+            mentorChat.scrollHeight;
+
+    }
+
+    catch {
+
+        document
+            .getElementById("typing")
+            .remove();
+
+        mentorChat.innerHTML += `
+
+            <div class="mentor-message ai">
+
+                Sorry, I couldn't connect.
+
+            </div>
+
+        `;
+
+    }
 
 }

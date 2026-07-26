@@ -155,40 +155,70 @@
 
         </section>
 
+        <!-- ==========================================
+            AI MENTOR
+        ========================================== -->
+
         <section class="ai-mentor-card">
 
             <div class="ai-mentor-header">
 
-                <i class="fas fa-robot"></i>
+                <div class="mentor-avatar">
 
-                <h2>Akwire AI Mentor</h2>
+                    <i class="fas fa-robot"></i>
+
+                </div>
+
+                <div>
+
+                    <h2>Akwire AI Mentor</h2>
+
+                    <p>Ask questions about this lesson.</p>
+
+                </div>
 
             </div>
 
-            <p class="ai-mentor-subtitle">
-
-                Ask questions about this lesson. Your mentor already knows
-                which course and lesson you're studying.
-
-            </p>
-
-            <textarea
-                id="aiQuestion"
-                placeholder="Ask your question..."
-                rows="4"
-            ></textarea>
-
-            <button
-                id="askMentorBtn"
-                class="academy-btn"
-            >
-                Ask AI Mentor
-            </button>
-
             <div
-                id="mentorResponse"
-                class="mentor-response"
-            ></div>
+                id="mentorChat"
+                class="mentor-chat"
+            >
+
+                <div class="mentor-message ai">
+
+                    👋 Hello! I'm your Akwire AI Mentor.
+
+                    Ask me anything about this lesson.
+
+                </div>
+
+            </div>
+
+            <div class="mentor-input">
+
+                <textarea
+
+                    id="aiQuestion"
+
+                    rows="2"
+
+                    placeholder="Ask a question..."
+
+                ></textarea>
+
+                <button
+
+                    id="askMentorBtn"
+
+                    class="academy-btn"
+
+                >
+
+                    <i class="fas fa-paper-plane"></i>
+
+                </button>
+
+            </div>
 
         </section>
 
