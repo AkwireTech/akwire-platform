@@ -5578,6 +5578,7 @@ margin-bottom:20px;
     font-size:12px;
     color:#94a3b8;
     margin-top:4px;
+    padding:0 8px;
 }
 
 .mentor-message{
@@ -5778,4 +5779,26 @@ transform:translateY(-4px);
 opacity:1;
 }
 
+}
+
+
+.message-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:16px;
+}
+
+.message-group.user{
+    align-items:flex-end;
+}
+
+.message-group.ai{
+    align-items:flex-start;
+}
+
+.message-time{
+    font-size:12px;
+    color:#94a3b8;
+    margin-top:4px;
+    padding:0 8px;
 }

@@ -636,18 +636,22 @@ async function askMentor() {
 
     mentorChat.innerHTML += `
 
-    <div class="mentor-message user">
+    <div class="message-group user">
 
-    ${question}
+        <div class="mentor-message user">
 
-    </div>
+            ${question}
 
-    <div class="message-time">
+        </div>
 
-    ${new Date().toLocaleTimeString([],{
-    hour:"2-digit",
-    minute:"2-digit"
-    })}
+        <div class="message-time">
+
+            ${new Date().toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit"
+            })}
+
+        </div>
 
     </div>
 
