@@ -38,16 +38,22 @@ function getSystemPrompt(mode = "lesson") {
     }
 }
 
-export async function mentor(data) {
-    // Build structured context once
+export async function mentor(data = {}) {
     const context = buildContext(data);
 
-    // Select the correct system prompt
-    const systemPrompt = getSystemPrompt(context.activity.mode);
+    const systemPrompt = getSystemPrompt(
+        context.activity.mode
+    );
 
-    // Build OpenAI messages
-    const messages = buildPrompt(context, systemPrompt);
+    const messages = buildPrompt(
+        context,
+        systemPrompt
+    );
 
-    // Send to OpenAI
-    return await askAI(messages);
+    const answer = await askAI(messages);
+
+    return {
+        answer,
+        context
+    };
 }

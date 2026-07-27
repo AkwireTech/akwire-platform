@@ -1,15 +1,32 @@
-export function buildPrompt(context, systemPrompt) {
-    return [
-        {
-            role: "system",
-            content: systemPrompt
-        },
-        {
-            role: "user",
-            content: `
-==============================
+export function buildPrompt(
+    context,
+    systemPrompt
+) {
+    const messages = [];
+
+    messages.push({
+        role: "system",
+        content: systemPrompt
+    });
+
+    if (
+        context.conversation.history &&
+        context.conversation.history.length
+    ) {
+        context.conversation.history.forEach(
+            (message) => {
+                messages.push({
+                    role: message.role,
+                    content: message.content
+                });
+            }
+        );
+    }
+
+    const studentContext = `
+===========================
 STUDENT PROFILE
-==============================
+===========================
 
 Name:
 ${context.user.name || "Student"}
@@ -17,9 +34,9 @@ ${context.user.name || "Student"}
 Certification Goal:
 ${context.user.certificationGoal || "Not specified"}
 
-==============================
+===========================
 CURRENT ACTIVITY
-==============================
+===========================
 
 Mode:
 ${context.activity.mode}
@@ -39,9 +56,9 @@ ${context.activity.lab}
 Objective:
 ${context.activity.objective}
 
-==============================
+===========================
 LEARNING PROGRESS
-==============================
+===========================
 
 Overall Progress:
 ${context.learning.progress}%
@@ -56,41 +73,54 @@ Completed Exams:
 ${context.learning.completedExams}
 
 Strengths:
-${context.learning.strengths.length
-    ? context.learning.strengths.join(", ")
-    : "Unknown"}
+${
+context.learning.strengths.length
+? context.learning.strengths.join(", ")
+: "Unknown"
+}
 
 Weaknesses:
-${context.learning.weaknesses.length
-    ? context.learning.weaknesses.join(", ")
-    : "Unknown"}
+${
+context.learning.weaknesses.length
+? context.learning.weaknesses.join(", ")
+: "Unknown"
+}
 
-==============================
+===========================
 LAB CONTEXT
-==============================
+===========================
 
 Current Directory:
 ${context.lab.currentDirectory}
 
 Recent Commands:
-${context.lab.recentCommands.length
-    ? context.lab.recentCommands.join("\n")
-    : "None"}
+${
+context.lab.recentCommands.length
+? context.lab.recentCommands.join("\n")
+: "None"
+}
 
 Hints Used:
 ${context.lab.hintsUsed}
 
 Completed Objectives:
-${context.lab.completedObjectives.length
-    ? context.lab.completedObjectives.join(", ")
-    : "None"}
+${
+context.lab.completedObjectives.length
+? context.lab.completedObjectives.join(", ")
+: "None"
+}
+`;
 
-==============================
-STUDENT QUESTION
-==============================
+    messages.push({
+        role: "user",
+        content: studentContext
+    });
 
-${context.conversation.message}
-`
-        }
-    ];
+    messages.push({
+        role: "user",
+        content:
+            context.conversation.message
+    });
+
+    return messages;
 }

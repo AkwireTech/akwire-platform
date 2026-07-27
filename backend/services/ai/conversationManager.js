@@ -29,24 +29,12 @@ function createTitle(message) {
 
 export async function createConversation({
     userId,
-    mode,
-    course = "",
-    module = "",
-    lesson = "",
     firstMessage = ""
 }) {
     const conversation = await Conversation.create({
         user: userId,
 
         title: createTitle(firstMessage),
-
-        mode,
-
-        course,
-
-        module,
-
-        lesson,
 
         messages: []
     });

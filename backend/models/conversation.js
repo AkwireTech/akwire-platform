@@ -40,35 +40,6 @@ const conversationSchema = new mongoose.Schema(
             maxlength: 100
         },
 
-        mode: {
-            type: String,
-            enum: [
-                "lesson",
-                "lab",
-                "exam",
-                "career",
-                "interview",
-                "course-builder",
-                "admin"
-            ],
-            default: "lesson"
-        },
-
-        course: {
-            type: String,
-            default: ""
-        },
-
-        module: {
-            type: String,
-            default: ""
-        },
-
-        lesson: {
-            type: String,
-            default: ""
-        },
-
         messages: {
             type: [messageSchema],
             default: []
