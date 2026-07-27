@@ -66,7 +66,7 @@ export async function getRecentConversations(userId) {
             updatedAt: -1
         })
         .limit(20)
-        .select("title mode updatedAt");
+        .select("title updatedAt");
 }
 
 export async function addMessage(
