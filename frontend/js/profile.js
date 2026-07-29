@@ -92,12 +92,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export/Import functions
 function exportProgress() {
-    const data = localStorage.getItem('currentUser');
-    if(!data) return alert("No data found to export.");
-    const blob = new Blob([data], {type: 'application/json'});
+
+    const data = localStorage.getItem("user");
+
+    if (!data) {
+        return alert("No data found to export.");
+    }
+
+    const blob = new Blob(
+        [data],
+        { type: "application/json" }
+    );
+
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'secplus_progress.json';
+    a.download = "akwire_user.json";
     a.click();
+
+    URL.revokeObjectURL(url);
+
 }
