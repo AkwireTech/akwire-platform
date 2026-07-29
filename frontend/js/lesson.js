@@ -675,6 +675,8 @@ async function askMentor() {
 
                     method: "POST",
 
+                    credentials: "include",
+
                     headers: {
 
                         "Content-Type":
@@ -686,19 +688,15 @@ async function askMentor() {
 
                         mode: "lesson",
 
-                        course:
-                            aiCourse.title,
+                        course: aiCourse.title,
 
-                        module:
-                            aiModule.title,
+                        module: aiModule.title,
 
-                        lesson:
-                            aiLesson.title,
+                        lesson: aiLesson.title,
 
-                        progress:
-                            document.getElementById(
-                                "lessonPercent"
-                            ).textContent,
+                        progress: document.getElementById(
+                            "lessonPercent"
+                        ).textContent,
 
                         message: question
 
