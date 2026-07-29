@@ -52,9 +52,7 @@ async function loadCourse() {
                 const progressResponse = await fetch(
                     "https://akwire-api.onrender.com/api/progress/lessons",
                     {
-                        headers: {
-                            Authorization: "Bearer " + token
-                        }
+                        credentials: "include"
                     }
                 );
 

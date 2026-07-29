@@ -370,9 +370,9 @@ async function addModule() {
             `https://akwire-api.onrender.com/api/courses/${courseId}/modules`,
             {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + token
                 },
                 body: JSON.stringify({ title })
             }
@@ -447,9 +447,7 @@ async function deleteModule(moduleIndex) {
             `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}`,
             {
                 method: "DELETE",
-                headers: {
-                    Authorization: "Bearer " + token
-                }
+                credentials: "include"
             }
         );
 
@@ -493,9 +491,9 @@ async function addLesson(moduleIndex) {
             `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons`,
             {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + token
                 },
                 body: JSON.stringify({
                     title,
@@ -594,9 +592,7 @@ async function deleteLesson(moduleIndex, lessonIndex) {
             `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}/lessons/${lessonIndex}`,
             {
                 method: "DELETE",
-                headers: {
-                    Authorization: "Bearer " + token
-                }
+                credentials: "include"
             }
         );
 
@@ -645,9 +641,9 @@ async function saveModuleEdit() {
             `https://akwire-api.onrender.com/api/courses/${courseId}/modules/${moduleIndex}`,
             {
                 method: "PUT",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + token
                 },
                 body: JSON.stringify({
                     title
@@ -734,9 +730,9 @@ console.log(
             {
                 
                 method: "PUT",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + token
                 },
                 body: JSON.stringify({
 

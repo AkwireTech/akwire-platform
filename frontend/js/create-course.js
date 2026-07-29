@@ -45,9 +45,9 @@ async function createCourse(e) {
             "https://akwire-api.onrender.com/api/courses",
             {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + token
                 },
                 body: JSON.stringify({
                     title,
@@ -245,9 +245,7 @@ async function deleteCourse(courseId) {
             `https://akwire-api.onrender.com/api/courses/${courseId}`,
             {
                 method: "DELETE",
-                headers: {
-                    Authorization: "Bearer " + token
-                }
+                credentials: "include"
             }
         );
 
@@ -323,9 +321,9 @@ async function saveCourseEdit() {
             `https://akwire-api.onrender.com/api/courses/${editingCourseId}`,
             {
                 method: "PUT",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + token
                 },
                 body: JSON.stringify({
                     title,

@@ -49,8 +49,8 @@ async function fetchExam() {
             "https://akwire-api.onrender.com/api/exam",
             {
                 method: "GET",
+                credentials: "include",
                 headers: {
-                    Authorization: "Bearer " + token,
                     "Content-Type": "application/json"
                 }
             }
@@ -321,9 +321,9 @@ async function submitExam() {
             "https://akwire-api.onrender.com/api/exam/submit",
             {
                 method: "POST",
+                credentials: "include",
                 headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + token
                 },
                 body: JSON.stringify(payload)
             }

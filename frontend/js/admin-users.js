@@ -14,7 +14,7 @@ async function loadUsers() {
             "https://akwire-api.onrender.com/api/users",
             {
                 headers: {
-                    Authorization: "Bearer " + token
+                    credentials: "include"
                 }
             }
         );

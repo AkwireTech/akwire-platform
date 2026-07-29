@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", async () => {
 
     const user = JSON.parse(localStorage.getItem("user"));
-    const token = localStorage.getItem("token");
 
     // ==========================
     // ACADEMY PROGRESS
@@ -12,9 +11,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const academyRes = await fetch(
             "https://akwire-api.onrender.com/api/progress",
             {
-                headers: {
-                    Authorization: "Bearer " + token
-                }
+               credentials: "include"
             }
         );
 
@@ -46,9 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const certRes = await fetch(
             "https://akwire-api.onrender.com/api/progress/certificates",
             {
-                headers: {
-                    Authorization: "Bearer " + token
-                }
+                credentials: "include"
             }
         );
 
@@ -83,10 +78,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     // AUTH CHECK
     // ==========================
 
-    if (!user || !user._id || !token) {
+    if (!user || !user._id) {
 
-        window.location.href = "login.html";
-        return;
+    window.location.href = "login.html";
+    return;
 
     }
 
@@ -208,10 +203,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const examRes = await fetch(
             "https://akwire-api.onrender.com/api/exam/history",
             {
-                headers: {
-                    Authorization:
-                        "Bearer " + token
-                }
+                credentials: "include"
             }
         );
 
@@ -222,7 +214,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             examData.attempts || [];
 
         
-                // ==========================
+        // ==========================
         // EXAM ANALYTICS
         // ==========================
 
@@ -421,7 +413,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
 
-                        // ==========================
+            // ==========================
             // EXAM CHART
             // ==========================
 
@@ -499,10 +491,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const recRes = await fetch(
             "https://akwire-api.onrender.com/api/exam/recommendations",
             {
-                headers: {
-                    Authorization:
-                        "Bearer " + token
-                }
+               credentials: "include"
             }
         );
 
