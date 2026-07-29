@@ -1,235 +1,224 @@
 console.log("AUTH JS LOADED");
 
-document.addEventListener("DOMContentLoaded", () => {
+const API_BASE = "https://akwire-api.onrender.com/api/auth";
 
-    // =========================
-    // LOGIN
-    // =========================
+// =====================================
+// LOGIN
+// =====================================
 
-    const loginForm =
-        document.getElementById("login-form");
+const loginForm = document.getElementById("login-form");
 
-    if (loginForm) {
+if (loginForm) {
 
-        loginForm.addEventListener(
-            "submit",
-            async (e) => {
+    loginForm.addEventListener("submit", async (e) => {
 
-                e.preventDefault();
+        e.preventDefault();
 
-                const email =
-                    loginForm
-                        .querySelector('input[type="email"]')
-                        .value
-                        .trim();
+        const email =
+            loginForm.querySelector('input[type="email"]').value.trim();
 
-                const password =
-                    loginForm
-                        .querySelector('input[type="password"]')
-                        .value
-                        .trim();
+        const password =
+            loginForm.querySelector('input[type="password"]').value.trim();
 
-                try {
+        try {
 
-                    const res = await fetch(
-                        "https://akwire-api.onrender.com/api/auth/login",
-                        {
-                            method: "POST",
+            const response = await fetch(`${API_BASE}/login`, {
 
-                            headers: {
-                                "Content-Type":
-                                    "application/json"
-                            },
+                method: "POST",
 
-                            body: JSON.stringify({
-                                email,
-                                password
-                            })
+                credentials: "include",
 
-                        }
-                    );
+                headers: {
+                    "Content-Type": "application/json"
+                },
 
-                    const data = await res.json();
+                body: JSON.stringify({
+                    email,
+                    password
+                })
 
-                    console.log("LOGIN RESPONSE:", JSON.stringify(data, null, 2));
-                        alert("Login response received");
+            });
 
-                    if (!res.ok) {
+            const data = await response.json();
 
-                        alert(
-                            data.message ||
-                            "Login failed"
-                        );
+            if (!response.ok) {
 
-                        return;
+                alert(data.message || "Login failed");
 
-                    }
-
-                    // =========================
-                    // SAVE USER
-                    // =========================
-
-                    const userData =
-                        data.user || data;
-
-                    localStorage.setItem(
-                        "user",
-                        JSON.stringify({
-                            _id: userData._id,
-                            email: userData.email,
-                            role: userData.role || "student"
-                        })
-                    );
-
-                    localStorage.setItem(
-                        "token",
-                        data.token
-                    );
-
-                    console.log(
-                        "User saved successfully"
-                    );
-
-                    window.location.href =
-                        "dashboard.html";
-
-                } catch (err) {
-
-                    console.error(
-                        "Login error:",
-                        err
-                    );
-
-                    alert("Server error");
-
-                }
+                return;
 
             }
-        );
+
+            // Store user ONLY
+
+            localStorage.setItem(
+
+                "user",
+
+                JSON.stringify(data.user)
+
+            );
+
+            window.location.href = "dashboard.html";
+
+        }
+
+        catch (err) {
+
+            console.error(err);
+
+            alert("Unable to connect to server.");
+
+        }
+
+    });
+
+}
+
+// =====================================
+// REGISTER
+// =====================================
+
+const registerForm = document.getElementById("register-form");
+
+if (registerForm) {
+
+    registerForm.addEventListener("submit", async (e) => {
+
+        e.preventDefault();
+
+        const inputs = registerForm.querySelectorAll("input");
+
+        const firstName = inputs[0].value.trim();
+
+        const lastName = inputs[1].value.trim();
+
+        const email = inputs[2].value.trim();
+
+        const password = inputs[3].value.trim();
+
+        const confirmPassword = inputs[4].value.trim();
+
+        if (password !== confirmPassword) {
+
+            alert("Passwords do not match");
+
+            return;
+
+        }
+
+        try {
+
+            const response = await fetch(`${API_BASE}/register`, {
+
+                method: "POST",
+
+                credentials: "include",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                },
+
+                body: JSON.stringify({
+
+                    username: `${firstName}${lastName}`
+                        .replace(/\s+/g, "")
+                        .toLowerCase(),
+
+                    email,
+
+                    password
+
+                })
+
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+
+                alert(data.message || "Registration failed");
+
+                return;
+
+            }
+
+            localStorage.setItem(
+
+                "user",
+
+                JSON.stringify(data.user)
+
+            );
+
+            window.location.href = "dashboard.html";
+
+        }
+
+        catch (err) {
+
+            console.error(err);
+
+            alert("Unable to connect to server.");
+
+        }
+
+    });
+
+}
+
+// =====================================
+// LOGOUT
+// =====================================
+
+async function logout() {
+
+    try {
+
+        await fetch(`${API_BASE}/logout`, {
+
+            method: "POST",
+
+            credentials: "include"
+
+        });
 
     }
 
-    // =========================
-    // REGISTER
-    // =========================
+    catch (err) {
 
-    const registerForm =
-        document.getElementById("register-form");
-
-    if (registerForm) {
-
-        registerForm.addEventListener(
-            "submit",
-            async (e) => {
-
-                e.preventDefault();
-
-                const inputs =
-                    registerForm.querySelectorAll("input");
-
-                const firstName =
-                    inputs[0].value.trim();
-
-                const lastName =
-                    inputs[1].value.trim();
-
-                const email =
-                    inputs[2].value.trim();
-
-                const password =
-                    inputs[3].value.trim();
-
-                const confirmPassword =
-                    inputs[4].value.trim();
-
-                if (password !== confirmPassword) {
-
-                    alert(
-                        "Passwords do not match"
-                    );
-
-                    return;
-
-                }
-
-                try {
-
-                    const res = await fetch(
-                        "https://akwire-api.onrender.com/api/auth/register",
-                        {
-                            method: "POST",
-
-                            headers: {
-                                "Content-Type":
-                                    "application/json"
-                            },
-
-                            body: JSON.stringify({
-
-                                username:
-                                    `${firstName}${lastName}`
-                                        .toLowerCase(),
-
-                                name:
-                                    `${firstName} ${lastName}`,
-
-                                email,
-
-                                password
-
-                            })
-
-                        }
-                    );
-
-                    const data = await res.json();
-
-                    console.log("REGISTER:", data);
-
-                    if (!res.ok) {
-
-                        alert(
-                            data.message ||
-                            "Registration failed"
-                        );
-
-                        return;
-
-                    }
-
-                    const userData =
-                        data.user || data;
-
-                    localStorage.setItem(
-                        "user",
-                        JSON.stringify({
-                            _id: userData._id,
-                            role: userData.role || "student"
-                        })
-                    );
-
-                    localStorage.setItem(
-                        "token",
-                        data.token
-                    );
-
-                    window.location.href =
-                        "dashboard.html";
-
-                } catch (err) {
-
-                    console.error(
-                        "Register error:",
-                        err
-                    );
-
-                    alert("Server error");
-
-                }
-
-            }
-        );
+        console.error(err);
 
     }
 
-});
+    localStorage.removeItem("user");
+
+    window.location.href = "login.html";
+
+}
+
+// Make logout available globally
+
+window.logout = logout;
+
+// =====================================
+// AUTH CHECK
+// =====================================
+
+function getCurrentUser() {
+
+    const user = localStorage.getItem("user");
+
+    if (!user) {
+
+        return null;
+
+    }
+
+    return JSON.parse(user);
+
+}
+
+window.getCurrentUser = getCurrentUser;

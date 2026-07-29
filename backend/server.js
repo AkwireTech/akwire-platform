@@ -1,55 +1,137 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
+import cookieParser from "cookie-parser";
+import path from "path";
+import { fileURLToPath } from "url";
+
 import connectDB from "./config/db.js";
+
 import authRoutes from "./routes/auth.js";
 import labRoutes from "./routes/labs.js";
 import dashboardRoutes from "./routes/dashboard.js";
 import progressRoutes from "./routes/progress.js";
 import examRoutes from "./routes/exam.js";
 import userRoutes from "./routes/users.js";
-import path from "path";
-import { fileURLToPath } from "url";
 import courseRoutes from "./routes/courseRoutes.js";
 import aiRoutes from "./routes/aiRoutes.js";
 
 dotenv.config();
+
 connectDB();
 
 const app = express();
 
+// ======================================
+// REQUEST LOGGER
+// ======================================
+
 app.use((req, res, next) => {
-  console.log("Incoming request:", req.method, req.url);
-  next();
+    console.log(`${req.method} ${req.originalUrl}`);
+    next();
 });
 
-app.use(cors());
+// ======================================
+// CORS
+// ======================================
+
+const allowedOrigins = [
+    "https://akwire-frontend.onrender.com",
+    "https://akwire.onrender.com",
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+    "http://localhost:5173"
+];
+
+app.use(
+    cors({
+        origin(origin, callback) {
+
+            // Allow Postman / server-to-server requests
+            if (!origin) {
+                return callback(null, true);
+            }
+
+            if (allowedOrigins.includes(origin)) {
+                return callback(null, true);
+            }
+
+            return callback(
+                new Error(`CORS blocked: ${origin}`)
+            );
+        },
+
+        credentials: true
+    })
+);
+
+// ======================================
+// MIDDLEWARE
+// ======================================
+
 app.use(express.json());
 
-// Routes
+app.use(cookieParser());
+
+// ======================================
+// API ROUTES
+// ======================================
+
 app.use("/api/auth", authRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/api/labs", labRoutes);
-app.use('/api/dashboard', dashboardRoutes);
+app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/progress", progressRoutes);
 app.use("/api/exam", examRoutes);
 app.use("/api/users", userRoutes);
-app.use(express.static("public"));
 app.use("/api/ai", aiRoutes);
+
+// ======================================
+// STATIC FILES
+// ======================================
+
+app.use(express.static("public"));
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// SERVE FRONTEND
 app.use(express.static(path.join(__dirname, "frontend")));
 
-app.get("/", (req, res) => res.send("Akwire Platform API Running"));
+// ======================================
+// HOME
+// ======================================
 
-// Global error handler
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({ message: err.message });
+app.get("/", (req, res) => {
+
+    res.send("Akwire Platform API Running");
+
 });
 
+// ======================================
+// GLOBAL ERROR HANDLER
+// ======================================
+
+app.use((err, req, res, next) => {
+
+    console.error(err.stack);
+
+    res.status(err.status || 500).json({
+
+        success: false,
+        message: err.message || "Internal Server Error"
+
+    });
+
+});
+
+// ======================================
+// START SERVER
+// ======================================
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.listen(PORT, () => {
+
+    console.log(`🚀 Server running on port ${PORT}`);
+
+});

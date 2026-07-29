@@ -2,29 +2,82 @@ import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 
 export const protect = async (req, res, next) => {
-  try {
-    let token;
 
-    // Check if Authorization header exists
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer ")
-    ) {
-      token = req.headers.authorization.split(" ")[1];
+    try {
 
-      // Verify token
-      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        let token = null;
 
-      // Attach user to request
-      req.user = await User.findById(decoded.id).select("-password");
+        // =====================================
+        // 1. AUTHORIZATION HEADER (POSTMAN/API)
+        // =====================================
 
-      return next();
+        if (
+            req.headers.authorization &&
+            req.headers.authorization.startsWith("Bearer ")
+        ) {
+
+            token = req.headers.authorization.split(" ")[1];
+
+        }
+
+        // =====================================
+        // 2. HTTP-ONLY COOKIE (BROWSER)
+        // =====================================
+
+        if (!token && req.cookies?.akwire_session) {
+
+            token = req.cookies.akwire_session;
+
+        }
+
+        // =====================================
+        // NO TOKEN FOUND
+        // =====================================
+
+        if (!token) {
+
+            return res.status(401).json({
+                message: "Not authorized"
+            });
+
+        }
+
+        // =====================================
+        // VERIFY TOKEN
+        // =====================================
+
+        const decoded = jwt.verify(
+            token,
+            process.env.JWT_SECRET
+        );
+
+        const user = await User.findById(decoded.id)
+            .select("-password");
+
+        if (!user) {
+
+            return res.status(401).json({
+                message: "User no longer exists"
+            });
+
+        }
+
+        req.user = user;
+
+        next();
+
     }
 
-    return res.status(401).json({ message: "Not authorized, no token" });
+    catch (error) {
 
-  } catch (error) {
-    console.error("Token error:", error);
-    return res.status(401).json({ message: "Token verification failed" });
-  }
+        console.error("Authentication Error:", error);
+
+        return res.status(401).json({
+
+            message: "Token verification failed"
+
+        });
+
+    }
+
 };
