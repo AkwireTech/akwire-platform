@@ -45,15 +45,18 @@ export const protect = async (req, res, next) => {
         // =====================================
         // VERIFY TOKEN
         // =====================================
-
+console.log("=== AUTH DEBUG ===");
+console.log("Cookies:", req.cookies);
+console.log("Token exists:", !!token);
+console.log("JWT Secret exists:", !!process.env.JWT_SECRET);
         const decoded = jwt.verify(
             token,
             process.env.JWT_SECRET
         );
-
+console.log("Decoded:", decoded);
         const user = await User.findById(decoded.id)
             .select("-password");
-
+console.log("User:", user);
         if (!user) {
 
             return res.status(401).json({
@@ -68,16 +71,11 @@ export const protect = async (req, res, next) => {
 
     }
 
-    catch (error) {
-
-        console.error("Authentication Error:", error);
-
-        return res.status(401).json({
-
-            message: "Token verification failed"
-
-        });
-
-    }
+ catch (error) {
+    console.error("AUTH ERROR:", error);
+    return res.status(401).json({
+        message: error.message
+    });
+}
 
 };
