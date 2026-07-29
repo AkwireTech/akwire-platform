@@ -36,34 +36,34 @@ app.use((req, res, next) => {
 // ======================================
 
 const allowedOrigins = [
-    "https://akwire-frontend.onrender.com",
-    "https://akwire.onrender.com",
-    "http://localhost:5500",
     "http://127.0.0.1:5500",
+    "http://localhost:5500",
     "http://localhost:5173"
 ];
 
-app.use(
-    cors({
-        origin(origin, callback) {
+app.use(cors({
+    origin(origin, callback) {
 
-            // Allow Postman / server-to-server requests
-            if (!origin) {
-                return callback(null, true);
-            }
+        // Allow Postman
+        if (!origin) {
+            return callback(null, true);
+        }
 
-            if (allowedOrigins.includes(origin)) {
-                return callback(null, true);
-            }
+        // Local development
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
 
-            return callback(
-                new Error(`CORS blocked: ${origin}`)
-            );
-        },
+        // Allow ALL Vercel preview deployments
+        if (origin.endsWith(".vercel.app")) {
+            return callback(null, true);
+        }
 
-        credentials: true
-    })
-);
+        return callback(new Error("CORS not allowed"));
+    },
+
+    credentials: true
+}));
 
 // ======================================
 // MIDDLEWARE
