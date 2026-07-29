@@ -16,7 +16,15 @@ export const protect = async (req, res, next) => {
             req.headers.authorization.startsWith("Bearer ")
         ) {
 
-            token = req.headers.authorization.split(" ")[1];
+            const bearerToken = req.headers.authorization.split(" ")[1];
+
+            if (
+                bearerToken &&
+                bearerToken !== "null" &&
+                bearerToken !== "undefined"
+            ) {
+                token = bearerToken;
+            }
 
         }
 
@@ -45,18 +53,15 @@ export const protect = async (req, res, next) => {
         // =====================================
         // VERIFY TOKEN
         // =====================================
-console.log("=== AUTH DEBUG ===");
-console.log("Cookies:", req.cookies);
-console.log("Token exists:", !!token);
-console.log("JWT Secret exists:", !!process.env.JWT_SECRET);
+
         const decoded = jwt.verify(
             token,
             process.env.JWT_SECRET
         );
-console.log("Decoded:", decoded);
+
         const user = await User.findById(decoded.id)
             .select("-password");
-console.log("User:", user);
+
         if (!user) {
 
             return res.status(401).json({
@@ -71,11 +76,16 @@ console.log("User:", user);
 
     }
 
- catch (error) {
-    console.error("AUTH ERROR:", error);
-    return res.status(401).json({
-        message: error.message
-    });
-}
+    catch (error) {
+
+        console.error("Authentication Error:", error);
+
+        return res.status(401).json({
+
+            message: "Token verification failed"
+
+        });
+
+    }
 
 };
