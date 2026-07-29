@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     "https://akwire-api.onrender.com/api/auth/login",
                     {
                         method: "POST",
+                        credentials: "include",
 
                         headers: {
                             "Content-Type": "application/json"
@@ -67,11 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
                         email: userData.email,
                         role: userData.role || "student"
                     })
-                );
-
-                localStorage.setItem(
-                    "token",
-                    data.token
                 );
 
                 console.log("Login successful");
@@ -138,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         "https://akwire-api.onrender.com/api/auth/register",
                         {
                             method: "POST",
+                            credentials: "include",
 
                             headers: {
                                 "Content-Type":
@@ -193,11 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
                             email: userData.email,
                             role: userData.role || "student"
                         })
-                    );
-
-                    localStorage.setItem(
-                        "token",
-                        data.token
                     );
 
                     alert(

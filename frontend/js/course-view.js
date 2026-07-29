@@ -44,30 +44,48 @@ async function loadCourse() {
         // ==========================
         // LOAD LESSON PROGRESS
         // ==========================
-        const token = localStorage.getItem("token");
-        let completedLessons = [];
+    const user = JSON.parse(localStorage.getItem("user"));
+    let completedLessons = [];
 
-        if (token) {
-            try {
-                const progressResponse = await fetch(
-                    "https://akwire-api.onrender.com/api/progress/lessons",
-                    {
-                        credentials: "include"
-                    }
-                );
+    if (user && user._id) {
 
-                const lessonProgress = await progressResponse.json();
+        try {
 
-                const courseProgress = Array.isArray(lessonProgress)
-                    ? lessonProgress.find(p => p.courseId === courseId)
-                    : null;
+            const progressResponse = await fetch(
+                "https://akwire-api.onrender.com/api/progress/lessons",
+                {
+                    credentials: "include"
+                }
+            );
 
-                completedLessons =
-                    courseProgress?.completedLessons || [];
-            } catch (error) {
-                console.error("Failed to load lesson progress:", error);
+            if (!progressResponse.ok) {
+                throw new Error("Failed to load lesson progress");
             }
+
+            const lessonProgress = await progressResponse.json();
+
+            const courseProgress = Array.isArray(lessonProgress)
+                ? lessonProgress.find(p => p.courseId === courseId)
+                : null;
+
+            completedLessons =
+                courseProgress?.completedLessons || [];
+
+        } catch (error) {
+
+            console.error(
+                "Failed to load lesson progress:",
+                error
+            );
+
         }
+
+    } else {
+
+        window.location.href = "login.html";
+        return;
+
+    }
 
         // ==========================
         // CALCULATE PROGRESS

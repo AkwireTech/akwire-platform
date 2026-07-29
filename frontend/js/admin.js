@@ -1,5 +1,4 @@
-const user =
-    JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("user"));
 
 if (!user || user.role !== "admin") {
 
@@ -9,9 +8,23 @@ if (!user || user.role !== "admin") {
 
 }
 
-function logout() {
+async function logout() {
 
-    localStorage.removeItem("token");
+    try {
+
+        await fetch(
+            "https://akwire-api.onrender.com/api/auth/logout",
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+
+    } catch (error) {
+
+        console.error("Logout failed:", error);
+
+    }
 
     localStorage.removeItem("user");
 

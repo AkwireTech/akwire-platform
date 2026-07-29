@@ -393,80 +393,60 @@ document.getElementById("lessonContent").innerHTML = html;
 // YOUTUBE EMBED CONVERTER
 // ==========================================
 
-function convertYoutubeUrl(url) {
+document.getElementById(
+    "completeLessonBtn"
+).addEventListener(
 
-    if (
-        url.includes("watch?v=")
-    ) {
+    "click",
 
-        return url.replace(
-            "watch?v=",
-            "embed/"
-        );
-
-    }
-
-    return url;
-
-}
-
-// ==========================================
-// LESSON COMPLETE
-// ==========================================
-
-    document.getElementById(
-        "completeLessonBtn"
-    ).addEventListener(
-
-        "click",
-
-        async () => {
+    async () => {
 
         const lessonKey =
+            `${courseId}-${moduleIndex}-${lessonIndex}`;
 
-        `${courseId}-${moduleIndex}-${lessonIndex}`;
-
-        const token =
-            localStorage.getItem(
-                "token"
-            );
-
-
-    try {
-
-        // ==========================
-        // SAVE LESSON PROGRESS
-        // ==========================
-
-        await fetch(
-
-            "https://akwire-api.onrender.com/api/progress/lesson",
-
-            {
-
-                method: "POST",
-
-                headers: {
-
-                    "Content-Type":
-                        "application/json",
-
-                    Authorization:
-                        "Bearer " + token
-
-                },
-
-                body: JSON.stringify({
-
-                    courseId,
-
-                    lessonKey
-
-                })
-
-            }
-
+        const user = JSON.parse(
+            localStorage.getItem("user")
         );
+
+        if (!user || !user._id) {
+            window.location.href = "login.html";
+            return;
+        }
+
+        try {
+
+            // ==========================
+            // SAVE LESSON PROGRESS
+            // ==========================
+
+            await fetch(
+
+                "https://akwire-api.onrender.com/api/progress/lesson",
+
+                {
+
+                    method: "POST",
+
+                    credentials: "include",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json"
+
+                    },
+
+                    body: JSON.stringify({
+
+                        courseId,
+
+                        lessonKey
+
+                    })
+
+                }
+
+            );
 
 
    } catch (error) {

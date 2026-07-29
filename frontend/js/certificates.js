@@ -9,10 +9,17 @@ async function loadCertificates() {
             "certificateContainer"
         );
 
-    const token =
-        localStorage.getItem(
-            "token"
+    const user =
+        JSON.parse(
+            localStorage.getItem("user")
         );
+
+    if (!user || !user._id) {
+
+        window.location.href = "login.html";
+        return;
+
+    }
 
     try {
 
@@ -22,10 +29,7 @@ async function loadCertificates() {
                 "https://akwire-api.onrender.com/api/progress/certificates",
 
                 {
-                    headers: {
-                        Authorization:
-                            "Bearer " + token
-                    }
+                    credentials: "include"
                 }
 
             );

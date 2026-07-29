@@ -37,10 +37,12 @@ function startExamTimer() {
 // LOAD PRACTICE EXAM
 // =============================
 async function fetchExam() {
-    try {
-        const token = localStorage.getItem("token");
 
-        if (!token) {
+    try {
+
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user || !user._id) {
             window.location.href = "login.html";
             return;
         }
@@ -307,9 +309,15 @@ function showReviewScreen() {
 // =============================
 async function submitExam() {
     try {
+
         clearInterval(timerInterval);
 
-        const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem("user"));
+
+        if (!user || !user._id) {
+            window.location.href = "login.html";
+            return;
+        }
 
         const payload = {
             type: "practice",
@@ -323,7 +331,7 @@ async function submitExam() {
                 method: "POST",
                 credentials: "include",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify(payload)
             }

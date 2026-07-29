@@ -62,32 +62,21 @@ async function loadCourses() {
 
 async function loadProgress() {
 
-    const token =
-        localStorage.getItem(
-            "token"
-        );
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!token) return;
+    if (!user || !user._id) {
+        window.location.href = "login.html";
+        return;
+    }
 
     try {
 
-        const response =
-            await fetch(
-
-                "https://akwire-api.onrender.com/api/progress",
-
-                {
-
-                    headers: {
-
-                        Authorization:
-                            "Bearer " + token
-
-                    }
-
-                }
-
-            );
+        const response = await fetch(
+            "https://akwire-api.onrender.com/api/progress",
+            {
+                credentials: "include"
+            }
+        );
 
         completedCourses =
             await response.json();

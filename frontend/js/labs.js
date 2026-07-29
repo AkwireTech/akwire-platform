@@ -208,13 +208,19 @@ function completeObjective() {
 
 async function fetchLabFromBackend(labID) {
 
-    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    const res = await fetch(`https://akwire-api.onrender.com/api/labs/${labID}`, {
-        headers: {
-            "Authorization": "Bearer " + token
+    if (!user || !user._id) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    const res = await fetch(
+        `https://akwire-api.onrender.com/api/labs/${labID}`,
+        {
+            credentials: "include"
         }
-    });
+    );
 
     const data = await res.json();
 
@@ -251,13 +257,19 @@ async function fetchLabFromBackend(labID) {
 
 async function loadLabMenu() {
 
-    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    const res = await fetch("https://akwire-api.onrender.com/api/labs", {
-        headers: {
-            "Authorization": "Bearer " + token
+    if (!user || !user._id) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    const res = await fetch(
+        "https://akwire-api.onrender.com/api/labs",
+        {
+            credentials: "include"
         }
-    });
+    );
 
     const labs = await res.json();
 
@@ -488,24 +500,33 @@ function finalizeLab() {
 
 async function saveLabResult(totalTasks) {
 
-    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || !user._id) {
+        window.location.href = "login.html";
+        return;
+    }
 
     console.log("Saving lab result...");
 
     try {
-        const res = await fetch("https://akwire-api.onrender.com/api/labs/complete", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                labId: currentLabID,
-                score: score,
-                completedTasks: completedTasks,
-                totalTasks: totalTasks
-            })
-        });
+
+        const res = await fetch(
+            "https://akwire-api.onrender.com/api/labs/complete",
+            {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    labId: currentLabID,
+                    score: score,
+                    completedTasks: completedTasks,
+                    totalTasks: totalTasks
+                })
+            }
+        );
 
         const data = await res.json();
 

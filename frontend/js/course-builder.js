@@ -1,4 +1,8 @@
-const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user || !user._id) {
+    window.location.href = "login.html";
+}
 
 const params = new URLSearchParams(window.location.search);
 const courseId = params.get("id");
@@ -360,8 +364,11 @@ async function addModule() {
         return;
     }
 
-    if (!token) {
-        alert("No token found. Please log in again.");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || !user._id) {
+        alert("Please log in again.");
+        window.location.href = "login.html";
         return;
     }
 
@@ -481,8 +488,11 @@ async function addLesson(moduleIndex) {
         return;
     }
 
-    if (!token) {
-        alert("No token found. Please log in again.");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || !user._id) {
+        alert("Please log in again.");
+        window.location.href = "login.html";
         return;
     }
 

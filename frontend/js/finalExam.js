@@ -48,10 +48,10 @@ async function fetchExam() {
 
     try {
 
-        const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem("user"));
 
-        if (!token) {
-            console.error("No token found. Please login.");
+        if (!user || !user._id) {
+            console.error("No user found. Please login.");
             window.location.href = "login.html";
             return;
         }
@@ -62,11 +62,9 @@ async function fetchExam() {
 
             {
                 method: "GET",
+                credentials: "include",
                 headers: {
-                    "Authorization":
-                        "Bearer " + token,
-                    "Content-Type":
-                        "application/json"
+                    "Content-Type": "application/json"
                 }
             }
 
@@ -556,30 +554,30 @@ loadQuestion();
 // 7. SUBMIT EXAM TO BACKEND
 // =============================
 
-async function submitExam() {
+async function fetchExam() {
 
     try {
 
-        const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem("user"));
 
-        const payload = {
-            type: "final",
-            answers: userAnswers,
-            questions
-        };
-
-        console.log("Submitting Exam:", payload);
+        if (!user || !user._id) {
+            console.error("No user found. Please login.");
+            window.location.href = "login.html";
+            return;
+        }
 
         const res = await fetch(
-            "https://akwire-api.onrender.com/api/exam/submit",
+
+            "https://akwire-api.onrender.com/api/exam/final",
+
             {
-                method: "POST",
+                method: "GET",
+                credentials: "include",
                 headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + token
-                },
-                body: JSON.stringify(payload)
+                    "Content-Type": "application/json"
+                }
             }
+
         );
 
         const result = await res.json();

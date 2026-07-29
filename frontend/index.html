@@ -872,23 +872,41 @@
     <script src="js/slider.js"></script>
     <script>
 
-    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
 
     const loginBtn = document.getElementById("auth-link");
     const logoutItem = document.getElementById("logout-item");
 
-    if (token) {
+    if (user && user._id) {
 
         loginBtn.style.display = "none";
 
         logoutItem.style.display = "block";
 
+    } else {
+
+        loginBtn.style.display = "block";
+
+        logoutItem.style.display = "none";
+
     }
 
     document.getElementById("logoutBtn")
-    .addEventListener("click", () => {
+    .addEventListener("click", async () => {
 
-        localStorage.removeItem("token");
+        try {
+
+            await fetch(
+                "https://akwire-api.onrender.com/api/auth/logout",
+                {
+                    method: "POST",
+                    credentials: "include"
+                }
+            );
+
+        } catch (error) {
+            console.error("Logout failed:", error);
+        }
 
         localStorage.removeItem("user");
 

@@ -48,37 +48,30 @@ async function fetchExam() {
 
     try {
 
-        const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem("user"));
 
-        if (!token) {
-            console.error("No token found. Please login.");
+        if (!user || !user._id) {
+            console.error("No user found. Please login.");
             window.location.href = "login.html";
             return;
         }
 
-        const params =
-            new URLSearchParams(
-                window.location.search
-            );
+        const params = new URLSearchParams(window.location.search);
 
         const moduleId = params.get("module") || "1";
         const courseId = params.get("course");
 
-            console.log("Module ID:", moduleId);
+        console.log("Module ID:", moduleId);
 
         const res = await fetch(
             `https://akwire-api.onrender.com/api/exam/module/${moduleId}?course=${courseId}`,
-
             {
                 method: "GET",
+                credentials: "include",
                 headers: {
-                    "Authorization":
-                        "Bearer " + token,
-                    "Content-Type":
-                        "application/json"
+                    "Content-Type": "application/json"
                 }
             }
-
         );
 
         if (!res.ok) {
@@ -412,40 +405,48 @@ loadQuestion();
 
 async function submitExam() {
 
-try {
+    try {
 
-const token = localStorage.getItem("token");
+        const user = JSON.parse(localStorage.getItem("user"));
 
-const payload = {
-    type: "module",
-    answers: userAnswers,
-    questions
-};
+        if (!user || !user._id) {
+            window.location.href = "login.html";
+            return;
+        }
 
-console.log("Submitting exam:");
-console.log("Answers:", userAnswers);
-console.log("First Question:", questions[0]);
+        const payload = {
+            type: "module",
+            answers: userAnswers,
+            questions
+        };
 
-const res = await fetch("https://akwire-api.onrender.com/api/exam/submit", {
-method: "POST",
-headers: {
-"Content-Type": "application/json",
-"Authorization": "Bearer " + token
-},
-body: JSON.stringify(payload)
-});
+        console.log("Submitting exam:");
+        console.log("Answers:", userAnswers);
+        console.log("First Question:", questions[0]);
 
-const result = await res.json();
+        const res = await fetch(
+            "https://akwire-api.onrender.com/api/exam/submit",
+            {
+                method: "POST",
+                credentials: "include",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            }
+        );
 
-console.log("SERVER RESULT:", result);
+        const result = await res.json();
 
-showFinalScore(result);
+        console.log("SERVER RESULT:", result);
 
-} catch (err) {
+        showFinalScore(result);
 
-console.error("Submit failed:", err);
+    } catch (err) {
 
-}
+        console.error("Submit failed:", err);
+
+    }
 
 }
 

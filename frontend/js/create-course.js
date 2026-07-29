@@ -1,4 +1,8 @@
-const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user || !user._id) {
+    window.location.href = "login.html";
+}
 
 let editingCourseId = null;
 
@@ -235,8 +239,11 @@ function bindCourseActions() {
 // DELETE COURSE
 // ==========================================
 async function deleteCourse(courseId) {
-    if (!token) {
-        alert("No token found. Please log in again.");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || !user._id) {
+        alert("Please log in again.");
+        window.location.href = "login.html";
         return;
     }
 
@@ -301,8 +308,11 @@ function closeEditCourseModal() {
 async function saveCourseEdit() {
     if (!editingCourseId) return;
 
-    if (!token) {
-        alert("No token found. Please log in again.");
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || !user._id) {
+        alert("Please log in again.");
+        window.location.href = "login.html";
         return;
     }
 

@@ -1,4 +1,8 @@
-const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
+
+if (!user || !user._id) {
+    window.location.href = "login.html";
+}
 
 const table = document.getElementById("usersTable");
 
@@ -13,9 +17,7 @@ async function loadUsers() {
         const res = await fetch(
             "https://akwire-api.onrender.com/api/users",
             {
-                headers: {
                     credentials: "include"
-                }
             }
         );
 
@@ -97,12 +99,11 @@ async function changeRole(id, role) {
         {
 
             method: "PUT",
+            credentials: "include",
 
             headers: {
 
                 "Content-Type":"application/json",
-
-                Authorization:"Bearer " + token
 
             },
 
@@ -129,12 +130,7 @@ async function deleteUser(id) {
         {
 
             method:"DELETE",
-
-            headers:{
-
-                Authorization:"Bearer " + token
-
-            }
+            credentials: "include",
 
         }
 
@@ -170,9 +166,24 @@ search.addEventListener("input", () => {
 
 loadUsers();
 
-function logout() {
+async function logout() {
 
-    localStorage.removeItem("token");
+    try {
+
+        await fetch(
+            "https://akwire-api.onrender.com/api/auth/logout",
+            {
+                method: "POST",
+                credentials: "include"
+            }
+        );
+
+    } catch (error) {
+
+        console.error("Logout failed:", error);
+
+    }
+
     localStorage.removeItem("user");
 
     window.location.href = "login.html";
