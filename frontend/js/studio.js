@@ -23,17 +23,23 @@ function initializeStudio() {
 
 function protectPage() {
 
-    const token = localStorage.getItem("token");
+    const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!token) {
+    if (!user || !user._id) {
 
         window.location.href = "login.html";
-
         return;
 
     }
 
 }
+
+const res = await fetch(
+    "https://akwire-api.onrender.com/api/login",
+    {
+        credentials: "include"
+    }
+);
 
 // ===============================================
 // STUDIO
@@ -118,12 +124,9 @@ function openAIAssistant() {
 // LOGOUT
 // ===============================================
 
-function logout() {
+const user = JSON.parse(localStorage.getItem("user"));
 
-    localStorage.removeItem("token");
-
-    localStorage.removeItem("user");
-
+if (!user || !user._id) {
     window.location.href = "login.html";
-
+    return;
 }
