@@ -11,7 +11,7 @@
     <title>Akwire Admin Dashboard</title>
 
     <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -26,14 +26,16 @@
 
 <div class="dashboard-wrapper">
 
+    <!-- ==========================================
+         SIDEBAR
+    =========================================== -->
+
     <aside class="sidebar">
 
         <div class="logo">
 
-            <img
-                src="images/logo.png"
-                alt="Akwire"
-            >
+            <img src="images/logo.png"
+                 alt="Akwire">
 
             <h2>Administrator</h2>
 
@@ -45,6 +47,13 @@
                 <a href="admin-dashboard.html" class="active">
                     <i class="fas fa-chart-line"></i>
                     Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="studio.html">
+                    <i class="fas fa-layer-group"></i>
+                    Akwire Studio
                 </a>
             </li>
 
@@ -107,7 +116,7 @@
             <li class="logout-link">
 
                 <a href="#"
-                onclick="logout()">
+                   onclick="logout()">
                     <i class="fas fa-right-from-bracket"></i>
                     Logout
                 </a>
@@ -118,95 +127,158 @@
 
     </aside>
 
+    <!-- ==========================================
+         MAIN CONTENT
+    =========================================== -->
+
     <main class="main-content">
 
-       <div class="content-header">
-        <div>
-            <h1>Administrator Dashboard</h1>
-            <p>Manage courses, exams, labs, users and reports.</p>
+        <div class="content-header">
+
+            <div>
+
+                <h1>Administrator Dashboard</h1>
+
+                <p>
+                    Manage every part of the Akwire platform from one place.
+                </p>
+
+            </div>
+
         </div>
-    </div>
 
         <div class="dashboard-grid">
 
+            <!-- NEW -->
             <div class="dashboard-card">
-                <h3>Course Management</h3>
-                <p>Create and manage courses.</p>
+
+                <h3>
+                    <i class="fas fa-layer-group"></i>
+                    Akwire Studio
+                </h3>
+
+                <p>
+                    Launch the centralized workspace for
+                    course creation, assessments, labs,
+                    publishing and future AI tools.
+                </p>
+
+                <a href="studio.html"
+                   class="academy-btn">
+                    Launch Studio
+                </a>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h3>
+                    <i class="fas fa-book"></i>
+                    Course Management
+                </h3>
+
+                <p>
+                    Create and manage certification courses,
+                    modules and lessons.
+                </p>
 
                 <a href="create-course.html"
                    class="academy-btn">
                     Open
                 </a>
+
             </div>
 
             <div class="dashboard-card">
-                <h3>Exam Management</h3>
-                <p>Create module quizzes and exams.</p>
+
+                <h3>
+                    <i class="fas fa-file-pen"></i>
+                    Exam Management
+                </h3>
+
+                <p>
+                    Create quizzes, module exams and
+                    certification assessments.
+                </p>
 
                 <a href="create-exam.html"
                    class="academy-btn">
                     Open
                 </a>
+
             </div>
 
             <div class="dashboard-card">
-                <h3>Lab Management</h3>
-                <p>Create and manage labs.</p>
+
+                <h3>
+                    <i class="fas fa-flask"></i>
+                    Lab Management
+                </h3>
+
+                <p>
+                    Create and manage practical
+                    cybersecurity labs.
+                </p>
 
                 <a href="create-lab.html"
                    class="academy-btn">
                     Open
                 </a>
-            </div>
 
+            </div>
 
             <div class="dashboard-card">
 
-                <h3>Reports</h3>
+                <h3>
+                    <i class="fas fa-users"></i>
+                    User Management
+                </h3>
 
                 <p>
-                    View platform analytics and export reports.
+                    Manage students,
+                    administrators and user roles.
+                </p>
+
+                <a href="admin-users.html"
+                   class="academy-btn">
+                    Open
+                </a>
+
+            </div>
+
+            <div class="dashboard-card">
+
+                <h3>
+                    <i class="fas fa-chart-column"></i>
+                    Reports
+                </h3>
+
+                <p>
+                    View analytics,
+                    student progress and exports.
                 </p>
 
                 <a href="reports.html"
-                class="academy-btn">
-
+                   class="academy-btn">
                     Open
-
                 </a>
 
             </div>
 
             <div class="dashboard-card">
 
-                <h3>Settings</h3>
+                <h3>
+                    <i class="fas fa-gear"></i>
+                    Settings
+                </h3>
 
                 <p>
-                    Configure platform settings and preferences.
+                    Configure platform
+                    preferences and administration.
                 </p>
 
-                <a
-                    href="settings.html"
-                    class="academy-btn"
-                >
-                    Open
-                </a>
-
-            </div>
-            
-
-           <div class="dashboard-card">
-
-                <h3>User Management</h3>
-
-                <p>
-                    Manage students, administrators and user roles.
-                </p>
-
-                <a
-                    href="admin-users.html"
-                    class="academy-btn"
-                >
+                <a href="settings.html"
+                   class="academy-btn">
                     Open
                 </a>
 

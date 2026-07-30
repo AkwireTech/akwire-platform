@@ -528,3 +528,82 @@
     border-radius:10px;
     font-size:14px;
 }
+
+
+/* ==========================================
+   AKWIRE STUDIO
+========================================== */
+
+.studio-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+    margin-top:30px;
+}
+
+.studio-card{
+    background:#fff;
+    border-radius:20px;
+    padding:28px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.25s ease;
+}
+
+.studio-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 35px rgba(0,0,0,.12);
+}
+
+.studio-card i{
+    font-size:42px;
+    color:#2563eb;
+    margin-bottom:18px;
+}
+
+.studio-card h3{
+    margin:0 0 12px;
+    color:#0f172a;
+    font-size:22px;
+}
+
+.studio-card p{
+    color:#64748b;
+    line-height:1.7;
+    margin-bottom:24px;
+}
+
+.studio-section{
+    margin-top:45px;
+}
+
+.studio-section h2{
+    margin-bottom:20px;
+    color:#0f172a;
+}
+
+.studio-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:11px 22px;
+    background:#2563eb;
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+    transition:.2s ease;
+}
+
+.studio-btn:hover{
+    background:#1d4ed8;
+}
+
+@media (max-width:900px){
+
+    .studio-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
