@@ -140,7 +140,11 @@ async function loadLesson() {
                 <div class="lesson-content-card">
 
                     <h2>
+
+                        <i class="fas fa-circle-info"></i>
+
                         Overview
+
                     </h2>
 
                     <p>
@@ -162,7 +166,11 @@ async function loadLesson() {
                 <div class="lesson-content-card">
 
                     <h2>
+
+                        <i class="fas fa-bullseye"></i>
+
                         Learning Objectives
+
                     </h2>
 
                     <ul>
@@ -185,10 +193,14 @@ async function loadLesson() {
             <div class="lesson-content-card">
 
                 <h2>
+
+                    <i class="fas fa-book-open"></i>
+
                     Lesson
+
                 </h2>
 
-                ${lesson.content}
+                ${formatLessonContent(lesson.content)}
 
             </div>
         `;
@@ -200,7 +212,13 @@ async function loadLesson() {
             html += `
                 <div class="lesson-content-card">
 
-                    <h2>Key Terms</h2>
+                    <h2>
+
+                        <i class="fas fa-key"></i>
+
+                        Key Terms
+
+                    </h2>
 
                     <ul>
                         ${lesson.keyTerms
@@ -229,7 +247,11 @@ async function loadLesson() {
                 <div class="lesson-content-card">
 
                     <h2>
+
+                        <i class="fas fa-list-check"></i>
+
                         Lesson Summary
+
                     </h2>
 
                     <p>
@@ -255,9 +277,12 @@ async function loadLesson() {
                 <div class="lesson-content-card">
 
                     <h2>
-                        Knowledge Check
-                    </h2>
 
+                        <i class="fas fa-circle-question"></i>
+
+                        Knowledge Check
+
+                    </h2>
             `;
 
             lesson.knowledgeCheck.forEach(
@@ -756,5 +781,779 @@ async function askMentor() {
         `;
 
     }
+
+}
+
+// ==========================================
+// FORMAT LESSON CONTENT
+// ==========================================
+
+function formatLessonContent(content = "") {
+
+    return content
+
+        .replace(
+            /\[NOTE\]([\s\S]*?)\[\/NOTE\]/gi,
+            `
+            <div class="lesson-callout lesson-note">
+
+                <i class="fas fa-circle-info"></i>
+
+                <div>
+
+                    <h4>Note</h4>
+
+                    <p>$1</p>
+
+                </div>
+
+            </div>
+            `
+        )
+
+        .replace(
+            /\[TIP\]([\s\S]*?)\[\/TIP\]/gi,
+            `
+            <div class="lesson-callout lesson-tip">
+
+                <i class="fas fa-lightbulb"></i>
+
+                <div>
+
+                    <h4>Tip</h4>
+
+                    <p>$1</p>
+
+                </div>
+
+            </div>
+            `
+        )
+
+        .replace(
+            /\[WARNING\]([\s\S]*?)\[\/WARNING\]/gi,
+            `
+            <div class="lesson-callout lesson-warning">
+
+                <i class="fas fa-triangle-exclamation"></i>
+
+                <div>
+
+                    <h4>Warning</h4>
+
+                    <p>$1</p>
+
+                </div>
+
+            </div>
+            `
+        )
+
+        .replace(
+            /\[IMPORTANT\]([\s\S]*?)\[\/IMPORTANT\]/gi,
+            `
+            <div class="lesson-callout lesson-important">
+
+                <i class="fas fa-shield-halved"></i>
+
+                <div>
+
+                    <h4>Important</h4>
+
+                    <p>$1</p>
+
+                </div>
+
+            </div>
+            `
+        )
+
+        .replace(
+            /\[CODE(?:\s+language="(.*?)")?\]([\s\S]*?)\[\/CODE\]/gi,
+
+            (match, language, code) => `
+
+                <div class="lesson-code">
+
+                    <div class="lesson-code-header">
+
+                        <div class="lesson-code-title">
+
+                            <i class="fas fa-terminal"></i>
+
+                            ${language || "Terminal"}
+
+                        </div>
+
+                        <button
+                            class="copy-code-btn"
+                            onclick="copyLessonCode(this)">
+
+                            Copy
+
+                        </button>
+
+                    </div>
+
+                    <pre><code>${escapeHtml(code.trim())}</code></pre>
+
+                </div>
+
+            `
+        )
+
+
+        .replace(
+
+            /\[IMAGE\s+src="(.*?)"\s+caption="(.*?)"\]/gi,
+
+            `
+                <figure class="lesson-image">
+
+                    <img
+                        src="$1"
+                        alt="$2"
+                        loading="lazy"
+                    >
+
+                    <figcaption>
+
+                        $2
+
+                    </figcaption>
+
+                </figure>
+
+            `
+
+        )
+
+
+        .replace(
+
+            /\[ANIMATION\s+title="(.*?)"\]/gi,
+
+            (match,title)=>renderAnimation(title)
+
+        );
+
+}
+
+
+// ==========================================
+// COPY CODE
+// ==========================================
+
+function copyLessonCode(button){
+
+    const code = button
+        .closest(".lesson-code")
+        .querySelector("code")
+        .innerText;
+
+    navigator.clipboard.writeText(code);
+
+    const original = button.textContent;
+
+    button.textContent = "Copied!";
+
+    setTimeout(()=>{
+
+        button.textContent = original;
+
+    },1500);
+
+}
+
+// ==========================================
+// ESCAPE HTML
+// ==========================================
+
+function escapeHtml(text=""){
+
+    return String(text)
+
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+// ==========================================
+// TCP THREE-WAY HANDSHAKE
+// ==========================================
+
+function createTCPAnimation(){
+
+    return `
+
+    <div class="tcp-animation">
+
+        <div class="tcp-row">
+
+            <div class="tcp-node">
+
+                Client
+
+            </div>
+
+            <div class="tcp-packet">
+
+                <div
+                    id="tcpDot"
+                    class="tcp-dot">
+
+                </div>
+
+            </div>
+
+            <div class="tcp-node">
+
+                Server
+
+            </div>
+
+        </div>
+
+        <div
+            id="tcpStatus"
+            class="tcp-status">
+
+            Click Start Animation
+
+        </div>
+
+        <div class="tcp-controls">
+
+            <button
+                class="academy-btn"
+                onclick="playTCPHandshake()">
+
+                Start
+
+            </button>
+
+            <button
+                class="academy-btn"
+                onclick="resetTCPHandshake()">
+
+                Reset
+
+            </button>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+async function playTCPHandshake(){
+
+    const dot=document.getElementById("tcpDot");
+
+    const status=document.getElementById("tcpStatus");
+
+    dot.style.left="0%";
+
+    status.innerHTML="① Client sends SYN";
+
+    await sleep(1000);
+
+    dot.style.left="95%";
+
+    await sleep(1000);
+
+    status.innerHTML="② Server replies SYN-ACK";
+
+    dot.style.left="0%";
+
+    await sleep(1000);
+
+    status.innerHTML="③ Client sends ACK";
+
+    dot.style.left="95%";
+
+    await sleep(1000);
+
+    status.innerHTML="✅ TCP Connection Established";
+
+}
+
+function resetTCPHandshake(){
+
+    document.getElementById("tcpDot").style.left="0%";
+
+    document.getElementById("tcpStatus").innerHTML="Click Start Animation";
+
+}
+
+function sleep(ms){
+
+    return new Promise(resolve=>setTimeout(resolve,ms));
+
+}
+
+
+// ==========================================
+// ANIMATION ENGINE
+// ==========================================
+
+function renderAnimation(title){
+
+    switch(title){
+
+        case "TCP Three-Way Handshake":
+
+            return createTCPAnimation();
+
+        default:
+
+            return `
+
+            <div class="lesson-animation">
+
+                <div class="lesson-animation-header">
+
+                    <h3>
+
+                        ${title}
+
+                    </h3>
+
+                </div>
+
+                <div class="lesson-animation-body">
+
+                    <h2>
+
+                        Animation Coming Soon
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+            `;
+
+
+        case "OSI Model":
+
+            return createOSIAnimation();
+
+
+        case "Packet Encapsulation":
+
+            return createPacketAnimation();
+
+
+        case "Linux Terminal":
+
+            return createTerminalSimulation();
+
+    }
+
+}
+
+
+// ==========================================
+// OSI EXPLORER
+// ==========================================
+
+const osiLayers=[
+
+{
+layer:"Layer 7 - Application",
+pdu:"Data",
+protocols:"HTTP, HTTPS, FTP, SMTP",
+description:"Provides network services directly to end-user applications."
+},
+
+{
+layer:"Layer 6 - Presentation",
+pdu:"Data",
+protocols:"SSL/TLS, JPEG, ASCII",
+description:"Formats, encrypts and compresses data."
+},
+
+{
+layer:"Layer 5 - Session",
+pdu:"Data",
+protocols:"NetBIOS, RPC",
+description:"Creates, manages and terminates communication sessions."
+},
+
+{
+layer:"Layer 4 - Transport",
+pdu:"Segment",
+protocols:"TCP, UDP",
+description:"Provides reliable or connectionless delivery."
+},
+
+{
+layer:"Layer 3 - Network",
+pdu:"Packet",
+protocols:"IP, ICMP",
+description:"Responsible for routing between networks."
+},
+
+{
+layer:"Layer 2 - Data Link",
+pdu:"Frame",
+protocols:"Ethernet, PPP",
+description:"Transfers frames using MAC addresses."
+},
+
+{
+layer:"Layer 1 - Physical",
+pdu:"Bits",
+protocols:"Fiber, Copper",
+description:"Transmits electrical, optical and radio signals."
+}
+
+];
+
+function createOSIAnimation(){
+
+    return `
+
+<div class="osi-explorer">
+
+    <div class="osi-layers">
+
+        ${osiLayers.map((layer,index)=>`
+
+<button
+class="osi-layer ${index===0?"active":""}"
+onclick="showOSILayer(${index})">
+
+${layer.layer}
+
+</button>
+
+`).join("")}
+
+    </div>
+
+    <div
+id="osiDetails"
+class="osi-details">
+
+    </div>
+
+</div>
+
+`;
+
+}
+
+function showOSILayer(index){
+
+    document
+        .querySelectorAll(".osi-layer")
+        .forEach(btn=>btn.classList.remove("active"));
+
+    document
+        .querySelectorAll(".osi-layer")[index]
+        .classList.add("active");
+
+    const layer=osiLayers[index];
+
+    document.getElementById("osiDetails").innerHTML=`
+
+<h2>
+
+${layer.layer}
+
+</h2>
+
+<p>
+
+${layer.description}
+
+</p>
+
+<div class="osi-badge">
+
+PDU:
+<strong>
+
+${layer.pdu}
+
+</strong>
+
+</div>
+
+<div class="osi-badge">
+
+Protocols:
+<strong>
+
+${layer.protocols}
+
+</strong>
+
+</div>
+
+`;
+
+}
+
+document.addEventListener("click",()=>{
+
+if(document.getElementById("osiDetails")){
+
+showOSILayer(0);
+
+}
+
+});
+
+
+// ==========================================
+// PACKET ENCAPSULATION
+// ==========================================
+
+const packetLayers=[
+
+{
+css:"l7",
+name:"Application Layer",
+info:"Application data is created."
+},
+
+{
+css:"l6",
+name:"Presentation Layer",
+info:"Data is formatted and encrypted."
+},
+
+{
+css:"l5",
+name:"Session Layer",
+info:"Communication session begins."
+},
+
+{
+css:"l4",
+name:"Transport Layer",
+info:"TCP or UDP header is added."
+},
+
+{
+css:"l3",
+name:"Network Layer",
+info:"IP header is added creating a packet."
+},
+
+{
+css:"l2",
+name:"Data Link Layer",
+info:"Frame header and trailer are added."
+},
+
+{
+css:"l1",
+name:"Physical Layer",
+info:"Bits are transmitted across the medium."
+}
+
+];
+
+function createPacketAnimation(){
+
+return`
+
+<div class="packet-stack">
+
+${packetLayers.map((layer,index)=>`
+
+<div
+class="packet-layer ${layer.css}"
+onclick="showPacketLayer(${index})">
+
+${layer.name}
+
+</div>
+
+`).join("")}
+
+</div>
+
+<div
+id="packetInfo"
+class="packet-info">
+
+Click a layer to see encapsulation.
+
+</div>
+
+`;
+
+}
+
+function showPacketLayer(index){
+
+document
+.querySelectorAll(".packet-layer")
+.forEach(card=>card.classList.remove("active"));
+
+document
+.querySelectorAll(".packet-layer")[index]
+.classList.add("active");
+
+document.getElementById("packetInfo").innerHTML=`
+
+<h2>
+
+${packetLayers[index].name}
+
+</h2>
+
+<p>
+
+${packetLayers[index].info}
+
+</p>
+
+`;
+
+}
+
+
+// ==========================================
+// TERMINAL SIMULATOR
+// ==========================================
+
+const terminalSteps=[
+
+{
+
+command:"pwd",
+
+output:"/home/student"
+
+},
+
+{
+
+command:"ls -la",
+
+output:`Documents
+Downloads
+labs
+notes.txt`
+
+},
+
+{
+
+command:"ip addr",
+
+output:`eth0
+inet 192.168.1.15/24`
+
+},
+
+{
+
+command:"ping 8.8.8.8",
+
+output:`64 bytes from 8.8.8.8
+time=18ms`
+
+}
+
+];
+
+let terminalIndex=0;
+
+function createTerminalSimulation(){
+
+return`
+
+<div class="lesson-terminal">
+
+<div class="lesson-terminal-header">
+
+<div class="lesson-terminal-dot dot-red"></div>
+
+<div class="lesson-terminal-dot dot-yellow"></div>
+
+<div class="lesson-terminal-dot dot-green"></div>
+
+</div>
+
+<div
+id="terminalScreen"
+class="lesson-terminal-screen">
+
+Click Start Demonstration
+
+</div>
+
+<div class="lesson-terminal-controls">
+
+<button
+class="academy-btn"
+onclick="playTerminalStep()">
+
+Next Step
+
+</button>
+
+<button
+class="academy-btn"
+onclick="resetTerminal()">
+
+Reset
+
+</button>
+
+</div>
+
+</div>
+
+`;
+
+}
+
+function playTerminalStep(){
+
+const screen=document.getElementById("terminalScreen");
+
+if(terminalIndex>=terminalSteps.length){
+
+terminalIndex=0;
+
+}
+
+const step=terminalSteps[terminalIndex];
+
+screen.innerHTML+=`
+
+$ ${step.command}
+
+${step.output}
+
+`;
+
+screen.scrollTop=screen.scrollHeight;
+
+terminalIndex++;
+
+}
+
+function resetTerminal(){
+
+terminalIndex=0;
+
+document.getElementById("terminalScreen").innerHTML=
+
+"Click Start Demonstration";
 
 }

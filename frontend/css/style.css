@@ -5922,3 +5922,882 @@ opacity:1;
     border-top: 1px solid #334155;
     margin: 20px 0;
 }
+
+
+/* ==========================================
+   PREMIUM LESSON HEADER
+========================================== */
+
+.lesson-header{
+
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+
+    color:#fff;
+
+    border-radius:18px;
+
+    padding:40px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+
+}
+
+.lesson-breadcrumb{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#cbd5e1;
+
+    margin-bottom:18px;
+
+    font-size:.95rem;
+
+}
+
+.lesson-header h1{
+
+    font-size:2.3rem;
+
+    margin-bottom:20px;
+
+    line-height:1.2;
+
+}
+
+.lesson-meta{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+}
+
+.lesson-meta-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    background:rgba(255,255,255,.12);
+
+    padding:10px 16px;
+
+    border-radius:999px;
+
+    font-size:.9rem;
+
+}
+
+.lesson-meta-item i{
+
+    color:#60a5fa;
+
+}
+
+
+/* ==========================================
+   PREMIUM LESSON CONTENT
+========================================== */
+
+.lesson-content-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:32px;
+
+    margin-bottom:28px;
+
+    border-left:6px solid #2563eb;
+
+    box-shadow:0 10px 30px rgba(15,23,42,.08);
+
+    transition:.25s ease;
+
+}
+
+.lesson-content-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 18px 40px rgba(15,23,42,.12);
+
+}
+
+.lesson-content-card h2{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:1.45rem;
+
+    margin-bottom:20px;
+
+    color:#0f172a;
+
+    border-bottom:1px solid #e2e8f0;
+
+    padding-bottom:12px;
+
+}
+
+.lesson-content-card p{
+
+    color:#334155;
+
+    font-size:1.05rem;
+
+    line-height:1.9;
+
+}
+
+.lesson-content-card ul{
+
+    margin-top:15px;
+
+    padding-left:24px;
+
+}
+
+.lesson-content-card li{
+
+    margin-bottom:12px;
+
+    color:#334155;
+
+    line-height:1.8;
+
+}
+
+.lesson-content-card strong{
+
+    color:#0f172a;
+
+}
+
+/* ==========================================
+   LESSON CALLOUT BLOCKS
+========================================== */
+
+.lesson-callout{
+
+    display:flex;
+
+    gap:18px;
+
+    padding:22px;
+
+    margin:30px 0;
+
+    border-radius:16px;
+
+    align-items:flex-start;
+
+}
+
+.lesson-callout i{
+
+    font-size:1.6rem;
+
+    margin-top:2px;
+
+}
+
+.lesson-callout h4{
+
+    margin-bottom:8px;
+
+    font-size:1.05rem;
+
+}
+
+.lesson-callout p{
+
+    margin:0;
+
+    line-height:1.8;
+
+}
+
+.lesson-note{
+
+    background:#eff6ff;
+
+    border-left:6px solid #2563eb;
+
+}
+
+.lesson-note i{
+
+    color:#2563eb;
+
+}
+
+.lesson-tip{
+
+    background:#ecfdf5;
+
+    border-left:6px solid #16a34a;
+
+}
+
+.lesson-tip i{
+
+    color:#16a34a;
+
+}
+
+.lesson-warning{
+
+    background:#fff7ed;
+
+    border-left:6px solid #ea580c;
+
+}
+
+.lesson-warning i{
+
+    color:#ea580c;
+
+}
+
+.lesson-important{
+
+    background:#fef2f2;
+
+    border-left:6px solid #dc2626;
+
+}
+
+.lesson-important i{
+
+    color:#dc2626;
+
+}
+
+
+/* ==========================================
+   CODE BLOCKS
+========================================== */
+
+.lesson-code{
+
+    background:#0f172a;
+
+    color:#e2e8f0;
+
+    border-radius:16px;
+
+    margin:30px 0;
+
+    overflow:hidden;
+
+    box-shadow:0 15px 35px rgba(15,23,42,.18);
+
+}
+
+.lesson-code-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#1e293b;
+
+    padding:12px 20px;
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.lesson-code-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-weight:600;
+
+    color:#93c5fd;
+
+}
+
+.copy-code-btn{
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    border-radius:8px;
+
+    padding:8px 14px;
+
+    cursor:pointer;
+
+    font-size:.85rem;
+
+}
+
+.copy-code-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+.lesson-code pre{
+
+    margin:0;
+
+    overflow:auto;
+
+    padding:22px;
+
+}
+
+.lesson-code code{
+
+    font-family:Consolas,
+                 "Courier New",
+                 monospace;
+
+    font-size:.95rem;
+
+    line-height:1.8;
+
+    white-space:pre;
+
+}
+
+
+/* ==========================================
+   LESSON IMAGE BLOCK
+========================================== */
+
+.lesson-image{
+
+    margin:35px 0;
+
+    text-align:center;
+
+}
+
+.lesson-image img{
+
+    width:100%;
+
+    max-width:900px;
+
+    border-radius:18px;
+
+    border:1px solid #e2e8f0;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.lesson-image img:hover{
+
+    transform:scale(1.02);
+
+}
+
+.lesson-image figcaption{
+
+    margin-top:15px;
+
+    color:#64748b;
+
+    font-size:.95rem;
+
+    font-style:italic;
+
+}
+
+
+/* ==========================================
+   ANIMATED LEARNING BLOCK
+========================================== */
+
+.lesson-animation{
+
+    margin:40px 0;
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.08);
+
+}
+
+.lesson-animation-header{
+
+    background:#1e3a8a;
+
+    color:#fff;
+
+    padding:18px 24px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.lesson-animation-header h3{
+
+    margin:0;
+
+}
+
+.lesson-animation-body{
+
+    padding:30px;
+
+    text-align:center;
+
+    min-height:320px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#f8fafc;
+
+}
+
+.lesson-animation-footer{
+
+    padding:18px 24px;
+
+    border-top:1px solid #e2e8f0;
+
+    background:#fff;
+
+}
+
+.lesson-animation-placeholder{
+
+    width:160px;
+
+    height:160px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    animation:pulseAnimation 2s infinite;
+
+}
+
+@keyframes pulseAnimation{
+
+    0%{
+
+        transform:scale(.9);
+
+        opacity:.7;
+
+    }
+
+    50%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+    100%{
+
+        transform:scale(.9);
+
+        opacity:.7;
+
+    }
+
+}
+
+
+/* ==========================================
+   TCP HANDSHAKE ANIMATION
+========================================== */
+
+.tcp-animation{
+
+    width:100%;
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+.tcp-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:35px 0;
+
+}
+
+.tcp-node{
+
+    width:180px;
+
+    padding:18px;
+
+    border-radius:14px;
+
+    background:#1e3a8a;
+
+    color:#fff;
+
+    font-weight:600;
+
+}
+
+.tcp-packet{
+
+    flex:1;
+
+    height:4px;
+
+    background:#cbd5e1;
+
+    margin:0 20px;
+
+    position:relative;
+
+}
+
+.tcp-dot{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#2563eb;
+
+    position:absolute;
+
+    top:-7px;
+
+    left:0;
+
+    transition:left .8s ease;
+
+}
+
+.tcp-controls{
+
+    margin-top:30px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:15px;
+
+}
+
+.tcp-status{
+
+    margin-top:25px;
+
+    text-align:center;
+
+    font-size:1.05rem;
+
+    font-weight:600;
+
+    color:#1e3a8a;
+
+}
+
+
+/* ==========================================
+   OSI INTERACTIVE EXPLORER
+========================================== */
+
+.osi-explorer{
+
+    display:grid;
+
+    grid-template-columns:260px 1fr;
+
+    gap:30px;
+
+    margin:35px 0;
+
+}
+
+.osi-layers{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.osi-layer{
+
+    background:#f8fafc;
+
+    border:2px solid #e2e8f0;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.25s;
+
+}
+
+.osi-layer:hover{
+
+    background:#2563eb;
+
+    color:#fff;
+
+}
+
+.osi-layer.active{
+
+    background:#1d4ed8;
+
+    color:#fff;
+
+}
+
+.osi-details{
+
+    background:#ffffff;
+
+    border-radius:16px;
+
+    padding:30px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+}
+
+.osi-details h2{
+
+    margin-bottom:18px;
+
+}
+
+.osi-details p{
+
+    line-height:1.8;
+
+}
+
+.osi-badge{
+
+    display:inline-block;
+
+    background:#dbeafe;
+
+    color:#1d4ed8;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    margin-top:15px;
+
+    font-size:.9rem;
+
+}
+
+
+/* ==========================================
+   PACKET ENCAPSULATION
+========================================== */
+
+.packet-stack{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    max-width:700px;
+
+    margin:40px auto;
+
+}
+
+.packet-layer{
+
+    padding:18px;
+
+    border-radius:12px;
+
+    color:#fff;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    transform:scale(1);
+
+}
+
+.packet-layer:hover{
+
+    transform:scale(1.03);
+
+}
+
+.packet-layer.active{
+
+    transform:scale(1.05);
+
+    box-shadow:0 12px 30px rgba(0,0,0,.15);
+
+}
+
+.l7{background:#2563eb;}
+.l6{background:#0ea5e9;}
+.l5{background:#14b8a6;}
+.l4{background:#22c55e;}
+.l3{background:#f59e0b;}
+.l2{background:#f97316;}
+.l1{background:#dc2626;}
+
+.packet-info{
+
+    margin-top:30px;
+
+    padding:25px;
+
+    background:#fff;
+
+    border-radius:16px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+
+/* ==========================================
+   LESSON TERMINAL
+========================================== */
+
+.lesson-terminal{
+
+    background:#0b1220;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    margin:40px 0;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.20);
+
+}
+
+.lesson-terminal-header{
+
+    background:#1e293b;
+
+    padding:14px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.lesson-terminal-dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+}
+
+.dot-red{background:#ef4444;}
+.dot-yellow{background:#facc15;}
+.dot-green{background:#22c55e;}
+
+.lesson-terminal-screen{
+
+    padding:24px;
+
+    min-height:260px;
+
+    font-family:Consolas,"Courier New",monospace;
+
+    color:#22c55e;
+
+    white-space:pre-wrap;
+
+    line-height:1.8;
+
+}
+
+.lesson-terminal-controls{
+
+    padding:18px;
+
+    background:#111827;
+
+    display:flex;
+
+    gap:15px;
+
+}
