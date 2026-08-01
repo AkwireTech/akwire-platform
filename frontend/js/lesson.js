@@ -174,12 +174,22 @@ async function loadLesson() {
                     </h2>
 
                     <ul>
-                        ${lesson.objectives
-                            .map(
-                                objective =>
-                                    `<li>${objective}</li>`
-                            )
-                            .join("")}
+                        ${lesson.keyTerms.map(item => `
+
+                            <li class="lesson-key-term">
+
+                                <strong>
+                                    ${item.term || ""}
+                                </strong>
+
+                                ${item.definition
+                                    ? `<span>${item.definition}</span>`
+                                    : ""
+                                }
+
+                            </li>
+
+                        `).join("")}
                     </ul>
 
                 </div>

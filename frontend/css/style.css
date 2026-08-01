@@ -6935,3 +6935,30 @@ opacity:1;
         width:100%;
     }
 }
+
+
+/* ==========================================
+   PREMIUM KEY TERMS
+========================================== */
+
+.lesson-key-term {
+    margin-bottom:18px;
+    padding:16px 18px;
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    border-radius:12px;
+    list-style:none;
+}
+
+.lesson-key-term strong {
+    display:block;
+    color:#1d4ed8;
+    font-size:1rem;
+    margin-bottom:5px;
+}
+
+.lesson-key-term span {
+    display:block;
+    color:#475569;
+    line-height:1.65;
+}
