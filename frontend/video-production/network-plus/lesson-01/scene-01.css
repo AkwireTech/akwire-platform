@@ -238,10 +238,10 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 56%;
+    top: 51%;
 
     width: min(1200px, 92vw);
-    height: min(500px, 55vh);
+    height: min(560px, 58vh);
 
     transform: translate(-50%, -50%);
 
@@ -378,14 +378,12 @@ body {
 
 
 /* ==========================================
-   DEVICE POSITIONS — FINAL LAYOUT
+   DEVICE POSITIONS
 ========================================== */
-
-/* CLOUD — TOP CENTER */
 
 .cloud-device {
     left: 50%;
-    top: 18%;
+    top: 2%;
 
     transform:
         translateX(-50%)
@@ -393,20 +391,14 @@ body {
         scale(0.88);
 }
 
-
-/* PHONE — LEFT */
-
 .phone-device {
-    left: 16%;
-    top: 42%;
+    left: 15%;
+    top: 22%;
 }
-
-
-/* WI-FI — CENTER */
 
 .wifi-device {
     left: 50%;
-    top: 48%;
+    top: 31%;
 
     transform:
         translateX(-50%)
@@ -414,20 +406,14 @@ body {
         scale(0.88);
 }
 
-
-/* PRINTER — RIGHT */
-
 .printer-device {
-    right: 16%;
-    top: 42%;
+    right: 14%;
+    top: 23%;
 }
-
-
-/* LAPTOP — LOWER CENTER */
 
 .laptop-device {
     left: 50%;
-    top: 78%;
+    bottom: 2%;
 
     transform:
         translateX(-50%)
@@ -435,12 +421,9 @@ body {
         scale(0.88);
 }
 
-
-/* SERVER — LOWER RIGHT */
-
 .server-device {
     right: 8%;
-    top: 68%;
+    bottom: 8%;
 }
 
 
@@ -536,7 +519,7 @@ body {
     position: absolute;
 
     left: 50%;
-    bottom: 34px;
+    bottom: 54px;
 
     display: flex;
     align-items: center;
