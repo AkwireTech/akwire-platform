@@ -1,0 +1,750 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 01 — NETWORKS ARE EVERYWHERE
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(37, 99, 235, 0.15),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 45%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(110px);
+    opacity: 0;
+}
+
+.glow-one {
+    left: -150px;
+    top: 100px;
+    background: rgba(37, 99, 235, 0.28);
+}
+
+.glow-two {
+    right: -150px;
+    bottom: 0;
+    background: rgba(124, 58, 237, 0.22);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    z-index: 10;
+
+    opacity: 0;
+    transform: translateY(-15px);
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+
+    top: 72px;
+    left: 50%;
+
+    width: min(850px, 80%);
+
+    transform: translateX(-50%) translateY(20px);
+
+    text-align: center;
+
+    z-index: 8;
+
+    opacity: 0;
+}
+
+.scene-number {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: #38bdf8;
+
+    font-size: 0.72rem;
+    font-weight: 700;
+
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size: clamp(2rem, 4vw, 4.2rem);
+    line-height: 1.05;
+
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #93c5fd
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 720px;
+
+    margin: 15px auto 0;
+
+    color: #94a3b8;
+
+    font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   NETWORK STAGE
+========================================== */
+
+.network-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 51%;
+
+    width: min(1200px, 92vw);
+    height: min(560px, 58vh);
+
+    transform: translate(-50%, -50%);
+
+    z-index: 4;
+}
+
+
+/* ==========================================
+   CONNECTION LAYER
+========================================== */
+
+.connection-layer {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.network-line {
+    fill: none;
+
+    stroke: #38bdf8;
+    stroke-width: 2.5;
+
+    stroke-linecap: round;
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 7px rgba(56, 189, 248, 0.8)
+        );
+
+    stroke-dasharray: 12 10;
+}
+
+.packet-pulse {
+    fill: #22d3ee;
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 9px #22d3ee
+        );
+}
+
+.packet-secondary {
+    fill: #8b5cf6;
+
+    filter:
+        drop-shadow(
+            0 0 9px #8b5cf6
+        );
+}
+
+
+/* ==========================================
+   DEVICES
+========================================== */
+
+.network-device {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    min-width: 125px;
+
+    color: #cbd5e1;
+
+    text-align: center;
+
+    font-size: 0.76rem;
+    font-weight: 600;
+
+    opacity: 0;
+
+    transform:
+        translateY(22px)
+        scale(0.88);
+
+    z-index: 5;
+}
+
+.device-icon {
+    width: 88px;
+    height: 88px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 24px;
+
+    border:
+        1px solid rgba(96, 165, 250, 0.32);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.96),
+            rgba(15, 38, 67, 0.9)
+        );
+
+    box-shadow:
+        0 18px 50px rgba(0, 0, 0, 0.35),
+        inset 0 0 22px rgba(59, 130, 246, 0.08);
+}
+
+.device-icon i {
+    color: #60a5fa;
+
+    font-size: 2.25rem;
+
+    filter:
+        drop-shadow(
+            0 0 9px rgba(96, 165, 250, 0.5)
+        );
+}
+
+
+/* ==========================================
+   DEVICE POSITIONS
+========================================== */
+
+.cloud-device {
+    left: 50%;
+    top: 2%;
+
+    transform:
+        translateX(-50%)
+        translateY(22px)
+        scale(0.88);
+}
+
+.phone-device {
+    left: 15%;
+    top: 22%;
+}
+
+.wifi-device {
+    left: 50%;
+    top: 31%;
+
+    transform:
+        translateX(-50%)
+        translateY(22px)
+        scale(0.88);
+}
+
+.printer-device {
+    right: 14%;
+    top: 23%;
+}
+
+.laptop-device {
+    left: 50%;
+    bottom: 2%;
+
+    transform:
+        translateX(-50%)
+        translateY(22px)
+        scale(0.88);
+}
+
+.server-device {
+    right: 8%;
+    bottom: 8%;
+}
+
+
+/* ==========================================
+   INDIVIDUAL DEVICE ACCENTS
+========================================== */
+
+.phone-device .device-icon i {
+    color: #22d3ee;
+}
+
+.wifi-device .device-icon i {
+    color: #38bdf8;
+}
+
+.printer-device .device-icon i {
+    color: #a78bfa;
+}
+
+.cloud-device .device-icon i {
+    color: #60a5fa;
+}
+
+.server-device .device-icon i {
+    color: #34d399;
+}
+
+.laptop-device .device-icon i {
+    color: #93c5fd;
+}
+
+
+/* ==========================================
+   NETWORK DEFINITION
+========================================== */
+
+.network-definition {
+    position: absolute;
+
+    left: 8%;
+    bottom: 7%;
+
+    width: 245px;
+
+    padding: 18px 20px;
+
+    border:
+        1px solid rgba(56, 189, 248, 0.22);
+
+    border-radius: 15px;
+
+    background:
+        rgba(2, 6, 23, 0.72);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.28);
+
+    opacity: 0;
+
+    transform: translateY(18px);
+
+    z-index: 6;
+}
+
+.network-definition span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #38bdf8;
+
+    font-size: 0.66rem;
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+}
+
+.network-definition strong {
+    color: #e2e8f0;
+
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+
+/* ==========================================
+   FINAL QUESTION
+========================================== */
+
+.scene-question {
+    position: absolute;
+
+    left: 50%;
+    bottom: 54px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    max-width: 650px;
+
+    padding: 13px 22px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid rgba(56, 189, 248, 0.24);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.88);
+
+    color: #e2e8f0;
+
+    font-size: 0.9rem;
+
+    opacity: 0;
+
+    z-index: 10;
+}
+
+.scene-question i {
+    color: #38bdf8;
+
+    font-size: 1.1rem;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 20;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #22d3ee,
+            #8b5cf6
+        );
+
+    box-shadow:
+        0 0 14px rgba(34, 211, 238, 0.65);
+}
+
+
+/* ==========================================
+   DEVELOPMENT CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border: 1px solid #334155;
+    border-radius: 9px;
+
+    background: rgba(15, 23, 42, 0.92);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+
+    background: #172033;
+
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   ANIMATION STATES
+   JavaScript adds these classes.
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transform:
+        translateY(0)
+        scale(1) !important;
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scene-brand.is-visible {
+    transform: translateY(0) !important;
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0) !important;
+}
+
+.cloud-device.is-visible,
+.wifi-device.is-visible,
+.laptop-device.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0)
+        scale(1) !important;
+}
+
+.network-line.is-visible {
+    opacity: 0.75 !important;
+
+    animation:
+        networkDash 1.8s linear infinite;
+}
+
+.network-definition.is-visible {
+    transform: translateY(0) !important;
+}
+
+.scene-question.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0) !important;
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes networkDash {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -44;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+
+   Add class="recording-mode" to body
+   when capturing the final video.
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE DEVELOPMENT PREVIEW
+========================================== */
+
+@media (max-width: 900px) {
+
+    .scene-title {
+        top: 90px;
+    }
+
+    .network-stage {
+        transform:
+            translate(-50%, -46%)
+            scale(0.8);
+    }
+
+    .network-definition {
+        left: 3%;
+    }
+
+}

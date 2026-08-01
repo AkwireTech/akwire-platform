@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 01
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-01.css">
+
+</head>
+
+<body>
+
+    <!-- ==========================================
+         AKWIRE VIDEO
+         NETWORK+ FUNDAMENTALS
+         SCENE 01 — NETWORKS ARE EVERYWHERE
+    =========================================== -->
+
+    <main id="scene01"
+          class="video-scene">
+
+        <!-- BACKGROUND -->
+
+        <div class="scene-background">
+
+            <div class="background-glow glow-one"></div>
+
+            <div class="background-glow glow-two"></div>
+
+            <div class="background-grid"></div>
+
+        </div>
+
+
+        <!-- ======================================
+             TOP BRAND
+        ======================================= -->
+
+        <header class="scene-brand">
+
+            <div class="brand-mark">
+                A
+            </div>
+
+            <div class="brand-copy">
+
+                <strong>
+                    AKWIRE
+                </strong>
+
+                <span>
+                    NETWORK+ FUNDAMENTALS
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <!-- ======================================
+             TITLE
+        ======================================= -->
+
+        <section class="scene-title">
+
+            <span class="scene-number">
+                SCENE 1
+            </span>
+
+            <h1>
+                Networks Are Everywhere
+            </h1>
+
+            <p>
+                Connected devices communicate,
+                share information, and deliver
+                the digital services we use every day.
+            </p>
+
+        </section>
+
+
+        <!-- ======================================
+             NETWORK VISUAL
+        ======================================= -->
+
+        <section class="network-stage">
+
+            <!-- SVG CONNECTION LAYER -->
+
+            <svg
+                class="connection-layer"
+                viewBox="0 0 1200 560"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+            >
+
+                <!-- Laptop → Wi-Fi -->
+
+                <path
+                    id="lineLaptopWifi"
+                    class="network-line"
+                    d="M600 405 C600 350 600 315 600 270"
+                />
+
+                <!-- Wi-Fi → Phone -->
+
+                <path
+                    id="lineWifiPhone"
+                    class="network-line"
+                    d="M585 260 C470 220 380 205 280 190"
+                />
+
+                <!-- Wi-Fi → Printer -->
+
+                <path
+                    id="lineWifiPrinter"
+                    class="network-line"
+                    d="M615 260 C735 220 820 210 925 195"
+                />
+
+                <!-- Wi-Fi → Cloud -->
+
+                <path
+                    id="lineWifiCloud"
+                    class="network-line"
+                    d="M600 245 C600 190 600 145 600 105"
+                />
+
+                <!-- Wi-Fi → Server -->
+
+                <path
+                    id="lineWifiServer"
+                    class="network-line"
+                    d="M635 270 C760 300 845 330 965 375"
+                />
+
+                <!-- PACKET PULSES -->
+
+                <circle
+                    id="packetOne"
+                    class="packet-pulse"
+                    r="7"
+                ></circle>
+
+                <circle
+                    id="packetTwo"
+                    class="packet-pulse packet-secondary"
+                    r="7"
+                ></circle>
+
+                <circle
+                    id="packetThree"
+                    class="packet-pulse"
+                    r="7"
+                ></circle>
+
+            </svg>
+
+
+            <!-- ==================================
+                 CLOUD
+            =================================== -->
+
+            <div
+                id="cloudDevice"
+                class="network-device cloud-device"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-cloud"></i>
+
+                </div>
+
+                <span>
+                    Cloud Services
+                </span>
+
+            </div>
+
+
+            <!-- ==================================
+                 PHONE
+            =================================== -->
+
+            <div
+                id="phoneDevice"
+                class="network-device phone-device"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-mobile-screen-button"></i>
+
+                </div>
+
+                <span>
+                    Smartphone
+                </span>
+
+            </div>
+
+
+            <!-- ==================================
+                 WIFI
+            =================================== -->
+
+            <div
+                id="wifiDevice"
+                class="network-device wifi-device"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-wifi"></i>
+
+                </div>
+
+                <span>
+                    Wireless Network
+                </span>
+
+            </div>
+
+
+            <!-- ==================================
+                 PRINTER
+            =================================== -->
+
+            <div
+                id="printerDevice"
+                class="network-device printer-device"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-print"></i>
+
+                </div>
+
+                <span>
+                    Printer
+                </span>
+
+            </div>
+
+
+            <!-- ==================================
+                 LAPTOP
+            =================================== -->
+
+            <div
+                id="laptopDevice"
+                class="network-device laptop-device"
+            >
+
+                <div class="device-icon laptop-screen">
+
+                    <i class="fas fa-laptop"></i>
+
+                </div>
+
+                <span>
+                    Your Computer
+                </span>
+
+            </div>
+
+
+            <!-- ==================================
+                 SERVER
+            =================================== -->
+
+            <div
+                id="serverDevice"
+                class="network-device server-device"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-server"></i>
+
+                </div>
+
+                <span>
+                    Server
+                </span>
+
+            </div>
+
+
+            <!-- ==================================
+                 CENTER MESSAGE
+            =================================== -->
+
+            <div
+                id="networkDefinition"
+                class="network-definition"
+            >
+
+                <span>
+                    COMPUTER NETWORK
+                </span>
+
+                <strong>
+                    Devices communicating
+                    and sharing information
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             FINAL QUESTION
+        ======================================= -->
+
+        <section
+            id="sceneQuestion"
+            class="scene-question"
+        >
+
+            <i class="fas fa-circle-question"></i>
+
+            <span>
+                How does information actually travel
+                from one device to another?
+            </span>
+
+        </section>
+
+
+        <!-- ======================================
+             TIMELINE
+        ======================================= -->
+
+        <div class="scene-timeline">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+
+        <!-- ======================================
+             DEVELOPMENT CONTROLS
+             Hidden during final recording
+        ======================================= -->
+
+        <div
+            id="sceneControls"
+            class="scene-controls"
+        >
+
+            <button id="startSceneBtn">
+
+                <i class="fas fa-play"></i>
+
+                Start Scene
+
+            </button>
+
+            <button id="restartSceneBtn">
+
+                <i class="fas fa-rotate-right"></i>
+
+                Restart
+
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script src="scene-01.js"></script>
+
+</body>
+
+</html>
