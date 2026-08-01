@@ -869,7 +869,8 @@ function formatLessonContent(content = "") {
         )
 
         .replace(
-            /\[CODE(?:\s+language="(.*?)")?\]([\s\S]*?)\[\/CODE\]/gi,
+
+            /\[CODE(?:\s+language=(?:&quot;|")(.+?)(?:&quot;|"))?\]([\s\S]*?)\[\/CODE\]/gi,
 
             (match, language, code) => `
 
@@ -900,6 +901,7 @@ function formatLessonContent(content = "") {
                 </div>
 
             `
+
         )
 
 
