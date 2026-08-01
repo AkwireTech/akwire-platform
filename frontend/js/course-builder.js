@@ -569,7 +569,21 @@ function openEditLesson(moduleIndex, lessonIndex) {
         lesson.content || "";
 
     document.getElementById("editLessonKeyTerms").value =
-        (lesson.keyTerms || []).join("\n");
+        (lesson.keyTerms || [])
+            .map(item => {
+
+                if (typeof item === "string") {
+                    return item;
+                }
+
+                if (item.term && item.definition) {
+                    return `${item.term} — ${item.definition}`;
+                }
+
+                return item.term || "";
+
+            })
+            .join("\n");
 
     document.getElementById("editLessonSummary").value =
         lesson.summary || "";
@@ -704,10 +718,46 @@ async function saveLessonEdit() {
             .split("\n")
             .map(item => item.trim())
             .filter(Boolean)
-            .map(term => ({
-                term,
-                definition: ""
-            }));
+            .map(item => {
+
+                const separator =
+                    item.includes(" — ")
+                        ? " — "
+                        : item.includes(" - ")
+                            ? " - "
+                            : null;
+
+                if (!separator) {
+
+                    return {
+                        term: item,
+                        definition: ""
+                    };
+
+                }
+
+                const separatorIndex =
+                    item.indexOf(separator);
+
+                const term =
+                    item
+                        .slice(0, separatorIndex)
+                        .trim();
+
+                const definition =
+                    item
+                        .slice(
+                            separatorIndex +
+                            separator.length
+                        )
+                        .trim();
+
+                return {
+                    term,
+                    definition
+                };
+
+            });
 
     const summary =
         document.getElementById("editLessonSummary").value.trim();
