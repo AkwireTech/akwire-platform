@@ -931,11 +931,11 @@ function formatLessonContent(content = "") {
 
         .replace(
 
-            /\[ANIMATION\s+title="(.*?)"\]/gi,
+            /\[ANIMATION\s+title=(?:&quot;|")(.+?)(?:&quot;|")\]/gi,
 
-            (match,title)=>renderAnimation(title)
+            (match, title) => renderAnimation(title.trim())
 
-        );
+        )
 
 }
 
