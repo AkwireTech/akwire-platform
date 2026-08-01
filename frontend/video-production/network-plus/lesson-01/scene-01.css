@@ -383,22 +383,17 @@ body {
 
 .cloud-device {
     left: 50%;
-    top: 20%;
+    top: 22%;
 
     transform:
         translateX(-50%)
         translateY(22px)
         scale(0.88);
-}
-
-.phone-device {
-    left: 15%;
-    top: 22%;
 }
 
 .wifi-device {
     left: 50%;
-    top: 31%;
+    top: 52%;
 
     transform:
         translateX(-50%)
@@ -406,14 +401,9 @@ body {
         scale(0.88);
 }
 
-.printer-device {
-    right: 14%;
-    top: 23%;
-}
-
 .laptop-device {
     left: 50%;
-    bottom: 2%;
+    bottom: -4%;
 
     transform:
         translateX(-50%)
