@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 02
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-02.css">
+
+</head>
+
+<body>
+
+<main id="scene02"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-one"></div>
+
+        <div class="background-glow glow-two"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 2
+        </span>
+
+        <h1>
+            Follow One Request
+        </h1>
+
+        <p>
+            Watch what happens when a client
+            requests information from a server.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         NETWORK STAGE
+    =========================================== -->
+
+    <section class="request-stage">
+
+
+        <!-- ======================================
+             SVG CONNECTIONS
+        ======================================= -->
+
+        <svg
+            class="connection-layer"
+            viewBox="0 0 1400 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <!-- CLIENT → SWITCH -->
+
+            <path
+                id="pathClientSwitch"
+                class="network-line"
+                d="M190 250 L410 250"
+            />
+
+
+            <!-- SWITCH → ROUTER -->
+
+            <path
+                id="pathSwitchRouter"
+                class="network-line"
+                d="M470 250 L650 250"
+            />
+
+
+            <!-- ROUTER → INTERNET -->
+
+            <path
+                id="pathRouterInternet"
+                class="network-line"
+                d="M710 250 L900 250"
+            />
+
+
+            <!-- INTERNET → SERVER -->
+
+            <path
+                id="pathInternetServer"
+                class="network-line"
+                d="M960 250 L1200 250"
+            />
+
+
+            <!-- REQUEST PACKET -->
+
+            <circle
+                id="requestPacket"
+                class="packet request-packet"
+                r="9"
+            ></circle>
+
+
+            <!-- RESPONSE PACKET -->
+
+            <circle
+                id="responsePacket"
+                class="packet response-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             CLIENT
+        ======================================= -->
+
+        <div
+            id="clientDevice"
+            class="network-node client-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                CLIENT
+            </strong>
+
+            <span>
+                Your Computer
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH
+        ======================================= -->
+
+        <div
+            id="switchDevice"
+            class="network-node switch-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-network-wired"></i>
+
+            </div>
+
+            <strong>
+                SWITCH
+            </strong>
+
+            <span>
+                Local Network
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER
+        ======================================= -->
+
+        <div
+            id="routerDevice"
+            class="network-node router-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-route"></i>
+
+            </div>
+
+            <strong>
+                ROUTER
+            </strong>
+
+            <span>
+                Between Networks
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             INTERNET
+        ======================================= -->
+
+        <div
+            id="internetDevice"
+            class="network-node internet-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-globe"></i>
+
+            </div>
+
+            <strong>
+                INTERNET
+            </strong>
+
+            <span>
+                Other Networks
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SERVER
+        ======================================= -->
+
+        <div
+            id="serverDevice"
+            class="network-node server-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-server"></i>
+
+            </div>
+
+            <strong>
+                SERVER
+            </strong>
+
+            <span>
+                Destination
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             REQUEST LABEL
+        ======================================= -->
+
+        <div
+            id="requestLabel"
+            class="traffic-label request-label"
+        >
+
+            <i class="fas fa-arrow-right"></i>
+
+            REQUEST
+
+        </div>
+
+
+        <!-- ======================================
+             SERVER PROCESSING
+        ======================================= -->
+
+        <div
+            id="processingLabel"
+            class="processing-label"
+        >
+
+            <i class="fas fa-gear"></i>
+
+            Server processing request...
+
+        </div>
+
+
+        <!-- ======================================
+             RESPONSE LABEL
+        ======================================= -->
+
+        <div
+            id="responseLabel"
+            class="traffic-label response-label"
+        >
+
+            <i class="fas fa-arrow-left"></i>
+
+            RESPONSE
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         EXPLANATION CARD
+    =========================================== -->
+
+    <section
+        id="explanationCard"
+        class="explanation-card"
+    >
+
+        <div class="explanation-icon">
+
+            <i class="fas fa-circle-info"></i>
+
+        </div>
+
+        <div>
+
+            <span id="explanationTitle">
+                CLIENT
+            </span>
+
+            <p id="explanationText">
+                The client creates a request
+                for information.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL SUMMARY
+    =========================================== -->
+
+    <section
+        id="sceneSummary"
+        class="scene-summary"
+    >
+
+        <div>
+
+            <span>
+                REQUEST
+            </span>
+
+            <strong>
+                Client → Server
+            </strong>
+
+        </div>
+
+        <i class="fas fa-arrows-left-right"></i>
+
+        <div>
+
+            <span>
+                RESPONSE
+            </span>
+
+            <strong>
+                Server → Client
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-02.js"></script>
+
+</body>
+
+</html>
