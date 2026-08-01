@@ -238,7 +238,7 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 51%;
+    top: 54%;
 
     width: min(1200px, 92vw);
     height: min(560px, 58vh);
@@ -381,29 +381,54 @@ body {
    DEVICE POSITIONS
 ========================================== */
 
+/* CLOUD — TOP CENTER */
+
 .cloud-device {
     left: 50%;
-    top: 22%;
+    top: 20%;
 
     transform:
         translateX(-50%)
         translateY(22px)
         scale(0.88);
 }
+
+
+/* PHONE — LEFT */
+
+.phone-device {
+    left: 15%;
+    top: 42%;
+}
+
+
+/* WI-FI — CENTER */
 
 .wifi-device {
     left: 50%;
-    top: 52%;
+    top: 47%;
 
     transform:
         translateX(-50%)
         translateY(22px)
         scale(0.88);
 }
+
+
+/* PRINTER — RIGHT */
+
+.printer-device {
+    right: 15%;
+    top: 47%;
+}
+
+
+/* LAPTOP — LOWER CENTER */
 
 .laptop-device {
     left: 50%;
-    bottom: -4%;
+    bottom: 2%;
+    top: 65%;
 
     transform:
         translateX(-50%)
@@ -411,9 +436,12 @@ body {
         scale(0.88);
 }
 
+
+/* SERVER — LOWER RIGHT */
+
 .server-device {
     right: 8%;
-    bottom: 8%;
+    bottom: 5%;
 }
 
 
