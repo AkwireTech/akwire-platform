@@ -238,16 +238,19 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 51%;
+    top: 54%;
 
     width: min(1200px, 92vw);
-    height: min(560px, 58vh);
+    height: 560px;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%)
+        scale(var(--scene-scale, 1));
+
+    transform-origin: center center;
 
     z-index: 4;
 }
-
 
 /* ==========================================
    CONNECTION LAYER
@@ -745,6 +748,22 @@ body.recording-mode .scene-controls {
 
     .network-definition {
         left: 3%;
+    }
+
+}
+
+@media (max-height: 900px) {
+
+    .network-stage {
+        --scene-scale: 0.82;
+    }
+
+}
+
+@media (max-height: 750px) {
+
+    .network-stage {
+        --scene-scale: 0.72;
     }
 
 }
