@@ -932,7 +932,7 @@ function formatLessonContent(content = "") {
 
         .replace(
 
-            /\[NETWORK_FLOW\]/gi,
+            /(?:<p>\s*)?\[NETWORK_FLOW\](?:\s*<\/p>)?/gi,
 
             `
 
