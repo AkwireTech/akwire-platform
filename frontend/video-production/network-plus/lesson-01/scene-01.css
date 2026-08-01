@@ -238,20 +238,49 @@ body {
     position: absolute;
 
     left: 50%;
-    top: 54%;
+    top: 55%;
 
-    width: min(1200px, 92vw);
+    width: 1200px;
     height: 560px;
 
     transform:
         translate(-50%, -50%)
-        scale(var(--scene-scale, 1));
+        scale(1);
 
     transform-origin: center center;
 
     z-index: 4;
 }
 
+@media (max-width: 1300px) {
+
+    .network-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-height: 800px) {
+
+    .network-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.78);
+    }
+
+}
+
+@media (max-height: 700px) {
+
+    .network-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.68);
+    }
+
+}
 /* ==========================================
    CONNECTION LAYER
 ========================================== */
@@ -748,22 +777,6 @@ body.recording-mode .scene-controls {
 
     .network-definition {
         left: 3%;
-    }
-
-}
-
-@media (max-height: 900px) {
-
-    .network-stage {
-        --scene-scale: 0.82;
-    }
-
-}
-
-@media (max-height: 750px) {
-
-    .network-stage {
-        --scene-scale: 0.72;
     }
 
 }
