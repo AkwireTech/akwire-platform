@@ -199,7 +199,7 @@ body {
 }
 
 .scene-title h1 {
-    font-size: clamp(2rem, 4vw, 4.2rem);
+    font-size: clamp(1.8rem, 3vw, 3rem);
     line-height: 1.05;
 
     letter-spacing: -0.04em;
