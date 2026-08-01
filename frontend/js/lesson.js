@@ -200,7 +200,7 @@ async function loadLesson() {
 
                 </h2>
 
-                ${marked.parse(formatLessonContent(lesson.content))}
+                ${formatLessonContent(marked.parse(lesson.content))}
 
             </div>
         `;
