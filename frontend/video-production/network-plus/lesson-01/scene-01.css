@@ -383,7 +383,7 @@ body {
 
 .cloud-device {
     left: 50%;
-    top: 2%;
+    top: 10%;
 
     transform:
         translateX(-50%)
