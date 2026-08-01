@@ -930,6 +930,67 @@ function formatLessonContent(content = "") {
 
         )
 
+        .replace(
+
+            /\[NETWORK_FLOW\]/gi,
+
+            `
+
+            <div class="network-flow">
+
+                <div class="network-flow-step">
+                    <i class="fas fa-window-maximize"></i>
+                    <span>Application</span>
+                </div>
+
+                <i class="fas fa-arrow-right network-flow-arrow"></i>
+
+                <div class="network-flow-step">
+                    <i class="fas fa-laptop"></i>
+                    <span>Source Device</span>
+                </div>
+
+                <i class="fas fa-arrow-right network-flow-arrow"></i>
+
+                <div class="network-flow-step">
+                    <i class="fas fa-network-wired"></i>
+                    <span>Local Network</span>
+                </div>
+
+                <i class="fas fa-arrow-right network-flow-arrow"></i>
+
+                <div class="network-flow-step">
+                    <i class="fas fa-route"></i>
+                    <span>Router</span>
+                </div>
+
+                <i class="fas fa-arrow-right network-flow-arrow"></i>
+
+                <div class="network-flow-step">
+                    <i class="fas fa-globe"></i>
+                    <span>Other Networks</span>
+                </div>
+
+                <i class="fas fa-arrow-right network-flow-arrow"></i>
+
+                <div class="network-flow-step">
+                    <i class="fas fa-server"></i>
+                    <span>Destination</span>
+                </div>
+
+                <i class="fas fa-arrow-right network-flow-arrow"></i>
+
+                <div class="network-flow-step network-flow-response">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Response</span>
+                </div>
+
+            </div>
+
+            `
+
+        )
+
 
         .replace(
 
