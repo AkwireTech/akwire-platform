@@ -913,21 +913,20 @@ function formatLessonContent(content = "") {
 
         .replace(
 
-            /\[IMAGE\s+src="(.*?)"\s+caption="(.*?)"\]/gi,
+            /\[IMAGE\s+src=(?:&quot;|")(.+?)(?:&quot;|")\s+caption=(?:&quot;|")(.+?)(?:&quot;|")\]/gi,
 
-            `
+            (match, src, caption) => `
+
                 <figure class="lesson-image">
 
                     <img
-                        src="$1"
-                        alt="$2"
+                        src="${src.trim()}"
+                        alt="${caption.trim()}"
                         loading="lazy"
                     >
 
                     <figcaption>
-
-                        $2
-
+                        ${caption.trim()}
                     </figcaption>
 
                 </figure>
