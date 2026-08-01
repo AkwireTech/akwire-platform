@@ -157,6 +157,7 @@ async function loadLesson() {
         }
 
         // Learning Objectives
+
         if (
             lesson.objectives &&
             lesson.objectives.length
@@ -174,22 +175,17 @@ async function loadLesson() {
                     </h2>
 
                     <ul>
-                        ${lesson.keyTerms.map(item => `
 
-                            <li class="lesson-key-term">
+                        ${lesson.objectives
+                            .map(
+                                objective => `
+                                    <li>
+                                        ${objective}
+                                    </li>
+                                `
+                            )
+                            .join("")}
 
-                                <strong>
-                                    ${item.term || ""}
-                                </strong>
-
-                                ${item.definition
-                                    ? `<span>${item.definition}</span>`
-                                    : ""
-                                }
-
-                            </li>
-
-                        `).join("")}
                     </ul>
 
                 </div>
