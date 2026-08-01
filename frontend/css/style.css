@@ -6801,3 +6801,68 @@ opacity:1;
     gap:15px;
 
 }
+
+
+/* ==========================================
+   LESSON MARKDOWN TYPOGRAPHY FIX
+========================================== */
+
+.lesson-content-card {
+    color: #334155;
+}
+
+.lesson-content-card h1,
+.lesson-content-card h2,
+.lesson-content-card h3,
+.lesson-content-card h4 {
+    color: #0f172a;
+    line-height: 1.3;
+}
+
+.lesson-content-card h3 {
+    font-size: 1.3rem;
+    margin-top: 30px;
+    margin-bottom: 14px;
+}
+
+.lesson-content-card p {
+    color: #334155;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    margin-bottom: 18px;
+}
+
+.lesson-content-card ul,
+.lesson-content-card ol {
+    color: #334155;
+    margin: 16px 0 24px 25px;
+    padding-left: 20px;
+}
+
+.lesson-content-card li {
+    color: #334155;
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+.lesson-content-card a {
+    color: #2563eb;
+}
+
+.lesson-content-card code {
+    color: inherit;
+}
+
+/* Preserve Akwire custom blocks inside Markdown */
+
+.lesson-callout p {
+    margin-bottom: 0;
+}
+
+.lesson-code pre {
+    margin: 0;
+}
+
+.lesson-code code {
+    color: #e2e8f0;
+}
