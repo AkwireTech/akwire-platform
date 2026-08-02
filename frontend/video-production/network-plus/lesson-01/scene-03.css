@@ -1,0 +1,990 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 03 — WHAT IS A NETWORK?
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(37, 99, 235, 0.15),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 48%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+
+    border-radius: 50%;
+    filter: blur(120px);
+
+    opacity: 0;
+}
+
+.glow-one {
+    left: -170px;
+    top: 110px;
+
+    background:
+        rgba(37, 99, 235, 0.26);
+}
+
+.glow-two {
+    right: -170px;
+    bottom: -60px;
+
+    background:
+        rgba(124, 58, 237, 0.2);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    z-index: 20;
+
+    opacity: 0;
+
+    transform:
+        translateY(-15px);
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px
+        rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+
+    top: 70px;
+    left: 50%;
+
+    width: min(800px, 78%);
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    text-align: center;
+
+    opacity: 0;
+
+    z-index: 15;
+}
+
+.scene-number {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #38bdf8;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size:
+        clamp(2rem, 3.2vw, 3.2rem);
+
+    line-height: 1.05;
+
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #93c5fd
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 650px;
+
+    margin: 12px auto 0;
+
+    color: #94a3b8;
+
+    font-size:
+        clamp(
+            0.82rem,
+            1.1vw,
+            1rem
+        );
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   CONCEPT STAGE
+
+   IMPORTANT:
+   Fixed 1200 x 500 coordinate system.
+========================================== */
+
+.concept-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    width: 1200px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin:
+        center center;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   SVG CONNECTIONS
+========================================== */
+
+.connection-layer {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.network-line {
+    fill: none;
+
+    stroke: #334155;
+    stroke-width: 3;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 10 8;
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 5px
+            rgba(56, 189, 248, 0.2)
+        );
+}
+
+.network-line.is-visible {
+    opacity: 0.9;
+
+    animation:
+        networkDash 1.7s linear infinite;
+}
+
+.network-line.is-active {
+    stroke: #38bdf8;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(56, 189, 248, 0.85)
+        );
+}
+
+
+/* ==========================================
+   DATA PACKETS
+========================================== */
+
+.data-packet {
+    opacity: 0;
+}
+
+.packet-blue {
+    fill: #22d3ee;
+
+    filter:
+        drop-shadow(
+            0 0 10px #22d3ee
+        );
+}
+
+.packet-purple {
+    fill: #a78bfa;
+
+    filter:
+        drop-shadow(
+            0 0 10px #a78bfa
+        );
+}
+
+.packet-green {
+    fill: #34d399;
+
+    filter:
+        drop-shadow(
+            0 0 10px #34d399
+        );
+}
+
+
+/* ==========================================
+   DEVICES
+========================================== */
+
+.network-device {
+    position: absolute;
+
+    width: 145px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 7px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(18px)
+        scale(0.9);
+
+    z-index: 5;
+}
+
+.device-icon {
+    width: 88px;
+    height: 88px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 23px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.3);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.98),
+            rgba(15, 38, 67, 0.92)
+        );
+
+    box-shadow:
+        0 18px 45px
+        rgba(0, 0, 0, 0.38),
+        inset 0 0 22px
+        rgba(59, 130, 246, 0.08);
+}
+
+.device-icon i {
+    color: #60a5fa;
+
+    font-size: 2.2rem;
+
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(96, 165, 250, 0.5)
+        );
+}
+
+.network-device strong {
+    margin-top: 2px;
+
+    color: #e2e8f0;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.12em;
+}
+
+.network-device span {
+    color: #64748b;
+
+    font-size: 0.68rem;
+}
+
+
+/* ==========================================
+   DEVICE POSITIONS
+   Match the 1200 x 500 SVG coordinates.
+========================================== */
+
+.laptop-device {
+    left: 220px;
+    top: 250px;
+}
+
+.phone-device {
+    left: 300px;
+    top: 105px;
+}
+
+.printer-device {
+    left: 300px;
+    top: 395px;
+}
+
+.switch-device {
+    left: 500px;
+    top: 250px;
+}
+
+.server-device {
+    left: 880px;
+    top: 250px;
+}
+
+
+/* ==========================================
+   DEVICE COLORS
+========================================== */
+
+.laptop-device .device-icon i {
+    color: #38bdf8;
+}
+
+.phone-device .device-icon i {
+    color: #22d3ee;
+}
+
+.printer-device .device-icon i {
+    color: #a78bfa;
+}
+
+.switch-device .device-icon i {
+    color: #60a5fa;
+}
+
+.server-device .device-icon i {
+    color: #34d399;
+}
+
+
+/* ==========================================
+   ACTIVE DEVICE
+========================================== */
+
+.network-device.is-active .device-icon {
+    border-color:
+        rgba(56, 189, 248, 0.85);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(56, 189, 248, 0.08),
+        0 0 35px
+        rgba(56, 189, 248, 0.35),
+        inset 0 0 25px
+        rgba(56, 189, 248, 0.1);
+}
+
+
+/* ==========================================
+   CONCEPT LABELS
+========================================== */
+
+.concept-label {
+    position: absolute;
+
+    width: 250px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 16px;
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.2);
+
+    border-radius: 13px;
+
+    background:
+        rgba(2, 6, 23, 0.78);
+
+    backdrop-filter:
+        blur(10px);
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    z-index: 8;
+}
+
+.concept-number {
+    width: 34px;
+    height: 34px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(14, 165, 233, 0.14);
+
+    color: #38bdf8;
+
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.concept-label span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #38bdf8;
+
+    font-size: 0.62rem;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+.concept-label strong {
+    display: block;
+
+    color: #cbd5e1;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   CONCEPT LABEL POSITIONS
+========================================== */
+
+.devices-concept {
+    left: 15px;
+    bottom: 5px;
+}
+
+.connection-concept {
+    left: 590px;
+    top: 60px;
+}
+
+.communication-concept {
+    right: 10px;
+    bottom: 40px;
+}
+
+
+/* ==========================================
+   NETWORK EQUATION
+========================================== */
+
+.network-equation {
+    position: absolute;
+
+    left: 50%;
+    bottom: 93px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 11px 20px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.18);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.92);
+
+    opacity: 0;
+
+    z-index: 15;
+}
+
+.equation-part,
+.equation-result {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.equation-part i {
+    color: #38bdf8;
+}
+
+.equation-part span {
+    color: #cbd5e1;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.equation-symbol {
+    color: #64748b;
+
+    font-size: 1rem;
+}
+
+.equation-result {
+    padding: 7px 12px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(37, 99, 235, 0.14);
+}
+
+.equation-result i {
+    color: #60a5fa;
+}
+
+.equation-result span {
+    color: #bfdbfe;
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+}
+
+
+/* ==========================================
+   FINAL DEFINITION
+========================================== */
+
+.network-definition {
+    position: absolute;
+
+    left: 50%;
+    bottom: 30px;
+
+    width: min(620px, 72vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.24);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 15;
+}
+
+.network-definition > i {
+    color: #34d399;
+
+    font-size: 1.2rem;
+}
+
+.network-definition span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.6rem;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+.network-definition strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 30;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #22d3ee,
+            #34d399
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(34, 211, 238, 0.65);
+}
+
+
+/* ==========================================
+   DEVELOPMENT CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+
+    background: #172033;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* ==========================================
+   VISIBILITY STATES
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scene-brand.is-visible {
+    transform:
+        translateY(0);
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.network-device.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+.concept-label.is-visible {
+    transform:
+        translateY(0);
+}
+
+.network-equation.is-visible,
+.network-definition.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes networkDash {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -36;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE STAGE SCALING
+
+   Never compress the internal 1200 x 500 stage.
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .concept-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .concept-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.76);
+    }
+
+}
+
+@media (max-height: 800px) {
+
+    .concept-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.78);
+    }
+
+}
+
+@media (max-height: 700px) {
+
+    .concept-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.68);
+    }
+
+}
