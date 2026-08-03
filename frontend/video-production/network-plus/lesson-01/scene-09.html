@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 09
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-09.css">
+
+</head>
+
+<body>
+
+<main id="scene09"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 9
+        </span>
+
+        <h1>
+            Data Changes as It Moves Through the Layers
+        </h1>
+
+        <p>
+            Each layer adds information needed
+            to move the data toward its destination.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         ENCAPSULATION STAGE
+
+         Fixed 1200 × 500 coordinate system.
+    =========================================== -->
+
+    <section class="encapsulation-stage">
+
+
+        <!-- ======================================
+             PROCESS LINE
+        ======================================= -->
+
+        <svg
+            class="process-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="encapsulationPath"
+                class="process-line"
+                d="M180 250
+                   C290 250 320 250 390 250
+                   C480 250 500 250 570 250
+                   C660 250 680 250 750 250
+                   C840 250 860 250 940 250
+                   C1010 250 1040 250 1080 250"
+            />
+
+            <circle
+                id="processPacket"
+                class="process-packet"
+                r="8"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             APPLICATION DATA
+        ======================================= -->
+
+        <div
+            id="applicationData"
+            class="encapsulation-node application-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-file-lines"></i>
+
+            </div>
+
+            <span class="node-layer">
+                APPLICATION
+            </span>
+
+            <strong>
+                DATA
+            </strong>
+
+            <small>
+                "Hello"
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             TRANSPORT
+        ======================================= -->
+
+        <div
+            id="segmentNode"
+            class="encapsulation-node segment-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-box"></i>
+
+            </div>
+
+            <span class="node-layer">
+                TRANSPORT
+            </span>
+
+            <strong>
+                SEGMENT
+            </strong>
+
+            <small>
+                TCP / UDP
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             NETWORK
+        ======================================= -->
+
+        <div
+            id="packetNode"
+            class="encapsulation-node packet-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-route"></i>
+
+            </div>
+
+            <span class="node-layer">
+                NETWORK
+            </span>
+
+            <strong>
+                PACKET
+            </strong>
+
+            <small>
+                IP
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             DATA LINK
+        ======================================= -->
+
+        <div
+            id="frameNode"
+            class="encapsulation-node frame-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-network-wired"></i>
+
+            </div>
+
+            <span class="node-layer">
+                DATA LINK
+            </span>
+
+            <strong>
+                FRAME
+            </strong>
+
+            <small>
+                Ethernet
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             PHYSICAL
+        ======================================= -->
+
+        <div
+            id="bitsNode"
+            class="encapsulation-node bits-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-wave-square"></i>
+
+            </div>
+
+            <span class="node-layer">
+                PHYSICAL
+            </span>
+
+            <strong>
+                BITS
+            </strong>
+
+            <small>
+                1s and 0s
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             DATA OBJECT
+        ======================================= -->
+
+        <div
+            id="dataObject"
+            class="data-object"
+        >
+
+            <span class="data-label">
+                DATA
+            </span>
+
+            <strong>
+                HELLO
+            </strong>
+
+        </div>
+
+
+        <!-- ======================================
+             TRANSPORT HEADER
+        ======================================= -->
+
+        <div
+            id="transportHeader"
+            class="header-card transport-header"
+        >
+
+            <div class="header-tag">
+                TCP
+            </div>
+
+            <div>
+
+                <span>
+                    TRANSPORT HEADER
+                </span>
+
+                <strong>
+                    Adds delivery information
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IP HEADER
+        ======================================= -->
+
+        <div
+            id="ipHeader"
+            class="header-card ip-header"
+        >
+
+            <div class="header-tag">
+                IP
+            </div>
+
+            <div>
+
+                <span>
+                    NETWORK HEADER
+                </span>
+
+                <strong>
+                    Adds source and destination IP
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ETHERNET HEADER
+        ======================================= -->
+
+        <div
+            id="ethernetHeader"
+            class="header-card ethernet-header"
+        >
+
+            <div class="header-tag">
+                ETH
+            </div>
+
+            <div>
+
+                <span>
+                    DATA LINK HEADER
+                </span>
+
+                <strong>
+                    Adds local delivery information
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ENCAPSULATED DATA VISUAL
+        ======================================= -->
+
+        <div
+            id="encapsulatedData"
+            class="encapsulated-data"
+        >
+
+            <span class="block ethernet-block">
+                ETH
+            </span>
+
+            <span class="block ip-block">
+                IP
+            </span>
+
+            <span class="block transport-block">
+                TCP
+            </span>
+
+            <span class="block payload-block">
+                DATA
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             BIT STREAM
+        ======================================= -->
+
+        <div
+            id="bitStream"
+            class="bit-stream"
+        >
+
+            <span>1</span>
+            <span>0</span>
+            <span>1</span>
+            <span>1</span>
+            <span>0</span>
+            <span>0</span>
+            <span>1</span>
+            <span>0</span>
+            <span>1</span>
+            <span>0</span>
+            <span>1</span>
+            <span>1</span>
+
+        </div>
+
+
+        <!-- ======================================
+             PROCESS EXPLANATION
+        ======================================= -->
+
+        <div
+            id="processExplanation"
+            class="process-explanation"
+        >
+
+            <i class="fas fa-boxes-stacked"></i>
+
+            <div>
+
+                <span>
+                    ENCAPSULATION
+                </span>
+
+                <strong>
+                    Each layer wraps the data
+                    with information needed
+                    for communication.
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         PDU SUMMARY
+    =========================================== -->
+
+    <section
+        id="pduSummary"
+        class="pdu-summary"
+    >
+
+        <div class="pdu-item">
+
+            <span>
+                APPLICATION
+            </span>
+
+            <strong>
+                Data
+            </strong>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right"></i>
+
+
+        <div class="pdu-item">
+
+            <span>
+                TRANSPORT
+            </span>
+
+            <strong>
+                Segment
+            </strong>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right"></i>
+
+
+        <div class="pdu-item">
+
+            <span>
+                NETWORK
+            </span>
+
+            <strong>
+                Packet
+            </strong>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right"></i>
+
+
+        <div class="pdu-item">
+
+            <span>
+                DATA LINK
+            </span>
+
+            <strong>
+                Frame
+            </strong>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right"></i>
+
+
+        <div class="pdu-item">
+
+            <span>
+                PHYSICAL
+            </span>
+
+            <strong>
+                Bits
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                Encapsulation prepares data for
+                transmission by adding information
+                as it moves down the network stack.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-09.js"></script>
+
+</body>
+
+</html>
