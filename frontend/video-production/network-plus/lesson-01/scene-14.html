@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 14
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-14.css">
+
+</head>
+
+<body>
+
+<main id="scene14"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 14
+        </span>
+
+        <h1>
+            DNS: From Names to IP Addresses
+        </h1>
+
+        <p>
+            People remember names. Networks communicate
+            using IP addresses. DNS helps connect the two.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         DNS STAGE
+    =========================================== -->
+
+    <section class="dns-stage">
+
+
+        <!-- ======================================
+             DNS PATHS
+        ======================================= -->
+
+        <svg
+            class="dns-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <!-- Client to DNS server -->
+
+            <path
+                id="queryPath"
+                class="dns-path query-path"
+                d="M180 270
+                   C310 270 380 270 520 270"
+            />
+
+
+            <!-- DNS server back to client -->
+
+            <path
+                id="responsePath"
+                class="dns-path response-path"
+                d="M520 300
+                   C390 330 300 330 180 300"
+            />
+
+
+            <!-- Client to destination -->
+
+            <path
+                id="connectionPath"
+                class="dns-path connection-path"
+                d="M180 245
+                   C430 165 690 165 1000 255"
+            />
+
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             CLIENT DEVICE
+        ======================================= -->
+
+        <div
+            id="clientDevice"
+            class="dns-node client-device"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                CLIENT
+            </strong>
+
+            <span>
+                Web Browser
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             BROWSER
+        ======================================= -->
+
+        <div
+            id="browserWindow"
+            class="browser-window"
+        >
+
+            <div class="browser-top">
+
+                <div class="browser-dots">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+                <span class="browser-label">
+                    BROWSER
+                </span>
+
+            </div>
+
+
+            <div class="address-bar">
+
+                <i class="fas fa-globe"></i>
+
+                <span id="typedDomain">
+                    www.example.com
+                </span>
+
+            </div>
+
+
+            <div class="browser-message">
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <span>
+                    Finding destination...
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NAME CONCEPT
+        ======================================= -->
+
+        <div
+            id="nameConcept"
+            class="concept-card name-concept"
+        >
+
+            <div class="concept-icon">
+
+                <i class="fas fa-font"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    DOMAIN NAME
+                </span>
+
+                <strong>
+                    www.example.com
+                </strong>
+
+                <small>
+                    Easy for people to remember
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS QUERY
+        ======================================= -->
+
+        <div
+            id="dnsQuery"
+            class="message-card dns-query"
+        >
+
+            <span class="message-label">
+                DNS QUERY
+            </span>
+
+            <div class="message-content">
+
+                <i class="fas fa-circle-question"></i>
+
+                <strong>
+                    What IP address belongs to
+                    www.example.com?
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS SERVER
+        ======================================= -->
+
+        <div
+            id="dnsServer"
+            class="dns-node dns-server"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-server"></i>
+
+            </div>
+
+            <strong>
+                DNS SERVER
+            </strong>
+
+            <span>
+                Name Resolution
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS LOOKUP PANEL
+        ======================================= -->
+
+        <div
+            id="lookupPanel"
+            class="lookup-panel"
+        >
+
+            <span class="lookup-title">
+                DNS LOOKUP
+            </span>
+
+
+            <div class="lookup-row">
+
+                <span>
+                    NAME
+                </span>
+
+                <strong>
+                    www.example.com
+                </strong>
+
+            </div>
+
+
+            <div class="lookup-arrow">
+
+                <i class="fas fa-arrow-down"></i>
+
+            </div>
+
+
+            <div class="lookup-row result-row">
+
+                <span>
+                    IPv4 ADDRESS
+                </span>
+
+                <strong>
+                    10.0.0.25
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS RECORD
+        ======================================= -->
+
+        <div
+            id="dnsRecord"
+            class="dns-record"
+        >
+
+            <span class="record-type">
+                A
+            </span>
+
+            <div>
+
+                <span>
+                    ADDRESS RECORD
+                </span>
+
+                <strong>
+                    www.example.com
+                </strong>
+
+                <small>
+                    10.0.0.25
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS RESPONSE
+        ======================================= -->
+
+        <div
+            id="dnsResponse"
+            class="message-card dns-response"
+        >
+
+            <span class="message-label">
+                DNS RESPONSE
+            </span>
+
+            <div class="message-content">
+
+                <i class="fas fa-circle-check"></i>
+
+                <strong>
+                    www.example.com
+                    → 10.0.0.25
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IP CONCEPT
+        ======================================= -->
+
+        <div
+            id="ipConcept"
+            class="concept-card ip-concept"
+        >
+
+            <div class="concept-icon">
+
+                <i class="fas fa-location-dot"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    IP ADDRESS
+                </span>
+
+                <strong>
+                    10.0.0.25
+                </strong>
+
+                <small>
+                    Used to reach the destination host
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION SERVER
+        ======================================= -->
+
+        <div
+            id="webServer"
+            class="dns-node web-server"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-server"></i>
+
+            </div>
+
+            <strong>
+                WEB SERVER
+            </strong>
+
+            <span>
+                10.0.0.25
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             CONNECTION CARD
+        ======================================= -->
+
+        <div
+            id="connectionCard"
+            class="connection-card"
+        >
+
+            <i class="fas fa-link"></i>
+
+            <div>
+
+                <span>
+                    DESTINATION FOUND
+                </span>
+
+                <strong>
+                    Browser can now contact
+                    10.0.0.25
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS PROCESS
+        ======================================= -->
+
+        <div
+            id="dnsProcess"
+            class="dns-process"
+        >
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    1
+                </div>
+
+                <div>
+
+                    <span>
+                        NAME
+                    </span>
+
+                    <strong>
+                        www.example.com
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right process-arrow"></i>
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    2
+                </div>
+
+                <div>
+
+                    <span>
+                        DNS
+                    </span>
+
+                    <strong>
+                        Resolve
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right process-arrow"></i>
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    3
+                </div>
+
+                <div>
+
+                    <span>
+                        IP
+                    </span>
+
+                    <strong>
+                        10.0.0.25
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right process-arrow"></i>
+
+
+            <div class="process-item">
+
+                <div class="process-number">
+                    4
+                </div>
+
+                <div>
+
+                    <span>
+                        CONNECT
+                    </span>
+
+                    <strong>
+                        Web Server
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="dnsSummary"
+        class="dns-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-font"></i>
+
+            <div>
+
+                <span>
+                    DOMAIN NAME
+                </span>
+
+                <strong>
+                    Human Friendly
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-server"></i>
+
+            <div>
+
+                <span>
+                    DNS
+                </span>
+
+                <strong>
+                    Resolves Name
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-location-dot"></i>
+
+            <div>
+
+                <span>
+                    IP ADDRESS
+                </span>
+
+                <strong>
+                    Destination Host
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                DNS translates domain names into IP
+                addresses so applications can locate
+                network destinations.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-14.js"></script>
+
+</body>
+
+</html>
