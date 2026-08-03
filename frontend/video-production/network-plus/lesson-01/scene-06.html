@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 06
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-06.css">
+
+</head>
+
+<body>
+
+<main id="scene06"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-one"></div>
+        <div class="background-glow glow-two"></div>
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 6
+        </span>
+
+        <h1>
+            How Does the Network Know Which Device?
+        </h1>
+
+        <p>
+            Devices use identifiers so network
+            communication can reach the correct
+            destination.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         IDENTIFICATION STAGE
+
+         Fixed 1200 × 500 coordinate system.
+    =========================================== -->
+
+    <section class="identity-stage">
+
+
+        <!-- ======================================
+             SVG CONNECTION LAYER
+        ======================================= -->
+
+        <svg
+            class="connection-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="pathLaptopSwitch"
+                class="network-line"
+                d="M180 250 C280 250 330 250 430 250"
+            />
+
+            <path
+                id="pathSwitchDesktop"
+                class="network-line"
+                d="M510 250 C610 250 665 250 760 250"
+            />
+
+            <path
+                id="pathSwitchPrinter"
+                class="network-line"
+                d="M485 275 C600 330 700 350 850 350"
+            />
+
+            <circle
+                id="dataPacket"
+                class="data-packet"
+                r="8"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             SOURCE LAPTOP
+        ======================================= -->
+
+        <div
+            id="sourceDevice"
+            class="network-device source-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                LAPTOP-A
+            </strong>
+
+            <span>
+                Source Device
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH
+        ======================================= -->
+
+        <div
+            id="switchDevice"
+            class="network-device switch-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-network-wired"></i>
+
+            </div>
+
+            <strong>
+                SWITCH
+            </strong>
+
+            <span>
+                Local Network
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION DESKTOP
+        ======================================= -->
+
+        <div
+            id="destinationDevice"
+            class="network-device destination-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-desktop"></i>
+
+            </div>
+
+            <strong>
+                DESKTOP-B
+            </strong>
+
+            <span>
+                Destination
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             OTHER DEVICE
+        ======================================= -->
+
+        <div
+            id="otherDevice"
+            class="network-device other-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-print"></i>
+
+            </div>
+
+            <strong>
+                PRINTER-C
+            </strong>
+
+            <span>
+                Another Device
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SOURCE IDENTITY CARD
+        ======================================= -->
+
+        <div
+            id="sourceIdentity"
+            class="identity-card source-identity"
+        >
+
+            <div class="identity-header">
+
+                <i class="fas fa-id-card"></i>
+
+                <span>
+                    DEVICE IDENTITY
+                </span>
+
+            </div>
+
+            <div class="identity-row">
+
+                <span>
+                    Name
+                </span>
+
+                <strong>
+                    LAPTOP-A
+                </strong>
+
+            </div>
+
+            <div class="identity-row">
+
+                <span>
+                    IP Address
+                </span>
+
+                <strong>
+                    192.168.1.10
+                </strong>
+
+            </div>
+
+            <div class="identity-row">
+
+                <span>
+                    MAC Address
+                </span>
+
+                <strong>
+                    AA:10:2B:44:7C:01
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION IDENTITY CARD
+        ======================================= -->
+
+        <div
+            id="destinationIdentity"
+            class="identity-card destination-identity"
+        >
+
+            <div class="identity-header">
+
+                <i class="fas fa-location-crosshairs"></i>
+
+                <span>
+                    DESTINATION
+                </span>
+
+            </div>
+
+            <div class="identity-row">
+
+                <span>
+                    Name
+                </span>
+
+                <strong>
+                    DESKTOP-B
+                </strong>
+
+            </div>
+
+            <div class="identity-row highlight-row">
+
+                <span>
+                    IP Address
+                </span>
+
+                <strong>
+                    192.168.1.20
+                </strong>
+
+            </div>
+
+            <div class="identity-row">
+
+                <span>
+                    MAC Address
+                </span>
+
+                <strong>
+                    BB:20:8D:11:3A:02
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IP ADDRESS EXPLANATION
+        ======================================= -->
+
+        <div
+            id="ipConcept"
+            class="concept-card ip-concept"
+        >
+
+            <div class="concept-icon">
+
+                <i class="fas fa-location-dot"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    IP ADDRESS
+                </span>
+
+                <strong>
+                    Identifies where a device
+                    is located on an IP network.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             MAC ADDRESS EXPLANATION
+        ======================================= -->
+
+        <div
+            id="macConcept"
+            class="concept-card mac-concept"
+        >
+
+            <div class="concept-icon">
+
+                <i class="fas fa-fingerprint"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    MAC ADDRESS
+                </span>
+
+                <strong>
+                    Identifies a network interface
+                    for local network delivery.
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         ADDRESS FLOW
+    =========================================== -->
+
+    <section
+        id="addressFlow"
+        class="address-flow"
+    >
+
+        <div class="flow-item">
+
+            <i class="fas fa-laptop"></i>
+
+            <span>
+                LAPTOP-A
+            </span>
+
+        </div>
+
+        <i class="fas fa-arrow-right flow-arrow"></i>
+
+        <div class="flow-address">
+
+            <span>
+                Destination IP
+            </span>
+
+            <strong>
+                192.168.1.20
+            </strong>
+
+        </div>
+
+        <i class="fas fa-arrow-right flow-arrow"></i>
+
+        <div class="flow-item destination-flow">
+
+            <i class="fas fa-desktop"></i>
+
+            <span>
+                DESKTOP-B
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                Network communication depends on
+                identifying the correct source
+                and destination devices.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-06.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,1090 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 06 — DEVICE IDENTIFICATION
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(37, 99, 235, 0.14),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 48%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    border-radius: 50%;
+
+    filter: blur(120px);
+
+    opacity: 0;
+}
+
+.glow-one {
+    left: -170px;
+    top: 120px;
+
+    background:
+        rgba(37, 99, 235, 0.25);
+}
+
+.glow-two {
+    right: -170px;
+    bottom: -60px;
+
+    background:
+        rgba(16, 185, 129, 0.18);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    opacity: 0;
+
+    transform: translateY(-15px);
+
+    z-index: 20;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px
+        rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+
+    top: 70px;
+    left: 50%;
+
+    width: min(850px, 78%);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    z-index: 15;
+}
+
+.scene-number {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: #38bdf8;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size:
+        clamp(1.9rem, 3vw, 3rem);
+
+    line-height: 1.05;
+
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #a7f3d0
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 680px;
+
+    margin: 12px auto 0;
+
+    color: #94a3b8;
+
+    font-size:
+        clamp(
+            0.82rem,
+            1.1vw,
+            1rem
+        );
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   IDENTITY STAGE
+========================================== */
+
+.identity-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    width: 1200px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin: center center;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   CONNECTION LAYER
+========================================== */
+
+.connection-layer {
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.network-line {
+    fill: none;
+
+    stroke: #38bdf8;
+    stroke-width: 3;
+
+    stroke-linecap: round;
+
+    stroke-dasharray: 10 8;
+
+    opacity: 0;
+}
+
+.network-line.is-visible {
+    opacity: 0.8;
+
+    animation:
+        connectionFlow 1.6s linear infinite;
+}
+
+.network-line.is-active {
+    stroke: #22d3ee;
+
+    opacity: 1;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(34, 211, 238, 0.85)
+        );
+}
+
+
+/* ==========================================
+   DATA PACKET
+========================================== */
+
+.data-packet {
+    fill: #22d3ee;
+
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 11px #22d3ee
+        );
+}
+
+
+/* ==========================================
+   NETWORK DEVICES
+========================================== */
+
+.network-device {
+    position: absolute;
+
+    width: 145px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 6px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(18px)
+        scale(0.9);
+
+    z-index: 7;
+}
+
+.device-icon {
+    width: 86px;
+    height: 86px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.3);
+
+    border-radius: 23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.98),
+            rgba(15, 38, 67, 0.92)
+        );
+
+    box-shadow:
+        0 18px 40px
+        rgba(0, 0, 0, 0.36),
+        inset 0 0 22px
+        rgba(59, 130, 246, 0.07);
+}
+
+.device-icon i {
+    color: #60a5fa;
+
+    font-size: 2.1rem;
+
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(96, 165, 250, 0.45)
+        );
+}
+
+.network-device strong {
+    color: #e2e8f0;
+
+    font-size: 0.7rem;
+
+    letter-spacing: 0.11em;
+}
+
+.network-device span {
+    color: #64748b;
+
+    font-size: 0.64rem;
+}
+
+
+/* ==========================================
+   DEVICE POSITIONS
+========================================== */
+
+.source-device {
+    left: 180px;
+    top: 250px;
+}
+
+.switch-device {
+    left: 470px;
+    top: 250px;
+}
+
+.destination-device {
+    left: 805px;
+    top: 250px;
+}
+
+.other-device {
+    left: 895px;
+    top: 350px;
+}
+
+
+/* ==========================================
+   DEVICE COLORS
+========================================== */
+
+.source-device .device-icon i {
+    color: #38bdf8;
+}
+
+.switch-device .device-icon i {
+    color: #60a5fa;
+}
+
+.destination-device .device-icon i {
+    color: #34d399;
+}
+
+.other-device .device-icon i {
+    color: #a78bfa;
+}
+
+
+/* ==========================================
+   ACTIVE DEVICE
+========================================== */
+
+.network-device.is-active .device-icon {
+    border-color:
+        rgba(56, 189, 248, 0.9);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(56, 189, 248, 0.08),
+        0 0 34px
+        rgba(56, 189, 248, 0.35);
+}
+
+.destination-device.is-active .device-icon {
+    border-color:
+        rgba(52, 211, 153, 0.9);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(52, 211, 153, 0.08),
+        0 0 34px
+        rgba(52, 211, 153, 0.35);
+}
+
+
+/* ==========================================
+   IDENTITY CARDS
+========================================== */
+
+.identity-card {
+    position: absolute;
+
+    width: 270px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(2, 6, 23, 0.88);
+
+    backdrop-filter: blur(10px);
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    z-index: 10;
+}
+
+.source-identity {
+    left: 45px;
+    top: 40px;
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+}
+
+.destination-identity {
+    right: 35px;
+    top: 35px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.24);
+}
+
+.identity-header {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding-bottom: 10px;
+    margin-bottom: 8px;
+
+    border-bottom:
+        1px solid
+        rgba(148, 163, 184, 0.12);
+}
+
+.identity-header i {
+    color: #38bdf8;
+}
+
+.destination-identity .identity-header i {
+    color: #34d399;
+}
+
+.identity-header span {
+    color: #cbd5e1;
+
+    font-size: 0.63rem;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+.identity-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 7px 8px;
+
+    border-radius: 8px;
+}
+
+.identity-row span {
+    color: #64748b;
+
+    font-size: 0.63rem;
+}
+
+.identity-row strong {
+    color: #e2e8f0;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.67rem;
+}
+
+.highlight-row {
+    background:
+        rgba(16, 185, 129, 0.1);
+}
+
+.highlight-row strong {
+    color: #6ee7b7;
+}
+
+
+/* ==========================================
+   CONCEPT CARDS
+========================================== */
+
+.concept-card {
+    position: absolute;
+
+    width: 265px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 15px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.88);
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    z-index: 9;
+}
+
+.ip-concept {
+    left: 340px;
+    top: 50px;
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.23);
+}
+
+.mac-concept {
+    left: 475px;
+    bottom: 42px;
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.23);
+}
+
+.concept-icon {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        rgba(37, 99, 235, 0.12);
+}
+
+.concept-icon i {
+    color: #38bdf8;
+}
+
+.mac-concept .concept-icon {
+    background:
+        rgba(124, 58, 237, 0.12);
+}
+
+.mac-concept .concept-icon i {
+    color: #a78bfa;
+}
+
+.concept-card span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #38bdf8;
+
+    font-size: 0.61rem;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+.mac-concept span {
+    color: #a78bfa;
+}
+
+.concept-card strong {
+    display: block;
+
+    color: #cbd5e1;
+
+    font-size: 0.69rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   ADDRESS FLOW
+========================================== */
+
+.address-flow {
+    position: absolute;
+
+    left: 50%;
+    bottom: 91px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 11px 19px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.18);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    opacity: 0;
+
+    z-index: 15;
+}
+
+.flow-item {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.flow-item i {
+    color: #38bdf8;
+}
+
+.destination-flow i {
+    color: #34d399;
+}
+
+.flow-item span {
+    color: #cbd5e1;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.flow-arrow {
+    color: #475569;
+
+    font-size: 0.7rem;
+}
+
+.flow-address {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 7px 12px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(37, 99, 235, 0.12);
+}
+
+.flow-address span {
+    color: #64748b;
+
+    font-size: 0.62rem;
+}
+
+.flow-address strong {
+    color: #93c5fd;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.7rem;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+
+    left: 50%;
+    bottom: 27px;
+
+    width: min(650px, 72vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 15;
+}
+
+.final-concept > i {
+    color: #34d399;
+
+    font-size: 1.25rem;
+}
+
+.final-concept span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.6rem;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+}
+
+.final-concept strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.78rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 30;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #2563eb,
+            #22d3ee,
+            #34d399
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(34, 211, 238, 0.65);
+}
+
+
+/* ==========================================
+   DEVELOPMENT CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+
+    background: #172033;
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* ==========================================
+   VISIBILITY STATES
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scene-brand.is-visible {
+    transform: translateY(0);
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.network-device.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+.identity-card.is-visible,
+.concept-card.is-visible {
+    transform: translateY(0);
+}
+
+.address-flow.is-visible,
+.final-concept.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   CONNECTION ANIMATION
+========================================== */
+
+@keyframes connectionFlow {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -36;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE STAGE SCALING
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .identity-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .identity-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.76);
+    }
+
+}
+
+@media (max-height: 800px) {
+
+    .identity-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.78);
+    }
+
+}
+
+@media (max-height: 700px) {
+
+    .identity-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.68);
+    }
+
+}
