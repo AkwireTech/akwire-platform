@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 05
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-05.css">
+
+</head>
+
+<body>
+
+<main id="scene05"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-one"></div>
+        <div class="background-glow glow-two"></div>
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 5
+        </span>
+
+        <h1>
+            Network Devices Have Different Jobs
+        </h1>
+
+        <p>
+            End devices create and receive data,
+            while network devices move that data
+            toward its destination.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         DEVICE STAGE
+
+         Fixed 1200 × 500 coordinate system.
+    =========================================== -->
+
+    <section class="device-stage">
+
+
+        <!-- ======================================
+             SVG CONNECTIONS
+        ======================================= -->
+
+        <svg
+            class="connection-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <!-- LAPTOP → SWITCH -->
+
+            <path
+                id="pathLaptopSwitch"
+                class="network-line local-line"
+                d="M170 175 C260 185 315 215 390 245"
+            />
+
+
+            <!-- PHONE → SWITCH -->
+
+            <path
+                id="pathPhoneSwitch"
+                class="network-line local-line"
+                d="M170 325 C260 315 315 285 390 255"
+            />
+
+
+            <!-- PRINTER → SWITCH -->
+
+            <path
+                id="pathPrinterSwitch"
+                class="network-line local-line"
+                d="M170 250 C260 250 320 250 390 250"
+            />
+
+
+            <!-- SWITCH → ROUTER -->
+
+            <path
+                id="pathSwitchRouter"
+                class="network-line routing-line"
+                d="M475 250 L690 250"
+            />
+
+
+            <!-- ROUTER → CLOUD -->
+
+            <path
+                id="pathRouterCloud"
+                class="network-line wan-line"
+                d="M775 250 C850 250 900 250 980 250"
+            />
+
+
+            <!-- PACKETS -->
+
+            <circle
+                id="localPacket"
+                class="data-packet local-packet"
+                r="8"
+            ></circle>
+
+            <circle
+                id="routingPacket"
+                class="data-packet routing-packet"
+                r="8"
+            ></circle>
+
+            <circle
+                id="wanPacket"
+                class="data-packet wan-packet"
+                r="8"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             END DEVICES GROUP
+        ======================================= -->
+
+        <div
+            id="endDeviceGroup"
+            class="device-group end-device-group"
+        >
+
+            <span class="group-label">
+                END DEVICES
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             LAPTOP
+        ======================================= -->
+
+        <div
+            id="laptopDevice"
+            class="network-device laptop-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                LAPTOP
+            </strong>
+
+            <span>
+                Creates & receives data
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             PRINTER
+        ======================================= -->
+
+        <div
+            id="printerDevice"
+            class="network-device printer-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-print"></i>
+
+            </div>
+
+            <strong>
+                PRINTER
+            </strong>
+
+            <span>
+                Shared resource
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             PHONE
+        ======================================= -->
+
+        <div
+            id="phoneDevice"
+            class="network-device phone-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-mobile-screen-button"></i>
+
+            </div>
+
+            <strong>
+                PHONE
+            </strong>
+
+            <span>
+                Creates & receives data
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH
+        ======================================= -->
+
+        <div
+            id="switchDevice"
+            class="network-device infrastructure-device switch-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-network-wired"></i>
+
+            </div>
+
+            <strong>
+                SWITCH
+            </strong>
+
+            <span>
+                Connects devices inside a LAN
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER
+        ======================================= -->
+
+        <div
+            id="routerDevice"
+            class="network-device infrastructure-device router-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-route"></i>
+
+            </div>
+
+            <strong>
+                ROUTER
+            </strong>
+
+            <span>
+                Connects different networks
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             OTHER NETWORKS
+        ======================================= -->
+
+        <div
+            id="otherNetworks"
+            class="other-networks"
+        >
+
+            <div class="cloud-icon">
+
+                <i class="fas fa-cloud"></i>
+
+            </div>
+
+            <strong>
+                OTHER NETWORKS
+            </strong>
+
+            <span>
+                Internet / Remote Networks
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH ROLE CARD
+        ======================================= -->
+
+        <div
+            id="switchRole"
+            class="role-card switch-role"
+        >
+
+            <div class="role-number">
+                1
+            </div>
+
+            <div>
+
+                <span>
+                    SWITCH
+                </span>
+
+                <strong>
+                    Moves traffic between devices
+                    on the same local network.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER ROLE CARD
+        ======================================= -->
+
+        <div
+            id="routerRole"
+            class="role-card router-role"
+        >
+
+            <div class="role-number">
+                2
+            </div>
+
+            <div>
+
+                <span>
+                    ROUTER
+                </span>
+
+                <strong>
+                    Moves traffic between
+                    different networks.
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TRAFFIC FLOW SUMMARY
+    =========================================== -->
+
+    <section
+        id="trafficSummary"
+        class="traffic-summary"
+    >
+
+        <div class="summary-step">
+
+            <i class="fas fa-laptop"></i>
+
+            <span>
+                End Device
+            </span>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-step">
+
+            <i class="fas fa-network-wired"></i>
+
+            <span>
+                Switch
+            </span>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-step">
+
+            <i class="fas fa-route"></i>
+
+            <span>
+                Router
+            </span>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-step">
+
+            <i class="fas fa-globe"></i>
+
+            <span>
+                Other Network
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                REMEMBER
+            </span>
+
+            <strong>
+                A switch connects devices within
+                a LAN. A router connects
+                different networks.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-05.js"></script>
+
+</body>
+
+</html>
