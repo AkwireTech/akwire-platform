@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 10
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-10.css">
+
+</head>
+
+<body>
+
+<main id="scene10"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 10
+        </span>
+
+        <h1>
+            The Destination Reverses the Process
+        </h1>
+
+        <p>
+            When data reaches the receiving device,
+            each layer removes the information it
+            needs and passes the remaining data upward.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         DECAPSULATION STAGE
+
+         Fixed 1200 × 500 coordinate system.
+    =========================================== -->
+
+    <section class="decapsulation-stage">
+
+
+        <!-- ======================================
+             PROCESS PATH
+        ======================================= -->
+
+        <svg
+            class="process-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="decapsulationPath"
+                class="process-line"
+                d="M180 250
+                   C260 250 290 250 350 250
+                   C430 250 460 250 520 250
+                   C600 250 630 250 690 250
+                   C770 250 800 250 860 250
+                   C940 250 970 250 1040 250"
+            />
+
+            <circle
+                id="processPacket"
+                class="process-packet"
+                r="8"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             PHYSICAL — BITS
+        ======================================= -->
+
+        <div
+            id="bitsNode"
+            class="decapsulation-node bits-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-wave-square"></i>
+
+            </div>
+
+            <span class="node-layer">
+                PHYSICAL
+            </span>
+
+            <strong>
+                BITS
+            </strong>
+
+            <small>
+                1s and 0s
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             DATA LINK — FRAME
+        ======================================= -->
+
+        <div
+            id="frameNode"
+            class="decapsulation-node frame-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-network-wired"></i>
+
+            </div>
+
+            <span class="node-layer">
+                DATA LINK
+            </span>
+
+            <strong>
+                FRAME
+            </strong>
+
+            <small>
+                Ethernet
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             NETWORK — PACKET
+        ======================================= -->
+
+        <div
+            id="packetNode"
+            class="decapsulation-node packet-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-route"></i>
+
+            </div>
+
+            <span class="node-layer">
+                NETWORK
+            </span>
+
+            <strong>
+                PACKET
+            </strong>
+
+            <small>
+                IP
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             TRANSPORT — SEGMENT
+        ======================================= -->
+
+        <div
+            id="segmentNode"
+            class="decapsulation-node segment-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-box"></i>
+
+            </div>
+
+            <span class="node-layer">
+                TRANSPORT
+            </span>
+
+            <strong>
+                SEGMENT
+            </strong>
+
+            <small>
+                TCP / UDP
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             APPLICATION — DATA
+        ======================================= -->
+
+        <div
+            id="dataNode"
+            class="decapsulation-node data-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-file-lines"></i>
+
+            </div>
+
+            <span class="node-layer">
+                APPLICATION
+            </span>
+
+            <strong>
+                DATA
+            </strong>
+
+            <small>
+                "Hello"
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             RECEIVED FRAME
+        ======================================= -->
+
+        <div
+            id="receivedFrame"
+            class="received-frame"
+        >
+
+            <span class="frame-block ethernet-block">
+                ETH
+            </span>
+
+            <span class="frame-block ip-block">
+                IP
+            </span>
+
+            <span class="frame-block transport-block">
+                TCP
+            </span>
+
+            <span class="frame-block payload-block">
+                DATA
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             STEP 1 — ETHERNET REMOVED
+        ======================================= -->
+
+        <div
+            id="ethernetRemoval"
+            class="removal-card ethernet-removal"
+        >
+
+            <div class="removal-icon">
+
+                <i class="fas fa-minus"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    DATA LINK
+                </span>
+
+                <strong>
+                    Ethernet information removed
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             STEP 2 — IP REMOVED
+        ======================================= -->
+
+        <div
+            id="ipRemoval"
+            class="removal-card ip-removal"
+        >
+
+            <div class="removal-icon">
+
+                <i class="fas fa-minus"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    NETWORK
+                </span>
+
+                <strong>
+                    IP information removed
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             STEP 3 — TRANSPORT REMOVED
+        ======================================= -->
+
+        <div
+            id="transportRemoval"
+            class="removal-card transport-removal"
+        >
+
+            <div class="removal-icon">
+
+                <i class="fas fa-minus"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    TRANSPORT
+                </span>
+
+                <strong>
+                    Transport information removed
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DATA TRANSFORMATION
+        ======================================= -->
+
+        <div
+            id="dataTransformation"
+            class="data-transformation"
+        >
+
+            <span
+                id="transformEthernet"
+                class="transform-block ethernet-block"
+            >
+                ETH
+            </span>
+
+            <span
+                id="transformIp"
+                class="transform-block ip-block"
+            >
+                IP
+            </span>
+
+            <span
+                id="transformTransport"
+                class="transform-block transport-block"
+            >
+                TCP
+            </span>
+
+            <span
+                id="transformPayload"
+                class="transform-block payload-block"
+            >
+                DATA
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             DELIVERED APPLICATION DATA
+        ======================================= -->
+
+        <div
+            id="deliveredData"
+            class="delivered-data"
+        >
+
+            <div class="message-icon">
+
+                <i class="fas fa-envelope-open-text"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    APPLICATION RECEIVES
+                </span>
+
+                <strong>
+                    "Hello"
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION DEVICE
+        ======================================= -->
+
+        <div
+            id="destinationDevice"
+            class="destination-device"
+        >
+
+            <div class="destination-icon">
+
+                <i class="fas fa-desktop"></i>
+
+            </div>
+
+            <strong>
+                DESKTOP-B
+            </strong>
+
+            <span>
+                Destination
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             EXPLANATION
+        ======================================= -->
+
+        <div
+            id="processExplanation"
+            class="process-explanation"
+        >
+
+            <i class="fas fa-box-open"></i>
+
+            <div>
+
+                <span>
+                    DECAPSULATION
+                </span>
+
+                <strong>
+                    Headers are removed as the data
+                    moves up the receiving network stack.
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         PROCESS SUMMARY
+    =========================================== -->
+
+    <section
+        id="processSummary"
+        class="process-summary"
+    >
+
+        <div class="summary-item">
+
+            <span>
+                PHYSICAL
+            </span>
+
+            <strong>
+                Bits
+            </strong>
+
+        </div>
+
+        <i class="fas fa-arrow-right"></i>
+
+        <div class="summary-item">
+
+            <span>
+                DATA LINK
+            </span>
+
+            <strong>
+                Frame
+            </strong>
+
+        </div>
+
+        <i class="fas fa-arrow-right"></i>
+
+        <div class="summary-item">
+
+            <span>
+                NETWORK
+            </span>
+
+            <strong>
+                Packet
+            </strong>
+
+        </div>
+
+        <i class="fas fa-arrow-right"></i>
+
+        <div class="summary-item">
+
+            <span>
+                TRANSPORT
+            </span>
+
+            <strong>
+                Segment
+            </strong>
+
+        </div>
+
+        <i class="fas fa-arrow-right"></i>
+
+        <div class="summary-item">
+
+            <span>
+                APPLICATION
+            </span>
+
+            <strong>
+                Data
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                Encapsulation prepares data for
+                transmission. Decapsulation rebuilds
+                the original data at the destination.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-10.js"></script>
+
+</body>
+
+</html>
