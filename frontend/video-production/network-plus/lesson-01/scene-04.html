@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 04
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-04.css">
+
+</head>
+
+<body>
+
+<main id="scene04"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 4
+        </span>
+
+        <h1>
+            LAN vs. WAN
+        </h1>
+
+        <p>
+            Networks can cover a small local area
+            or connect locations across much
+            greater distances.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         COMPARISON STAGE
+
+         Fixed 1200 × 500 coordinate system.
+    =========================================== -->
+
+    <section class="comparison-stage">
+
+
+        <!-- ======================================
+             LAN AREA
+        ======================================= -->
+
+        <div
+            id="lanArea"
+            class="network-area lan-area"
+        >
+
+            <div class="area-heading">
+
+                <div class="area-icon">
+
+                    <i class="fas fa-house"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        LAN
+                    </span>
+
+                    <strong>
+                        Local Area Network
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- LAPTOP -->
+
+            <div
+                id="lanLaptop"
+                class="network-device lan-laptop"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-laptop"></i>
+
+                </div>
+
+                <span>
+                    Laptop
+                </span>
+
+            </div>
+
+
+            <!-- PHONE -->
+
+            <div
+                id="lanPhone"
+                class="network-device lan-phone"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-mobile-screen-button"></i>
+
+                </div>
+
+                <span>
+                    Phone
+                </span>
+
+            </div>
+
+
+            <!-- PRINTER -->
+
+            <div
+                id="lanPrinter"
+                class="network-device lan-printer"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-print"></i>
+
+                </div>
+
+                <span>
+                    Printer
+                </span>
+
+            </div>
+
+
+            <!-- SWITCH -->
+
+            <div
+                id="lanSwitch"
+                class="network-device lan-switch"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-network-wired"></i>
+
+                </div>
+
+                <span>
+                    Switch
+                </span>
+
+            </div>
+
+
+            <!-- ROUTER -->
+
+            <div
+                id="lanRouter"
+                class="network-device lan-router"
+            >
+
+                <div class="device-icon">
+
+                    <i class="fas fa-route"></i>
+
+                </div>
+
+                <span>
+                    Router
+                </span>
+
+            </div>
+
+
+            <div
+                id="lanDescription"
+                class="area-description"
+            >
+
+                <i class="fas fa-location-dot"></i>
+
+                <span>
+                    One home, office,
+                    school, or building
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             WAN AREA
+        ======================================= -->
+
+        <div
+            id="wanArea"
+            class="network-area wan-area"
+        >
+
+            <div class="area-heading">
+
+                <div class="area-icon">
+
+                    <i class="fas fa-earth-americas"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        WAN
+                    </span>
+
+                    <strong>
+                        Wide Area Network
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- SITE A -->
+
+            <div
+                id="siteA"
+                class="remote-site site-a"
+            >
+
+                <div class="site-icon">
+
+                    <i class="fas fa-building"></i>
+
+                </div>
+
+                <strong>
+                    SITE A
+                </strong>
+
+                <span>
+                    Local Network
+                </span>
+
+            </div>
+
+
+            <!-- SITE B -->
+
+            <div
+                id="siteB"
+                class="remote-site site-b"
+            >
+
+                <div class="site-icon">
+
+                    <i class="fas fa-building"></i>
+
+                </div>
+
+                <strong>
+                    SITE B
+                </strong>
+
+                <span>
+                    Remote Network
+                </span>
+
+            </div>
+
+
+            <!-- SITE C -->
+
+            <div
+                id="siteC"
+                class="remote-site site-c"
+            >
+
+                <div class="site-icon">
+
+                    <i class="fas fa-building"></i>
+
+                </div>
+
+                <strong>
+                    SITE C
+                </strong>
+
+                <span>
+                    Remote Network
+                </span>
+
+            </div>
+
+
+            <!-- WAN CLOUD -->
+
+            <div
+                id="wanCloud"
+                class="wan-cloud"
+            >
+
+                <i class="fas fa-cloud"></i>
+
+                <strong>
+                    WAN
+                </strong>
+
+                <span>
+                    Long-distance connection
+                </span>
+
+            </div>
+
+
+            <div
+                id="wanDescription"
+                class="area-description"
+            >
+
+                <i class="fas fa-globe"></i>
+
+                <span>
+                    Connects networks across
+                    cities, regions, or countries
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SVG CONNECTION LAYER
+        ======================================= -->
+
+        <svg
+            class="connection-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <!-- LAN CONNECTIONS -->
+
+            <path
+                id="lanLaptopPath"
+                class="network-line lan-line"
+                d="M120 255 L250 255"
+            />
+
+            <path
+                id="lanPhonePath"
+                class="network-line lan-line"
+                d="M145 150 C185 180 215 210 250 235"
+            />
+
+            <path
+                id="lanPrinterPath"
+                class="network-line lan-line"
+                d="M145 360 C190 330 220 295 250 275"
+            />
+
+            <path
+                id="lanSwitchRouterPath"
+                class="network-line lan-line"
+                d="M310 255 L455 255"
+            />
+
+
+            <!-- LAN → WAN -->
+
+            <path
+                id="lanWanPath"
+                class="network-line bridge-line"
+                d="M505 255 C560 255 595 255 650 255"
+            />
+
+
+            <!-- WAN CONNECTIONS -->
+
+            <path
+                id="wanSiteAPath"
+                class="network-line wan-line"
+                d="M790 145 C820 180 845 205 865 235"
+            />
+
+            <path
+                id="wanSiteBPath"
+                class="network-line wan-line"
+                d="M1010 145 C970 180 935 210 905 235"
+            />
+
+            <path
+                id="wanSiteCPath"
+                class="network-line wan-line"
+                d="M1010 365 C970 330 935 300 905 275"
+            />
+
+
+            <!-- PACKETS -->
+
+            <circle
+                id="lanPacket"
+                class="data-packet lan-packet"
+                r="8"
+            ></circle>
+
+            <circle
+                id="wanPacket"
+                class="data-packet wan-packet"
+                r="8"
+            ></circle>
+
+        </svg>
+
+    </section>
+
+
+    <!-- ==========================================
+         COMPARISON CARDS
+    =========================================== -->
+
+    <section
+        id="comparisonSummary"
+        class="comparison-summary"
+    >
+
+        <div class="summary-card lan-summary">
+
+            <span>
+                LAN
+            </span>
+
+            <strong>
+                Small geographic area
+            </strong>
+
+            <p>
+                Connects devices within a
+                local location.
+            </p>
+
+        </div>
+
+
+        <div class="versus-badge">
+            VS
+        </div>
+
+
+        <div class="summary-card wan-summary">
+
+            <span>
+                WAN
+            </span>
+
+            <strong>
+                Large geographic area
+            </strong>
+
+            <p>
+                Connects separate networks
+                over long distances.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-route"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                Routers connect different networks.
+                A WAN can connect multiple LANs.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-04.js"></script>
+
+</body>
+
+</html>
