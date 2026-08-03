@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 07
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-07.css">
+
+</head>
+
+<body>
+
+<main id="scene07"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 7
+        </span>
+
+        <h1>
+            Devices Need Rules to Communicate
+        </h1>
+
+        <p>
+            Network devices follow agreed-upon
+            rules called protocols so data can be
+            understood and delivered correctly.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         PROTOCOL STAGE
+
+         Fixed 1200 × 500 coordinate system.
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+
+        <!-- ======================================
+             CONNECTION LAYER
+        ======================================= -->
+
+        <svg
+            class="connection-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <!-- SOURCE → PROTOCOL -->
+
+            <path
+                id="pathSourceProtocol"
+                class="network-line"
+                d="M220 250 C330 250 385 250 485 250"
+            />
+
+
+            <!-- PROTOCOL → DESTINATION -->
+
+            <path
+                id="pathProtocolDestination"
+                class="network-line"
+                d="M715 250 C815 250 870 250 980 250"
+            />
+
+
+            <!-- PACKET -->
+
+            <circle
+                id="dataPacket"
+                class="data-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             SOURCE DEVICE
+        ======================================= -->
+
+        <div
+            id="sourceDevice"
+            class="network-device source-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                LAPTOP-A
+            </strong>
+
+            <span>
+                Sender
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             PROTOCOL ENGINE
+        ======================================= -->
+
+        <div
+            id="protocolEngine"
+            class="protocol-engine"
+        >
+
+            <div class="protocol-ring ring-one"></div>
+
+            <div class="protocol-ring ring-two"></div>
+
+
+            <div class="protocol-core">
+
+                <i class="fas fa-code-branch"></i>
+
+                <span>
+                    PROTOCOL
+                </span>
+
+                <strong>
+                    Communication Rules
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION DEVICE
+        ======================================= -->
+
+        <div
+            id="destinationDevice"
+            class="network-device destination-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-desktop"></i>
+
+            </div>
+
+            <strong>
+                DESKTOP-B
+            </strong>
+
+            <span>
+                Receiver
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             RULE 1
+        ======================================= -->
+
+        <div
+            id="ruleFormat"
+            class="rule-card rule-format"
+        >
+
+            <div class="rule-number">
+                1
+            </div>
+
+            <div>
+
+                <span>
+                    FORMAT
+                </span>
+
+                <strong>
+                    How should the data
+                    be structured?
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             RULE 2
+        ======================================= -->
+
+        <div
+            id="ruleAddress"
+            class="rule-card rule-address"
+        >
+
+            <div class="rule-number">
+                2
+            </div>
+
+            <div>
+
+                <span>
+                    ADDRESSING
+                </span>
+
+                <strong>
+                    Who is sending and
+                    who should receive it?
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             RULE 3
+        ======================================= -->
+
+        <div
+            id="ruleDelivery"
+            class="rule-card rule-delivery"
+        >
+
+            <div class="rule-number">
+                3
+            </div>
+
+            <div>
+
+                <span>
+                    DELIVERY
+                </span>
+
+                <strong>
+                    How should the information
+                    be transferred?
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DATA MESSAGE — BEFORE
+        ======================================= -->
+
+        <div
+            id="rawMessage"
+            class="message-card raw-message"
+        >
+
+            <div class="message-header">
+
+                <i class="fas fa-file-lines"></i>
+
+                <span>
+                    APPLICATION DATA
+                </span>
+
+            </div>
+
+            <div class="message-content">
+
+                Hello, Desktop-B
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DATA MESSAGE — PROTOCOL READY
+        ======================================= -->
+
+        <div
+            id="protocolMessage"
+            class="message-card protocol-message"
+        >
+
+            <div class="message-header">
+
+                <i class="fas fa-box"></i>
+
+                <span>
+                    PROTOCOL DATA
+                </span>
+
+            </div>
+
+
+            <div class="packet-field">
+
+                <span>
+                    SOURCE
+                </span>
+
+                <strong>
+                    Laptop-A
+                </strong>
+
+            </div>
+
+
+            <div class="packet-field">
+
+                <span>
+                    DESTINATION
+                </span>
+
+                <strong>
+                    Desktop-B
+                </strong>
+
+            </div>
+
+
+            <div class="packet-field payload-field">
+
+                <span>
+                    DATA
+                </span>
+
+                <strong>
+                    Hello
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SUCCESS INDICATOR
+        ======================================= -->
+
+        <div
+            id="deliverySuccess"
+            class="delivery-success"
+        >
+
+            <div class="success-icon">
+
+                <i class="fas fa-check"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    MESSAGE RECEIVED
+                </span>
+
+                <strong>
+                    Both devices followed
+                    the same communication rules.
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         PROTOCOL EXAMPLES
+    =========================================== -->
+
+    <section
+        id="protocolExamples"
+        class="protocol-examples"
+    >
+
+        <span class="examples-label">
+            EXAMPLES
+        </span>
+
+
+        <div class="protocol-pill">
+
+            <strong>
+                HTTP
+            </strong>
+
+            <span>
+                Web
+            </span>
+
+        </div>
+
+
+        <div class="protocol-pill">
+
+            <strong>
+                DNS
+            </strong>
+
+            <span>
+                Names
+            </span>
+
+        </div>
+
+
+        <div class="protocol-pill">
+
+            <strong>
+                TCP
+            </strong>
+
+            <span>
+                Reliable Delivery
+            </span>
+
+        </div>
+
+
+        <div class="protocol-pill">
+
+            <strong>
+                IP
+            </strong>
+
+            <span>
+                Addressing
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                A protocol is a set of rules
+                devices follow when communicating
+                across a network.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-07.js"></script>
+
+</body>
+
+</html>
