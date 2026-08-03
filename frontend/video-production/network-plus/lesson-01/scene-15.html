@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 15
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-15.css">
+
+</head>
+
+<body>
+
+<main id="scene15"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 15
+        </span>
+
+        <h1>
+            DHCP: Getting an IP Address Automatically
+        </h1>
+
+        <p>
+            Before a new device can communicate on an
+            IP network, it needs network configuration.
+            DHCP can provide that information automatically.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         DHCP STAGE
+    =========================================== -->
+
+    <section class="dhcp-stage">
+
+
+        <!-- ======================================
+             PACKET PATHS
+        ======================================= -->
+
+        <svg
+            class="dhcp-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="discoverPath"
+                class="dhcp-path discover-path"
+                d="M180 250 C390 205 625 205 1000 250"
+            />
+
+            <path
+                id="offerPath"
+                class="dhcp-path offer-path"
+                d="M1000 275 C750 325 490 325 180 275"
+            />
+
+            <path
+                id="requestPath"
+                class="dhcp-path request-path"
+                d="M180 300 C420 365 720 365 1000 300"
+            />
+
+            <path
+                id="ackPath"
+                class="dhcp-path ack-path"
+                d="M1000 225 C730 145 430 145 180 225"
+            />
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             CLIENT
+        ======================================= -->
+
+        <div
+            id="clientDevice"
+            class="dhcp-node client-device"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                NEW CLIENT
+            </strong>
+
+            <span id="clientIpLabel">
+                IP: Not Assigned
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             INITIAL STATE
+        ======================================= -->
+
+        <div
+            id="initialState"
+            class="initial-state"
+        >
+
+            <i class="fas fa-circle-question"></i>
+
+            <div>
+
+                <span>
+                    NEW DEVICE
+                </span>
+
+                <strong>
+                    No IP configuration yet
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DHCP SERVER
+        ======================================= -->
+
+        <div
+            id="dhcpServer"
+            class="dhcp-node dhcp-server"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-server"></i>
+
+            </div>
+
+            <strong>
+                DHCP SERVER
+            </strong>
+
+            <span>
+                Address Configuration
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ADDRESS POOL
+        ======================================= -->
+
+        <div
+            id="addressPool"
+            class="address-pool"
+        >
+
+            <span class="pool-title">
+                DHCP ADDRESS POOL
+            </span>
+
+            <div class="pool-range">
+
+                <span>
+                    AVAILABLE RANGE
+                </span>
+
+                <strong>
+                    192.168.1.100 – 192.168.1.200
+                </strong>
+
+            </div>
+
+
+            <div class="pool-addresses">
+
+                <div class="pool-address">
+                    .100
+                </div>
+
+                <div class="pool-address">
+                    .101
+                </div>
+
+                <div
+                    id="selectedAddress"
+                    class="pool-address selected-address"
+                >
+                    .102
+                </div>
+
+                <div class="pool-address">
+                    .103
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DISCOVER
+        ======================================= -->
+
+        <div
+            id="discoverCard"
+            class="dora-card discover-card"
+        >
+
+            <div class="dora-letter">
+                D
+            </div>
+
+            <div>
+
+                <span>
+                    DHCP DISCOVER
+                </span>
+
+                <strong>
+                    Is there a DHCP server?
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             OFFER
+        ======================================= -->
+
+        <div
+            id="offerCard"
+            class="dora-card offer-card"
+        >
+
+            <div class="dora-letter">
+                O
+            </div>
+
+            <div>
+
+                <span>
+                    DHCP OFFER
+                </span>
+
+                <strong>
+                    192.168.1.102 is available.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             REQUEST
+        ======================================= -->
+
+        <div
+            id="requestCard"
+            class="dora-card request-card"
+        >
+
+            <div class="dora-letter">
+                R
+            </div>
+
+            <div>
+
+                <span>
+                    DHCP REQUEST
+                </span>
+
+                <strong>
+                    I would like 192.168.1.102.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ACKNOWLEDGE
+        ======================================= -->
+
+        <div
+            id="ackCard"
+            class="dora-card ack-card"
+        >
+
+            <div class="dora-letter">
+                A
+            </div>
+
+            <div>
+
+                <span>
+                    DHCP ACKNOWLEDGE
+                </span>
+
+                <strong>
+                    The configuration is assigned.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DORA PROCESS
+        ======================================= -->
+
+        <div
+            id="doraProcess"
+            class="dora-process"
+        >
+
+            <div class="dora-step discover-step">
+
+                <strong>
+                    D
+                </strong>
+
+                <span>
+                    DISCOVER
+                </span>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="dora-step offer-step">
+
+                <strong>
+                    O
+                </strong>
+
+                <span>
+                    OFFER
+                </span>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="dora-step request-step">
+
+                <strong>
+                    R
+                </strong>
+
+                <span>
+                    REQUEST
+                </span>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="dora-step ack-step">
+
+                <strong>
+                    A
+                </strong>
+
+                <span>
+                    ACKNOWLEDGE
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             CONFIGURATION PANEL
+        ======================================= -->
+
+        <div
+            id="configurationPanel"
+            class="configuration-panel"
+        >
+
+            <header>
+
+                <i class="fas fa-circle-check"></i>
+
+                <div>
+
+                    <span>
+                        DHCP CONFIGURATION
+                    </span>
+
+                    <strong>
+                        CLIENT CONFIGURED
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="configuration-grid">
+
+
+                <div class="configuration-row">
+
+                    <span>
+                        IP ADDRESS
+                    </span>
+
+                    <strong>
+                        192.168.1.102
+                    </strong>
+
+                </div>
+
+
+                <div class="configuration-row">
+
+                    <span>
+                        SUBNET MASK
+                    </span>
+
+                    <strong>
+                        255.255.255.0
+                    </strong>
+
+                </div>
+
+
+                <div class="configuration-row">
+
+                    <span>
+                        DEFAULT GATEWAY
+                    </span>
+
+                    <strong>
+                        192.168.1.1
+                    </strong>
+
+                </div>
+
+
+                <div class="configuration-row">
+
+                    <span>
+                        DNS SERVER
+                    </span>
+
+                    <strong>
+                        192.168.1.10
+                    </strong>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             LEASE
+        ======================================= -->
+
+        <div
+            id="leaseCard"
+            class="lease-card"
+        >
+
+            <i class="fas fa-clock"></i>
+
+            <div>
+
+                <span>
+                    DHCP LEASE
+                </span>
+
+                <strong>
+                    The address is assigned for a
+                    limited lease period.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SUCCESS
+        ======================================= -->
+
+        <div
+            id="successCard"
+            class="success-card"
+        >
+
+            <i class="fas fa-network-wired"></i>
+
+            <div>
+
+                <span>
+                    READY
+                </span>
+
+                <strong>
+                    The client now has the IP
+                    configuration needed to communicate.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="dhcpSummary"
+        class="dhcp-summary"
+    >
+
+        <div class="summary-item">
+
+            <span>
+                D
+            </span>
+
+            <strong>
+                Discover
+            </strong>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right"></i>
+
+
+        <div class="summary-item">
+
+            <span>
+                O
+            </span>
+
+            <strong>
+                Offer
+            </strong>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right"></i>
+
+
+        <div class="summary-item">
+
+            <span>
+                R
+            </span>
+
+            <strong>
+                Request
+            </strong>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right"></i>
+
+
+        <div class="summary-item">
+
+            <span>
+                A
+            </span>
+
+            <strong>
+                Acknowledge
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                DHCP automatically provides clients with
+                IP configuration such as an IP address,
+                subnet mask, default gateway, and DNS
+                server information.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-15.js"></script>
+
+</body>
+
+</html>

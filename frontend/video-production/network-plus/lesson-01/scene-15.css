@@ -1,0 +1,1513 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 15 — DHCP / DORA
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(37, 99, 235, 0.14),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 48%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0;
+}
+
+.glow-left {
+    left: -190px;
+    top: 120px;
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.glow-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(124, 58, 237, 0.14);
+}
+
+.glow-right {
+    right: -190px;
+    bottom: -70px;
+    background: rgba(16, 185, 129, 0.18);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    opacity: 0;
+    transform: translateY(-15px);
+
+    z-index: 20;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px
+        rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+
+    width: min(900px, 78%);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    z-index: 15;
+}
+
+.scene-number {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    color: #38bdf8;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #c4b5fd
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 720px;
+    margin: 12px auto 0;
+
+    color: #94a3b8;
+
+    font-size:
+        clamp(
+            0.82rem,
+            1.1vw,
+            1rem
+        );
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   DHCP STAGE
+========================================== */
+
+.dhcp-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    width: 1200px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin: center center;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   DHCP PATHS
+========================================== */
+
+.dhcp-path-layer {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+.dhcp-path {
+    fill: none;
+
+    stroke-width: 3;
+    stroke-linecap: round;
+
+    stroke-dasharray: 9 8;
+
+    opacity: 0;
+}
+
+.discover-path {
+    stroke: #38bdf8;
+}
+
+.offer-path {
+    stroke: #a78bfa;
+}
+
+.request-path {
+    stroke: #f59e0b;
+}
+
+.ack-path {
+    stroke: #34d399;
+}
+
+.dhcp-path.is-visible {
+    opacity: 0.72;
+    animation: pathFlow 1.5s linear infinite;
+}
+
+.dhcp-path.is-active {
+    opacity: 1;
+    stroke-width: 4;
+
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(56, 189, 248, 0.75)
+        );
+}
+
+.offer-path.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(167, 139, 250, 0.75)
+        );
+}
+
+.request-path.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(245, 158, 11, 0.75)
+        );
+}
+
+.ack-path.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(52, 211, 153, 0.8)
+        );
+}
+
+.moving-packet {
+    fill: #38bdf8;
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 11px #38bdf8
+        );
+}
+
+
+/* ==========================================
+   CLIENT / SERVER NODES
+========================================== */
+
+.dhcp-node {
+    position: absolute;
+
+    top: 260px;
+
+    width: 160px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 5px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(18px)
+        scale(0.9);
+
+    z-index: 8;
+}
+
+.client-device {
+    left: 180px;
+}
+
+.dhcp-server {
+    left: 1000px;
+}
+
+.node-icon {
+    width: 82px;
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.28);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.98),
+            rgba(15, 38, 67, 0.92)
+        );
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.3);
+}
+
+.node-icon i {
+    color: #60a5fa;
+    font-size: 1.9rem;
+}
+
+.dhcp-server .node-icon i {
+    color: #a78bfa;
+}
+
+.dhcp-node strong {
+    color: #e2e8f0;
+
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+}
+
+.dhcp-node > span {
+    color: #64748b;
+    font-size: 0.59rem;
+}
+
+.dhcp-node.is-active .node-icon {
+    border-color:
+        rgba(56, 189, 248, 0.85);
+
+    box-shadow:
+        0 0 30px
+        rgba(56, 189, 248, 0.3);
+}
+
+.dhcp-server.is-active .node-icon {
+    border-color:
+        rgba(167, 139, 250, 0.9);
+
+    box-shadow:
+        0 0 30px
+        rgba(167, 139, 250, 0.3);
+}
+
+.client-device.is-configured .node-icon {
+    border-color:
+        rgba(52, 211, 153, 0.9);
+
+    box-shadow:
+        0 0 32px
+        rgba(52, 211, 153, 0.32);
+}
+
+.client-device.is-configured .node-icon i {
+    color: #34d399;
+}
+
+.client-device.is-configured > span {
+    color: #34d399;
+}
+
+
+/* ==========================================
+   INITIAL STATE
+========================================== */
+
+.initial-state {
+    position: absolute;
+
+    left: 45px;
+    top: 65px;
+
+    width: 270px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.24);
+
+    border-radius: 13px;
+
+    background:
+        rgba(69, 10, 10, 0.22);
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    z-index: 13;
+}
+
+.initial-state > i {
+    color: #f87171;
+    font-size: 1.05rem;
+}
+
+.initial-state span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #f87171;
+
+    font-size: 0.52rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+}
+
+.initial-state strong {
+    display: block;
+
+    color: #fecaca;
+
+    font-size: 0.64rem;
+}
+
+
+/* ==========================================
+   ADDRESS POOL
+========================================== */
+
+.address-pool {
+    position: absolute;
+
+    right: 25px;
+    top: 45px;
+
+    width: 300px;
+
+    padding: 14px;
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+
+    border-radius: 15px;
+
+    background:
+        rgba(30, 27, 75, 0.58);
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    z-index: 13;
+}
+
+.pool-title {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #a78bfa;
+
+    font-size: 0.55rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.pool-range {
+    padding: 8px 10px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+}
+
+.pool-range span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 0.47rem;
+    font-weight: 800;
+}
+
+.pool-range strong {
+    color: #e2e8f0;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.62rem;
+}
+
+.pool-addresses {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 6px;
+
+    margin-top: 9px;
+}
+
+.pool-address {
+    padding: 7px 4px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.12);
+
+    border-radius: 7px;
+
+    background:
+        rgba(15, 23, 42, 0.66);
+
+    color: #64748b;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.56rem;
+
+    text-align: center;
+}
+
+.selected-address.is-selected {
+    border-color:
+        rgba(52, 211, 153, 0.65);
+
+    background:
+        rgba(5, 150, 105, 0.17);
+
+    color: #6ee7b7;
+
+    box-shadow:
+        0 0 16px
+        rgba(52, 211, 153, 0.18);
+}
+
+
+/* ==========================================
+   DORA CARDS
+========================================== */
+
+.dora-card {
+    position: absolute;
+
+    width: 260px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 11px 13px;
+
+    border-radius: 13px;
+
+    background:
+        rgba(2, 6, 23, 0.95);
+
+    opacity: 0;
+
+    transform: translateY(14px);
+
+    z-index: 15;
+}
+
+.discover-card {
+    left: 285px;
+    top: 185px;
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.28);
+}
+
+.offer-card {
+    right: 285px;
+    top: 315px;
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.28);
+}
+
+.request-card {
+    left: 285px;
+    top: 350px;
+
+    border:
+        1px solid
+        rgba(245, 158, 11, 0.3);
+}
+
+.ack-card {
+    right: 285px;
+    top: 155px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.28);
+}
+
+.dora-letter {
+    width: 39px;
+    height: 39px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(14, 165, 233, 0.12);
+
+    color: #38bdf8;
+
+    font-size: 0.85rem;
+    font-weight: 900;
+}
+
+.offer-card .dora-letter {
+    background:
+        rgba(124, 58, 237, 0.14);
+
+    color: #a78bfa;
+}
+
+.request-card .dora-letter {
+    background:
+        rgba(217, 119, 6, 0.14);
+
+    color: #fbbf24;
+}
+
+.ack-card .dora-letter {
+    background:
+        rgba(5, 150, 105, 0.14);
+
+    color: #34d399;
+}
+
+.dora-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 0.5rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.dora-card strong {
+    display: block;
+
+    color: #cbd5e1;
+
+    font-size: 0.62rem;
+    font-weight: 600;
+
+    line-height: 1.35;
+}
+
+
+/* ==========================================
+   DORA PROCESS
+========================================== */
+
+.dora-process {
+    position: absolute;
+
+    left: 50%;
+    top: 60px;
+
+    width: 540px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 12px 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 15px;
+
+    background:
+        rgba(15, 23, 42, 0.95);
+
+    opacity: 0;
+
+    z-index: 16;
+}
+
+.dora-step {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.dora-step strong {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(37, 99, 235, 0.14);
+
+    color: #60a5fa;
+
+    font-size: 0.62rem;
+}
+
+.offer-step strong {
+    color: #a78bfa;
+}
+
+.request-step strong {
+    color: #fbbf24;
+}
+
+.ack-step strong {
+    color: #34d399;
+}
+
+.dora-step span {
+    color: #94a3b8;
+
+    font-size: 0.5rem;
+    font-weight: 800;
+}
+
+.dora-process > i {
+    color: #475569;
+    font-size: 0.55rem;
+}
+
+
+/* ==========================================
+   CONFIGURATION PANEL
+========================================== */
+
+.configuration-panel {
+    position: absolute;
+
+    left: 50%;
+    top: 155px;
+
+    width: 410px;
+
+    padding: 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.27);
+
+    border-radius: 16px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 25;
+}
+
+.configuration-panel header {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding-bottom: 11px;
+
+    border-bottom:
+        1px solid
+        rgba(52, 211, 153, 0.13);
+}
+
+.configuration-panel header > i {
+    color: #34d399;
+    font-size: 1.1rem;
+}
+
+.configuration-panel header span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.49rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+}
+
+.configuration-panel header strong {
+    color: #d1fae5;
+    font-size: 0.68rem;
+}
+
+.configuration-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 11px;
+}
+
+.configuration-row {
+    padding: 9px 10px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+}
+
+.configuration-row span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #64748b;
+
+    font-size: 0.47rem;
+    font-weight: 800;
+    letter-spacing: 0.07em;
+}
+
+.configuration-row strong {
+    color: #d1fae5;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.62rem;
+}
+
+
+/* ==========================================
+   LEASE CARD
+========================================== */
+
+.lease-card {
+    position: absolute;
+
+    left: 50%;
+    bottom: 42px;
+
+    width: 330px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 11px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(251, 191, 36, 0.22);
+
+    border-radius: 13px;
+
+    background:
+        rgba(120, 53, 15, 0.2);
+
+    opacity: 0;
+
+    z-index: 20;
+}
+
+.lease-card > i {
+    color: #fbbf24;
+    font-size: 1rem;
+}
+
+.lease-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #fbbf24;
+
+    font-size: 0.5rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.lease-card strong {
+    display: block;
+
+    color: #fde68a;
+
+    font-size: 0.59rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   SUCCESS CARD
+========================================== */
+
+.success-card {
+    position: absolute;
+
+    left: 40px;
+    bottom: 35px;
+
+    width: 285px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.24);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    transform: translateY(15px);
+
+    z-index: 14;
+}
+
+.success-card > i {
+    color: #34d399;
+    font-size: 1.05rem;
+}
+
+.success-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.5rem;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+}
+
+.success-card strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.59rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.dhcp-summary {
+    position: absolute;
+
+    left: 50%;
+    bottom: 91px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 9px 16px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.summary-item span {
+    width: 24px;
+    height: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(37, 99, 235, 0.14);
+
+    color: #60a5fa;
+
+    font-size: 0.56rem;
+    font-weight: 900;
+}
+
+.summary-item strong {
+    color: #cbd5e1;
+
+    font-size: 0.56rem;
+}
+
+.dhcp-summary > i {
+    color: #475569;
+    font-size: 0.52rem;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+
+    left: 50%;
+    bottom: 27px;
+
+    width: min(760px, 74vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.final-concept > i {
+    color: #34d399;
+    font-size: 1.25rem;
+}
+
+.final-concept span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.final-concept strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 40;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #7c3aed,
+            #f59e0b,
+            #34d399
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(96, 165, 250, 0.65);
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+    background: #172033;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   VISIBILITY
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scene-brand.is-visible {
+    transform: translateY(0);
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.dhcp-node.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+.initial-state.is-visible,
+.address-pool.is-visible,
+.dora-card.is-visible,
+.success-card.is-visible {
+    transform: translateY(0);
+}
+
+.dora-process.is-visible,
+.configuration-panel.is-visible,
+.lease-card.is-visible,
+.dhcp-summary.is-visible,
+.final-concept.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes pathFlow {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -34;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE STAGE SCALING
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .dhcp-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .dhcp-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.76);
+    }
+
+}
+
+
+/* Vertical responsiveness */
+
+@media (max-height: 850px) {
+
+    .dhcp-stage {
+        top: 55%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.84);
+    }
+
+    .scene-title {
+        top: 48px;
+    }
+
+    .scene-title p {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-height: 760px) {
+
+    .dhcp-stage {
+        top: 56%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.74);
+    }
+
+    .scene-title {
+        top: 40px;
+    }
+
+    .scene-title h1 {
+        font-size:
+            clamp(1.6rem, 2.4vw, 2.25rem);
+    }
+
+    .scene-title p {
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+}
+
+@media (max-height: 680px) {
+
+    .dhcp-stage {
+        top: 57%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.65);
+    }
+
+    .scene-brand {
+        top: 20px;
+        left: 28px;
+    }
+
+    .scene-title {
+        top: 28px;
+    }
+
+}
