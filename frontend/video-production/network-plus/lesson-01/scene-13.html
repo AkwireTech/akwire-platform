@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 13
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-13.css">
+
+</head>
+
+<body>
+
+<main id="scene13"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 13
+        </span>
+
+        <h1>
+            TCP vs UDP
+        </h1>
+
+        <p>
+            The Transport Layer can prioritize
+            reliable delivery or lower-overhead
+            communication depending on the application.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         COMPARISON STAGE
+    =========================================== -->
+
+    <section class="transport-stage">
+
+
+        <!-- ======================================
+             CENTER TRANSPORT NODE
+        ======================================= -->
+
+        <div
+            id="transportLayer"
+            class="transport-layer"
+        >
+
+            <div class="transport-icon">
+
+                <i class="fas fa-layer-group"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    OSI LAYER 4
+                </span>
+
+                <strong>
+                    TRANSPORT LAYER
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             BRANCH LINES
+        ======================================= -->
+
+        <svg
+            class="branch-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="tcpBranch"
+                class="branch-path tcp-branch"
+                d="M600 120
+                   C520 145 440 155 335 190"
+            />
+
+            <path
+                id="udpBranch"
+                class="branch-path udp-branch"
+                d="M600 120
+                   C680 145 760 155 865 190"
+            />
+
+        </svg>
+
+
+        <!-- ======================================
+             TCP SIDE
+        ======================================= -->
+
+        <section
+            id="tcpPanel"
+            class="protocol-panel tcp-panel"
+        >
+
+            <header class="protocol-header">
+
+                <div class="protocol-badge tcp-badge">
+                    TCP
+                </div>
+
+                <div>
+
+                    <span>
+                        TRANSMISSION CONTROL PROTOCOL
+                    </span>
+
+                    <strong>
+                        Reliable Delivery
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protocol-features">
+
+                <div class="feature-row">
+
+                    <i class="fas fa-link"></i>
+
+                    <span>
+                        Connection-oriented
+                    </span>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <i class="fas fa-check-double"></i>
+
+                    <span>
+                        Acknowledgments
+                    </span>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <i class="fas fa-arrow-down-1-9"></i>
+
+                    <span>
+                        Ordered delivery
+                    </span>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <i class="fas fa-rotate"></i>
+
+                    <span>
+                        Retransmission of lost data
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="protocol-example">
+
+                <span>
+                    COMMON EXAMPLE
+                </span>
+
+                <strong>
+                    HTTPS
+                </strong>
+
+                <small>
+                    Reliable web communication
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             UDP SIDE
+        ======================================= -->
+
+        <section
+            id="udpPanel"
+            class="protocol-panel udp-panel"
+        >
+
+            <header class="protocol-header">
+
+                <div class="protocol-badge udp-badge">
+                    UDP
+                </div>
+
+                <div>
+
+                    <span>
+                        USER DATAGRAM PROTOCOL
+                    </span>
+
+                    <strong>
+                        Low-Overhead Delivery
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protocol-features">
+
+                <div class="feature-row">
+
+                    <i class="fas fa-bolt"></i>
+
+                    <span>
+                        Connectionless
+                    </span>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <i class="fas fa-paper-plane"></i>
+
+                    <span>
+                        Sends without waiting for ACKs
+                    </span>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <i class="fas fa-feather"></i>
+
+                    <span>
+                        Lower protocol overhead
+                    </span>
+
+                </div>
+
+
+                <div class="feature-row">
+
+                    <i class="fas fa-circle-exclamation"></i>
+
+                    <span>
+                        No built-in delivery guarantee
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="protocol-example">
+
+                <span>
+                    COMMON EXAMPLES
+                </span>
+
+                <strong>
+                    DNS • VOICE • STREAMING
+                </strong>
+
+                <small>
+                    Useful where low latency matters
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- ======================================
+             TCP DEMONSTRATION
+        ======================================= -->
+
+        <div
+            id="tcpDemo"
+            class="delivery-demo tcp-demo"
+        >
+
+            <span class="demo-title">
+                TCP DELIVERY
+            </span>
+
+
+            <div class="demo-devices">
+
+                <div class="demo-device">
+
+                    <i class="fas fa-laptop"></i>
+
+                    <strong>
+                        CLIENT
+                    </strong>
+
+                </div>
+
+
+                <div class="demo-channel">
+
+                    <div
+                        id="tcpPacket1"
+                        class="demo-packet tcp-packet packet-one"
+                    >
+                        1
+                    </div>
+
+                    <div
+                        id="tcpPacket2"
+                        class="demo-packet tcp-packet packet-two"
+                    >
+                        2
+                    </div>
+
+                    <div
+                        id="tcpPacket3"
+                        class="demo-packet tcp-packet packet-three"
+                    >
+                        3
+                    </div>
+
+                    <div
+                        id="tcpAck"
+                        class="ack-packet"
+                    >
+                        ACK
+                    </div>
+
+                </div>
+
+
+                <div class="demo-device">
+
+                    <i class="fas fa-server"></i>
+
+                    <strong>
+                        SERVER
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="tcpStatus"
+                class="demo-status"
+            >
+
+                <i class="fas fa-check-double"></i>
+
+                <span>
+                    Delivery confirmed
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             UDP DEMONSTRATION
+        ======================================= -->
+
+        <div
+            id="udpDemo"
+            class="delivery-demo udp-demo"
+        >
+
+            <span class="demo-title">
+                UDP DELIVERY
+            </span>
+
+
+            <div class="demo-devices">
+
+                <div class="demo-device">
+
+                    <i class="fas fa-laptop"></i>
+
+                    <strong>
+                        CLIENT
+                    </strong>
+
+                </div>
+
+
+                <div class="demo-channel">
+
+                    <div
+                        id="udpPacket1"
+                        class="demo-packet udp-packet packet-one"
+                    >
+                        1
+                    </div>
+
+                    <div
+                        id="udpPacket2"
+                        class="demo-packet udp-packet packet-two"
+                    >
+                        2
+                    </div>
+
+                    <div
+                        id="udpPacket3"
+                        class="demo-packet udp-packet packet-three"
+                    >
+                        3
+                    </div>
+
+                </div>
+
+
+                <div class="demo-device">
+
+                    <i class="fas fa-server"></i>
+
+                    <strong>
+                        SERVER
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="udpStatus"
+                class="demo-status"
+            >
+
+                <i class="fas fa-forward"></i>
+
+                <span>
+                    No acknowledgment required
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TCP LOST SEGMENT
+        ======================================= -->
+
+        <div
+            id="tcpLoss"
+            class="event-card tcp-loss"
+        >
+
+            <i class="fas fa-triangle-exclamation"></i>
+
+            <div>
+
+                <span>
+                    SEGMENT 2 LOST
+                </span>
+
+                <strong>
+                    TCP detects missing data.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TCP RETRANSMISSION
+        ======================================= -->
+
+        <div
+            id="tcpRetransmission"
+            class="event-card tcp-retransmission"
+        >
+
+            <i class="fas fa-rotate"></i>
+
+            <div>
+
+                <span>
+                    RETRANSMISSION
+                </span>
+
+                <strong>
+                    Missing data is sent again.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             UDP LOSS
+        ======================================= -->
+
+        <div
+            id="udpLoss"
+            class="event-card udp-loss"
+        >
+
+            <i class="fas fa-circle-exclamation"></i>
+
+            <div>
+
+                <span>
+                    DATAGRAM 2 LOST
+                </span>
+
+                <strong>
+                    UDP itself does not retransmit it.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DECISION VISUAL
+        ======================================= -->
+
+        <div
+            id="protocolDecision"
+            class="protocol-decision"
+        >
+
+            <span class="decision-title">
+                WHICH ONE?
+            </span>
+
+
+            <div class="decision-options">
+
+                <div class="decision-option tcp-option">
+
+                    <i class="fas fa-shield-halved"></i>
+
+                    <div>
+
+                        <span>
+                            NEED RELIABILITY?
+                        </span>
+
+                        <strong>
+                            TCP
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="decision-divider">
+                    OR
+                </div>
+
+
+                <div class="decision-option udp-option">
+
+                    <i class="fas fa-gauge-high"></i>
+
+                    <div>
+
+                        <span>
+                            PRIORITIZE LOW OVERHEAD?
+                        </span>
+
+                        <strong>
+                            UDP
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="transportSummary"
+        class="transport-summary"
+    >
+
+        <div class="summary-item tcp-summary">
+
+            <strong>
+                TCP
+            </strong>
+
+            <span>
+                Reliable • Ordered • ACKs
+            </span>
+
+        </div>
+
+
+        <div class="summary-vs">
+            VS
+        </div>
+
+
+        <div class="summary-item udp-summary">
+
+            <strong>
+                UDP
+            </strong>
+
+            <span>
+                Connectionless • Lower overhead
+            </span>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                TCP provides transport-layer reliability
+                features such as acknowledgments and
+                retransmission. UDP provides a simpler,
+                connectionless transport service with
+                less protocol overhead.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-13.js"></script>
+
+</body>
+
+</html>
