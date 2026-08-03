@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 11
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-11.css">
+
+</head>
+
+<body>
+
+<main id="scene11"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 11
+        </span>
+
+        <h1>
+            How Do Devices Find Each Other?
+        </h1>
+
+        <p>
+            Network communication uses different
+            types of addresses to identify where
+            data needs to go.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         ADDRESSING STAGE
+
+         Fixed 1200 × 500 coordinate system.
+    =========================================== -->
+
+    <section class="addressing-stage">
+
+
+        <!-- ======================================
+             NETWORK PATH
+        ======================================= -->
+
+        <svg
+            class="network-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="networkPath"
+                class="network-path"
+                d="M150 270
+                   C250 270 270 270 350 270
+                   C450 270 470 270 550 270
+                   C650 270 670 270 750 270
+                   C850 270 870 270 970 270"
+            />
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             SOURCE DEVICE
+        ======================================= -->
+
+        <div
+            id="sourceDevice"
+            class="network-device source-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                LAPTOP-A
+            </strong>
+
+            <span>
+                Source
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SOURCE ADDRESS CARD
+        ======================================= -->
+
+        <div
+            id="sourceAddress"
+            class="address-card source-address"
+        >
+
+            <span class="address-label">
+                SOURCE
+            </span>
+
+            <div class="address-row">
+
+                <span>
+                    IP
+                </span>
+
+                <strong>
+                    192.168.1.10
+                </strong>
+
+            </div>
+
+            <div class="address-row">
+
+                <span>
+                    MAC
+                </span>
+
+                <strong>
+                    AA:AA:AA:AA:AA:10
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH
+        ======================================= -->
+
+        <div
+            id="switchDevice"
+            class="network-device switch-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-network-wired"></i>
+
+            </div>
+
+            <strong>
+                SWITCH
+            </strong>
+
+            <span>
+                Local Network
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH DECISION
+        ======================================= -->
+
+        <div
+            id="switchDecision"
+            class="decision-card switch-decision"
+        >
+
+            <div class="decision-icon">
+
+                <i class="fas fa-address-card"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    SWITCH
+                </span>
+
+                <strong>
+                    Uses MAC addresses
+                    for Layer 2 forwarding
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER
+        ======================================= -->
+
+        <div
+            id="routerDevice"
+            class="network-device router-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-route"></i>
+
+            </div>
+
+            <strong>
+                ROUTER
+            </strong>
+
+            <span>
+                Between Networks
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER DECISION
+        ======================================= -->
+
+        <div
+            id="routerDecision"
+            class="decision-card router-decision"
+        >
+
+            <div class="decision-icon">
+
+                <i class="fas fa-location-arrow"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    ROUTER
+                </span>
+
+                <strong>
+                    Uses IP addresses
+                    for Layer 3 routing
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SECOND SWITCH
+        ======================================= -->
+
+        <div
+            id="destinationSwitch"
+            class="network-device destination-switch"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-network-wired"></i>
+
+            </div>
+
+            <strong>
+                SWITCH
+            </strong>
+
+            <span>
+                Destination LAN
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION DEVICE
+        ======================================= -->
+
+        <div
+            id="destinationDevice"
+            class="network-device destination-device"
+        >
+
+            <div class="device-icon">
+
+                <i class="fas fa-desktop"></i>
+
+            </div>
+
+            <strong>
+                DESKTOP-B
+            </strong>
+
+            <span>
+                Destination
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION ADDRESS CARD
+        ======================================= -->
+
+        <div
+            id="destinationAddress"
+            class="address-card destination-address"
+        >
+
+            <span class="address-label">
+                DESTINATION
+            </span>
+
+            <div class="address-row">
+
+                <span>
+                    IP
+                </span>
+
+                <strong>
+                    10.0.0.25
+                </strong>
+
+            </div>
+
+            <div class="address-row">
+
+                <span>
+                    MAC
+                </span>
+
+                <strong>
+                    BB:BB:BB:BB:BB:25
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IP CONCEPT
+        ======================================= -->
+
+        <div
+            id="ipConcept"
+            class="concept-card ip-concept"
+        >
+
+            <div class="concept-icon">
+
+                <i class="fas fa-globe"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    IP ADDRESS
+                </span>
+
+                <strong>
+                    Logical addressing used
+                    to identify hosts and route
+                    traffic between networks.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             MAC CONCEPT
+        ======================================= -->
+
+        <div
+            id="macConcept"
+            class="concept-card mac-concept"
+        >
+
+            <div class="concept-icon">
+
+                <i class="fas fa-microchip"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    MAC ADDRESS
+                </span>
+
+                <strong>
+                    Layer 2 addressing used
+                    for delivery on the
+                    local network segment.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PACKET INFORMATION
+        ======================================= -->
+
+        <div
+            id="packetInfo"
+            class="packet-info"
+        >
+
+            <span class="packet-label">
+                NETWORK PACKET
+            </span>
+
+            <div class="packet-addresses">
+
+                <div>
+
+                    <small>
+                        DESTINATION IP
+                    </small>
+
+                    <strong>
+                        10.0.0.25
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div>
+
+                    <small>
+                        NEXT-HOP MAC
+                    </small>
+
+                    <strong id="nextHopMac">
+                        ROUTER MAC
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NETWORK BOUNDARY
+        ======================================= -->
+
+        <div
+            id="networkBoundary"
+            class="network-boundary"
+        >
+
+            <span class="boundary-left">
+                192.168.1.0 /24
+            </span>
+
+            <span class="boundary-center">
+                ROUTING
+            </span>
+
+            <span class="boundary-right">
+                10.0.0.0 /24
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ADDRESS RELATIONSHIP
+        ======================================= -->
+
+        <div
+            id="addressRelationship"
+            class="address-relationship"
+        >
+
+            <div class="relationship-item">
+
+                <i class="fas fa-globe"></i>
+
+                <div>
+
+                    <span>
+                        IP
+                    </span>
+
+                    <strong>
+                        End-to-end destination
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <i class="fas fa-plus relationship-plus"></i>
+
+
+            <div class="relationship-item">
+
+                <i class="fas fa-microchip"></i>
+
+                <div>
+
+                    <span>
+                        MAC
+                    </span>
+
+                    <strong>
+                        Local-hop delivery
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="addressSummary"
+        class="address-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-network-wired"></i>
+
+            <div>
+
+                <span>
+                    SWITCH
+                </span>
+
+                <strong>
+                    MAC Address
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-route"></i>
+
+            <div>
+
+                <span>
+                    ROUTER
+                </span>
+
+                <strong>
+                    IP Address
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-desktop"></i>
+
+            <div>
+
+                <span>
+                    DESTINATION
+                </span>
+
+                <strong>
+                    Correct Host
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                IP provides logical addressing across
+                networks, while MAC addressing supports
+                delivery across each local Layer 2 link.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-11.js"></script>
+
+</body>
+
+</html>
