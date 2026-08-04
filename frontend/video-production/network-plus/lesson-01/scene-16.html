@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 16
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-16.css">
+
+</head>
+
+<body>
+
+<main id="scene16"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 16
+        </span>
+
+        <h1>
+            ARP: Finding a MAC Address
+        </h1>
+
+        <p>
+            On a local IPv4 network, a device may know
+            the destination IP address but still need
+            the destination MAC address for Ethernet delivery.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         ARP STAGE
+    =========================================== -->
+
+    <section class="arp-stage">
+
+
+        <!-- ======================================
+             NETWORK PATHS
+        ======================================= -->
+
+        <svg
+            class="arp-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <!-- Client to switch -->
+
+            <path
+                id="clientSwitchPath"
+                class="arp-path"
+                d="M180 260 C300 260 385 260 500 260"
+            />
+
+
+            <!-- Switch to host A -->
+
+            <path
+                id="hostAPath"
+                class="arp-path broadcast-path"
+                d="M500 260 C610 210 690 185 790 175"
+            />
+
+
+            <!-- Switch to target -->
+
+            <path
+                id="targetPath"
+                class="arp-path broadcast-path"
+                d="M500 260 C650 260 800 260 1000 260"
+            />
+
+
+            <!-- Switch to host C -->
+
+            <path
+                id="hostCPath"
+                class="arp-path broadcast-path"
+                d="M500 260 C610 310 690 335 790 350"
+            />
+
+
+            <!-- Target reply -->
+
+            <path
+                id="replyPath"
+                class="arp-path reply-path"
+                d="M1000 285
+                   C790 330 570 330 180 285"
+            />
+
+
+            <!-- Final frame delivery -->
+
+            <path
+                id="framePath"
+                class="arp-path frame-path"
+                d="M180 225
+                   C430 135 735 135 1000 225"
+            />
+
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             SOURCE CLIENT
+        ======================================= -->
+
+        <div
+            id="sourceClient"
+            class="arp-node source-client"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                CLIENT
+            </strong>
+
+            <span>
+                192.168.1.10
+            </span>
+
+            <small>
+                MAC: AA:BB:CC:DD:EE:10
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             KNOWN / UNKNOWN CARD
+        ======================================= -->
+
+        <div
+            id="addressQuestion"
+            class="address-question"
+        >
+
+            <span class="question-title">
+                DESTINATION
+            </span>
+
+            <div class="question-row known">
+
+                <i class="fas fa-circle-check"></i>
+
+                <span>
+                    IP
+                </span>
+
+                <strong>
+                    192.168.1.20
+                </strong>
+
+            </div>
+
+            <div class="question-row unknown">
+
+                <i class="fas fa-circle-question"></i>
+
+                <span>
+                    MAC
+                </span>
+
+                <strong>
+                    ?
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH
+        ======================================= -->
+
+        <div
+            id="lanSwitch"
+            class="arp-node lan-switch"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-network-wired"></i>
+
+            </div>
+
+            <strong>
+                ETHERNET SWITCH
+            </strong>
+
+            <span>
+                Local LAN
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             OTHER HOST A
+        ======================================= -->
+
+        <div
+            id="hostA"
+            class="arp-node lan-host host-a"
+        >
+
+            <div class="small-node-icon">
+
+                <i class="fas fa-desktop"></i>
+
+            </div>
+
+            <strong>
+                HOST A
+            </strong>
+
+            <span>
+                192.168.1.15
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             TARGET HOST
+        ======================================= -->
+
+        <div
+            id="targetHost"
+            class="arp-node target-host"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-desktop"></i>
+
+            </div>
+
+            <strong>
+                TARGET HOST
+            </strong>
+
+            <span>
+                192.168.1.20
+            </span>
+
+            <small>
+                AA:BB:CC:DD:EE:20
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             OTHER HOST C
+        ======================================= -->
+
+        <div
+            id="hostC"
+            class="arp-node lan-host host-c"
+        >
+
+            <div class="small-node-icon">
+
+                <i class="fas fa-desktop"></i>
+
+            </div>
+
+            <strong>
+                HOST C
+            </strong>
+
+            <span>
+                192.168.1.30
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ARP REQUEST
+        ======================================= -->
+
+        <div
+            id="arpRequest"
+            class="arp-message arp-request"
+        >
+
+            <div class="message-badge">
+                REQUEST
+            </div>
+
+            <div>
+
+                <span>
+                    ARP REQUEST
+                </span>
+
+                <strong>
+                    Who has 192.168.1.20?
+                </strong>
+
+                <small>
+                    Tell 192.168.1.10
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             BROADCAST CARD
+        ======================================= -->
+
+        <div
+            id="broadcastCard"
+            class="broadcast-card"
+        >
+
+            <i class="fas fa-tower-broadcast"></i>
+
+            <div>
+
+                <span>
+                    BROADCAST
+                </span>
+
+                <strong>
+                    The ARP Request is sent across
+                    the local broadcast domain.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NON-TARGET RESPONSE
+        ======================================= -->
+
+        <div
+            id="ignoredHosts"
+            class="ignored-hosts"
+        >
+
+            <i class="fas fa-ban"></i>
+
+            <div>
+
+                <span>
+                    OTHER HOSTS
+                </span>
+
+                <strong>
+                    IP does not match — ignore request.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TARGET MATCH
+        ======================================= -->
+
+        <div
+            id="targetMatch"
+            class="target-match"
+        >
+
+            <i class="fas fa-circle-check"></i>
+
+            <div>
+
+                <span>
+                    IP MATCH
+                </span>
+
+                <strong>
+                    192.168.1.20 belongs to this host.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ARP REPLY
+        ======================================= -->
+
+        <div
+            id="arpReply"
+            class="arp-message arp-reply"
+        >
+
+            <div class="message-badge">
+                REPLY
+            </div>
+
+            <div>
+
+                <span>
+                    ARP REPLY
+                </span>
+
+                <strong>
+                    192.168.1.20 is at
+                    AA:BB:CC:DD:EE:20
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ARP TABLE
+        ======================================= -->
+
+        <div
+            id="arpTable"
+            class="arp-table"
+        >
+
+            <header>
+
+                <i class="fas fa-table-list"></i>
+
+                <div>
+
+                    <span>
+                        CLIENT
+                    </span>
+
+                    <strong>
+                        ARP TABLE
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="table-heading">
+
+                <span>
+                    IPv4 ADDRESS
+                </span>
+
+                <span>
+                    MAC ADDRESS
+                </span>
+
+            </div>
+
+
+            <div
+                id="arpTableEntry"
+                class="arp-table-entry"
+            >
+
+                <strong>
+                    192.168.1.20
+                </strong>
+
+                <strong>
+                    AA:BB:CC:DD:EE:20
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             RESOLVED ADDRESS
+        ======================================= -->
+
+        <div
+            id="resolvedAddress"
+            class="resolved-address"
+        >
+
+            <i class="fas fa-link"></i>
+
+            <div>
+
+                <span>
+                    ADDRESS RESOLVED
+                </span>
+
+                <strong>
+                    192.168.1.20
+                    → AA:BB:CC:DD:EE:20
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ETHERNET FRAME
+        ======================================= -->
+
+        <div
+            id="ethernetFrame"
+            class="ethernet-frame"
+        >
+
+            <span class="frame-title">
+                ETHERNET FRAME
+            </span>
+
+
+            <div class="frame-fields">
+
+                <div class="frame-field">
+
+                    <span>
+                        DESTINATION MAC
+                    </span>
+
+                    <strong>
+                        AA:BB:CC:DD:EE:20
+                    </strong>
+
+                </div>
+
+
+                <div class="frame-field">
+
+                    <span>
+                        DESTINATION IP
+                    </span>
+
+                    <strong>
+                        192.168.1.20
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DELIVERY RESULT
+        ======================================= -->
+
+        <div
+            id="deliveryResult"
+            class="delivery-result"
+        >
+
+            <i class="fas fa-circle-check"></i>
+
+            <div>
+
+                <span>
+                    LOCAL DELIVERY
+                </span>
+
+                <strong>
+                    The frame can now be addressed
+                    to the target MAC address.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PROCESS STRIP
+        ======================================= -->
+
+        <div
+            id="arpProcess"
+            class="arp-process"
+        >
+
+            <div class="process-item">
+
+                <span>
+                    1
+                </span>
+
+                <strong>
+                    Known IP
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="process-item">
+
+                <span>
+                    2
+                </span>
+
+                <strong>
+                    ARP Request
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="process-item">
+
+                <span>
+                    3
+                </span>
+
+                <strong>
+                    ARP Reply
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="process-item">
+
+                <span>
+                    4
+                </span>
+
+                <strong>
+                    MAC Learned
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="arpSummary"
+        class="arp-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-location-dot"></i>
+
+            <div>
+
+                <span>
+                    IPv4 ADDRESS
+                </span>
+
+                <strong>
+                    192.168.1.20
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-magnifying-glass"></i>
+
+            <div>
+
+                <span>
+                    ARP
+                </span>
+
+                <strong>
+                    Resolve
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-ethernet"></i>
+
+            <div>
+
+                <span>
+                    MAC ADDRESS
+                </span>
+
+                <strong>
+                    AA:BB:CC:DD:EE:20
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                ARP resolves an IPv4 address to a MAC
+                address for local Ethernet communication.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-16.js"></script>
+
+</body>
+
+</html>
