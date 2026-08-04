@@ -1,0 +1,1991 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 18 — ROUTER FRAME REPLACEMENT
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(37, 99, 235, 0.14),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 48%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0;
+}
+
+.glow-left {
+    left: -190px;
+    top: 120px;
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.glow-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(124, 58, 237, 0.14);
+}
+
+.glow-right {
+    right: -190px;
+    bottom: -70px;
+    background: rgba(16, 185, 129, 0.18);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    opacity: 0;
+    transform: translateY(-15px);
+
+    z-index: 20;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px
+        rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+
+    width: min(940px, 78%);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    z-index: 15;
+}
+
+.scene-number {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    color: #38bdf8;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #c4b5fd
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 760px;
+    margin: 12px auto 0;
+
+    color: #94a3b8;
+
+    font-size:
+        clamp(
+            0.82rem,
+            1.1vw,
+            1rem
+        );
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   ROUTING STAGE
+========================================== */
+
+.routing-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    width: 1200px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin: center center;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   NETWORK SEGMENTS
+========================================== */
+
+.network-segment {
+    position: absolute;
+
+    top: 155px;
+    height: 235px;
+
+    border-radius: 28px;
+
+    opacity: 0;
+
+    z-index: 1;
+}
+
+.network-segment > span {
+    position: absolute;
+    top: 13px;
+    left: 18px;
+
+    font-size: 0.47rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.network-segment > strong {
+    position: absolute;
+    top: 31px;
+    left: 18px;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.58rem;
+}
+
+.segment-one {
+    left: 35px;
+    width: 535px;
+
+    border:
+        1px dashed
+        rgba(56, 189, 248, 0.25);
+
+    background:
+        rgba(14, 165, 233, 0.035);
+}
+
+.segment-one > span {
+    color: #38bdf8;
+}
+
+.segment-one > strong {
+    color: #7dd3fc;
+}
+
+.segment-two {
+    right: 35px;
+    width: 535px;
+
+    border:
+        1px dashed
+        rgba(52, 211, 153, 0.25);
+
+    background:
+        rgba(5, 150, 105, 0.035);
+}
+
+.segment-two > span {
+    color: #34d399;
+}
+
+.segment-two > strong {
+    color: #6ee7b7;
+}
+
+
+/* ==========================================
+   PATHS
+========================================== */
+
+.packet-path-layer {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+.packet-path {
+    fill: none;
+
+    stroke-width: 3;
+    stroke-linecap: round;
+
+    stroke-dasharray: 9 8;
+
+    opacity: 0;
+}
+
+.incoming-path {
+    stroke: #38bdf8;
+}
+
+.outgoing-path {
+    stroke: #34d399;
+}
+
+.packet-path.is-visible {
+    opacity: 0.72;
+    animation: pathFlow 1.5s linear infinite;
+}
+
+.packet-path.is-active {
+    opacity: 1;
+    stroke-width: 4;
+}
+
+.incoming-path.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(56, 189, 248, 0.8)
+        );
+}
+
+.outgoing-path.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(52, 211, 153, 0.8)
+        );
+}
+
+.moving-packet {
+    fill: #38bdf8;
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 11px #38bdf8
+        );
+}
+
+
+/* ==========================================
+   NETWORK NODES
+========================================== */
+
+.network-node {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(18px)
+        scale(0.9);
+
+    z-index: 8;
+}
+
+.source-client {
+    left: 170px;
+    top: 270px;
+
+    width: 180px;
+}
+
+.router-node {
+    left: 600px;
+    top: 270px;
+
+    width: 210px;
+}
+
+.next-hop {
+    left: 1030px;
+    top: 270px;
+
+    width: 190px;
+}
+
+.node-icon {
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.28);
+
+    border-radius: 21px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.98),
+            rgba(15, 38, 67, 0.92)
+        );
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.3);
+}
+
+.node-icon i {
+    color: #60a5fa;
+    font-size: 1.8rem;
+}
+
+.router-icon {
+    border-color:
+        rgba(245, 158, 11, 0.3);
+}
+
+.router-icon i {
+    color: #fbbf24;
+}
+
+.next-hop .node-icon i {
+    color: #34d399;
+}
+
+.network-node > strong {
+    color: #e2e8f0;
+
+    font-size: 0.69rem;
+    letter-spacing: 0.08em;
+}
+
+.network-node > span {
+    color: #94a3b8;
+    font-size: 0.58rem;
+}
+
+.network-node > small {
+    color: #64748b;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.47rem;
+}
+
+
+/* ==========================================
+   ROUTER INTERFACES
+========================================== */
+
+.router-interface {
+    position: absolute;
+
+    top: 31px;
+
+    width: 70px;
+
+    padding: 6px 7px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+}
+
+.interface-left {
+    right: 150px;
+}
+
+.interface-right {
+    left: 150px;
+}
+
+.router-interface span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.4rem;
+    font-weight: 800;
+}
+
+.router-interface strong {
+    color: #cbd5e1;
+
+    font-size: 0.46rem;
+}
+
+
+/* ==========================================
+   NODE ACTIVE STATES
+========================================== */
+
+.network-node.is-active .node-icon {
+    border-color:
+        rgba(56, 189, 248, 0.9);
+
+    box-shadow:
+        0 0 30px
+        rgba(56, 189, 248, 0.3);
+}
+
+.router-node.is-active .node-icon {
+    border-color:
+        rgba(245, 158, 11, 0.95);
+
+    box-shadow:
+        0 0 32px
+        rgba(245, 158, 11, 0.34);
+}
+
+.next-hop.is-active .node-icon {
+    border-color:
+        rgba(52, 211, 153, 0.95);
+
+    box-shadow:
+        0 0 32px
+        rgba(52, 211, 153, 0.34);
+}
+
+
+/* ==========================================
+   FRAME CARDS
+========================================== */
+
+.frame-card {
+    position: absolute;
+
+    width: 430px;
+
+    padding: 14px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    z-index: 24;
+}
+
+.incoming-frame {
+    left: 55px;
+    top: 50px;
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.25);
+}
+
+.outgoing-frame {
+    right: 55px;
+    top: 50px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+}
+
+.frame-card header {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding-bottom: 9px;
+
+    border-bottom:
+        1px solid
+        rgba(148, 163, 184, 0.12);
+}
+
+.frame-number {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background:
+        rgba(37, 99, 235, 0.14);
+
+    color: #60a5fa;
+
+    font-size: 0.68rem;
+    font-weight: 900;
+}
+
+.outgoing-frame .frame-number {
+    background:
+        rgba(5, 150, 105, 0.13);
+
+    color: #34d399;
+}
+
+.frame-card header span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.45rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+}
+
+.frame-card header strong {
+    color: #cbd5e1;
+
+    font-size: 0.63rem;
+    letter-spacing: 0.06em;
+}
+
+.frame-addresses {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 10px;
+}
+
+.frame-addresses > div {
+    padding: 8px 9px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(2, 6, 23, 0.62);
+}
+
+.frame-addresses span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 0.41rem;
+    font-weight: 800;
+}
+
+.frame-addresses strong {
+    display: block;
+
+    color: #bfdbfe;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.52rem;
+}
+
+.outgoing-frame .frame-addresses strong {
+    color: #a7f3d0;
+}
+
+.frame-addresses small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 0.4rem;
+}
+
+.inner-packet {
+    margin-top: 8px;
+    padding: 8px 10px;
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.16);
+
+    border-radius: 8px;
+
+    background:
+        rgba(76, 29, 149, 0.09);
+}
+
+.inner-packet > span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #a78bfa;
+
+    font-size: 0.42rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+}
+
+.inner-packet > div {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.inner-packet strong {
+    color: #ddd6fe;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.55rem;
+}
+
+.inner-packet i {
+    color: #7c3aed;
+    font-size: 0.52rem;
+}
+
+.inner-packet.preserved {
+    border-color:
+        rgba(52, 211, 153, 0.15);
+}
+
+
+/* ==========================================
+   ROUTER ACTION
+========================================== */
+
+.router-action {
+    position: absolute;
+
+    left: 50%;
+    top: 75px;
+
+    width: 350px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 13px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(245, 158, 11, 0.24);
+
+    border-radius: 14px;
+
+    background:
+        rgba(120, 53, 15, 0.22);
+
+    opacity: 0;
+
+    z-index: 28;
+}
+
+.action-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 9px;
+
+    background:
+        rgba(217, 119, 6, 0.13);
+
+    color: #fbbf24;
+}
+
+.router-action span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #fbbf24;
+
+    font-size: 0.46rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+}
+
+.router-action strong {
+    display: block;
+
+    color: #fde68a;
+
+    font-size: 0.61rem;
+}
+
+.router-action small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #d6a951;
+
+    font-size: 0.48rem;
+}
+
+
+/* ==========================================
+   PACKET INSPECTION
+========================================== */
+
+.packet-inspection {
+    position: absolute;
+
+    left: 50%;
+    top: 70px;
+
+    width: 350px;
+
+    padding: 13px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.24);
+
+    border-radius: 14px;
+
+    background:
+        rgba(30, 27, 75, 0.62);
+
+    opacity: 0;
+
+    z-index: 29;
+}
+
+.packet-inspection header {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 9px;
+}
+
+.packet-inspection header > i {
+    color: #a78bfa;
+}
+
+.packet-inspection header span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #a78bfa;
+
+    font-size: 0.45rem;
+    font-weight: 800;
+}
+
+.packet-inspection header strong {
+    color: #ddd6fe;
+
+    font-size: 0.61rem;
+}
+
+.inspection-address {
+    padding: 8px 10px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(15, 23, 42, 0.7);
+}
+
+.inspection-address span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 0.42rem;
+    font-weight: 800;
+}
+
+.inspection-address strong {
+    color: #c4b5fd;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.65rem;
+}
+
+
+/* ==========================================
+   ROUTING TABLE
+========================================== */
+
+.routing-table {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 500px;
+
+    padding: 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.23);
+
+    border-radius: 15px;
+
+    background:
+        rgba(15, 23, 42, 0.98);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.routing-table header {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding-bottom: 9px;
+
+    border-bottom:
+        1px solid
+        rgba(148, 163, 184, 0.12);
+}
+
+.routing-table header > i {
+    color: #60a5fa;
+}
+
+.routing-table header span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.44rem;
+    font-weight: 800;
+}
+
+.routing-table header strong {
+    color: #bfdbfe;
+
+    font-size: 0.64rem;
+    letter-spacing: 0.07em;
+}
+
+.route-heading,
+.route-row {
+    display: grid;
+
+    grid-template-columns:
+        1.25fr
+        1fr
+        0.7fr;
+
+    gap: 10px;
+}
+
+.route-heading {
+    padding: 9px 10px 5px;
+}
+
+.route-heading span {
+    color: #64748b;
+
+    font-size: 0.41rem;
+    font-weight: 800;
+}
+
+.route-row {
+    padding: 8px 10px;
+
+    border-radius: 8px;
+}
+
+.route-row + .route-row {
+    margin-top: 5px;
+}
+
+.route-row strong {
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.52rem;
+}
+
+.muted-route {
+    background:
+        rgba(30, 41, 59, 0.48);
+}
+
+.muted-route strong {
+    color: #64748b;
+}
+
+.selected-route {
+    background:
+        rgba(5, 150, 105, 0.1);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.18);
+
+    opacity: 0;
+}
+
+.selected-route strong {
+    color: #6ee7b7;
+}
+
+
+/* ==========================================
+   ROUTE SELECTED
+========================================== */
+
+.route-selected {
+    position: absolute;
+
+    right: 40px;
+    top: 65px;
+
+    width: 275px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 13px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.23);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    z-index: 27;
+}
+
+.route-selected > i {
+    color: #34d399;
+}
+
+.route-selected span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.45rem;
+    font-weight: 800;
+}
+
+.route-selected strong {
+    color: #d1fae5;
+
+    font-size: 0.57rem;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   IP PACKET
+========================================== */
+
+.ip-packet {
+    position: absolute;
+
+    left: 50%;
+    top: 100px;
+
+    width: 430px;
+
+    padding: 13px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+
+    border-radius: 14px;
+
+    background:
+        rgba(30, 27, 75, 0.65);
+
+    opacity: 0;
+
+    z-index: 29;
+}
+
+.packet-label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #a78bfa;
+
+    font-size: 0.48rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.packet-address {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        25px
+        1fr;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.packet-address > div {
+    padding: 8px 9px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+}
+
+.packet-address span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 0.4rem;
+    font-weight: 800;
+}
+
+.packet-address strong {
+    color: #ddd6fe;
+
+    font-family:
+        "Courier New",
+        Courier,
+        monospace;
+
+    font-size: 0.57rem;
+}
+
+.packet-address > i {
+    color: #a78bfa;
+    text-align: center;
+}
+
+.ip-packet > small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #94a3b8;
+
+    font-size: 0.47rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   ADDRESS COMPARISON
+========================================== */
+
+.address-comparison {
+    position: absolute;
+
+    left: 50%;
+    bottom: 40px;
+
+    width: 450px;
+
+    padding: 10px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 13px;
+
+    background:
+        rgba(15, 23, 42, 0.95);
+
+    opacity: 0;
+
+    z-index: 28;
+}
+
+.comparison-row {
+    display: grid;
+
+    grid-template-columns:
+        65px
+        1fr
+        25px;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 7px 9px;
+
+    border-radius: 8px;
+}
+
+.comparison-row + .comparison-row {
+    margin-top: 5px;
+}
+
+.mac-comparison {
+    background:
+        rgba(14, 165, 233, 0.08);
+}
+
+.ip-comparison {
+    background:
+        rgba(124, 58, 237, 0.08);
+}
+
+.comparison-row span {
+    font-size: 0.43rem;
+    font-weight: 900;
+}
+
+.mac-comparison span,
+.mac-comparison i {
+    color: #38bdf8;
+}
+
+.ip-comparison span,
+.ip-comparison i {
+    color: #a78bfa;
+}
+
+.comparison-row strong {
+    color: #cbd5e1;
+
+    font-size: 0.56rem;
+}
+
+.comparison-row i {
+    text-align: center;
+}
+
+
+/* ==========================================
+   FORWARD RESULT
+========================================== */
+
+.forward-result {
+    position: absolute;
+
+    right: 45px;
+    bottom: 40px;
+
+    width: 280px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.24);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    z-index: 22;
+}
+
+.forward-result > i {
+    color: #34d399;
+    font-size: 1.05rem;
+}
+
+.forward-result span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.47rem;
+    font-weight: 800;
+    letter-spacing: 0.09em;
+}
+
+.forward-result strong {
+    color: #d1fae5;
+
+    font-size: 0.57rem;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   PROCESS STRIP
+========================================== */
+
+.router-process {
+    position: absolute;
+
+    left: 50%;
+    top: 65px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    opacity: 0;
+
+    z-index: 34;
+}
+
+.process-item {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.process-item span {
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(37, 99, 235, 0.14);
+
+    color: #60a5fa;
+
+    font-size: 0.51rem;
+    font-weight: 900;
+}
+
+.process-item strong {
+    color: #cbd5e1;
+    font-size: 0.51rem;
+}
+
+.router-process > i {
+    color: #475569;
+    font-size: 0.5rem;
+}
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.router-summary {
+    position: absolute;
+
+    left: 50%;
+    bottom: 91px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 9px 16px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.summary-item > i {
+    color: #60a5fa;
+    font-size: 0.75rem;
+}
+
+.summary-item:nth-of-type(2) > i {
+    color: #fbbf24;
+}
+
+.summary-item:last-child > i {
+    color: #34d399;
+}
+
+.summary-item span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.46rem;
+    font-weight: 800;
+}
+
+.summary-item strong {
+    display: block;
+
+    color: #cbd5e1;
+
+    font-size: 0.56rem;
+}
+
+.summary-arrow {
+    color: #475569;
+    font-size: 0.56rem;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+
+    left: 50%;
+    bottom: 27px;
+
+    width: min(790px, 76vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.final-concept > i {
+    color: #34d399;
+    font-size: 1.25rem;
+}
+
+.final-concept span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.final-concept strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.73rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   NAT NOTE
+========================================== */
+
+.nat-note {
+    position: absolute;
+
+    left: 50%;
+    bottom: 91px;
+
+    width: min(680px, 68vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 10px 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(245, 158, 11, 0.2);
+
+    border-radius: 12px;
+
+    background:
+        rgba(120, 53, 15, 0.18);
+
+    opacity: 0;
+
+    z-index: 36;
+}
+
+.nat-note > i {
+    color: #fbbf24;
+}
+
+.nat-note span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #fbbf24;
+
+    font-size: 0.48rem;
+    font-weight: 800;
+}
+
+.nat-note strong {
+    color: #fde68a;
+
+    font-size: 0.6rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 40;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #f59e0b,
+            #a78bfa,
+            #34d399
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(96, 165, 250, 0.65);
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+    background: #172033;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   VISIBILITY
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scene-brand.is-visible {
+    transform: translateY(0);
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.network-node.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+.frame-card.is-visible,
+.route-selected.is-visible,
+.forward-result.is-visible {
+    transform: translateY(0);
+}
+
+.router-action.is-visible,
+.packet-inspection.is-visible,
+.routing-table.is-visible,
+.ip-packet.is-visible,
+.address-comparison.is-visible,
+.router-process.is-visible,
+.router-summary.is-visible,
+.final-concept.is-visible,
+.nat-note.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.selected-route.is-visible {
+    opacity: 1;
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes pathFlow {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -34;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE WIDTH
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .routing-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .routing-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.76);
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE HEIGHT
+========================================== */
+
+@media (max-height: 850px) {
+
+    .routing-stage {
+        top: 55%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.84);
+    }
+
+    .scene-title {
+        top: 48px;
+    }
+
+    .scene-title p {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-height: 760px) {
+
+    .routing-stage {
+        top: 56%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.74);
+    }
+
+    .scene-title {
+        top: 40px;
+    }
+
+    .scene-title h1 {
+        font-size:
+            clamp(1.6rem, 2.4vw, 2.25rem);
+    }
+
+    .scene-title p {
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+}
+
+@media (max-height: 680px) {
+
+    .routing-stage {
+        top: 57%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.65);
+    }
+
+    .scene-brand {
+        top: 20px;
+        left: 28px;
+    }
+
+    .scene-title {
+        top: 28px;
+    }
+
+}

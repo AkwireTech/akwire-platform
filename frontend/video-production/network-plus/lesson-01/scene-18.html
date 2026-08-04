@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 18
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-18.css">
+
+</head>
+
+<body>
+
+<main id="scene18"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 18
+        </span>
+
+        <h1>
+            What Happens at the Router?
+        </h1>
+
+        <p>
+            Routers remove the incoming Layer 2 frame,
+            examine the Layer 3 destination, choose a route,
+            and build a new frame for the next network.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         ROUTING STAGE
+    =========================================== -->
+
+    <section class="routing-stage">
+
+
+        <!-- ======================================
+             NETWORK SEGMENTS
+        ======================================= -->
+
+        <div
+            id="segmentOne"
+            class="network-segment segment-one"
+        >
+
+            <span>
+                NETWORK SEGMENT 1
+            </span>
+
+            <strong>
+                192.168.1.0/24
+            </strong>
+
+        </div>
+
+
+        <div
+            id="segmentTwo"
+            class="network-segment segment-two"
+        >
+
+            <span>
+                NEXT NETWORK
+            </span>
+
+            <strong>
+                ROUTED PATH
+            </strong>
+
+        </div>
+
+
+        <!-- ======================================
+             PATHS
+        ======================================= -->
+
+        <svg
+            class="packet-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <!-- Client to router -->
+
+            <path
+                id="incomingPath"
+                class="packet-path incoming-path"
+                d="M170 270
+                   C300 270 380 270 500 270"
+            />
+
+
+            <!-- Router to next hop -->
+
+            <path
+                id="outgoingPath"
+                class="packet-path outgoing-path"
+                d="M700 270
+                   C820 270 900 270 1030 270"
+            />
+
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             SOURCE CLIENT
+        ======================================= -->
+
+        <div
+            id="sourceClient"
+            class="network-node source-client"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                CLIENT
+            </strong>
+
+            <span>
+                192.168.1.10
+            </span>
+
+            <small>
+                MAC: AA:AA:AA:AA:AA:10
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER
+        ======================================= -->
+
+        <div
+            id="router"
+            class="network-node router-node"
+        >
+
+            <div class="router-interface interface-left">
+
+                <span>
+                    LAN
+                </span>
+
+                <strong>
+                    R1-LAN
+                </strong>
+
+            </div>
+
+
+            <div class="node-icon router-icon">
+
+                <i class="fas fa-router"></i>
+
+            </div>
+
+
+            <strong>
+                ROUTER R1
+            </strong>
+
+            <span>
+                Layer 3 Forwarding
+            </span>
+
+
+            <div class="router-interface interface-right">
+
+                <span>
+                    OUT
+                </span>
+
+                <strong>
+                    R1-WAN
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NEXT HOP
+        ======================================= -->
+
+        <div
+            id="nextHop"
+            class="network-node next-hop"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-network-wired"></i>
+
+            </div>
+
+            <strong>
+                NEXT HOP
+            </strong>
+
+            <span>
+                Next Network Device
+            </span>
+
+            <small>
+                MAC: CC:CC:CC:CC:CC:20
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             INCOMING FRAME
+        ======================================= -->
+
+        <div
+            id="incomingFrame"
+            class="frame-card incoming-frame"
+        >
+
+            <header>
+
+                <div class="frame-number">
+                    1
+                </div>
+
+                <div>
+
+                    <span>
+                        INCOMING
+                    </span>
+
+                    <strong>
+                        ETHERNET FRAME
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="frame-addresses">
+
+                <div>
+
+                    <span>
+                        SOURCE MAC
+                    </span>
+
+                    <strong>
+                        AA:AA:AA:AA:AA:10
+                    </strong>
+
+                    <small>
+                        CLIENT
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        DESTINATION MAC
+                    </span>
+
+                    <strong>
+                        BB:BB:BB:BB:BB:01
+                    </strong>
+
+                    <small>
+                        ROUTER LAN INTERFACE
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="inner-packet">
+
+                <span>
+                    IP PACKET INSIDE
+                </span>
+
+                <div>
+
+                    <strong>
+                        192.168.1.10
+                    </strong>
+
+                    <i class="fas fa-arrow-right"></i>
+
+                    <strong>
+                        10.20.30.40
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             FRAME REMOVAL
+        ======================================= -->
+
+        <div
+            id="frameRemoval"
+            class="router-action frame-removal"
+        >
+
+            <div class="action-icon">
+
+                <i class="fas fa-box-open"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    STEP 1
+                </span>
+
+                <strong>
+                    Remove Incoming Layer 2 Frame
+                </strong>
+
+                <small>
+                    Router processes the packet inside.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IP PACKET INSPECTION
+        ======================================= -->
+
+        <div
+            id="packetInspection"
+            class="packet-inspection"
+        >
+
+            <header>
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <div>
+
+                    <span>
+                        STEP 2
+                    </span>
+
+                    <strong>
+                        Examine Destination IP
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="inspection-address">
+
+                <span>
+                    DESTINATION IP
+                </span>
+
+                <strong>
+                    10.20.30.40
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTING TABLE
+        ======================================= -->
+
+        <div
+            id="routingTable"
+            class="routing-table"
+        >
+
+            <header>
+
+                <i class="fas fa-table-list"></i>
+
+                <div>
+
+                    <span>
+                        STEP 3
+                    </span>
+
+                    <strong>
+                        ROUTING TABLE
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="route-heading">
+
+                <span>
+                    DESTINATION
+                </span>
+
+                <span>
+                    NEXT HOP
+                </span>
+
+                <span>
+                    INTERFACE
+                </span>
+
+            </div>
+
+
+            <div class="route-row muted-route">
+
+                <strong>
+                    192.168.1.0/24
+                </strong>
+
+                <strong>
+                    Direct
+                </strong>
+
+                <strong>
+                    LAN
+                </strong>
+
+            </div>
+
+
+            <div
+                id="selectedRoute"
+                class="route-row selected-route"
+            >
+
+                <strong>
+                    10.20.30.0/24
+                </strong>
+
+                <strong>
+                    Next Router
+                </strong>
+
+                <strong>
+                    WAN
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTE SELECTED
+        ======================================= -->
+
+        <div
+            id="routeSelected"
+            class="route-selected"
+        >
+
+            <i class="fas fa-route"></i>
+
+            <div>
+
+                <span>
+                    ROUTE SELECTED
+                </span>
+
+                <strong>
+                    Forward through the
+                    outgoing interface.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IP PACKET PRESERVED
+        ======================================= -->
+
+        <div
+            id="ipPacket"
+            class="ip-packet"
+        >
+
+            <span class="packet-label">
+                IP PACKET
+            </span>
+
+
+            <div class="packet-address">
+
+                <div>
+
+                    <span>
+                        SOURCE IP
+                    </span>
+
+                    <strong>
+                        192.168.1.10
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div>
+
+                    <span>
+                        DESTINATION IP
+                    </span>
+
+                    <strong>
+                        10.20.30.40
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <small>
+                Layer 3 addressing remains end-to-end
+                during normal routing.
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             NEW FRAME
+        ======================================= -->
+
+        <div
+            id="outgoingFrame"
+            class="frame-card outgoing-frame"
+        >
+
+            <header>
+
+                <div class="frame-number">
+                    2
+                </div>
+
+                <div>
+
+                    <span>
+                        OUTGOING
+                    </span>
+
+                    <strong>
+                        NEW ETHERNET FRAME
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="frame-addresses">
+
+                <div>
+
+                    <span>
+                        SOURCE MAC
+                    </span>
+
+                    <strong>
+                        DD:DD:DD:DD:DD:01
+                    </strong>
+
+                    <small>
+                        ROUTER OUT INTERFACE
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        DESTINATION MAC
+                    </span>
+
+                    <strong>
+                        CC:CC:CC:CC:CC:20
+                    </strong>
+
+                    <small>
+                        NEXT HOP
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="inner-packet preserved">
+
+                <span>
+                    IP PACKET INSIDE
+                </span>
+
+                <div>
+
+                    <strong>
+                        192.168.1.10
+                    </strong>
+
+                    <i class="fas fa-arrow-right"></i>
+
+                    <strong>
+                        10.20.30.40
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ADDRESS CHANGE COMPARISON
+        ======================================= -->
+
+        <div
+            id="addressComparison"
+            class="address-comparison"
+        >
+
+            <div class="comparison-row mac-comparison">
+
+                <span>
+                    LAYER 2
+                </span>
+
+                <strong>
+                    MAC addresses change
+                </strong>
+
+                <i class="fas fa-arrows-rotate"></i>
+
+            </div>
+
+
+            <div class="comparison-row ip-comparison">
+
+                <span>
+                    LAYER 3
+                </span>
+
+                <strong>
+                    IP addresses remain end-to-end
+                </strong>
+
+                <i class="fas fa-lock"></i>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             FORWARD RESULT
+        ======================================= -->
+
+        <div
+            id="forwardResult"
+            class="forward-result"
+        >
+
+            <i class="fas fa-circle-check"></i>
+
+            <div>
+
+                <span>
+                    FORWARDED
+                </span>
+
+                <strong>
+                    The packet continues
+                    toward the remote network.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PROCESS STRIP
+        ======================================= -->
+
+        <div
+            id="routerProcess"
+            class="router-process"
+        >
+
+            <div class="process-item">
+
+                <span>
+                    1
+                </span>
+
+                <strong>
+                    Remove Frame
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    2
+                </span>
+
+                <strong>
+                    Read IP
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    3
+                </span>
+
+                <strong>
+                    Select Route
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    4
+                </span>
+
+                <strong>
+                    New Frame
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    5
+                </span>
+
+                <strong>
+                    Forward
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="routerSummary"
+        class="router-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-box"></i>
+
+            <div>
+
+                <span>
+                    FRAME 1
+                </span>
+
+                <strong>
+                    Client → Router
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-router"></i>
+
+            <div>
+
+                <span>
+                    ROUTER
+                </span>
+
+                <strong>
+                    Route Packet
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-box"></i>
+
+            <div>
+
+                <span>
+                    FRAME 2
+                </span>
+
+                <strong>
+                    Router → Next Hop
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                Routers replace Layer 2 framing at each
+                routed segment while forwarding the
+                Layer 3 packet toward its destination.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         NAT NOTE
+    =========================================== -->
+
+    <section
+        id="natNote"
+        class="nat-note"
+    >
+
+        <i class="fas fa-circle-info"></i>
+
+        <div>
+
+            <span>
+                IMPORTANT
+            </span>
+
+            <strong>
+                NAT is a separate process that can modify
+                IP addressing. This example shows normal
+                routing without NAT.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-18.js"></script>
+
+</body>
+
+</html>
