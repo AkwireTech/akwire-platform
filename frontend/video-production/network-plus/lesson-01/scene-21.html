@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 21
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-21.css">
+
+</head>
+
+<body>
+
+<main id="scene21"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 21
+        </span>
+
+        <h1>
+            ICMP: Error Reporting and Diagnostics
+        </h1>
+
+        <p>
+            Internet Control Message Protocol helps IP devices
+            report network-layer problems and provides information
+            used by diagnostic tools such as ping and traceroute.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="icmp-stage">
+
+
+        <!-- ======================================
+             NETWORK PATHS
+        ======================================= -->
+
+        <svg
+            class="network-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="sourceRouterPath"
+                class="network-path path-blue"
+                d="M145 270
+                   C250 270 300 270 405 270"
+            />
+
+            <path
+                id="routerDestinationPath"
+                class="network-path path-green"
+                d="M405 270
+                   C590 270 745 270 925 270"
+            />
+
+            <path
+                id="icmpReturnPath"
+                class="network-path path-red"
+                d="M405 235
+                   C320 155 225 155 145 235"
+            />
+
+            <path
+                id="pingRequestPath"
+                class="network-path path-blue"
+                d="M145 255
+                   C390 175 690 175 925 255"
+            />
+
+            <path
+                id="pingReplyPath"
+                class="network-path path-green"
+                d="M925 285
+                   C690 365 390 365 145 285"
+            />
+
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             SOURCE HOST
+        ======================================= -->
+
+        <div
+            id="sourceHost"
+            class="network-node source-host"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                SOURCE HOST
+            </strong>
+
+            <span>
+                192.168.1.10
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER
+        ======================================= -->
+
+        <div
+            id="router"
+            class="network-node router-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-router"></i>
+
+            </div>
+
+            <strong>
+                ROUTER
+            </strong>
+
+            <span>
+                Layer 3 Device
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION
+        ======================================= -->
+
+        <div
+            id="destinationHost"
+            class="network-node destination-host"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-server"></i>
+
+            </div>
+
+            <strong>
+                DESTINATION
+            </strong>
+
+            <span>
+                10.20.30.40
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             IP PACKET
+        ======================================= -->
+
+        <div
+            id="ipPacketCard"
+            class="info-card ip-packet-card"
+        >
+
+            <header>
+
+                <i class="fas fa-envelope"></i>
+
+                <div>
+
+                    <span>
+                        IPv4 PACKET
+                    </span>
+
+                    <strong>
+                        Normal IP Traffic
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="packet-flow">
+
+                <span>
+                    SOURCE
+                </span>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <span>
+                    DESTINATION
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PROBLEM DETECTED
+        ======================================= -->
+
+        <div
+            id="problemCard"
+            class="problem-card"
+        >
+
+            <i class="fas fa-triangle-exclamation"></i>
+
+            <div>
+
+                <span>
+                    NETWORK PROBLEM
+                </span>
+
+                <strong>
+                    Router cannot complete
+                    normal packet delivery.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ICMP MESSAGE
+        ======================================= -->
+
+        <div
+            id="icmpMessageCard"
+            class="icmp-message-card"
+        >
+
+            <header>
+
+                <div class="icmp-icon">
+
+                    <i class="fas fa-circle-exclamation"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        ICMP
+                    </span>
+
+                    <strong>
+                        Control Message
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <p>
+                A network device can send an ICMP message
+                back toward the source to report certain
+                IP delivery conditions or errors.
+            </p>
+
+        </div>
+
+
+        <!-- ======================================
+             ICMP RETURN
+        ======================================= -->
+
+        <div
+            id="icmpReturnLabel"
+            class="path-label icmp-return-label"
+        >
+
+            <i class="fas fa-reply"></i>
+
+            <span>
+                ICMP MESSAGE
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ICMP PURPOSE
+        ======================================= -->
+
+        <div
+            id="icmpPurpose"
+            class="icmp-purpose"
+        >
+
+            <div>
+
+                <i class="fas fa-triangle-exclamation"></i>
+
+                <span>
+                    ERROR REPORTING
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="fas fa-stethoscope"></i>
+
+                <span>
+                    DIAGNOSTICS
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <i class="fas fa-route"></i>
+
+                <span>
+                    PATH INFORMATION
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PING TITLE
+        ======================================= -->
+
+        <div
+            id="pingTitle"
+            class="section-callout ping-title"
+        >
+
+            <i class="fas fa-satellite-dish"></i>
+
+            <div>
+
+                <span>
+                    DIAGNOSTIC TOOL
+                </span>
+
+                <strong>
+                    PING
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ECHO REQUEST
+        ======================================= -->
+
+        <div
+            id="echoRequest"
+            class="message-badge echo-request"
+        >
+
+            <span>
+                ICMP
+            </span>
+
+            <strong>
+                Echo Request
+            </strong>
+
+        </div>
+
+
+        <!-- ======================================
+             ECHO REPLY
+        ======================================= -->
+
+        <div
+            id="echoReply"
+            class="message-badge echo-reply"
+        >
+
+            <span>
+                ICMP
+            </span>
+
+            <strong>
+                Echo Reply
+            </strong>
+
+        </div>
+
+
+        <!-- ======================================
+             PING RESULT
+        ======================================= -->
+
+        <div
+            id="pingResult"
+            class="ping-result"
+        >
+
+            <i class="fas fa-circle-check"></i>
+
+            <div>
+
+                <span>
+                    REPLY RECEIVED
+                </span>
+
+                <strong>
+                    Basic IP reachability confirmed
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TRACEROUTE
+        ======================================= -->
+
+        <div
+            id="tracerouteCard"
+            class="diagnostic-card traceroute-card"
+        >
+
+            <header>
+
+                <i class="fas fa-location-crosshairs"></i>
+
+                <div>
+
+                    <span>
+                        TRACEROUTE
+                    </span>
+
+                    <strong>
+                        TTL Expiration Reveals Hops
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="diagnostic-flow">
+
+                <div>
+
+                    <span>
+                        TTL
+                    </span>
+
+                    <strong>
+                        1
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div>
+
+                    <span>
+                        ROUTER
+                    </span>
+
+                    <strong>
+                        TTL = 0
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div class="icmp-response">
+
+                    <span>
+                        ICMP
+                    </span>
+
+                    <strong>
+                        Time Exceeded
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <small>
+                Repeating this process with increasing TTL values
+                helps reveal routers along the path.
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION UNREACHABLE
+        ======================================= -->
+
+        <div
+            id="unreachableCard"
+            class="diagnostic-card unreachable-card"
+        >
+
+            <header>
+
+                <i class="fas fa-circle-xmark"></i>
+
+                <div>
+
+                    <span>
+                        ICMP
+                    </span>
+
+                    <strong>
+                        Destination Unreachable
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <p>
+                ICMP can report that delivery cannot be completed,
+                with codes providing more detail about the condition.
+            </p>
+
+
+            <div class="condition-row">
+
+                <span>
+                    Network
+                </span>
+
+                <span>
+                    Host
+                </span>
+
+                <span>
+                    Protocol
+                </span>
+
+                <span>
+                    Port
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             MTU CONNECTION
+        ======================================= -->
+
+        <div
+            id="mtuIcmpCard"
+            class="diagnostic-card mtu-icmp-card"
+        >
+
+            <header>
+
+                <i class="fas fa-ruler-horizontal"></i>
+
+                <div>
+
+                    <span>
+                        MTU CONNECTION
+                    </span>
+
+                    <strong>
+                        Oversized Packet + No Fragmentation
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="mtu-flow">
+
+                <div>
+
+                    <span>
+                        IPv4
+                    </span>
+
+                    <strong>
+                        DF Set
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div>
+
+                    <span>
+                        MTU
+                    </span>
+
+                    <strong>
+                        Too Small
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div class="icmp-response">
+
+                    <span>
+                        ICMP
+                    </span>
+
+                    <strong>
+                        Fragmentation Needed
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <small>
+                This ICMP feedback is used by IPv4 Path MTU Discovery.
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             IPv6 NOTE
+        ======================================= -->
+
+        <div
+            id="ipv6Note"
+            class="ipv6-note"
+        >
+
+            <i class="fas fa-circle-info"></i>
+
+            <div>
+
+                <span>
+                    IPv6
+                </span>
+
+                <strong>
+                    ICMPv6 Packet Too Big performs the
+                    corresponding Path MTU function for IPv6.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NO PORTS
+        ======================================= -->
+
+        <div
+            id="noPortsCard"
+            class="no-ports-card"
+        >
+
+            <header>
+
+                <i class="fas fa-network-wired"></i>
+
+                <div>
+
+                    <span>
+                        IMPORTANT DISTINCTION
+                    </span>
+
+                    <strong>
+                        ICMP Does Not Use TCP or UDP Ports
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protocol-grid">
+
+                <div class="protocol-box tcp-box">
+
+                    <span>
+                        TCP
+                    </span>
+
+                    <strong>
+                        Port Numbers
+                    </strong>
+
+                </div>
+
+
+                <div class="protocol-box udp-box">
+
+                    <span>
+                        UDP
+                    </span>
+
+                    <strong>
+                        Port Numbers
+                    </strong>
+
+                </div>
+
+
+                <div class="protocol-separator">
+                    ≠
+                </div>
+
+
+                <div class="protocol-box icmp-box">
+
+                    <span>
+                        ICMP
+                    </span>
+
+                    <strong>
+                        Type + Code
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <small>
+                ICMP is carried directly by IP rather than
+                inside a TCP or UDP transport segment.
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             ICMP MESSAGE STRUCTURE
+        ======================================= -->
+
+        <div
+            id="icmpStructure"
+            class="icmp-structure"
+        >
+
+            <span class="structure-title">
+                ICMP MESSAGE
+            </span>
+
+
+            <div class="structure-row">
+
+                <div>
+
+                    <span>
+                        TYPE
+                    </span>
+
+                    <strong>
+                        Message Category
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        CODE
+                    </span>
+
+                    <strong>
+                        More Detail
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        CHECKSUM
+                    </span>
+
+                    <strong>
+                        Error Check
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PROCESS STRIP
+        ======================================= -->
+
+        <div
+            id="icmpProcess"
+            class="icmp-process"
+        >
+
+            <div class="process-item">
+
+                <span>
+                    1
+                </span>
+
+                <strong>
+                    IP Traffic
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    2
+                </span>
+
+                <strong>
+                    Condition Detected
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    3
+                </span>
+
+                <strong>
+                    ICMP Message
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    4
+                </span>
+
+                <strong>
+                    Source Learns
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="icmpSummary"
+        class="icmp-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-satellite-dish"></i>
+
+            <div>
+
+                <span>
+                    PING
+                </span>
+
+                <strong>
+                    Echo Request / Reply
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-route"></i>
+
+            <div>
+
+                <span>
+                    TRACEROUTE
+                </span>
+
+                <strong>
+                    Time Exceeded
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-circle-xmark"></i>
+
+            <div>
+
+                <span>
+                    DELIVERY ERROR
+                </span>
+
+                <strong>
+                    Unreachable
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-ruler-horizontal"></i>
+
+            <div>
+
+                <span>
+                    PATH MTU
+                </span>
+
+                <strong>
+                    ICMP Feedback
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                ICMP provides network-layer control, error-reporting,
+                and diagnostic messages used by IP devices and tools
+                such as ping and traceroute.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-21.js"></script>
+
+</body>
+
+</html>

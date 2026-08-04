@@ -1,0 +1,1958 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 21 — ICMP
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(37, 99, 235, 0.14),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 48%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0;
+}
+
+.glow-left {
+    left: -190px;
+    top: 120px;
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.glow-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(124, 58, 237, 0.14);
+}
+
+.glow-right {
+    right: -190px;
+    bottom: -70px;
+    background: rgba(16, 185, 129, 0.18);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    opacity: 0;
+    transform: translateY(-15px);
+
+    z-index: 20;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px
+        rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+
+    width: min(940px, 78%);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    z-index: 15;
+}
+
+.scene-number {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    color: #38bdf8;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #c4b5fd
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 780px;
+    margin: 12px auto 0;
+
+    color: #94a3b8;
+
+    font-size: clamp(0.82rem, 1.1vw, 1rem);
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   MAIN STAGE
+========================================== */
+
+.icmp-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    width: 1200px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin: center center;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   NETWORK PATHS
+========================================== */
+
+.network-path-layer {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+.network-path {
+    fill: none;
+
+    stroke-width: 3;
+    stroke-linecap: round;
+
+    stroke-dasharray: 9 8;
+
+    opacity: 0;
+}
+
+.path-blue {
+    stroke: #38bdf8;
+}
+
+.path-green {
+    stroke: #34d399;
+}
+
+.path-red {
+    stroke: #f87171;
+}
+
+.network-path.is-visible {
+    opacity: 0.72;
+    animation: pathFlow 1.5s linear infinite;
+}
+
+.network-path.is-active {
+    opacity: 1;
+    stroke-width: 4;
+}
+
+.path-blue.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(56, 189, 248, 0.85)
+        );
+}
+
+.path-green.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(52, 211, 153, 0.85)
+        );
+}
+
+.path-red.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(248, 113, 113, 0.85)
+        );
+}
+
+.moving-packet {
+    fill: #38bdf8;
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 11px #38bdf8
+        );
+}
+
+
+/* ==========================================
+   NETWORK NODES
+========================================== */
+
+.network-node {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(18px)
+        scale(0.9);
+
+    z-index: 8;
+}
+
+.source-host {
+    left: 145px;
+    top: 270px;
+    width: 175px;
+}
+
+.router-node {
+    left: 405px;
+    top: 270px;
+    width: 175px;
+}
+
+.destination-host {
+    left: 925px;
+    top: 270px;
+    width: 180px;
+}
+
+.node-icon {
+    width: 76px;
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.28);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.98),
+            rgba(15, 38, 67, 0.92)
+        );
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.3);
+}
+
+.node-icon i {
+    color: #60a5fa;
+    font-size: 1.7rem;
+}
+
+.router-node .node-icon i {
+    color: #fbbf24;
+}
+
+.destination-host .node-icon i {
+    color: #34d399;
+}
+
+.network-node > strong {
+    color: #e2e8f0;
+
+    font-size: 0.67rem;
+    letter-spacing: 0.08em;
+}
+
+.network-node > span {
+    color: #94a3b8;
+    font-size: 0.55rem;
+}
+
+.network-node.is-active .node-icon {
+    border-color:
+        rgba(96, 165, 250, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(96, 165, 250, 0.3);
+}
+
+.router-node.is-active .node-icon {
+    border-color:
+        rgba(245, 158, 11, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(245, 158, 11, 0.34);
+}
+
+.destination-host.is-active .node-icon {
+    border-color:
+        rgba(52, 211, 153, 0.95);
+
+    box-shadow:
+        0 0 32px
+        rgba(52, 211, 153, 0.34);
+}
+
+
+/* ==========================================
+   GENERAL INFO CARD
+========================================== */
+
+.info-card {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 370px;
+
+    padding: 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+
+    border-radius: 14px;
+
+    background:
+        rgba(2, 6, 23, 0.96);
+
+    opacity: 0;
+
+    z-index: 24;
+}
+
+.info-card header {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 11px;
+}
+
+.info-card header > i {
+    color: #38bdf8;
+}
+
+.info-card header span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #38bdf8;
+
+    font-size: 0.44rem;
+    font-weight: 800;
+}
+
+.info-card header strong {
+    color: #dbeafe;
+
+    font-size: 0.64rem;
+}
+
+.packet-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 16px;
+
+    padding: 9px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(14, 165, 233, 0.08);
+}
+
+.packet-flow span {
+    color: #bae6fd;
+
+    font-size: 0.48rem;
+    font-weight: 800;
+}
+
+.packet-flow i {
+    color: #38bdf8;
+}
+
+
+/* ==========================================
+   PROBLEM
+========================================== */
+
+.problem-card {
+    position: absolute;
+
+    left: 50%;
+    top: 65px;
+
+    width: 370px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px 16px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.28);
+
+    border-radius: 14px;
+
+    background:
+        rgba(69, 10, 10, 0.32);
+
+    opacity: 0;
+
+    z-index: 26;
+}
+
+.problem-card > i {
+    color: #f87171;
+    font-size: 1.15rem;
+}
+
+.problem-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #f87171;
+
+    font-size: 0.46rem;
+    font-weight: 900;
+}
+
+.problem-card strong {
+    color: #fecaca;
+
+    font-size: 0.59rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   ICMP MESSAGE
+========================================== */
+
+.icmp-message-card {
+    position: absolute;
+
+    left: 50%;
+    top: 50px;
+
+    width: 420px;
+
+    padding: 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.25);
+
+    border-radius: 15px;
+
+    background:
+        rgba(69, 10, 10, 0.25);
+
+    opacity: 0;
+
+    z-index: 28;
+}
+
+.icmp-message-card header {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 9px;
+}
+
+.icmp-icon {
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(248, 113, 113, 0.12);
+
+    color: #f87171;
+}
+
+.icmp-message-card header span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #f87171;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.icmp-message-card header strong {
+    color: #fecaca;
+    font-size: 0.65rem;
+}
+
+.icmp-message-card p {
+    color: #fca5a5;
+
+    font-size: 0.52rem;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   RETURN LABEL
+========================================== */
+
+.path-label {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 7px 10px;
+
+    border-radius: 100px;
+
+    opacity: 0;
+
+    z-index: 16;
+}
+
+.icmp-return-label {
+    left: 265px;
+    top: 150px;
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.22);
+
+    background:
+        rgba(69, 10, 10, 0.78);
+
+    color: #fca5a5;
+
+    font-size: 0.44rem;
+    font-weight: 800;
+}
+
+
+/* ==========================================
+   ICMP PURPOSE
+========================================== */
+
+.icmp-purpose {
+    position: absolute;
+
+    left: 50%;
+    top: 65px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.icmp-purpose > div {
+    min-width: 130px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 9px 10px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(2, 6, 23, 0.6);
+}
+
+.icmp-purpose i {
+    color: #60a5fa;
+}
+
+.icmp-purpose > div:first-child i {
+    color: #f87171;
+}
+
+.icmp-purpose > div:last-child i {
+    color: #a78bfa;
+}
+
+.icmp-purpose span {
+    color: #cbd5e1;
+
+    font-size: 0.46rem;
+    font-weight: 800;
+}
+
+
+/* ==========================================
+   SECTION CALLOUT
+========================================== */
+
+.section-callout {
+    position: absolute;
+
+    left: 50%;
+    top: 65px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border-radius: 14px;
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.ping-title {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+
+    background:
+        rgba(14, 165, 233, 0.1);
+}
+
+.ping-title > i {
+    color: #38bdf8;
+    font-size: 1.15rem;
+}
+
+.section-callout span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #38bdf8;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.section-callout strong {
+    color: #e0f2fe;
+
+    font-size: 0.72rem;
+}
+
+
+/* ==========================================
+   ECHO BADGES
+========================================== */
+
+.message-badge {
+    position: absolute;
+
+    min-width: 145px;
+
+    padding: 9px 12px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    opacity: 0;
+
+    transform: translateY(12px);
+
+    z-index: 18;
+}
+
+.echo-request {
+    left: 465px;
+    top: 175px;
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.25);
+
+    background:
+        rgba(14, 165, 233, 0.12);
+}
+
+.echo-reply {
+    left: 465px;
+    top: 330px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    background:
+        rgba(6, 78, 59, 0.28);
+}
+
+.message-badge span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.42rem;
+    font-weight: 900;
+}
+
+.echo-request span {
+    color: #38bdf8;
+}
+
+.echo-reply span {
+    color: #34d399;
+}
+
+.message-badge strong {
+    color: #e2e8f0;
+
+    font-size: 0.56rem;
+}
+
+
+/* ==========================================
+   PING RESULT
+========================================== */
+
+.ping-result {
+    position: absolute;
+
+    left: 50%;
+    bottom: 38px;
+
+    width: 360px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.24);
+
+    opacity: 0;
+
+    z-index: 25;
+}
+
+.ping-result > i {
+    color: #34d399;
+    font-size: 1.05rem;
+}
+
+.ping-result span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.45rem;
+    font-weight: 900;
+}
+
+.ping-result strong {
+    color: #d1fae5;
+
+    font-size: 0.58rem;
+}
+
+
+/* ==========================================
+   DIAGNOSTIC CARDS
+========================================== */
+
+.diagnostic-card {
+    position: absolute;
+
+    left: 50%;
+    top: 50px;
+
+    width: 590px;
+
+    padding: 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border-radius: 15px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.diagnostic-card header {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 12px;
+}
+
+.diagnostic-card header span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.diagnostic-card header strong {
+    font-size: 0.65rem;
+}
+
+.traceroute-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+}
+
+.traceroute-card header > i,
+.traceroute-card header span {
+    color: #a78bfa;
+}
+
+.traceroute-card header strong {
+    color: #ddd6fe;
+}
+
+.unreachable-card {
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.25);
+}
+
+.unreachable-card header > i,
+.unreachable-card header span {
+    color: #f87171;
+}
+
+.unreachable-card header strong {
+    color: #fecaca;
+}
+
+.mtu-icmp-card {
+    border:
+        1px solid
+        rgba(245, 158, 11, 0.25);
+}
+
+.mtu-icmp-card header > i,
+.mtu-icmp-card header span {
+    color: #fbbf24;
+}
+
+.mtu-icmp-card header strong {
+    color: #fde68a;
+}
+
+.diagnostic-flow,
+.mtu-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.diagnostic-flow > div,
+.mtu-flow > div {
+    min-width: 125px;
+
+    padding: 9px 10px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(2, 6, 23, 0.66);
+}
+
+.diagnostic-flow span,
+.mtu-flow span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #94a3b8;
+
+    font-size: 0.42rem;
+    font-weight: 900;
+}
+
+.diagnostic-flow strong,
+.mtu-flow strong {
+    color: #e2e8f0;
+
+    font-size: 0.55rem;
+}
+
+.diagnostic-flow > i,
+.mtu-flow > i {
+    color: #475569;
+}
+
+.icmp-response span {
+    color: #f87171 !important;
+}
+
+.icmp-response strong {
+    color: #fecaca !important;
+}
+
+.diagnostic-card > small {
+    display: block;
+
+    margin-top: 11px;
+
+    color: #94a3b8;
+
+    font-size: 0.48rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   UNREACHABLE
+========================================== */
+
+.unreachable-card p {
+    color: #fca5a5;
+
+    font-size: 0.52rem;
+    line-height: 1.5;
+}
+
+.condition-row {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 7px;
+
+    margin-top: 11px;
+}
+
+.condition-row span {
+    padding: 8px;
+
+    text-align: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(69, 10, 10, 0.35);
+
+    color: #fecaca;
+
+    font-size: 0.48rem;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   IPv6 NOTE
+========================================== */
+
+.ipv6-note {
+    position: absolute;
+
+    left: 50%;
+    bottom: 38px;
+
+    width: 480px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 11px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.22);
+
+    border-radius: 13px;
+
+    background:
+        rgba(30, 27, 75, 0.56);
+
+    opacity: 0;
+
+    z-index: 29;
+}
+
+.ipv6-note > i {
+    color: #a78bfa;
+}
+
+.ipv6-note span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #a78bfa;
+
+    font-size: 0.45rem;
+    font-weight: 900;
+}
+
+.ipv6-note strong {
+    color: #ddd6fe;
+
+    font-size: 0.56rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   NO PORTS
+========================================== */
+
+.no-ports-card {
+    position: absolute;
+
+    left: 50%;
+    top: 45px;
+
+    width: 590px;
+
+    padding: 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+
+    border-radius: 15px;
+
+    background:
+        rgba(15, 23, 42, 0.98);
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.no-ports-card header {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 12px;
+}
+
+.no-ports-card header > i {
+    color: #38bdf8;
+}
+
+.no-ports-card header span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #38bdf8;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.no-ports-card header strong {
+    color: #dbeafe;
+
+    font-size: 0.65rem;
+}
+
+.protocol-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr
+        35px
+        1fr;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.protocol-box {
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(2, 6, 23, 0.66);
+}
+
+.protocol-box span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 0.46rem;
+    font-weight: 900;
+}
+
+.protocol-box strong {
+    color: #cbd5e1;
+
+    font-size: 0.53rem;
+}
+
+.tcp-box span {
+    color: #60a5fa;
+}
+
+.udp-box span {
+    color: #a78bfa;
+}
+
+.icmp-box span {
+    color: #f87171;
+}
+
+.protocol-separator {
+    text-align: center;
+
+    color: #fbbf24;
+
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.no-ports-card > small {
+    display: block;
+
+    margin-top: 11px;
+
+    color: #94a3b8;
+
+    font-size: 0.48rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   ICMP STRUCTURE
+========================================== */
+
+.icmp-structure {
+    position: absolute;
+
+    left: 50%;
+    top: 60px;
+
+    width: 560px;
+
+    padding: 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.22);
+
+    border-radius: 14px;
+
+    background:
+        rgba(69, 10, 10, 0.23);
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.structure-title {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #f87171;
+
+    font-size: 0.47rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.structure-row {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 8px;
+}
+
+.structure-row > div {
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(15, 23, 42, 0.72);
+}
+
+.structure-row span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #f87171;
+
+    font-size: 0.42rem;
+    font-weight: 900;
+}
+
+.structure-row strong {
+    color: #fecaca;
+
+    font-size: 0.52rem;
+}
+
+
+/* ==========================================
+   PROCESS STRIP
+========================================== */
+
+.icmp-process {
+    position: absolute;
+
+    left: 50%;
+    top: 65px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    opacity: 0;
+
+    z-index: 34;
+}
+
+.process-item {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.process-item span {
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(37, 99, 235, 0.14);
+
+    color: #60a5fa;
+
+    font-size: 0.51rem;
+    font-weight: 900;
+}
+
+.process-item strong {
+    color: #cbd5e1;
+    font-size: 0.51rem;
+}
+
+.icmp-process > i {
+    color: #475569;
+    font-size: 0.5rem;
+}
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.icmp-summary {
+    position: absolute;
+
+    left: 50%;
+    bottom: 91px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 16px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.summary-item > i {
+    color: #60a5fa;
+    font-size: 0.75rem;
+}
+
+.summary-item:nth-of-type(2) > i {
+    color: #a78bfa;
+}
+
+.summary-item:nth-of-type(3) > i {
+    color: #f87171;
+}
+
+.summary-item:last-child > i {
+    color: #fbbf24;
+}
+
+.summary-item span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.44rem;
+    font-weight: 800;
+}
+
+.summary-item strong {
+    display: block;
+
+    color: #cbd5e1;
+
+    font-size: 0.54rem;
+}
+
+.summary-arrow {
+    color: #475569;
+    font-size: 0.54rem;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+
+    left: 50%;
+    bottom: 27px;
+
+    width: min(820px, 76vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.final-concept > i {
+    color: #34d399;
+    font-size: 1.25rem;
+}
+
+.final-concept span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.final-concept strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 40;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #a78bfa,
+            #f87171,
+            #34d399
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(96, 165, 250, 0.65);
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+    background: #172033;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   VISIBILITY
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scene-brand.is-visible {
+    transform: translateY(0);
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.network-node.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+.message-badge.is-visible {
+    transform: translateY(0);
+}
+
+.info-card.is-visible,
+.problem-card.is-visible,
+.icmp-message-card.is-visible,
+.icmp-purpose.is-visible,
+.section-callout.is-visible,
+.ping-result.is-visible,
+.diagnostic-card.is-visible,
+.ipv6-note.is-visible,
+.no-ports-card.is-visible,
+.icmp-structure.is-visible,
+.icmp-process.is-visible,
+.icmp-summary.is-visible,
+.final-concept.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes pathFlow {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -34;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE WIDTH
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .icmp-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .icmp-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.76);
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE HEIGHT
+========================================== */
+
+@media (max-height: 850px) {
+
+    .icmp-stage {
+        top: 55%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.84);
+    }
+
+    .scene-title {
+        top: 48px;
+    }
+
+    .scene-title p {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-height: 760px) {
+
+    .icmp-stage {
+        top: 56%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.74);
+    }
+
+    .scene-title {
+        top: 40px;
+    }
+
+    .scene-title h1 {
+        font-size:
+            clamp(1.6rem, 2.4vw, 2.25rem);
+    }
+
+    .scene-title p {
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+}
+
+@media (max-height: 680px) {
+
+    .icmp-stage {
+        top: 57%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.65);
+    }
+
+    .scene-brand {
+        top: 20px;
+        left: 28px;
+    }
+
+    .scene-title {
+        top: 28px;
+    }
+
+}
