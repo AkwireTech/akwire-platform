@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 17
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-17.css">
+
+</head>
+
+<body>
+
+<main id="scene17"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 17
+        </span>
+
+        <h1>
+            Default Gateway: Reaching Other Networks
+        </h1>
+
+        <p>
+            When the destination is outside the local
+            subnet, the client sends the frame to its
+            default gateway for routing.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         NETWORK STAGE
+    =========================================== -->
+
+    <section class="gateway-stage">
+
+
+        <!-- ======================================
+             PACKET PATHS
+        ======================================= -->
+
+        <svg
+            class="network-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <!-- Client to gateway -->
+
+            <path
+                id="gatewayPath"
+                class="network-path gateway-path"
+                d="M180 270
+                   C330 270 420 270 550 270"
+            />
+
+
+            <!-- Gateway to WAN -->
+
+            <path
+                id="wanPath"
+                class="network-path wan-path"
+                d="M550 270
+                   C700 270 770 270 850 270"
+            />
+
+
+            <!-- WAN to remote server -->
+
+            <path
+                id="remotePath"
+                class="network-path remote-path"
+                d="M850 270
+                   C930 270 970 270 1040 270"
+            />
+
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             LOCAL NETWORK BOUNDARY
+        ======================================= -->
+
+        <div
+            id="localNetwork"
+            class="network-zone local-network"
+        >
+
+            <span>
+                LOCAL NETWORK
+            </span>
+
+            <strong>
+                192.168.1.0/24
+            </strong>
+
+        </div>
+
+
+        <!-- ======================================
+             REMOTE NETWORK BOUNDARY
+        ======================================= -->
+
+        <div
+            id="remoteNetwork"
+            class="network-zone remote-network"
+        >
+
+            <span>
+                REMOTE NETWORK
+            </span>
+
+            <strong>
+                10.20.30.0/24
+            </strong>
+
+        </div>
+
+
+        <!-- ======================================
+             CLIENT
+        ======================================= -->
+
+        <div
+            id="sourceClient"
+            class="network-node source-client"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                CLIENT
+            </strong>
+
+            <span>
+                192.168.1.10/24
+            </span>
+
+            <small>
+                Gateway: 192.168.1.1
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION QUESTION
+        ======================================= -->
+
+        <div
+            id="destinationCard"
+            class="destination-card"
+        >
+
+            <span class="card-label">
+                DESTINATION
+            </span>
+
+            <div class="destination-address">
+
+                <i class="fas fa-location-dot"></i>
+
+                <div>
+
+                    <span>
+                        DESTINATION IP
+                    </span>
+
+                    <strong>
+                        10.20.30.40
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SUBNET CHECK
+        ======================================= -->
+
+        <div
+            id="subnetCheck"
+            class="subnet-check"
+        >
+
+            <header>
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <div>
+
+                    <span>
+                        SUBNET CHECK
+                    </span>
+
+                    <strong>
+                        Is the destination local?
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="subnet-comparison">
+
+                <div>
+
+                    <span>
+                        CLIENT NETWORK
+                    </span>
+
+                    <strong>
+                        192.168.1.0/24
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-not-equal"></i>
+
+                <div>
+
+                    <span>
+                        DESTINATION NETWORK
+                    </span>
+
+                    <strong>
+                        10.20.30.0/24
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NOT LOCAL RESULT
+        ======================================= -->
+
+        <div
+            id="notLocalResult"
+            class="not-local-result"
+        >
+
+            <div class="result-icon">
+
+                <i class="fas fa-xmark"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    NOT LOCAL
+                </span>
+
+                <strong>
+                    Destination is outside
+                    192.168.1.0/24
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DEFAULT GATEWAY DECISION
+        ======================================= -->
+
+        <div
+            id="gatewayDecision"
+            class="gateway-decision"
+        >
+
+            <i class="fas fa-route"></i>
+
+            <div>
+
+                <span>
+                    NEXT HOP
+                </span>
+
+                <strong>
+                    Send the frame to the
+                    default gateway.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER / DEFAULT GATEWAY
+        ======================================= -->
+
+        <div
+            id="gatewayRouter"
+            class="network-node gateway-router"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-router"></i>
+
+            </div>
+
+            <strong>
+                DEFAULT GATEWAY
+            </strong>
+
+            <span>
+                192.168.1.1
+            </span>
+
+            <small>
+                MAC: 00:11:22:33:44:01
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             ARP RESOLUTION
+        ======================================= -->
+
+        <div
+            id="arpResolution"
+            class="arp-resolution"
+        >
+
+            <header>
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <div>
+
+                    <span>
+                        ARP
+                    </span>
+
+                    <strong>
+                        Resolve Gateway MAC
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="arp-mapping">
+
+                <strong>
+                    192.168.1.1
+                </strong>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <strong>
+                    00:11:22:33:44:01
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ENCAPSULATION PANEL
+        ======================================= -->
+
+        <div
+            id="encapsulationPanel"
+            class="encapsulation-panel"
+        >
+
+            <span class="panel-title">
+                LOCAL TRANSMISSION
+            </span>
+
+
+            <div class="protocol-layer ethernet-layer">
+
+                <div class="layer-name">
+
+                    <i class="fas fa-ethernet"></i>
+
+                    <span>
+                        ETHERNET FRAME
+                    </span>
+
+                </div>
+
+
+                <div class="layer-address">
+
+                    <span>
+                        DESTINATION MAC
+                    </span>
+
+                    <strong>
+                        00:11:22:33:44:01
+                    </strong>
+
+                    <small>
+                        DEFAULT GATEWAY
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="protocol-layer ip-layer">
+
+                <div class="layer-name">
+
+                    <i class="fas fa-globe"></i>
+
+                    <span>
+                        IP PACKET
+                    </span>
+
+                </div>
+
+
+                <div class="layer-address">
+
+                    <span>
+                        DESTINATION IP
+                    </span>
+
+                    <strong>
+                        10.20.30.40
+                    </strong>
+
+                    <small>
+                        REMOTE HOST
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IMPORTANT DISTINCTION
+        ======================================= -->
+
+        <div
+            id="addressDistinction"
+            class="address-distinction"
+        >
+
+            <div class="distinction-item mac-item">
+
+                <span>
+                    FRAME
+                </span>
+
+                <strong>
+                    Gateway MAC
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right-arrow-left"></i>
+
+
+            <div class="distinction-item ip-item">
+
+                <span>
+                    PACKET
+                </span>
+
+                <strong>
+                    Remote IP
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             WAN / OTHER NETWORKS
+        ======================================= -->
+
+        <div
+            id="wanCloud"
+            class="network-node wan-cloud"
+        >
+
+            <div class="cloud-icon">
+
+                <i class="fas fa-cloud"></i>
+
+            </div>
+
+            <strong>
+                ROUTED NETWORK
+            </strong>
+
+            <span>
+                Other Networks
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             REMOTE SERVER
+        ======================================= -->
+
+        <div
+            id="remoteServer"
+            class="network-node remote-server"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-server"></i>
+
+            </div>
+
+            <strong>
+                REMOTE SERVER
+            </strong>
+
+            <span>
+                10.20.30.40
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTING CARD
+        ======================================= -->
+
+        <div
+            id="routingCard"
+            class="routing-card"
+        >
+
+            <i class="fas fa-route"></i>
+
+            <div>
+
+                <span>
+                    ROUTING
+                </span>
+
+                <strong>
+                    The gateway forwards the packet
+                    toward the remote network.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DELIVERY RESULT
+        ======================================= -->
+
+        <div
+            id="deliveryResult"
+            class="delivery-result"
+        >
+
+            <i class="fas fa-circle-check"></i>
+
+            <div>
+
+                <span>
+                    REMOTE DESTINATION
+                </span>
+
+                <strong>
+                    The packet reaches
+                    10.20.30.40.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PROCESS STRIP
+        ======================================= -->
+
+        <div
+            id="gatewayProcess"
+            class="gateway-process"
+        >
+
+            <div class="process-item">
+
+                <span>
+                    1
+                </span>
+
+                <strong>
+                    Check Subnet
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    2
+                </span>
+
+                <strong>
+                    Use Gateway
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    3
+                </span>
+
+                <strong>
+                    Route Packet
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    4
+                </span>
+
+                <strong>
+                    Remote Network
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="gatewaySummary"
+        class="gateway-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-laptop"></i>
+
+            <div>
+
+                <span>
+                    CLIENT
+                </span>
+
+                <strong>
+                    192.168.1.10
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-router"></i>
+
+            <div>
+
+                <span>
+                    DEFAULT GATEWAY
+                </span>
+
+                <strong>
+                    192.168.1.1
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-server"></i>
+
+            <div>
+
+                <span>
+                    REMOTE HOST
+                </span>
+
+                <strong>
+                    10.20.30.40
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                For a remote destination, the local
+                Ethernet frame is sent to the default
+                gateway's MAC address while the IP packet
+                remains addressed to the remote host.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-17.js"></script>
+
+</body>
+
+</html>
