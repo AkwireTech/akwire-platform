@@ -1,0 +1,1830 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 19 — TTL AND ROUTER HOPS
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(37, 99, 235, 0.14),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 48%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0;
+}
+
+.glow-left {
+    left: -190px;
+    top: 120px;
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.glow-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(124, 58, 237, 0.14);
+}
+
+.glow-right {
+    right: -190px;
+    bottom: -70px;
+    background: rgba(16, 185, 129, 0.18);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    opacity: 0;
+    transform: translateY(-15px);
+
+    z-index: 20;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px
+        rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+
+    width: min(940px, 78%);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    z-index: 15;
+}
+
+.scene-number {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    color: #38bdf8;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #c4b5fd
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 760px;
+    margin: 12px auto 0;
+
+    color: #94a3b8;
+
+    font-size:
+        clamp(
+            0.82rem,
+            1.1vw,
+            1rem
+        );
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   TTL STAGE
+========================================== */
+
+.ttl-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    width: 1200px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin: center center;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   NETWORK PATHS
+========================================== */
+
+.network-path-layer {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+.network-path {
+    fill: none;
+
+    stroke-width: 3;
+    stroke-linecap: round;
+
+    stroke-dasharray: 9 8;
+
+    opacity: 0;
+}
+
+.path-blue {
+    stroke: #38bdf8;
+}
+
+.path-purple {
+    stroke: #a78bfa;
+}
+
+.path-green {
+    stroke: #34d399;
+}
+
+.loop-path {
+    stroke: #f87171;
+    stroke-width: 3.5;
+}
+
+.network-path.is-visible {
+    opacity: 0.72;
+    animation: pathFlow 1.5s linear infinite;
+}
+
+.network-path.is-active {
+    opacity: 1;
+    stroke-width: 4;
+}
+
+.path-blue.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(56, 189, 248, 0.85)
+        );
+}
+
+.path-purple.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(167, 139, 250, 0.85)
+        );
+}
+
+.path-green.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(52, 211, 153, 0.85)
+        );
+}
+
+.loop-path.is-active {
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(248, 113, 113, 0.9)
+        );
+}
+
+.moving-packet {
+    fill: #38bdf8;
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 11px #38bdf8
+        );
+}
+
+
+/* ==========================================
+   NETWORK NODES
+========================================== */
+
+.network-node {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(18px)
+        scale(0.9);
+
+    z-index: 8;
+}
+
+.client-node {
+    left: 125px;
+    top: 260px;
+    width: 160px;
+}
+
+.router-one {
+    left: 280px;
+    top: 260px;
+    width: 150px;
+}
+
+.router-two {
+    left: 465px;
+    top: 260px;
+    width: 150px;
+}
+
+.router-three {
+    left: 650px;
+    top: 260px;
+    width: 150px;
+}
+
+.destination-node {
+    left: 930px;
+    top: 260px;
+    width: 180px;
+}
+
+.loop-router-a {
+    left: 430px;
+    top: 260px;
+    width: 160px;
+}
+
+.loop-router-b {
+    left: 650px;
+    top: 260px;
+    width: 160px;
+}
+
+.node-icon {
+    width: 74px;
+    height: 74px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.28);
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.98),
+            rgba(15, 38, 67, 0.92)
+        );
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.3);
+}
+
+.node-icon i {
+    color: #60a5fa;
+    font-size: 1.65rem;
+}
+
+.router-one .node-icon i,
+.router-two .node-icon i,
+.router-three .node-icon i {
+    color: #a78bfa;
+}
+
+.destination-node .node-icon i {
+    color: #34d399;
+}
+
+.loop-router .node-icon {
+    border-color:
+        rgba(248, 113, 113, 0.28);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(30, 15, 20, 0.98),
+            rgba(69, 10, 10, 0.72)
+        );
+}
+
+.loop-router .node-icon i {
+    color: #f87171;
+}
+
+.network-node > strong {
+    color: #e2e8f0;
+
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+}
+
+.network-node > span {
+    color: #94a3b8;
+
+    font-size: 0.55rem;
+}
+
+
+/* ==========================================
+   ACTIVE NODES
+========================================== */
+
+.network-node.is-active .node-icon {
+    border-color:
+        rgba(96, 165, 250, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(96, 165, 250, 0.3);
+}
+
+.router-one.is-active .node-icon,
+.router-two.is-active .node-icon,
+.router-three.is-active .node-icon {
+    border-color:
+        rgba(167, 139, 250, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(167, 139, 250, 0.34);
+}
+
+.destination-node.is-active .node-icon {
+    border-color:
+        rgba(52, 211, 153, 0.95);
+
+    box-shadow:
+        0 0 32px
+        rgba(52, 211, 153, 0.34);
+}
+
+.loop-router.is-active .node-icon {
+    border-color:
+        rgba(248, 113, 113, 0.95);
+
+    box-shadow:
+        0 0 32px
+        rgba(248, 113, 113, 0.35);
+}
+
+
+/* ==========================================
+   INITIAL PACKET
+========================================== */
+
+.ttl-card {
+    position: absolute;
+
+    left: 50px;
+    top: 55px;
+
+    width: 280px;
+
+    padding: 13px 14px;
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.23);
+
+    border-radius: 14px;
+
+    background:
+        rgba(2, 6, 23, 0.95);
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    z-index: 20;
+}
+
+.ttl-card header {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 9px;
+}
+
+.ttl-card header > i {
+    color: #38bdf8;
+}
+
+.ttl-card header span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.44rem;
+    font-weight: 800;
+}
+
+.ttl-card header strong {
+    color: #bfdbfe;
+
+    font-size: 0.62rem;
+}
+
+.ttl-display {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 8px 11px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(14, 165, 233, 0.09);
+}
+
+.ttl-display span {
+    color: #38bdf8;
+
+    font-size: 0.48rem;
+    font-weight: 900;
+}
+
+.ttl-display strong {
+    color: #ffffff;
+
+    font-size: 1.35rem;
+}
+
+.ttl-card > small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #64748b;
+
+    font-size: 0.47rem;
+}
+
+
+/* ==========================================
+   TTL COUNTER
+========================================== */
+
+.ttl-counter {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 180px;
+
+    padding: 11px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.24);
+
+    border-radius: 14px;
+
+    background:
+        rgba(30, 27, 75, 0.65);
+
+    opacity: 0;
+
+    z-index: 22;
+}
+
+.ttl-counter > span {
+    display: block;
+
+    color: #a78bfa;
+
+    font-size: 0.46rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.ttl-counter > strong {
+    display: block;
+
+    margin: 4px 0;
+
+    color: #ffffff;
+
+    font-size: 1.65rem;
+}
+
+.ttl-counter > small {
+    color: #94a3b8;
+
+    font-size: 0.46rem;
+}
+
+
+/* ==========================================
+   HOP COUNTER
+========================================== */
+
+.hop-counter {
+    position: absolute;
+
+    right: 55px;
+    top: 65px;
+
+    width: 180px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 11px 13px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.22);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.2);
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    z-index: 21;
+}
+
+.hop-counter > i {
+    color: #34d399;
+}
+
+.hop-counter span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #34d399;
+
+    font-size: 0.44rem;
+    font-weight: 800;
+}
+
+.hop-counter strong {
+    color: #d1fae5;
+
+    font-size: 1.05rem;
+}
+
+
+/* ==========================================
+   TTL CHANGE CARDS
+========================================== */
+
+.ttl-change-card {
+    position: absolute;
+
+    top: 360px;
+
+    width: 155px;
+
+    padding: 10px;
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.2);
+
+    border-radius: 11px;
+
+    background:
+        rgba(30, 27, 75, 0.58);
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    z-index: 17;
+}
+
+#ttlChange1 {
+    left: 203px;
+}
+
+#ttlChange2 {
+    left: 388px;
+}
+
+#ttlChange3 {
+    left: 573px;
+}
+
+.ttl-change-card > span {
+    display: block;
+
+    color: #a78bfa;
+
+    font-size: 0.43rem;
+    font-weight: 800;
+}
+
+.ttl-change-card > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin: 5px 0;
+}
+
+.ttl-change-card strong {
+    color: #ddd6fe;
+
+    font-size: 0.8rem;
+}
+
+.ttl-change-card i {
+    color: #7c3aed;
+
+    font-size: 0.52rem;
+}
+
+.ttl-change-card small {
+    color: #64748b;
+
+    font-size: 0.42rem;
+}
+
+
+/* ==========================================
+   DELIVERY RESULT
+========================================== */
+
+.delivery-result {
+    position: absolute;
+
+    right: 45px;
+    bottom: 45px;
+
+    width: 290px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+    transform: translateY(15px);
+
+    z-index: 20;
+}
+
+.delivery-result > i {
+    color: #34d399;
+    font-size: 1.05rem;
+}
+
+.delivery-result span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.46rem;
+    font-weight: 800;
+}
+
+.delivery-result strong {
+    color: #d1fae5;
+
+    font-size: 0.57rem;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   TTL RULE
+========================================== */
+
+.ttl-rule {
+    position: absolute;
+
+    left: 50%;
+    bottom: 42px;
+
+    width: 380px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.23);
+
+    border-radius: 13px;
+
+    background:
+        rgba(15, 23, 42, 0.95);
+
+    opacity: 0;
+
+    z-index: 22;
+}
+
+.ttl-rule > i {
+    color: #60a5fa;
+    font-size: 1.05rem;
+}
+
+.ttl-rule span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #60a5fa;
+
+    font-size: 0.46rem;
+    font-weight: 800;
+}
+
+.ttl-rule strong {
+    color: #dbeafe;
+
+    font-size: 0.58rem;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   LOOP TITLE
+========================================== */
+
+.loop-title {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 330px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.24);
+
+    border-radius: 13px;
+
+    background:
+        rgba(69, 10, 10, 0.24);
+
+    opacity: 0;
+
+    z-index: 25;
+}
+
+.loop-title > i {
+    color: #f87171;
+}
+
+.loop-title span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #f87171;
+
+    font-size: 0.45rem;
+    font-weight: 800;
+}
+
+.loop-title strong {
+    color: #fecaca;
+
+    font-size: 0.61rem;
+}
+
+
+/* ==========================================
+   LOOP COUNTER
+========================================== */
+
+.loop-counter {
+    position: absolute;
+
+    left: 50%;
+    bottom: 45px;
+
+    width: 220px;
+
+    padding: 11px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    text-align: center;
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.24);
+
+    border-radius: 13px;
+
+    background:
+        rgba(69, 10, 10, 0.25);
+
+    opacity: 0;
+
+    z-index: 25;
+}
+
+.loop-counter span {
+    display: block;
+
+    color: #f87171;
+
+    font-size: 0.45rem;
+    font-weight: 900;
+}
+
+.loop-counter strong {
+    display: block;
+
+    margin: 3px 0;
+
+    color: #ffffff;
+
+    font-size: 1.55rem;
+}
+
+.loop-counter small {
+    color: #fca5a5;
+
+    font-size: 0.46rem;
+}
+
+
+/* ==========================================
+   TTL EXPIRED
+========================================== */
+
+.ttl-expired {
+    position: absolute;
+
+    left: 50%;
+    top: 165px;
+
+    width: 390px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(239, 68, 68, 0.36);
+
+    border-radius: 15px;
+
+    background:
+        rgba(69, 10, 10, 0.92);
+
+    box-shadow:
+        0 0 35px
+        rgba(239, 68, 68, 0.15);
+
+    opacity: 0;
+
+    z-index: 32;
+}
+
+.expired-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        rgba(220, 38, 38, 0.16);
+
+    color: #f87171;
+
+    font-size: 1.25rem;
+}
+
+.ttl-expired span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #f87171;
+
+    font-size: 0.5rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+}
+
+.ttl-expired strong {
+    display: block;
+
+    color: #fee2e2;
+
+    font-size: 0.72rem;
+}
+
+.ttl-expired small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #fca5a5;
+
+    font-size: 0.48rem;
+}
+
+
+/* ==========================================
+   LOOP PREVENTION
+========================================== */
+
+.loop-prevention {
+    position: absolute;
+
+    left: 50%;
+    bottom: 42px;
+
+    width: 410px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.23);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 28;
+}
+
+.loop-prevention > i {
+    color: #34d399;
+    font-size: 1.1rem;
+}
+
+.loop-prevention span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.46rem;
+    font-weight: 800;
+}
+
+.loop-prevention strong {
+    color: #d1fae5;
+
+    font-size: 0.58rem;
+    font-weight: 600;
+}
+
+
+/* ==========================================
+   TRACEROUTE
+========================================== */
+
+.traceroute-card {
+    position: absolute;
+
+    left: 50%;
+    top: 90px;
+
+    width: 560px;
+
+    padding: 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(245, 158, 11, 0.23);
+
+    border-radius: 15px;
+
+    background:
+        rgba(120, 53, 15, 0.22);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.traceroute-card header {
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 11px;
+}
+
+.traceroute-card header > i {
+    color: #fbbf24;
+}
+
+.traceroute-card header span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #f59e0b;
+
+    font-size: 0.44rem;
+    font-weight: 800;
+}
+
+.traceroute-card header strong {
+    color: #fde68a;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.07em;
+}
+
+.trace-hops {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.trace-hops > div {
+    min-width: 105px;
+
+    padding: 8px 10px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(15, 23, 42, 0.7);
+}
+
+.trace-hops span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #fbbf24;
+
+    font-size: 0.43rem;
+    font-weight: 800;
+}
+
+.trace-hops strong {
+    color: #fef3c7;
+
+    font-size: 0.57rem;
+}
+
+.trace-hops > i {
+    color: #92400e;
+    font-size: 0.54rem;
+}
+
+.traceroute-card > small {
+    display: block;
+
+    margin-top: 10px;
+
+    color: #d6a951;
+
+    font-size: 0.49rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   PROCESS STRIP
+========================================== */
+
+.ttl-process {
+    position: absolute;
+
+    left: 50%;
+    top: 65px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    opacity: 0;
+
+    z-index: 34;
+}
+
+.process-item {
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+}
+
+.process-item span {
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(37, 99, 235, 0.14);
+
+    color: #60a5fa;
+
+    font-size: 0.51rem;
+    font-weight: 900;
+}
+
+.process-item strong {
+    color: #cbd5e1;
+
+    font-size: 0.52rem;
+}
+
+.ttl-process > i {
+    color: #475569;
+
+    font-size: 0.5rem;
+}
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.ttl-summary {
+    position: absolute;
+
+    left: 50%;
+    bottom: 91px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 9px 16px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+}
+
+.summary-item > i {
+    color: #60a5fa;
+
+    font-size: 0.75rem;
+}
+
+.summary-item:nth-of-type(2) > i {
+    color: #a78bfa;
+}
+
+.summary-item:last-child > i {
+    color: #34d399;
+}
+
+.summary-item span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.46rem;
+    font-weight: 800;
+}
+
+.summary-item strong {
+    display: block;
+
+    color: #cbd5e1;
+
+    font-size: 0.56rem;
+}
+
+.summary-arrow {
+    color: #475569;
+
+    font-size: 0.56rem;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+
+    left: 50%;
+    bottom: 27px;
+
+    width: min(790px, 76vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.final-concept > i {
+    color: #34d399;
+
+    font-size: 1.25rem;
+}
+
+.final-concept span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.final-concept strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.73rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 40;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #a78bfa,
+            #f87171,
+            #34d399
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(96, 165, 250, 0.65);
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+    background: #172033;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   VISIBILITY
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scene-brand.is-visible {
+    transform: translateY(0);
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.network-node.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+.ttl-card.is-visible,
+.hop-counter.is-visible,
+.ttl-change-card.is-visible,
+.delivery-result.is-visible {
+    transform: translateY(0);
+}
+
+.ttl-counter.is-visible,
+.ttl-rule.is-visible,
+.loop-title.is-visible,
+.loop-counter.is-visible,
+.ttl-expired.is-visible,
+.loop-prevention.is-visible,
+.traceroute-card.is-visible,
+.ttl-process.is-visible,
+.ttl-summary.is-visible,
+.final-concept.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes pathFlow {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -34;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE WIDTH
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .ttl-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .ttl-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.76);
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE HEIGHT
+========================================== */
+
+@media (max-height: 850px) {
+
+    .ttl-stage {
+        top: 55%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.84);
+    }
+
+    .scene-title {
+        top: 48px;
+    }
+
+    .scene-title p {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-height: 760px) {
+
+    .ttl-stage {
+        top: 56%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.74);
+    }
+
+    .scene-title {
+        top: 40px;
+    }
+
+    .scene-title h1 {
+        font-size:
+            clamp(1.6rem, 2.4vw, 2.25rem);
+    }
+
+    .scene-title p {
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+}
+
+@media (max-height: 680px) {
+
+    .ttl-stage {
+        top: 57%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.65);
+    }
+
+    .scene-brand {
+        top: 20px;
+        left: 28px;
+    }
+
+    .scene-title {
+        top: 28px;
+    }
+
+}

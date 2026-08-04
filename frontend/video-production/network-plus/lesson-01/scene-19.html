@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 19
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-19.css">
+
+</head>
+
+<body>
+
+<main id="scene19"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 19
+        </span>
+
+        <h1>
+            TTL and Router Hops
+        </h1>
+
+        <p>
+            Every router decreases an IPv4 packet's
+            Time to Live before forwarding it, preventing
+            packets from circulating forever.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="ttl-stage">
+
+
+        <!-- ======================================
+             NORMAL ROUTE PATH
+        ======================================= -->
+
+        <svg
+            class="network-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="pathClientR1"
+                class="network-path path-blue"
+                d="M125 260 C190 260 210 260 280 260"
+            />
+
+            <path
+                id="pathR1R2"
+                class="network-path path-purple"
+                d="M280 260 C355 260 390 260 465 260"
+            />
+
+            <path
+                id="pathR2R3"
+                class="network-path path-purple"
+                d="M465 260 C540 260 575 260 650 260"
+            />
+
+            <path
+                id="pathR3Destination"
+                class="network-path path-green"
+                d="M650 260 C750 260 830 260 930 260"
+            />
+
+
+            <!-- ==================================
+                 ROUTING LOOP
+            =================================== -->
+
+            <path
+                id="loopPathAB"
+                class="network-path loop-path"
+                d="M430 285
+                   C470 355 610 355 650 285"
+            />
+
+            <path
+                id="loopPathBA"
+                class="network-path loop-path"
+                d="M650 235
+                   C610 165 470 165 430 235"
+            />
+
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             CLIENT
+        ======================================= -->
+
+        <div
+            id="client"
+            class="network-node client-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                CLIENT
+            </strong>
+
+            <span>
+                Source Host
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER 1
+        ======================================= -->
+
+        <div
+            id="router1"
+            class="network-node router-one"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-router"></i>
+
+            </div>
+
+            <strong>
+                ROUTER 1
+            </strong>
+
+            <span>
+                Hop 1
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER 2
+        ======================================= -->
+
+        <div
+            id="router2"
+            class="network-node router-two"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-router"></i>
+
+            </div>
+
+            <strong>
+                ROUTER 2
+            </strong>
+
+            <span>
+                Hop 2
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER 3
+        ======================================= -->
+
+        <div
+            id="router3"
+            class="network-node router-three"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-router"></i>
+
+            </div>
+
+            <strong>
+                ROUTER 3
+            </strong>
+
+            <span>
+                Hop 3
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             DESTINATION
+        ======================================= -->
+
+        <div
+            id="destination"
+            class="network-node destination-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-server"></i>
+
+            </div>
+
+            <strong>
+                DESTINATION
+            </strong>
+
+            <span>
+                Remote Host
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             INITIAL PACKET
+        ======================================= -->
+
+        <div
+            id="initialPacket"
+            class="ttl-card initial-packet"
+        >
+
+            <header>
+
+                <i class="fas fa-envelope"></i>
+
+                <div>
+
+                    <span>
+                        IPv4 PACKET
+                    </span>
+
+                    <strong>
+                        Packet Created
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="ttl-display">
+
+                <span>
+                    TTL
+                </span>
+
+                <strong>
+                    64
+                </strong>
+
+            </div>
+
+
+            <small>
+                Time to Live is stored
+                in the IPv4 header.
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             TTL COUNTER
+        ======================================= -->
+
+        <div
+            id="ttlCounter"
+            class="ttl-counter"
+        >
+
+            <span>
+                CURRENT TTL
+            </span>
+
+            <strong id="ttlValue">
+                64
+            </strong>
+
+            <small id="ttlStatus">
+                Packet ready
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             HOP COUNTER
+        ======================================= -->
+
+        <div
+            id="hopCounter"
+            class="hop-counter"
+        >
+
+            <i class="fas fa-route"></i>
+
+            <div>
+
+                <span>
+                    ROUTER HOPS
+                </span>
+
+                <strong id="hopValue">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER 1 TTL CHANGE
+        ======================================= -->
+
+        <div
+            id="ttlChange1"
+            class="ttl-change-card"
+        >
+
+            <span>
+                ROUTER 1
+            </span>
+
+            <div>
+
+                <strong>
+                    64
+                </strong>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <strong>
+                    63
+                </strong>
+
+            </div>
+
+            <small>
+                Decrement TTL
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER 2 TTL CHANGE
+        ======================================= -->
+
+        <div
+            id="ttlChange2"
+            class="ttl-change-card"
+        >
+
+            <span>
+                ROUTER 2
+            </span>
+
+            <div>
+
+                <strong>
+                    63
+                </strong>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <strong>
+                    62
+                </strong>
+
+            </div>
+
+            <small>
+                Decrement TTL
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER 3 TTL CHANGE
+        ======================================= -->
+
+        <div
+            id="ttlChange3"
+            class="ttl-change-card"
+        >
+
+            <span>
+                ROUTER 3
+            </span>
+
+            <div>
+
+                <strong>
+                    62
+                </strong>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <strong>
+                    61
+                </strong>
+
+            </div>
+
+            <small>
+                Decrement TTL
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             NORMAL DELIVERY
+        ======================================= -->
+
+        <div
+            id="deliveryResult"
+            class="delivery-result"
+        >
+
+            <i class="fas fa-circle-check"></i>
+
+            <div>
+
+                <span>
+                    DELIVERED
+                </span>
+
+                <strong>
+                    Packet reached the destination
+                    with TTL 61.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TTL RULE
+        ======================================= -->
+
+        <div
+            id="ttlRule"
+            class="ttl-rule"
+        >
+
+            <i class="fas fa-arrow-down-1-9"></i>
+
+            <div>
+
+                <span>
+                    TTL RULE
+                </span>
+
+                <strong>
+                    Each router decreases
+                    the IPv4 TTL by at least 1.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             LOOP TITLE
+        ======================================= -->
+
+        <div
+            id="loopTitle"
+            class="loop-title"
+        >
+
+            <i class="fas fa-arrows-rotate"></i>
+
+            <div>
+
+                <span>
+                    WHY TTL EXISTS
+                </span>
+
+                <strong>
+                    Consider a routing loop.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             LOOP ROUTER A
+        ======================================= -->
+
+        <div
+            id="loopRouterA"
+            class="network-node loop-router loop-router-a"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-router"></i>
+
+            </div>
+
+            <strong>
+                ROUTER A
+            </strong>
+
+        </div>
+
+
+        <!-- ======================================
+             LOOP ROUTER B
+        ======================================= -->
+
+        <div
+            id="loopRouterB"
+            class="network-node loop-router loop-router-b"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-router"></i>
+
+            </div>
+
+            <strong>
+                ROUTER B
+            </strong>
+
+        </div>
+
+
+        <!-- ======================================
+             LOOP TTL COUNTER
+        ======================================= -->
+
+        <div
+            id="loopCounter"
+            class="loop-counter"
+        >
+
+            <span>
+                PACKET TTL
+            </span>
+
+            <strong id="loopTtlValue">
+                3
+            </strong>
+
+            <small id="loopStatus">
+                Entering routing loop
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             TTL ZERO
+        ======================================= -->
+
+        <div
+            id="ttlExpired"
+            class="ttl-expired"
+        >
+
+            <div class="expired-icon">
+
+                <i class="fas fa-ban"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    TTL = 0
+                </span>
+
+                <strong>
+                    PACKET DISCARDED
+                </strong>
+
+                <small>
+                    The router does not
+                    forward the packet again.
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             LOOP PREVENTION
+        ======================================= -->
+
+        <div
+            id="loopPrevention"
+            class="loop-prevention"
+        >
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <span>
+                    LOOP PROTECTION
+                </span>
+
+                <strong>
+                    TTL prevents packets from
+                    circulating indefinitely.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TRACEROUTE CONNECTION
+        ======================================= -->
+
+        <div
+            id="tracerouteCard"
+            class="traceroute-card"
+        >
+
+            <header>
+
+                <i class="fas fa-location-crosshairs"></i>
+
+                <div>
+
+                    <span>
+                        NETWORK+ CONNECTION
+                    </span>
+
+                    <strong>
+                        TRACEROUTE
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="trace-hops">
+
+                <div>
+
+                    <span>
+                        TTL 1
+                    </span>
+
+                    <strong>
+                        Hop 1
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div>
+
+                    <span>
+                        TTL 2
+                    </span>
+
+                    <strong>
+                        Hop 2
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div>
+
+                    <span>
+                        TTL 3
+                    </span>
+
+                    <strong>
+                        Hop 3
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <small>
+                Traceroute uses TTL expiration behavior
+                to discover routers along a path.
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             PROCESS STRIP
+        ======================================= -->
+
+        <div
+            id="ttlProcess"
+            class="ttl-process"
+        >
+
+            <div class="process-item">
+
+                <span>
+                    1
+                </span>
+
+                <strong>
+                    Packet Created
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    2
+                </span>
+
+                <strong>
+                    Router Hop
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    3
+                </span>
+
+                <strong>
+                    TTL − 1
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="process-item">
+
+                <span>
+                    4
+                </span>
+
+                <strong>
+                    Forward
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="ttlSummary"
+        class="ttl-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-envelope"></i>
+
+            <div>
+
+                <span>
+                    START
+                </span>
+
+                <strong>
+                    TTL 64
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-router"></i>
+
+            <div>
+
+                <span>
+                    3 ROUTERS
+                </span>
+
+                <strong>
+                    3 Hops
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-server"></i>
+
+            <div>
+
+                <span>
+                    ARRIVAL
+                </span>
+
+                <strong>
+                    TTL 61
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                Every router decreases an IPv4 packet's
+                TTL before forwarding it. When TTL reaches
+                zero, the packet is discarded.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-19.js"></script>
+
+</body>
+
+</html>
