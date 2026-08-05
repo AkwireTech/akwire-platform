@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 23
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-23.css">
+
+</head>
+
+<body>
+
+<main id="scene23"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 23
+        </span>
+
+        <h1>
+            DNS: Resolving Names to IP Addresses
+        </h1>
+
+        <p>
+            DNS translates human-readable domain names
+            into IP addresses that computers can use
+            to locate network services.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="dns-stage">
+
+
+        <!-- ======================================
+             NETWORK PATHS
+        ======================================= -->
+
+        <svg
+            class="network-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <!-- Client to recursive resolver -->
+
+            <path
+                id="clientResolverPath"
+                class="network-path path-blue"
+                d="M130 275
+                   C220 275 265 275 350 275"
+            />
+
+
+            <!-- Resolver to root -->
+
+            <path
+                id="resolverRootPath"
+                class="network-path path-purple"
+                d="M350 275
+                   C450 145 520 125 610 150"
+            />
+
+
+            <!-- Resolver to TLD -->
+
+            <path
+                id="resolverTldPath"
+                class="network-path path-orange"
+                d="M350 275
+                   C500 275 575 275 700 275"
+            />
+
+
+            <!-- Resolver to authoritative -->
+
+            <path
+                id="resolverAuthoritativePath"
+                class="network-path path-green"
+                d="M350 275
+                   C505 400 690 410 835 360"
+            />
+
+
+            <!-- Client to web server -->
+
+            <path
+                id="clientWebPath"
+                class="network-path path-cyan"
+                d="M130 275
+                   C370 465 815 470 1080 275"
+            />
+
+
+            <!-- Resolver response to client -->
+
+            <path
+                id="resolverClientReplyPath"
+                class="network-path path-green"
+                d="M350 245
+                   C270 180 205 180 130 245"
+            />
+
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             CLIENT
+        ======================================= -->
+
+        <div
+            id="clientNode"
+            class="network-node client-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-laptop"></i>
+
+            </div>
+
+            <strong>
+                CLIENT
+            </strong>
+
+            <span>
+                192.168.1.10
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             RECURSIVE RESOLVER
+        ======================================= -->
+
+        <div
+            id="resolverNode"
+            class="network-node resolver-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-server"></i>
+
+            </div>
+
+            <strong>
+                DNS RESOLVER
+            </strong>
+
+            <span>
+                Recursive Resolver
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ROOT SERVER
+        ======================================= -->
+
+        <div
+            id="rootNode"
+            class="network-node root-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-sitemap"></i>
+
+            </div>
+
+            <strong>
+                ROOT DNS
+            </strong>
+
+            <span>
+                Root Server
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             TLD SERVER
+        ======================================= -->
+
+        <div
+            id="tldNode"
+            class="network-node tld-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-globe"></i>
+
+            </div>
+
+            <strong>
+                .COM TLD
+            </strong>
+
+            <span>
+                TLD Server
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             AUTHORITATIVE SERVER
+        ======================================= -->
+
+        <div
+            id="authoritativeNode"
+            class="network-node authoritative-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-database"></i>
+
+            </div>
+
+            <strong>
+                AUTHORITATIVE DNS
+            </strong>
+
+            <span>
+                example.com
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             WEB SERVER
+        ======================================= -->
+
+        <div
+            id="webServerNode"
+            class="network-node web-server-node"
+        >
+
+            <div class="node-icon">
+
+                <i class="fas fa-server"></i>
+
+            </div>
+
+            <strong>
+                WEB SERVER
+            </strong>
+
+            <span>
+                93.184.216.34
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             USER REQUEST
+        ======================================= -->
+
+        <div
+            id="browserRequestCard"
+            class="browser-request-card"
+        >
+
+            <header>
+
+                <i class="fas fa-window-maximize"></i>
+
+                <div>
+
+                    <span>
+                        USER ENTERS
+                    </span>
+
+                    <strong>
+                        www.example.com
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="browser-question">
+
+                <span>
+                    THE CLIENT NEEDS
+                </span>
+
+                <strong>
+                    An IP address
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS PURPOSE
+        ======================================= -->
+
+        <div
+            id="dnsPurposeCard"
+            class="dns-purpose-card"
+        >
+
+            <div class="purpose-side">
+
+                <i class="fas fa-font"></i>
+
+                <span>
+                    HUMAN-READABLE NAME
+                </span>
+
+                <strong>
+                    www.example.com
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="purpose-side">
+
+                <i class="fas fa-location-dot"></i>
+
+                <span>
+                    NETWORK ADDRESS
+                </span>
+
+                <strong>
+                    IP Address
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             LOCAL CACHE
+        ======================================= -->
+
+        <div
+            id="localCacheCard"
+            class="local-cache-card"
+        >
+
+            <header>
+
+                <i class="fas fa-hard-drive"></i>
+
+                <div>
+
+                    <span>
+                        STEP 1
+                    </span>
+
+                    <strong>
+                        Check Local DNS Cache
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="cache-search">
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <span>
+                    Looking for www.example.com
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             CACHE MISS
+        ======================================= -->
+
+        <div
+            id="cacheMissCard"
+            class="cache-miss-card"
+        >
+
+            <i class="fas fa-circle-xmark"></i>
+
+            <div>
+
+                <span>
+                    CACHE MISS
+                </span>
+
+                <strong>
+                    No usable cached DNS record
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             CLIENT QUERY
+        ======================================= -->
+
+        <div
+            id="clientQueryCard"
+            class="dns-message-card client-query-card"
+        >
+
+            <header>
+
+                <i class="fas fa-paper-plane"></i>
+
+                <div>
+
+                    <span>
+                        DNS QUERY
+                    </span>
+
+                    <strong>
+                        Client → Recursive Resolver
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="query-content">
+
+                <span>
+                    QUESTION
+                </span>
+
+                <strong>
+                    What is the IP address of
+                    www.example.com?
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             RECURSIVE QUERY LABEL
+        ======================================= -->
+
+        <div
+            id="recursiveLabel"
+            class="query-label recursive-label"
+        >
+
+            <i class="fas fa-rotate"></i>
+
+            <span>
+                RECURSIVE QUERY
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             RESOLVER ROLE
+        ======================================= -->
+
+        <div
+            id="resolverRoleCard"
+            class="resolver-role-card"
+        >
+
+            <i class="fas fa-magnifying-glass-location"></i>
+
+            <div>
+
+                <span>
+                    RECURSIVE RESOLVER
+                </span>
+
+                <strong>
+                    Finds the answer on behalf
+                    of the client.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ROOT QUERY
+        ======================================= -->
+
+        <div
+            id="rootQueryCard"
+            class="dns-message-card root-query-card"
+        >
+
+            <header>
+
+                <i class="fas fa-sitemap"></i>
+
+                <div>
+
+                    <span>
+                        ITERATIVE LOOKUP
+                    </span>
+
+                    <strong>
+                        Resolver → Root DNS
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <p>
+                Where can I find information
+                about .com?
+            </p>
+
+        </div>
+
+
+        <!-- ======================================
+             ROOT REFERRAL
+        ======================================= -->
+
+        <div
+            id="rootReferralCard"
+            class="referral-card root-referral-card"
+        >
+
+            <i class="fas fa-share"></i>
+
+            <div>
+
+                <span>
+                    ROOT REFERRAL
+                </span>
+
+                <strong>
+                    Ask a .com TLD server.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TLD QUERY
+        ======================================= -->
+
+        <div
+            id="tldQueryCard"
+            class="dns-message-card tld-query-card"
+        >
+
+            <header>
+
+                <i class="fas fa-globe"></i>
+
+                <div>
+
+                    <span>
+                        ITERATIVE LOOKUP
+                    </span>
+
+                    <strong>
+                        Resolver → .com TLD
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <p>
+                Where can I find the authoritative
+                DNS server for example.com?
+            </p>
+
+        </div>
+
+
+        <!-- ======================================
+             TLD REFERRAL
+        ======================================= -->
+
+        <div
+            id="tldReferralCard"
+            class="referral-card tld-referral-card"
+        >
+
+            <i class="fas fa-share"></i>
+
+            <div>
+
+                <span>
+                    TLD REFERRAL
+                </span>
+
+                <strong>
+                    Ask the authoritative server
+                    for example.com.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             AUTHORITATIVE QUERY
+        ======================================= -->
+
+        <div
+            id="authoritativeQueryCard"
+            class="dns-message-card authoritative-query-card"
+        >
+
+            <header>
+
+                <i class="fas fa-database"></i>
+
+                <div>
+
+                    <span>
+                        FINAL LOOKUP
+                    </span>
+
+                    <strong>
+                        Resolver → Authoritative DNS
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <p>
+                What is the address record for
+                www.example.com?
+            </p>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS ANSWER
+        ======================================= -->
+
+        <div
+            id="dnsAnswerCard"
+            class="dns-answer-card"
+        >
+
+            <header>
+
+                <i class="fas fa-circle-check"></i>
+
+                <div>
+
+                    <span>
+                        AUTHORITATIVE ANSWER
+                    </span>
+
+                    <strong>
+                        DNS Record Found
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="answer-record">
+
+                <div>
+
+                    <span>
+                        NAME
+                    </span>
+
+                    <strong>
+                        www.example.com
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        TYPE
+                    </span>
+
+                    <strong>
+                        A
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        ADDRESS
+                    </span>
+
+                    <strong>
+                        93.184.216.34
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             A / AAAA
+        ======================================= -->
+
+        <div
+            id="recordTypesCard"
+            class="record-types-card"
+        >
+
+            <header>
+
+                <i class="fas fa-list"></i>
+
+                <div>
+
+                    <span>
+                        COMMON ADDRESS RECORDS
+                    </span>
+
+                    <strong>
+                        A vs. AAAA
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="record-grid">
+
+                <div class="record-a">
+
+                    <span>
+                        A
+                    </span>
+
+                    <strong>
+                        IPv4 Address
+                    </strong>
+
+                    <small>
+                        93.184.216.34
+                    </small>
+
+                </div>
+
+
+                <div class="record-aaaa">
+
+                    <span>
+                        AAAA
+                    </span>
+
+                    <strong>
+                        IPv6 Address
+                    </strong>
+
+                    <small>
+                        2001:db8::34
+                    </small>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             RESOLVER RESPONSE
+        ======================================= -->
+
+        <div
+            id="resolverResponseCard"
+            class="resolver-response-card"
+        >
+
+            <i class="fas fa-reply"></i>
+
+            <div>
+
+                <span>
+                    DNS RESPONSE TO CLIENT
+                </span>
+
+                <strong>
+                    www.example.com → 93.184.216.34
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             CACHE UPDATED
+        ======================================= -->
+
+        <div
+            id="cacheUpdatedCard"
+            class="cache-updated-card"
+        >
+
+            <header>
+
+                <i class="fas fa-database"></i>
+
+                <div>
+
+                    <span>
+                        DNS CACHE
+                    </span>
+
+                    <strong>
+                        Answer Stored Temporarily
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="cache-record">
+
+                <div>
+
+                    <span>
+                        NAME
+                    </span>
+
+                    <strong>
+                        www.example.com
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-arrows-left-right"></i>
+
+
+                <div>
+
+                    <span>
+                        ADDRESS
+                    </span>
+
+                    <strong>
+                        93.184.216.34
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TTL
+        ======================================= -->
+
+        <div
+            id="ttlCard"
+            class="ttl-card"
+        >
+
+            <i class="fas fa-clock"></i>
+
+            <div>
+
+                <span>
+                    DNS TTL
+                </span>
+
+                <strong>
+                    Controls how long a DNS record
+                    may remain cached.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             CACHE HIT
+        ======================================= -->
+
+        <div
+            id="cacheHitCard"
+            class="cache-hit-card"
+        >
+
+            <i class="fas fa-bolt"></i>
+
+            <div>
+
+                <span>
+                    NEXT LOOKUP
+                </span>
+
+                <strong>
+                    Cached answer can avoid repeating
+                    the full DNS hierarchy lookup.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             CONNECT TO SERVER
+        ======================================= -->
+
+        <div
+            id="connectCard"
+            class="connect-card"
+        >
+
+            <header>
+
+                <i class="fas fa-link"></i>
+
+                <div>
+
+                    <span>
+                        NAME RESOLUTION COMPLETE
+                    </span>
+
+                    <strong>
+                        Client Can Contact the Server
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="connect-flow">
+
+                <span>
+                    www.example.com
+                </span>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <strong>
+                    93.184.216.34
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PORT 53
+        ======================================= -->
+
+        <div
+            id="port53Card"
+            class="port53-card"
+        >
+
+            <header>
+
+                <i class="fas fa-network-wired"></i>
+
+                <div>
+
+                    <span>
+                        DNS SERVICE
+                    </span>
+
+                    <strong>
+                        Port 53
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="transport-grid">
+
+                <div class="udp-box">
+
+                    <span>
+                        UDP 53
+                    </span>
+
+                    <strong>
+                        Common DNS queries
+                    </strong>
+
+                </div>
+
+
+                <div class="tcp-box">
+
+                    <span>
+                        TCP 53
+                    </span>
+
+                    <strong>
+                        Used when TCP is required
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             QUERY TYPES
+        ======================================= -->
+
+        <div
+            id="queryTypesCard"
+            class="query-types-card"
+        >
+
+            <div class="query-type">
+
+                <i class="fas fa-user"></i>
+
+                <div>
+
+                    <span>
+                        RECURSIVE
+                    </span>
+
+                    <strong>
+                        Client asks resolver
+                        for the final answer.
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="query-type">
+
+                <i class="fas fa-route"></i>
+
+                <div>
+
+                    <span>
+                        ITERATIVE
+                    </span>
+
+                    <strong>
+                        DNS servers may return
+                        referrals to the next server.
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS HIERARCHY
+        ======================================= -->
+
+        <div
+            id="dnsHierarchy"
+            class="dns-hierarchy"
+        >
+
+            <div class="hierarchy-item">
+
+                <span>
+                    1
+                </span>
+
+                <strong>
+                    Resolver
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="hierarchy-item">
+
+                <span>
+                    2
+                </span>
+
+                <strong>
+                    Root
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="hierarchy-item">
+
+                <span>
+                    3
+                </span>
+
+                <strong>
+                    TLD
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="hierarchy-item">
+
+                <span>
+                    4
+                </span>
+
+                <strong>
+                    Authoritative
+                </strong>
+
+            </div>
+
+
+            <i class="fas fa-arrow-right"></i>
+
+
+            <div class="hierarchy-item">
+
+                <span>
+                    5
+                </span>
+
+                <strong>
+                    Answer
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="dnsSummary"
+        class="dns-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-font"></i>
+
+            <div>
+
+                <span>
+                    DOMAIN NAME
+                </span>
+
+                <strong>
+                    Human Friendly
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-server"></i>
+
+            <div>
+
+                <span>
+                    DNS
+                </span>
+
+                <strong>
+                    Resolution
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-location-dot"></i>
+
+            <div>
+
+                <span>
+                    IP ADDRESS
+                </span>
+
+                <strong>
+                    Network Location
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-link"></i>
+
+            <div>
+
+                <span>
+                    CONNECTION
+                </span>
+
+                <strong>
+                    Service Reached
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                DNS resolves names into IP addresses.
+                Recursive resolvers follow the DNS hierarchy,
+                cache answers according to TTL, and return
+                the result to the client.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div
+        id="sceneControls"
+        class="scene-controls"
+    >
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-23.js"></script>
+
+</body>
+
+</html>

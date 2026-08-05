@@ -1,0 +1,2164 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 23 — DNS
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(37, 99, 235, 0.14),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 48%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0;
+}
+
+.glow-left {
+    left: -190px;
+    top: 120px;
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.glow-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(124, 58, 237, 0.14);
+}
+
+.glow-right {
+    right: -190px;
+    bottom: -70px;
+    background: rgba(16, 185, 129, 0.18);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    opacity: 0;
+    transform: translateY(-15px);
+
+    z-index: 20;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px
+        rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+
+    width: min(940px, 78%);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    z-index: 15;
+}
+
+.scene-number {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    color: #38bdf8;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #c4b5fd
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 780px;
+    margin: 12px auto 0;
+
+    color: #94a3b8;
+
+    font-size: clamp(0.82rem, 1.1vw, 1rem);
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   MAIN STAGE
+========================================== */
+
+.dns-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    width: 1200px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin: center center;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   NETWORK PATHS
+========================================== */
+
+.network-path-layer {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+.network-path {
+    fill: none;
+
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 9 8;
+
+    opacity: 0;
+}
+
+.path-blue {
+    stroke: #38bdf8;
+}
+
+.path-purple {
+    stroke: #a78bfa;
+}
+
+.path-orange {
+    stroke: #fbbf24;
+}
+
+.path-green {
+    stroke: #34d399;
+}
+
+.path-cyan {
+    stroke: #22d3ee;
+}
+
+.network-path.is-visible {
+    opacity: 0.72;
+    animation: pathFlow 1.5s linear infinite;
+}
+
+.network-path.is-active {
+    opacity: 1;
+    stroke-width: 4;
+}
+
+.path-blue.is-active,
+.path-cyan.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(56, 189, 248, 0.85)
+        );
+}
+
+.path-purple.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(167, 139, 250, 0.85)
+        );
+}
+
+.path-orange.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(251, 191, 36, 0.85)
+        );
+}
+
+.path-green.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(52, 211, 153, 0.85)
+        );
+}
+
+.moving-packet {
+    fill: #38bdf8;
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 11px #38bdf8
+        );
+}
+
+
+/* ==========================================
+   NETWORK NODES
+========================================== */
+
+.network-node {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(18px)
+        scale(0.9);
+
+    z-index: 8;
+}
+
+.client-node {
+    left: 130px;
+    top: 275px;
+    width: 160px;
+}
+
+.resolver-node {
+    left: 350px;
+    top: 275px;
+    width: 180px;
+}
+
+.root-node {
+    left: 610px;
+    top: 150px;
+    width: 175px;
+}
+
+.tld-node {
+    left: 700px;
+    top: 275px;
+    width: 175px;
+}
+
+.authoritative-node {
+    left: 835px;
+    top: 360px;
+    width: 195px;
+}
+
+.web-server-node {
+    left: 1080px;
+    top: 275px;
+    width: 170px;
+}
+
+.node-icon {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.28);
+
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.98),
+            rgba(15, 38, 67, 0.92)
+        );
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.3);
+}
+
+.node-icon i {
+    color: #60a5fa;
+    font-size: 1.6rem;
+}
+
+.resolver-node .node-icon i {
+    color: #38bdf8;
+}
+
+.root-node .node-icon i {
+    color: #a78bfa;
+}
+
+.tld-node .node-icon i {
+    color: #fbbf24;
+}
+
+.authoritative-node .node-icon i {
+    color: #34d399;
+}
+
+.web-server-node .node-icon i {
+    color: #22d3ee;
+}
+
+.network-node > strong {
+    color: #e2e8f0;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.07em;
+}
+
+.network-node > span {
+    color: #94a3b8;
+    font-size: 0.52rem;
+}
+
+.network-node.is-active .node-icon {
+    border-color:
+        rgba(96, 165, 250, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(96, 165, 250, 0.3);
+}
+
+.root-node.is-active .node-icon {
+    border-color:
+        rgba(167, 139, 250, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(167, 139, 250, 0.32);
+}
+
+.tld-node.is-active .node-icon {
+    border-color:
+        rgba(251, 191, 36, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(251, 191, 36, 0.32);
+}
+
+.authoritative-node.is-active .node-icon {
+    border-color:
+        rgba(52, 211, 153, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(52, 211, 153, 0.32);
+}
+
+.web-server-node.is-active .node-icon {
+    border-color:
+        rgba(34, 211, 238, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(34, 211, 238, 0.32);
+}
+
+
+/* ==========================================
+   COMMON CENTER CARDS
+========================================== */
+
+.browser-request-card,
+.local-cache-card,
+.dns-message-card,
+.dns-answer-card,
+.record-types-card,
+.cache-updated-card,
+.connect-card,
+.port53-card {
+    position: absolute;
+
+    left: 50%;
+    top: 45px;
+
+    width: 500px;
+
+    padding: 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border-radius: 15px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+
+/* ==========================================
+   COMMON HEADERS
+========================================== */
+
+.browser-request-card header,
+.local-cache-card header,
+.dns-message-card header,
+.dns-answer-card header,
+.record-types-card header,
+.cache-updated-card header,
+.connect-card header,
+.port53-card header {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 11px;
+}
+
+.browser-request-card header span,
+.local-cache-card header span,
+.dns-message-card header span,
+.dns-answer-card header span,
+.record-types-card header span,
+.cache-updated-card header span,
+.connect-card header span,
+.port53-card header span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+
+/* ==========================================
+   BROWSER REQUEST
+========================================== */
+
+.browser-request-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+}
+
+.browser-request-card header > i,
+.browser-request-card header span {
+    color: #38bdf8;
+}
+
+.browser-request-card header strong {
+    color: #dbeafe;
+    font-size: 0.68rem;
+}
+
+.browser-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(14, 165, 233, 0.08);
+}
+
+.browser-question span {
+    color: #64748b;
+
+    font-size: 0.42rem;
+    font-weight: 900;
+}
+
+.browser-question strong {
+    color: #bae6fd;
+    font-size: 0.57rem;
+}
+
+
+/* ==========================================
+   DNS PURPOSE
+========================================== */
+
+.dns-purpose-card {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 520px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 35px 1fr;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.22);
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.purpose-side {
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(14, 165, 233, 0.07);
+}
+
+.purpose-side i {
+    margin-bottom: 7px;
+    color: #38bdf8;
+}
+
+.purpose-side span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #64748b;
+
+    font-size: 0.41rem;
+    font-weight: 900;
+}
+
+.purpose-side strong {
+    color: #dbeafe;
+    font-size: 0.55rem;
+}
+
+.dns-purpose-card > i {
+    color: #38bdf8;
+    text-align: center;
+}
+
+
+/* ==========================================
+   LOCAL CACHE
+========================================== */
+
+.local-cache-card {
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.24);
+}
+
+.local-cache-card header > i,
+.local-cache-card header span {
+    color: #60a5fa;
+}
+
+.local-cache-card header strong {
+    color: #dbeafe;
+    font-size: 0.65rem;
+}
+
+.cache-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    padding: 12px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(30, 41, 59, 0.7);
+
+    color: #cbd5e1;
+
+    font-size: 0.52rem;
+}
+
+
+/* ==========================================
+   CACHE MISS
+========================================== */
+
+.cache-miss-card {
+    position: absolute;
+
+    left: 50%;
+    top: 65px;
+
+    width: 360px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(69, 10, 10, 0.3);
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.cache-miss-card > i {
+    color: #f87171;
+}
+
+.cache-miss-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #f87171;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.cache-miss-card strong {
+    color: #fecaca;
+    font-size: 0.56rem;
+}
+
+
+/* ==========================================
+   CLIENT QUERY
+========================================== */
+
+.client-query-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+}
+
+.client-query-card header > i,
+.client-query-card header span {
+    color: #38bdf8;
+}
+
+.client-query-card header strong {
+    color: #dbeafe;
+    font-size: 0.64rem;
+}
+
+.query-content {
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(14, 165, 233, 0.08);
+}
+
+.query-content span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #38bdf8;
+
+    font-size: 0.42rem;
+    font-weight: 900;
+}
+
+.query-content strong {
+    color: #dbeafe;
+
+    font-size: 0.56rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   QUERY LABEL
+========================================== */
+
+.query-label {
+    position: absolute;
+
+    left: 225px;
+    top: 210px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 7px 10px;
+
+    border-radius: 100px;
+
+    opacity: 0;
+
+    z-index: 18;
+}
+
+.recursive-label {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+
+    background:
+        rgba(8, 47, 73, 0.78);
+
+    color: #bae6fd;
+
+    font-size: 0.43rem;
+    font-weight: 900;
+}
+
+
+/* ==========================================
+   RESOLVER ROLE
+========================================== */
+
+.resolver-role-card {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 430px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.23);
+
+    border-radius: 14px;
+
+    background:
+        rgba(8, 47, 73, 0.44);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.resolver-role-card > i {
+    color: #38bdf8;
+    font-size: 1.05rem;
+}
+
+.resolver-role-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #38bdf8;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.resolver-role-card strong {
+    color: #bae6fd;
+
+    font-size: 0.56rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   ROOT QUERY
+========================================== */
+
+.root-query-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+}
+
+.root-query-card header > i,
+.root-query-card header span {
+    color: #a78bfa;
+}
+
+.root-query-card header strong {
+    color: #ddd6fe;
+    font-size: 0.64rem;
+}
+
+.root-query-card p {
+    color: #c4b5fd;
+
+    font-size: 0.54rem;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   REFERRALS
+========================================== */
+
+.referral-card {
+    position: absolute;
+
+    left: 50%;
+    top: 60px;
+
+    width: 400px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 12px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border-radius: 13px;
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.root-referral-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.24);
+
+    background:
+        rgba(30, 27, 75, 0.5);
+}
+
+.root-referral-card > i,
+.root-referral-card span {
+    color: #a78bfa;
+}
+
+.tld-referral-card {
+    border:
+        1px solid
+        rgba(251, 191, 36, 0.24);
+
+    background:
+        rgba(120, 53, 15, 0.28);
+}
+
+.tld-referral-card > i,
+.tld-referral-card span {
+    color: #fbbf24;
+}
+
+.referral-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.referral-card strong {
+    color: #e2e8f0;
+
+    font-size: 0.56rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TLD QUERY
+========================================== */
+
+.tld-query-card {
+    border:
+        1px solid
+        rgba(251, 191, 36, 0.25);
+}
+
+.tld-query-card header > i,
+.tld-query-card header span {
+    color: #fbbf24;
+}
+
+.tld-query-card header strong {
+    color: #fde68a;
+    font-size: 0.64rem;
+}
+
+.tld-query-card p {
+    color: #fde68a;
+
+    font-size: 0.53rem;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   AUTHORITATIVE QUERY
+========================================== */
+
+.authoritative-query-card {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+}
+
+.authoritative-query-card header > i,
+.authoritative-query-card header span {
+    color: #34d399;
+}
+
+.authoritative-query-card header strong {
+    color: #d1fae5;
+    font-size: 0.64rem;
+}
+
+.authoritative-query-card p {
+    color: #a7f3d0;
+
+    font-size: 0.53rem;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   DNS ANSWER
+========================================== */
+
+.dns-answer-card {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.26);
+}
+
+.dns-answer-card header > i,
+.dns-answer-card header span {
+    color: #34d399;
+}
+
+.dns-answer-card header strong {
+    color: #d1fae5;
+    font-size: 0.64rem;
+}
+
+.answer-record {
+    display: grid;
+
+    grid-template-columns:
+        1.5fr 0.5fr 1fr;
+
+    gap: 7px;
+}
+
+.answer-record > div {
+    padding: 9px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(6, 78, 59, 0.2);
+}
+
+.answer-record span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #34d399;
+
+    font-size: 0.4rem;
+    font-weight: 900;
+}
+
+.answer-record strong {
+    color: #d1fae5;
+    font-size: 0.51rem;
+}
+
+
+/* ==========================================
+   A / AAAA RECORDS
+========================================== */
+
+.record-types-card {
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.23);
+}
+
+.record-types-card header > i,
+.record-types-card header span {
+    color: #60a5fa;
+}
+
+.record-types-card header strong {
+    color: #dbeafe;
+    font-size: 0.64rem;
+}
+
+.record-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+}
+
+.record-grid > div {
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(2, 6, 23, 0.62);
+}
+
+.record-grid span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 0.58rem;
+    font-weight: 900;
+}
+
+.record-a span {
+    color: #38bdf8;
+}
+
+.record-aaaa span {
+    color: #a78bfa;
+}
+
+.record-grid strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #e2e8f0;
+
+    font-size: 0.52rem;
+}
+
+.record-grid small {
+    color: #94a3b8;
+    font-size: 0.46rem;
+}
+
+
+/* ==========================================
+   RESOLVER RESPONSE
+========================================== */
+
+.resolver-response-card {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 450px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 13px 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 14px;
+
+    background:
+        rgba(6, 78, 59, 0.28);
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.resolver-response-card > i {
+    color: #34d399;
+}
+
+.resolver-response-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.resolver-response-card strong {
+    color: #d1fae5;
+    font-size: 0.57rem;
+}
+
+
+/* ==========================================
+   CACHE UPDATED
+========================================== */
+
+.cache-updated-card {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+}
+
+.cache-updated-card header > i,
+.cache-updated-card header span {
+    color: #34d399;
+}
+
+.cache-updated-card header strong {
+    color: #d1fae5;
+    font-size: 0.64rem;
+}
+
+.cache-record {
+    display: grid;
+
+    grid-template-columns:
+        1fr 35px 1fr;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.cache-record > div {
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(6, 78, 59, 0.18);
+}
+
+.cache-record span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #34d399;
+
+    font-size: 0.4rem;
+    font-weight: 900;
+}
+
+.cache-record strong {
+    color: #d1fae5;
+    font-size: 0.52rem;
+}
+
+.cache-record > i {
+    color: #34d399;
+    text-align: center;
+}
+
+
+/* ==========================================
+   TTL
+========================================== */
+
+.ttl-card {
+    position: absolute;
+
+    left: 50%;
+    top: 60px;
+
+    width: 430px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 13px 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(251, 191, 36, 0.24);
+
+    border-radius: 14px;
+
+    background:
+        rgba(120, 53, 15, 0.26);
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.ttl-card > i {
+    color: #fbbf24;
+}
+
+.ttl-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #fbbf24;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.ttl-card strong {
+    color: #fde68a;
+
+    font-size: 0.55rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   CACHE HIT
+========================================== */
+
+.cache-hit-card {
+    position: absolute;
+
+    left: 50%;
+    top: 60px;
+
+    width: 450px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    padding: 13px 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.24);
+
+    border-radius: 14px;
+
+    background:
+        rgba(6, 78, 59, 0.26);
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.cache-hit-card > i {
+    color: #34d399;
+}
+
+.cache-hit-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.cache-hit-card strong {
+    color: #d1fae5;
+
+    font-size: 0.55rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   CONNECT
+========================================== */
+
+.connect-card {
+    border:
+        1px solid
+        rgba(34, 211, 238, 0.25);
+}
+
+.connect-card header > i,
+.connect-card header span {
+    color: #22d3ee;
+}
+
+.connect-card header strong {
+    color: #cffafe;
+    font-size: 0.64rem;
+}
+
+.connect-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(8, 47, 73, 0.3);
+}
+
+.connect-flow span,
+.connect-flow strong {
+    color: #cffafe;
+    font-size: 0.56rem;
+}
+
+.connect-flow i {
+    color: #22d3ee;
+}
+
+
+/* ==========================================
+   PORT 53
+========================================== */
+
+.port53-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.24);
+}
+
+.port53-card header > i,
+.port53-card header span {
+    color: #a78bfa;
+}
+
+.port53-card header strong {
+    color: #ddd6fe;
+    font-size: 0.66rem;
+}
+
+.transport-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 9px;
+}
+
+.transport-grid > div {
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(2, 6, 23, 0.64);
+}
+
+.transport-grid span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 0.55rem;
+    font-weight: 900;
+}
+
+.udp-box span {
+    color: #38bdf8;
+}
+
+.tcp-box span {
+    color: #a78bfa;
+}
+
+.transport-grid strong {
+    color: #cbd5e1;
+    font-size: 0.5rem;
+}
+
+
+/* ==========================================
+   QUERY TYPES
+========================================== */
+
+.query-types-card {
+    position: absolute;
+
+    left: 50%;
+    top: 50px;
+
+    width: 560px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 10px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.query-type {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 13px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.2);
+
+    border-radius: 12px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+}
+
+.query-type:first-child i,
+.query-type:first-child span {
+    color: #38bdf8;
+}
+
+.query-type:last-child i,
+.query-type:last-child span {
+    color: #fbbf24;
+}
+
+.query-type span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.43rem;
+    font-weight: 900;
+}
+
+.query-type strong {
+    color: #cbd5e1;
+
+    font-size: 0.51rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   DNS HIERARCHY
+========================================== */
+
+.dns-hierarchy {
+    position: absolute;
+
+    left: 50%;
+    top: 65px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    opacity: 0;
+
+    z-index: 34;
+}
+
+.hierarchy-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hierarchy-item span {
+    width: 23px;
+    height: 23px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 7px;
+
+    background:
+        rgba(37, 99, 235, 0.14);
+
+    color: #60a5fa;
+
+    font-size: 0.5rem;
+    font-weight: 900;
+}
+
+.hierarchy-item strong {
+    color: #cbd5e1;
+    font-size: 0.49rem;
+}
+
+.dns-hierarchy > i {
+    color: #475569;
+    font-size: 0.48rem;
+}
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.dns-summary {
+    position: absolute;
+
+    left: 50%;
+    bottom: 91px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 16px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-item > i {
+    color: #60a5fa;
+    font-size: 0.75rem;
+}
+
+.summary-item:nth-of-type(2) > i {
+    color: #a78bfa;
+}
+
+.summary-item:nth-of-type(3) > i {
+    color: #34d399;
+}
+
+.summary-item:last-child > i {
+    color: #22d3ee;
+}
+
+.summary-item span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.43rem;
+    font-weight: 800;
+}
+
+.summary-item strong {
+    display: block;
+
+    color: #cbd5e1;
+    font-size: 0.53rem;
+}
+
+.summary-arrow {
+    color: #475569;
+    font-size: 0.54rem;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+
+    left: 50%;
+    bottom: 27px;
+
+    width: min(820px, 76vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.final-concept > i {
+    color: #34d399;
+    font-size: 1.25rem;
+}
+
+.final-concept span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.final-concept strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 40;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #a78bfa,
+            #fbbf24,
+            #34d399,
+            #22d3ee
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(96, 165, 250, 0.65);
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+    background: #172033;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   VISIBILITY
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scene-brand.is-visible {
+    transform: translateY(0);
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.network-node.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+.browser-request-card.is-visible,
+.dns-purpose-card.is-visible,
+.local-cache-card.is-visible,
+.cache-miss-card.is-visible,
+.dns-message-card.is-visible,
+.resolver-role-card.is-visible,
+.referral-card.is-visible,
+.dns-answer-card.is-visible,
+.record-types-card.is-visible,
+.resolver-response-card.is-visible,
+.cache-updated-card.is-visible,
+.ttl-card.is-visible,
+.cache-hit-card.is-visible,
+.connect-card.is-visible,
+.port53-card.is-visible,
+.query-types-card.is-visible,
+.dns-hierarchy.is-visible,
+.dns-summary.is-visible,
+.final-concept.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes pathFlow {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -34;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE WIDTH
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .dns-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .dns-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.76);
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE HEIGHT
+========================================== */
+
+@media (max-height: 850px) {
+
+    .dns-stage {
+        top: 55%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.84);
+    }
+
+    .scene-title {
+        top: 48px;
+    }
+
+    .scene-title p {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-height: 760px) {
+
+    .dns-stage {
+        top: 56%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.74);
+    }
+
+    .scene-title {
+        top: 40px;
+    }
+
+    .scene-title h1 {
+        font-size:
+            clamp(1.6rem, 2.4vw, 2.25rem);
+    }
+
+    .scene-title p {
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+}
+
+@media (max-height: 680px) {
+
+    .dns-stage {
+        top: 57%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.65);
+    }
+
+    .scene-brand {
+        top: 20px;
+        left: 28px;
+    }
+
+    .scene-title {
+        top: 28px;
+    }
+
+}
