@@ -1,0 +1,1860 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 25 — NTP
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(37, 99, 235, 0.14),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 48%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0;
+}
+
+.glow-left {
+    left: -190px;
+    top: 120px;
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.glow-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(124, 58, 237, 0.14);
+}
+
+.glow-right {
+    right: -190px;
+    bottom: -70px;
+    background: rgba(16, 185, 129, 0.18);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    opacity: 0;
+    transform: translateY(-15px);
+
+    z-index: 20;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px
+        rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+
+    width: min(940px, 78%);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    z-index: 15;
+}
+
+.scene-number {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    color: #38bdf8;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #c4b5fd
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 780px;
+    margin: 12px auto 0;
+
+    color: #94a3b8;
+
+    font-size: clamp(0.82rem, 1.1vw, 1rem);
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   MAIN STAGE
+========================================== */
+
+.ntp-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    width: 1200px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin: center center;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   NETWORK PATHS
+========================================== */
+
+.network-path-layer {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+.network-path {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 9 8;
+    opacity: 0;
+}
+
+.path-blue {
+    stroke: #38bdf8;
+}
+
+.path-green {
+    stroke: #34d399;
+}
+
+.path-gold {
+    stroke: #fbbf24;
+}
+
+.path-purple {
+    stroke: #a78bfa;
+}
+
+.path-cyan {
+    stroke: #22d3ee;
+}
+
+.network-path.is-visible {
+    opacity: 0.72;
+    animation: pathFlow 1.5s linear infinite;
+}
+
+.network-path.is-active {
+    opacity: 1;
+    stroke-width: 4;
+}
+
+.path-blue.is-active,
+.path-cyan.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(56, 189, 248, 0.85)
+        );
+}
+
+.path-green.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(52, 211, 153, 0.85)
+        );
+}
+
+.path-gold.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(251, 191, 36, 0.85)
+        );
+}
+
+.path-purple.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(167, 139, 250, 0.85)
+        );
+}
+
+.moving-packet {
+    fill: #38bdf8;
+    opacity: 0;
+    filter: drop-shadow(0 0 11px #38bdf8);
+}
+
+
+/* ==========================================
+   NETWORK NODES
+========================================== */
+
+.network-node {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(18px)
+        scale(0.9);
+
+    z-index: 8;
+}
+
+.client-node {
+    left: 165px;
+    top: 300px;
+    width: 175px;
+}
+
+.server-node {
+    left: 650px;
+    top: 300px;
+    width: 185px;
+}
+
+.reference-node {
+    left: 1040px;
+    top: 100px;
+    width: 195px;
+}
+
+.stratum1-node {
+    left: 820px;
+    top: 185px;
+    width: 175px;
+}
+
+.stratum3-node {
+    left: 385px;
+    top: 345px;
+    width: 175px;
+}
+
+.internal-node {
+    left: 980px;
+    top: 350px;
+    width: 195px;
+}
+
+.node-icon {
+    width: 72px;
+    height: 72px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.28);
+
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.98),
+            rgba(15, 38, 67, 0.92)
+        );
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.3);
+}
+
+.node-icon i {
+    color: #60a5fa;
+    font-size: 1.6rem;
+}
+
+.server-node .node-icon i {
+    color: #34d399;
+}
+
+.reference-node .node-icon i {
+    color: #fbbf24;
+}
+
+.stratum1-node .node-icon i {
+    color: #a78bfa;
+}
+
+.stratum3-node .node-icon i {
+    color: #22d3ee;
+}
+
+.internal-node .node-icon i {
+    color: #34d399;
+}
+
+.network-node > strong {
+    color: #e2e8f0;
+
+    font-size: 0.65rem;
+    letter-spacing: 0.07em;
+}
+
+.network-node > span {
+    color: #94a3b8;
+    font-size: 0.52rem;
+}
+
+.network-node > small {
+    color: #64748b;
+    font-size: 0.44rem;
+}
+
+.network-node.is-active .node-icon {
+    border-color:
+        rgba(96, 165, 250, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(96, 165, 250, 0.3);
+}
+
+.server-node.is-active .node-icon,
+.internal-node.is-active .node-icon {
+    border-color:
+        rgba(52, 211, 153, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(52, 211, 153, 0.32);
+}
+
+.reference-node.is-active .node-icon {
+    border-color:
+        rgba(251, 191, 36, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(251, 191, 36, 0.32);
+}
+
+.stratum1-node.is-active .node-icon {
+    border-color:
+        rgba(167, 139, 250, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(167, 139, 250, 0.32);
+}
+
+
+/* ==========================================
+   COMMON CENTER CARDS
+========================================== */
+
+.clock-drift-card,
+.ntp-message-card,
+.time-calculation-card,
+.udp-card,
+.log-problem-card {
+    position: absolute;
+
+    left: 50%;
+    top: 45px;
+
+    width: 510px;
+
+    padding: 15px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border-radius: 15px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+
+/* ==========================================
+   COMMON HEADERS
+========================================== */
+
+.clock-drift-card header,
+.ntp-message-card header,
+.time-calculation-card header,
+.udp-card header,
+.log-problem-card header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    margin-bottom: 11px;
+}
+
+.clock-drift-card header span,
+.ntp-message-card header span,
+.time-calculation-card header span,
+.udp-card header span,
+.log-problem-card header span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+
+/* ==========================================
+   CLOCK DRIFT
+========================================== */
+
+.clock-drift-card {
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.24);
+}
+
+.clock-drift-card header > i,
+.clock-drift-card header span {
+    color: #f87171;
+}
+
+.clock-drift-card header strong {
+    color: #fecaca;
+    font-size: 0.61rem;
+}
+
+.clock-comparison {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+}
+
+.clock-comparison > div:not(.clock-difference) {
+    padding: 11px;
+
+    text-align: center;
+
+    border-radius: 9px;
+
+    background:
+        rgba(2, 6, 23, 0.55);
+}
+
+.clock-comparison span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #64748b;
+
+    font-size: 0.4rem;
+    font-weight: 900;
+}
+
+.clock-comparison strong {
+    color: #e2e8f0;
+    font-size: 0.75rem;
+}
+
+.clock-difference {
+    text-align: center;
+}
+
+.clock-difference i {
+    display: block;
+    margin-bottom: 5px;
+    color: #fbbf24;
+}
+
+.clock-difference span {
+    color: #fbbf24;
+    font-size: 0.4rem;
+}
+
+
+/* ==========================================
+   NTP PURPOSE
+========================================== */
+
+.ntp-purpose-card,
+.synchronized-card,
+.stratum-intro-card,
+.stratum-distance-card,
+.source-card,
+.importance-card {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 470px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 16px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border-radius: 14px;
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.ntp-purpose-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+
+    background:
+        rgba(8, 47, 73, 0.36);
+}
+
+.ntp-purpose-card > i {
+    color: #38bdf8;
+    font-size: 1.3rem;
+}
+
+.ntp-purpose-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #38bdf8;
+
+    font-size: 0.45rem;
+    font-weight: 900;
+}
+
+.ntp-purpose-card strong {
+    color: #bae6fd;
+    font-size: 0.63rem;
+}
+
+.ntp-purpose-card p {
+    margin-top: 5px;
+
+    color: #94a3b8;
+
+    font-size: 0.51rem;
+    line-height: 1.45;
+}
+
+
+/* ==========================================
+   REQUEST / RESPONSE
+========================================== */
+
+.request-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.25);
+}
+
+.request-card header > i,
+.request-card header span {
+    color: #38bdf8;
+}
+
+.request-card header strong {
+    color: #bae6fd;
+    font-size: 0.63rem;
+}
+
+.response-card {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+}
+
+.response-card header > i,
+.response-card header span {
+    color: #34d399;
+}
+
+.response-card header strong {
+    color: #d1fae5;
+    font-size: 0.63rem;
+}
+
+.message-detail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(2, 6, 23, 0.55);
+}
+
+.message-detail span {
+    color: #64748b;
+
+    font-size: 0.41rem;
+    font-weight: 900;
+}
+
+.message-detail strong {
+    color: #e2e8f0;
+    font-size: 0.58rem;
+}
+
+
+/* ==========================================
+   TIME CALCULATION
+========================================== */
+
+.time-calculation-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.24);
+}
+
+.time-calculation-card header > i,
+.time-calculation-card header span {
+    color: #a78bfa;
+}
+
+.time-calculation-card header strong {
+    color: #ddd6fe;
+    font-size: 0.61rem;
+}
+
+.adjustment-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    padding: 11px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(76, 29, 149, 0.14);
+}
+
+.adjustment-flow span {
+    color: #e2e8f0;
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.adjustment-flow strong {
+    color: #c4b5fd;
+    font-size: 0.56rem;
+}
+
+.adjustment-flow i {
+    color: #a78bfa;
+}
+
+
+/* ==========================================
+   SYNCHRONIZED
+========================================== */
+
+.synchronized-card {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    background:
+        rgba(6, 78, 59, 0.25);
+}
+
+.synchronized-card > i {
+    color: #34d399;
+    font-size: 1.25rem;
+}
+
+.synchronized-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.synchronized-card strong {
+    color: #d1fae5;
+
+    font-size: 0.57rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   UDP 123
+========================================== */
+
+.udp-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+}
+
+.udp-card header > i,
+.udp-card header span {
+    color: #a78bfa;
+}
+
+.udp-card header strong {
+    color: #ddd6fe;
+    font-size: 0.65rem;
+}
+
+.port-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 14px;
+
+    padding: 12px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(76, 29, 149, 0.16);
+}
+
+.port-display span {
+    color: #c4b5fd;
+
+    font-size: 0.65rem;
+    font-weight: 900;
+}
+
+.port-display strong {
+    color: #ffffff;
+    font-size: 1.25rem;
+}
+
+
+/* ==========================================
+   STRATUM INTRO
+========================================== */
+
+.stratum-intro-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+
+    background:
+        rgba(76, 29, 149, 0.2);
+}
+
+.stratum-intro-card > i {
+    color: #a78bfa;
+    font-size: 1.3rem;
+}
+
+.stratum-intro-card span,
+.stratum-distance-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #a78bfa;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.stratum-intro-card strong,
+.stratum-distance-card strong {
+    color: #ddd6fe;
+
+    font-size: 0.56rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   STRATUM FLOW
+========================================== */
+
+.stratum-card {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+
+    width: 590px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 25px 1fr 25px 1fr;
+
+    align-items: center;
+    gap: 7px;
+
+    padding: 12px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.2);
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    opacity: 0;
+
+    z-index: 31;
+}
+
+.stratum-card > div {
+    padding: 10px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(76, 29, 149, 0.12);
+}
+
+.stratum-card span {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #a78bfa;
+
+    font-size: 0.39rem;
+    font-weight: 900;
+}
+
+.stratum-card strong {
+    color: #ddd6fe;
+    font-size: 0.51rem;
+}
+
+.stratum-card > i {
+    color: #64748b;
+    text-align: center;
+}
+
+
+/* ==========================================
+   STRATUM DISTANCE
+========================================== */
+
+.stratum-distance-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.23);
+
+    background:
+        rgba(8, 47, 73, 0.28);
+}
+
+.stratum-distance-card > i {
+    color: #38bdf8;
+}
+
+.stratum-distance-card span {
+    color: #38bdf8;
+}
+
+.stratum-distance-card strong {
+    color: #bae6fd;
+}
+
+
+/* ==========================================
+   EXTERNAL / INTERNAL SOURCES
+========================================== */
+
+.source-card {
+    width: 490px;
+}
+
+.external-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+
+    background:
+        rgba(8, 47, 73, 0.3);
+}
+
+.external-card > i {
+    color: #38bdf8;
+    font-size: 1.25rem;
+}
+
+.external-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #38bdf8;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.external-card strong {
+    color: #bae6fd;
+
+    font-size: 0.56rem;
+    line-height: 1.4;
+}
+
+.internal-card {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.24);
+
+    background:
+        rgba(6, 78, 59, 0.24);
+}
+
+.internal-card > i {
+    color: #34d399;
+    font-size: 1.25rem;
+}
+
+.internal-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.internal-card strong {
+    color: #d1fae5;
+
+    font-size: 0.56rem;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   LOG PROBLEM
+========================================== */
+
+.log-problem-card {
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.24);
+}
+
+.log-problem-card header > i,
+.log-problem-card header span {
+    color: #f87171;
+}
+
+.log-problem-card header strong {
+    color: #fecaca;
+    font-size: 0.62rem;
+}
+
+.log-lines {
+    display: grid;
+    gap: 6px;
+}
+
+.log-lines > div {
+    display: grid;
+    grid-template-columns: 75px 1fr;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 8px 10px;
+
+    border-radius: 7px;
+
+    background:
+        rgba(69, 10, 10, 0.2);
+}
+
+.log-lines span {
+    color: #f87171;
+    font-size: 0.48rem;
+    font-weight: 900;
+}
+
+.log-lines strong {
+    color: #fecaca;
+    font-size: 0.49rem;
+}
+
+
+/* ==========================================
+   IMPORTANCE CARDS
+========================================== */
+
+.importance-card {
+    width: 500px;
+}
+
+.importance-card > i {
+    font-size: 1.25rem;
+}
+
+.importance-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.importance-card strong {
+    font-size: 0.56rem;
+    line-height: 1.4;
+}
+
+#logCorrelationCard {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+
+    background:
+        rgba(8, 47, 73, 0.3);
+}
+
+#logCorrelationCard > i,
+#logCorrelationCard span {
+    color: #38bdf8;
+}
+
+#logCorrelationCard strong {
+    color: #bae6fd;
+}
+
+#authenticationCard {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.24);
+
+    background:
+        rgba(76, 29, 149, 0.2);
+}
+
+#authenticationCard > i,
+#authenticationCard span {
+    color: #a78bfa;
+}
+
+#authenticationCard strong {
+    color: #ddd6fe;
+}
+
+#certificateCard {
+    border:
+        1px solid
+        rgba(251, 191, 36, 0.24);
+
+    background:
+        rgba(120, 53, 15, 0.24);
+}
+
+#certificateCard > i,
+#certificateCard span {
+    color: #fbbf24;
+}
+
+#certificateCard strong {
+    color: #fde68a;
+}
+
+#troubleshootingCard {
+    border:
+        1px solid
+        rgba(34, 211, 238, 0.24);
+
+    background:
+        rgba(8, 51, 68, 0.28);
+}
+
+#troubleshootingCard > i,
+#troubleshootingCard span {
+    color: #22d3ee;
+}
+
+#troubleshootingCard strong {
+    color: #cffafe;
+}
+
+#securityCard {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.24);
+
+    background:
+        rgba(6, 78, 59, 0.24);
+}
+
+#securityCard > i,
+#securityCard span {
+    color: #34d399;
+}
+
+#securityCard strong {
+    color: #d1fae5;
+}
+
+
+/* ==========================================
+   IMPORTANCE SUMMARY
+========================================== */
+
+.importance-summary {
+    position: absolute;
+
+    left: 50%;
+    top: 65px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    padding: 10px 14px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.18);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    opacity: 0;
+
+    z-index: 32;
+}
+
+.importance-summary > div {
+    display: flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding: 7px 9px;
+
+    border-radius: 100px;
+
+    background:
+        rgba(30, 41, 59, 0.65);
+}
+
+.importance-summary i {
+    color: #60a5fa;
+    font-size: 0.58rem;
+}
+
+.importance-summary span {
+    color: #cbd5e1;
+
+    font-size: 0.44rem;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   NTP FLOW SUMMARY
+========================================== */
+
+.ntp-flow-summary {
+    position: absolute;
+
+    left: 50%;
+    top: 50px;
+
+    width: 690px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 25px 1fr 25px 1fr 25px 1fr;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 12px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.18);
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+
+    opacity: 0;
+
+    z-index: 32;
+}
+
+.ntp-flow-summary > div {
+    padding: 9px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(30, 41, 59, 0.6);
+}
+
+.ntp-flow-summary > div > i {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #60a5fa;
+}
+
+.ntp-flow-summary span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 0.38rem;
+    font-weight: 900;
+}
+
+.ntp-flow-summary strong {
+    color: #cbd5e1;
+    font-size: 0.48rem;
+}
+
+.ntp-flow-summary > i {
+    color: #475569;
+    text-align: center;
+}
+
+
+/* ==========================================
+   FINAL SUMMARY
+========================================== */
+
+.ntp-summary {
+    position: absolute;
+
+    left: 50%;
+    bottom: 91px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 16px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-item > i {
+    color: #60a5fa;
+    font-size: 0.75rem;
+}
+
+.summary-item:nth-of-type(2) > i {
+    color: #34d399;
+}
+
+.summary-item:nth-of-type(3) > i {
+    color: #a78bfa;
+}
+
+.summary-item:last-child > i {
+    color: #22d3ee;
+}
+
+.summary-item span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.43rem;
+    font-weight: 800;
+}
+
+.summary-item strong {
+    display: block;
+
+    color: #cbd5e1;
+    font-size: 0.53rem;
+}
+
+.summary-arrow {
+    color: #475569;
+    font-size: 0.54rem;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+
+    left: 50%;
+    bottom: 27px;
+
+    width: min(860px, 78vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.final-concept > i {
+    color: #34d399;
+    font-size: 1.25rem;
+}
+
+.final-concept span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.final-concept strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.72rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 40;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #34d399,
+            #fbbf24,
+            #a78bfa,
+            #22d3ee
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(96, 165, 250, 0.65);
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+    background: #172033;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   VISIBILITY
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scene-brand.is-visible {
+    transform: translateY(0);
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.network-node.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+.clock-drift-card.is-visible,
+.ntp-purpose-card.is-visible,
+.ntp-message-card.is-visible,
+.time-calculation-card.is-visible,
+.synchronized-card.is-visible,
+.udp-card.is-visible,
+.stratum-intro-card.is-visible,
+.stratum-card.is-visible,
+.stratum-distance-card.is-visible,
+.source-card.is-visible,
+.log-problem-card.is-visible,
+.importance-card.is-visible,
+.importance-summary.is-visible,
+.ntp-flow-summary.is-visible,
+.ntp-summary.is-visible,
+.final-concept.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes pathFlow {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -34;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE WIDTH
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .ntp-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .ntp-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.76);
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE HEIGHT
+========================================== */
+
+@media (max-height: 850px) {
+
+    .ntp-stage {
+        top: 55%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.84);
+    }
+
+    .scene-title {
+        top: 48px;
+    }
+
+    .scene-title p {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-height: 760px) {
+
+    .ntp-stage {
+        top: 56%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.74);
+    }
+
+    .scene-title {
+        top: 40px;
+    }
+
+    .scene-title h1 {
+        font-size:
+            clamp(1.6rem, 2.4vw, 2.25rem);
+    }
+
+    .scene-title p {
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+}
+
+@media (max-height: 680px) {
+
+    .ntp-stage {
+        top: 57%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.65);
+    }
+
+    .scene-brand {
+        top: 20px;
+        left: 28px;
+    }
+
+    .scene-title {
+        top: 28px;
+    }
+
+}

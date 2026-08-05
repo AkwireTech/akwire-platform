@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 25
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-25.css">
+
+</head>
+
+<body>
+
+<main id="scene25"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 25
+        </span>
+
+        <h1>
+            NTP: Network Time Synchronization
+        </h1>
+
+        <p>
+            Network Time Protocol keeps clocks synchronized
+            across network devices and systems.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="ntp-stage">
+
+
+        <!-- ======================================
+             NETWORK PATHS
+        ======================================= -->
+
+        <svg
+            class="network-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="clientServerPath"
+                class="network-path path-blue"
+                d="M165 280 C330 205 510 205 650 280"
+            />
+
+            <path
+                id="serverClientPath"
+                class="network-path path-green"
+                d="M650 320 C500 405 320 405 165 320"
+            />
+
+            <path
+                id="referenceStratum1Path"
+                class="network-path path-gold"
+                d="M1040 100 C960 130 900 155 820 185"
+            />
+
+            <path
+                id="stratum1Stratum2Path"
+                class="network-path path-purple"
+                d="M820 185 C760 220 710 245 650 280"
+            />
+
+            <path
+                id="stratum2Stratum3Path"
+                class="network-path path-cyan"
+                d="M650 280 C555 310 475 330 385 345"
+            />
+
+            <path
+                id="internalNtpPath"
+                class="network-path path-green"
+                d="M650 280 C775 300 875 320 980 350"
+            />
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             CLIENT
+        ======================================= -->
+
+        <div id="clientNode"
+             class="network-node client-node">
+
+            <div class="node-icon">
+                <i class="fas fa-laptop"></i>
+            </div>
+
+            <strong>
+                NTP CLIENT
+            </strong>
+
+            <span id="clientClockLabel">
+                10:42:17
+            </span>
+
+            <small id="clientClockStatus">
+                Clock Drifting
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             NTP SERVER
+        ======================================= -->
+
+        <div id="ntpServerNode"
+             class="network-node server-node">
+
+            <div class="node-icon">
+                <i class="fas fa-server"></i>
+            </div>
+
+            <strong>
+                NTP SERVER
+            </strong>
+
+            <span>
+                10:42:30
+            </span>
+
+            <small>
+                Accurate Time Source
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             REFERENCE CLOCK
+        ======================================= -->
+
+        <div id="referenceClockNode"
+             class="network-node reference-node">
+
+            <div class="node-icon">
+                <i class="fas fa-satellite-dish"></i>
+            </div>
+
+            <strong>
+                REFERENCE CLOCK
+            </strong>
+
+            <span>
+                Highly Accurate Source
+            </span>
+
+            <small>
+                Example: GNSS / Atomic Reference
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             STRATUM 1
+        ======================================= -->
+
+        <div id="stratum1Node"
+             class="network-node stratum1-node">
+
+            <div class="node-icon">
+                <i class="fas fa-clock"></i>
+            </div>
+
+            <strong>
+                STRATUM 1
+            </strong>
+
+            <span>
+                Primary Time Server
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             STRATUM 3
+        ======================================= -->
+
+        <div id="stratum3Node"
+             class="network-node stratum3-node">
+
+            <div class="node-icon">
+                <i class="fas fa-desktop"></i>
+            </div>
+
+            <strong>
+                STRATUM 3
+            </strong>
+
+            <span>
+                Downstream Client
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             INTERNAL SERVER
+        ======================================= -->
+
+        <div id="internalServerNode"
+             class="network-node internal-node">
+
+            <div class="node-icon">
+                <i class="fas fa-building-shield"></i>
+            </div>
+
+            <strong>
+                INTERNAL NTP
+            </strong>
+
+            <span>
+                Organization Time Source
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             CLOCK DRIFT CARD
+        ======================================= -->
+
+        <div id="clockDriftCard"
+             class="clock-drift-card">
+
+            <header>
+
+                <i class="fas fa-clock-rotate-left"></i>
+
+                <div>
+
+                    <span>
+                        CLOCK DRIFT
+                    </span>
+
+                    <strong>
+                        Device clocks do not remain perfectly
+                        accurate on their own.
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="clock-comparison">
+
+                <div>
+
+                    <span>
+                        CLIENT CLOCK
+                    </span>
+
+                    <strong>
+                        10:42:17
+                    </strong>
+
+                </div>
+
+                <div class="clock-difference">
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+                    <span>
+                        13 seconds behind
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        CORRECT TIME
+                    </span>
+
+                    <strong>
+                        10:42:30
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NTP PURPOSE
+        ======================================= -->
+
+        <div id="ntpPurposeCard"
+             class="ntp-purpose-card">
+
+            <i class="fas fa-arrows-rotate"></i>
+
+            <div>
+
+                <span>
+                    NTP
+                </span>
+
+                <strong>
+                    Network Time Protocol
+                </strong>
+
+                <p>
+                    Synchronizes clocks between systems
+                    across an IP network.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TIME REQUEST
+        ======================================= -->
+
+        <div id="timeRequestCard"
+             class="ntp-message-card request-card">
+
+            <header>
+
+                <i class="fas fa-paper-plane"></i>
+
+                <div>
+
+                    <span>
+                        NTP REQUEST
+                    </span>
+
+                    <strong>
+                        Client Requests Time Information
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="message-detail">
+
+                <span>
+                    TRANSPORT
+                </span>
+
+                <strong>
+                    UDP 123
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TIME RESPONSE
+        ======================================= -->
+
+        <div id="timeResponseCard"
+             class="ntp-message-card response-card">
+
+            <header>
+
+                <i class="fas fa-clock"></i>
+
+                <div>
+
+                    <span>
+                        NTP RESPONSE
+                    </span>
+
+                    <strong>
+                        Server Returns Timing Information
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="message-detail">
+
+                <span>
+                    SERVER TIME
+                </span>
+
+                <strong>
+                    10:42:30
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TIME CALCULATION
+        ======================================= -->
+
+        <div id="timeCalculationCard"
+             class="time-calculation-card">
+
+            <header>
+
+                <i class="fas fa-calculator"></i>
+
+                <div>
+
+                    <span>
+                        TIME ADJUSTMENT
+                    </span>
+
+                    <strong>
+                        The client compares timing information
+                        and adjusts its local clock.
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="adjustment-flow">
+
+                <span>
+                    10:42:17
+                </span>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <strong>
+                    Synchronize
+                </strong>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <span>
+                    10:42:30
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SYNCHRONIZED
+        ======================================= -->
+
+        <div id="synchronizedCard"
+             class="synchronized-card">
+
+            <i class="fas fa-circle-check"></i>
+
+            <div>
+
+                <span>
+                    CLOCK SYNCHRONIZED
+                </span>
+
+                <strong>
+                    Client and server now share
+                    consistent network time.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             UDP 123
+        ======================================= -->
+
+        <div id="udp123Card"
+             class="udp-card">
+
+            <header>
+
+                <i class="fas fa-network-wired"></i>
+
+                <div>
+
+                    <span>
+                        NTP TRANSPORT
+                    </span>
+
+                    <strong>
+                        UDP Port 123
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="port-display">
+
+                <span>
+                    UDP
+                </span>
+
+                <strong>
+                    123
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             STRATUM INTRO
+        ======================================= -->
+
+        <div id="stratumIntroCard"
+             class="stratum-intro-card">
+
+            <i class="fas fa-layer-group"></i>
+
+            <div>
+
+                <span>
+                    NTP STRATUM
+                </span>
+
+                <strong>
+                    NTP organizes time sources into
+                    hierarchical levels.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             STRATUM EXPLANATION
+        ======================================= -->
+
+        <div id="stratumCard"
+             class="stratum-card">
+
+            <div>
+
+                <span>
+                    REFERENCE CLOCK
+                </span>
+
+                <strong>
+                    Stratum 0
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <span>
+                    PRIMARY SERVER
+                </span>
+
+                <strong>
+                    Stratum 1
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <span>
+                    DOWNSTREAM
+                </span>
+
+                <strong>
+                    Stratum 2+
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             STRATUM DISTANCE
+        ======================================= -->
+
+        <div id="stratumDistanceCard"
+             class="stratum-distance-card">
+
+            <i class="fas fa-circle-info"></i>
+
+            <div>
+
+                <span>
+                    STRATUM NUMBER
+                </span>
+
+                <strong>
+                    The number represents the server's
+                    distance in the synchronization hierarchy
+                    from the reference clock.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             EXTERNAL NTP
+        ======================================= -->
+
+        <div id="externalNtpCard"
+             class="source-card external-card">
+
+            <i class="fas fa-globe"></i>
+
+            <div>
+
+                <span>
+                    EXTERNAL NTP
+                </span>
+
+                <strong>
+                    Devices may synchronize with an
+                    approved external time source.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             INTERNAL NTP
+        ======================================= -->
+
+        <div id="internalNtpCard"
+             class="source-card internal-card">
+
+            <i class="fas fa-building-shield"></i>
+
+            <div>
+
+                <span>
+                    INTERNAL NTP
+                </span>
+
+                <strong>
+                    Organizations can provide a central
+                    internal time source for their devices.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             LOG EXAMPLE
+        ======================================= -->
+
+        <div id="logProblemCard"
+             class="log-problem-card">
+
+            <header>
+
+                <i class="fas fa-file-lines"></i>
+
+                <div>
+
+                    <span>
+                        WITHOUT SYNCHRONIZED TIME
+                    </span>
+
+                    <strong>
+                        Logs can tell conflicting stories.
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="log-lines">
+
+                <div>
+                    <span>10:42:18</span>
+                    <strong>Firewall: Connection accepted</strong>
+                </div>
+
+                <div>
+                    <span>10:41:56</span>
+                    <strong>Server: User authenticated</strong>
+                </div>
+
+                <div>
+                    <span>10:42:05</span>
+                    <strong>IDS: Alert generated</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             LOG CORRELATION
+        ======================================= -->
+
+        <div id="logCorrelationCard"
+             class="importance-card">
+
+            <i class="fas fa-list-check"></i>
+
+            <div>
+
+                <span>
+                    LOG CORRELATION
+                </span>
+
+                <strong>
+                    Consistent timestamps help administrators
+                    reconstruct the correct order of events.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             AUTHENTICATION
+        ======================================= -->
+
+        <div id="authenticationCard"
+             class="importance-card">
+
+            <i class="fas fa-user-shield"></i>
+
+            <div>
+
+                <span>
+                    AUTHENTICATION
+                </span>
+
+                <strong>
+                    Time-sensitive authentication systems
+                    depend on clocks being reasonably aligned.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             CERTIFICATES
+        ======================================= -->
+
+        <div id="certificateCard"
+             class="importance-card">
+
+            <i class="fas fa-certificate"></i>
+
+            <div>
+
+                <span>
+                    CERTIFICATES
+                </span>
+
+                <strong>
+                    Incorrect system time can cause
+                    validity checks to fail.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TROUBLESHOOTING
+        ======================================= -->
+
+        <div id="troubleshootingCard"
+             class="importance-card">
+
+            <i class="fas fa-screwdriver-wrench"></i>
+
+            <div>
+
+                <span>
+                    TROUBLESHOOTING
+                </span>
+
+                <strong>
+                    Accurate timestamps make it easier
+                    to compare events across devices.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SECURITY
+        ======================================= -->
+
+        <div id="securityCard"
+             class="importance-card">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <span>
+                    SECURITY EVENTS
+                </span>
+
+                <strong>
+                    Synchronized clocks improve incident
+                    analysis and event correlation.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IMPORTANCE SUMMARY
+        ======================================= -->
+
+        <div id="importanceSummary"
+             class="importance-summary">
+
+            <div>
+                <i class="fas fa-file-lines"></i>
+                <span>Logs</span>
+            </div>
+
+            <div>
+                <i class="fas fa-user-shield"></i>
+                <span>Authentication</span>
+            </div>
+
+            <div>
+                <i class="fas fa-certificate"></i>
+                <span>Certificates</span>
+            </div>
+
+            <div>
+                <i class="fas fa-screwdriver-wrench"></i>
+                <span>Troubleshooting</span>
+            </div>
+
+            <div>
+                <i class="fas fa-shield-halved"></i>
+                <span>Security</span>
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NTP FLOW SUMMARY
+        ======================================= -->
+
+        <div id="ntpFlowSummary"
+             class="ntp-flow-summary">
+
+            <div>
+
+                <i class="fas fa-clock-rotate-left"></i>
+
+                <span>
+                    DRIFT
+                </span>
+
+                <strong>
+                    Incorrect Time
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <i class="fas fa-server"></i>
+
+                <span>
+                    NTP
+                </span>
+
+                <strong>
+                    UDP 123
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <i class="fas fa-arrows-rotate"></i>
+
+                <span>
+                    SYNC
+                </span>
+
+                <strong>
+                    Adjust Clock
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <i class="fas fa-circle-check"></i>
+
+                <span>
+                    RESULT
+                </span>
+
+                <strong>
+                    Consistent Time
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL SUMMARY
+    =========================================== -->
+
+    <section id="ntpSummary"
+             class="ntp-summary">
+
+        <div class="summary-item">
+
+            <i class="fas fa-laptop"></i>
+
+            <div>
+                <span>CLIENT</span>
+                <strong>Clock Drift</strong>
+            </div>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-server"></i>
+
+            <div>
+                <span>NTP SERVER</span>
+                <strong>UDP 123</strong>
+            </div>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-arrows-rotate"></i>
+
+            <div>
+                <span>SYNC</span>
+                <strong>Clock Adjusted</strong>
+            </div>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-clock"></i>
+
+            <div>
+                <span>RESULT</span>
+                <strong>Consistent Time</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                NTP synchronizes clocks across networked
+                systems using UDP port 123. Accurate,
+                consistent time is essential for logs,
+                authentication, certificate validation,
+                troubleshooting, and security analysis.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div id="sceneControls"
+         class="scene-controls">
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-25.js"></script>
+
+</body>
+
+</html>
