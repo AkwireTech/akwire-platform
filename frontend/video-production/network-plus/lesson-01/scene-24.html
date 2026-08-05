@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 24
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-24.css">
+
+</head>
+
+<body>
+
+<main id="scene24"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 24
+        </span>
+
+        <h1>
+            DHCP: Automatic Network Configuration
+        </h1>
+
+        <p>
+            DHCP automatically provides clients with the
+            addressing information they need to communicate
+            on an IP network.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="dhcp-stage">
+
+
+        <!-- ======================================
+             NETWORK PATHS
+        ======================================= -->
+
+        <svg
+            class="network-path-layer"
+            viewBox="0 0 1200 500"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+        >
+
+            <path
+                id="clientSwitchPath"
+                class="network-path path-blue"
+                d="M135 275 C220 275 280 275 365 275"
+            />
+
+            <path
+                id="switchServerPath"
+                class="network-path path-green"
+                d="M365 275 C470 275 545 275 640 275"
+            />
+
+            <path
+                id="serverReplyPath"
+                class="network-path path-green"
+                d="M640 235 C500 145 275 145 135 235"
+            />
+
+            <path
+                id="clientGatewayPath"
+                class="network-path path-cyan"
+                d="M135 310 C365 440 705 440 920 285"
+            />
+
+            <path
+                id="relayServerPath"
+                class="network-path path-purple"
+                d="M920 250 C980 190 1040 190 1100 250"
+            />
+
+            <circle
+                id="movingPacket"
+                class="moving-packet"
+                r="9"
+            ></circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             CLIENT
+        ======================================= -->
+
+        <div id="clientNode"
+             class="network-node client-node">
+
+            <div class="node-icon">
+                <i class="fas fa-laptop"></i>
+            </div>
+
+            <strong>
+                DHCP CLIENT
+            </strong>
+
+            <span id="clientIpLabel">
+                No IPv4 Address
+            </span>
+
+            <small>
+                Needs Configuration
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH
+        ======================================= -->
+
+        <div id="switchNode"
+             class="network-node switch-node">
+
+            <div class="node-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+
+            <strong>
+                SWITCH
+            </strong>
+
+            <span>
+                Local LAN
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             DHCP SERVER
+        ======================================= -->
+
+        <div id="dhcpServerNode"
+             class="network-node server-node">
+
+            <div class="node-icon">
+                <i class="fas fa-server"></i>
+            </div>
+
+            <strong>
+                DHCP SERVER
+            </strong>
+
+            <span>
+                Address Pool
+            </span>
+
+            <small>
+                192.168.1.100–200
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             ROUTER / RELAY
+        ======================================= -->
+
+        <div id="gatewayNode"
+             class="network-node gateway-node">
+
+            <div class="node-icon">
+                <i class="fas fa-route"></i>
+            </div>
+
+            <strong>
+                ROUTER
+            </strong>
+
+            <span>
+                192.168.1.1
+            </span>
+
+            <small>
+                Default Gateway
+            </small>
+
+        </div>
+
+
+        <!-- ======================================
+             REMOTE DHCP SERVER
+        ======================================= -->
+
+        <div id="remoteServerNode"
+             class="network-node remote-server-node">
+
+            <div class="node-icon">
+                <i class="fas fa-building"></i>
+            </div>
+
+            <strong>
+                DHCP SERVER
+            </strong>
+
+            <span>
+                Remote Subnet
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             CLIENT START
+        ======================================= -->
+
+        <div id="clientStartCard"
+             class="client-start-card">
+
+            <header>
+
+                <i class="fas fa-laptop"></i>
+
+                <div>
+                    <span>
+                        CLIENT STARTS
+                    </span>
+
+                    <strong>
+                        Network Configuration Needed
+                    </strong>
+                </div>
+
+            </header>
+
+            <div class="missing-config">
+
+                <div>
+                    <span>IP ADDRESS</span>
+                    <strong>?</strong>
+                </div>
+
+                <div>
+                    <span>SUBNET MASK</span>
+                    <strong>?</strong>
+                </div>
+
+                <div>
+                    <span>GATEWAY</span>
+                    <strong>?</strong>
+                </div>
+
+                <div>
+                    <span>DNS</span>
+                    <strong>?</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DHCP PURPOSE
+        ======================================= -->
+
+        <div id="dhcpPurposeCard"
+             class="dhcp-purpose-card">
+
+            <i class="fas fa-gears"></i>
+
+            <div>
+
+                <span>
+                    DHCP
+                </span>
+
+                <strong>
+                    Dynamic Host Configuration Protocol
+                </strong>
+
+                <p>
+                    Automatically supplies network
+                    configuration to clients.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DORA PROCESS
+        ======================================= -->
+
+        <div id="doraProcess"
+             class="dora-process">
+
+            <div class="dora-item discover">
+                <span>D</span>
+                <strong>Discover</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="dora-item offer">
+                <span>O</span>
+                <strong>Offer</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="dora-item request">
+                <span>R</span>
+                <strong>Request</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="dora-item ack">
+                <span>A</span>
+                <strong>ACK</strong>
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DHCP DISCOVER
+        ======================================= -->
+
+        <div id="discoverCard"
+             class="dhcp-message-card discover-card">
+
+            <header>
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <div>
+
+                    <span>
+                        D — DHCP DISCOVER
+                    </span>
+
+                    <strong>
+                        Client Searches for a DHCP Server
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="message-detail">
+
+                <span>
+                    DESTINATION
+                </span>
+
+                <strong>
+                    IPv4 Broadcast
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             BROADCAST
+        ======================================= -->
+
+        <div id="broadcastLabel"
+             class="broadcast-label">
+
+            <i class="fas fa-tower-broadcast"></i>
+
+            <span>
+                BROADCAST
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH FLOOD
+        ======================================= -->
+
+        <div id="switchFloodCard"
+             class="switch-flood-card">
+
+            <i class="fas fa-share-nodes"></i>
+
+            <div>
+
+                <span>
+                    LOCAL BROADCAST
+                </span>
+
+                <strong>
+                    The switch forwards the DHCP
+                    broadcast across the local LAN.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DHCP OFFER
+        ======================================= -->
+
+        <div id="offerCard"
+             class="dhcp-message-card offer-card">
+
+            <header>
+
+                <i class="fas fa-hand-holding"></i>
+
+                <div>
+
+                    <span>
+                        O — DHCP OFFER
+                    </span>
+
+                    <strong>
+                        Server Offers Configuration
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="offer-grid">
+
+                <div>
+                    <span>IP ADDRESS</span>
+                    <strong>192.168.1.120</strong>
+                </div>
+
+                <div>
+                    <span>SUBNET MASK</span>
+                    <strong>255.255.255.0</strong>
+                </div>
+
+                <div>
+                    <span>GATEWAY</span>
+                    <strong>192.168.1.1</strong>
+                </div>
+
+                <div>
+                    <span>DNS SERVER</span>
+                    <strong>192.168.1.53</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DHCP REQUEST
+        ======================================= -->
+
+        <div id="requestCard"
+             class="dhcp-message-card request-card">
+
+            <header>
+
+                <i class="fas fa-paper-plane"></i>
+
+                <div>
+
+                    <span>
+                        R — DHCP REQUEST
+                    </span>
+
+                    <strong>
+                        Client Requests the Offered Address
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="message-detail">
+
+                <span>
+                    REQUESTED ADDRESS
+                </span>
+
+                <strong>
+                    192.168.1.120
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DHCP ACK
+        ======================================= -->
+
+        <div id="ackCard"
+             class="dhcp-message-card ack-card">
+
+            <header>
+
+                <i class="fas fa-circle-check"></i>
+
+                <div>
+
+                    <span>
+                        A — DHCP ACK
+                    </span>
+
+                    <strong>
+                        Server Confirms the Lease
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="message-detail">
+
+                <span>
+                    LEASE STATUS
+                </span>
+
+                <strong>
+                    Approved
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             CONFIGURED CLIENT
+        ======================================= -->
+
+        <div id="configuredCard"
+             class="configured-card">
+
+            <header>
+
+                <i class="fas fa-circle-check"></i>
+
+                <div>
+
+                    <span>
+                        CLIENT CONFIGURED
+                    </span>
+
+                    <strong>
+                        DHCP Lease Active
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="configuration-grid">
+
+                <div>
+                    <span>IPv4 ADDRESS</span>
+                    <strong>192.168.1.120</strong>
+                </div>
+
+                <div>
+                    <span>SUBNET MASK</span>
+                    <strong>255.255.255.0</strong>
+                </div>
+
+                <div>
+                    <span>DEFAULT GATEWAY</span>
+                    <strong>192.168.1.1</strong>
+                </div>
+
+                <div>
+                    <span>DNS SERVER</span>
+                    <strong>192.168.1.53</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             LEASE
+        ======================================= -->
+
+        <div id="leaseCard"
+             class="lease-card">
+
+            <i class="fas fa-clock"></i>
+
+            <div>
+
+                <span>
+                    DHCP LEASE
+                </span>
+
+                <strong>
+                    The address is assigned for a
+                    limited period of time.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             RENEWAL
+        ======================================= -->
+
+        <div id="renewalCard"
+             class="renewal-card">
+
+            <header>
+
+                <i class="fas fa-arrows-rotate"></i>
+
+                <div>
+
+                    <span>
+                        LEASE RENEWAL
+                    </span>
+
+                    <strong>
+                        Client Attempts to Keep Its Address
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="renewal-flow">
+
+                <span>
+                    Existing Lease
+                </span>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <strong>
+                    Renewal Request
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             UDP PORTS
+        ======================================= -->
+
+        <div id="portsCard"
+             class="ports-card">
+
+            <header>
+
+                <i class="fas fa-network-wired"></i>
+
+                <div>
+
+                    <span>
+                        DHCP TRANSPORT
+                    </span>
+
+                    <strong>
+                        UDP Ports 67 and 68
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="ports-grid">
+
+                <div>
+
+                    <span>
+                        UDP 67
+                    </span>
+
+                    <strong>
+                        DHCP Server
+                    </strong>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        UDP 68
+                    </span>
+
+                    <strong>
+                        DHCP Client
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             BROADCAST BOUNDARY
+        ======================================= -->
+
+        <div id="broadcastBoundaryCard"
+             class="broadcast-boundary-card">
+
+            <i class="fas fa-ban"></i>
+
+            <div>
+
+                <span>
+                    ROUTING BOUNDARY
+                </span>
+
+                <strong>
+                    Routers normally do not forward
+                    IPv4 broadcasts between subnets.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DHCP RELAY
+        ======================================= -->
+
+        <div id="relayCard"
+             class="relay-card">
+
+            <header>
+
+                <i class="fas fa-route"></i>
+
+                <div>
+
+                    <span>
+                        DHCP RELAY
+                    </span>
+
+                    <strong>
+                        Reaches DHCP Servers on Other Subnets
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <p>
+                A relay agent forwards DHCP messages
+                between the client subnet and a DHCP
+                server located on another network.
+            </p>
+
+        </div>
+
+
+        <!-- ======================================
+             RELAY FLOW
+        ======================================= -->
+
+        <div id="relayFlowCard"
+             class="relay-flow-card">
+
+            <div>
+                <span>CLIENT SUBNET</span>
+                <strong>DHCP Broadcast</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+                <span>RELAY AGENT</span>
+                <strong>Router</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+                <span>REMOTE NETWORK</span>
+                <strong>DHCP Server</strong>
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DHCP FAILURE
+        ======================================= -->
+
+        <div id="failureCard"
+             class="failure-card">
+
+            <i class="fas fa-triangle-exclamation"></i>
+
+            <div>
+
+                <span>
+                    DHCP UNAVAILABLE
+                </span>
+
+                <strong>
+                    What happens if an IPv4 client
+                    cannot obtain DHCP configuration?
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             APIPA
+        ======================================= -->
+
+        <div id="apipaCard"
+             class="apipa-card">
+
+            <header>
+
+                <i class="fas fa-laptop-code"></i>
+
+                <div>
+
+                    <span>
+                        APIPA
+                    </span>
+
+                    <strong>
+                        Automatic Private IP Addressing
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="apipa-address">
+
+                <span>
+                    IPv4 RANGE
+                </span>
+
+                <strong>
+                    169.254.0.0/16
+                </strong>
+
+            </div>
+
+            <p>
+                APIPA can provide local-link IPv4
+                addressing when automatic DHCP
+                configuration is unavailable.
+            </p>
+
+        </div>
+
+
+        <!-- ======================================
+             APIPA LIMITATION
+        ======================================= -->
+
+        <div id="apipaLimitCard"
+             class="apipa-limit-card">
+
+            <i class="fas fa-circle-exclamation"></i>
+
+            <div>
+
+                <span>
+                    TROUBLESHOOTING CLUE
+                </span>
+
+                <strong>
+                    A 169.254.x.x address can indicate
+                    that the client failed to obtain
+                    normal DHCP configuration.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DORA SUMMARY
+        ======================================= -->
+
+        <div id="doraSummary"
+             class="dora-summary">
+
+            <div class="summary-step">
+                <span>D</span>
+                <strong>Discover</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="summary-step">
+                <span>O</span>
+                <strong>Offer</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="summary-step">
+                <span>R</span>
+                <strong>Request</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div class="summary-step">
+                <span>A</span>
+                <strong>ACK</strong>
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="dhcpSummary"
+             class="dhcp-summary">
+
+        <div class="summary-item">
+
+            <i class="fas fa-laptop"></i>
+
+            <div>
+                <span>CLIENT</span>
+                <strong>No Address</strong>
+            </div>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-tower-broadcast"></i>
+
+            <div>
+                <span>DORA</span>
+                <strong>DHCP Exchange</strong>
+            </div>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-file-contract"></i>
+
+            <div>
+                <span>LEASE</span>
+                <strong>Configuration</strong>
+            </div>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-circle-check"></i>
+
+            <div>
+                <span>READY</span>
+                <strong>Network Access</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                DHCP uses the DORA process to automatically
+                provide IPv4 configuration. DHCP servers use
+                UDP 67, clients use UDP 68, and DHCP relay
+                allows centralized servers to support clients
+                on other subnets.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         DEVELOPMENT CONTROLS
+    =========================================== -->
+
+    <div id="sceneControls"
+         class="scene-controls">
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-24.js"></script>
+
+</body>
+
+</html>
