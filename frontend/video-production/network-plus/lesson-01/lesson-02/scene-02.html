@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Lesson 2 | Scene 02
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-02.css">
+
+</head>
+
+<body>
+
+<main id="scene02"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            LESSON 2 • SCENE 02
+        </span>
+
+        <h1>
+            Copper Ethernet & Twisted-Pair Cabling
+        </h1>
+
+        <p>
+            Understanding Ethernet copper cabling,
+            twisted pairs, shielding, categories,
+            distance limits, and common cable types.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="copper-stage">
+
+
+        <!-- ======================================
+             OPENING CONNECTION
+        ======================================= -->
+
+        <div id="ethernetOverview"
+             class="ethernet-overview">
+
+            <div id="computerNode"
+                 class="network-device">
+
+                <div class="device-icon">
+                    <i class="fas fa-desktop"></i>
+                </div>
+
+                <strong>
+                    Workstation
+                </strong>
+
+                <span>
+                    Ethernet NIC
+                </span>
+
+            </div>
+
+
+            <div class="ethernet-link">
+
+                <div id="ethernetCable"
+                     class="ethernet-cable">
+
+                    <span class="cable-core"></span>
+
+                    <span id="dataPulse"
+                          class="data-pulse"></span>
+
+                </div>
+
+                <span class="link-label">
+                    COPPER ETHERNET
+                </span>
+
+            </div>
+
+
+            <div id="switchNode"
+                 class="network-device">
+
+                <div class="device-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+
+                <strong>
+                    Switch
+                </strong>
+
+                <span>
+                    Ethernet Port
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TWISTED PAIR INTRODUCTION
+        ======================================= -->
+
+        <article id="twistedPairIntro"
+                 class="concept-card">
+
+            <header>
+
+                <div class="concept-icon">
+
+                    <i class="fas fa-ethernet"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        COPPER NETWORK MEDIA
+                    </span>
+
+                    <h2>
+                        Twisted-Pair Ethernet
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="twisted-layout">
+
+                <div class="cable-illustration">
+
+                    <div class="outer-jacket">
+
+                        <div class="pair pair-one">
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="pair pair-two">
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="pair pair-three">
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                        <div class="pair pair-four">
+                            <span></span>
+                            <span></span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="twisted-copy">
+
+                    <p>
+                        Ethernet twisted-pair cable contains
+                        copper conductors arranged into pairs
+                        that are twisted around each other.
+                    </p>
+
+                    <div class="pair-count">
+
+                        <strong>
+                            4
+                        </strong>
+
+                        <span>
+                            twisted pairs
+                        </span>
+
+                    </div>
+
+                    <div class="wire-count">
+
+                        <strong>
+                            8
+                        </strong>
+
+                        <span>
+                            individual conductors
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             WHY WIRES ARE TWISTED
+        ======================================= -->
+
+        <article id="whyTwisted"
+                 class="interference-card">
+
+            <header>
+
+                <i class="fas fa-wave-square"></i>
+
+                <div>
+
+                    <span>
+                        WHY TWIST THE WIRES?
+                    </span>
+
+                    <h2>
+                        Reduce Interference and Crosstalk
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="interference-demo">
+
+
+                <div class="noise-source">
+
+                    <i class="fas fa-bolt"></i>
+
+                    <strong>
+                        Interference
+                    </strong>
+
+                    <span class="noise-wave wave-a"></span>
+                    <span class="noise-wave wave-b"></span>
+                    <span class="noise-wave wave-c"></span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right demo-arrow"></i>
+
+
+                <div class="twisted-demo">
+
+                    <div class="twist-wire wire-a"></div>
+                    <div class="twist-wire wire-b"></div>
+
+                    <strong>
+                        Twisted Pair
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right demo-arrow"></i>
+
+
+                <div class="clean-signal">
+
+                    <i class="fas fa-circle-check"></i>
+
+                    <strong>
+                        Cleaner Signal
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <p class="interference-note">
+
+                Twisting helps cancel electromagnetic
+                interference and reduces crosstalk between
+                neighboring wire pairs.
+
+            </p>
+
+        </article>
+
+
+        <!-- ======================================
+             UTP VS STP
+        ======================================= -->
+
+        <article id="shieldingComparison"
+                 class="shielding-card">
+
+            <header>
+
+                <span>
+                    COPPER CABLE TYPES
+                </span>
+
+                <h2>
+                    UTP vs. STP
+                </h2>
+
+            </header>
+
+
+            <div class="shielding-grid">
+
+
+                <!-- UTP -->
+
+                <div id="utpCard"
+                     class="shield-type">
+
+                    <div class="shield-icon">
+
+                        <i class="fas fa-ethernet"></i>
+
+                    </div>
+
+                    <span>
+                        UTP
+                    </span>
+
+                    <h3>
+                        Unshielded Twisted Pair
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            No additional metallic shielding
+                        </li>
+
+                        <li>
+                            Common in office Ethernet networks
+                        </li>
+
+                        <li>
+                            Flexible and inexpensive
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- STP -->
+
+                <div id="stpCard"
+                     class="shield-type">
+
+                    <div class="shield-icon">
+
+                        <i class="fas fa-shield-halved"></i>
+
+                    </div>
+
+                    <span>
+                        STP
+                    </span>
+
+                    <h3>
+                        Shielded Twisted Pair
+                    </h3>
+
+                    <ul>
+
+                        <li>
+                            Includes additional shielding
+                        </li>
+
+                        <li>
+                            Better resistance to EMI
+                        </li>
+
+                        <li>
+                            Useful in electrically noisy areas
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             EMI ENVIRONMENT
+        ======================================= -->
+
+        <article id="emiExample"
+                 class="environment-card">
+
+            <div class="environment-visual">
+
+                <div class="motor-device">
+
+                    <i class="fas fa-gears"></i>
+
+                    <span>
+                        Industrial Equipment
+                    </span>
+
+                </div>
+
+
+                <div class="emi-field">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <div class="protected-cable">
+
+                    <i class="fas fa-shield-halved"></i>
+
+                    <strong>
+                        STP
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="environment-copy">
+
+                <span>
+                    EMI — ELECTROMAGNETIC INTERFERENCE
+                </span>
+
+                <h2>
+                    Environment Matters
+                </h2>
+
+                <p>
+                    Motors, electrical equipment, fluorescent
+                    lighting, and power cabling can introduce
+                    electromagnetic interference. Shielded
+                    cabling can help protect network signals.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CATEGORY INTRODUCTION
+        ======================================= -->
+
+        <article id="categoryIntro"
+                 class="category-card">
+
+            <header>
+
+                <i class="fas fa-layer-group"></i>
+
+                <div>
+
+                    <span>
+                        CABLE CATEGORIES
+                    </span>
+
+                    <h2>
+                        Cat 5e, Cat 6, Cat 6a, and Cat 8
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <p class="category-intro-copy">
+
+                Category ratings define performance
+                characteristics for twisted-pair cabling.
+                Higher categories support higher frequencies
+                and newer Ethernet speeds.
+
+            </p>
+
+
+            <div class="category-flow">
+
+                <div id="cat5e"
+                     class="category-item">
+
+                    <span>
+                        CAT
+                    </span>
+
+                    <strong>
+                        5e
+                    </strong>
+
+                    <small>
+                        1 Gbps
+                    </small>
+
+                </div>
+
+
+                <i class="fas fa-chevron-right"></i>
+
+
+                <div id="cat6"
+                     class="category-item">
+
+                    <span>
+                        CAT
+                    </span>
+
+                    <strong>
+                        6
+                    </strong>
+
+                    <small>
+                        1 / 10 Gbps
+                    </small>
+
+                </div>
+
+
+                <i class="fas fa-chevron-right"></i>
+
+
+                <div id="cat6a"
+                     class="category-item">
+
+                    <span>
+                        CAT
+                    </span>
+
+                    <strong>
+                        6a
+                    </strong>
+
+                    <small>
+                        10 Gbps
+                    </small>
+
+                </div>
+
+
+                <i class="fas fa-chevron-right"></i>
+
+
+                <div id="cat8"
+                     class="category-item">
+
+                    <span>
+                        CAT
+                    </span>
+
+                    <strong>
+                        8
+                    </strong>
+
+                    <small>
+                        25 / 40 Gbps
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CATEGORY TABLE
+        ======================================= -->
+
+        <article id="categoryTable"
+                 class="spec-card">
+
+            <header>
+
+                <span>
+                    NETWORK+ REFERENCE
+                </span>
+
+                <h2>
+                    Common Twisted-Pair Categories
+                </h2>
+
+            </header>
+
+
+            <div class="spec-table">
+
+                <div class="spec-row spec-heading">
+
+                    <span>
+                        CATEGORY
+                    </span>
+
+                    <span>
+                        FREQUENCY
+                    </span>
+
+                    <span>
+                        COMMON SPEED
+                    </span>
+
+                    <span>
+                        MAX CHANNEL
+                    </span>
+
+                </div>
+
+
+                <div id="cat5eRow"
+                     class="spec-row">
+
+                    <strong>
+                        Cat 5e
+                    </strong>
+
+                    <span>
+                        100 MHz
+                    </span>
+
+                    <span>
+                        1 Gbps
+                    </span>
+
+                    <span>
+                        100 m
+                    </span>
+
+                </div>
+
+
+                <div id="cat6Row"
+                     class="spec-row">
+
+                    <strong>
+                        Cat 6
+                    </strong>
+
+                    <span>
+                        250 MHz
+                    </span>
+
+                    <span>
+                        1 Gbps
+                    </span>
+
+                    <span>
+                        100 m
+                    </span>
+
+                </div>
+
+
+                <div id="cat6aRow"
+                     class="spec-row">
+
+                    <strong>
+                        Cat 6a
+                    </strong>
+
+                    <span>
+                        500 MHz
+                    </span>
+
+                    <span>
+                        10 Gbps
+                    </span>
+
+                    <span>
+                        100 m
+                    </span>
+
+                </div>
+
+
+                <div id="cat8Row"
+                     class="spec-row">
+
+                    <strong>
+                        Cat 8
+                    </strong>
+
+                    <span>
+                        2000 MHz
+                    </span>
+
+                    <span>
+                        25 / 40 Gbps
+                    </span>
+
+                    <span>
+                        30 m
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <p class="spec-note">
+
+                Cat 6 can support 10GBASE-T over shorter
+                distances, while Cat 6a is designed for
+                10GBASE-T across a full 100-meter channel.
+
+            </p>
+
+        </article>
+
+
+        <!-- ======================================
+             100 METER RULE
+        ======================================= -->
+
+        <article id="distanceLimit"
+                 class="distance-card">
+
+            <header>
+
+                <i class="fas fa-ruler-horizontal"></i>
+
+                <div>
+
+                    <span>
+                        ETHERNET DISTANCE
+                    </span>
+
+                    <h2>
+                        The 100-Meter Channel
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="distance-diagram">
+
+
+                <div class="distance-device">
+
+                    <i class="fas fa-network-wired"></i>
+
+                    <strong>
+                        Switch
+                    </strong>
+
+                </div>
+
+
+                <div class="distance-line">
+
+                    <span class="distance-fill"></span>
+
+                    <div class="distance-marker start-marker">
+                        0 m
+                    </div>
+
+                    <div class="distance-marker end-marker">
+                        100 m
+                    </div>
+
+                </div>
+
+
+                <div class="distance-device">
+
+                    <i class="fas fa-desktop"></i>
+
+                    <strong>
+                        Device
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="distance-breakdown">
+
+                <div>
+
+                    <strong>
+                        90 m
+                    </strong>
+
+                    <span>
+                        Permanent link
+                    </span>
+
+                </div>
+
+                <i class="fas fa-plus"></i>
+
+                <div>
+
+                    <strong>
+                        10 m
+                    </strong>
+
+                    <span>
+                        Patch cabling
+                    </span>
+
+                </div>
+
+                <i class="fas fa-equals"></i>
+
+                <div>
+
+                    <strong>
+                        100 m
+                    </strong>
+
+                    <span>
+                        Channel
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             SOLID VS STRANDED
+        ======================================= -->
+
+        <article id="conductorTypes"
+                 class="conductor-card">
+
+            <header>
+
+                <span>
+                    COPPER CONDUCTORS
+                </span>
+
+                <h2>
+                    Solid vs. Stranded Cable
+                </h2>
+
+            </header>
+
+
+            <div class="conductor-grid">
+
+
+                <div id="solidCable"
+                     class="conductor-type">
+
+                    <div class="conductor-visual solid-visual">
+
+                        <span></span>
+
+                    </div>
+
+                    <h3>
+                        Solid
+                    </h3>
+
+                    <p>
+                        One solid conductor per wire.
+                    </p>
+
+                    <strong>
+                        Best for permanent horizontal cabling
+                    </strong>
+
+                </div>
+
+
+                <div id="strandedCable"
+                     class="conductor-type">
+
+                    <div class="conductor-visual stranded-visual">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <h3>
+                        Stranded
+                    </h3>
+
+                    <p>
+                        Multiple small conductors per wire.
+                    </p>
+
+                    <strong>
+                        Flexible for patch cables
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             PLENUM VS PVC
+        ======================================= -->
+
+        <article id="jacketTypes"
+                 class="jacket-card">
+
+            <header>
+
+                <i class="fas fa-building"></i>
+
+                <div>
+
+                    <span>
+                        CABLE JACKET RATINGS
+                    </span>
+
+                    <h2>
+                        Plenum vs. Standard PVC
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="jacket-grid">
+
+
+                <div id="pvcCable"
+                     class="jacket-type">
+
+                    <i class="fas fa-cable-car"></i>
+
+                    <span>
+                        PVC
+                    </span>
+
+                    <strong>
+                        General-purpose cable jacket
+                    </strong>
+
+                    <small>
+                        Used where building codes permit.
+                    </small>
+
+                </div>
+
+
+                <div id="plenumCable"
+                     class="jacket-type">
+
+                    <i class="fas fa-wind"></i>
+
+                    <span>
+                        PLENUM
+                    </span>
+
+                    <strong>
+                        Low-smoke, fire-resistant jacket
+                    </strong>
+
+                    <small>
+                        Designed for environmental air spaces
+                        when required by code.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             KEY DECISION
+        ======================================= -->
+
+        <article id="copperDecision"
+                 class="decision-card">
+
+            <header>
+
+                <i class="fas fa-lightbulb"></i>
+
+                <div>
+
+                    <span>
+                        CHOOSING COPPER CABLING
+                    </span>
+
+                    <h2>
+                        Match the Cable to the Requirement
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="decision-flow">
+
+
+                <div>
+
+                    <i class="fas fa-gauge-high"></i>
+
+                    <strong>
+                        Speed
+                    </strong>
+
+                    <span>
+                        Category
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div>
+
+                    <i class="fas fa-ruler-horizontal"></i>
+
+                    <strong>
+                        Distance
+                    </strong>
+
+                    <span>
+                        Channel length
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div>
+
+                    <i class="fas fa-bolt"></i>
+
+                    <strong>
+                        EMI
+                    </strong>
+
+                    <span>
+                        UTP or STP
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div>
+
+                    <i class="fas fa-building"></i>
+
+                    <strong>
+                        Location
+                    </strong>
+
+                    <span>
+                        Jacket rating
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="sceneSummary"
+             class="scene-summary">
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-ethernet"></i>
+
+            <div>
+
+                <span>
+                    TWISTED PAIR
+                </span>
+
+                <strong>
+                    4 pairs / 8 conductors
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <span>
+                    SHIELDING
+                </span>
+
+                <strong>
+                    UTP or STP
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-ruler-horizontal"></i>
+
+            <div>
+
+                <span>
+                    DISTANCE
+                </span>
+
+                <strong>
+                    Typically 100 m
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-ethernet"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                Copper Ethernet uses twisted pairs to carry
+                electrical signals. Choose the correct category,
+                shielding, conductor type, and jacket for the
+                required speed, distance, and environment.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn"
+                type="button">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn"
+                type="button">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-02.js"></script>
+
+</body>
+
+</html>
