@@ -1,0 +1,1852 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 27 — SYSLOG
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background: #020617;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+}
+
+
+/* ==========================================
+   VIDEO FRAME
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-height: 650px;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 48%,
+            rgba(37, 99, 235, 0.14),
+            transparent 38%
+        ),
+        linear-gradient(
+            135deg,
+            #020617 0%,
+            #071426 48%,
+            #020617 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(59, 130, 246, 0.035) 1px,
+            transparent 1px
+        );
+
+    background-size: 50px 50px;
+    opacity: 0.5;
+}
+
+.background-glow {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0;
+}
+
+.glow-left {
+    left: -190px;
+    top: 120px;
+    background: rgba(14, 165, 233, 0.2);
+}
+
+.glow-center {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(124, 58, 237, 0.14);
+}
+
+.glow-right {
+    right: -190px;
+    bottom: -70px;
+    background: rgba(16, 185, 129, 0.18);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 34px;
+    left: 44px;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    opacity: 0;
+    transform: translateY(-15px);
+
+    z-index: 20;
+}
+
+.brand-mark {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #7c3aed
+        );
+
+    font-size: 1.35rem;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 28px
+        rgba(59, 130, 246, 0.35);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-copy strong {
+    font-size: 1rem;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+    top: 70px;
+    left: 50%;
+
+    width: min(940px, 78%);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(20px);
+
+    z-index: 15;
+}
+
+.scene-number {
+    display: inline-block;
+    margin-bottom: 8px;
+
+    color: #38bdf8;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+}
+
+.scene-title h1 {
+    font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ffffff,
+            #bfdbfe,
+            #c4b5fd
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.scene-title p {
+    max-width: 790px;
+    margin: 12px auto 0;
+
+    color: #94a3b8;
+
+    font-size: clamp(0.82rem, 1.1vw, 1rem);
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   MAIN STAGE
+========================================== */
+
+.syslog-stage {
+    position: absolute;
+
+    left: 50%;
+    top: 53%;
+
+    width: 1200px;
+    height: 500px;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+
+    transform-origin: center center;
+
+    z-index: 5;
+}
+
+
+/* ==========================================
+   NETWORK PATHS
+========================================== */
+
+.network-path-layer {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: visible;
+    pointer-events: none;
+
+    z-index: 3;
+}
+
+.network-path {
+    fill: none;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 9 8;
+
+    opacity: 0;
+}
+
+.path-blue {
+    stroke: #38bdf8;
+}
+
+.path-cyan {
+    stroke: #22d3ee;
+}
+
+.path-purple {
+    stroke: #a78bfa;
+}
+
+.path-gold {
+    stroke: #fbbf24;
+}
+
+.path-green {
+    stroke: #34d399;
+}
+
+.path-red {
+    stroke: #f87171;
+}
+
+.network-path.is-visible {
+    opacity: 0.72;
+    animation: pathFlow 1.5s linear infinite;
+}
+
+.network-path.is-active {
+    opacity: 1;
+    stroke-width: 4;
+}
+
+.path-blue.is-active,
+.path-cyan.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(56, 189, 248, 0.85)
+        );
+}
+
+.path-purple.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(167, 139, 250, 0.85)
+        );
+}
+
+.path-gold.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(251, 191, 36, 0.85)
+        );
+}
+
+.path-green.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(52, 211, 153, 0.85)
+        );
+}
+
+.path-red.is-active {
+    filter:
+        drop-shadow(
+            0 0 9px
+            rgba(248, 113, 113, 0.85)
+        );
+}
+
+.moving-packet {
+    fill: #38bdf8;
+    opacity: 0;
+
+    filter:
+        drop-shadow(
+            0 0 11px
+            #38bdf8
+        );
+}
+
+
+/* ==========================================
+   NETWORK NODES
+========================================== */
+
+.network-node {
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 4px;
+
+    width: 165px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(18px)
+        scale(0.9);
+
+    z-index: 8;
+}
+
+.router-node {
+    left: 170px;
+    top: 225px;
+}
+
+.switch-node {
+    left: 170px;
+    top: 315px;
+}
+
+.server-node {
+    left: 170px;
+    top: 405px;
+}
+
+.firewall-node {
+    left: 1030px;
+    top: 225px;
+}
+
+.ap-node {
+    left: 1030px;
+    top: 315px;
+}
+
+.endpoint-node {
+    left: 1030px;
+    top: 405px;
+}
+
+.syslog-node {
+    left: 600px;
+    top: 300px;
+    width: 200px;
+}
+
+.node-icon {
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 4px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.28);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 23, 42, 0.98),
+            rgba(15, 38, 67, 0.92)
+        );
+
+    box-shadow:
+        0 16px 35px
+        rgba(0, 0, 0, 0.3);
+}
+
+.node-icon i {
+    color: #60a5fa;
+    font-size: 1.55rem;
+}
+
+.switch-node .node-icon i {
+    color: #22d3ee;
+}
+
+.server-node .node-icon i {
+    color: #a78bfa;
+}
+
+.firewall-node .node-icon i {
+    color: #fbbf24;
+}
+
+.ap-node .node-icon i {
+    color: #34d399;
+}
+
+.endpoint-node .node-icon i {
+    color: #f87171;
+}
+
+.syslog-node .node-icon {
+    width: 82px;
+    height: 82px;
+
+    border-color:
+        rgba(52, 211, 153, 0.35);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(6, 78, 59, 0.38),
+            rgba(15, 23, 42, 0.98)
+        );
+}
+
+.syslog-node .node-icon i {
+    color: #34d399;
+    font-size: 1.9rem;
+}
+
+.network-node > strong {
+    color: #e2e8f0;
+
+    font-size: 0.64rem;
+    letter-spacing: 0.07em;
+}
+
+.network-node > span {
+    color: #94a3b8;
+    font-size: 0.5rem;
+}
+
+.network-node > small {
+    color: #64748b;
+    font-size: 0.43rem;
+}
+
+.network-node.is-active .node-icon {
+    border-color:
+        rgba(96, 165, 250, 0.95);
+
+    box-shadow:
+        0 0 30px
+        rgba(96, 165, 250, 0.3);
+}
+
+.syslog-node.is-active .node-icon {
+    border-color:
+        rgba(52, 211, 153, 0.95);
+
+    box-shadow:
+        0 0 34px
+        rgba(52, 211, 153, 0.35);
+}
+
+
+/* ==========================================
+   COMMON CARDS
+========================================== */
+
+.large-card,
+.concept-card,
+.port-card,
+.severity-card,
+.severity-memory-card,
+.analysis-card,
+.correlation-card,
+.syslog-flow-card {
+    position: absolute;
+
+    left: 50%;
+    top: 48px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    opacity: 0;
+
+    z-index: 30;
+}
+
+.large-card,
+.port-card,
+.correlation-card {
+    width: 530px;
+
+    padding: 15px;
+
+    border-radius: 15px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+}
+
+
+/* ==========================================
+   CARD HEADERS
+========================================== */
+
+.large-card header,
+.port-card header,
+.correlation-card header {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 11px;
+}
+
+.large-card header span,
+.port-card header span,
+.correlation-card header span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+
+/* ==========================================
+   PROBLEM CARD
+========================================== */
+
+.problem-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.24);
+}
+
+.problem-card header > i,
+.problem-card header span {
+    color: #38bdf8;
+}
+
+.problem-card header strong {
+    color: #bae6fd;
+    font-size: 0.61rem;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 7px;
+}
+
+.event-grid > div {
+    padding: 10px 6px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(8, 47, 73, 0.28);
+}
+
+.event-grid i {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #38bdf8;
+    font-size: 0.9rem;
+}
+
+.event-grid span {
+    color: #cbd5e1;
+
+    font-size: 0.42rem;
+    font-weight: 700;
+}
+
+
+/* ==========================================
+   CONCEPT CARDS
+========================================== */
+
+.concept-card {
+    width: 490px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 16px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.96);
+}
+
+.concept-card > i {
+    font-size: 1.3rem;
+}
+
+.concept-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.44rem;
+    font-weight: 900;
+}
+
+.concept-card strong {
+    font-size: 0.56rem;
+    line-height: 1.45;
+}
+
+.purpose-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.25);
+
+    background:
+        rgba(8, 47, 73, 0.34);
+}
+
+.purpose-card > i,
+.purpose-card span {
+    color: #38bdf8;
+}
+
+.purpose-card strong {
+    color: #bae6fd;
+}
+
+.source-card {
+    border:
+        1px solid
+        rgba(34, 211, 238, 0.25);
+
+    background:
+        rgba(8, 51, 68, 0.3);
+}
+
+.source-card > i,
+.source-card span {
+    color: #22d3ee;
+}
+
+.source-card strong {
+    color: #cffafe;
+}
+
+.centralization-card {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    background:
+        rgba(6, 78, 59, 0.25);
+}
+
+.centralization-card > i,
+.centralization-card span {
+    color: #34d399;
+}
+
+.centralization-card strong {
+    color: #d1fae5;
+}
+
+.tcp-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+
+    background:
+        rgba(76, 29, 149, 0.2);
+}
+
+.tcp-card > i,
+.tcp-card span {
+    color: #a78bfa;
+}
+
+.tcp-card strong {
+    color: #ddd6fe;
+}
+
+.severity-intro-card {
+    border:
+        1px solid
+        rgba(251, 191, 36, 0.25);
+
+    background:
+        rgba(120, 53, 15, 0.23);
+}
+
+.severity-intro-card > i,
+.severity-intro-card span {
+    color: #fbbf24;
+}
+
+.severity-intro-card strong {
+    color: #fde68a;
+}
+
+.troubleshooting-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.25);
+
+    background:
+        rgba(8, 47, 73, 0.3);
+}
+
+.troubleshooting-card > i,
+.troubleshooting-card span {
+    color: #38bdf8;
+}
+
+.troubleshooting-card strong {
+    color: #bae6fd;
+}
+
+.security-card {
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.25);
+
+    background:
+        rgba(69, 10, 10, 0.28);
+}
+
+.security-card > i,
+.security-card span {
+    color: #f87171;
+}
+
+.security-card strong {
+    color: #fecaca;
+}
+
+.siem-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+
+    background:
+        rgba(76, 29, 149, 0.22);
+}
+
+.siem-card > i,
+.siem-card span {
+    color: #a78bfa;
+}
+
+.siem-card strong {
+    color: #ddd6fe;
+}
+
+.ntp-card {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    background:
+        rgba(6, 78, 59, 0.24);
+}
+
+.ntp-card > i,
+.ntp-card span {
+    color: #34d399;
+}
+
+.ntp-card strong {
+    color: #d1fae5;
+}
+
+
+/* ==========================================
+   MESSAGE
+========================================== */
+
+.message-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.25);
+}
+
+.message-card header > i,
+.message-card header span {
+    color: #38bdf8;
+}
+
+.message-card header strong {
+    color: #bae6fd;
+    font-size: 0.61rem;
+}
+
+.log-message {
+    display: grid;
+
+    grid-template-columns:
+        115px 90px 1fr;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 11px 12px;
+
+    border-radius: 8px;
+
+    background:
+        rgba(2, 6, 23, 0.65);
+}
+
+.log-message span {
+    color: #64748b;
+
+    font-size: 0.43rem;
+    font-weight: 800;
+}
+
+.log-message strong {
+    color: #38bdf8;
+    font-size: 0.5rem;
+}
+
+.log-message em {
+    color: #e2e8f0;
+
+    font-size: 0.5rem;
+    font-style: normal;
+}
+
+
+/* ==========================================
+   PORT CARDS
+========================================== */
+
+.port-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+}
+
+.port-card header > i,
+.port-card header span {
+    color: #a78bfa;
+}
+
+.port-card header strong {
+    color: #ddd6fe;
+    font-size: 0.65rem;
+}
+
+.port-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    padding: 11px;
+
+    border-radius: 9px;
+
+    background:
+        rgba(76, 29, 149, 0.16);
+}
+
+.port-flow span {
+    color: #c4b5fd;
+
+    font-size: 0.47rem;
+    font-weight: 900;
+}
+
+.port-flow strong {
+    color: #ffffff;
+    font-size: 0.68rem;
+}
+
+.port-flow i {
+    color: #64748b;
+}
+
+.tls-card {
+    border-color:
+        rgba(52, 211, 153, 0.25);
+}
+
+.tls-card header > i,
+.tls-card header span {
+    color: #34d399;
+}
+
+.tls-card header strong {
+    color: #d1fae5;
+}
+
+.tls-card .port-flow {
+    background:
+        rgba(6, 78, 59, 0.2);
+}
+
+.tls-card .port-flow span {
+    color: #a7f3d0;
+}
+
+.tls-card .port-flow strong {
+    color: #d1fae5;
+}
+
+
+/* ==========================================
+   SEVERITY TABLE
+========================================== */
+
+.severity-card {
+    width: 690px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 7px;
+
+    padding: 12px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.18);
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+}
+
+.severity-row {
+    padding: 9px 7px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(30, 41, 59, 0.65);
+}
+
+.severity-row > span {
+    display: flex;
+
+    width: 24px;
+    height: 24px;
+
+    align-items: center;
+    justify-content: center;
+
+    margin: 0 auto 6px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    font-size: 0.56rem;
+    font-weight: 900;
+}
+
+.severity-row strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 0.49rem;
+}
+
+.severity-row small {
+    display: block;
+
+    color: #94a3b8;
+
+    font-size: 0.38rem;
+    line-height: 1.3;
+}
+
+.severity-0,
+.severity-1 {
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.28);
+}
+
+.severity-0 span,
+.severity-1 span,
+.severity-0 strong,
+.severity-1 strong {
+    color: #f87171;
+}
+
+.severity-2,
+.severity-3 {
+    border:
+        1px solid
+        rgba(251, 146, 60, 0.24);
+}
+
+.severity-2 span,
+.severity-3 span,
+.severity-2 strong,
+.severity-3 strong {
+    color: #fb923c;
+}
+
+.severity-4,
+.severity-5 {
+    border:
+        1px solid
+        rgba(251, 191, 36, 0.22);
+}
+
+.severity-4 span,
+.severity-5 span,
+.severity-4 strong,
+.severity-5 strong {
+    color: #fbbf24;
+}
+
+.severity-6,
+.severity-7 {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.22);
+}
+
+.severity-6 span,
+.severity-7 span,
+.severity-6 strong,
+.severity-7 strong {
+    color: #38bdf8;
+}
+
+
+/* ==========================================
+   SEVERITY MEMORY
+========================================== */
+
+.severity-memory-card {
+    width: 650px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 11px;
+
+    padding: 12px 15px;
+
+    border:
+        1px solid
+        rgba(251, 191, 36, 0.2);
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+}
+
+.severity-memory-card > div {
+    text-align: center;
+}
+
+.severity-memory-card > div > span {
+    display: block;
+
+    color: #fbbf24;
+
+    font-size: 0.7rem;
+    font-weight: 900;
+}
+
+.severity-memory-card strong {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #cbd5e1;
+
+    font-size: 0.4rem;
+}
+
+.severity-memory-card > i {
+    color: #475569;
+}
+
+.severity-scale {
+    display: flex;
+    gap: 7px;
+}
+
+.severity-scale span {
+    display: flex;
+
+    width: 28px;
+    height: 28px;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(30, 41, 59, 0.85);
+
+    color: #94a3b8;
+
+    font-size: 0.48rem;
+    font-weight: 900;
+}
+
+
+/* ==========================================
+   ANALYSIS CARDS
+========================================== */
+
+.analysis-card {
+    width: 440px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 14px 16px;
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+}
+
+.analysis-card > i {
+    font-size: 1.3rem;
+}
+
+.analysis-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 0.43rem;
+    font-weight: 900;
+}
+
+.analysis-card strong {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #e2e8f0;
+    font-size: 0.61rem;
+}
+
+.analysis-card small {
+    color: #94a3b8;
+    font-size: 0.44rem;
+}
+
+.timestamp-card {
+    border:
+        1px solid
+        rgba(56, 189, 248, 0.25);
+}
+
+.timestamp-card > i,
+.timestamp-card span {
+    color: #38bdf8;
+}
+
+.hostname-card {
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+}
+
+.hostname-card > i,
+.hostname-card span {
+    color: #34d399;
+}
+
+.event-card {
+    border:
+        1px solid
+        rgba(167, 139, 250, 0.25);
+}
+
+.event-card > i,
+.event-card span {
+    color: #a78bfa;
+}
+
+
+/* ==========================================
+   CORRELATION
+========================================== */
+
+.correlation-card {
+    width: 720px;
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.22);
+}
+
+.correlation-card header > i,
+.correlation-card header span {
+    color: #f87171;
+}
+
+.correlation-card header strong {
+    color: #fecaca;
+    font-size: 0.61rem;
+}
+
+.correlation-flow {
+    display: grid;
+
+    grid-template-columns:
+        1fr 20px 1fr 20px 1fr 20px 1.1fr;
+
+    align-items: center;
+
+    gap: 6px;
+}
+
+.correlation-flow > div {
+    padding: 9px 5px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(30, 41, 59, 0.65);
+}
+
+.correlation-flow > div > i {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #60a5fa;
+}
+
+.correlation-flow span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 0.38rem;
+    font-weight: 900;
+}
+
+.correlation-flow strong {
+    color: #cbd5e1;
+    font-size: 0.43rem;
+}
+
+.correlation-flow > i {
+    color: #475569;
+    text-align: center;
+}
+
+.correlation-flow .incident-result {
+    background:
+        rgba(69, 10, 10, 0.4);
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.25);
+}
+
+.correlation-flow .incident-result > i,
+.correlation-flow .incident-result span {
+    color: #f87171;
+}
+
+.correlation-flow .incident-result strong {
+    color: #fecaca;
+}
+
+
+/* ==========================================
+   SYSLOG FLOW
+========================================== */
+
+.syslog-flow-card {
+    width: 730px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 24px 1fr 24px 1fr 24px 1fr;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding: 12px;
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.18);
+
+    border-radius: 14px;
+
+    background:
+        rgba(15, 23, 42, 0.97);
+}
+
+.syslog-flow-card > div {
+    padding: 10px 7px;
+
+    text-align: center;
+
+    border-radius: 8px;
+
+    background:
+        rgba(30, 41, 59, 0.62);
+}
+
+.syslog-flow-card > div > i {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #60a5fa;
+}
+
+.syslog-flow-card span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #64748b;
+
+    font-size: 0.38rem;
+    font-weight: 900;
+}
+
+.syslog-flow-card strong {
+    color: #cbd5e1;
+    font-size: 0.47rem;
+}
+
+.syslog-flow-card > i {
+    color: #475569;
+    text-align: center;
+}
+
+
+/* ==========================================
+   FINAL SUMMARY
+========================================== */
+
+.syslog-summary {
+    position: absolute;
+
+    left: 50%;
+    bottom: 91px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 9px 16px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(148, 163, 184, 0.17);
+
+    border-radius: 100px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.summary-item > i {
+    color: #60a5fa;
+    font-size: 0.75rem;
+}
+
+.summary-item:nth-of-type(2) > i {
+    color: #34d399;
+}
+
+.summary-item:nth-of-type(3) > i {
+    color: #fbbf24;
+}
+
+.summary-item:last-child > i {
+    color: #a78bfa;
+}
+
+.summary-item span {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #64748b;
+
+    font-size: 0.43rem;
+    font-weight: 800;
+}
+
+.summary-item strong {
+    display: block;
+
+    color: #cbd5e1;
+    font-size: 0.53rem;
+}
+
+.summary-arrow {
+    color: #475569;
+    font-size: 0.54rem;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+
+    left: 50%;
+    bottom: 27px;
+
+    width: min(900px, 80vw);
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 18px;
+
+    transform:
+        translateX(-50%)
+        translateY(15px);
+
+    border:
+        1px solid
+        rgba(52, 211, 153, 0.25);
+
+    border-radius: 13px;
+
+    background:
+        rgba(6, 78, 59, 0.22);
+
+    opacity: 0;
+
+    z-index: 35;
+}
+
+.final-concept > i {
+    color: #34d399;
+    font-size: 1.25rem;
+}
+
+.final-concept span {
+    display: block;
+
+    margin-bottom: 3px;
+
+    color: #34d399;
+
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.final-concept strong {
+    display: block;
+
+    color: #d1fae5;
+
+    font-size: 0.68rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.07);
+
+    z-index: 40;
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38bdf8,
+            #34d399,
+            #a78bfa,
+            #fbbf24
+        );
+
+    box-shadow:
+        0 0 14px
+        rgba(96, 165, 250, 0.65);
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 28px;
+    bottom: 28px;
+
+    display: flex;
+    gap: 10px;
+
+    z-index: 50;
+}
+
+.scene-controls button {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 15px;
+
+    border:
+        1px solid #334155;
+
+    border-radius: 9px;
+
+    background:
+        rgba(15, 23, 42, 0.94);
+
+    color: #e2e8f0;
+
+    cursor: pointer;
+
+    font-size: 0.78rem;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: #38bdf8;
+    background: #172033;
+    transform: translateY(-2px);
+}
+
+
+/* ==========================================
+   VISIBILITY
+========================================== */
+
+.is-visible {
+    opacity: 1 !important;
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.scene-brand.is-visible {
+    transform: translateY(0);
+}
+
+.scene-title.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+.network-node.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+.large-card.is-visible,
+.concept-card.is-visible,
+.port-card.is-visible,
+.severity-card.is-visible,
+.severity-memory-card.is-visible,
+.analysis-card.is-visible,
+.correlation-card.is-visible,
+.syslog-flow-card.is-visible,
+.syslog-summary.is-visible,
+.final-concept.is-visible {
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes pathFlow {
+
+    from {
+        stroke-dashoffset: 0;
+    }
+
+    to {
+        stroke-dashoffset: -34;
+    }
+
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE WIDTH
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .syslog-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.88);
+    }
+
+}
+
+@media (max-width: 1100px) {
+
+    .syslog-stage {
+        transform:
+            translate(-50%, -50%)
+            scale(0.76);
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE HEIGHT
+========================================== */
+
+@media (max-height: 850px) {
+
+    .syslog-stage {
+        top: 55%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.84);
+    }
+
+    .scene-title {
+        top: 48px;
+    }
+
+    .scene-title p {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-height: 760px) {
+
+    .syslog-stage {
+        top: 56%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.74);
+    }
+
+    .scene-title {
+        top: 40px;
+    }
+
+    .scene-title h1 {
+        font-size:
+            clamp(1.6rem, 2.4vw, 2.25rem);
+    }
+
+    .scene-title p {
+        font-size: 0.78rem;
+        line-height: 1.4;
+    }
+
+}
+
+@media (max-height: 680px) {
+
+    .syslog-stage {
+        top: 57%;
+
+        transform:
+            translate(-50%, -50%)
+            scale(0.65);
+    }
+
+    .scene-brand {
+        top: 20px;
+        left: 28px;
+    }
+
+    .scene-title {
+        top: 28px;
+    }
+
+}
