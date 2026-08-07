@@ -1,0 +1,1161 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   SCENE 29 — PACKET CAPTURE & PROTOCOL ANALYSIS
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+    background: #050914;
+    font-family: Inter, Arial, sans-serif;
+    color: #ffffff;
+}
+
+body {
+    overflow: hidden;
+}
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-width: 1100px;
+    min-height: 650px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(30, 110, 255, 0.10), transparent 35%),
+        linear-gradient(145deg, #050914 0%, #081120 55%, #050914 100%);
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.13;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 55px 55px;
+}
+
+.background-glow {
+    position: absolute;
+    width: 430px;
+    height: 430px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.background-glow.is-visible {
+    opacity: 0.2;
+}
+
+.glow-left {
+    left: -180px;
+    top: 180px;
+    background: #0d6efd;
+}
+
+.glow-center {
+    left: 50%;
+    top: 30%;
+    transform: translateX(-50%);
+    background: #00d4ff;
+}
+
+.glow-right {
+    right: -180px;
+    top: 100px;
+    background: #7b61ff;
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 30px;
+    left: 42px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 30;
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: 0.5s ease;
+}
+
+.scene-brand.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 23px;
+    background: linear-gradient(135deg, #1478ff, #00c8ff);
+    box-shadow: 0 0 25px rgba(0, 174, 255, 0.3);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+.brand-copy strong {
+    font-size: 17px;
+    letter-spacing: 0.14em;
+}
+
+.brand-copy span {
+    margin-top: 4px;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: #8295b5;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+    top: 95px;
+    left: 50%;
+    width: 760px;
+    transform: translate(-50%, -10px);
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+    transition: 0.6s ease;
+}
+
+.scene-title.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.scene-number {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #36c9ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+}
+
+.scene-title h1 {
+    margin: 0;
+    font-size: clamp(30px, 3vw, 48px);
+    line-height: 1.05;
+}
+
+.scene-title p {
+    width: 680px;
+    max-width: 100%;
+    margin: 12px auto 0;
+    color: #9aacc7;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   MAIN STAGE
+========================================== */
+
+.packet-stage {
+    position: absolute;
+    left: 50%;
+    top: 220px;
+    width: 1200px;
+    height: 500px;
+    transform: translateX(-50%);
+}
+
+.packet-path-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    z-index: 2;
+}
+
+.packet-path {
+    fill: none;
+    stroke: rgba(77, 172, 255, 0.35);
+    stroke-width: 3;
+    stroke-dasharray: 9 10;
+    opacity: 0;
+    transition: 0.5s ease;
+}
+
+.packet-path.is-visible {
+    opacity: 1;
+}
+
+.packet-path.is-active {
+    stroke: #3ed6ff;
+    stroke-width: 4;
+    filter: drop-shadow(0 0 8px rgba(62, 214, 255, 0.7));
+}
+
+.packet-dot {
+    fill: #ffffff;
+    stroke: #26cfff;
+    stroke-width: 4;
+    opacity: 0;
+    filter: drop-shadow(0 0 8px #00c8ff);
+}
+
+
+/* ==========================================
+   NETWORK NODES
+========================================== */
+
+.network-node {
+    position: absolute;
+    z-index: 8;
+    width: 165px;
+    padding: 18px 15px;
+    text-align: center;
+    border: 1px solid rgba(90, 155, 255, 0.25);
+    border-radius: 18px;
+    background: rgba(10, 20, 38, 0.92);
+    box-shadow: 0 18px 50px rgba(0,0,0,0.25);
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+    transition: 0.5s ease;
+}
+
+.network-node.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.network-node.is-active {
+    border-color: #38d5ff;
+    box-shadow:
+        0 0 0 1px rgba(56, 213, 255, 0.2),
+        0 0 30px rgba(56, 213, 255, 0.25);
+}
+
+.node-icon {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto 11px;
+    border-radius: 15px;
+    background: rgba(28, 124, 255, 0.15);
+    color: #46d3ff;
+    font-size: 24px;
+}
+
+.network-node strong {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+}
+
+.network-node span {
+    display: block;
+    margin-top: 5px;
+    color: #8499ba;
+    font-size: 11px;
+}
+
+.client-node {
+    left: 135px;
+    top: 245px;
+}
+
+.analyzer-node {
+    left: 518px;
+    top: 185px;
+}
+
+.server-node {
+    right: 135px;
+    top: 245px;
+}
+
+
+/* ==========================================
+   SHARED CARD STYLES
+========================================== */
+
+.large-card,
+.flow-card,
+.packet-card,
+.analysis-card,
+.flags-card,
+.handshake-card,
+.filter-card,
+.protocol-example,
+.troubleshooting-card,
+.concept-card {
+    position: absolute;
+    z-index: 15;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(18px) scale(0.97);
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s ease,
+        visibility 0.45s;
+}
+
+.large-card.is-visible,
+.flow-card.is-visible,
+.packet-card.is-visible,
+.analysis-card.is-visible,
+.flags-card.is-visible,
+.handshake-card.is-visible,
+.filter-card.is-visible,
+.protocol-example.is-visible,
+.troubleshooting-card.is-visible,
+.concept-card.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+
+/* ==========================================
+   PURPOSE CARD
+========================================== */
+
+.purpose-card {
+    left: 50%;
+    top: 25px;
+    width: 700px;
+    transform: translate(-50%, 18px) scale(0.97);
+    padding: 24px;
+    border: 1px solid rgba(61, 176, 255, 0.3);
+    border-radius: 22px;
+    background: rgba(8, 18, 34, 0.96);
+}
+
+.purpose-card.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.purpose-card header,
+.packet-card header,
+.flags-card header,
+.filter-card header,
+.protocol-example header,
+.troubleshooting-card header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.purpose-card header > i,
+.packet-card header > i,
+.flags-card header > i,
+.filter-card header > i,
+.protocol-example header > i,
+.troubleshooting-card header > i {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    border-radius: 14px;
+    background: rgba(38, 177, 255, 0.14);
+    color: #3bd2ff;
+    font-size: 21px;
+}
+
+.purpose-card header span,
+.packet-card header span,
+.flags-card header span,
+.filter-card header span,
+.protocol-example header span,
+.troubleshooting-card header span {
+    display: block;
+    color: #3fd3ff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.purpose-card header strong,
+.packet-card header strong,
+.flags-card header strong,
+.filter-card header strong,
+.protocol-example header strong,
+.troubleshooting-card header strong {
+    display: block;
+    margin-top: 4px;
+    font-size: 16px;
+    line-height: 1.35;
+}
+
+.purpose-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.purpose-grid div {
+    padding: 14px 8px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 13px;
+    background: rgba(255,255,255,0.025);
+}
+
+.purpose-grid i {
+    display: block;
+    margin-bottom: 8px;
+    color: #43d5ff;
+    font-size: 18px;
+}
+
+.purpose-grid span {
+    font-size: 11px;
+    color: #afbed4;
+}
+
+
+/* ==========================================
+   FLOW CARDS
+========================================== */
+
+.flow-card {
+    left: 50%;
+    top: 65px;
+    width: 820px;
+    transform: translate(-50%, 18px) scale(0.97);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px;
+    border: 1px solid rgba(76, 167, 255, 0.28);
+    border-radius: 22px;
+    background: rgba(8, 18, 34, 0.96);
+}
+
+.flow-card.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.flow-card > div {
+    width: 150px;
+    text-align: center;
+}
+
+.flow-card > div i {
+    display: block;
+    margin-bottom: 8px;
+    color: #3dd5ff;
+    font-size: 25px;
+}
+
+.flow-card > div span {
+    display: block;
+    color: #5edcff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.flow-card > div strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.flow-card > i {
+    color: #4b6689;
+}
+
+
+/* ==========================================
+   PACKET OVERVIEW
+========================================== */
+
+.packet-card {
+    left: 50%;
+    top: 15px;
+    width: 720px;
+    transform: translate(-50%, 18px) scale(0.97);
+    padding: 22px;
+    border: 1px solid rgba(64, 184, 255, 0.3);
+    border-radius: 22px;
+    background: rgba(8, 18, 34, 0.97);
+}
+
+.packet-card.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.packet-sections {
+    display: grid;
+    grid-template-columns: 1.25fr 1.25fr 1.25fr 1.7fr;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 13px;
+}
+
+.packet-sections > div {
+    padding: 18px 10px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.packet-sections > div:last-child {
+    border-right: 0;
+}
+
+.packet-sections span {
+    display: block;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.packet-sections strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+.ethernet-section {
+    background: rgba(35, 126, 255, 0.16);
+}
+
+.ip-section {
+    background: rgba(0, 196, 255, 0.14);
+}
+
+.transport-section {
+    background: rgba(125, 95, 255, 0.14);
+}
+
+.data-section {
+    background: rgba(0, 210, 154, 0.12);
+}
+
+
+/* ==========================================
+   ANALYSIS DETAIL CARDS
+========================================== */
+
+.analysis-card {
+    left: 50%;
+    top: 75px;
+    width: 580px;
+    transform: translate(-50%, 18px) scale(0.97);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid rgba(70, 177, 255, 0.28);
+    border-radius: 20px;
+    background: rgba(8, 18, 34, 0.97);
+}
+
+.analysis-card.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.analysis-card > i {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    flex: 0 0 58px;
+    border-radius: 16px;
+    background: rgba(44, 158, 255, 0.14);
+    color: #4bd6ff;
+    font-size: 25px;
+}
+
+.analysis-card span {
+    display: block;
+    color: #4bd6ff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+}
+
+.analysis-card strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 17px;
+}
+
+.analysis-card small {
+    display: block;
+    margin-top: 6px;
+    color: #879bb9;
+}
+
+
+/* ==========================================
+   TCP FLAGS
+========================================== */
+
+.flags-card {
+    left: 50%;
+    top: 25px;
+    width: 650px;
+    transform: translate(-50%, 18px) scale(0.97);
+    padding: 22px;
+    border: 1px solid rgba(125, 102, 255, 0.3);
+    border-radius: 22px;
+    background: rgba(8, 18, 34, 0.97);
+}
+
+.flags-card.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.flag-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.flag-grid div {
+    padding: 16px 10px;
+    text-align: center;
+    border-radius: 13px;
+    background: rgba(255,255,255,0.035);
+}
+
+.flag-grid strong {
+    display: block;
+    color: #8c7dff;
+    font-size: 17px;
+}
+
+.flag-grid span {
+    display: block;
+    margin-top: 5px;
+    color: #9eacc1;
+    font-size: 10px;
+}
+
+
+/* ==========================================
+   TCP HANDSHAKE
+========================================== */
+
+.handshake-card {
+    left: 50%;
+    top: 25px;
+    width: 700px;
+    transform: translate(-50%, 18px) scale(0.97);
+    display: grid;
+    grid-template-columns: 140px 1fr 140px;
+    align-items: center;
+    gap: 25px;
+    padding: 24px;
+    border: 1px solid rgba(59, 196, 255, 0.3);
+    border-radius: 22px;
+    background: rgba(8, 18, 34, 0.97);
+}
+
+.handshake-card.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.handshake-endpoint {
+    text-align: center;
+}
+
+.handshake-endpoint i {
+    display: block;
+    color: #43d6ff;
+    font-size: 35px;
+    margin-bottom: 8px;
+}
+
+.handshake-endpoint span {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.handshake-middle {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.handshake-middle div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #4cd7ff;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+
+/* ==========================================
+   FILTER CARDS
+========================================== */
+
+.filter-card {
+    left: 50%;
+    top: 55px;
+    width: 610px;
+    transform: translate(-50%, 18px) scale(0.97);
+    padding: 22px;
+    border: 1px solid rgba(0, 208, 168, 0.3);
+    border-radius: 22px;
+    background: rgba(8, 18, 34, 0.97);
+}
+
+.filter-card.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.filter-example {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.filter-example code {
+    padding: 13px 16px;
+    border-radius: 10px;
+    background: #02060d;
+    color: #56e5c3;
+    font-size: 15px;
+}
+
+.filter-example span {
+    color: #9fb0c8;
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   DNS EXAMPLE
+========================================== */
+
+.protocol-example {
+    left: 50%;
+    top: 35px;
+    width: 760px;
+    transform: translate(-50%, 18px) scale(0.97);
+    padding: 22px;
+    border: 1px solid rgba(48, 185, 255, 0.28);
+    border-radius: 22px;
+    background: rgba(8, 18, 34, 0.97);
+}
+
+.protocol-example.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.protocol-flow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.protocol-flow div {
+    flex: 1;
+    padding: 14px;
+    text-align: center;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.035);
+}
+
+.protocol-flow span {
+    display: block;
+    color: #45d4ff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.protocol-flow strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+}
+
+.protocol-flow > i {
+    color: #506989;
+}
+
+
+/* ==========================================
+   TROUBLESHOOTING
+========================================== */
+
+.troubleshooting-card {
+    left: 50%;
+    top: 15px;
+    width: 790px;
+    transform: translate(-50%, 18px) scale(0.97);
+    padding: 22px;
+    border: 1px solid rgba(61, 177, 255, 0.28);
+    border-radius: 22px;
+    background: rgba(8, 18, 34, 0.97);
+}
+
+.troubleshooting-card.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.troubleshooting-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.troubleshooting-grid > div {
+    position: relative;
+    padding: 15px 10px;
+    text-align: center;
+    border-radius: 13px;
+    background: rgba(255,255,255,0.035);
+}
+
+.troubleshooting-grid > div > span {
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    margin: 0 auto 8px;
+    border-radius: 50%;
+    background: rgba(55, 184, 255, 0.16);
+    color: #42d3ff;
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.troubleshooting-grid strong,
+.troubleshooting-grid small {
+    display: block;
+}
+
+.troubleshooting-grid strong {
+    font-size: 11px;
+}
+
+.troubleshooting-grid small {
+    margin-top: 5px;
+    color: #8194b0;
+    font-size: 9px;
+}
+
+.troubleshooting-grid .problem-step {
+    border: 1px solid rgba(255, 88, 88, 0.45);
+    background: rgba(255, 70, 70, 0.08);
+}
+
+.troubleshooting-grid .problem-step > span {
+    background: rgba(255, 75, 75, 0.15);
+    color: #ff7777;
+}
+
+
+/* ==========================================
+   CONCEPT CARDS
+========================================== */
+
+.concept-card {
+    left: 50%;
+    top: 70px;
+    width: 650px;
+    transform: translate(-50%, 18px) scale(0.97);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    border: 1px solid rgba(60, 181, 255, 0.28);
+    border-radius: 22px;
+    background: rgba(8, 18, 34, 0.97);
+}
+
+.concept-card.is-visible {
+    transform: translate(-50%, 0) scale(1);
+}
+
+.concept-card > i {
+    display: grid;
+    place-items: center;
+    width: 62px;
+    height: 62px;
+    flex: 0 0 62px;
+    border-radius: 17px;
+    background: rgba(47, 174, 255, 0.13);
+    color: #46d5ff;
+    font-size: 26px;
+}
+
+.concept-card span {
+    display: block;
+    color: #48d4ff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+}
+
+.concept-card strong {
+    display: block;
+    margin-top: 7px;
+    color: #e9f2ff;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.packet-summary {
+    position: absolute;
+    left: 50%;
+    bottom: 120px;
+    z-index: 25;
+    width: 850px;
+    transform: translate(-50%, 20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease;
+}
+
+.packet-summary.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 200px;
+    padding: 15px;
+    border: 1px solid rgba(60, 181, 255, 0.22);
+    border-radius: 15px;
+    background: rgba(8, 18, 34, 0.94);
+}
+
+.summary-item > i {
+    color: #43d5ff;
+    font-size: 20px;
+}
+
+.summary-item span,
+.summary-item strong {
+    display: block;
+}
+
+.summary-item span {
+    color: #43d5ff;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.summary-item strong {
+    margin-top: 4px;
+    font-size: 11px;
+}
+
+.summary-arrow {
+    color: #4c6688;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+    left: 50%;
+    bottom: 115px;
+    z-index: 30;
+    width: 850px;
+    transform: translate(-50%, 20px);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 24px;
+    border: 1px solid rgba(0, 214, 168, 0.3);
+    border-radius: 18px;
+    background: rgba(6, 25, 29, 0.96);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s ease;
+}
+
+.final-concept.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+}
+
+.final-concept > i {
+    color: #4ce2bc;
+    font-size: 29px;
+}
+
+.final-concept span {
+    display: block;
+    color: #4ce2bc;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+}
+
+.final-concept strong {
+    display: block;
+    margin-top: 5px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    width: 100%;
+    height: 5px;
+    background: rgba(255,255,255,0.07);
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, #1478ff, #00d8ff);
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+    right: 28px;
+    bottom: 24px;
+    z-index: 60;
+    display: flex;
+    gap: 9px;
+}
+
+.scene-controls button {
+    border: 1px solid rgba(85, 163, 255, 0.25);
+    border-radius: 10px;
+    padding: 10px 14px;
+    background: rgba(8, 18, 34, 0.9);
+    color: #dbe9ff;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.scene-controls button:hover {
+    border-color: #3acfff;
+}
+
+.scene-controls button i {
+    margin-right: 6px;
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+.recording-mode .scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   RESPONSIVE SCALE
+========================================== */
+
+@media (max-width: 1300px) {
+
+    .packet-stage {
+        transform:
+            translateX(-50%)
+            scale(0.88);
+        transform-origin: top center;
+    }
+
+    .scene-title {
+        top: 85px;
+    }
+}
+
+@media (max-height: 760px) {
+
+    .packet-stage {
+        top: 195px;
+        transform:
+            translateX(-50%)
+            scale(0.82);
+        transform-origin: top center;
+    }
+
+    .scene-title {
+        top: 80px;
+    }
+
+    .scene-title p {
+        margin-top: 8px;
+    }
+}

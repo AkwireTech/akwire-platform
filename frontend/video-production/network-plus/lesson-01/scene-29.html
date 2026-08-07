@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 29
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-29.css">
+
+</head>
+
+<body>
+
+<main id="scene29"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>AKWIRE</strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 29
+        </span>
+
+        <h1>
+            Packet Capture & Protocol Analysis
+        </h1>
+
+        <p>
+            Packet capture allows administrators to inspect
+            network communication directly and understand
+            what is actually happening on the wire.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="packet-stage">
+
+
+        <!-- ======================================
+             NETWORK PATH
+        ======================================= -->
+
+        <svg class="packet-path-layer"
+             viewBox="0 0 1200 500"
+             preserveAspectRatio="none"
+             aria-hidden="true">
+
+            <path id="clientServerPath"
+                  class="packet-path"
+                  d="M220 310 C410 250 790 250 980 310">
+            </path>
+
+            <circle id="packetDot"
+                    class="packet-dot"
+                    r="8">
+            </circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             CLIENT
+        ======================================= -->
+
+        <div id="clientNode"
+             class="network-node client-node">
+
+            <div class="node-icon">
+                <i class="fas fa-laptop"></i>
+            </div>
+
+            <strong>CLIENT</strong>
+
+            <span>
+                10.10.20.25
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             ANALYZER
+        ======================================= -->
+
+        <div id="analyzerNode"
+             class="network-node analyzer-node">
+
+            <div class="node-icon">
+                <i class="fas fa-magnifying-glass-chart"></i>
+            </div>
+
+            <strong>
+                PACKET ANALYZER
+            </strong>
+
+            <span>
+                Capture + Inspect
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SERVER
+        ======================================= -->
+
+        <div id="serverNode"
+             class="network-node server-node">
+
+            <div class="node-icon">
+                <i class="fas fa-server"></i>
+            </div>
+
+            <strong>SERVER</strong>
+
+            <span>
+                172.16.10.50
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             WHY CAPTURE PACKETS
+        ======================================= -->
+
+        <div id="capturePurpose"
+             class="large-card purpose-card">
+
+            <header>
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <div>
+
+                    <span>
+                        PACKET CAPTURE
+                    </span>
+
+                    <strong>
+                        Capture network traffic and inspect
+                        individual packets to troubleshoot
+                        communication problems.
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="purpose-grid">
+
+                <div>
+                    <i class="fas fa-bug"></i>
+                    <span>Troubleshoot</span>
+                </div>
+
+                <div>
+                    <i class="fas fa-clock"></i>
+                    <span>Analyze Delay</span>
+                </div>
+
+                <div>
+                    <i class="fas fa-shield-halved"></i>
+                    <span>Investigate Security</span>
+                </div>
+
+                <div>
+                    <i class="fas fa-code"></i>
+                    <span>Inspect Protocols</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             CAPTURE PROCESS
+        ======================================= -->
+
+        <div id="captureProcess"
+             class="flow-card">
+
+            <div>
+
+                <i class="fas fa-network-wired"></i>
+
+                <span>
+                    NETWORK
+                </span>
+
+                <strong>
+                    Traffic
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <i class="fas fa-filter"></i>
+
+                <span>
+                    CAPTURE
+                </span>
+
+                <strong>
+                    Packets
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <span>
+                    ANALYZE
+                </span>
+
+                <strong>
+                    Protocols
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <i class="fas fa-lightbulb"></i>
+
+                <span>
+                    DIAGNOSE
+                </span>
+
+                <strong>
+                    Problem
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PACKET OVERVIEW
+        ======================================= -->
+
+        <div id="packetOverview"
+             class="packet-card">
+
+            <header>
+
+                <i class="fas fa-cube"></i>
+
+                <div>
+
+                    <span>
+                        CAPTURED PACKET
+                    </span>
+
+                    <strong>
+                        One network communication unit
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="packet-sections">
+
+                <div class="ethernet-section">
+
+                    <span>
+                        ETHERNET
+                    </span>
+
+                    <strong>
+                        MAC Addresses
+                    </strong>
+
+                </div>
+
+                <div class="ip-section">
+
+                    <span>
+                        IP
+                    </span>
+
+                    <strong>
+                        IP Addresses
+                    </strong>
+
+                </div>
+
+                <div class="transport-section">
+
+                    <span>
+                        TCP / UDP
+                    </span>
+
+                    <strong>
+                        Ports
+                    </strong>
+
+                </div>
+
+                <div class="data-section">
+
+                    <span>
+                        DATA
+                    </span>
+
+                    <strong>
+                        Payload
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             FRAME DETAILS
+        ======================================= -->
+
+        <div id="frameDetail"
+             class="analysis-card ethernet-card">
+
+            <i class="fas fa-ethernet"></i>
+
+            <div>
+
+                <span>
+                    ETHERNET FRAME
+                </span>
+
+                <strong>
+                    Source MAC → Destination MAC
+                </strong>
+
+                <small>
+                    Layer 2 information
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IP DETAILS
+        ======================================= -->
+
+        <div id="ipDetail"
+             class="analysis-card ip-card">
+
+            <i class="fas fa-location-dot"></i>
+
+            <div>
+
+                <span>
+                    IP HEADER
+                </span>
+
+                <strong>
+                    10.10.20.25 → 172.16.10.50
+                </strong>
+
+                <small>
+                    Layer 3 addressing
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TRANSPORT DETAILS
+        ======================================= -->
+
+        <div id="transportDetail"
+             class="analysis-card transport-card">
+
+            <i class="fas fa-door-open"></i>
+
+            <div>
+
+                <span>
+                    TRANSPORT HEADER
+                </span>
+
+                <strong>
+                    TCP 51542 → Port 443
+                </strong>
+
+                <small>
+                    Application communication
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PAYLOAD
+        ======================================= -->
+
+        <div id="payloadDetail"
+             class="analysis-card payload-card">
+
+            <i class="fas fa-box-open"></i>
+
+            <div>
+
+                <span>
+                    PAYLOAD
+                </span>
+
+                <strong>
+                    Application Data
+                </strong>
+
+                <small>
+                    May be readable or encrypted
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TCP FLAGS
+        ======================================= -->
+
+        <div id="tcpFlags"
+             class="flags-card">
+
+            <header>
+
+                <i class="fas fa-flag"></i>
+
+                <div>
+                    <span>TCP FLAGS</span>
+                    <strong>Connection behavior</strong>
+                </div>
+
+            </header>
+
+            <div class="flag-grid">
+
+                <div>
+                    <strong>SYN</strong>
+                    <span>Start Connection</span>
+                </div>
+
+                <div>
+                    <strong>ACK</strong>
+                    <span>Acknowledge</span>
+                </div>
+
+                <div>
+                    <strong>FIN</strong>
+                    <span>Close Connection</span>
+                </div>
+
+                <div>
+                    <strong>RST</strong>
+                    <span>Reset Connection</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TCP HANDSHAKE
+        ======================================= -->
+
+        <div id="handshakeCard"
+             class="handshake-card">
+
+            <div class="handshake-endpoint">
+
+                <i class="fas fa-laptop"></i>
+
+                <span>CLIENT</span>
+
+            </div>
+
+            <div class="handshake-middle">
+
+                <div>
+                    <span>SYN</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+                <div>
+                    <i class="fas fa-arrow-left"></i>
+                    <span>SYN-ACK</span>
+                </div>
+
+                <div>
+                    <span>ACK</span>
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+            </div>
+
+            <div class="handshake-endpoint">
+
+                <i class="fas fa-server"></i>
+
+                <span>SERVER</span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             FILTERING
+        ======================================= -->
+
+        <div id="filterCard"
+             class="filter-card">
+
+            <header>
+
+                <i class="fas fa-filter"></i>
+
+                <div>
+                    <span>DISPLAY FILTER</span>
+                    <strong>Focus on relevant traffic</strong>
+                </div>
+
+            </header>
+
+            <div class="filter-example">
+
+                <code>
+                    tcp.port == 443
+                </code>
+
+                <span>
+                    Show HTTPS TCP traffic
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IP FILTER
+        ======================================= -->
+
+        <div id="ipFilterCard"
+             class="filter-card ip-filter-card">
+
+            <header>
+
+                <i class="fas fa-filter-circle-dollar"></i>
+
+                <div>
+                    <span>IP FILTER</span>
+                    <strong>Isolate one host</strong>
+                </div>
+
+            </header>
+
+            <div class="filter-example">
+
+                <code>
+                    ip.addr == 10.10.20.25
+                </code>
+
+                <span>
+                    Show traffic involving this host
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DNS EXAMPLE
+        ======================================= -->
+
+        <div id="dnsExample"
+             class="protocol-example">
+
+            <header>
+
+                <i class="fas fa-globe"></i>
+
+                <div>
+                    <span>DNS ANALYSIS</span>
+                    <strong>Name resolution</strong>
+                </div>
+
+            </header>
+
+            <div class="protocol-flow">
+
+                <div>
+                    <span>QUERY</span>
+                    <strong>www.example.com</strong>
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div>
+                    <span>DNS SERVER</span>
+                    <strong>10.10.20.2</strong>
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div>
+                    <span>RESPONSE</span>
+                    <strong>93.184.216.34</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             TROUBLESHOOTING EXAMPLE
+        ======================================= -->
+
+        <div id="troubleshootingExample"
+             class="troubleshooting-card">
+
+            <header>
+
+                <i class="fas fa-stethoscope"></i>
+
+                <div>
+                    <span>TROUBLESHOOTING</span>
+                    <strong>User cannot reach a web server</strong>
+                </div>
+
+            </header>
+
+            <div class="troubleshooting-grid">
+
+                <div>
+                    <span>1</span>
+                    <strong>DNS Query</strong>
+                    <small>Successful</small>
+                </div>
+
+                <div>
+                    <span>2</span>
+                    <strong>TCP SYN</strong>
+                    <small>Sent</small>
+                </div>
+
+                <div class="problem-step">
+                    <span>3</span>
+                    <strong>No SYN-ACK</strong>
+                    <small>Connection fails</small>
+                </div>
+
+                <div>
+                    <span>4</span>
+                    <strong>Investigate</strong>
+                    <small>Firewall / Server</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PROMISCUOUS MODE
+        ======================================= -->
+
+        <div id="promiscuousCard"
+             class="concept-card">
+
+            <i class="fas fa-satellite-dish"></i>
+
+            <div>
+
+                <span>
+                    PROMISCUOUS MODE
+                </span>
+
+                <strong>
+                    Allows a network interface to process
+                    packets beyond traffic addressed only
+                    to that interface.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PORT MIRRORING
+        ======================================= -->
+
+        <div id="portMirrorCard"
+             class="concept-card mirror-card">
+
+            <i class="fas fa-code-branch"></i>
+
+            <div>
+
+                <span>
+                    PORT MIRRORING
+                </span>
+
+                <strong>
+                    A switch can copy traffic from selected
+                    interfaces to a monitoring port for
+                    packet capture and analysis.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ENCRYPTION
+        ======================================= -->
+
+        <div id="encryptionCard"
+             class="concept-card encryption-card">
+
+            <i class="fas fa-lock"></i>
+
+            <div>
+
+                <span>
+                    ENCRYPTED TRAFFIC
+                </span>
+
+                <strong>
+                    Packet headers can still reveal useful
+                    metadata even when the application
+                    payload is encrypted.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             PCAP
+        ======================================= -->
+
+        <div id="pcapCard"
+             class="concept-card pcap-card">
+
+            <i class="fas fa-file"></i>
+
+            <div>
+
+                <span>
+                    PCAP
+                </span>
+
+                <strong>
+                    Captured packet data can be saved to
+                    a packet capture file for later
+                    inspection and analysis.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ANALYSIS WORKFLOW
+        ======================================= -->
+
+        <div id="analysisWorkflow"
+             class="flow-card analysis-workflow">
+
+            <div>
+
+                <i class="fas fa-circle-record"></i>
+
+                <span>CAPTURE</span>
+
+                <strong>
+                    Traffic
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <i class="fas fa-filter"></i>
+
+                <span>FILTER</span>
+
+                <strong>
+                    Relevant Packets
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <span>INSPECT</span>
+
+                <strong>
+                    Headers
+                </strong>
+
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+
+                <i class="fas fa-lightbulb"></i>
+
+                <span>DIAGNOSE</span>
+
+                <strong>
+                    Root Cause
+                </strong>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL SUMMARY
+    =========================================== -->
+
+    <section id="packetSummary"
+             class="packet-summary">
+
+        <div class="summary-item">
+
+            <i class="fas fa-circle-record"></i>
+
+            <div>
+                <span>CAPTURE</span>
+                <strong>Collect Packets</strong>
+            </div>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-filter"></i>
+
+            <div>
+                <span>FILTER</span>
+                <strong>Find Relevant Traffic</strong>
+            </div>
+
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-magnifying-glass"></i>
+
+            <div>
+                <span>ANALYZE</span>
+                <strong>Inspect Protocols</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                Packet capture provides a detailed view of
+                network communication. By examining addresses,
+                ports, protocol fields, flags, timing, and
+                payload information, administrators can locate
+                problems that may not be visible from monitoring
+                dashboards alone.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-29.js"></script>
+
+</body>
+
+</html>
