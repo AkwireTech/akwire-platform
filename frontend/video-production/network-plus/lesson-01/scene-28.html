@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Scene 28
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-28.css">
+
+</head>
+
+<body>
+
+<main id="scene28"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>AKWIRE</strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 28
+        </span>
+
+        <h1>
+            Network Monitoring Protocols
+        </h1>
+
+        <p>
+            SNMP, Syslog, and flow monitoring provide
+            different views of network health, events,
+            and traffic behavior.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="monitor-stage">
+
+
+        <!-- NETWORK CONNECTIONS -->
+
+        <svg class="connection-layer"
+             viewBox="0 0 1200 500"
+             preserveAspectRatio="none"
+             aria-hidden="true">
+
+            <path id="snmpPath"
+                  class="connection-path path-blue"
+                  d="M205 305 C330 245 430 245 545 295">
+            </path>
+
+            <path id="syslogPath"
+                  class="connection-path path-purple"
+                  d="M205 390 C350 410 445 350 545 310">
+            </path>
+
+            <path id="flowPath"
+                  class="connection-path path-green"
+                  d="M995 305 C860 245 760 245 655 295">
+            </path>
+
+            <path id="analysisPath"
+                  class="connection-path path-gold"
+                  d="M995 390 C850 410 755 350 655 310">
+            </path>
+
+            <circle id="movingPacket"
+                    class="moving-packet"
+                    r="8">
+            </circle>
+
+        </svg>
+
+
+        <!-- ======================================
+             ROUTER
+        ======================================= -->
+
+        <div id="routerNode"
+             class="device-node router-node">
+
+            <div class="node-icon">
+                <i class="fas fa-route"></i>
+            </div>
+
+            <strong>ROUTER</strong>
+
+            <span>
+                Network Infrastructure
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SWITCH
+        ======================================= -->
+
+        <div id="switchNode"
+             class="device-node switch-node">
+
+            <div class="node-icon">
+                <i class="fas fa-network-wired"></i>
+            </div>
+
+            <strong>SWITCH</strong>
+
+            <span>
+                Network Infrastructure
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             MONITORING SYSTEM
+        ======================================= -->
+
+        <div id="monitorNode"
+             class="device-node monitor-node">
+
+            <div class="node-icon">
+                <i class="fas fa-desktop"></i>
+            </div>
+
+            <strong>
+                MONITORING PLATFORM
+            </strong>
+
+            <span>
+                Central Visibility
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             SERVER
+        ======================================= -->
+
+        <div id="serverNode"
+             class="device-node server-node">
+
+            <div class="node-icon">
+                <i class="fas fa-server"></i>
+            </div>
+
+            <strong>SERVER</strong>
+
+            <span>
+                Network Service
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             FIREWALL
+        ======================================= -->
+
+        <div id="firewallNode"
+             class="device-node firewall-node">
+
+            <div class="node-icon">
+                <i class="fas fa-shield-halved"></i>
+            </div>
+
+            <strong>FIREWALL</strong>
+
+            <span>
+                Security Infrastructure
+            </span>
+
+        </div>
+
+
+        <!-- ======================================
+             VISIBILITY PROBLEM
+        ======================================= -->
+
+        <div id="visibilityProblem"
+             class="large-card problem-card">
+
+            <header>
+
+                <i class="fas fa-eye-slash"></i>
+
+                <div>
+
+                    <span>
+                        NETWORK VISIBILITY
+                    </span>
+
+                    <strong>
+                        Administrators need to know whether
+                        devices are healthy, what events are
+                        occurring, and how traffic is moving.
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="problem-grid">
+
+                <div>
+                    <i class="fas fa-heart-pulse"></i>
+                    <span>Device Health</span>
+                </div>
+
+                <div>
+                    <i class="fas fa-triangle-exclamation"></i>
+                    <span>Events</span>
+                </div>
+
+                <div>
+                    <i class="fas fa-chart-line"></i>
+                    <span>Performance</span>
+                </div>
+
+                <div>
+                    <i class="fas fa-arrow-right-arrow-left"></i>
+                    <span>Traffic</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SNMP
+        ======================================= -->
+
+        <div id="snmpCard"
+             class="protocol-card snmp-card">
+
+            <div class="protocol-icon">
+                <i class="fas fa-chart-column"></i>
+            </div>
+
+            <div>
+
+                <span>
+                    SNMP
+                </span>
+
+                <strong>
+                    Device Health & Metrics
+                </strong>
+
+                <small>
+                    Interfaces • CPU • Memory • Counters
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SNMP DETAILS
+        ======================================= -->
+
+        <div id="snmpDetail"
+             class="detail-card">
+
+            <header>
+                <i class="fas fa-chart-column"></i>
+                <span>SNMP</span>
+            </header>
+
+            <div class="detail-grid">
+
+                <div>
+                    <strong>UDP 161</strong>
+                    <span>Queries</span>
+                </div>
+
+                <div>
+                    <strong>UDP 162</strong>
+                    <span>Traps</span>
+                </div>
+
+                <div>
+                    <strong>MIB</strong>
+                    <span>Managed Data</span>
+                </div>
+
+                <div>
+                    <strong>OID</strong>
+                    <span>Object Identifier</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SYSLOG
+        ======================================= -->
+
+        <div id="syslogCard"
+             class="protocol-card syslog-card">
+
+            <div class="protocol-icon">
+                <i class="fas fa-file-lines"></i>
+            </div>
+
+            <div>
+
+                <span>
+                    SYSLOG
+                </span>
+
+                <strong>
+                    Events & Log Messages
+                </strong>
+
+                <small>
+                    Errors • Warnings • Security Events
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SYSLOG DETAILS
+        ======================================= -->
+
+        <div id="syslogDetail"
+             class="detail-card">
+
+            <header>
+                <i class="fas fa-file-lines"></i>
+                <span>SYSLOG</span>
+            </header>
+
+            <div class="detail-grid">
+
+                <div>
+                    <strong>UDP 514</strong>
+                    <span>Common Transport</span>
+                </div>
+
+                <div>
+                    <strong>TCP</strong>
+                    <span>Reliable Delivery</span>
+                </div>
+
+                <div>
+                    <strong>0–7</strong>
+                    <span>Severity</span>
+                </div>
+
+                <div>
+                    <strong>TLS</strong>
+                    <span>Secure Logging</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             FLOW MONITORING
+        ======================================= -->
+
+        <div id="flowCard"
+             class="protocol-card flow-card">
+
+            <div class="protocol-icon">
+                <i class="fas fa-arrow-right-arrow-left"></i>
+            </div>
+
+            <div>
+
+                <span>
+                    FLOW MONITORING
+                </span>
+
+                <strong>
+                    Traffic Conversations
+                </strong>
+
+                <small>
+                    Who • Where • How Much
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             FLOW DETAILS
+        ======================================= -->
+
+        <div id="flowDetail"
+             class="detail-card">
+
+            <header>
+                <i class="fas fa-arrow-right-arrow-left"></i>
+                <span>FLOW DATA</span>
+            </header>
+
+            <div class="flow-record">
+
+                <div>
+                    <span>SOURCE</span>
+                    <strong>10.1.10.25</strong>
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div>
+                    <span>DESTINATION</span>
+                    <strong>172.16.20.8</strong>
+                </div>
+
+                <div>
+                    <span>PORT</span>
+                    <strong>443</strong>
+                </div>
+
+                <div>
+                    <span>TRAFFIC</span>
+                    <strong>248 MB</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             NETFLOW
+        ======================================= -->
+
+        <div id="netflowCard"
+             class="concept-card">
+
+            <i class="fas fa-diagram-project"></i>
+
+            <div>
+
+                <span>
+                    NETFLOW
+                </span>
+
+                <strong>
+                    Flow technology commonly associated
+                    with Cisco devices for summarizing
+                    network traffic conversations.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             SFLOW
+        ======================================= -->
+
+        <div id="sflowCard"
+             class="concept-card">
+
+            <i class="fas fa-wave-square"></i>
+
+            <div>
+
+                <span>
+                    sFLOW
+                </span>
+
+                <strong>
+                    Uses packet sampling and interface
+                    counters to provide traffic visibility
+                    across network infrastructure.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             IPFIX
+        ======================================= -->
+
+        <div id="ipfixCard"
+             class="concept-card">
+
+            <i class="fas fa-globe"></i>
+
+            <div>
+
+                <span>
+                    IPFIX
+                </span>
+
+                <strong>
+                    An IETF-standardized flow export
+                    technology based on the concepts
+                    developed through NetFlow.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             COMPARISON
+        ======================================= -->
+
+        <div id="comparisonCard"
+             class="comparison-card">
+
+            <div class="comparison-column">
+
+                <i class="fas fa-chart-column"></i>
+
+                <span>SNMP</span>
+
+                <strong>
+                    How is the device performing?
+                </strong>
+
+                <small>
+                    Health + Metrics
+                </small>
+
+            </div>
+
+            <div class="comparison-column">
+
+                <i class="fas fa-file-lines"></i>
+
+                <span>SYSLOG</span>
+
+                <strong>
+                    What happened?
+                </strong>
+
+                <small>
+                    Events + Messages
+                </small>
+
+            </div>
+
+            <div class="comparison-column">
+
+                <i class="fas fa-arrow-right-arrow-left"></i>
+
+                <span>FLOW</span>
+
+                <strong>
+                    Who is communicating?
+                </strong>
+
+                <small>
+                    Traffic + Conversations
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             EXAMPLE
+        ======================================= -->
+
+        <div id="exampleCard"
+             class="example-card">
+
+            <header>
+
+                <i class="fas fa-magnifying-glass-chart"></i>
+
+                <div>
+
+                    <span>
+                        ONE INCIDENT — THREE VIEWS
+                    </span>
+
+                    <strong>
+                        Users report that the network is slow.
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="example-flow">
+
+                <div>
+                    <span>SNMP</span>
+                    <strong>Interface utilization: 98%</strong>
+                </div>
+
+                <i class="fas fa-plus"></i>
+
+                <div>
+                    <span>SYSLOG</span>
+                    <strong>Interface warning generated</strong>
+                </div>
+
+                <i class="fas fa-plus"></i>
+
+                <div>
+                    <span>FLOW</span>
+                    <strong>Host consuming heavy bandwidth</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             BASELINE
+        ======================================= -->
+
+        <div id="baselineCard"
+             class="concept-card baseline-card">
+
+            <i class="fas fa-chart-area"></i>
+
+            <div>
+
+                <span>
+                    BASELINING
+                </span>
+
+                <strong>
+                    Monitoring over time establishes
+                    normal behavior so administrators
+                    can recognize unusual performance
+                    or traffic patterns.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             ALERTING
+        ======================================= -->
+
+        <div id="alertCard"
+             class="concept-card alert-card">
+
+            <i class="fas fa-bell"></i>
+
+            <div>
+
+                <span>
+                    ALERTING
+                </span>
+
+                <strong>
+                    Monitoring systems can generate
+                    notifications when thresholds,
+                    failures, or suspicious events occur.
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             DASHBOARD
+        ======================================= -->
+
+        <div id="dashboardCard"
+             class="dashboard-card">
+
+            <header>
+
+                <i class="fas fa-gauge-high"></i>
+
+                <div>
+                    <span>NETWORK OPERATIONS</span>
+                    <strong>Monitoring Dashboard</strong>
+                </div>
+
+            </header>
+
+            <div class="dashboard-grid">
+
+                <div>
+                    <span>DEVICE STATUS</span>
+                    <strong>42 / 42 UP</strong>
+                </div>
+
+                <div>
+                    <span>UTILIZATION</span>
+                    <strong>67%</strong>
+                </div>
+
+                <div>
+                    <span>ACTIVE ALERTS</span>
+                    <strong>3</strong>
+                </div>
+
+                <div>
+                    <span>TOP FLOW</span>
+                    <strong>248 MB</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================
+             FINAL FLOW
+        ======================================= -->
+
+        <div id="monitorFlow"
+             class="monitor-flow">
+
+            <div>
+                <i class="fas fa-server"></i>
+                <span>DEVICES</span>
+                <strong>Generate Data</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+                <i class="fas fa-satellite-dish"></i>
+                <span>MONITORING</span>
+                <strong>Collect</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+                <i class="fas fa-chart-line"></i>
+                <span>ANALYSIS</span>
+                <strong>Understand</strong>
+            </div>
+
+            <i class="fas fa-arrow-right"></i>
+
+            <div>
+                <i class="fas fa-bell"></i>
+                <span>ACTION</span>
+                <strong>Respond</strong>
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="monitorSummary"
+             class="monitor-summary">
+
+        <div class="summary-item">
+            <i class="fas fa-chart-column"></i>
+            <div>
+                <span>SNMP</span>
+                <strong>Health + Metrics</strong>
+            </div>
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+            <i class="fas fa-file-lines"></i>
+            <div>
+                <span>SYSLOG</span>
+                <strong>Events + Logs</strong>
+            </div>
+        </div>
+
+        <i class="fas fa-arrow-right summary-arrow"></i>
+
+        <div class="summary-item">
+            <i class="fas fa-arrow-right-arrow-left"></i>
+            <div>
+                <span>FLOW</span>
+                <strong>Traffic Behavior</strong>
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-circle-check"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                SNMP measures device health and performance,
+                Syslog records events, and flow technologies
+                such as NetFlow, sFlow, and IPFIX describe
+                network traffic. Together they provide
+                administrators with much stronger visibility.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div id="sceneControls"
+         class="scene-controls">
+
+        <button id="startSceneBtn">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-28.js"></script>
+
+</body>
+
+</html>
