@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Lesson 2 | Scene 03
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-03.css">
+
+</head>
+
+<body>
+
+<main id="scene03"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                NETWORK+ FUNDAMENTALS
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            LESSON 2 • SCENE 03
+        </span>
+
+        <h1>
+            Ethernet Connectors & T568A/T568B Wiring
+        </h1>
+
+        <p>
+            Identifying 8P8C Ethernet connectors,
+            understanding pin assignments, and recognizing
+            straight-through and crossover wiring.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="wiring-stage">
+
+
+        <!-- ======================================
+             ETHERNET CONNECTOR INTRO
+        ======================================= -->
+
+        <article id="connectorIntro"
+                 class="connector-intro">
+
+            <div id="ethernetPlug"
+                 class="ethernet-plug">
+
+                <div class="plug-body">
+
+                    <div class="plug-contacts">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                    <div class="plug-latch"></div>
+
+                </div>
+
+                <div class="plug-cable"></div>
+
+            </div>
+
+
+            <div class="connector-copy">
+
+                <span>
+                    ETHERNET CONNECTOR
+                </span>
+
+                <h2>
+                    8P8C Modular Connector
+                </h2>
+
+                <p>
+                    Copper Ethernet commonly uses an
+                    eight-position, eight-contact modular
+                    connector.
+                </p>
+
+                <div id="eightPositions"
+                     class="connector-stat">
+
+                    <strong>
+                        8
+                    </strong>
+
+                    <span>
+                        Positions
+                    </span>
+
+                </div>
+
+                <div id="eightContacts"
+                     class="connector-stat">
+
+                    <strong>
+                        8
+                    </strong>
+
+                    <span>
+                        Contacts
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             RJ45 TERMINOLOGY
+        ======================================= -->
+
+        <article id="rj45Terminology"
+                 class="terminology-card">
+
+            <header>
+
+                <i class="fas fa-ethernet"></i>
+
+                <div>
+
+                    <span>
+                        COMMON TERMINOLOGY
+                    </span>
+
+                    <h2>
+                        Commonly Called RJ45
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="terminology-flow">
+
+                <div id="term8p8c"
+                     class="term-item">
+
+                    <span>
+                        TECHNICAL FORM
+                    </span>
+
+                    <strong>
+                        8P8C
+                    </strong>
+
+                    <small>
+                        Eight positions,
+                        eight contacts
+                    </small>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div id="termRj45"
+                     class="term-item">
+
+                    <span>
+                        COMMON NETWORKING TERM
+                    </span>
+
+                    <strong>
+                        RJ45
+                    </strong>
+
+                    <small>
+                        Widely used name for
+                        Ethernet modular plugs
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <p class="terminology-note">
+
+                In networking discussions and exam questions,
+                RJ45 is commonly used to describe the modular
+                connector used with twisted-pair Ethernet.
+
+            </p>
+
+        </article>
+
+
+        <!-- ======================================
+             EIGHT PINS
+        ======================================= -->
+
+        <article id="pinOverview"
+                 class="pin-overview-card">
+
+            <header>
+
+                <span>
+                    CONNECTOR PINOUT
+                </span>
+
+                <h2>
+                    Eight Pins — One Defined Order
+                </h2>
+
+            </header>
+
+
+            <div class="pin-connector">
+
+                <div class="pin-numbers">
+
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+
+                </div>
+
+
+                <div class="pin-slots">
+
+                    <div id="pin1"
+                         class="pin-slot"></div>
+
+                    <div id="pin2"
+                         class="pin-slot"></div>
+
+                    <div id="pin3"
+                         class="pin-slot"></div>
+
+                    <div id="pin4"
+                         class="pin-slot"></div>
+
+                    <div id="pin5"
+                         class="pin-slot"></div>
+
+                    <div id="pin6"
+                         class="pin-slot"></div>
+
+                    <div id="pin7"
+                         class="pin-slot"></div>
+
+                    <div id="pin8"
+                         class="pin-slot"></div>
+
+                </div>
+
+            </div>
+
+
+            <p class="pin-note">
+
+                The wiring standard determines which conductor
+                color is terminated on each pin.
+
+            </p>
+
+        </article>
+
+
+        <!-- ======================================
+             TWO WIRING STANDARDS
+        ======================================= -->
+
+        <article id="standardsIntro"
+                 class="standards-intro">
+
+            <header>
+
+                <i class="fas fa-code-branch"></i>
+
+                <div>
+
+                    <span>
+                        TIA/EIA WIRING STANDARDS
+                    </span>
+
+                    <h2>
+                        T568A and T568B
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="standards-flow">
+
+                <div id="standardAIntro"
+                     class="standard-choice">
+
+                    <span>
+                        STANDARD
+                    </span>
+
+                    <strong>
+                        T568A
+                    </strong>
+
+                    <small>
+                        Green pair begins
+                        on pins 1 and 2
+                    </small>
+
+                </div>
+
+
+                <div class="standards-divider">
+
+                    <span>
+                        OR
+                    </span>
+
+                </div>
+
+
+                <div id="standardBIntro"
+                     class="standard-choice">
+
+                    <span>
+                        STANDARD
+                    </span>
+
+                    <strong>
+                        T568B
+                    </strong>
+
+                    <small>
+                        Orange pair begins
+                        on pins 1 and 2
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <p class="standards-note">
+
+                Both standards are valid. The difference is
+                the placement of the orange and green pairs.
+
+            </p>
+
+        </article>
+
+
+        <!-- ======================================
+             T568A PINOUT
+        ======================================= -->
+
+        <article id="t568aCard"
+                 class="pinout-card">
+
+            <header>
+
+                <div>
+
+                    <span>
+                        WIRING STANDARD
+                    </span>
+
+                    <h2>
+                        T568A Pinout
+                    </h2>
+
+                </div>
+
+                <strong class="standard-badge">
+                    A
+                </strong>
+
+            </header>
+
+
+            <div class="pinout-grid">
+
+                <div class="pinout-heading">
+
+                    <span>PIN</span>
+                    <span>WIRE COLOR</span>
+
+                </div>
+
+
+                <div id="aPin1"
+                     class="pinout-row">
+
+                    <span>1</span>
+
+                    <div>
+                        <i class="wire-color white-green"></i>
+                        White / Green
+                    </div>
+
+                </div>
+
+
+                <div id="aPin2"
+                     class="pinout-row">
+
+                    <span>2</span>
+
+                    <div>
+                        <i class="wire-color green"></i>
+                        Green
+                    </div>
+
+                </div>
+
+
+                <div id="aPin3"
+                     class="pinout-row">
+
+                    <span>3</span>
+
+                    <div>
+                        <i class="wire-color white-orange"></i>
+                        White / Orange
+                    </div>
+
+                </div>
+
+
+                <div id="aPin4"
+                     class="pinout-row">
+
+                    <span>4</span>
+
+                    <div>
+                        <i class="wire-color blue"></i>
+                        Blue
+                    </div>
+
+                </div>
+
+
+                <div id="aPin5"
+                     class="pinout-row">
+
+                    <span>5</span>
+
+                    <div>
+                        <i class="wire-color white-blue"></i>
+                        White / Blue
+                    </div>
+
+                </div>
+
+
+                <div id="aPin6"
+                     class="pinout-row">
+
+                    <span>6</span>
+
+                    <div>
+                        <i class="wire-color orange"></i>
+                        Orange
+                    </div>
+
+                </div>
+
+
+                <div id="aPin7"
+                     class="pinout-row">
+
+                    <span>7</span>
+
+                    <div>
+                        <i class="wire-color white-brown"></i>
+                        White / Brown
+                    </div>
+
+                </div>
+
+
+                <div id="aPin8"
+                     class="pinout-row">
+
+                    <span>8</span>
+
+                    <div>
+                        <i class="wire-color brown"></i>
+                        Brown
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             T568B PINOUT
+        ======================================= -->
+
+        <article id="t568bCard"
+                 class="pinout-card">
+
+            <header>
+
+                <div>
+
+                    <span>
+                        WIRING STANDARD
+                    </span>
+
+                    <h2>
+                        T568B Pinout
+                    </h2>
+
+                </div>
+
+                <strong class="standard-badge">
+                    B
+                </strong>
+
+            </header>
+
+
+            <div class="pinout-grid">
+
+                <div class="pinout-heading">
+
+                    <span>PIN</span>
+                    <span>WIRE COLOR</span>
+
+                </div>
+
+
+                <div id="bPin1"
+                     class="pinout-row">
+
+                    <span>1</span>
+
+                    <div>
+                        <i class="wire-color white-orange"></i>
+                        White / Orange
+                    </div>
+
+                </div>
+
+
+                <div id="bPin2"
+                     class="pinout-row">
+
+                    <span>2</span>
+
+                    <div>
+                        <i class="wire-color orange"></i>
+                        Orange
+                    </div>
+
+                </div>
+
+
+                <div id="bPin3"
+                     class="pinout-row">
+
+                    <span>3</span>
+
+                    <div>
+                        <i class="wire-color white-green"></i>
+                        White / Green
+                    </div>
+
+                </div>
+
+
+                <div id="bPin4"
+                     class="pinout-row">
+
+                    <span>4</span>
+
+                    <div>
+                        <i class="wire-color blue"></i>
+                        Blue
+                    </div>
+
+                </div>
+
+
+                <div id="bPin5"
+                     class="pinout-row">
+
+                    <span>5</span>
+
+                    <div>
+                        <i class="wire-color white-blue"></i>
+                        White / Blue
+                    </div>
+
+                </div>
+
+
+                <div id="bPin6"
+                     class="pinout-row">
+
+                    <span>6</span>
+
+                    <div>
+                        <i class="wire-color green"></i>
+                        Green
+                    </div>
+
+                </div>
+
+
+                <div id="bPin7"
+                     class="pinout-row">
+
+                    <span>7</span>
+
+                    <div>
+                        <i class="wire-color white-brown"></i>
+                        White / Brown
+                    </div>
+
+                </div>
+
+
+                <div id="bPin8"
+                     class="pinout-row">
+
+                    <span>8</span>
+
+                    <div>
+                        <i class="wire-color brown"></i>
+                        Brown
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             A VS B COMPARISON
+        ======================================= -->
+
+        <article id="abComparison"
+                 class="comparison-card">
+
+            <header>
+
+                <i class="fas fa-code-compare"></i>
+
+                <div>
+
+                    <span>
+                        KEY DIFFERENCE
+                    </span>
+
+                    <h2>
+                        Orange and Green Swap Positions
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-layout">
+
+
+                <div id="comparisonA"
+                     class="comparison-standard">
+
+                    <strong>
+                        T568A
+                    </strong>
+
+                    <div class="pair-sequence">
+
+                        <span class="pair-green">
+                            GREEN
+                        </span>
+
+                        <span class="pair-orange">
+                            ORANGE
+                        </span>
+
+                        <span class="pair-blue">
+                            BLUE
+                        </span>
+
+                        <span class="pair-brown">
+                            BROWN
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="swap-symbol">
+
+                    <i class="fas fa-right-left"></i>
+
+                    <span>
+                        SWAP
+                    </span>
+
+                </div>
+
+
+                <div id="comparisonB"
+                     class="comparison-standard">
+
+                    <strong>
+                        T568B
+                    </strong>
+
+                    <div class="pair-sequence">
+
+                        <span class="pair-orange">
+                            ORANGE
+                        </span>
+
+                        <span class="pair-green">
+                            GREEN
+                        </span>
+
+                        <span class="pair-blue">
+                            BLUE
+                        </span>
+
+                        <span class="pair-brown">
+                            BROWN
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <p class="comparison-note">
+
+                The blue and brown pairs remain in the same
+                positions. The orange and green pairs change.
+
+            </p>
+
+        </article>
+
+
+        <!-- ======================================
+             STRAIGHT-THROUGH
+        ======================================= -->
+
+        <article id="straightThrough"
+                 class="cable-type-card">
+
+            <header>
+
+                <i class="fas fa-arrow-right-long"></i>
+
+                <div>
+
+                    <span>
+                        ETHERNET CABLE WIRING
+                    </span>
+
+                    <h2>
+                        Straight-Through Cable
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="cable-standard-flow">
+
+
+                <div id="straightEndOne"
+                     class="cable-end">
+
+                    <i class="fas fa-ethernet"></i>
+
+                    <span>
+                        END 1
+                    </span>
+
+                    <strong>
+                        T568B
+                    </strong>
+
+                </div>
+
+
+                <div class="cable-path">
+
+                    <span id="straightSignal"
+                          class="cable-signal"></span>
+
+                </div>
+
+
+                <div id="straightEndTwo"
+                     class="cable-end">
+
+                    <i class="fas fa-ethernet"></i>
+
+                    <span>
+                        END 2
+                    </span>
+
+                    <strong>
+                        T568B
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="cable-rule">
+
+                <i class="fas fa-equals"></i>
+
+                <strong>
+                    Same standard on both ends
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CROSSOVER
+        ======================================= -->
+
+        <article id="crossoverCable"
+                 class="cable-type-card">
+
+            <header>
+
+                <i class="fas fa-shuffle"></i>
+
+                <div>
+
+                    <span>
+                        ETHERNET CABLE WIRING
+                    </span>
+
+                    <h2>
+                        Crossover Cable
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="cable-standard-flow">
+
+
+                <div id="crossEndOne"
+                     class="cable-end">
+
+                    <i class="fas fa-ethernet"></i>
+
+                    <span>
+                        END 1
+                    </span>
+
+                    <strong>
+                        T568A
+                    </strong>
+
+                </div>
+
+
+                <div class="crossover-path">
+
+                    <span class="cross-line cross-one"></span>
+                    <span class="cross-line cross-two"></span>
+
+                </div>
+
+
+                <div id="crossEndTwo"
+                     class="cable-end">
+
+                    <i class="fas fa-ethernet"></i>
+
+                    <span>
+                        END 2
+                    </span>
+
+                    <strong>
+                        T568B
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="cable-rule">
+
+                <i class="fas fa-not-equal"></i>
+
+                <strong>
+                    Different standard on each end
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             HISTORICAL DEVICE RULE
+        ======================================= -->
+
+        <article id="deviceRule"
+                 class="device-rule-card">
+
+            <header>
+
+                <span>
+                    TRADITIONAL ETHERNET RULE
+                </span>
+
+                <h2>
+                    Straight-Through vs. Crossover
+                </h2>
+
+            </header>
+
+
+            <div class="device-rule-grid">
+
+
+                <div id="differentDevices"
+                     class="device-rule">
+
+                    <div class="device-icons">
+
+                        <i class="fas fa-desktop"></i>
+
+                        <i class="fas fa-arrow-right"></i>
+
+                        <i class="fas fa-network-wired"></i>
+
+                    </div>
+
+                    <span>
+                        DIFFERENT DEVICE TYPES
+                    </span>
+
+                    <strong>
+                        Straight-Through
+                    </strong>
+
+                    <small>
+                        Example: PC → Switch
+                    </small>
+
+                </div>
+
+
+                <div id="similarDevices"
+                     class="device-rule">
+
+                    <div class="device-icons">
+
+                        <i class="fas fa-network-wired"></i>
+
+                        <i class="fas fa-arrow-right"></i>
+
+                        <i class="fas fa-network-wired"></i>
+
+                    </div>
+
+                    <span>
+                        SIMILAR DEVICE TYPES
+                    </span>
+
+                    <strong>
+                        Crossover
+                    </strong>
+
+                    <small>
+                        Example: Switch → Switch
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             AUTO-MDI/MDIX
+        ======================================= -->
+
+        <article id="autoMdix"
+                 class="auto-mdix-card">
+
+            <div class="auto-icon">
+
+                <i class="fas fa-arrows-rotate"></i>
+
+            </div>
+
+
+            <div class="auto-copy">
+
+                <span>
+                    MODERN ETHERNET
+                </span>
+
+                <h2>
+                    Auto-MDI/MDIX
+                </h2>
+
+                <p>
+                    Many modern Ethernet interfaces
+                    automatically detect the required
+                    transmit and receive configuration,
+                    reducing the need for dedicated
+                    crossover cables.
+                </p>
+
+            </div>
+
+
+            <div id="autoResult"
+                 class="auto-result">
+
+                <i class="fas fa-wand-magic-sparkles"></i>
+
+                <strong>
+                    Automatic Pair Detection
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             TERMINATION PROCESS
+        ======================================= -->
+
+        <article id="terminationProcess"
+                 class="termination-card">
+
+            <header>
+
+                <i class="fas fa-screwdriver-wrench"></i>
+
+                <div>
+
+                    <span>
+                        CABLE TERMINATION
+                    </span>
+
+                    <h2>
+                        Building an Ethernet Patch Cable
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="termination-flow">
+
+
+                <div id="terminationStep1"
+                     class="termination-step">
+
+                    <span>
+                        01
+                    </span>
+
+                    <i class="fas fa-scissors"></i>
+
+                    <strong>
+                        Strip Jacket
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-chevron-right"></i>
+
+
+                <div id="terminationStep2"
+                     class="termination-step">
+
+                    <span>
+                        02
+                    </span>
+
+                    <i class="fas fa-code-branch"></i>
+
+                    <strong>
+                        Arrange Wires
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-chevron-right"></i>
+
+
+                <div id="terminationStep3"
+                     class="termination-step">
+
+                    <span>
+                        03
+                    </span>
+
+                    <i class="fas fa-ethernet"></i>
+
+                    <strong>
+                        Insert Connector
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-chevron-right"></i>
+
+
+                <div id="terminationStep4"
+                     class="termination-step">
+
+                    <span>
+                        04
+                    </span>
+
+                    <i class="fas fa-screwdriver-wrench"></i>
+
+                    <strong>
+                        Crimp
+                    </strong>
+
+                </div>
+
+
+                <i class="fas fa-chevron-right"></i>
+
+
+                <div id="terminationStep5"
+                     class="termination-step">
+
+                    <span>
+                        05
+                    </span>
+
+                    <i class="fas fa-vial-circle-check"></i>
+
+                    <strong>
+                        Test
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CABLE TESTER
+        ======================================= -->
+
+        <article id="cableTester"
+                 class="tester-card">
+
+            <div class="tester-device">
+
+                <div class="tester-screen">
+
+                    <span>
+                        CABLE TEST
+                    </span>
+
+                    <strong id="testerStatus">
+                        READY
+                    </strong>
+
+                </div>
+
+
+                <div class="tester-pins">
+
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="tester-copy">
+
+                <span>
+                    VERIFY THE TERMINATION
+                </span>
+
+                <h2>
+                    Use a Cable Tester
+                </h2>
+
+                <p>
+                    A cable tester can identify wiring
+                    problems such as opens, shorts,
+                    reversals, and incorrect pin mappings.
+                </p>
+
+                <div class="tester-results">
+
+                    <span id="testContinuity">
+                        Continuity
+                    </span>
+
+                    <span id="testPinout">
+                        Pinout
+                    </span>
+
+                    <span id="testFaults">
+                        Faults
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             EXAM MEMORY
+        ======================================= -->
+
+        <article id="examMemory"
+                 class="memory-card">
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+                        NETWORK+ MEMORY CHECK
+                    </span>
+
+                    <h2>
+                        Remember the Pattern
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="memory-flow">
+
+
+                <div id="memoryA"
+                     class="memory-item">
+
+                    <strong>
+                        T568A
+                    </strong>
+
+                    <span>
+                        Green first
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrows-left-right"></i>
+
+
+                <div id="memoryB"
+                     class="memory-item">
+
+                    <strong>
+                        T568B
+                    </strong>
+
+                    <span>
+                        Orange first
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-plus"></i>
+
+
+                <div id="memoryStraight"
+                     class="memory-item">
+
+                    <strong>
+                        SAME
+                    </strong>
+
+                    <span>
+                        Straight-through
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-plus"></i>
+
+
+                <div id="memoryCross"
+                     class="memory-item">
+
+                    <strong>
+                        A ↔ B
+                    </strong>
+
+                    <span>
+                        Crossover
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="sceneSummary"
+             class="scene-summary">
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-ethernet"></i>
+
+            <div>
+
+                <span>
+                    CONNECTOR
+                </span>
+
+                <strong>
+                    8P8C / RJ45
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-code-branch"></i>
+
+            <div>
+
+                <span>
+                    STANDARDS
+                </span>
+
+                <strong>
+                    T568A & T568B
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-code-compare"></i>
+
+            <div>
+
+                <span>
+                    CABLE TYPE
+                </span>
+
+                <strong>
+                    Straight or Crossover
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-ethernet"></i>
+
+        <div>
+
+            <span>
+                KEY IDEA
+            </span>
+
+            <strong>
+                T568A and T568B define the conductor order
+                inside an Ethernet connector. Use the same
+                standard on both ends for straight-through
+                wiring and A on one end with B on the other
+                for crossover wiring.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn"
+                type="button">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button id="restartSceneBtn"
+                type="button">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-03.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,2288 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   LESSON 02 — SCENE 03
+   ETHERNET CONNECTORS & T568A/T568B WIRING
+========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background: #050a12;
+    color: #f8fbff;
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+button {
+    font: inherit;
+}
+
+
+/* ==========================================
+   SCENE
+========================================== */
+
+.video-scene {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    min-width: 1100px;
+    min-height: 620px;
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        radial-gradient(
+            circle at 50% 46%,
+            rgba(21, 101, 148, 0.14),
+            transparent 40%
+        ),
+        linear-gradient(
+            145deg,
+            #050912 0%,
+            #07111d 48%,
+            #03070d 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+    z-index: -5;
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.22;
+
+    background-image:
+        linear-gradient(
+            rgba(109, 194, 255, 0.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(109, 194, 255, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 52px 52px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 18%,
+            black 82%,
+            transparent
+        );
+}
+
+.background-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(95px);
+    opacity: 0;
+
+    transition: opacity 1.2s ease;
+}
+
+.glow-left {
+    width: 430px;
+    height: 430px;
+    left: -170px;
+    top: 150px;
+    background: rgba(0, 162, 255, 0.18);
+}
+
+.glow-center {
+    width: 520px;
+    height: 520px;
+    left: calc(50% - 260px);
+    top: 170px;
+    background: rgba(35, 224, 190, 0.09);
+}
+
+.glow-right {
+    width: 420px;
+    height: 420px;
+    right: -170px;
+    top: 130px;
+    background: rgba(117, 92, 255, 0.14);
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+    top: 28px;
+    left: 42px;
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    opacity: 0;
+    transform: translateY(-15px);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+.brand-mark {
+    display: grid;
+    place-items: center;
+
+    width: 43px;
+    height: 43px;
+
+    border: 1px solid rgba(83, 210, 255, 0.6);
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(13, 91, 143, 0.95),
+            rgba(8, 31, 55, 0.95)
+        );
+
+    box-shadow:
+        0 0 25px rgba(0, 173, 255, 0.18);
+
+    font-size: 23px;
+    font-weight: 900;
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.brand-copy strong {
+    font-size: 15px;
+    letter-spacing: 0.18em;
+}
+
+.brand-copy span {
+    color: #8294a8;
+    font-size: 9px;
+    letter-spacing: 0.17em;
+}
+
+
+/* ==========================================
+   TITLE — VIEWPORT CENTERED
+========================================== */
+
+.scene-title {
+    position: absolute;
+    top: 94px;
+    left: 50%;
+    z-index: 10;
+
+    width: 1000px;
+    max-width: calc(100vw - 100px);
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform:
+        translateX(-50%)
+        translateY(-12px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scene-number {
+    display: inline-block;
+    margin-bottom: 10px;
+
+    color: #53d7ff;
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+}
+
+.scene-title h1 {
+    width: 100%;
+
+    font-size: clamp(31px, 2.9vw, 46px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+
+    text-align: center;
+}
+
+.scene-title p {
+    width: 100%;
+    max-width: 760px;
+
+    margin: 14px auto 0;
+
+    color: #93a7ba;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   MAIN STAGE
+========================================== */
+
+.wiring-stage {
+    position: absolute;
+    top: 255px;
+    left: 50%;
+
+    width: min(1160px, 88vw);
+    height: calc(100vh - 355px);
+    min-height: 300px;
+
+    transform: translateX(-50%);
+}
+
+
+/* ==========================================
+   VISIBILITY
+========================================== */
+
+.connector-intro,
+.terminology-card,
+.pin-overview-card,
+.standards-intro,
+.pinout-card,
+.comparison-card,
+.cable-type-card,
+.device-rule-card,
+.auto-mdix-card,
+.termination-card,
+.tester-card,
+.memory-card,
+.scene-summary,
+.final-concept {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition:
+        opacity 0.55s ease,
+        transform 0.55s ease,
+        visibility 0.55s;
+}
+
+.is-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto;
+}
+
+.background-glow.is-visible {
+    opacity: 1 !important;
+}
+
+.scene-brand.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scene-title.is-visible {
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* ==========================================
+   SHARED CARD
+========================================== */
+
+.connector-intro,
+.terminology-card,
+.pin-overview-card,
+.standards-intro,
+.pinout-card,
+.comparison-card,
+.cable-type-card,
+.device-rule-card,
+.auto-mdix-card,
+.termination-card,
+.tester-card,
+.memory-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: min(930px, 82vw);
+
+    border: 1px solid rgba(93, 165, 208, 0.2);
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(12, 30, 48, 0.97),
+            rgba(5, 15, 27, 0.98)
+        );
+
+    box-shadow:
+        0 28px 70px rgba(0, 0, 0, 0.38),
+        inset 0 1px rgba(255, 255, 255, 0.03);
+
+    transform:
+        translate(-50%, -50%)
+        translateY(22px)
+        scale(0.985);
+}
+
+.connector-intro.is-visible,
+.terminology-card.is-visible,
+.pin-overview-card.is-visible,
+.standards-intro.is-visible,
+.pinout-card.is-visible,
+.comparison-card.is-visible,
+.cable-type-card.is-visible,
+.device-rule-card.is-visible,
+.auto-mdix-card.is-visible,
+.termination-card.is-visible,
+.tester-card.is-visible,
+.memory-card.is-visible {
+    transform:
+        translate(-50%, -50%)
+        translateY(0)
+        scale(1);
+}
+
+
+/* ==========================================
+   SHARED HEADERS
+========================================== */
+
+.terminology-card header,
+.standards-intro header,
+.comparison-card header,
+.cable-type-card header,
+.termination-card header,
+.memory-card header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.terminology-card header > i,
+.standards-intro header > i,
+.comparison-card header > i,
+.cable-type-card header > i,
+.termination-card header > i,
+.memory-card header > i {
+    display: grid;
+    place-items: center;
+
+    width: 51px;
+    height: 51px;
+
+    flex: 0 0 51px;
+
+    border: 1px solid rgba(69, 205, 255, 0.32);
+    border-radius: 15px;
+
+    background: rgba(48, 194, 255, 0.1);
+
+    color: #5bdcff;
+
+    font-size: 22px;
+}
+
+.connector-copy > span,
+.terminology-card header span,
+.pin-overview-card header > span,
+.standards-intro header span,
+.pinout-card header span,
+.comparison-card header span,
+.cable-type-card header span,
+.device-rule-card header span,
+.auto-copy > span,
+.termination-card header span,
+.tester-copy > span,
+.memory-card header span {
+    color: #57d8ff;
+
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.19em;
+}
+
+.connector-copy h2,
+.terminology-card h2,
+.pin-overview-card h2,
+.standards-intro h2,
+.pinout-card h2,
+.comparison-card h2,
+.cable-type-card h2,
+.device-rule-card h2,
+.auto-mdix-card h2,
+.termination-card h2,
+.tester-card h2,
+.memory-card h2 {
+    margin-top: 4px;
+
+    font-size: 25px;
+    letter-spacing: -0.025em;
+}
+
+
+/* ==========================================
+   CONNECTOR INTRO
+========================================== */
+
+.connector-intro {
+    width: min(850px, 76vw);
+
+    padding: 30px 34px;
+
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    align-items: center;
+
+    gap: 35px;
+}
+
+.ethernet-plug {
+    position: relative;
+
+    height: 215px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(95, 166, 207, 0.13);
+    border-radius: 18px;
+
+    background: rgba(3, 13, 23, 0.58);
+}
+
+.plug-body {
+    position: relative;
+
+    width: 190px;
+    height: 115px;
+
+    border: 3px solid #4b6578;
+    border-radius: 12px 12px 23px 23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(111, 143, 162, 0.34),
+            rgba(34, 55, 69, 0.55)
+        );
+
+    box-shadow:
+        inset 0 0 25px rgba(137, 215, 255, 0.06),
+        0 18px 35px rgba(0, 0, 0, 0.3);
+}
+
+.plug-contacts {
+    position: absolute;
+
+    top: 15px;
+    left: 18px;
+    right: 18px;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 5px;
+}
+
+.plug-contacts span {
+    height: 48px;
+
+    border-radius: 3px 3px 6px 6px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            #f4d67a,
+            #b8862d
+        );
+
+    box-shadow:
+        0 0 5px rgba(255, 211, 102, 0.12);
+
+    opacity: 0.38;
+
+    transition:
+        opacity 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.plug-contacts span.is-active {
+    opacity: 1;
+
+    box-shadow:
+        0 0 9px rgba(255, 218, 113, 0.55);
+
+    transform: translateY(-3px);
+}
+
+.plug-latch {
+    position: absolute;
+
+    left: 50%;
+    bottom: -27px;
+
+    width: 78px;
+    height: 35px;
+
+    border: 3px solid #4b6578;
+    border-top: none;
+
+    transform:
+        translateX(-50%)
+        skewX(-12deg);
+
+    opacity: 0.75;
+}
+
+.plug-cable {
+    position: absolute;
+
+    left: calc(50% - 14px);
+    bottom: 0;
+
+    width: 28px;
+    height: 51px;
+
+    border-radius: 0 0 10px 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #142b3b,
+            #29495f,
+            #142b3b
+        );
+}
+
+.connector-copy p {
+    margin-top: 12px;
+
+    color: #92a7b9;
+
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+.connector-stat {
+    margin-top: 13px;
+    padding: 10px 14px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 11px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.connector-stat.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.5);
+
+    background: rgba(17, 59, 83, 0.48);
+
+    transform: translateX(5px);
+}
+
+.connector-stat strong {
+    color: #5bdcff;
+    font-size: 23px;
+}
+
+.connector-stat span {
+    color: #d9e5ee;
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   RJ45 TERMINOLOGY
+========================================== */
+
+.terminology-card {
+    width: min(800px, 74vw);
+    padding: 29px 33px;
+}
+
+.terminology-flow {
+    margin-top: 27px;
+
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.term-item {
+    min-height: 135px;
+
+    padding: 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    text-align: center;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 15px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.term-item.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.5);
+    background: rgba(16, 57, 80, 0.46);
+
+    transform: translateY(-4px);
+}
+
+.term-item > span {
+    color: #607d92;
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.13em;
+}
+
+.term-item strong {
+    color: #5bdcff;
+    font-size: 25px;
+}
+
+.term-item small {
+    max-width: 180px;
+
+    color: #8ea4b6;
+
+    font-size: 9px;
+    line-height: 1.45;
+}
+
+.terminology-flow > i {
+    color: #45637a;
+    text-align: center;
+}
+
+.terminology-note {
+    margin-top: 18px;
+
+    color: #8197aa;
+
+    font-size: 10px;
+    line-height: 1.55;
+
+    text-align: center;
+}
+
+
+/* ==========================================
+   PIN OVERVIEW
+========================================== */
+
+.pin-overview-card {
+    width: min(820px, 75vw);
+
+    padding: 27px 32px 30px;
+
+    text-align: center;
+}
+
+.pin-connector {
+    width: 620px;
+    max-width: 100%;
+
+    margin: 27px auto 0;
+    padding: 20px 24px 24px;
+
+    border: 2px solid #3a566a;
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45, 72, 91, 0.46),
+            rgba(10, 24, 36, 0.72)
+        );
+}
+
+.pin-numbers,
+.pin-slots {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+
+    gap: 8px;
+}
+
+.pin-numbers {
+    margin-bottom: 8px;
+}
+
+.pin-numbers span {
+    color: #708b9e;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.pin-slot {
+    height: 75px;
+
+    border: 1px solid rgba(245, 208, 103, 0.25);
+    border-radius: 4px 4px 8px 8px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(242, 208, 111, 0.88),
+            rgba(155, 110, 37, 0.8)
+        );
+
+    opacity: 0.25;
+
+    transition:
+        opacity 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+.pin-slot.is-active {
+    opacity: 1;
+
+    box-shadow:
+        0 0 12px rgba(255, 218, 109, 0.38);
+
+    transform: translateY(-4px);
+}
+
+.pin-note {
+    margin-top: 18px;
+
+    color: #859bad;
+
+    font-size: 10px;
+}
+
+
+/* ==========================================
+   STANDARDS INTRO
+========================================== */
+
+.standards-intro {
+    width: min(820px, 75vw);
+
+    padding: 29px 33px;
+}
+
+.standards-flow {
+    margin-top: 27px;
+
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.standard-choice {
+    min-height: 150px;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    text-align: center;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 16px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.standard-choice.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.52);
+    background: rgba(16, 57, 80, 0.46);
+
+    transform: translateY(-4px);
+}
+
+.standard-choice > span {
+    color: #607d92;
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.16em;
+}
+
+.standard-choice strong {
+    color: #5bdcff;
+    font-size: 28px;
+}
+
+.standard-choice small {
+    color: #91a6b8;
+
+    font-size: 9px;
+    line-height: 1.45;
+}
+
+.standards-divider {
+    display: grid;
+    place-items: center;
+}
+
+.standards-divider span {
+    display: grid;
+    place-items: center;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid rgba(85, 194, 234, 0.2);
+    border-radius: 50%;
+
+    color: #55788e;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.standards-note {
+    margin-top: 18px;
+
+    color: #8197aa;
+
+    font-size: 10px;
+    text-align: center;
+}
+
+
+/* ==========================================
+   T568A / T568B PINOUT CARDS
+========================================== */
+
+.pinout-card {
+    width: min(690px, 66vw);
+
+    padding: 23px 28px 25px;
+}
+
+.pinout-card header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 16px;
+}
+
+.standard-badge {
+    display: grid;
+    place-items: center;
+
+    width: 47px;
+    height: 47px;
+
+    border: 1px solid rgba(83, 210, 255, 0.38);
+    border-radius: 14px;
+
+    background: rgba(48, 194, 255, 0.1);
+
+    color: #5bdcff;
+
+    font-size: 22px;
+}
+
+.pinout-grid {
+    overflow: hidden;
+
+    border: 1px solid rgba(94, 164, 205, 0.15);
+    border-radius: 13px;
+}
+
+.pinout-heading,
+.pinout-row {
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    align-items: center;
+}
+
+.pinout-heading {
+    min-height: 32px;
+
+    padding: 0 17px;
+
+    background: rgba(23, 61, 84, 0.45);
+
+    color: #66879e;
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.11em;
+}
+
+.pinout-row {
+    min-height: 34px;
+
+    padding: 0 17px;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.045);
+
+    color: #8fa5b7;
+
+    font-size: 10px;
+
+    opacity: 0.38;
+
+    transition:
+        opacity 0.3s ease,
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+.pinout-row.is-active {
+    opacity: 1;
+
+    background: rgba(18, 62, 87, 0.47);
+
+    color: #e2edf4;
+}
+
+.pinout-row > span {
+    color: #5bdcff;
+    font-weight: 800;
+}
+
+.pinout-row > div {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+
+/* ==========================================
+   EXACT WIRE COLOR MARKERS
+========================================== */
+
+.wire-color {
+    display: inline-block;
+
+    width: 40px;
+    height: 8px;
+
+    flex: 0 0 40px;
+
+    border-radius: 999px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.green {
+    background: #28a65a;
+}
+
+.orange {
+    background: #e98332;
+}
+
+.blue {
+    background: #3689d8;
+}
+
+.brown {
+    background: #85502e;
+}
+
+.white-green {
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #f1f4f2 0 7px,
+            #28a65a 7px 12px
+        );
+}
+
+.white-orange {
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #f1f4f2 0 7px,
+            #e98332 7px 12px
+        );
+}
+
+.white-blue {
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #f1f4f2 0 7px,
+            #3689d8 7px 12px
+        );
+}
+
+.white-brown {
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #f1f4f2 0 7px,
+            #85502e 7px 12px
+        );
+}
+
+
+/* ==========================================
+   A VS B COMPARISON
+========================================== */
+
+.comparison-card {
+    width: min(880px, 79vw);
+
+    padding: 28px 32px 30px;
+}
+
+.comparison-layout {
+    margin-top: 27px;
+
+    display: grid;
+    grid-template-columns: 1fr 90px 1fr;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.comparison-standard {
+    padding: 19px;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 15px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.comparison-standard.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.5);
+    background: rgba(16, 57, 80, 0.46);
+
+    transform: translateY(-4px);
+}
+
+.comparison-standard > strong {
+    display: block;
+
+    margin-bottom: 13px;
+
+    color: #5bdcff;
+
+    text-align: center;
+    font-size: 15px;
+}
+
+.pair-sequence {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 6px;
+}
+
+.pair-sequence span {
+    padding: 10px 4px;
+
+    border-radius: 8px;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    font-size: 7px;
+    font-weight: 900;
+}
+
+.pair-green {
+    background: rgba(40, 166, 90, 0.78);
+}
+
+.pair-orange {
+    background: rgba(233, 131, 50, 0.78);
+}
+
+.pair-blue {
+    background: rgba(54, 137, 216, 0.78);
+}
+
+.pair-brown {
+    background: rgba(133, 80, 46, 0.86);
+}
+
+.swap-symbol {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    color: #5bdcff;
+}
+
+.swap-symbol i {
+    font-size: 22px;
+}
+
+.swap-symbol span {
+    color: #617d91;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.comparison-note {
+    margin-top: 18px;
+
+    color: #8197aa;
+
+    text-align: center;
+
+    font-size: 10px;
+}
+
+
+/* ==========================================
+   STRAIGHT / CROSSOVER
+========================================== */
+
+.cable-type-card {
+    width: min(840px, 76vw);
+
+    padding: 28px 32px 30px;
+}
+
+.cable-standard-flow {
+    margin-top: 28px;
+
+    display: grid;
+    grid-template-columns: 170px 1fr 170px;
+    align-items: center;
+
+    gap: 22px;
+}
+
+.cable-end {
+    min-height: 120px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 15px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.cable-end.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.5);
+    background: rgba(16, 57, 80, 0.46);
+
+    transform: translateY(-4px);
+}
+
+.cable-end i {
+    color: #5bdcff;
+    font-size: 24px;
+}
+
+.cable-end span {
+    color: #637f93;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.cable-end strong {
+    font-size: 15px;
+}
+
+.cable-path {
+    position: relative;
+
+    height: 8px;
+
+    border-radius: 999px;
+
+    background: rgba(65, 94, 115, 0.35);
+}
+
+.cable-path::before {
+    content: "";
+
+    position: absolute;
+    inset: 2px;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #e98332,
+            #28a65a,
+            #3689d8,
+            #85502e
+        );
+
+    opacity: 0.55;
+}
+
+.cable-signal {
+    position: absolute;
+
+    z-index: 3;
+
+    left: 0;
+    top: 50%;
+
+    width: 12px;
+    height: 12px;
+
+    margin-top: -6px;
+
+    border-radius: 50%;
+
+    background: #65e2ff;
+
+    box-shadow:
+        0 0 8px #65e2ff,
+        0 0 18px rgba(101, 226, 255, 0.7);
+
+    opacity: 0;
+}
+
+.cable-signal.is-active {
+    opacity: 1;
+
+    animation:
+        cableSignal 1.7s linear infinite;
+}
+
+.crossover-path {
+    position: relative;
+
+    height: 75px;
+}
+
+.cross-line {
+    position: absolute;
+
+    left: 0;
+    top: 50%;
+
+    width: 100%;
+    height: 4px;
+
+    border-radius: 999px;
+
+    transform-origin: center;
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.cross-one {
+    background: #e98332;
+
+    transform:
+        rotate(11deg);
+}
+
+.cross-two {
+    background: #28a65a;
+
+    transform:
+        rotate(-11deg);
+}
+
+.crossover-path.is-active
+.cross-line {
+    opacity: 1;
+
+    box-shadow:
+        0 0 10px rgba(89, 214, 255, 0.12);
+}
+
+.cable-rule {
+    margin: 22px auto 0;
+
+    width: max-content;
+    max-width: 100%;
+
+    padding: 10px 17px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 11px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    color: #94a9ba;
+
+    font-size: 10px;
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        color 0.35s ease;
+}
+
+.cable-rule.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.46);
+
+    color: #e0eaf1;
+}
+
+.cable-rule i {
+    color: #5bdcff;
+}
+
+
+/* ==========================================
+   DEVICE RULE
+========================================== */
+
+.device-rule-card {
+    width: min(840px, 76vw);
+
+    padding: 27px 31px 30px;
+
+    text-align: center;
+}
+
+.device-rule-card header {
+    margin-bottom: 23px;
+}
+
+.device-rule-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.device-rule {
+    min-height: 200px;
+
+    padding: 21px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    border: 1px solid rgba(94, 164, 205, 0.15);
+    border-radius: 17px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    opacity: 0.45;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.device-rule.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.5);
+    background: rgba(16, 57, 80, 0.46);
+
+    transform: translateY(-4px);
+}
+
+.device-icons {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 8px;
+
+    color: #5bdcff;
+
+    font-size: 25px;
+}
+
+.device-icons .fa-arrow-right {
+    color: #4d6a7f;
+    font-size: 12px;
+}
+
+.device-rule > span {
+    color: #617e93;
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.13em;
+}
+
+.device-rule > strong {
+    font-size: 15px;
+}
+
+.device-rule > small {
+    color: #8298aa;
+    font-size: 9px;
+}
+
+
+/* ==========================================
+   AUTO-MDI/MDIX
+========================================== */
+
+.auto-mdix-card {
+    width: min(850px, 77vw);
+
+    padding: 31px 35px;
+
+    display: grid;
+    grid-template-columns: 90px 1fr 200px;
+    align-items: center;
+
+    gap: 24px;
+}
+
+.auto-icon {
+    display: grid;
+    place-items: center;
+
+    width: 76px;
+    height: 76px;
+
+    border: 1px solid rgba(79, 214, 255, 0.32);
+    border-radius: 21px;
+
+    background: rgba(48, 194, 255, 0.09);
+
+    color: #5bdcff;
+
+    font-size: 30px;
+}
+
+.auto-icon.is-active i {
+    animation:
+        autoRotate 2s linear infinite;
+}
+
+.auto-copy p {
+    margin-top: 10px;
+
+    color: #91a6b8;
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.auto-result {
+    min-height: 120px;
+
+    padding: 17px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 9px;
+
+    text-align: center;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 15px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    opacity: 0.4;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.auto-result.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.5);
+    background: rgba(16, 57, 80, 0.46);
+
+    transform: translateY(-4px);
+}
+
+.auto-result i {
+    color: #64dfc0;
+    font-size: 27px;
+}
+
+.auto-result strong {
+    font-size: 10px;
+}
+
+
+/* ==========================================
+   TERMINATION
+========================================== */
+
+.termination-card {
+    width: min(980px, 85vw);
+
+    padding: 27px 30px 30px;
+}
+
+.termination-flow {
+    margin-top: 27px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 28px
+        1fr 28px
+        1fr 28px
+        1fr 28px
+        1fr;
+
+    align-items: center;
+
+    gap: 5px;
+}
+
+.termination-step {
+    position: relative;
+
+    min-height: 125px;
+
+    padding: 16px 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 14px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    opacity: 0.42;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.termination-step.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.5);
+    background: rgba(16, 57, 80, 0.46);
+
+    transform: translateY(-4px);
+}
+
+.termination-step > span {
+    position: absolute;
+
+    top: 7px;
+    right: 9px;
+
+    color: #526e82;
+
+    font-size: 8px;
+    font-weight: 900;
+}
+
+.termination-step i {
+    color: #5bdcff;
+    font-size: 22px;
+}
+
+.termination-step strong {
+    font-size: 9px;
+    text-align: center;
+}
+
+.termination-flow > i {
+    color: #45637a;
+
+    font-size: 9px;
+    text-align: center;
+}
+
+
+/* ==========================================
+   CABLE TESTER
+========================================== */
+
+.tester-card {
+    width: min(860px, 78vw);
+
+    padding: 30px 34px;
+
+    display: grid;
+    grid-template-columns: 310px 1fr;
+    align-items: center;
+
+    gap: 34px;
+}
+
+.tester-device {
+    padding: 23px;
+
+    border: 2px solid #314b5e;
+    border-radius: 23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #182b39,
+            #0a1822
+        );
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+.tester-screen {
+    padding: 14px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    gap: 4px;
+
+    border: 1px solid rgba(90, 216, 178, 0.28);
+    border-radius: 9px;
+
+    background: rgba(52, 121, 91, 0.15);
+}
+
+.tester-screen span {
+    color: #648a79;
+
+    font-size: 7px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+}
+
+.tester-screen strong {
+    color: #74e1b5;
+
+    font-family:
+        Consolas,
+        "Courier New",
+        monospace;
+
+    font-size: 18px;
+}
+
+.tester-pins {
+    margin-top: 18px;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+
+    gap: 5px;
+}
+
+.tester-pins span {
+    display: grid;
+    place-items: center;
+
+    height: 29px;
+
+    border: 1px solid rgba(86, 145, 176, 0.16);
+    border-radius: 5px;
+
+    background: rgba(3, 13, 23, 0.58);
+
+    color: #536f82;
+
+    font-size: 8px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.tester-pins span.is-active {
+    background: rgba(53, 179, 135, 0.22);
+
+    color: #76e4ba;
+
+    box-shadow:
+        0 0 8px rgba(75, 214, 164, 0.2);
+}
+
+.tester-copy p {
+    margin-top: 11px;
+
+    color: #91a6b8;
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.tester-results {
+    margin-top: 17px;
+
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+.tester-results span {
+    padding: 8px 11px;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 8px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    color: #6f8799;
+
+    font-size: 8px;
+    font-weight: 800;
+
+    opacity: 0.5;
+
+    transition:
+        opacity 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.tester-results span.is-active {
+    opacity: 1;
+
+    color: #dce9f1;
+
+    border-color: rgba(80, 214, 255, 0.4);
+}
+
+
+/* ==========================================
+   MEMORY CHECK
+========================================== */
+
+.memory-card {
+    width: min(930px, 82vw);
+
+    padding: 28px 32px 30px;
+}
+
+.memory-flow {
+    margin-top: 27px;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 45px
+        1fr 45px
+        1fr 45px
+        1fr;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.memory-item {
+    min-height: 110px;
+
+    padding: 15px 8px;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 6px;
+
+    text-align: center;
+
+    border: 1px solid rgba(94, 164, 205, 0.14);
+    border-radius: 14px;
+
+    background: rgba(3, 13, 23, 0.62);
+
+    opacity: 0.42;
+
+    transition:
+        opacity 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease,
+        transform 0.35s ease;
+}
+
+.memory-item.is-active {
+    opacity: 1;
+
+    border-color: rgba(80, 214, 255, 0.5);
+    background: rgba(16, 57, 80, 0.46);
+
+    transform: translateY(-4px);
+}
+
+.memory-item strong {
+    color: #5bdcff;
+    font-size: 17px;
+}
+
+.memory-item span {
+    color: #8ba0b2;
+
+    font-size: 9px;
+}
+
+.memory-flow > i {
+    color: #45637a;
+
+    font-size: 11px;
+    text-align: center;
+}
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.scene-summary {
+    position: absolute;
+    z-index: 30;
+
+    top: 51%;
+    left: 50%;
+
+    width: min(920px, 80vw);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+
+    transform:
+        translate(-50%, -50%)
+        translateY(20px);
+}
+
+.scene-summary.is-visible {
+    transform: translate(-50%, -50%);
+}
+
+.summary-item {
+    width: 235px;
+
+    padding: 23px 20px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    border: 1px solid rgba(90, 169, 212, 0.2);
+    border-radius: 17px;
+
+    background: rgba(7, 23, 38, 0.95);
+}
+
+.summary-item > i {
+    color: #5bdcff;
+    font-size: 27px;
+}
+
+.summary-item span {
+    display: block;
+
+    color: #5bdcff;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+}
+
+.summary-item strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 12px;
+}
+
+.summary-symbol {
+    color: #466276;
+    font-size: 12px;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    position: absolute;
+    z-index: 35;
+
+    top: 50%;
+    left: 50%;
+
+    width: min(900px, 79vw);
+
+    padding: 32px 36px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 24px;
+
+    border: 1px solid rgba(77, 214, 255, 0.32);
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(9, 35, 55, 0.98),
+            rgba(4, 17, 29, 0.98)
+        );
+
+    box-shadow:
+        0 0 55px rgba(0, 181, 255, 0.09),
+        0 28px 70px rgba(0, 0, 0, 0.42);
+
+    transform:
+        translate(-50%, -50%)
+        translateY(20px);
+}
+
+.final-concept.is-visible {
+    transform: translate(-50%, -50%);
+}
+
+.final-concept > i {
+    flex: 0 0 auto;
+
+    color: #66dfff;
+    font-size: 48px;
+}
+
+.final-concept span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #5bdcff;
+
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+}
+
+.final-concept strong {
+    color: #e3edf5;
+
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+    z-index: 50;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 4px;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+}
+
+.timeline-progress {
+    width: 0;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #3abef2,
+            #5de1d0
+        );
+
+    box-shadow:
+        0 0 12px rgba(72, 213, 255, 0.45);
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+    z-index: 60;
+
+    right: 26px;
+    bottom: 22px;
+
+    display: flex;
+    gap: 8px;
+}
+
+.scene-controls button {
+    padding: 9px 13px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    border: 1px solid rgba(100, 171, 213, 0.22);
+    border-radius: 9px;
+
+    background: rgba(7, 19, 31, 0.84);
+
+    color: #b8c8d5;
+
+    cursor: pointer;
+
+    font-size: 10px;
+    font-weight: 700;
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        border-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color: rgba(79, 210, 255, 0.5);
+
+    color: #ffffff;
+
+    transform: translateY(-1px);
+}
+
+
+/* ==========================================
+   RECORDING MODE
+========================================== */
+
+body.recording-mode
+.scene-controls {
+    display: none;
+}
+
+
+/* ==========================================
+   KEYFRAMES
+========================================== */
+
+@keyframes cableSignal {
+
+    0% {
+        left: 0;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        left: calc(100% - 12px);
+        opacity: 0;
+    }
+}
+
+
+@keyframes autoRotate {
+
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* ==========================================
+   SMALLER DESKTOP PREVIEW
+========================================== */
+
+@media (max-width: 1250px) {
+
+    .termination-flow {
+        gap: 3px;
+    }
+
+    .termination-step {
+        min-height: 115px;
+    }
+
+    .memory-flow {
+        gap: 5px;
+    }
+
+    .connector-intro {
+        grid-template-columns:
+            320px 1fr;
+    }
+}
