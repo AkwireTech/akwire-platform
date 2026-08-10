@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Lesson 03 | Scene 02
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-02.css">
+
+</head>
+
+<body>
+
+<main id="scene02"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+
+            A
+
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+
+                AKWIRE
+
+            </strong>
+
+            <span>
+
+                NETWORK+ FUNDAMENTALS
+
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+
+            LESSON 03 • SCENE 02
+
+        </span>
+
+        <h1>
+
+            DNS, DHCP & NTP
+
+        </h1>
+
+        <p>
+
+            Learn how DNS translates names,
+            DHCP automatically assigns
+            network settings,
+            and NTP keeps systems
+            synchronized with accurate time.
+
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+
+        <!-- ======================================
+             INTRO
+        ======================================= -->
+
+        <article id="servicesIntro"
+                 class="service-intro">
+
+            <div class="service-visual">
+
+                <div id="networkServicesCore"
+                     class="service-core">
+
+                    <div class="core-icon">
+
+                        <i class="fas fa-server"></i>
+
+                    </div>
+
+                    <span class="signal-ring ring-1"></span>
+
+                    <span class="signal-ring ring-2"></span>
+
+                    <span class="signal-ring ring-3"></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="service-copy">
+
+                <span>
+
+                    NETWORK SERVICES
+
+                </span>
+
+                <h2>
+
+                    Essential Infrastructure Services
+
+                </h2>
+
+                <p>
+
+                    Modern networks rely on
+                    infrastructure services
+                    that translate names,
+                    assign IP addresses,
+                    and synchronize system
+                    clocks automatically.
+
+                </p>
+
+                <div id="automationBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-gears"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Automation
+
+                        </strong>
+
+                        <span>
+
+                            Reduces manual configuration.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div id="reliabilityBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-shield-halved"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Reliability
+
+                        </strong>
+
+                        <span>
+
+                            Keeps the network operating smoothly.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             DNS
+        ======================================= -->
+
+        <article id="dnsScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-globe"></i>
+
+                <div>
+
+                    <span>
+
+                        DNS
+
+                    </span>
+
+                    <h2>
+
+                        Domain Name System
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="dnsIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-globe"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        DNS translates human-
+                        readable domain names
+                        into IP addresses that
+                        computers use to
+                        communicate.
+
+                    </p>
+
+                    <div id="dnsFact"
+                         class="service-point">
+
+                        <i class="fas fa-circle-info"></i>
+
+                        <span>
+
+                            Example:
+                            www.example.com
+                            → 93.184.216.34
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             DNS LOOKUPS
+        ======================================= -->
+
+        <article id="lookupScene"
+                 class="comparison-card">
+
+            <header>
+
+                <i class="fas fa-magnifying-glass"></i>
+
+                <div>
+
+                    <span>
+
+                        DNS LOOKUPS
+
+                    </span>
+
+                    <h2>
+
+                        Forward vs Reverse Lookup
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="comparison-grid">
+
+                <div id="forwardLookup"
+                     class="comparison-item">
+
+                    <i class="fas fa-arrow-right"></i>
+
+                    <strong>
+
+                        Forward Lookup
+
+                    </strong>
+
+                    <p>
+
+                        Converts a
+                        domain name
+                        into an
+                        IP address.
+
+                    </p>
+
+                </div>
+
+                <div id="reverseLookup"
+                     class="comparison-item">
+
+                    <i class="fas fa-arrow-left"></i>
+
+                    <strong>
+
+                        Reverse Lookup
+
+                    </strong>
+
+                    <p>
+
+                        Converts an
+                        IP address
+                        into a
+                        hostname.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             DHCP
+        ======================================= -->
+
+        <article id="dhcpScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-network-wired"></i>
+
+                <div>
+
+                    <span>
+
+                        DHCP
+
+                    </span>
+
+                    <h2>
+
+                        Dynamic Host Configuration Protocol
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="dhcpIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-network-wired"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        DHCP automatically
+                        assigns IP addresses,
+                        subnet masks,
+                        gateways,
+                        and DNS servers
+                        to network clients.
+
+                    </p>
+
+                    <div id="dhcpFact"
+                         class="service-point">
+
+                        <i class="fas fa-circle-check"></i>
+
+                        <span>
+
+                            Eliminates manual
+                            IP configuration.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        
+        <!-- ======================================
+             DORA PROCESS
+        ======================================= -->
+
+        <article id="doraScene"
+                 class="process-card">
+
+            <header>
+
+                <i class="fas fa-arrows-rotate"></i>
+
+                <div>
+
+                    <span>
+
+                        DHCP PROCESS
+
+                    </span>
+
+                    <h2>
+
+                        DORA Sequence
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="process-flow">
+
+                <div id="discoverStep"
+                     class="process-item">
+
+                    <strong>
+
+                        Discover
+
+                    </strong>
+
+                    <span>
+
+                        Client searches
+                        for a DHCP server.
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="offerStep"
+                     class="process-item">
+
+                    <strong>
+
+                        Offer
+
+                    </strong>
+
+                    <span>
+
+                        Server offers
+                        an available
+                        IP address.
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="requestStep"
+                     class="process-item">
+
+                    <strong>
+
+                        Request
+
+                    </strong>
+
+                    <span>
+
+                        Client requests
+                        the offered
+                        configuration.
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="ackStep"
+                     class="process-item">
+
+                    <strong>
+
+                        Acknowledge
+
+                    </strong>
+
+                    <span>
+
+                        Server confirms
+                        the lease.
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             NTP
+        ======================================= -->
+
+        <article id="ntpScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-clock"></i>
+
+                <div>
+
+                    <span>
+
+                        NTP
+
+                    </span>
+
+                    <h2>
+
+                        Network Time Protocol
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="ntpIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-clock"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        NTP synchronizes
+                        clocks across
+                        network devices,
+                        ensuring accurate
+                        timestamps for logs,
+                        authentication,
+                        and troubleshooting.
+
+                    </p>
+
+                    <div id="ntpFact"
+                         class="service-point">
+
+                        <i class="fas fa-stopwatch"></i>
+
+                        <span>
+
+                            Accurate time
+                            is essential for
+                            security and auditing.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             EXAM MEMORY
+        ======================================= -->
+
+        <article id="examMemory"
+                 class="memory-card">
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+
+                        NETWORK+ MEMORY CHECK
+
+                    </span>
+
+                    <h2>
+
+                        Essential Network Services
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="memory-flow">
+
+                <div id="memoryDns"
+                     class="memory-item">
+
+                    <strong>
+
+                        DNS
+
+                    </strong>
+
+                    <span>
+
+                        Name Resolution
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryDhcp"
+                     class="memory-item">
+
+                    <strong>
+
+                        DHCP
+
+                    </strong>
+
+                    <span>
+
+                        Automatic IP
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryDora"
+                     class="memory-item">
+
+                    <strong>
+
+                        DORA
+
+                    </strong>
+
+                    <span>
+
+                        Discover → ACK
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryNtp"
+                     class="memory-item">
+
+                    <strong>
+
+                        NTP
+
+                    </strong>
+
+                    <span>
+
+                        Time Sync
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="sceneSummary"
+             class="scene-summary">
+
+        <div class="summary-item">
+
+            <i class="fas fa-globe"></i>
+
+            <div>
+
+                <span>
+
+                    DNS
+
+                </span>
+
+                <strong>
+
+                    Name Resolution
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-network-wired"></i>
+
+            <div>
+
+                <span>
+
+                    DHCP
+
+                </span>
+
+                <strong>
+
+                    Automatic Addressing
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-clock"></i>
+
+            <div>
+
+                <span>
+
+                    NTP
+
+                </span>
+
+                <strong>
+
+                    Time Synchronization
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-server"></i>
+
+        <div>
+
+            <span>
+
+                KEY IDEA
+
+            </span>
+
+            <strong>
+
+                DNS helps devices find each other,
+                DHCP automatically configures network
+                settings, and NTP keeps every system
+                synchronized. Together, these services
+                provide the foundation for reliable
+                network communication.
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn"
+                type="button">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn"
+                type="button">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+<script src="scene-02.js"></script>
+
+</body>
+</html>
