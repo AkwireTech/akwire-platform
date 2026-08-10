@@ -1,0 +1,1284 @@
+/* ==========================================
+   AKWIRE NETWORK+ VIDEO PRODUCTION
+   LESSON 02 — SCENE 08
+   WIRELESS TROUBLESHOOTING
+========================================== */
+
+*{
+
+    margin:0;
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+}
+
+body{
+
+    overflow:hidden;
+
+    background:#050a12;
+
+    color:#f8fbff;
+
+    font-family:Inter,"Segoe UI",Arial,sans-serif;
+
+}
+
+button{
+
+    font:inherit;
+
+}
+
+
+/* ==========================================
+   MAIN SCENE
+========================================== */
+
+.video-scene{
+
+    position:relative;
+
+    width:100vw;
+    height:100vh;
+
+    min-width:1100px;
+    min-height:620px;
+
+    overflow:hidden;
+
+    isolation:isolate;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(0,150,255,.12),
+            transparent 42%
+        ),
+
+        linear-gradient(
+            145deg,
+            #050912 0%,
+            #07111d 45%,
+            #03070d 100%
+        );
+
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background{
+
+    position:absolute;
+
+    inset:0;
+
+    z-index:-5;
+
+    pointer-events:none;
+
+}
+
+.background-grid{
+
+    position:absolute;
+
+    inset:0;
+
+    opacity:.22;
+
+    background-image:
+
+        linear-gradient(
+            rgba(100,200,255,.08) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(100,200,255,.08) 1px,
+            transparent 1px
+        );
+
+    background-size:52px 52px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 15%,
+            black 85%,
+            transparent
+        );
+
+}
+
+.background-glow{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    filter:blur(95px);
+
+    opacity:0;
+
+    transition:opacity 1s ease;
+
+}
+
+.glow-left{
+
+    width:420px;
+    height:420px;
+
+    left:-170px;
+    top:160px;
+
+    background:
+        rgba(0,180,255,.18);
+
+}
+
+.glow-center{
+
+    width:520px;
+    height:520px;
+
+    left:calc(50% - 260px);
+    top:150px;
+
+    background:
+        rgba(0,255,220,.08);
+
+}
+
+.glow-right{
+
+    width:420px;
+    height:420px;
+
+    right:-170px;
+    top:120px;
+
+    background:
+        rgba(112,92,255,.15);
+
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand{
+
+    position:absolute;
+
+    top:28px;
+    left:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    opacity:0;
+
+    transform:translateY(-15px);
+
+    transition:
+        opacity .7s,
+        transform .7s;
+
+}
+
+.brand-mark{
+
+    display:grid;
+
+    place-items:center;
+
+    width:43px;
+    height:43px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(80,220,255,.5);
+
+    background:
+        linear-gradient(
+            145deg,
+            #1167a4,
+            #092746
+        );
+
+    font-size:23px;
+
+    font-weight:900;
+
+}
+
+.brand-copy{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2px;
+
+}
+
+.brand-copy strong{
+
+    font-size:15px;
+
+    letter-spacing:.18em;
+
+}
+
+.brand-copy span{
+
+    color:#8396a8;
+
+    font-size:9px;
+
+    letter-spacing:.18em;
+
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title{
+
+    position:absolute;
+
+    top:95px;
+    left:50%;
+
+    width:1000px;
+
+    max-width:calc(100vw - 100px);
+
+    transform:
+
+        translateX(-50%)
+
+        translateY(-12px);
+
+    text-align:center;
+
+    opacity:0;
+
+    transition:
+        opacity .8s,
+        transform .8s;
+
+}
+
+.scene-number{
+
+    display:inline-block;
+
+    margin-bottom:10px;
+
+    color:#59dfff;
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:.22em;
+
+}
+
+.scene-title h1{
+
+    width:100%;
+
+    font-size:
+        clamp(32px,2.9vw,46px);
+
+    line-height:1.05;
+
+    letter-spacing:-.04em;
+
+}
+
+.scene-title p{
+
+    width:100%;
+
+    max-width:760px;
+
+    margin:14px auto 0;
+
+    color:#90a6b8;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+}
+
+
+/* ==========================================
+   MAIN STAGE
+========================================== */
+
+.wireless-stage{
+
+    position:absolute;
+
+    top:255px;
+    left:50%;
+
+    width:min(1160px,88vw);
+
+    height:calc(100vh - 355px);
+
+    min-height:300px;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+/* ==========================================
+   VISIBILITY SYSTEM
+========================================== */
+
+.troubleshooting-intro,
+.issue-card,
+.memory-card,
+.scene-summary,
+.final-concept{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:min(900px,82vw);
+
+    transform:
+        translate(-50%,-50%)
+        translateY(20px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+
+    border-radius:22px;
+
+    border:1px solid rgba(80,170,220,.18);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(11,29,47,.97),
+            rgba(4,16,29,.98)
+        );
+
+    box-shadow:
+
+        0 28px 70px rgba(0,0,0,.40),
+
+        inset 0 1px rgba(255,255,255,.03);
+
+    transition:
+
+        opacity .55s,
+
+        transform .55s,
+
+        visibility .55s;
+
+}
+
+.is-visible{
+
+    opacity:1 !important;
+
+    visibility:visible !important;
+
+    pointer-events:auto;
+
+}
+
+.scene-brand.is-visible{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+.scene-title.is-visible{
+
+    opacity:1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+
+}
+
+.background-glow.is-visible{
+
+    opacity:1;
+
+}
+
+
+/* ==========================================
+   SHARED CARD HEADERS
+========================================== */
+
+.issue-card header,
+.memory-card header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.issue-card header i,
+.memory-card header i{
+
+    width:52px;
+    height:52px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:14px;
+
+    background:
+        rgba(0,190,255,.10);
+
+    border:1px solid rgba(0,210,255,.30);
+
+    color:#5adfff;
+
+    font-size:22px;
+
+}
+
+header span{
+
+    color:#5bddff;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:.18em;
+
+}
+
+header h2{
+
+    margin-top:4px;
+
+    font-size:25px;
+
+}
+
+
+/* ==========================================
+   TROUBLESHOOTING INTRO
+========================================== */
+
+.troubleshooting-intro{
+
+    padding:32px 36px;
+
+    display:grid;
+
+    grid-template-columns:360px 1fr;
+
+    align-items:center;
+
+    gap:36px;
+
+}
+
+.troubleshooting-intro.is-visible{
+
+    transform:
+        translate(-50%,-50%)
+        translateY(0);
+
+}
+
+.troubleshooting-visual{
+
+    height:230px;
+
+    display:grid;
+
+    place-items:center;
+
+    border-radius:18px;
+
+    border:1px solid rgba(95,170,220,.14);
+
+    background:
+        rgba(5,18,31,.55);
+
+}
+
+.troubleshooting-center{
+
+    position:relative;
+
+    width:150px;
+    height:150px;
+
+    display:grid;
+    place-items:center;
+
+    opacity:.45;
+
+    transition:.35s;
+
+}
+
+.troubleshooting-center.is-active{
+
+    opacity:1;
+
+    transform:scale(1.05);
+
+}
+
+.center-icon{
+
+    width:76px;
+    height:76px;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1571b6,
+            #0d2b4d
+        );
+
+    border:2px solid rgba(90,225,255,.35);
+
+    color:#fff;
+
+    font-size:30px;
+
+    box-shadow:
+        0 0 30px rgba(0,180,255,.25);
+
+}
+
+.signal-ring{
+
+    position:absolute;
+
+    border:2px solid rgba(90,220,255,.45);
+
+    border-radius:50%;
+
+    opacity:0;
+
+}
+
+.signal-ring.is-active{
+
+    animation:
+        troubleshootPulse 2.2s infinite;
+
+}
+
+.ring-1{
+
+    width:110px;
+    height:110px;
+
+}
+
+.ring-2{
+
+    width:170px;
+    height:170px;
+
+    animation-delay:.4s;
+
+}
+
+.ring-3{
+
+    width:230px;
+    height:230px;
+
+    animation-delay:.8s;
+
+}
+
+.troubleshooting-copy span{
+
+    color:#5bddff;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:.18em;
+
+}
+
+.troubleshooting-copy h2{
+
+    margin-top:5px;
+
+    font-size:27px;
+
+}
+
+.troubleshooting-copy p{
+
+    margin-top:14px;
+
+    color:#90a6b8;
+
+    font-size:11px;
+
+    line-height:1.65;
+
+}
+
+.troubleshooting-stat{
+
+    margin-top:14px;
+
+    padding:12px 15px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(90,170,220,.16);
+
+    background:
+        rgba(5,18,31,.62);
+
+    opacity:.40;
+
+    transition:.35s;
+
+}
+
+.troubleshooting-stat.is-active{
+
+    opacity:1;
+
+    transform:translateX(5px);
+
+    border-color:
+        rgba(90,225,255,.45);
+
+}
+
+.troubleshooting-stat i{
+
+    width:30px;
+
+    color:#5bddff;
+
+    font-size:20px;
+
+}
+
+
+/* ==========================================
+   ISSUE CARDS
+========================================== */
+
+.issue-card{
+
+    padding:30px 34px;
+
+}
+
+.issue-card.is-visible{
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+.issue-layout{
+
+    margin-top:30px;
+
+    display:grid;
+
+    grid-template-columns:
+        170px 1fr;
+
+    gap:28px;
+
+    align-items:center;
+
+}
+
+.issue-icon{
+
+    width:150px;
+    height:150px;
+
+    margin:auto;
+
+    display:grid;
+    place-items:center;
+
+    border-radius:24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #176eb4,
+            #0f3558
+        );
+
+    color:#ffffff;
+
+    font-size:56px;
+
+    opacity:.40;
+
+    transition:.35s;
+
+}
+
+.issue-icon.is-active{
+
+    opacity:1;
+
+    transform:scale(1.05);
+
+}
+
+.issue-description p{
+
+    color:#90a6b8;
+
+    font-size:11px;
+
+    line-height:1.75;
+
+}
+
+.issue-point{
+
+    margin-top:18px;
+
+    padding:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    border-radius:12px;
+
+    border:1px solid rgba(90,170,220,.14);
+
+    background:
+        rgba(5,18,31,.55);
+
+    opacity:.40;
+
+    transition:.35s;
+
+}
+
+.issue-point.is-active{
+
+    opacity:1;
+
+    border-color:
+        rgba(90,225,255,.45);
+
+}
+
+.issue-point i{
+
+    color:#5bddff;
+
+}
+
+
+/* ==========================================
+   MEMORY
+========================================== */
+
+.memory-card{
+
+    padding:30px 34px;
+
+}
+
+.memory-card.is-visible{
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+.memory-flow{
+
+    margin-top:32px;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 40px
+        1fr 40px
+        1fr 40px
+        1fr;
+
+    align-items:center;
+
+    gap:6px;
+
+}
+
+.memory-item{
+
+    min-height:115px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:14px;
+
+    border:1px solid rgba(90,170,220,.14);
+
+    background:
+        rgba(5,18,31,.60);
+
+    opacity:.40;
+
+    transition:.35s;
+
+}
+
+.memory-item.is-active{
+
+    opacity:1;
+
+    transform:translateY(-4px);
+
+    border-color:
+        rgba(90,225,255,.45);
+
+}
+
+.memory-item strong{
+
+    color:#5bddff;
+
+    font-size:17px;
+
+}
+
+.memory-item span{
+
+    margin-top:6px;
+
+    color:#90a6b8;
+
+    font-size:8px;
+
+}
+
+.memory-flow > i{
+
+    color:#4d6b7f;
+
+    text-align:center;
+
+}
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.scene-summary{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:min(920px,80vw);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:26px;
+
+    transform:
+        translate(-50%,-50%)
+        translateY(20px);
+
+}
+
+.scene-summary.is-visible{
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+.summary-item{
+
+    width:235px;
+
+    padding:24px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    border-radius:18px;
+
+    border:1px solid rgba(90,170,220,.20);
+
+    background:
+        rgba(8,24,39,.95);
+
+}
+
+.summary-item i{
+
+    color:#5bddff;
+
+    font-size:28px;
+
+}
+
+.summary-item span{
+
+    display:block;
+
+    color:#5bddff;
+
+    font-size:9px;
+
+    font-weight:800;
+
+    letter-spacing:.15em;
+
+}
+
+.summary-item strong{
+
+    display:block;
+
+    margin-top:5px;
+
+    font-size:12px;
+
+}
+
+.summary-symbol{
+
+    color:#4f6d82;
+
+    font-size:13px;
+
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    width:min(900px,79vw);
+
+    padding:34px 36px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:24px;
+
+    border-radius:22px;
+
+    border:1px solid rgba(90,225,255,.30);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8,35,55,.98),
+            rgba(4,17,29,.98)
+        );
+
+    box-shadow:
+        0 0 55px rgba(0,180,255,.10),
+        0 28px 70px rgba(0,0,0,.42);
+
+    transform:
+        translate(-50%,-50%)
+        translateY(20px);
+
+}
+
+.final-concept.is-visible{
+
+    transform:
+        translate(-50%,-50%);
+
+}
+
+.final-concept i{
+
+    color:#63e2ff;
+
+    font-size:50px;
+
+}
+
+.final-concept span{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    color:#5bddff;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:.18em;
+
+}
+
+.final-concept strong{
+
+    font-size:16px;
+
+    line-height:1.65;
+
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline{
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:4px;
+
+    background:
+        rgba(255,255,255,.05);
+
+}
+
+.timeline-progress{
+
+    width:0;
+
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #38c2f3,
+            #63e4d0
+        );
+
+    box-shadow:
+        0 0 12px rgba(90,220,255,.40);
+
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls{
+
+    position:absolute;
+
+    right:26px;
+    bottom:22px;
+
+    display:flex;
+
+    gap:10px;
+
+    z-index:50;
+
+}
+
+.scene-controls button{
+
+    padding:10px 14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:
+        rgba(8,24,39,.92);
+
+    border:1px solid rgba(90,170,220,.20);
+
+    color:#d8e6ef;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.scene-controls button:hover{
+
+    transform:translateY(-2px);
+
+    border-color:
+        rgba(90,225,255,.45);
+
+    color:#ffffff;
+
+}
+
+body.recording-mode .scene-controls{
+
+    display:none;
+
+}
+
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes troubleshootPulse{
+
+    0%{
+
+        transform:scale(.55);
+
+        opacity:.90;
+
+    }
+
+    100%{
+
+        transform:scale(1.45);
+
+        opacity:0;
+
+    }
+
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1250px){
+
+    .troubleshooting-intro{
+
+        grid-template-columns:
+            330px 1fr;
+
+    }
+
+    .issue-layout{
+
+        grid-template-columns:
+            150px 1fr;
+
+    }
+
+}
+
+@media (max-width:1150px){
+
+    .memory-flow{
+
+        gap:4px;
+
+    }
+
+}
