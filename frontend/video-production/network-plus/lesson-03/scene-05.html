@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Lesson 03 | Scene 05
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-05.css">
+
+</head>
+
+<body>
+
+<main id="scene05"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+
+            A
+
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+
+                AKWIRE
+
+            </strong>
+
+            <span>
+
+                NETWORK+ FUNDAMENTALS
+
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+
+            LESSON 03 • SCENE 05
+
+        </span>
+
+        <h1>
+
+            File Sharing Protocols & Network Services
+
+        </h1>
+
+        <p>
+
+            Learn how operating systems share
+            files across networks using SMB,
+            NFS, AFP, SFTP, and TFTP.
+
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+
+        <!-- ======================================
+             INTRO
+        ======================================= -->
+
+        <article id="sharingIntro"
+                 class="service-intro">
+
+            <div class="service-visual">
+
+                <div id="sharingCore"
+                     class="service-core">
+
+                    <div class="core-icon">
+
+                        <i class="fas fa-folder-tree"></i>
+
+                    </div>
+
+                    <span class="signal-ring ring-1"></span>
+                    <span class="signal-ring ring-2"></span>
+                    <span class="signal-ring ring-3"></span>
+
+                </div>
+
+            </div>
+
+            <div class="service-copy">
+
+                <span>
+
+                    FILE SHARING
+
+                </span>
+
+                <h2>
+
+                    Sharing Data Across Networks
+
+                </h2>
+
+                <p>
+
+                    File-sharing protocols allow
+                    computers to exchange files,
+                    access shared folders,
+                    upload firmware,
+                    and securely transfer
+                    information between systems.
+
+                </p>
+
+                <div id="sharingBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-folder-open"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Shared Resources
+
+                        </strong>
+
+                        <span>
+
+                            Access files from anywhere.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div id="securityBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-lock"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Secure Transfers
+
+                        </strong>
+
+                        <span>
+
+                            Protect sensitive information.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             SMB
+        ======================================= -->
+
+        <article id="smbScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-folder-open"></i>
+
+                <div>
+
+                    <span>
+
+                        WINDOWS
+
+                    </span>
+
+                    <h2>
+
+                        SMB (Server Message Block)
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="smbIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-folder-open"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        SMB is Microsoft's primary
+                        file-sharing protocol used
+                        for shared folders,
+                        printers,
+                        and network resources.
+
+                    </p>
+
+                    <div id="smbFact"
+                         class="service-point">
+
+                        <i class="fas fa-desktop"></i>
+
+                        <span>
+
+                            Standard Windows
+                            file sharing.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CIFS vs SMB
+        ======================================= -->
+
+        <article id="cifsScene"
+                 class="comparison-card">
+
+            <header>
+
+                <i class="fas fa-code-compare"></i>
+
+                <div>
+
+                    <span>
+
+                        COMPARISON
+
+                    </span>
+
+                    <h2>
+
+                        CIFS vs Modern SMB
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="comparison-grid">
+
+                <div id="cifsCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-clock-rotate-left"></i>
+
+                    <strong>
+
+                        CIFS
+
+                    </strong>
+
+                    <p>
+
+                        Older implementation
+                        of SMB with lower
+                        performance.
+
+                    </p>
+
+                </div>
+
+                <div id="modernSmbCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-bolt"></i>
+
+                    <strong>
+
+                        SMB 3.x
+
+                    </strong>
+
+                    <p>
+
+                        Faster,
+                        more secure,
+                        supports encryption
+                        and modern features.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             NFS
+        ======================================= -->
+
+        <article id="nfsScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fab fa-linux"></i>
+
+                <div>
+
+                    <span>
+
+                        LINUX / UNIX
+
+                    </span>
+
+                    <h2>
+
+                        NFS (Network File System)
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="nfsIcon"
+                     class="service-icon">
+
+                    <i class="fab fa-linux"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        NFS allows Linux
+                        and UNIX systems
+                        to share directories
+                        and files over
+                        a network.
+
+                    </p>
+
+                    <div id="nfsFact"
+                         class="service-point">
+
+                        <i class="fas fa-server"></i>
+
+                        <span>
+
+                            Common in Linux
+                            environments.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        
+        <!-- ======================================
+             AFP
+        ======================================= -->
+
+        <article id="afpScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fab fa-apple"></i>
+
+                <div>
+
+                    <span>
+
+                        APPLE
+
+                    </span>
+
+                    <h2>
+
+                        AFP (Apple Filing Protocol)
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="afpIcon"
+                     class="service-icon">
+
+                    <i class="fab fa-apple"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        AFP was Apple's traditional
+                        file-sharing protocol used
+                        by older macOS systems.
+                        Modern macOS primarily
+                        uses SMB for file sharing.
+
+                    </p>
+
+                    <div id="afpFact"
+                         class="service-point">
+
+                        <i class="fas fa-computer"></i>
+
+                        <span>
+
+                            Legacy protocol for
+                            Apple environments.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             SFTP
+        ======================================= -->
+
+        <article id="sftpScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-lock"></i>
+
+                <div>
+
+                    <span>
+
+                        SECURE TRANSFER
+
+                    </span>
+
+                    <h2>
+
+                        SFTP (SSH File Transfer Protocol)
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="sftpIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-lock"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        SFTP transfers files
+                        securely through an
+                        encrypted SSH connection,
+                        protecting both credentials
+                        and file contents.
+
+                    </p>
+
+                    <div id="sftpFact"
+                         class="service-point">
+
+                        <i class="fas fa-shield-halved"></i>
+
+                        <span>
+
+                            Uses SSH
+                            (Port 22).
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             TFTP
+        ======================================= -->
+
+        <article id="tftpScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-file-arrow-up"></i>
+
+                <div>
+
+                    <span>
+
+                        LIGHTWEIGHT TRANSFER
+
+                    </span>
+
+                    <h2>
+
+                        TFTP (Trivial File Transfer Protocol)
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="tftpIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-file-arrow-up"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        TFTP provides simple,
+                        unauthenticated file
+                        transfers and is commonly
+                        used for boot images,
+                        firmware upgrades,
+                        and network device
+                        configuration files.
+
+                    </p>
+
+                    <div id="tftpFact"
+                         class="service-point">
+
+                        <i class="fas fa-triangle-exclamation"></i>
+
+                        <span>
+
+                            No authentication
+                            or encryption.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             EXAM MEMORY
+        ======================================= -->
+
+        <article id="examMemory"
+                 class="memory-card">
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+
+                        NETWORK+ MEMORY CHECK
+
+                    </span>
+
+                    <h2>
+
+                        File Sharing Protocol Review
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="memory-flow">
+
+                <div id="memorySmb"
+                     class="memory-item">
+
+                    <strong>
+
+                        SMB
+
+                    </strong>
+
+                    <span>
+
+                        Windows Sharing
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryNfs"
+                     class="memory-item">
+
+                    <strong>
+
+                        NFS
+
+                    </strong>
+
+                    <span>
+
+                        Linux / UNIX
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memorySftp"
+                     class="memory-item">
+
+                    <strong>
+
+                        SFTP
+
+                    </strong>
+
+                    <span>
+
+                        Secure Transfer
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryTftp"
+                     class="memory-item">
+
+                    <strong>
+
+                        TFTP
+
+                    </strong>
+
+                    <span>
+
+                        Lightweight Transfer
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="sceneSummary"
+             class="scene-summary">
+
+        <div class="summary-item">
+
+            <i class="fas fa-folder-open"></i>
+
+            <div>
+
+                <span>
+
+                    SMB
+
+                </span>
+
+                <strong>
+
+                    Windows File Sharing
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fab fa-linux"></i>
+
+            <div>
+
+                <span>
+
+                    NFS
+
+                </span>
+
+                <strong>
+
+                    Linux / UNIX Sharing
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-lock"></i>
+
+            <div>
+
+                <span>
+
+                    SFTP
+
+                </span>
+
+                <strong>
+
+                    Secure File Transfer
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-folder-tree"></i>
+
+        <div>
+
+            <span>
+
+                KEY IDEA
+
+            </span>
+
+            <strong>
+
+                SMB and NFS are the primary file-sharing
+                protocols for Windows and Linux systems.
+                SFTP securely transfers files using SSH,
+                while TFTP is designed for simple network
+                transfers where security is not required.
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn"
+                type="button">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn"
+                type="button">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+<script src="scene-05.js"></script>
+
+</body>
+
+</html>
