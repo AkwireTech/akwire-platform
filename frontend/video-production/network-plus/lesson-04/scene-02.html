@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Lesson 04 | Scene 02
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-02.css">
+
+</head>
+
+<body>
+
+<main id="scene02"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+
+            A
+
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+
+                AKWIRE
+
+            </strong>
+
+            <span>
+
+                NETWORK+ FUNDAMENTALS
+
+            </span>
+
+        </div>
+
+    </header>
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+
+            LESSON 04 • SCENE 02
+
+        </span>
+
+        <h1>
+
+            Network Monitoring & Performance Baselines
+
+        </h1>
+
+        <p>
+
+            Learn how administrators monitor
+            network health, establish performance
+            baselines, detect anomalies,
+            and identify performance bottlenecks
+            before users are affected.
+
+        </p>
+
+    </section>
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+        <!-- ======================================
+             INTRODUCTION
+        ======================================= -->
+
+        <article id="monitorIntro"
+                 class="service-intro">
+
+            <div class="service-visual">
+
+                <div id="monitorCore"
+                     class="service-core">
+
+                    <div class="core-icon">
+
+                        <i class="fas fa-chart-line"></i>
+
+                    </div>
+
+                    <span class="signal-ring ring-1"></span>
+                    <span class="signal-ring ring-2"></span>
+                    <span class="signal-ring ring-3"></span>
+
+                </div>
+
+            </div>
+
+            <div class="service-copy">
+
+                <span>
+
+                    NETWORK OPERATIONS
+
+                </span>
+
+                <h2>
+
+                    Continuous Monitoring
+
+                </h2>
+
+                <p>
+
+                    Modern networks generate
+                    performance data continuously.
+                    Monitoring systems collect,
+                    analyze,
+                    and alert administrators
+                    before minor issues become
+                    major outages.
+
+                </p>
+
+                <div id="visibilityBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-eye"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Visibility
+
+                        </strong>
+
+                        <span>
+
+                            Monitor every device.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div id="proactiveBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-bell"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Proactive Response
+
+                        </strong>
+
+                        <span>
+
+                            Detect problems early.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             BASELINE vs CURRENT
+        ======================================= -->
+
+        <article id="baselineScene"
+                 class="comparison-card">
+
+            <header>
+
+                <i class="fas fa-code-compare"></i>
+
+                <div>
+
+                    <span>
+
+                        PERFORMANCE
+
+                    </span>
+
+                    <h2>
+
+                        Baseline vs Current Performance
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="comparison-grid">
+
+                <div id="baselineCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-chart-area"></i>
+
+                    <strong>
+
+                        Performance Baseline
+
+                    </strong>
+
+                    <p>
+
+                        Records normal values
+                        for bandwidth,
+                        latency,
+                        CPU,
+                        memory,
+                        and utilization.
+
+                    </p>
+
+                </div>
+
+                <div id="currentCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-wave-square"></i>
+
+                    <strong>
+
+                        Current Performance
+
+                    </strong>
+
+                    <p>
+
+                        Live measurements are
+                        compared against the
+                        baseline to identify
+                        abnormal behavior.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             THRESHOLDS
+        ======================================= -->
+
+        <article id="thresholdScene"
+                 class="comparison-card">
+
+            <header>
+
+                <i class="fas fa-gauge-high"></i>
+
+                <div>
+
+                    <span>
+
+                        ALERTING
+
+                    </span>
+
+                    <h2>
+
+                        Thresholds vs Alerts
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="comparison-grid">
+
+                <div id="thresholdCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-sliders"></i>
+
+                    <strong>
+
+                        Threshold
+
+                    </strong>
+
+                    <p>
+
+                        Defines acceptable
+                        operating limits
+                        before corrective
+                        action is required.
+
+                    </p>
+
+                </div>
+
+                <div id="alertCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+                    <strong>
+
+                        Alert
+
+                    </strong>
+
+                    <p>
+
+                        Generated whenever
+                        performance exceeds
+                        established thresholds
+                        or unexpected events occur.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             PERFORMANCE METRICS
+        ======================================= -->
+
+        <article id="metricsScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-chart-pie"></i>
+
+                <div>
+
+                    <span>
+
+                        METRICS
+
+                    </span>
+
+                    <h2>
+
+                        Key Performance Indicators
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="metricsIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-chart-pie"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Administrators monitor
+                        bandwidth utilization,
+                        latency,
+                        jitter,
+                        packet loss,
+                        CPU usage,
+                        memory usage,
+                        and interface errors
+                        to evaluate network health.
+
+                    </p>
+
+                    <div id="metricsFact"
+                         class="service-point">
+
+                        <i class="fas fa-heart-pulse"></i>
+
+                        <span>
+
+                            Healthy metrics
+                            indicate a stable
+                            network.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        
+        <!-- ======================================
+             TREND ANALYSIS
+        ======================================= -->
+
+        <article id="trendScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-arrow-trend-up"></i>
+
+                <div>
+
+                    <span>
+
+                        ANALYTICS
+
+                    </span>
+
+                    <h2>
+
+                        Trend Analysis
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="trendIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-arrow-trend-up"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Trend analysis compares
+                        historical monitoring data
+                        over time to identify
+                        recurring patterns,
+                        capacity growth,
+                        seasonal traffic,
+                        and gradual performance
+                        degradation.
+
+                    </p>
+
+                    <div id="trendFact"
+                         class="service-point">
+
+                        <i class="fas fa-chart-column"></i>
+
+                        <span>
+
+                            Trends help predict
+                            future capacity needs.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             BOTTLENECKS
+        ======================================= -->
+
+        <article id="bottleneckScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-road-barrier"></i>
+
+                <div>
+
+                    <span>
+
+                        TROUBLESHOOTING
+
+                    </span>
+
+                    <h2>
+
+                        Performance Bottlenecks
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="bottleneckIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-road-barrier"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Bottlenecks occur when
+                        network resources become
+                        overloaded. Monitoring
+                        tools help identify
+                        overloaded links,
+                        servers,
+                        routers,
+                        switches,
+                        or applications.
+
+                    </p>
+
+                    <div id="bottleneckFact"
+                         class="service-point">
+
+                        <i class="fas fa-magnifying-glass-chart"></i>
+
+                        <span>
+
+                            Locate the constraint
+                            before expanding
+                            network capacity.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             EXAM MEMORY
+        ======================================= -->
+
+        <article id="examMemory"
+                 class="memory-card">
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+
+                        NETWORK+ MEMORY CHECK
+
+                    </span>
+
+                    <h2>
+
+                        Monitoring Review
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="memory-flow">
+
+                <div id="memoryBaseline"
+                     class="memory-item">
+
+                    <strong>
+
+                        Baseline
+
+                    </strong>
+
+                    <span>
+
+                        Normal Performance
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryThreshold"
+                     class="memory-item">
+
+                    <strong>
+
+                        Threshold
+
+                    </strong>
+
+                    <span>
+
+                        Acceptable Limits
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryTrend"
+                     class="memory-item">
+
+                    <strong>
+
+                        Trends
+
+                    </strong>
+
+                    <span>
+
+                        Historical Analysis
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryAlert"
+                     class="memory-item">
+
+                    <strong>
+
+                        Alerts
+
+                    </strong>
+
+                    <span>
+
+                        Immediate Action
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="sceneSummary"
+             class="scene-summary">
+
+        <div class="summary-item">
+
+            <i class="fas fa-chart-line"></i>
+
+            <div>
+
+                <span>
+
+                    MONITOR
+
+                </span>
+
+                <strong>
+
+                    Baselines • Metrics
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-chart-column"></i>
+
+            <div>
+
+                <span>
+
+                    ANALYZE
+
+                </span>
+
+                <strong>
+
+                    Trends • Bottlenecks
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-bell"></i>
+
+            <div>
+
+                <span>
+
+                    RESPOND
+
+                </span>
+
+                <strong>
+
+                    Thresholds • Alerts
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-chart-line"></i>
+
+        <div>
+
+            <span>
+
+                KEY IDEA
+
+            </span>
+
+            <strong>
+
+                Effective monitoring combines performance baselines, continuous metrics, threshold-based alerting, and trend analysis to detect problems early, maintain reliable network operations, and support informed capacity planning.
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn"
+                type="button">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn"
+                type="button">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+<script src="scene-02.js"></script>
+
+</body>
+
+</html>
