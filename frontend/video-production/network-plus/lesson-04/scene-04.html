@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Lesson 04 | Scene 04
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-04.css">
+
+</head>
+
+<body>
+
+<main id="scene04"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+
+            A
+
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+
+                AKWIRE
+
+            </strong>
+
+            <span>
+
+                NETWORK+ FUNDAMENTALS
+
+            </span>
+
+        </div>
+
+    </header>
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+
+            LESSON 04 • SCENE 04
+
+        </span>
+
+        <h1>
+
+            Configuration Management & Change Control
+
+        </h1>
+
+        <p>
+
+            Learn how administrators safely
+            manage device configurations,
+            document changes,
+            perform backups,
+            and reduce operational risk
+            through structured change control.
+
+        </p>
+
+    </section>
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+        <!-- ======================================
+             INTRODUCTION
+        ======================================= -->
+
+        <article id="configIntro"
+                 class="service-intro">
+
+            <div class="service-visual">
+
+                <div id="configCore"
+                     class="service-core">
+
+                    <div class="core-icon">
+
+                        <i class="fas fa-sliders"></i>
+
+                    </div>
+
+                    <span class="signal-ring ring-1"></span>
+                    <span class="signal-ring ring-2"></span>
+                    <span class="signal-ring ring-3"></span>
+
+                </div>
+
+            </div>
+
+            <div class="service-copy">
+
+                <span>
+
+                    NETWORK OPERATIONS
+
+                </span>
+
+                <h2>
+
+                    Configuration Management
+
+                </h2>
+
+                <p>
+
+                    Configuration management
+                    ensures that routers,
+                    switches,
+                    firewalls,
+                    servers,
+                    and other infrastructure
+                    remain consistent,
+                    documented,
+                    and recoverable throughout
+                    their lifecycle.
+
+                </p>
+
+                <div id="consistencyBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-check-double"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Consistency
+
+                        </strong>
+
+                        <span>
+
+                            Standardized device configurations.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div id="recoveryBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-clock-rotate-left"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Fast Recovery
+
+                        </strong>
+
+                        <span>
+
+                            Restore known-good configurations.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             RUNNING vs STARTUP CONFIG
+        ======================================= -->
+
+        <article id="configScene"
+                 class="comparison-card">
+
+            <header>
+
+                <i class="fas fa-code-compare"></i>
+
+                <div>
+
+                    <span>
+
+                        CONFIGURATION
+
+                    </span>
+
+                    <h2>
+
+                        Running vs Startup Configuration
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="comparison-grid">
+
+                <div id="runningCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-bolt"></i>
+
+                    <strong>
+
+                        Running Configuration
+
+                    </strong>
+
+                    <p>
+
+                        The active configuration
+                        currently loaded into
+                        device memory and used
+                        for normal network
+                        operations.
+
+                    </p>
+
+                </div>
+
+                <div id="startupCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-hard-drive"></i>
+
+                    <strong>
+
+                        Startup Configuration
+
+                    </strong>
+
+                    <p>
+
+                        The saved configuration
+                        stored in nonvolatile
+                        memory and loaded
+                        whenever the device
+                        restarts.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             BACKUPS
+        ======================================= -->
+
+        <article id="backupScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-database"></i>
+
+                <div>
+
+                    <span>
+
+                        BACKUPS
+
+                    </span>
+
+                    <h2>
+
+                        Configuration Backups
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="backupIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-database"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Configuration backups
+                        allow administrators
+                        to restore devices
+                        after hardware failures,
+                        accidental changes,
+                        software corruption,
+                        or security incidents.
+
+                    </p>
+
+                    <div id="backupFact"
+                         class="service-point">
+
+                        <i class="fas fa-cloud-arrow-down"></i>
+
+                        <span>
+
+                            Always maintain
+                            secure backup copies
+                            before making changes.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             VERSION CONTROL
+        ======================================= -->
+
+        <article id="versionScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-code-branch"></i>
+
+                <div>
+
+                    <span>
+
+                        VERSION CONTROL
+
+                    </span>
+
+                    <h2>
+
+                        Configuration Revisions
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="versionIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-code-branch"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Tracking configuration
+                        revisions provides
+                        accountability,
+                        simplifies troubleshooting,
+                        and allows administrators
+                        to compare previous
+                        configurations.
+
+                    </p>
+
+                    <div id="versionFact"
+                         class="service-point">
+
+                        <i class="fas fa-file-code"></i>
+
+                        <span>
+
+                            Every revision
+                            should be documented
+                            and recoverable.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        
+        <!-- ======================================
+             CHANGE CONTROL
+        ======================================= -->
+
+        <article id="changeScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-clipboard-list"></i>
+
+                <div>
+
+                    <span>
+
+                        CHANGE MANAGEMENT
+
+                    </span>
+
+                    <h2>
+
+                        Change Control Process
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="changeIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-clipboard-check"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Change control ensures
+                        that proposed network
+                        modifications are
+                        reviewed,
+                        approved,
+                        documented,
+                        tested,
+                        and communicated
+                        before implementation.
+
+                    </p>
+
+                    <div id="changeFact"
+                         class="service-point">
+
+                        <i class="fas fa-list-check"></i>
+
+                        <span>
+
+                            Every significant
+                            change should follow
+                            a documented approval
+                            process.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             MAINTENANCE WINDOWS
+        ======================================= -->
+
+        <article id="maintenanceScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-calendar-days"></i>
+
+                <div>
+
+                    <span>
+
+                        SCHEDULING
+
+                    </span>
+
+                    <h2>
+
+                        Maintenance Windows
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="maintenanceIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-calendar-days"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Planned maintenance
+                        windows minimize business
+                        disruption by scheduling
+                        upgrades,
+                        configuration changes,
+                        firmware updates,
+                        and hardware replacements
+                        during low-usage periods.
+
+                    </p>
+
+                    <div id="maintenanceFact"
+                         class="service-point">
+
+                        <i class="fas fa-clock"></i>
+
+                        <span>
+
+                            Notify stakeholders
+                            before scheduled
+                            maintenance begins.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ROLLBACK PLANS
+        ======================================= -->
+
+        <article id="rollbackScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-rotate-left"></i>
+
+                <div>
+
+                    <span>
+
+                        RECOVERY
+
+                    </span>
+
+                    <h2>
+
+                        Rollback Planning
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="rollbackIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-rotate-left"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        A rollback plan defines
+                        exactly how administrators
+                        will restore the previous
+                        working configuration if
+                        a deployment causes
+                        unexpected problems.
+
+                    </p>
+
+                    <div id="rollbackFact"
+                         class="service-point">
+
+                        <i class="fas fa-shield-heart"></i>
+
+                        <span>
+
+                            Always verify rollback
+                            procedures before
+                            implementing changes.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             EXAM MEMORY
+        ======================================= -->
+
+        <article id="examMemory"
+                 class="memory-card">
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+
+                        NETWORK+ MEMORY CHECK
+
+                    </span>
+
+                    <h2>
+
+                        Change Control Review
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="memory-flow">
+
+                <div id="memoryRunning"
+                     class="memory-item">
+
+                    <strong>
+
+                        Running
+
+                    </strong>
+
+                    <span>
+
+                        Active Configuration
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryBackup"
+                     class="memory-item">
+
+                    <strong>
+
+                        Backup
+
+                    </strong>
+
+                    <span>
+
+                        Save Configuration
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryChange"
+                     class="memory-item">
+
+                    <strong>
+
+                        Change
+
+                    </strong>
+
+                    <span>
+
+                        Review & Approve
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryRollback"
+                     class="memory-item">
+
+                    <strong>
+
+                        Rollback
+
+                    </strong>
+
+                    <span>
+
+                        Restore Service
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="sceneSummary"
+             class="scene-summary">
+
+        <div class="summary-item">
+
+            <i class="fas fa-sliders"></i>
+
+            <div>
+
+                <span>
+
+                    CONFIGURE
+
+                </span>
+
+                <strong>
+
+                    Running • Startup
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-database"></i>
+
+            <div>
+
+                <span>
+
+                    PROTECT
+
+                </span>
+
+                <strong>
+
+                    Backups • Versions
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-clipboard-check"></i>
+
+            <div>
+
+                <span>
+
+                    CONTROL
+
+                </span>
+
+                <strong>
+
+                    Change • Rollback
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-gears"></i>
+
+        <div>
+
+            <span>
+
+                KEY IDEA
+
+            </span>
+
+            <strong>
+
+                Successful network administration depends on disciplined configuration management. Backups, documented changes, maintenance windows, version tracking, and tested rollback plans reduce risk and keep enterprise networks stable.
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn"
+                type="button">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn"
+                type="button">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+<script src="scene-04.js"></script>
+
+</body>
+
+</html>
