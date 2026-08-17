@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Lesson 04 | Scene 05
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-05.css">
+
+</head>
+
+<body>
+
+<main id="scene05"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+
+            A
+
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+
+                AKWIRE
+
+            </strong>
+
+            <span>
+
+                NETWORK+ FUNDAMENTALS
+
+            </span>
+
+        </div>
+
+    </header>
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+
+            LESSON 04 • SCENE 05
+
+        </span>
+
+        <h1>
+
+            Disaster Recovery & Business Continuity
+
+        </h1>
+
+        <p>
+
+            Learn how organizations prepare
+            for disasters, maintain critical
+            operations, recover network
+            services quickly, and minimize
+            business disruption.
+
+        </p>
+
+    </section>
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+        <!-- ======================================
+             INTRODUCTION
+        ======================================= -->
+
+        <article id="drIntro"
+                 class="service-intro">
+
+            <div class="service-visual">
+
+                <div id="drCore"
+                     class="service-core">
+
+                    <div class="core-icon">
+
+                        <i class="fas fa-shield-heart"></i>
+
+                    </div>
+
+                    <span class="signal-ring ring-1"></span>
+                    <span class="signal-ring ring-2"></span>
+                    <span class="signal-ring ring-3"></span>
+
+                </div>
+
+            </div>
+
+            <div class="service-copy">
+
+                <span>
+
+                    NETWORK RESILIENCE
+
+                </span>
+
+                <h2>
+
+                    Preparing for Disruptions
+
+                </h2>
+
+                <p>
+
+                    Hardware failures,
+                    cyberattacks,
+                    natural disasters,
+                    and human error can
+                    interrupt business
+                    operations. Disaster
+                    recovery planning
+                    prepares organizations
+                    to restore services
+                    quickly and safely.
+
+                </p>
+
+                <div id="availabilityBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-server"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Service Availability
+
+                        </strong>
+
+                        <span>
+
+                            Restore critical systems rapidly.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div id="preparednessBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-clipboard-check"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Preparedness
+
+                        </strong>
+
+                        <span>
+
+                            Plan before disasters occur.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             DR vs BC
+        ======================================= -->
+
+        <article id="drbcScene"
+                 class="comparison-card">
+
+            <header>
+
+                <i class="fas fa-code-compare"></i>
+
+                <div>
+
+                    <span>
+
+                        PLANNING
+
+                    </span>
+
+                    <h2>
+
+                        Disaster Recovery vs Business Continuity
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="comparison-grid">
+
+                <div id="drCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-life-ring"></i>
+
+                    <strong>
+
+                        Disaster Recovery (DR)
+
+                    </strong>
+
+                    <p>
+
+                        Focuses on restoring
+                        IT systems,
+                        infrastructure,
+                        applications,
+                        and network services
+                        after an outage.
+
+                    </p>
+
+                </div>
+
+                <div id="bcCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-building-shield"></i>
+
+                    <strong>
+
+                        Business Continuity (BC)
+
+                    </strong>
+
+                    <p>
+
+                        Ensures critical
+                        business operations
+                        continue during
+                        and after a disruptive
+                        event.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             RTO vs RPO
+        ======================================= -->
+
+        <article id="rtoScene"
+                 class="comparison-card">
+
+            <header>
+
+                <i class="fas fa-stopwatch"></i>
+
+                <div>
+
+                    <span>
+
+                        RECOVERY OBJECTIVES
+
+                    </span>
+
+                    <h2>
+
+                        RTO vs RPO
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="comparison-grid">
+
+                <div id="rtoCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-clock"></i>
+
+                    <strong>
+
+                        RTO
+
+                    </strong>
+
+                    <p>
+
+                        Recovery Time Objective
+                        defines the maximum
+                        acceptable downtime
+                        before services
+                        must be restored.
+
+                    </p>
+
+                </div>
+
+                <div id="rpoCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-database"></i>
+
+                    <strong>
+
+                        RPO
+
+                    </strong>
+
+                    <p>
+
+                        Recovery Point Objective
+                        defines the maximum
+                        acceptable amount
+                        of data loss after
+                        an incident.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             BACKUP STRATEGIES
+        ======================================= -->
+
+        <article id="backupScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-cloud-arrow-up"></i>
+
+                <div>
+
+                    <span>
+
+                        DATA PROTECTION
+
+                    </span>
+
+                    <h2>
+
+                        Backup Strategies
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="backupIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-cloud-arrow-up"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Reliable disaster
+                        recovery depends on
+                        regular backups,
+                        secure storage,
+                        off-site copies,
+                        cloud replication,
+                        and periodic recovery
+                        testing.
+
+                    </p>
+
+                    <div id="backupFact"
+                         class="service-point">
+
+                        <i class="fas fa-cloud"></i>
+
+                        <span>
+
+                            A backup is valuable
+                            only if it can be
+                            successfully restored.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        
+        <!-- ======================================
+             REDUNDANCY
+        ======================================= -->
+
+        <article id="redundancyScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-network-wired"></i>
+
+                <div>
+
+                    <span>
+
+                        HIGH AVAILABILITY
+
+                    </span>
+
+                    <h2>
+
+                        Redundant Infrastructure
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="redundancyIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-network-wired"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Redundant links,
+                        backup power,
+                        duplicate servers,
+                        clustered storage,
+                        and secondary internet
+                        connections help
+                        eliminate single
+                        points of failure.
+
+                    </p>
+
+                    <div id="redundancyFact"
+                         class="service-point">
+
+                        <i class="fas fa-link"></i>
+
+                        <span>
+
+                            Redundancy increases
+                            availability even
+                            when hardware fails.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             DR TESTING
+        ======================================= -->
+
+        <article id="testingScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-vial-circle-check"></i>
+
+                <div>
+
+                    <span>
+
+                        VALIDATION
+
+                    </span>
+
+                    <h2>
+
+                        Disaster Recovery Testing
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="testingIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-vial-circle-check"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Recovery plans should
+                        be tested regularly
+                        through tabletop
+                        exercises,
+                        simulated failures,
+                        and full recovery
+                        drills to verify that
+                        procedures actually work.
+
+                    </p>
+
+                    <div id="testingFact"
+                         class="service-point">
+
+                        <i class="fas fa-clipboard-check"></i>
+
+                        <span>
+
+                            An untested recovery
+                            plan cannot be
+                            trusted during
+                            an emergency.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             EXAM MEMORY
+        ======================================= -->
+
+        <article id="examMemory"
+                 class="memory-card">
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+
+                        NETWORK+ MEMORY CHECK
+
+                    </span>
+
+                    <h2>
+
+                        Disaster Recovery Review
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="memory-flow">
+
+                <div id="memoryDR"
+                     class="memory-item">
+
+                    <strong>
+
+                        DR
+
+                    </strong>
+
+                    <span>
+
+                        Restore IT Services
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryBC"
+                     class="memory-item">
+
+                    <strong>
+
+                        BC
+
+                    </strong>
+
+                    <span>
+
+                        Continue Operations
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryRTO"
+                     class="memory-item">
+
+                    <strong>
+
+                        RTO
+
+                    </strong>
+
+                    <span>
+
+                        Downtime Target
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryRPO"
+                     class="memory-item">
+
+                    <strong>
+
+                        RPO
+
+                    </strong>
+
+                    <span>
+
+                        Data Loss Target
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="sceneSummary"
+             class="scene-summary">
+
+        <div class="summary-item">
+
+            <i class="fas fa-life-ring"></i>
+
+            <div>
+
+                <span>
+
+                    PREPARE
+
+                </span>
+
+                <strong>
+
+                    DR • BC
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-stopwatch"></i>
+
+            <div>
+
+                <span>
+
+                    RECOVER
+
+                </span>
+
+                <strong>
+
+                    RTO • RPO
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <span>
+
+                    PROTECT
+
+                </span>
+
+                <strong>
+
+                    Backups • Redundancy
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-shield-heart"></i>
+
+        <div>
+
+            <span>
+
+                KEY IDEA
+
+            </span>
+
+            <strong>
+
+                Disaster recovery and business continuity planning ensure that organizations can restore critical systems, minimize downtime, protect data, and continue delivering essential services even during major disruptions.
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn"
+                type="button">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn"
+                type="button">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+<script src="scene-05.js"></script>
+
+</body>
+
+</html>
