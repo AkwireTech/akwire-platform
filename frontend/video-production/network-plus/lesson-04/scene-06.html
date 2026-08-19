@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Network+ | Lesson 04 | Scene 06
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-06.css">
+
+</head>
+
+<body>
+
+<main id="scene06"
+      class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+
+            A
+
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+
+                AKWIRE
+
+            </strong>
+
+            <span>
+
+                NETWORK+ FUNDAMENTALS
+
+            </span>
+
+        </div>
+
+    </header>
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+
+            LESSON 04 • SCENE 06
+
+        </span>
+
+        <h1>
+
+            High Availability & Redundancy
+
+        </h1>
+
+        <p>
+
+            Learn how enterprise networks
+            remain available through
+            redundant components,
+            fault tolerance,
+            load balancing,
+            clustering,
+            and elimination of single
+            points of failure.
+
+        </p>
+
+    </section>
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+        <!-- ======================================
+             INTRODUCTION
+        ======================================= -->
+
+        <article id="haIntro"
+                 class="service-intro">
+
+            <div class="service-visual">
+
+                <div id="haCore"
+                     class="service-core">
+
+                    <div class="core-icon">
+
+                        <i class="fas fa-shield-halved"></i>
+
+                    </div>
+
+                    <span class="signal-ring ring-1"></span>
+                    <span class="signal-ring ring-2"></span>
+                    <span class="signal-ring ring-3"></span>
+
+                </div>
+
+            </div>
+
+            <div class="service-copy">
+
+                <span>
+
+                    NETWORK RESILIENCE
+
+                </span>
+
+                <h2>
+
+                    High Availability
+
+                </h2>
+
+                <p>
+
+                    Enterprise networks are
+                    designed to remain
+                    operational even when
+                    hardware,
+                    software,
+                    or communication links
+                    fail. High availability
+                    minimizes downtime
+                    and improves reliability.
+
+                </p>
+
+                <div id="uptimeBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-heart-pulse"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Maximum Uptime
+
+                        </strong>
+
+                        <span>
+
+                            Keep critical services online.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div id="faultBenefit"
+                     class="service-stat">
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+                    <div>
+
+                        <strong>
+
+                            Fault Tolerance
+
+                        </strong>
+
+                        <span>
+
+                            Continue operating after failures.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             HA vs FAULT TOLERANCE
+        ======================================= -->
+
+        <article id="haScene"
+                 class="comparison-card">
+
+            <header>
+
+                <i class="fas fa-code-compare"></i>
+
+                <div>
+
+                    <span>
+
+                        RESILIENCE
+
+                    </span>
+
+                    <h2>
+
+                        High Availability vs Fault Tolerance
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="comparison-grid">
+
+                <div id="haCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-server"></i>
+
+                    <strong>
+
+                        High Availability
+
+                    </strong>
+
+                    <p>
+
+                        Uses redundancy and
+                        rapid recovery methods
+                        to minimize downtime
+                        and maintain service
+                        availability.
+
+                    </p>
+
+                </div>
+
+                <div id="faultCard"
+                     class="comparison-item">
+
+                    <i class="fas fa-shield-halved"></i>
+
+                    <strong>
+
+                        Fault Tolerance
+
+                    </strong>
+
+                    <p>
+
+                        Allows systems to
+                        continue operating
+                        immediately even when
+                        a hardware component
+                        fails.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             LOAD BALANCING
+        ======================================= -->
+
+        <article id="loadScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-scale-balanced"></i>
+
+                <div>
+
+                    <span>
+
+                        TRAFFIC DISTRIBUTION
+
+                    </span>
+
+                    <h2>
+
+                        Load Balancing
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="loadIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-scale-balanced"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Load balancers distribute
+                        client requests across
+                        multiple servers,
+                        improving performance,
+                        availability,
+                        and scalability while
+                        preventing individual
+                        systems from becoming
+                        overloaded.
+
+                    </p>
+
+                    <div id="loadFact"
+                         class="service-point">
+
+                        <i class="fas fa-arrows-split-up-and-left"></i>
+
+                        <span>
+
+                            Spread traffic across
+                            multiple resources
+                            instead of relying
+                            on one server.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        <!-- ======================================
+             CLUSTERING
+        ======================================= -->
+
+        <article id="clusterScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-diagram-project"></i>
+
+                <div>
+
+                    <span>
+
+                        REDUNDANCY
+
+                    </span>
+
+                    <h2>
+
+                        Clustering
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="clusterIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-diagram-project"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        Clusters combine
+                        multiple servers so
+                        workloads continue
+                        running even if one
+                        server becomes
+                        unavailable.
+
+                    </p>
+
+                    <div id="clusterFact"
+                         class="service-point">
+
+                        <i class="fas fa-server"></i>
+
+                        <span>
+
+                            Cluster members
+                            support each other
+                            during failures.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        
+        <!-- ======================================
+             NIC TEAMING
+        ======================================= -->
+
+        <article id="nicScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-ethernet"></i>
+
+                <div>
+
+                    <span>
+
+                        LINK REDUNDANCY
+
+                    </span>
+
+                    <h2>
+
+                        NIC Teaming & Link Aggregation
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="nicIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-ethernet"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        NIC teaming combines
+                        multiple network
+                        interfaces into a
+                        single logical
+                        connection to increase
+                        bandwidth and provide
+                        automatic failover if
+                        one network adapter
+                        or cable fails.
+
+                    </p>
+
+                    <div id="nicFact"
+                         class="service-point">
+
+                        <i class="fas fa-link"></i>
+
+                        <span>
+
+                            Multiple network
+                            connections improve
+                            both performance
+                            and availability.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             RAID & REDUNDANT POWER
+        ======================================= -->
+
+        <article id="raidScene"
+                 class="service-card">
+
+            <header>
+
+                <i class="fas fa-hard-drive"></i>
+
+                <div>
+
+                    <span>
+
+                        HARDWARE RESILIENCE
+
+                    </span>
+
+                    <h2>
+
+                        RAID & Redundant Power
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="service-layout">
+
+                <div id="raidIcon"
+                     class="service-icon">
+
+                    <i class="fas fa-hard-drive"></i>
+
+                </div>
+
+                <div class="service-description">
+
+                    <p>
+
+                        RAID protects storage
+                        from disk failures,
+                        while redundant power
+                        supplies ensure that
+                        equipment continues
+                        operating if one power
+                        supply fails. These
+                        technologies reduce
+                        single points of failure.
+
+                    </p>
+
+                    <div id="raidFact"
+                         class="service-point">
+
+                        <i class="fas fa-plug-circle-check"></i>
+
+                        <span>
+
+                            Duplicate critical
+                            hardware whenever
+                            continuous operation
+                            is required.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             EXAM MEMORY
+        ======================================= -->
+
+        <article id="examMemory"
+                 class="memory-card">
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+
+                        NETWORK+ MEMORY CHECK
+
+                    </span>
+
+                    <h2>
+
+                        High Availability Review
+
+                    </h2>
+
+                </div>
+
+            </header>
+
+            <div class="memory-flow">
+
+                <div id="memoryHA"
+                     class="memory-item">
+
+                    <strong>
+
+                        HA
+
+                    </strong>
+
+                    <span>
+
+                        Reduce Downtime
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryLoad"
+                     class="memory-item">
+
+                    <strong>
+
+                        Load Balance
+
+                    </strong>
+
+                    <span>
+
+                        Share Workloads
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryCluster"
+                     class="memory-item">
+
+                    <strong>
+
+                        Cluster
+
+                    </strong>
+
+                    <span>
+
+                        Multiple Servers
+
+                    </span>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div id="memoryRedundant"
+                     class="memory-item">
+
+                    <strong>
+
+                        Redundancy
+
+                    </strong>
+
+                    <span>
+
+                        Eliminate SPOFs
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section id="sceneSummary"
+             class="scene-summary">
+
+        <div class="summary-item">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <span>
+
+                    PROTECT
+
+                </span>
+
+                <strong>
+
+                    HA • Fault Tolerance
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-scale-balanced"></i>
+
+            <div>
+
+                <span>
+
+                    DISTRIBUTE
+
+                </span>
+
+                <strong>
+
+                    Load Balancing • Clusters
+
+                </strong>
+
+            </div>
+
+        </div>
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+        <div class="summary-item">
+
+            <i class="fas fa-network-wired"></i>
+
+            <div>
+
+                <span>
+
+                    REDUNDANCY
+
+                </span>
+
+                <strong>
+
+                    NIC Teaming • RAID
+
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section id="finalConcept"
+             class="final-concept">
+
+        <i class="fas fa-infinity"></i>
+
+        <div>
+
+            <span>
+
+                KEY IDEA
+
+            </span>
+
+            <strong>
+
+                High availability is achieved by eliminating single points of failure through redundancy, fault tolerance, load balancing, clustering, and resilient hardware so that network services remain available even when individual components fail.
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn"
+                type="button">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn"
+                type="button">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+<script src="scene-06.js"></script>
+
+</body>
+
+</html>
