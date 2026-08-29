@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 02 | Scene 06
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="scene-06.css"
+    >
+
+</head>
+
+<body>
+
+<main
+    id="securityScene06"
+    class="video-scene"
+>
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+
+            MODULE 01 • LESSON 02 • SCENE 06
+
+        </span>
+
+        <h1>
+
+            Access Control & Authorization
+
+        </h1>
+
+        <p>
+
+            Learn how authorization determines
+            what an authenticated subject can
+            access, modify, or perform.
+
+        </p>
+
+        <div class="objective-badge">
+
+            <i class="fas fa-key"></i>
+
+            Identity & Access Management
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+
+        <!-- ======================================
+             INTRODUCTION
+        ======================================= -->
+
+        <article
+            id="accessIntro"
+            class="service-intro"
+        >
+
+            <div class="service-visual">
+
+                <div
+                    id="accessCore"
+                    class="service-core"
+                >
+
+                    <div class="core-icon">
+
+                        <i class="fas fa-key"></i>
+
+                    </div>
+
+                    <span class="signal-ring ring-1"></span>
+
+                    <span class="signal-ring ring-2"></span>
+
+                    <span class="signal-ring ring-3"></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="service-copy">
+
+                <span>
+                    AUTHORIZATION
+                </span>
+
+                <h2>
+                    What Can You Do?
+                </h2>
+
+                <p>
+
+                    Authorization determines what
+                    an authenticated user, device,
+                    process, or service is permitted
+                    to access or perform.
+
+                    Authentication establishes
+                    identity. Authorization applies
+                    permissions to that identity.
+
+                </p>
+
+
+                <div
+                    id="accessIdentityBenefit"
+                    class="service-stat"
+                >
+
+                    <i class="fas fa-user-check"></i>
+
+                    <div>
+
+                        <strong>
+                            Authenticated Identity
+                        </strong>
+
+                        <span>
+                            First establish who or what
+                            is requesting access.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="permissionBenefit"
+                    class="service-stat"
+                >
+
+                    <i class="fas fa-key"></i>
+
+                    <div>
+
+                        <strong>
+                            Permissions
+                        </strong>
+
+                        <span>
+                            Then determine which actions
+                            are allowed.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACCESS CONTROL MODELS
+        ======================================= -->
+
+        <article
+            id="accessModelsScene"
+            class="comparison-card"
+        >
+
+            <header>
+
+                <i class="fas fa-diagram-project"></i>
+
+                <div>
+
+                    <span>
+                        ACCESS CONTROL MODELS
+                    </span>
+
+                    <h2>
+                        Common Authorization Models
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+
+                <div
+                    id="dacCard"
+                    class="comparison-item"
+                >
+
+                    <i class="fas fa-user-gear"></i>
+
+                    <strong>
+                        DAC
+                    </strong>
+
+                    <p>
+
+                        Discretionary Access Control
+                        allows the owner of a resource
+                        to control access to it.
+
+                    </p>
+
+                    <div class="example-label">
+
+                        <span>
+                            KEY IDEA
+                        </span>
+
+                        <strong>
+                            Owner decides
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="macCard"
+                    class="comparison-item"
+                >
+
+                    <i class="fas fa-tags"></i>
+
+                    <strong>
+                        MAC
+                    </strong>
+
+                    <p>
+
+                        Mandatory Access Control
+                        uses centrally defined
+                        security labels and rules.
+
+                    </p>
+
+                    <div class="example-label">
+
+                        <span>
+                            KEY IDEA
+                        </span>
+
+                        <strong>
+                            Labels + policy
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="rbacCard"
+                    class="comparison-item"
+                >
+
+                    <i class="fas fa-users-gear"></i>
+
+                    <strong>
+                        RBAC
+                    </strong>
+
+                    <p>
+
+                        Role-Based Access Control
+                        assigns permissions according
+                        to a user's organizational role.
+
+                    </p>
+
+                    <div class="example-label">
+
+                        <span>
+                            KEY IDEA
+                        </span>
+
+                        <strong>
+                            Role → permissions
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ABAC
+        ======================================= -->
+
+        <article
+            id="abacScene"
+            class="service-card"
+        >
+
+            <header>
+
+                <i class="fas fa-filter-circle-dollar"></i>
+
+                <div>
+
+                    <span>
+                        ACCESS CONTROL MODEL
+                    </span>
+
+                    <h2>
+                        Attribute-Based Access Control
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="service-layout">
+
+                <div
+                    id="abacIcon"
+                    class="service-icon"
+                >
+
+                    <i class="fas fa-sliders"></i>
+
+                </div>
+
+
+                <div class="service-description">
+
+                    <p>
+
+                        ABAC evaluates attributes
+                        associated with the subject,
+                        resource, action, and
+                        environment to determine
+                        whether access should be
+                        permitted.
+
+                    </p>
+
+
+                    <div
+                        id="abacFact"
+                        class="service-point"
+                    >
+
+                        <i class="fas fa-filter"></i>
+
+                        <span>
+
+                            Example:
+                            allow access when the
+                            user, device, location,
+                            resource, and requested
+                            action satisfy policy.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACCESS PERMISSIONS
+        ======================================= -->
+
+        <article
+            id="permissionsScene"
+            class="comparison-card"
+        >
+
+            <header>
+
+                <i class="fas fa-list-check"></i>
+
+                <div>
+
+                    <span>
+                        AUTHORIZATION
+                    </span>
+
+                    <h2>
+                        Permissions & Privileges
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+
+                <div
+                    id="readCard"
+                    class="comparison-item"
+                >
+
+                    <i class="fas fa-eye"></i>
+
+                    <strong>
+                        Read
+                    </strong>
+
+                    <p>
+
+                        View or retrieve information
+                        without necessarily changing
+                        the resource.
+
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="writeCard"
+                    class="comparison-item"
+                >
+
+                    <i class="fas fa-pen"></i>
+
+                    <strong>
+                        Write
+                    </strong>
+
+                    <p>
+
+                        Create, modify, or update
+                        information.
+
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="executeCard"
+                    class="comparison-item"
+                >
+
+                    <i class="fas fa-play"></i>
+
+                    <strong>
+                        Execute
+                    </strong>
+
+                    <p>
+
+                        Run a program, command,
+                        process, or permitted action.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             PRIVILEGE MANAGEMENT
+        ======================================= -->
+
+        <article
+            id="privilegeScene"
+            class="service-card"
+        >
+
+            <header>
+
+                <i class="fas fa-user-lock"></i>
+
+                <div>
+
+                    <span>
+                        PRIVILEGE MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Control Elevated Access
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="service-layout">
+
+                <div
+                    id="privilegeIcon"
+                    class="service-icon"
+                >
+
+                    <i class="fas fa-user-shield"></i>
+
+                </div>
+
+
+                <div class="service-description">
+
+                    <p>
+
+                        Privileged accounts can perform
+                        sensitive administrative actions.
+                        These accounts should be carefully
+                        controlled, monitored, and limited
+                        to legitimate business needs.
+
+                    </p>
+
+
+                    <div
+                        id="privilegeFact"
+                        class="service-point"
+                    >
+
+                        <i class="fas fa-shield-halved"></i>
+
+                        <span>
+
+                            Apply least privilege,
+                            separate administrative
+                            accounts when appropriate,
+                            and review elevated access
+                            regularly.
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACCOUNT LIFECYCLE
+        ======================================= -->
+
+        <article
+            id="lifecycleScene"
+            class="comparison-card"
+        >
+
+            <header>
+
+                <i class="fas fa-arrows-spin"></i>
+
+                <div>
+
+                    <span>
+                        ACCOUNT MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Access Lifecycle
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+
+                <div
+                    id="provisionCard"
+                    class="comparison-item"
+                >
+
+                    <i class="fas fa-user-plus"></i>
+
+                    <strong>
+                        Provision
+                    </strong>
+
+                    <p>
+
+                        Create an account and assign
+                        the access required for the
+                        user's responsibilities.
+
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="reviewCard"
+                    class="comparison-item"
+                >
+
+                    <i class="fas fa-user-check"></i>
+
+                    <strong>
+                        Review
+                    </strong>
+
+                    <p>
+
+                        Verify that assigned access
+                        remains appropriate as
+                        responsibilities change.
+
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="deprovisionCard"
+                    class="comparison-item"
+                >
+
+                    <i class="fas fa-user-minus"></i>
+
+                    <strong>
+                        Deprovision
+                    </strong>
+
+                    <p>
+
+                        Remove access when it is no
+                        longer required, such as after
+                        termination or role changes.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             MEMORY REVIEW
+        ======================================= -->
+
+        <article
+            id="memoryScene"
+            class="memory-card"
+        >
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+                        MEMORY CHECK
+                    </span>
+
+                    <h2>
+                        Authorization Flow
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="memory-flow">
+
+                <div
+                    id="memoryIdentity"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        IDENTITY
+                    </strong>
+
+                    <span>
+                        Who are you?
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div
+                    id="memoryPolicy"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        POLICY
+                    </strong>
+
+                    <span>
+                        What rule applies?
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div
+                    id="memoryPermission"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        PERMISSION
+                    </strong>
+
+                    <span>
+                        What can you do?
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div
+                    id="memoryDecision"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        DECISION
+                    </strong>
+
+                    <span>
+                        Allow or deny
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="sceneSummary"
+        class="scene-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-fingerprint"></i>
+
+            <div>
+
+                <span>
+                    AUTHENTICATE
+                </span>
+
+                <strong>
+                    Establish identity
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-key"></i>
+
+            <div>
+
+                <span>
+                    AUTHORIZE
+                </span>
+
+                <strong>
+                    Apply permissions
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-arrow-right summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <span>
+                    CONTROL
+                </span>
+
+                <strong>
+                    Allow or deny access
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-key"></i>
+
+        <div>
+
+            <span>
+                KEY TAKEAWAY
+            </span>
+
+            <strong>
+
+                Authentication answers “Who are you?”
+                Authorization answers “What are you
+                allowed to do?” Access control models
+                such as DAC, MAC, RBAC, and ABAC apply
+                different rules for making authorization
+                decisions. Effective access management
+                also includes controlling privileged
+                access and removing permissions when
+                they are no longer needed.
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+
+<script src="scene-06.js"></script>
+
+</body>
+
+</html>
