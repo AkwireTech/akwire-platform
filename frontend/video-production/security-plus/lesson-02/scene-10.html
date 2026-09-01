@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 10
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-10.css">
+</head>
+
+<body>
+
+<main id="securityScene10" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>AKWIRE</strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 10
+        </span>
+
+        <h1>
+            Network Security Architecture & Segmentation
+        </h1>
+
+        <p>
+            Secure network architecture separates systems,
+            limits unnecessary communication, and creates
+            multiple control points for detecting and
+            containing threats.
+        </p>
+
+        <div class="objective-badge">
+
+            <i class="fas fa-network-wired"></i>
+
+            NETWORK SEGMENTATION
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+
+        <!-- ======================================
+             INTRO
+        ======================================= -->
+
+        <article
+            id="networkIntro"
+            class="network-intro"
+        >
+
+            <div class="network-visual">
+
+                <div
+                    id="networkCore"
+                    class="network-core"
+                >
+
+                    <div class="core-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+
+                    <span class="network-ring ring-1"></span>
+                    <span class="network-ring ring-2"></span>
+                    <span class="network-ring ring-3"></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="network-copy">
+
+                <span>
+                    SECURE NETWORK ARCHITECTURE
+                </span>
+
+                <h2>
+                    Do Not Let Every System
+                    Talk to Every System
+                </h2>
+
+                <p>
+                    Network architecture determines how
+                    devices, applications, users, and
+                    services communicate. Segmentation
+                    divides a network into controlled
+                    security zones so that access can be
+                    limited according to business and
+                    security requirements.
+                </p>
+
+
+                <div
+                    id="segmentationBenefit"
+                    class="network-stat"
+                >
+
+                    <i class="fas fa-scissors"></i>
+
+                    <div>
+
+                        <strong>
+                            Segmentation
+                        </strong>
+
+                        <span>
+                            Divide networks into smaller
+                            security zones and control
+                            communication between them.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="containmentBenefit"
+                    class="network-stat"
+                >
+
+                    <i class="fas fa-shield-halved"></i>
+
+                    <div>
+
+                        <strong>
+                            Containment
+                        </strong>
+
+                        <span>
+                            Limit how far an attacker can
+                            move if one system or segment
+                            is compromised.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             SEGMENTATION
+        ======================================= -->
+
+        <article
+            id="segmentationScene"
+            class="comparison-card"
+        >
+
+            <header>
+
+                <i class="fas fa-diagram-project"></i>
+
+                <div>
+
+                    <span>
+                        NETWORK SEGMENTATION
+                    </span>
+
+                    <h2>
+                        Separate Assets by Risk and Function
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="network-map">
+
+                <div
+                    id="userSegment"
+                    class="network-segment"
+                >
+
+                    <i class="fas fa-users"></i>
+
+                    <strong>
+                        User Network
+                    </strong>
+
+                    <span>
+                        End-user devices
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="serverSegment"
+                    class="network-segment"
+                >
+
+                    <i class="fas fa-server"></i>
+
+                    <strong>
+                        Server Network
+                    </strong>
+
+                    <span>
+                        Applications & services
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="databaseSegment"
+                    class="network-segment"
+                >
+
+                    <i class="fas fa-database"></i>
+
+                    <strong>
+                        Data Network
+                    </strong>
+
+                    <span>
+                        Sensitive information
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="managementSegment"
+                    class="network-segment"
+                >
+
+                    <i class="fas fa-user-shield"></i>
+
+                    <strong>
+                        Management
+                    </strong>
+
+                    <span>
+                        Administrative systems
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="segmentationRule"
+                class="architecture-rule"
+            >
+
+                <i class="fas fa-lock"></i>
+
+                <span>
+                    Communication between segments should
+                    be explicitly controlled rather than
+                    automatically trusted.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             VLAN
+        ======================================= -->
+
+        <article
+            id="vlanScene"
+            class="service-card"
+        >
+
+            <header>
+
+                <i class="fas fa-code-branch"></i>
+
+                <div>
+
+                    <span>
+                        LOGICAL SEGMENTATION
+                    </span>
+
+                    <h2>
+                        VLANs Create Separate Logical Networks
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="service-layout">
+
+                <div
+                    id="vlanIcon"
+                    class="service-icon"
+                >
+
+                    <i class="fas fa-code-branch"></i>
+
+                </div>
+
+
+                <div class="service-description">
+
+                    <p>
+                        A virtual LAN, or VLAN, can divide
+                        devices into separate logical network
+                        segments even when they share the
+                        same physical switching infrastructure.
+                    </p>
+
+
+                    <div
+                        id="vlanFact"
+                        class="service-point"
+                    >
+
+                        <i class="fas fa-network-wired"></i>
+
+                        <span>
+                            VLANs help organize traffic by
+                            function or security boundary.
+                            Routing and security controls can
+                            then regulate communication between
+                            VLANs.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             DMZ
+        ======================================= -->
+
+        <article
+            id="dmzScene"
+            class="comparison-card"
+        >
+
+            <header>
+
+                <i class="fas fa-earth-americas"></i>
+
+                <div>
+
+                    <span>
+                        NETWORK SECURITY ZONES
+                    </span>
+
+                    <h2>
+                        The DMZ Creates a Controlled Boundary
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="dmz-layout">
+
+                <div
+                    id="internetZone"
+                    class="zone-card"
+                >
+
+                    <i class="fas fa-globe"></i>
+
+                    <strong>
+                        Internet
+                    </strong>
+
+                    <span>
+                        Untrusted external network
+                    </span>
+
+                </div>
+
+
+                <div class="zone-arrow">
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </div>
+
+
+                <div
+                    id="dmzZone"
+                    class="zone-card dmz-zone"
+                >
+
+                    <i class="fas fa-server"></i>
+
+                    <strong>
+                        DMZ
+                    </strong>
+
+                    <span>
+                        Public-facing services
+                    </span>
+
+                </div>
+
+
+                <div class="zone-arrow">
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </div>
+
+
+                <div
+                    id="internalZone"
+                    class="zone-card"
+                >
+
+                    <i class="fas fa-building-lock"></i>
+
+                    <strong>
+                        Internal Network
+                    </strong>
+
+                    <span>
+                        Protected resources
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="dmzRule"
+                class="architecture-rule"
+            >
+
+                <i class="fas fa-shield-halved"></i>
+
+                <span>
+                    Public-facing systems can be isolated
+                    from the internal network to reduce
+                    direct exposure of protected resources.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ZERO TRUST
+        ======================================= -->
+
+        <article
+            id="zeroTrustScene"
+            class="service-card"
+        >
+
+            <header>
+
+                <i class="fas fa-fingerprint"></i>
+
+                <div>
+
+                    <span>
+                        MODERN NETWORK ARCHITECTURE
+                    </span>
+
+                    <h2>
+                        Zero Trust: Verify Before Access
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="service-layout">
+
+                <div
+                    id="zeroTrustIcon"
+                    class="service-icon"
+                >
+
+                    <i class="fas fa-user-shield"></i>
+
+                </div>
+
+
+                <div class="service-description">
+
+                    <p>
+                        Zero Trust challenges the assumption
+                        that network location alone should
+                        establish trust. Access decisions
+                        should consider identity, device
+                        condition, policy, and the resource
+                        being requested.
+                    </p>
+
+
+                    <div
+                        id="zeroTrustFact"
+                        class="service-point"
+                    >
+
+                        <i class="fas fa-circle-check"></i>
+
+                        <span>
+                            A user inside a network is not
+                            automatically trusted. Access
+                            should be evaluated according to
+                            defined policy and context.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CONTAINMENT
+        ======================================= -->
+
+        <article
+            id="containmentScene"
+            class="comparison-card"
+        >
+
+            <header>
+
+                <i class="fas fa-bug-slash"></i>
+
+                <div>
+
+                    <span>
+                        THREAT CONTAINMENT
+                    </span>
+
+                    <h2>
+                        Segmentation Limits Lateral Movement
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="containment-flow">
+
+                <div
+                    id="attackStart"
+                    class="containment-node"
+                >
+
+                    <i class="fas fa-virus"></i>
+
+                    <strong>
+                        Compromised Host
+                    </strong>
+
+                    <span>
+                        Initial foothold
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right flow-arrow"></i>
+
+
+                <div
+                    id="blockedPath"
+                    class="containment-node blocked"
+                >
+
+                    <i class="fas fa-ban"></i>
+
+                    <strong>
+                        Security Boundary
+                    </strong>
+
+                    <span>
+                        Unauthorized traffic blocked
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right flow-arrow"></i>
+
+
+                <div
+                    id="protectedAssets"
+                    class="containment-node protected"
+                >
+
+                    <i class="fas fa-database"></i>
+
+                    <strong>
+                        Protected Assets
+                    </strong>
+
+                    <span>
+                        Additional systems remain isolated
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             MEMORY
+        ======================================= -->
+
+        <article
+            id="memoryScene"
+            class="memory-card"
+        >
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+                        MEMORY CHECK
+                    </span>
+
+                    <h2>
+                        Remember the Segmentation Strategy
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="memory-flow">
+
+                <div
+                    id="memoryDivide"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        DIVIDE
+                    </strong>
+
+                    <span>
+                        Separate security zones
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div
+                    id="memoryControl"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        CONTROL
+                    </strong>
+
+                    <span>
+                        Restrict communication
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div
+                    id="memoryVerify"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        VERIFY
+                    </strong>
+
+                    <span>
+                        Evaluate access requests
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div
+                    id="memoryContain"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        CONTAIN
+                    </strong>
+
+                    <span>
+                        Limit attack movement
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="sceneSummary"
+        class="scene-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-scissors"></i>
+
+            <div>
+
+                <span>SEGMENT</span>
+
+                <strong>
+                    Separate systems by function and risk
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-lock"></i>
+
+            <div>
+
+                <span>CONTROL</span>
+
+                <strong>
+                    Restrict traffic between zones
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <span>CONTAIN</span>
+
+                <strong>
+                    Reduce lateral movement and exposure
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-network-wired"></i>
+
+        <div>
+
+            <span>
+                KEY TAKEAWAY
+            </span>
+
+            <strong>
+                Secure network architecture limits trust
+                and unnecessary communication. Use
+                segmentation, controlled security zones,
+                and appropriate access policies to reduce
+                exposure and contain threats when a system
+                is compromised.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+<script src="scene-10.js"></script>
+
+</body>
+
+</html>
