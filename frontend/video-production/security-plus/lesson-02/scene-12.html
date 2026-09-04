@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Scene 12
+    </title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet"
+          href="scene-12.css">
+
+</head>
+
+
+<body>
+
+<main id="scene12"
+      class="video-scene">
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+        <div class="background-grid"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            SCENE 12
+        </span>
+
+        <h1>
+            Cloud Security Controls &amp; Shared Responsibility
+        </h1>
+
+        <p>
+            Cloud security depends on understanding who secures what,
+            where controls are applied, and how those controls protect
+            identities, workloads, networks, and data.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="cloud-controls-stage">
+
+
+        <!-- ======================================
+             INTRO
+        ======================================= -->
+
+        <article id="controlsIntro"
+                 class="intro-card">
+
+            <div class="intro-icon">
+
+                <i class="fas fa-cloud"></i>
+
+                <span class="pulse-ring ring-1"></span>
+                <span class="pulse-ring ring-2"></span>
+                <span class="pulse-ring ring-3"></span>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    THE SECURITY QUESTION
+                </span>
+
+                <h2>
+                    Who is responsible for security?
+                </h2>
+
+                <p>
+                    Moving a workload to the cloud does not transfer
+                    every security responsibility to the provider.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             SHARED RESPONSIBILITY MODEL
+        ======================================= -->
+
+        <article id="responsibilityModel"
+                 class="responsibility-card">
+
+            <header>
+
+                <div class="detail-icon">
+
+                    <i class="fas fa-people-arrows"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        SHARED RESPONSIBILITY
+                    </span>
+
+                    <strong>
+                        Security responsibilities depend on the service model.
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="responsibility-columns">
+
+
+                <!-- PROVIDER -->
+
+                <div class="responsibility-side provider-side">
+
+                    <div class="side-heading">
+
+                        <i class="fas fa-server"></i>
+
+                        <strong>
+                            CLOUD PROVIDER
+                        </strong>
+
+                    </div>
+
+                    <div class="responsibility-items">
+
+                        <div>
+                            <i class="fas fa-building"></i>
+
+                            <span>
+                                Physical infrastructure
+                            </span>
+                        </div>
+
+                        <div>
+                            <i class="fas fa-microchip"></i>
+
+                            <span>
+                                Underlying hardware
+                            </span>
+                        </div>
+
+                        <div>
+                            <i class="fas fa-network-wired"></i>
+
+                            <span>
+                                Provider infrastructure
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DIVIDER -->
+
+                <div class="responsibility-divider">
+
+                    <span>
+                        +
+                    </span>
+
+                </div>
+
+
+                <!-- CUSTOMER -->
+
+                <div class="responsibility-side customer-side">
+
+                    <div class="side-heading">
+
+                        <i class="fas fa-user-shield"></i>
+
+                        <strong>
+                            CUSTOMER
+                        </strong>
+
+                    </div>
+
+                    <div class="responsibility-items">
+
+                        <div>
+                            <i class="fas fa-key"></i>
+
+                            <span>
+                                Identity and access
+                            </span>
+                        </div>
+
+                        <div>
+                            <i class="fas fa-database"></i>
+
+                            <span>
+                                Data protection
+                            </span>
+                        </div>
+
+                        <div>
+                            <i class="fas fa-user-lock"></i>
+
+                            <span>
+                                Configuration and usage
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             SERVICE MODEL CONTROLS
+        ======================================= -->
+
+        <article id="serviceControls"
+                 class="service-controls-card">
+
+            <header>
+
+                <div>
+
+                    <span>
+                        CONTROL RESPONSIBILITY
+                    </span>
+
+                    <strong>
+                        The service model changes the security boundary.
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-layer-group"></i>
+
+            </header>
+
+
+            <div class="service-model-grid">
+
+
+                <!-- IAAS -->
+
+                <div id="iaasControls"
+                     class="service-model">
+
+                    <div class="model-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+
+                    <div class="model-heading">
+
+                        <strong>
+                            IaaS
+                        </strong>
+
+                        <span>
+                            Infrastructure as a Service
+                        </span>
+
+                    </div>
+
+                    <div class="control-stack">
+
+                        <div class="provider-control">
+                            <span>PROVIDER</span>
+                            <strong>
+                                Physical infrastructure
+                            </strong>
+                        </div>
+
+                        <div class="customer-control">
+                            <span>CUSTOMER</span>
+                            <strong>
+                                OS, applications, data, access
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PAAS -->
+
+                <div id="paasControls"
+                     class="service-model">
+
+                    <div class="model-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+
+                    <div class="model-heading">
+
+                        <strong>
+                            PaaS
+                        </strong>
+
+                        <span>
+                            Platform as a Service
+                        </span>
+
+                    </div>
+
+                    <div class="control-stack">
+
+                        <div class="provider-control">
+                            <span>PROVIDER</span>
+                            <strong>
+                                Infrastructure and platform
+                            </strong>
+                        </div>
+
+                        <div class="customer-control">
+                            <span>CUSTOMER</span>
+                            <strong>
+                                Applications, data, identities
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SAAS -->
+
+                <div id="saasControls"
+                     class="service-model">
+
+                    <div class="model-icon">
+                        <i class="fas fa-window-maximize"></i>
+                    </div>
+
+                    <div class="model-heading">
+
+                        <strong>
+                            SaaS
+                        </strong>
+
+                        <span>
+                            Software as a Service
+                        </span>
+
+                    </div>
+
+                    <div class="control-stack">
+
+                        <div class="provider-control">
+                            <span>PROVIDER</span>
+                            <strong>
+                                Application and infrastructure
+                            </strong>
+                        </div>
+
+                        <div class="customer-control">
+                            <span>CUSTOMER</span>
+                            <strong>
+                                Users, access, data, configuration
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             IDENTITY CONTROLS
+        ======================================= -->
+
+        <article id="identityControls"
+                 class="control-detail-card">
+
+            <header>
+
+                <div class="control-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        CONTROL 01
+                    </span>
+
+                    <strong>
+                        Identity &amp; Access
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="control-flow">
+
+                <div class="control-node">
+
+                    <i class="fas fa-user"></i>
+
+                    <strong>
+                        Identity
+                    </strong>
+
+                    <small>
+                        Who is requesting access?
+                    </small>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div class="control-node">
+
+                    <i class="fas fa-shield-halved"></i>
+
+                    <strong>
+                        Authentication
+                    </strong>
+
+                    <small>
+                        Prove the identity.
+                    </small>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div class="control-node">
+
+                    <i class="fas fa-key"></i>
+
+                    <strong>
+                        Authorization
+                    </strong>
+
+                    <small>
+                        What can it access?
+                    </small>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div class="control-node">
+
+                    <i class="fas fa-file-shield"></i>
+
+                    <strong>
+                        Audit
+                    </strong>
+
+                    <small>
+                        Record the activity.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             DATA CONTROLS
+        ======================================= -->
+
+        <article id="dataControls"
+                 class="data-control-card">
+
+            <header>
+
+                <div>
+
+                    <span>
+                        CONTROL 02
+                    </span>
+
+                    <strong>
+                        Protecting Cloud Data
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-database"></i>
+
+            </header>
+
+
+            <div class="data-protection-flow">
+
+
+                <div id="dataAtRest"
+                     class="data-state">
+
+                    <div class="state-icon">
+
+                        <i class="fas fa-hard-drive"></i>
+
+                    </div>
+
+                    <strong>
+                        DATA AT REST
+                    </strong>
+
+                    <small>
+                        Protect stored information.
+                    </small>
+
+                    <span>
+                        Encryption
+                    </span>
+
+                </div>
+
+
+                <div class="state-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+
+                <div id="dataInTransit"
+                     class="data-state">
+
+                    <div class="state-icon">
+
+                        <i class="fas fa-right-left"></i>
+
+                    </div>
+
+                    <strong>
+                        DATA IN TRANSIT
+                    </strong>
+
+                    <small>
+                        Protect information moving between systems.
+                    </small>
+
+                    <span>
+                        Secure protocols
+                    </span>
+
+                </div>
+
+
+                <div class="state-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+
+                <div id="dataInUse"
+                     class="data-state">
+
+                    <div class="state-icon">
+
+                        <i class="fas fa-microchip"></i>
+
+                    </div>
+
+                    <strong>
+                        DATA IN USE
+                    </strong>
+
+                    <small>
+                        Protect information while being processed.
+                    </small>
+
+                    <span>
+                        Access controls
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CLOUD CONFIGURATION
+        ======================================= -->
+
+        <article id="configurationControls"
+                 class="configuration-card">
+
+            <header>
+
+                <div class="configuration-icon">
+
+                    <i class="fas fa-sliders"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        CONTROL 03
+                    </span>
+
+                    <strong>
+                        Secure Configuration
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="configuration-grid">
+
+                <div>
+
+                    <i class="fas fa-user-lock"></i>
+
+                    <strong>
+                        Least Privilege
+                    </strong>
+
+                    <small>
+                        Give identities only the access they require.
+                    </small>
+
+                </div>
+
+                <div>
+
+                    <i class="fas fa-network-wired"></i>
+
+                    <strong>
+                        Network Segmentation
+                    </strong>
+
+                    <small>
+                        Separate workloads and limit unnecessary paths.
+                    </small>
+
+                </div>
+
+                <div>
+
+                    <i class="fas fa-eye"></i>
+
+                    <strong>
+                        Logging &amp; Monitoring
+                    </strong>
+
+                    <small>
+                        Detect and investigate security-relevant activity.
+                    </small>
+
+                </div>
+
+                <div>
+
+                    <i class="fas fa-rotate"></i>
+
+                    <strong>
+                        Secure Defaults
+                    </strong>
+
+                    <small>
+                        Reduce exposure through deliberate configuration.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             MISCONFIGURATION SCENARIO
+        ======================================= -->
+
+        <article id="misconfigurationScenario"
+                 class="scenario-card">
+
+            <header>
+
+                <div class="scenario-alert">
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        CLOUD SECURITY SCENARIO
+                    </span>
+
+                    <strong>
+                        A storage resource is accidentally exposed.
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="scenario-flow">
+
+                <div class="scenario-state">
+
+                    <i class="fas fa-database"></i>
+
+                    <strong>
+                        Cloud Storage
+                    </strong>
+
+                    <small>
+                        Sensitive information stored
+                    </small>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div class="scenario-state exposed">
+
+                    <i class="fas fa-globe"></i>
+
+                    <strong>
+                        Public Access
+                    </strong>
+
+                    <small>
+                        Configuration exposes the resource
+                    </small>
+
+                </div>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <div class="scenario-state protected">
+
+                    <i class="fas fa-lock"></i>
+
+                    <strong>
+                        Corrective Control
+                    </strong>
+
+                    <small>
+                        Restrict access and verify configuration
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="scenario-memory">
+
+                <i class="fas fa-lightbulb"></i>
+
+                <span>
+                    Cloud security failures often come from
+                    misconfiguration—not a failure of the underlying cloud infrastructure.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CONTAINMENT
+        ======================================= -->
+
+        <article id="cloudContainment"
+                 class="containment-card">
+
+            <header>
+
+                <div>
+
+                    <span>
+                        CONTROL 04
+                    </span>
+
+                    <strong>
+                        Containment &amp; Recovery
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-shield-virus"></i>
+
+            </header>
+
+
+            <div class="containment-flow">
+
+                <div>
+
+                    <span>
+                        01
+                    </span>
+
+                    <i class="fas fa-magnifying-glass"></i>
+
+                    <strong>
+                        Detect
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-chevron-right"></i>
+
+                <div>
+
+                    <span>
+                        02
+                    </span>
+
+                    <i class="fas fa-ban"></i>
+
+                    <strong>
+                        Contain
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-chevron-right"></i>
+
+                <div>
+
+                    <span>
+                        03
+                    </span>
+
+                    <i class="fas fa-wrench"></i>
+
+                    <strong>
+                        Remediate
+                    </strong>
+
+                </div>
+
+                <i class="fas fa-chevron-right"></i>
+
+                <div>
+
+                    <span>
+                        04
+                    </span>
+
+                    <i class="fas fa-circle-check"></i>
+
+                    <strong>
+                        Recover
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             EXAM MEMORY
+        ======================================= -->
+
+        <article id="examMemory"
+                 class="memory-card">
+
+            <div class="memory-symbol">
+
+                <i class="fas fa-brain"></i>
+
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Cloud security is shared responsibility.
+                </h2>
+
+                <p>
+                    Always determine the service model first,
+                    then identify which security controls belong
+                    to the provider and which remain with the customer.
+                </p>
+
+            </div>
+
+            <div class="memory-rule">
+
+                <strong>
+                    SERVICE MODEL
+                </strong>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <strong>
+                    SECURITY BOUNDARY
+                </strong>
+
+                <i class="fas fa-arrow-right"></i>
+
+                <strong>
+                    CONTROL
+                </strong>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             SCENE SUMMARY
+        ======================================= -->
+
+        <article id="sceneSummary"
+                 class="summary-card">
+
+            <header>
+
+                <i class="fas fa-list-check"></i>
+
+                <div>
+
+                    <span>
+                        SCENE SUMMARY
+                    </span>
+
+                    <strong>
+                        Four ideas to remember
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <span>
+                        01
+                    </span>
+
+                    <strong>
+                        Shared Responsibility
+                    </strong>
+
+                    <small>
+                        Provider and customer responsibilities are different.
+                    </small>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        02
+                    </span>
+
+                    <strong>
+                        Service Models
+                    </strong>
+
+                    <small>
+                        IaaS, PaaS, and SaaS change the security boundary.
+                    </small>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        03
+                    </span>
+
+                    <strong>
+                        Security Controls
+                    </strong>
+
+                    <small>
+                        Identity, data, configuration, monitoring, and segmentation matter.
+                    </small>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        04
+                    </span>
+
+                    <strong>
+                        Misconfiguration
+                    </strong>
+
+                    <small>
+                        A secure platform can still be insecurely configured.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             FINAL CONCEPT
+        ======================================= -->
+
+        <article id="finalConcept"
+                 class="final-concept">
+
+            <div class="final-icon">
+
+                <i class="fas fa-cloud-shield"></i>
+
+            </div>
+
+            <div>
+
+                <span>
+                    AKWIRE SECURITY+ CORE CONCEPT
+                </span>
+
+                <h2>
+                    The cloud provider secures the cloud.
+                    You still have to secure what you put in it.
+                </h2>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button id="startSceneBtn"
+                type="button">
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+        <button id="restartSceneBtn"
+                type="button">
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div id="timelineProgress"
+             class="timeline-progress">
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-12.js"></script>
+
+</body>
+
+</html>
