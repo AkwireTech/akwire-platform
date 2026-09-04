@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 11
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-11.css">
+</head>
+
+<body>
+
+<main id="securityScene11" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>AKWIRE</strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 11
+        </span>
+
+        <h1>
+            Cloud & Virtualization Security Architecture
+        </h1>
+
+        <p>
+            Cloud and virtualized environments change where
+            systems run, but security responsibilities remain.
+            Secure architecture requires understanding the
+            environment, protecting workloads, and controlling
+            access to cloud resources.
+        </p>
+
+        <div class="objective-badge">
+
+            <i class="fas fa-cloud-shield"></i>
+
+            CLOUD SECURITY ARCHITECTURE
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="protocol-stage">
+
+
+        <!-- ======================================
+             INTRO
+        ======================================= -->
+
+        <article
+            id="cloudIntro"
+            class="cloud-intro"
+        >
+
+            <div class="cloud-visual">
+
+                <div
+                    id="cloudCore"
+                    class="cloud-core"
+                >
+
+                    <div class="core-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+
+                    <span class="cloud-ring ring-1"></span>
+                    <span class="cloud-ring ring-2"></span>
+                    <span class="cloud-ring ring-3"></span>
+
+                </div>
+
+            </div>
+
+
+            <div class="cloud-copy">
+
+                <span>
+                    CLOUD SECURITY
+                </span>
+
+                <h2>
+                    Security Follows the Workload
+                </h2>
+
+                <p>
+                    Cloud computing changes the location and
+                    ownership of infrastructure. Systems may
+                    run on infrastructure managed by a cloud
+                    provider, while the organization remains
+                    responsible for securing its data, identities,
+                    configurations, and workloads according to
+                    the service model.
+                </p>
+
+
+                <div
+                    id="cloudVisibility"
+                    class="cloud-stat"
+                >
+
+                    <i class="fas fa-eye"></i>
+
+                    <div>
+
+                        <strong>
+                            Visibility
+                        </strong>
+
+                        <span>
+                            Know what resources exist, who can
+                            access them, and how they communicate.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="cloudConfiguration"
+                    class="cloud-stat"
+                >
+
+                    <i class="fas fa-gears"></i>
+
+                    <div>
+
+                        <strong>
+                            Secure Configuration
+                        </strong>
+
+                        <span>
+                            Misconfigured cloud resources can
+                            expose data and services even when
+                            the underlying infrastructure is secure.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             SERVICE MODELS
+        ======================================= -->
+
+        <article
+            id="serviceModelScene"
+            class="comparison-card"
+        >
+
+            <header>
+
+                <i class="fas fa-cloud-arrow-up"></i>
+
+                <div>
+
+                    <span>
+                        CLOUD SERVICE MODELS
+                    </span>
+
+                    <h2>
+                        Security Responsibilities Depend on the Service
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="service-model-grid">
+
+
+                <div
+                    id="iaasCard"
+                    class="service-model-card"
+                >
+
+                    <i class="fas fa-server"></i>
+
+                    <strong>
+                        IaaS
+                    </strong>
+
+                    <span>
+                        Infrastructure as a Service
+                    </span>
+
+                    <p>
+                        The provider supplies foundational
+                        infrastructure while the customer has
+                        greater responsibility for operating
+                        systems, applications, configurations,
+                        and data.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="paasCard"
+                    class="service-model-card"
+                >
+
+                    <i class="fas fa-code"></i>
+
+                    <strong>
+                        PaaS
+                    </strong>
+
+                    <span>
+                        Platform as a Service
+                    </span>
+
+                    <p>
+                        The provider manages more of the
+                        underlying platform while the customer
+                        focuses primarily on applications,
+                        configurations, and data.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="saasCard"
+                    class="service-model-card"
+                >
+
+                    <i class="fas fa-window-maximize"></i>
+
+                    <strong>
+                        SaaS
+                    </strong>
+
+                    <span>
+                        Software as a Service
+                    </span>
+
+                    <p>
+                        The provider manages the application
+                        platform and infrastructure while the
+                        customer remains responsible for users,
+                        access, configuration, and data use.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="sharedResponsibility"
+                class="architecture-rule"
+            >
+
+                <i class="fas fa-handshake"></i>
+
+                <span>
+                    Cloud security follows a shared-responsibility
+                    model: the provider and customer each have
+                    defined security responsibilities.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             VIRTUALIZATION
+        ======================================= -->
+
+        <article
+            id="virtualizationScene"
+            class="service-card"
+        >
+
+            <header>
+
+                <i class="fas fa-cubes-stacked"></i>
+
+                <div>
+
+                    <span>
+                        VIRTUALIZATION
+                    </span>
+
+                    <h2>
+                        Multiple Workloads Can Share One Host
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="virtualization-layout">
+
+                <div
+                    id="hypervisorIcon"
+                    class="service-icon"
+                >
+
+                    <i class="fas fa-layer-group"></i>
+
+                </div>
+
+
+                <div class="virtualization-description">
+
+                    <p>
+                        Virtualization allows multiple virtual
+                        machines or workloads to operate on a
+                        shared physical host. A hypervisor provides
+                        the abstraction and isolation between the
+                        virtualized environments.
+                    </p>
+
+
+                    <div
+                        id="hypervisorFact"
+                        class="service-point"
+                    >
+
+                        <i class="fas fa-shield-halved"></i>
+
+                        <span>
+                            Security depends on maintaining strong
+                            isolation and protecting the hypervisor
+                            and virtual workloads.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CLOUD NETWORK SECURITY
+        ======================================= -->
+
+        <article
+            id="cloudNetworkScene"
+            class="comparison-card"
+        >
+
+            <header>
+
+                <i class="fas fa-diagram-project"></i>
+
+                <div>
+
+                    <span>
+                        CLOUD NETWORK SECURITY
+                    </span>
+
+                    <h2>
+                        Control Traffic Between Cloud Resources
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="cloud-network">
+
+                <div
+                    id="publicCloudZone"
+                    class="cloud-zone"
+                >
+
+                    <i class="fas fa-globe"></i>
+
+                    <strong>
+                        Public Access
+                    </strong>
+
+                    <span>
+                        Internet-facing resources
+                    </span>
+
+                </div>
+
+
+                <div class="cloud-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="securityBoundary"
+                    class="cloud-zone security-zone"
+                >
+
+                    <i class="fas fa-shield-halved"></i>
+
+                    <strong>
+                        Security Boundary
+                    </strong>
+
+                    <span>
+                        Policies and traffic controls
+                    </span>
+
+                </div>
+
+
+                <div class="cloud-arrow">
+                    <i class="fas fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="privateCloudZone"
+                    class="cloud-zone"
+                >
+
+                    <i class="fas fa-lock"></i>
+
+                    <strong>
+                        Private Resources
+                    </strong>
+
+                    <span>
+                        Protected workloads and data
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="cloudNetworkRule"
+                class="architecture-rule"
+            >
+
+                <i class="fas fa-filter-circle-dollar"></i>
+
+                <span>
+                    Cloud resources should receive only the
+                    network access required for their function.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CLOUD STORAGE
+        ======================================= -->
+
+        <article
+            id="storageScene"
+            class="service-card"
+        >
+
+            <header>
+
+                <i class="fas fa-database"></i>
+
+                <div>
+
+                    <span>
+                        CLOUD DATA PROTECTION
+                    </span>
+
+                    <h2>
+                        Protect Data at Rest and in Transit
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="storage-layout">
+
+                <div
+                    id="storageIcon"
+                    class="service-icon"
+                >
+
+                    <i class="fas fa-database"></i>
+
+                </div>
+
+
+                <div class="storage-description">
+
+                    <p>
+                        Cloud storage can contain sensitive
+                        organizational information. Security
+                        architecture should address access,
+                        encryption, configuration, backup,
+                        and lifecycle requirements.
+                    </p>
+
+
+                    <div
+                        id="storageFact"
+                        class="service-point"
+                    >
+
+                        <i class="fas fa-key"></i>
+
+                        <span>
+                            Encryption can help protect data
+                            from unauthorized disclosure while
+                            access controls determine who can
+                            use the data.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             CONTAINMENT
+        ======================================= -->
+
+        <article
+            id="cloudContainmentScene"
+            class="comparison-card"
+        >
+
+            <header>
+
+                <i class="fas fa-cloud-bolt"></i>
+
+                <div>
+
+                    <span>
+                        CLOUD THREAT CONTAINMENT
+                    </span>
+
+                    <h2>
+                        Isolate Compromised Workloads
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="containment-flow">
+
+                <div
+                    id="compromisedWorkload"
+                    class="containment-node"
+                >
+
+                    <i class="fas fa-triangle-exclamation"></i>
+
+                    <strong>
+                        Compromised Workload
+                    </strong>
+
+                    <span>
+                        Suspicious activity detected
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right flow-arrow"></i>
+
+
+                <div
+                    id="cloudIsolation"
+                    class="containment-node blocked"
+                >
+
+                    <i class="fas fa-user-lock"></i>
+
+                    <strong>
+                        Isolation
+                    </strong>
+
+                    <span>
+                        Restrict access and communication
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right flow-arrow"></i>
+
+
+                <div
+                    id="cloudProtectedData"
+                    class="containment-node protected"
+                >
+
+                    <i class="fas fa-database"></i>
+
+                    <strong>
+                        Protected Resources
+                    </strong>
+
+                    <span>
+                        Reduce further exposure
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             MEMORY
+        ======================================= -->
+
+        <article
+            id="memoryScene"
+            class="memory-card"
+        >
+
+            <header>
+
+                <i class="fas fa-brain"></i>
+
+                <div>
+
+                    <span>
+                        MEMORY CHECK
+                    </span>
+
+                    <h2>
+                        Remember the Cloud Security Model
+                    </h2>
+
+                </div>
+
+            </header>
+
+
+            <div class="memory-flow">
+
+                <div
+                    id="memoryModel"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        MODEL
+                    </strong>
+
+                    <span>
+                        Know the service model
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div
+                    id="memoryResponsibility"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        RESPONSIBILITY
+                    </strong>
+
+                    <span>
+                        Know who secures what
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div
+                    id="memoryConfigure"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        CONFIGURE
+                    </strong>
+
+                    <span>
+                        Secure resources and access
+                    </span>
+
+                </div>
+
+
+                <i class="fas fa-arrow-right"></i>
+
+
+                <div
+                    id="memoryProtect"
+                    class="memory-item"
+                >
+
+                    <strong>
+                        PROTECT
+                    </strong>
+
+                    <span>
+                        Limit exposure and impact
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         SUMMARY
+    =========================================== -->
+
+    <section
+        id="sceneSummary"
+        class="scene-summary"
+    >
+
+        <div class="summary-item">
+
+            <i class="fas fa-cloud"></i>
+
+            <div>
+
+                <span>UNDERSTAND</span>
+
+                <strong>
+                    Know the cloud service and deployment model
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-handshake"></i>
+
+            <div>
+
+                <span>ASSIGN</span>
+
+                <strong>
+                    Understand shared security responsibilities
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <i class="fas fa-plus summary-symbol"></i>
+
+
+        <div class="summary-item">
+
+            <i class="fas fa-shield-halved"></i>
+
+            <div>
+
+                <span>PROTECT</span>
+
+                <strong>
+                    Secure identities, workloads, networks, and data
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         FINAL CONCEPT
+    =========================================== -->
+
+    <section
+        id="finalConcept"
+        class="final-concept"
+    >
+
+        <i class="fas fa-cloud-shield"></i>
+
+        <div>
+
+            <span>
+                KEY TAKEAWAY
+            </span>
+
+            <strong>
+                Moving workloads to the cloud does not
+                eliminate security responsibility. Identify
+                the service model, understand the shared
+                responsibility boundary, secure configurations
+                and identities, protect data, and isolate
+                compromised workloads when necessary.
+            </strong>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+</main>
+
+<script src="scene-11.js"></script>
+
+</body>
+</html>
