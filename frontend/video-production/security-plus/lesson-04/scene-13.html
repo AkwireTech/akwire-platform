@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 13
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-13.css">
+</head>
+
+<body>
+
+<main id="securityScene13" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 13
+        </span>
+
+        <h1>
+            Cryptographic Fundamentals
+        </h1>
+
+        <p>
+            Cryptography protects information by transforming data so unauthorized
+            users cannot read, alter, or reliably impersonate trusted communications.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="crypto-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="cryptoIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-lock"></i>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    THE SECURITY PROBLEM
+                </span>
+
+                <h2>
+                    Data must remain trustworthy
+                </h2>
+
+                <p>
+                    Cryptography provides mechanisms for protecting confidentiality,
+                    integrity, authenticity, and trust. Different cryptographic
+                    functions solve different security problems.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — SECURITY GOALS
+        ======================================= -->
+
+        <article
+            id="cryptoGoals"
+            class="goals-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        WHAT CRYPTOGRAPHY PROVIDES
+                    </span>
+
+                    <strong>
+                        Match the mechanism to the security goal
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="goal-grid">
+
+                <div
+                    id="confidentialityGoal"
+                    class="goal-node"
+                >
+
+                    <div class="goal-icon">
+                        <i class="fa-solid fa-eye-slash"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Confidentiality
+                        </strong>
+
+                        <small>
+                            Prevent unauthorized parties from reading data.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="integrityGoal"
+                    class="goal-node"
+                >
+
+                    <div class="goal-icon">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Integrity
+                        </strong>
+
+                        <small>
+                            Detect whether data has been changed.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="authenticityGoal"
+                    class="goal-node"
+                >
+
+                    <div class="goal-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Authenticity
+                        </strong>
+
+                        <small>
+                            Establish confidence in an identity or source.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="nonrepudiationGoal"
+                    class="goal-node"
+                >
+
+                    <div class="goal-icon">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Non-repudiation
+                        </strong>
+
+                        <small>
+                            Provide evidence supporting who performed an action
+                            or approved data.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — ENCRYPTION
+        ======================================= -->
+
+        <article
+            id="encryptionModel"
+            class="encryption-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        ENCRYPTION
+                    </span>
+
+                    <strong>
+                        Plaintext becomes ciphertext
+                    </strong>
+
+                </div>
+
+            </header>
+
+            <div class="encryption-flow">
+
+                <div
+                    id="plaintextNode"
+                    class="crypto-node plaintext"
+                >
+
+                    <span>
+                        PLAINTEXT
+                    </span>
+
+                    <strong>
+                        Readable data
+                    </strong>
+
+                    <small>
+                        Original information
+                    </small>
+
+                </div>
+
+                <div class="flow-arrow">
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                    <span>
+                        ENCRYPT
+                    </span>
+
+                </div>
+
+                <div
+                    id="ciphertextNode"
+                    class="crypto-node ciphertext"
+                >
+
+                    <span>
+                        CIPHERTEXT
+                    </span>
+
+                    <strong>
+                        Protected data
+                    </strong>
+
+                    <small>
+                        Unreadable without the required key
+                    </small>
+
+                </div>
+
+                <div class="flow-arrow">
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                    <span>
+                        DECRYPT
+                    </span>
+
+                </div>
+
+                <div
+                    id="recoveredNode"
+                    class="crypto-node recovered"
+                >
+
+                    <span>
+                        RECOVERED
+                    </span>
+
+                    <strong>
+                        Original data
+                    </strong>
+
+                    <small>
+                        Returned to usable form
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — CRYPTOGRAPHIC TYPES
+        ======================================= -->
+
+        <article
+            id="cryptoTypes"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        TWO CORE APPROACHES
+                    </span>
+
+                    <strong>
+                        Symmetric and asymmetric cryptography
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="type-comparison">
+
+
+                <div
+                    id="symmetricType"
+                    class="crypto-type"
+                >
+
+                    <div class="type-header">
+
+                        <div class="type-icon">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                SYMMETRIC
+                            </span>
+
+                            <strong>
+                                One shared secret key
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="type-visual">
+
+                        <div class="endpoint">
+
+                            <i class="fa-solid fa-laptop"></i>
+
+                            <span>
+                                Sender
+                            </span>
+
+                        </div>
+
+                        <div class="shared-key">
+
+                            <i class="fa-solid fa-key"></i>
+
+                            <span>
+                                Same key
+                            </span>
+
+                        </div>
+
+                        <div class="endpoint">
+
+                            <i class="fa-solid fa-server"></i>
+
+                            <span>
+                                Receiver
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        Symmetric encryption is efficient and is commonly used
+                        when large amounts of data must be protected.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="asymmetricType"
+                    class="crypto-type"
+                >
+
+                    <div class="type-header">
+
+                        <div class="type-icon">
+                            <i class="fa-solid fa-key"></i>
+                        </div>
+
+                        <div>
+
+                            <span>
+                                ASYMMETRIC
+                            </span>
+
+                            <strong>
+                                Public and private key pair
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="type-visual">
+
+                        <div class="endpoint">
+
+                            <i class="fa-solid fa-globe"></i>
+
+                            <span>
+                                Public key
+                            </span>
+
+                        </div>
+
+                        <div class="key-pair">
+
+                            <div>
+
+                                <i class="fa-solid fa-key"></i>
+
+                                <span>
+                                    Public
+                                </span>
+
+                            </div>
+
+                            <div>
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                <span>
+                                    Private
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="endpoint">
+
+                            <i class="fa-solid fa-user-shield"></i>
+
+                            <span>
+                                Trusted identity
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <p>
+                        Asymmetric cryptography uses related key pairs and
+                        supports functions such as secure key exchange and
+                        digital signatures.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — HASHING
+        ======================================= -->
+
+        <article
+            id="hashingConcept"
+            class="hash-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-fingerprint"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        HASHING
+                    </span>
+
+                    <strong>
+                        A hash is not encryption
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="hash-flow">
+
+                <div
+                    id="hashInput"
+                    class="hash-node"
+                >
+
+                    <span>
+                        INPUT
+                    </span>
+
+                    <strong>
+                        Any data
+                    </strong>
+
+                </div>
+
+                <div class="hash-arrow">
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                    <span>
+                        HASH FUNCTION
+                    </span>
+
+                </div>
+
+                <div
+                    id="hashOutput"
+                    class="hash-node digest"
+                >
+
+                    <span>
+                        DIGEST
+                    </span>
+
+                    <strong>
+                        Fixed-length value
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="hashIntegrity"
+                class="hash-purpose"
+            >
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <p>
+                    Hashing is commonly used to verify integrity and support
+                    password-protection mechanisms. A hash function is designed
+                    to produce a one-way digest rather than readable ciphertext
+                    that can simply be decrypted.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — SCENARIO
+        ======================================= -->
+
+        <article
+            id="cryptoScenario"
+            class="scenario-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-crosshairs"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SECURITY SCENARIO
+                    </span>
+
+                    <strong>
+                        Which mechanism fits the requirement?
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="scenario-grid">
+
+                <div
+                    id="scenarioData"
+                    class="scenario-panel"
+                >
+
+                    <div class="scenario-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+                    <span>
+                        REQUIREMENT
+                    </span>
+
+                    <strong>
+                        Protect sensitive stored data
+                    </strong>
+
+                    <p>
+                        An organization needs to prevent unauthorized users
+                        from reading confidential information.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="scenario-arrow"
+                >
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </div>
+
+
+                <div
+                    id="scenarioControl"
+                    class="scenario-panel control"
+                >
+
+                    <div class="scenario-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <span>
+                        CONTROL
+                    </span>
+
+                    <strong>
+                        Encryption
+                    </strong>
+
+                    <p>
+                        Use encryption to provide confidentiality for the
+                        protected data.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Encrypt for confidentiality. Hash for integrity.
+                </h2>
+
+                <p>
+                    Symmetric encryption uses a shared secret key. Asymmetric
+                    cryptography uses a public/private key pair. Hashing creates
+                    a digest and is not the same thing as encryption.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SCENE SUMMARY
+                    </span>
+
+                    <strong>
+                        Cryptography uses different mechanisms for different goals
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+                        Encryption protects confidentiality.
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <span>
+                        Symmetric uses one shared secret key.
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <span>
+                        Asymmetric uses public/private keys.
+                    </span>
+
+                </div>
+
+                <div>
+
+                    <i class="fa-solid fa-fingerprint"></i>
+
+                    <span>
+                        Hashing produces a digest for integrity-related uses.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <span>
+                KEY CONCEPT
+            </span>
+
+            <h2>
+                Choose the cryptographic mechanism that matches the security goal.
+            </h2>
+
+            <p>
+                Encryption, asymmetric cryptography, hashing, and digital
+                signatures solve different problems. Understanding the
+                distinction is essential for Security+.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-play"></i>
+
+            <span>
+                Start Scene
+            </span>
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            <span>
+                Restart
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div class="timeline-track">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-13.js"></script>
+
+</body>
+</html>

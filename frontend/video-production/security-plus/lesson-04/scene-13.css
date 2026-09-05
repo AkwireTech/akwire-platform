@@ -1,0 +1,1560 @@
+/* ==========================================
+   AKWIRE SECURITY+ VIDEO PRODUCTION
+   SCENE 13 — CRYPTOGRAPHIC FUNDAMENTALS
+   ========================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-main: #071018;
+    --bg-panel: rgba(12, 24, 35, 0.92);
+    --bg-panel-light: rgba(18, 34, 48, 0.9);
+    --border: rgba(115, 170, 210, 0.18);
+    --text-main: #eef7ff;
+    --text-secondary: #a9bfce;
+    --text-muted: #718897;
+    --accent: #55c8ff;
+    --accent-soft: rgba(85, 200, 255, 0.14);
+    --success: #63e6a7;
+    --warning: #ffd166;
+    --danger: #ff6b7a;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background: var(--bg-main);
+    color: var(--text-main);
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+}
+
+
+/* ==========================================
+   MAIN SCENE
+========================================== */
+
+.video-scene {
+    position: relative;
+
+    width: 100vw;
+    min-width: 1100px;
+
+    height: 100vh;
+    min-height: 700px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(45, 112, 150, 0.13),
+            transparent 42%
+        ),
+        linear-gradient(
+            135deg,
+            #061019 0%,
+            #091722 48%,
+            #061019 100%
+        );
+}
+
+
+/* ==========================================
+   BACKGROUND
+========================================== */
+
+.scene-background {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+.background-grid {
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.19;
+
+    background-image:
+        linear-gradient(
+            rgba(110, 170, 200, 0.07) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(110, 170, 200, 0.07) 1px,
+            transparent 1px
+        );
+
+    background-size: 46px 46px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 20%,
+            black 80%,
+            transparent
+        );
+}
+
+.background-glow {
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    filter: blur(80px);
+
+    opacity: 0;
+
+    transition:
+        opacity 1.5s ease,
+        transform 2s ease;
+}
+
+.glow-left {
+    top: 8%;
+    left: -10%;
+
+    background: rgba(44, 151, 205, 0.14);
+}
+
+.glow-center {
+    top: 20%;
+    left: 42%;
+
+    background: rgba(71, 189, 255, 0.08);
+}
+
+.glow-right {
+    right: -12%;
+    bottom: 4%;
+
+    background: rgba(70, 160, 180, 0.1);
+}
+
+.background-glow.is-visible {
+    opacity: 1;
+}
+
+
+/* ==========================================
+   BRAND
+========================================== */
+
+.scene-brand {
+    position: absolute;
+
+    top: 28px;
+    left: 42px;
+
+    z-index: 20;
+
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    opacity: 0;
+
+    transform: translateY(-12px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.scene-brand.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.brand-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid rgba(85, 200, 255, 0.4);
+    border-radius: 9px;
+
+    background: rgba(85, 200, 255, 0.08);
+
+    color: var(--accent);
+
+    font-size: 18px;
+    font-weight: 800;
+
+    box-shadow:
+        0 0 22px rgba(85, 200, 255, 0.08);
+}
+
+.brand-copy {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.brand-copy strong {
+    color: #f3faff;
+
+    font-size: 14px;
+    letter-spacing: 0.18em;
+}
+
+.brand-copy span {
+    color: var(--text-muted);
+
+    font-size: 8px;
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+}
+
+
+/* ==========================================
+   TITLE
+========================================== */
+
+.scene-title {
+    position: absolute;
+
+    top: 28px;
+    left: 50%;
+
+    z-index: 15;
+
+    width: 620px;
+
+    text-align: center;
+
+    opacity: 0;
+
+    transform: translate(-50%, -12px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+}
+
+.scene-title.is-visible {
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0);
+}
+
+.scene-number {
+    display: inline-block;
+
+    margin-bottom: 8px;
+
+    color: var(--accent);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.24em;
+}
+
+.scene-title h1 {
+    color: var(--text-main);
+
+    font-size: 28px;
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.02em;
+}
+
+.scene-title p {
+    margin-top: 9px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+
+/* ==========================================
+   MAIN STAGE
+========================================== */
+
+.crypto-stage {
+    position: absolute;
+
+    top: 146px;
+    left: 50%;
+
+    width: 1000px;
+    height: calc(100vh - 205px);
+
+    transform: translateX(-50%);
+
+    overflow: hidden;
+}
+
+
+/* ==========================================
+   SHARED CONTENT TRANSITIONS
+========================================== */
+
+.crypto-stage > article {
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(20px)
+        scale(0.985);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s ease;
+}
+
+.crypto-stage > article.is-visible {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* ==========================================
+   SHARED PANELS
+========================================== */
+
+.goals-card,
+.encryption-card,
+.types-card,
+.hash-card,
+.scenario-card,
+.memory-card,
+.summary-card,
+.final-concept {
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 34, 47, 0.96),
+            rgba(8, 19, 29, 0.94)
+        );
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.content-header {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+.content-header > div:last-child {
+    min-width: 0;
+}
+
+.content-header span,
+.memory-content > span,
+.final-concept > span {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.18em;
+}
+
+.content-header strong {
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--text-main);
+
+    font-size: 16px;
+}
+
+.detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    flex: 0 0 44px;
+
+    border: 1px solid rgba(85, 200, 255, 0.2);
+    border-radius: 12px;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 18px;
+}
+
+
+/* ==========================================
+   INTRO
+========================================== */
+
+.intro-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 58px;
+
+    width: 100%;
+    height: 100%;
+}
+
+.intro-icon {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 190px;
+    height: 190px;
+
+    flex: 0 0 190px;
+
+    border: 1px solid rgba(85, 200, 255, 0.28);
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(85, 200, 255, 0.13),
+            rgba(85, 200, 255, 0.02) 58%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 70px rgba(85, 200, 255, 0.08);
+}
+
+.intro-icon > i {
+    z-index: 2;
+
+    color: var(--accent);
+
+    font-size: 62px;
+
+    filter:
+        drop-shadow(
+            0 0 22px
+            rgba(85, 200, 255, 0.35)
+        );
+}
+
+.pulse-ring {
+    position: absolute;
+
+    border: 1px solid rgba(85, 200, 255, 0.2);
+
+    border-radius: 50%;
+
+    opacity: 0;
+}
+
+.ring-1 {
+    width: 225px;
+    height: 225px;
+}
+
+.ring-2 {
+    width: 270px;
+    height: 270px;
+}
+
+.ring-3 {
+    width: 320px;
+    height: 320px;
+}
+
+.intro-card.is-active .pulse-ring {
+    animation: pulseOut 2.8s ease-out infinite;
+}
+
+.intro-card.is-active .ring-2 {
+    animation-delay: 0.65s;
+}
+
+.intro-card.is-active .ring-3 {
+    animation-delay: 1.3s;
+}
+
+@keyframes pulseOut {
+    0% {
+        opacity: 0.5;
+        transform: scale(0.82);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.08);
+    }
+}
+
+.intro-copy {
+    width: 500px;
+}
+
+.intro-copy > span {
+    color: var(--accent);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 0.2em;
+}
+
+.intro-copy h2 {
+    margin-top: 10px;
+
+    font-size: 38px;
+    font-weight: 700;
+
+    line-height: 1.08;
+}
+
+.intro-copy p {
+    max-width: 470px;
+
+    margin-top: 15px;
+
+    color: var(--text-secondary);
+
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+
+/* ==========================================
+   SECURITY GOALS
+========================================== */
+
+.goals-card {
+    padding: 32px 38px;
+}
+
+.goal-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 16px;
+
+    margin-top: 30px;
+}
+
+.goal-node {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 16px;
+
+    padding: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+
+    background: rgba(5, 15, 23, 0.48);
+
+    opacity: 0.55;
+
+    transform: translateY(10px);
+
+    transition:
+        border-color 0.4s ease,
+        background 0.4s ease,
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.goal-node.is-active {
+    opacity: 1;
+
+    border-color:
+        rgba(85, 200, 255, 0.42);
+
+    background:
+        rgba(24, 52, 68, 0.7);
+
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 0 35px rgba(42, 157, 255, 0.1);
+}
+
+.goal-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    border-radius: 12px;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 18px;
+}
+
+.goal-node strong {
+    display: block;
+
+    color: var(--text-main);
+
+    font-size: 14px;
+}
+
+.goal-node small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--text-muted);
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   ENCRYPTION
+========================================== */
+
+.encryption-card {
+    padding: 30px 34px;
+}
+
+.encryption-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    margin-top: 54px;
+}
+
+.crypto-node {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 205px;
+    min-height: 150px;
+
+    padding: 22px 18px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+
+    background:
+        rgba(4, 14, 22, 0.55);
+
+    text-align: center;
+
+    opacity: 0.5;
+
+    transform: scale(0.96);
+
+    transition:
+        border-color 0.4s ease,
+        background 0.4s ease,
+        transform 0.4s ease,
+        opacity 0.4s ease;
+
+    gap: 7px;
+}
+
+.crypto-node.is-active {
+    opacity: 1;
+
+    transform: scale(1);
+
+    border-color:
+        rgba(85, 200, 255, 0.42);
+
+    background:
+        rgba(24, 52, 68, 0.7);
+
+    box-shadow:
+        0 0 35px rgba(42, 157, 255, 0.1);
+}
+
+.crypto-node > span,
+.hash-node > span {
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+.crypto-node strong,
+.hash-node strong {
+    color: var(--text-main);
+
+    font-size: 15px;
+}
+
+.crypto-node small {
+    color: var(--text-muted);
+
+    font-size: 9px;
+
+    line-height: 1.45;
+}
+
+.plaintext {
+    border-color:
+        rgba(85, 200, 255, 0.24);
+}
+
+.ciphertext {
+    border-color:
+        rgba(150, 125, 255, 0.3);
+}
+
+.recovered {
+    border-color:
+        rgba(74, 224, 184, 0.3);
+}
+
+.flow-arrow,
+.hash-arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 6px;
+
+    min-width: 58px;
+
+    color: var(--text-muted);
+
+    font-size: 8px;
+
+    letter-spacing: 0.13em;
+}
+
+.flow-arrow i,
+.hash-arrow i {
+    color: var(--accent);
+
+    font-size: 20px;
+}
+
+
+/* ==========================================
+   CRYPTOGRAPHIC TYPES
+========================================== */
+
+.types-card {
+    padding: 28px 32px;
+}
+
+.type-comparison {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        1fr;
+
+    gap: 18px;
+
+    margin-top: 28px;
+}
+
+.crypto-type {
+    padding: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+
+    background:
+        rgba(4, 14, 22, 0.55);
+
+    opacity: 0.55;
+
+    transform: translateY(10px);
+
+    transition:
+        border-color 0.4s ease,
+        background 0.4s ease,
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.crypto-type.is-active {
+    opacity: 1;
+
+    border-color:
+        rgba(85, 200, 255, 0.38);
+
+    background:
+        rgba(23, 51, 68, 0.6);
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+.type-header {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+.type-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    flex: 0 0 46px;
+
+    border-radius: 12px;
+
+    background: var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 18px;
+}
+
+.type-header span {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+}
+
+.type-header strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 17px;
+}
+
+.type-visual {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin: 24px 0;
+
+    padding: 16px;
+
+    border-radius: 12px;
+
+    background:
+        rgba(0, 0, 0, 0.18);
+}
+
+.endpoint,
+.shared-key,
+.key-pair {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+    text-align: center;
+}
+
+.endpoint i,
+.shared-key i,
+.key-pair i {
+    color: var(--accent);
+
+    font-size: 20px;
+}
+
+.key-pair {
+    flex-direction: row;
+
+    gap: 14px;
+}
+
+.key-pair div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 5px;
+}
+
+.crypto-type p {
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   HASHING
+========================================== */
+
+.hash-card {
+    padding: 30px 34px;
+}
+
+.hash-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 18px;
+
+    margin-top: 50px;
+}
+
+.hash-node {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 235px;
+    min-height: 145px;
+
+    padding: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+
+    background:
+        rgba(4, 14, 22, 0.55);
+
+    text-align: center;
+
+    opacity: 0.5;
+
+    transform: scale(0.96);
+
+    transition:
+        border-color 0.4s ease,
+        background 0.4s ease,
+        transform 0.4s ease,
+        opacity 0.4s ease;
+
+    gap: 8px;
+}
+
+.hash-node.is-active {
+    opacity: 1;
+
+    transform: scale(1);
+
+    border-color:
+        rgba(85, 200, 255, 0.42);
+
+    background:
+        rgba(24, 52, 68, 0.7);
+
+    box-shadow:
+        0 0 35px rgba(42, 157, 255, 0.1);
+}
+
+.hash-purpose {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 14px;
+
+    max-width: 780px;
+
+    margin: 34px auto 0;
+
+    padding: 18px 22px;
+
+    border:
+        1px solid rgba(90, 220, 170, 0.16);
+
+    border-radius: 14px;
+
+    background:
+        rgba(55, 155, 125, 0.06);
+
+    opacity: 0;
+
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.hash-purpose.is-active {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+.hash-purpose i {
+    margin-top: 3px;
+
+    color: var(--success);
+}
+
+.hash-purpose p {
+    color: #93a99f;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+
+/* ==========================================
+   SCENARIO
+========================================== */
+
+.scenario-card {
+    padding: 30px 34px;
+}
+
+.scenario-grid {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        70px
+        1fr;
+
+    align-items: stretch;
+
+    gap: 18px;
+
+    margin-top: 38px;
+}
+
+.scenario-panel {
+    padding: 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 14px;
+
+    background:
+        rgba(4, 14, 22, 0.55);
+
+    opacity: 0.5;
+
+    transform: translateX(-10px);
+
+    transition:
+        border-color 0.5s ease,
+        background 0.5s ease,
+        transform 0.5s ease,
+        opacity 0.5s ease;
+}
+
+.scenario-panel.control {
+    transform:
+        translateX(10px);
+}
+
+.scenario-panel.is-active {
+    opacity: 1;
+
+    transform: translateX(0);
+
+    border-color:
+        rgba(85, 200, 255, 0.42);
+
+    background:
+        rgba(24, 52, 68, 0.7);
+}
+
+.scenario-icon {
+    margin-bottom: 16px;
+
+    color: var(--accent);
+
+    font-size: 24px;
+}
+
+.scenario-panel > span {
+    display: block;
+
+    color: var(--accent);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+}
+
+.scenario-panel strong {
+    display: block;
+
+    margin-top: 7px;
+
+    color: var(--text-main);
+
+    font-size: 18px;
+}
+
+.scenario-panel p {
+    margin-top: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    line-height: 1.6;
+}
+
+.scenario-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--accent);
+
+    font-size: 23px;
+
+    opacity: 0.35;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.scenario-arrow.is-active {
+    opacity: 1;
+
+    transform:
+        translateX(4px);
+}
+
+
+/* ==========================================
+   EXAM MEMORY
+========================================== */
+
+.memory-card {
+    display: flex;
+    align-items: center;
+
+    gap: 22px;
+
+    max-width: 940px;
+
+    margin:
+        8vh auto 0;
+
+    padding: 30px 34px;
+}
+
+.memory-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 66px;
+    height: 66px;
+
+    flex: 0 0 66px;
+
+    border:
+        1px solid rgba(85, 200, 255, 0.2);
+
+    border-radius: 16px;
+
+    background:
+        var(--accent-soft);
+
+    color: var(--accent);
+
+    font-size: 25px;
+}
+
+.memory-content h2 {
+    margin-top: 7px;
+
+    font-size: 28px;
+    line-height: 1.2;
+}
+
+.memory-content p {
+    margin-top: 10px;
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    line-height: 1.65;
+}
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
+.summary-card {
+    padding: 28px 32px;
+}
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 26px;
+}
+
+.summary-grid > div {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-height: 58px;
+
+    padding: 15px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.07);
+
+    border-radius: 12px;
+
+    background:
+        rgba(5, 15, 23, 0.48);
+
+    color: var(--text-secondary);
+
+    font-size: 11px;
+
+    opacity: 0.55;
+
+    transform: translateY(8px);
+
+    transition:
+        border-color 0.4s ease,
+        background 0.4s ease,
+        transform 0.4s ease,
+        opacity 0.4s ease;
+}
+
+.summary-grid > div.is-active {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+    border-color:
+        rgba(85, 200, 255, 0.38);
+
+    background:
+        rgba(24, 52, 68, 0.7);
+}
+
+.summary-grid i {
+    color: var(--accent);
+
+    font-size: 15px;
+}
+
+
+/* ==========================================
+   FINAL CONCEPT
+========================================== */
+
+.final-concept {
+    max-width: 900px;
+
+    margin:
+        7vh auto 0;
+
+    padding: 36px 44px;
+
+    text-align: center;
+}
+
+.final-concept h2 {
+    margin-top: 12px;
+
+    color: var(--text-main);
+
+    font-size: 34px;
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.02em;
+}
+
+.final-concept p {
+    max-width: 700px;
+
+    margin:
+        15px auto 0;
+
+    color: var(--text-secondary);
+
+    font-size: 12px;
+
+    line-height: 1.7;
+}
+
+
+/* ==========================================
+   CONTROLS
+========================================== */
+
+.scene-controls {
+    position: absolute;
+
+    right: 42px;
+    bottom: 27px;
+
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+}
+
+.scene-controls button {
+    border:
+        1px solid rgba(130, 180, 230, 0.22);
+
+    background:
+        rgba(9, 18, 31, 0.85);
+
+    color: #cbd8e8;
+
+    padding:
+        10px 15px;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+
+    cursor: pointer;
+
+    backdrop-filter:
+        blur(8px);
+
+    transition:
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.scene-controls button:hover {
+    border-color:
+        rgba(100, 200, 255, 0.5);
+
+    transform:
+        translateY(-1px);
+}
+
+.scene-controls button:first-child {
+    background:
+        rgba(36, 126, 190, 0.18);
+
+    border-color:
+        rgba(75, 190, 255, 0.35);
+
+    color:
+        #7bd4ff;
+}
+
+
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.scene-timeline {
+    position: absolute;
+
+    left: 42px;
+    right: 42px;
+
+    bottom: 13px;
+
+    height: 3px;
+
+    z-index: 30;
+}
+
+.timeline-track {
+    width: 100%;
+    height: 100%;
+
+    background:
+        rgba(130, 160, 190, 0.13);
+
+    border-radius: 4px;
+
+    overflow: hidden;
+}
+
+.timeline-progress {
+    width: 0%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #42b9ff,
+            #77e0c0
+        );
+
+    box-shadow:
+        0 0 12px rgba(70, 190, 255, 0.45);
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 900px) {
+
+    .crypto-stage {
+        left: 4vw;
+
+        width: 92vw;
+
+        transform: none;
+    }
+
+    .goal-grid,
+    .type-comparison,
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .encryption-flow,
+    .hash-flow {
+        gap: 8px;
+    }
+
+    .crypto-node,
+    .hash-node {
+        width: 145px;
+    }
+
+    .flow-arrow,
+    .hash-arrow {
+        min-width: 42px;
+
+        font-size: 7px;
+    }
+
+    .intro-card {
+        gap: 25px;
+    }
+
+    .intro-icon {
+        width: 150px;
+        height: 150px;
+
+        flex-basis: 150px;
+    }
+
+    .intro-copy {
+        width: auto;
+    }
+
+    .intro-copy h2 {
+        font-size: 30px;
+    }
+
+    .scenario-grid {
+        grid-template-columns:
+            1fr
+            50px
+            1fr;
+    }
+
+    .scene-controls {
+        right: 20px;
+    }
+
+    .scene-timeline {
+        left: 20px;
+        right: 20px;
+    }
+}
