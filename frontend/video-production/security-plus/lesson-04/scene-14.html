@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 14
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="scene-14.css"
+    >
+
+</head>
+
+
+<body>
+
+<main
+    id="securityScene14"
+    class="video-scene"
+>
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+
+        <div class="background-glow glow-center"></div>
+
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 14
+        </span>
+
+        <h1>
+            Cryptographic Algorithms &amp; Key Management
+        </h1>
+
+        <p>
+            Cryptographic security depends not only on encryption,
+            but also on choosing appropriate algorithms and protecting
+            the keys that control access to encrypted information.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="algorithm-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="algorithmIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+
+                <div class="pulse-ring ring-2"></div>
+
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-key"></i>
+
+            </div>
+
+
+            <div class="intro-copy">
+
+                <span>
+                    THE CRYPTOGRAPHIC DECISION
+                </span>
+
+                <h2>
+                    Strong algorithms are only part of the solution
+                </h2>
+
+                <p>
+                    A cryptographic system is only as secure as the
+                    algorithms, keys, and processes used to protect it.
+                    Understanding the role of each component is critical.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — ALGORITHM TYPES
+        ======================================= -->
+
+        <article
+            id="algorithmTypes"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        COMMON CRYPTOGRAPHIC FUNCTIONS
+                    </span>
+
+                    <strong>
+                        Different algorithms solve different problems
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="algorithm-grid">
+
+
+                <div
+                    id="encryptionAlgorithm"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Encryption
+                        </strong>
+
+                        <small>
+                            Protects confidentiality by transforming readable data into ciphertext.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="hashAlgorithm"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+
+                        <i class="fa-solid fa-fingerprint"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Hashing
+                        </strong>
+
+                        <small>
+                            Produces a fixed-length value used to detect changes in data.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="signatureAlgorithm"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+
+                        <i class="fa-solid fa-file-signature"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Digital Signatures
+                        </strong>
+
+                        <small>
+                            Support authenticity, integrity, and non-repudiation.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="keyExchangeAlgorithm"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+
+                        <i class="fa-solid fa-right-left"></i>
+
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Key Exchange
+                        </strong>
+
+                        <small>
+                            Establishes cryptographic material between communicating parties.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — KEY MANAGEMENT
+        ======================================= -->
+
+        <article
+            id="keyManagement"
+            class="key-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-key"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        KEY MANAGEMENT
+                    </span>
+
+                    <strong>
+                        Protect the keys that protect the data
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="key-flow">
+
+
+                <div
+                    id="keyGenerate"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    <strong>
+                        Generate
+                    </strong>
+
+                    <small>
+                        Create strong cryptographic keys.
+                    </small>
+
+                </div>
+
+
+                <div
+                    class="key-arrow"
+                >
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </div>
+
+
+                <div
+                    id="keyStore"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-vault"></i>
+
+                    <strong>
+                        Store
+                    </strong>
+
+                    <small>
+                        Protect keys from unauthorized access.
+                    </small>
+
+                </div>
+
+
+                <div
+                    class="key-arrow"
+                >
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </div>
+
+
+                <div
+                    id="keyUse"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <strong>
+                        Use
+                    </strong>
+
+                    <small>
+                        Apply keys only for authorized cryptographic operations.
+                    </small>
+
+                </div>
+
+
+                <div
+                    class="key-arrow"
+                >
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </div>
+
+
+                <div
+                    id="keyRotate"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-arrows-rotate"></i>
+
+                    <strong>
+                        Rotate
+                    </strong>
+
+                    <small>
+                        Replace keys according to security requirements.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — KEY PROTECTION
+        ======================================= -->
+
+        <article
+            id="keyProtection"
+            class="protection-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-lock"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        KEY PROTECTION
+                    </span>
+
+                    <strong>
+                        A stolen key can defeat strong encryption
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protection-layout">
+
+
+                <div
+                    id="protectedData"
+                    class="protection-panel"
+                >
+
+                    <div class="protection-icon">
+
+                        <i class="fa-solid fa-database"></i>
+
+                    </div>
+
+                    <strong>
+                        Encrypted Data
+                    </strong>
+
+                    <small>
+                        Confidential information remains protected by cryptographic controls.
+                    </small>
+
+                </div>
+
+
+                <div
+                    class="protection-connector"
+                >
+
+                    <div class="connector-line"></div>
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <div class="connector-line"></div>
+
+                </div>
+
+
+                <div
+                    id="protectedKey"
+                    class="protection-panel key-highlight"
+                >
+
+                    <div class="protection-icon">
+
+                        <i class="fa-solid fa-key"></i>
+
+                    </div>
+
+                    <strong>
+                        Protected Key
+                    </strong>
+
+                    <small>
+                        Access to the key must be restricted and controlled.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="keyWarning"
+                class="warning-strip"
+            >
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <span>
+                    Protecting encrypted data without protecting its keys
+                    leaves the security boundary exposed.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — SYMMETRIC VS ASYMMETRIC
+        ======================================= -->
+
+        <article
+            id="algorithmComparison"
+            class="comparison-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-code-compare"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        ALGORITHM SELECTION
+                    </span>
+
+                    <strong>
+                        Symmetric and asymmetric cryptography
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+
+                <div
+                    id="symmetricComparison"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-top">
+
+                        <i class="fa-solid fa-key"></i>
+
+                        <strong>
+                            Symmetric
+                        </strong>
+
+                    </div>
+
+                    <p>
+                        Uses the same shared secret key to encrypt and decrypt data.
+                    </p>
+
+                    <span>
+                        Efficient for bulk data
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="comparison-divider"
+                >
+
+                    <span>
+                        VS
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="asymmetricComparison"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-top">
+
+                        <i class="fa-solid fa-key"></i>
+
+                        <strong>
+                            Asymmetric
+                        </strong>
+
+                    </div>
+
+                    <p>
+                        Uses a related public and private key pair for cryptographic operations.
+                    </p>
+
+                    <span>
+                        Useful for identity and key exchange
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — CRYPTOGRAPHIC PRACTICE
+        ======================================= -->
+
+        <article
+            id="cryptoPractice"
+            class="practice-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        SECURITY PRACTICE
+                    </span>
+
+                    <strong>
+                        Apply cryptography as part of a complete control
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="practice-grid">
+
+
+                <div
+                    id="practiceAlgorithm"
+                    class="practice-node"
+                >
+
+                    <span>
+                        01
+                    </span>
+
+                    <strong>
+                        Choose appropriate algorithms
+                    </strong>
+
+                    <small>
+                        Match the cryptographic function to the security requirement.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="practiceKey"
+                    class="practice-node"
+                >
+
+                    <span>
+                        02
+                    </span>
+
+                    <strong>
+                        Protect cryptographic keys
+                    </strong>
+
+                    <small>
+                        Restrict access and manage the full key lifecycle.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="practiceLifecycle"
+                    class="practice-node"
+                >
+
+                    <span>
+                        03
+                    </span>
+
+                    <strong>
+                        Manage the lifecycle
+                    </strong>
+
+                    <small>
+                        Generate, store, use, rotate, and retire keys appropriately.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="practicePolicy"
+                    class="practice-node"
+                >
+
+                    <span>
+                        04
+                    </span>
+
+                    <strong>
+                        Follow security policy
+                    </strong>
+
+                    <small>
+                        Cryptographic controls must support organizational requirements.
+                    </small>
+
+                </div>
+
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+
+            <div class="memory-copy">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Strong cryptography still depends on strong key management.
+                </h2>
+
+                <p>
+                    Know what the algorithm protects, what the key controls,
+                    and how the key is managed throughout its lifecycle.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header>
+
+                <i class="fas fa-list-check"></i>
+
+                <div>
+
+                    <span>
+                        SCENE SUMMARY
+                    </span>
+
+                    <strong>
+                        Four ideas to remember
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+
+                <div>
+
+                    <span>
+                        01
+                    </span>
+
+                    <strong>
+                        Cryptographic Functions
+                    </strong>
+
+                    <small>
+                        Encryption, hashing, signatures, and key exchange solve different security problems.
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        02
+                    </span>
+
+                    <strong>
+                        Key Management
+                    </strong>
+
+                    <small>
+                        Keys must be generated, stored, used, rotated, and retired securely.
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        03
+                    </span>
+
+                    <strong>
+                        Key Protection
+                    </strong>
+
+                    <small>
+                        Strong encryption cannot compensate for exposed cryptographic keys.
+                    </small>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        04
+                    </span>
+
+                    <strong>
+                        Algorithm Selection
+                    </strong>
+
+                    <small>
+                        Choose the cryptographic approach that matches the security requirement.
+                    </small>
+
+                </div>
+
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <div class="final-icon">
+
+                <i class="fas fa-key"></i>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    AKWIRE SECURITY+ CORE CONCEPT
+                </span>
+
+                <h2>
+                    Cryptography protects the data.
+                    Key management protects the cryptography.
+                </h2>
+
+            </div>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div
+            id="timelineProgress"
+            class="timeline-progress"
+        ></div>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-14.js"></script>
+
+</body>
+
+</html>
