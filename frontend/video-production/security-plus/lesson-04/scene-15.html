@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 15
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-15.css">
+</head>
+
+<body>
+
+<main id="securityScene15" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 15
+        </span>
+
+        <h1>
+            Public Key Infrastructure (PKI)
+        </h1>
+
+        <p>
+            Public Key Infrastructure establishes trust by using digital
+            certificates, certificate authorities, and defined validation
+            processes to connect identities with public keys.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="algorithm-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="pkiIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-certificate"></i>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    THE TRUST PROBLEM
+                </span>
+
+                <h2>
+                    PKI establishes trust
+                </h2>
+
+                <p>
+                    Public Key Infrastructure provides a framework for
+                    associating identities with public keys and establishing
+                    trust through digital certificates and trusted authorities.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — PKI COMPONENTS
+        ======================================= -->
+
+        <article
+            id="pkiComponents"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        PKI COMPONENTS
+                    </span>
+
+                    <strong>
+                        Each component supports the trust model
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="algorithm-grid">
+
+                <div
+                    id="certificateAuthority"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-building-shield"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Certificate Authority
+                        </strong>
+
+                        <small>
+                            Issues and signs digital certificates.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="registrationAuthority"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-user-check"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Registration Authority
+                        </strong>
+
+                        <small>
+                            Helps validate certificate requests and identities.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="digitalCertificate"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Digital Certificate
+                        </strong>
+
+                        <small>
+                            Binds an identity to a public key.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="certificateRepository"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Certificate Repository
+                        </strong>
+
+                        <small>
+                            Provides access to certificate information.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — CERTIFICATE LIFECYCLE
+        ======================================= -->
+
+        <article
+            id="certificateLifecycle"
+            class="key-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        CERTIFICATE LIFECYCLE
+                    </span>
+
+                    <strong>
+                        Certificates move through defined stages
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="key-flow">
+
+                <div
+                    id="certificateRequest"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-file-circle-plus"></i>
+
+                    <strong>
+                        Request
+                    </strong>
+
+                    <small>
+                        Certificate request is submitted.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="certificateValidate"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                    <strong>
+                        Validate
+                    </strong>
+
+                    <small>
+                        Identity and request are verified.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="certificateIssue"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <strong>
+                        Issue
+                    </strong>
+
+                    <small>
+                        The CA signs and issues the certificate.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="certificateRenew"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-rotate"></i>
+
+                    <strong>
+                        Renew / Revoke
+                    </strong>
+
+                    <small>
+                        Certificate status is maintained throughout its life.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — TRUST CHAIN
+        ======================================= -->
+
+        <article
+            id="certificateTrust"
+            class="protection-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-link"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        CERTIFICATE TRUST CHAIN
+                    </span>
+
+                    <strong>
+                        Trust flows from the root to the endpoint
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protection-flow">
+
+                <div
+                    id="endEntity"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-laptop"></i>
+
+                    <span>
+                        END ENTITY
+                    </span>
+
+                    <strong>
+                        User / Server
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="intermediateCA"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <span>
+                        INTERMEDIATE CA
+                    </span>
+
+                    <strong>
+                        Delegated Trust
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="rootCA"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>
+                        ROOT CA
+                    </span>
+
+                    <strong>
+                        Trusted Anchor
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="trustEstablished"
+                class="warning-strip"
+            >
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <span>
+                    If the certificate chain leads to a trusted root,
+                    the identity can be trusted.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — REVOCATION
+        ======================================= -->
+
+        <article
+            id="certificateRevocation"
+            class="comparison-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-ban"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        CERTIFICATE REVOCATION
+                    </span>
+
+                    <strong>
+                        Check whether a certificate is still trusted
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+                <div
+                    id="crlComparison"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-list"></i>
+                    </div>
+
+                    <span>
+                        CRL
+                    </span>
+
+                    <strong>
+                        Certificate Revocation List
+                    </strong>
+
+                    <small>
+                        A published list of certificates that have been revoked.
+                    </small>
+
+                </div>
+
+
+                <div class="comparison-divider">
+                    <span>
+                        VS
+                    </span>
+                </div>
+
+
+                <div
+                    id="ocspComparison"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-circle-question"></i>
+                    </div>
+
+                    <span>
+                        OCSP
+                    </span>
+
+                    <strong>
+                        Online Certificate Status Protocol
+                    </strong>
+
+                    <small>
+                        Checks certificate status through an online responder.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — PKI PRACTICE
+        ======================================= -->
+
+        <article
+            id="pkiPractice"
+            class="practice-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        PKI IN PRACTICE
+                    </span>
+
+                    <strong>
+                        Where certificate-based trust is commonly used
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="practice-grid">
+
+                <div
+                    id="tlsPractice"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <strong>
+                        TLS
+                    </strong>
+
+                    <small>
+                        Establishes trusted encrypted connections.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="emailPractice"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <strong>
+                        Secure Email
+                    </strong>
+
+                    <small>
+                        Certificates can support signing and encryption.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="authenticationPractice"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-user-shield"></i>
+
+                    <strong>
+                        Authentication
+                    </strong>
+
+                    <small>
+                        Certificates can identify users and systems.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="devicePractice"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-desktop"></i>
+
+                    <strong>
+                        Device Trust
+                    </strong>
+
+                    <small>
+                        Certificates can establish trust for devices.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    CA issues. Certificate binds. Chain establishes trust.
+                </h2>
+
+                <p>
+                    A digital certificate associates an identity with a public key.
+                    The certificate authority establishes trust by signing the
+                    certificate. A certificate chain connects the endpoint to a
+                    trusted root CA.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SCENE SUMMARY
+                    </span>
+
+                    <strong>
+                        Four PKI ideas to remember
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <span>
+                        Certificates bind identities to public keys.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-building-shield"></i>
+
+                    <span>
+                        Certificate authorities establish trust.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-link"></i>
+
+                    <span>
+                        Certificate chains lead toward a trusted root.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-ban"></i>
+
+                    <span>
+                        CRL and OCSP help determine certificate status.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <span>
+                KEY CONCEPT
+            </span>
+
+            <h2>
+                PKI creates a framework for trusted digital identities.
+            </h2>
+
+            <p>
+                Certificates connect identities to public keys, certificate
+                authorities establish trust, and validation mechanisms help
+                determine whether that trust should still be accepted.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-play"></i>
+
+            <span>
+                Start Scene
+            </span>
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            <span>
+                Restart
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div class="timeline-track">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="scene-15.js"></script>
+
+</body>
+
+</html>
