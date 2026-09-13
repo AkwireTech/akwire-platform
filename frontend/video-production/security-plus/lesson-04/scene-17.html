@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 17
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-17.css">
+</head>
+
+<body>
+
+<main id="securityScene17" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 17
+        </span>
+
+        <h1>
+            Cryptographic Attacks &amp; Vulnerabilities
+        </h1>
+
+        <p>
+            Cryptographic systems can fail when weak algorithms, poor key
+            management, insecure implementations, or compromised credentials
+            expose protected information.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="algorithm-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="cryptoAttackIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-unlock-keyhole"></i>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    THE SECURITY PROBLEM
+                </span>
+
+                <h2>
+                    Strong cryptography can still be defeated
+                </h2>
+
+                <p>
+                    Attackers may target the algorithm, the keys, the
+                    implementation, or the people and systems using the
+                    cryptographic solution.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — COMMON ATTACKS
+        ======================================= -->
+
+        <article
+            id="cryptoAttacks"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-user-secret"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        COMMON CRYPTOGRAPHIC ATTACKS
+                    </span>
+
+                    <strong>
+                        Attackers exploit weaknesses in protected communications
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="algorithm-grid">
+
+                <div
+                    id="bruteForceAttack"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-bolt"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Brute Force
+                        </strong>
+
+                        <small>
+                            Repeatedly attempts possible keys or passwords until one succeeds.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="collisionAttack"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Collision Attack
+                        </strong>
+
+                        <small>
+                            Attempts to find different inputs that produce the same hash.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="birthdayAttack"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-cake-candles"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Birthday Attack
+                        </strong>
+
+                        <small>
+                            Uses probability to find hash collisions more efficiently.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="downgradeAttack"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Downgrade Attack
+                        </strong>
+
+                        <small>
+                            Forces systems toward weaker protocols or cryptographic options.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — KEY COMPROMISE
+        ======================================= -->
+
+        <article
+            id="keyCompromise"
+            class="key-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        KEY COMPROMISE
+                    </span>
+
+                    <strong>
+                        Protecting the key is as important as protecting the data
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="key-flow">
+
+                <div
+                    id="weakKey"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <strong>
+                        Weak Key
+                    </strong>
+
+                    <small>
+                        A key is too short, predictable, or poorly generated.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="exposedKey"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    <strong>
+                        Key Exposed
+                    </strong>
+
+                    <small>
+                        The secret becomes available to an unauthorized party.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="attackerAccess"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-user-secret"></i>
+
+                    <strong>
+                        Attacker Access
+                    </strong>
+
+                    <small>
+                        The attacker can use the compromised key.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="dataExposure"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <strong>
+                        Data Exposure
+                    </strong>
+
+                    <small>
+                        Protected information may be decrypted or manipulated.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — MITM
+        ======================================= -->
+
+        <article
+            id="mitmAttack"
+            class="protection-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-user-ninja"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        MAN-IN-THE-MIDDLE
+                    </span>
+
+                    <strong>
+                        Trust must be established before communication can be trusted
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protection-flow">
+
+                <div
+                    id="mitmClient"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-laptop"></i>
+
+                    <span>
+                        ENDPOINT
+                    </span>
+
+                    <strong>
+                        Client
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="mitmAttacker"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-user-secret"></i>
+
+                    <span>
+                        ATTACKER
+                    </span>
+
+                    <strong>
+                        Intercept
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="mitmServer"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-server"></i>
+
+                    <span>
+                        ENDPOINT
+                    </span>
+
+                    <strong>
+                        Server
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="mitmProtection"
+                class="warning-strip"
+            >
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+                <span>
+                    Certificate validation, authenticated key exchange, and
+                    properly configured secure protocols help prevent interception.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — WEAK CRYPTO
+        ======================================= -->
+
+        <article
+            id="weakCryptography"
+            class="comparison-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        WEAK CRYPTOGRAPHY
+                    </span>
+
+                    <strong>
+                        Legacy algorithms can create unnecessary exposure
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+                <div
+                    id="legacyCrypto"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-lock-open"></i>
+                    </div>
+
+                    <span>
+                        LEGACY
+                    </span>
+
+                    <strong>
+                        Weak or Deprecated
+                    </strong>
+
+                    <small>
+                        Older algorithms and protocols may provide insufficient
+                        protection against modern attacks.
+                    </small>
+
+                </div>
+
+
+                <div class="comparison-divider">
+
+                    <span>
+                        VS
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="modernCrypto"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <span>
+                        MODERN
+                    </span>
+
+                    <strong>
+                        Strong and Supported
+                    </strong>
+
+                    <small>
+                        Use current, approved cryptographic algorithms and
+                        properly configured protocols.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — DEFENSE
+        ======================================= -->
+
+        <article
+            id="cryptoDefense"
+            class="practice-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-shield"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        CRYPTOGRAPHIC DEFENSE
+                    </span>
+
+                    <strong>
+                        Reduce attack opportunities through proper implementation
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="practice-grid">
+
+                <div
+                    id="strongAlgorithm"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <strong>
+                        Strong Algorithms
+                    </strong>
+
+                    <small>
+                        Select current, approved cryptographic algorithms.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="secureKeys"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <strong>
+                        Protect Keys
+                    </strong>
+
+                    <small>
+                        Generate, store, rotate, and destroy keys securely.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="secureProtocol"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-network-wired"></i>
+
+                    <strong>
+                        Secure Protocols
+                    </strong>
+
+                    <small>
+                        Disable weak protocols and insecure configurations.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="patchCrypto"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                    <strong>
+                        Maintain Systems
+                    </strong>
+
+                    <small>
+                        Patch cryptographic libraries and vulnerable implementations.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Do not confuse strong algorithms with secure implementations.
+                </h2>
+
+                <p>
+                    Security can fail because of weak keys, deprecated algorithms,
+                    vulnerable implementations, poor configuration, or attacks
+                    against the cryptographic process itself.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SCENE SUMMARY
+                    </span>
+
+                    <strong>
+                        Cryptographic security depends on more than the algorithm
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <i class="fa-solid fa-bolt"></i>
+
+                    <span>
+                        Brute force attacks attempt possible keys or passwords.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <span>
+                        Compromised keys can expose protected information.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-user-secret"></i>
+
+                    <span>
+                        Man-in-the-middle attacks target communication trust.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>
+                        Strong algorithms and secure implementation reduce risk.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <span>
+                KEY CONCEPT
+            </span>
+
+            <h2>
+                Cryptographic security depends on algorithms, keys, protocols, and implementation.
+            </h2>
+
+            <p>
+                Security professionals must identify weak cryptography,
+                protect cryptographic keys, recognize common attacks, and
+                replace insecure implementations with properly configured
+                modern controls.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-play"></i>
+
+            <span>
+                Start Scene
+            </span>
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            <span>
+                Restart
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div class="timeline-track">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="scene-17.js"></script>
+
+</body>
+
+</html>
