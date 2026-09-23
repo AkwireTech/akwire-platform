@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 21
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-21.css">
+</head>
+
+<body>
+
+<main id="securityScene21" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 21
+        </span>
+
+        <h1>
+            Cryptography — Scenario Analysis
+        </h1>
+
+        <p>
+            Security+ scenarios require you to identify the security
+            requirement, recognize the cryptographic technology involved,
+            and determine how the technology should be applied.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    ========================================== -->
+
+    <section class="algorithm-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="cryptoScenarioIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    SCENARIO ANALYSIS
+                </span>
+
+                <h2>
+                    Start with the security requirement
+                </h2>
+
+                <p>
+                    Before selecting a cryptographic technology, determine
+                    what the organization needs to protect and what security
+                    property the solution must provide.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — SCENARIO TYPES
+        ======================================= -->
+
+        <article
+            id="cryptoScenarios"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        COMMON SCENARIOS
+                    </span>
+
+                    <strong>
+                        Recognize the requirement before selecting the control
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="algorithm-grid">
+
+                <div
+                    id="confidentialityScenario"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Protect Data
+                        </strong>
+
+                        <small>
+                            Use encryption when information must remain confidential.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="integrityScenario"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Verify Integrity
+                        </strong>
+
+                        <small>
+                            Use hashing to detect changes to data.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="identityScenario"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Establish Identity
+                        </strong>
+
+                        <small>
+                            Use certificates and PKI to support trusted identities.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="communicationScenario"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-network-wired"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Secure Communication
+                        </strong>
+
+                        <small>
+                            Use secure protocols to protect network communications.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — DECISION PROCESS
+        ======================================= -->
+
+        <article
+            id="cryptoScenarioProcess"
+            class="key-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        DECISION PROCESS
+                    </span>
+
+                    <strong>
+                        Follow the requirement from beginning to solution
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="key-flow">
+
+                <div
+                    id="scenarioRequirement"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-file-circle-question"></i>
+
+                    <strong>
+                        Requirement
+                    </strong>
+
+                    <small>
+                        What needs protection?
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="scenarioObjective"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                    <strong>
+                        Objective
+                    </strong>
+
+                    <small>
+                        What security property is needed?
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="scenarioTechnology"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-gears"></i>
+
+                    <strong>
+                        Technology
+                    </strong>
+
+                    <small>
+                        Which cryptographic control fits?
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="scenarioImplementation"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <strong>
+                        Implementation
+                    </strong>
+
+                    <small>
+                        How should it be securely deployed?
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — CRYPTOGRAPHIC MATCHING
+        ======================================= -->
+
+        <article
+            id="cryptoScenarioMatching"
+            class="protection-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-puzzle-piece"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        TECHNOLOGY MATCHING
+                    </span>
+
+                    <strong>
+                        Connect common requirements to cryptographic controls
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protection-flow">
+
+                <div
+                    id="dataScenario"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <span>
+                        SENSITIVE DATA
+                    </span>
+
+                    <strong>
+                        Encryption
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="identityScenarioMatch"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-id-card"></i>
+
+                    <span>
+                        TRUSTED IDENTITY
+                    </span>
+
+                    <strong>
+                        Certificate
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="communicationScenarioMatch"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>
+                        SECURE SESSION
+                    </span>
+
+                    <strong>
+                        TLS
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="scenarioProtection"
+                class="warning-strip"
+            >
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <span>
+                    The correct answer is usually the control that directly
+                    satisfies the requirement described in the scenario.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — ATTACKER PERSPECTIVE
+        ======================================= -->
+
+        <article
+            id="cryptoScenarioThreats"
+            class="comparison-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-user-secret"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        THREAT PERSPECTIVE
+                    </span>
+
+                    <strong>
+                        Ask how cryptographic weaknesses could be exploited
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+                <div
+                    id="weakScenario"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <span>
+                        WEAKNESS
+                    </span>
+
+                    <strong>
+                        Exposed Protection
+                    </strong>
+
+                    <small>
+                        Weak algorithms, poor key management, expired certificates,
+                        or outdated protocols can reduce protection.
+                    </small>
+
+                </div>
+
+
+                <div class="comparison-divider">
+
+                    <span>
+                        VS
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="secureScenario"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+
+                    <span>
+                        DEFENSE
+                    </span>
+
+                    <strong>
+                        Managed Protection
+                    </strong>
+
+                    <small>
+                        Strong algorithms, protected keys, valid certificates,
+                        secure protocols, and lifecycle management improve protection.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — SCENARIO CHECKLIST
+        ======================================= -->
+
+        <article
+            id="cryptoScenarioChecklist"
+            class="practice-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SCENARIO CHECKLIST
+                    </span>
+
+                    <strong>
+                        Use four questions to break down a Security+ scenario
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="practice-grid">
+
+                <div
+                    id="scenarioQuestionOne"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-question"></i>
+
+                    <strong>
+                        What?
+                    </strong>
+
+                    <small>
+                        What information or communication needs protection?
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="scenarioQuestionTwo"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                    <strong>
+                        Why?
+                    </strong>
+
+                    <small>
+                        What security objective must be achieved?
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="scenarioQuestionThree"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-gears"></i>
+
+                    <strong>
+                        Which?
+                    </strong>
+
+                    <small>
+                        Which cryptographic technology satisfies the objective?
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="scenarioQuestionFour"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <strong>
+                        How?
+                    </strong>
+
+                    <small>
+                        How should the technology be implemented and maintained?
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Read the requirement before reading the technology.
+                </h2>
+
+                <p>
+                    Security+ scenarios often provide several technologies
+                    that sound correct. Focus first on the security objective,
+                    then eliminate controls that do not directly satisfy it.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SCENARIO SUMMARY
+                    </span>
+
+                    <strong>
+                        Analyze the requirement before selecting the solution
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <i class="fa-solid fa-file-circle-question"></i>
+
+                    <span>
+                        Identify the information or communication that needs protection.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                    <span>
+                        Determine the security objective.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-gears"></i>
+
+                    <span>
+                        Select the cryptographic mechanism that fits the requirement.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>
+                        Consider implementation, key management, and lifecycle.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <span>
+                LESSON 03 — SCENARIO TAKEAWAY
+            </span>
+
+            <h2>
+                Match the cryptographic control to the security requirement.
+            </h2>
+
+            <p>
+                When analyzing a Security+ scenario, identify the requirement,
+                determine the security objective, select the appropriate
+                cryptographic mechanism, and evaluate how it must be
+                implemented and maintained.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-play"></i>
+
+            <span>
+                Start Scene
+            </span>
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            <span>
+                Restart
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div class="timeline-track">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="scene-21.js"></script>
+
+</body>
+
+</html>
