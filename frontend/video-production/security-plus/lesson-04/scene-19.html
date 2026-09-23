@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 19
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-19.css">
+</head>
+
+<body>
+
+<main id="securityScene19" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 19
+        </span>
+
+        <h1>
+            Cryptography in Security Operations
+        </h1>
+
+        <p>
+            Cryptography becomes effective security when organizations apply
+            encryption, hashing, digital signatures, certificates, and secure
+            protocols to real operational requirements.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="algorithm-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="cryptoOperationsIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    FROM THEORY TO SECURITY
+                </span>
+
+                <h2>
+                    Cryptography protects real security operations
+                </h2>
+
+                <p>
+                    Security professionals use different cryptographic
+                    mechanisms depending on what must be protected,
+                    who must be trusted, and how information moves
+                    through the environment.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — SECURITY USE CASES
+        ======================================= -->
+
+        <article
+            id="cryptoUseCases"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-shield"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SECURITY USE CASES
+                    </span>
+
+                    <strong>
+                        Match cryptography to the operational requirement
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="algorithm-grid">
+
+                <div
+                    id="dataEncryption"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Data Encryption
+                        </strong>
+
+                        <small>
+                            Protect sensitive information at rest and in transit.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="passwordHashing"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Password Hashing
+                        </strong>
+
+                        <small>
+                            Store password verifiers without storing plaintext passwords.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="digitalSignatures"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-file-signature"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Digital Signatures
+                        </strong>
+
+                        <small>
+                            Support integrity, authenticity, and non-repudiation.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="certificateTrust"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Certificate Trust
+                        </strong>
+
+                        <small>
+                            Establish trusted identities for secure communications.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — PROTECTED DATA FLOW
+        ======================================= -->
+
+        <article
+            id="protectedDataFlow"
+            class="key-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        PROTECTED DATA FLOW
+                    </span>
+
+                    <strong>
+                        Security controls follow information through its lifecycle
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="key-flow">
+
+                <div
+                    id="dataCreated"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-file-circle-plus"></i>
+
+                    <strong>
+                        Create
+                    </strong>
+
+                    <small>
+                        Sensitive information is generated or received.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="dataProtect"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <strong>
+                        Protect
+                    </strong>
+
+                    <small>
+                        Apply encryption, hashing, or signatures as required.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="dataTransmit"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-paper-plane"></i>
+
+                    <strong>
+                        Transmit
+                    </strong>
+
+                    <small>
+                        Use secure protocols to protect communications.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="dataRetire"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-box-archive"></i>
+
+                    <strong>
+                        Retire
+                    </strong>
+
+                    <small>
+                        Securely archive or destroy information and keys.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — SECURITY DECISION
+        ======================================= -->
+
+        <article
+            id="cryptoSecurityDecision"
+            class="protection-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SECURITY DECISION
+                    </span>
+
+                    <strong>
+                        Start with the security requirement
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protection-flow">
+
+                <div
+                    id="securityRequirement"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-bullseye"></i>
+
+                    <span>
+                        REQUIREMENT
+                    </span>
+
+                    <strong>
+                        What must be protected?
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="cryptoMechanism"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <span>
+                        MECHANISM
+                    </span>
+
+                    <strong>
+                        Which control fits?
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="securityOutcome"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-shield-check"></i>
+
+                    <span>
+                        OUTCOME
+                    </span>
+
+                    <strong>
+                        Protected operation
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="decisionProtection"
+                class="warning-strip"
+            >
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <span>
+                    The correct cryptographic control depends on the security
+                    objective, data sensitivity, trust model, and operational
+                    environment.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — SECURITY CONTROLS
+        ======================================= -->
+
+        <article
+            id="cryptoControlComparison"
+            class="comparison-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SECURITY CONTROL
+                    </span>
+
+                    <strong>
+                        Different controls solve different problems
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+                <div
+                    id="confidentialityControl"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <span>
+                        CONFIDENTIALITY
+                    </span>
+
+                    <strong>
+                        Encryption
+                    </strong>
+
+                    <small>
+                        Protect information from unauthorized disclosure
+                        by transforming readable data into protected form.
+                    </small>
+
+                </div>
+
+
+                <div class="comparison-divider">
+
+                    <span>
+                        VS
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="integrityControl"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+
+                    <span>
+                        INTEGRITY
+                    </span>
+
+                    <strong>
+                        Hashing
+                    </strong>
+
+                    <small>
+                        Produce a digest that can help detect whether
+                        information has been modified.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — OPERATIONAL CHECKLIST
+        ======================================= -->
+
+        <article
+            id="cryptoOperationalChecklist"
+            class="practice-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SECURITY OPERATIONS CHECKLIST
+                    </span>
+
+                    <strong>
+                        Verify the cryptographic control before trusting it
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="practice-grid">
+
+                <div
+                    id="verifyAlgorithm"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-check-double"></i>
+
+                    <strong>
+                        Verify Algorithm
+                    </strong>
+
+                    <small>
+                        Confirm the algorithm is appropriate and supported.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="verifyKeys"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <strong>
+                        Verify Keys
+                    </strong>
+
+                    <small>
+                        Confirm keys are protected and properly managed.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="verifyTrust"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <strong>
+                        Verify Trust
+                    </strong>
+
+                    <small>
+                        Validate certificates and trust relationships.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="verifyLifecycle"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-arrows-rotate"></i>
+
+                    <strong>
+                        Verify Lifecycle
+                    </strong>
+
+                    <small>
+                        Review rotation, revocation, updates, and retirement.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Always identify the security objective before selecting the control.
+                </h2>
+
+                <p>
+                    Confidentiality, integrity, authenticity, and
+                    non-repudiation are different security goals.
+                    The cryptographic mechanism should match the goal.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SCENE SUMMARY
+                    </span>
+
+                    <strong>
+                        Apply cryptography according to the security requirement
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+                        Encryption supports confidentiality.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-fingerprint"></i>
+
+                    <span>
+                        Hashing supports integrity-related verification.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-file-signature"></i>
+
+                    <span>
+                        Digital signatures support authenticity and integrity.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <span>
+                        Certificates help establish trusted identities.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <span>
+                KEY CONCEPT
+            </span>
+
+            <h2>
+                Cryptography is a security control—not a security strategy by itself.
+            </h2>
+
+            <p>
+                Strong security comes from selecting the right cryptographic
+                mechanism, protecting the keys and trust relationships behind it,
+                and continuously managing the technology throughout its lifecycle.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-play"></i>
+
+            <span>
+                Start Scene
+            </span>
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            <span>
+                Restart
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div class="timeline-track">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="scene-19.js"></script>
+
+</body>
+
+</html>
