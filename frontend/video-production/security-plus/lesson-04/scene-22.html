@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 22
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-22.css">
+</head>
+
+<body>
+
+<main id="securityScene22" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 22
+        </span>
+
+        <h1>
+            Cryptography — Secure Implementation
+        </h1>
+
+        <p>
+            Effective cryptography depends on more than selecting a strong
+            algorithm. Secure implementation requires protected keys,
+            appropriate configurations, trusted certificates, and
+            continuous lifecycle management.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    ========================================== -->
+
+    <section class="algorithm-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="cryptoImplementationIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    SECURE IMPLEMENTATION
+                </span>
+
+                <h2>
+                    Strong cryptography requires strong implementation
+                </h2>
+
+                <p>
+                    A secure algorithm cannot compensate for exposed keys,
+                    weak configurations, expired certificates, or outdated
+                    protocols. Security depends on the complete implementation.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — IMPLEMENTATION CONTROLS
+        ======================================= -->
+
+        <article
+            id="cryptoImplementationControls"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-sliders"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        IMPLEMENTATION CONTROLS
+                    </span>
+
+                    <strong>
+                        Four controls strengthen cryptographic deployments
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="algorithm-grid">
+
+                <div
+                    id="strongAlgorithmControl"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Strong Algorithms
+                        </strong>
+
+                        <small>
+                            Use modern, approved algorithms appropriate for the requirement.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="protectedKeyControl"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Protected Keys
+                        </strong>
+
+                        <small>
+                            Restrict access to keys and protect them throughout their lifecycle.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="secureConfigurationControl"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-gears"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Secure Configuration
+                        </strong>
+
+                        <small>
+                            Disable weak options and configure cryptographic services securely.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="certificateValidationControl"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Certificate Validation
+                        </strong>
+
+                        <small>
+                            Verify certificate trust, validity, and intended use.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — KEY LIFECYCLE
+        ======================================= -->
+
+        <article
+            id="cryptoKeyLifecycle"
+            class="key-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-key"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        KEY LIFECYCLE
+                    </span>
+
+                    <strong>
+                        Keys must be managed from creation through retirement
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="key-flow">
+
+                <div
+                    id="keyGeneration"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                    <strong>
+                        Generate
+                    </strong>
+
+                    <small>
+                        Create keys using secure methods.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="keyStorage"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-vault"></i>
+
+                    <strong>
+                        Store
+                    </strong>
+
+                    <small>
+                        Protect keys from unauthorized access.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="keyRotation"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-arrows-rotate"></i>
+
+                    <strong>
+                        Rotate
+                    </strong>
+
+                    <small>
+                        Replace keys according to policy.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="keyRetirement"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-trash-can"></i>
+
+                    <strong>
+                        Retire
+                    </strong>
+
+                    <small>
+                        Remove keys when they are no longer required.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — CERTIFICATE VALIDATION
+        ======================================= -->
+
+        <article
+            id="cryptoCertificateValidation"
+            class="protection-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-certificate"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        CERTIFICATE VALIDATION
+                    </span>
+
+                    <strong>
+                        Trust depends on validating the certificate chain
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protection-flow">
+
+                <div
+                    id="certificatePresented"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-file-shield"></i>
+
+                    <span>
+                        CERTIFICATE
+                    </span>
+
+                    <strong>
+                        Presented
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="certificateValidated"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <span>
+                        VALIDATION
+                    </span>
+
+                    <strong>
+                        Verified
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="certificateTrusted"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-shield"></i>
+
+                    <span>
+                        TRUST
+                    </span>
+
+                    <strong>
+                        Established
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="certificateWarning"
+                class="warning-strip"
+            >
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <span>
+                    A certificate should be checked for validity, trust chain,
+                    intended purpose, and other relevant validation requirements
+                    before it is trusted.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — SECURE VS INSECURE
+        ======================================= -->
+
+        <article
+            id="cryptoImplementationComparison"
+            class="comparison-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        IMPLEMENTATION COMPARISON
+                    </span>
+
+                    <strong>
+                        Configuration can determine whether protection succeeds
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+                <div
+                    id="insecureImplementation"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-unlock"></i>
+                    </div>
+
+                    <span>
+                        INSECURE
+                    </span>
+
+                    <strong>
+                        Weak Implementation
+                    </strong>
+
+                    <small>
+                        Exposed keys, weak protocols, poor configuration,
+                        expired certificates, or unnecessary legacy options.
+                    </small>
+
+                </div>
+
+
+                <div class="comparison-divider">
+
+                    <span>
+                        VS
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="secureImplementation"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                    <span>
+                        SECURE
+                    </span>
+
+                    <strong>
+                        Managed Implementation
+                    </strong>
+
+                    <small>
+                        Protected keys, secure protocols, hardened settings,
+                        validated certificates, and lifecycle management.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — BEST PRACTICES
+        ======================================= -->
+
+        <article
+            id="cryptoImplementationPractice"
+            class="practice-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        BEST PRACTICES
+                    </span>
+
+                    <strong>
+                        Maintain cryptographic protection throughout its lifecycle
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="practice-grid">
+
+                <div
+                    id="practiceAlgorithms"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <strong>
+                        Algorithms
+                    </strong>
+
+                    <small>
+                        Use appropriate modern algorithms and avoid weak legacy choices.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="practiceKeys"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <strong>
+                        Keys
+                    </strong>
+
+                    <small>
+                        Protect, rotate, revoke, and retire keys according to policy.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="practiceCertificates"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <strong>
+                        Certificates
+                    </strong>
+
+                    <small>
+                        Validate certificates and maintain trusted PKI relationships.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="practiceMonitoring"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-eye"></i>
+
+                    <strong>
+                        Monitoring
+                    </strong>
+
+                    <small>
+                        Monitor cryptographic configurations and respond to weaknesses.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Protect the key. Validate the trust. Maintain the control.
+                </h2>
+
+                <p>
+                    When a question focuses on implementation, look beyond
+                    the algorithm. Consider key protection, certificate
+                    validation, secure configuration, and lifecycle management.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        IMPLEMENTATION SUMMARY
+                    </span>
+
+                    <strong>
+                        Secure cryptography requires continuous management
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+                        Use strong algorithms appropriate for the security requirement.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-key"></i>
+
+                    <span>
+                        Protect keys throughout generation, storage, use, and retirement.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <span>
+                        Validate certificates before establishing trust.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-arrows-rotate"></i>
+
+                    <span>
+                        Review and maintain cryptographic controls throughout their lifecycle.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <span>
+                LESSON 03 — IMPLEMENTATION TAKEAWAY
+            </span>
+
+            <h2>
+                Cryptography is only as strong as its implementation.
+            </h2>
+
+            <p>
+                Secure algorithms, protected keys, validated certificates,
+                hardened configurations, and lifecycle management work
+                together to maintain effective cryptographic security.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-play"></i>
+
+            <span>
+                Start Scene
+            </span>
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            <span>
+                Restart
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div class="timeline-track">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="scene-22.js"></script>
+
+</body>
+
+</html>
