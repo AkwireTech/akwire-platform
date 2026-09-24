@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 04 | Scene 26
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-26.css">
+</head>
+
+<body>
+
+<main id="securityScene26" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 04 • SCENE 26
+        </span>
+
+        <h1>
+            Data Protection Fundamentals
+        </h1>
+
+        <p>
+            Protecting data requires understanding where information exists,
+            how sensitive it is, how it moves, and which security controls
+            should be applied throughout its lifecycle.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    ========================================== -->
+
+    <section class="algorithm-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="dataProtectionIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-database"></i>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    LESSON 04 • DATA PROTECTION
+                </span>
+
+                <h2>
+                    Data must be protected throughout its lifecycle
+                </h2>
+
+                <p>
+                    Effective data protection begins with identifying the
+                    information that needs protection and applying controls
+                    from creation through storage, transmission, use, and disposal.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — DATA STATES
+        ======================================= -->
+
+        <article
+            id="dataProtectionStates"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-layer-group"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        DATA STATES
+                    </span>
+
+                    <strong>
+                        Understand where data exists
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="algorithm-grid">
+
+                <div
+                    id="dataAtRest"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-hard-drive"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Data at Rest
+                        </strong>
+
+                        <small>
+                            Information stored on devices, databases,
+                            servers, or other storage systems.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="dataInTransit"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-right-left"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Data in Transit
+                        </strong>
+
+                        <small>
+                            Information moving between systems,
+                            networks, applications, or users.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="dataInUse"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Data in Use
+                        </strong>
+
+                        <small>
+                            Information actively being processed
+                            by applications, systems, or users.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="dataArchived"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-box-archive"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Archived Data
+                        </strong>
+
+                        <small>
+                            Information retained for operational,
+                            legal, regulatory, or business requirements.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — DATA LIFECYCLE
+        ======================================= -->
+
+        <article
+            id="dataProtectionLifecycle"
+            class="key-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        DATA LIFECYCLE
+                    </span>
+
+                    <strong>
+                        Protect information from creation to disposal
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="key-flow">
+
+                <div
+                    id="dataCreate"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-file-circle-plus"></i>
+
+                    <strong>
+                        Create
+                    </strong>
+
+                    <small>
+                        Information enters the organization.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="dataStore"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <strong>
+                        Store
+                    </strong>
+
+                    <small>
+                        Protect information in storage.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="dataUse"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-user-gear"></i>
+
+                    <strong>
+                        Use
+                    </strong>
+
+                    <small>
+                        Control access during processing.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="dataDispose"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-trash-can"></i>
+
+                    <strong>
+                        Dispose
+                    </strong>
+
+                    <small>
+                        Remove information securely when no longer needed.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — DATA CLASSIFICATION
+        ======================================= -->
+
+        <article
+            id="dataProtectionClassification"
+            class="protection-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-tags"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        DATA CLASSIFICATION
+                    </span>
+
+                    <strong>
+                        Classification helps determine the required protection
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protection-flow">
+
+                <div
+                    id="publicData"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-globe"></i>
+
+                    <span>
+                        LOW SENSITIVITY
+                    </span>
+
+                    <strong>
+                        Public
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="internalData"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-building"></i>
+
+                    <span>
+                        ORGANIZATIONAL
+                    </span>
+
+                    <strong>
+                        Internal
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="sensitiveData"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+                        HIGH SENSITIVITY
+                    </span>
+
+                    <strong>
+                        Sensitive
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="classificationReminder"
+                class="warning-strip"
+            >
+
+                <i class="fa-solid fa-circle-check"></i>
+
+                <span>
+                    The more sensitive the information, the stronger and more
+                    carefully controlled the protection should be.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — DATA PROTECTION CONTROLS
+        ======================================= -->
+
+        <article
+            id="dataProtectionControls"
+            class="comparison-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        PROTECTION CONTROLS
+                    </span>
+
+                    <strong>
+                        Use multiple controls to protect sensitive information
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+                <div
+                    id="weakDataProtection"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <span>
+                        RISK
+                    </span>
+
+                    <strong>
+                        Unprotected Data
+                    </strong>
+
+                    <small>
+                        Excessive access, weak storage protection, insecure
+                        transmission, and improper disposal can expose information.
+                    </small>
+
+                </div>
+
+
+                <div class="comparison-divider">
+
+                    <span>
+                        VS
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="secureDataProtection"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+
+                    <span>
+                        PROTECTION
+                    </span>
+
+                    <strong>
+                        Protected Data
+                    </strong>
+
+                    <small>
+                        Classification, access controls, encryption, monitoring,
+                        retention, and secure disposal reduce exposure.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — PROTECTION PRACTICE
+        ======================================= -->
+
+        <article
+            id="dataProtectionPractice"
+            class="practice-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        DATA PROTECTION PRACTICE
+                    </span>
+
+                    <strong>
+                        Four questions to ask when protecting information
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="practice-grid">
+
+                <div
+                    id="dataPracticeOne"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-1"></i>
+
+                    <strong>
+                        What is it?
+                    </strong>
+
+                    <small>
+                        Identify the type and sensitivity of the data.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="dataPracticeTwo"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-2"></i>
+
+                    <strong>
+                        Where is it?
+                    </strong>
+
+                    <small>
+                        Determine whether data is stored, moving, or in use.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="dataPracticeThree"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-3"></i>
+
+                    <strong>
+                        Who needs it?
+                    </strong>
+
+                    <small>
+                        Apply appropriate access and authorization controls.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="dataPracticeFour"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-4"></i>
+
+                    <strong>
+                        How is it removed?
+                    </strong>
+
+                    <small>
+                        Follow retention and secure disposal requirements.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Classify → Locate → Control → Retain → Dispose
+                </h2>
+
+                <p>
+                    When a Security+ scenario involves data protection,
+                    determine what the information is, where it exists,
+                    who should access it, how long it should be retained,
+                    and how it should eventually be disposed of.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        LESSON 04 • SCENE 26 SUMMARY
+                    </span>
+
+                    <strong>
+                        Data protection starts with understanding the data
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <span>
+                        Identify and classify information according to sensitivity.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-arrows-left-right"></i>
+
+                    <span>
+                        Protect data at rest, in transit, and in use.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-user-lock"></i>
+
+                    <span>
+                        Apply appropriate access and protection controls.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-trash-can"></i>
+
+                    <span>
+                        Retain information appropriately and dispose of it securely.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <span>
+                MODULE 01 • LESSON 04 • SCENE 26
+            </span>
+
+            <h2>
+                Data protection begins with knowing what must be protected.
+            </h2>
+
+            <p>
+                Identify the information, understand its sensitivity and state,
+                apply appropriate controls, restrict access, manage retention,
+                and securely dispose of data when its lifecycle ends.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-play"></i>
+
+            <span>
+                Start Scene
+            </span>
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            <span>
+                Restart
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div class="timeline-track">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="scene-26.js"></script>
+
+</body>
+
+</html>
