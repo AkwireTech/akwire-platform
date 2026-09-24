@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 03 | Scene 24
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link rel="stylesheet" href="scene-24.css">
+</head>
+
+<body>
+
+<main id="securityScene24" class="video-scene">
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 03 • SCENE 24
+        </span>
+
+        <h1>
+            Cryptography — Knowledge Check
+        </h1>
+
+        <p>
+            Use the security objective, cryptographic mechanism,
+            implementation, and lifecycle concepts to solve common
+            Security+ cryptography scenarios.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    ========================================== -->
+
+    <section class="algorithm-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="cryptoCheckIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-circle-question"></i>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    KNOWLEDGE CHECK
+                </span>
+
+                <h2>
+                    Can you identify the correct cryptographic control?
+                </h2>
+
+                <p>
+                    Security+ questions often describe a security requirement
+                    without naming the technology. Identify the objective
+                    first, then match it to the appropriate cryptographic control.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — QUESTION TYPES
+        ======================================= -->
+
+        <article
+            id="cryptoCheckQuestions"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        QUESTION TYPES
+                    </span>
+
+                    <strong>
+                        Recognize what the scenario is asking for
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="algorithm-grid">
+
+                <div
+                    id="checkConfidentiality"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Confidentiality
+                        </strong>
+
+                        <small>
+                            Look for protection against unauthorized
+                            disclosure of information.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="checkIntegrity"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Integrity
+                        </strong>
+
+                        <small>
+                            Look for evidence that information has not
+                            been altered.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="checkAuthenticity"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-user-shield"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Authenticity
+                        </strong>
+
+                        <small>
+                            Look for verification that a message,
+                            identity, or source is genuine.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="checkTrust"
+                    class="algorithm-node"
+                >
+
+                    <div class="algorithm-icon">
+                        <i class="fa-solid fa-certificate"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Trust
+                        </strong>
+
+                        <small>
+                            Look for certificates, certificate authorities,
+                            and trusted relationships.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — DECISION PROCESS
+        ======================================= -->
+
+        <article
+            id="cryptoCheckProcess"
+            class="key-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-route"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SOLVING THE QUESTION
+                    </span>
+
+                    <strong>
+                        Follow the cryptographic decision process
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="key-flow">
+
+                <div
+                    id="checkRead"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    <strong>
+                        Read
+                    </strong>
+
+                    <small>
+                        Identify the important security requirement.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="checkIdentify"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <strong>
+                        Identify
+                    </strong>
+
+                    <small>
+                        Determine the security objective.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="checkMatch"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-puzzle-piece"></i>
+
+                    <strong>
+                        Match
+                    </strong>
+
+                    <small>
+                        Select the appropriate cryptographic mechanism.
+                    </small>
+
+                </div>
+
+
+                <div class="key-arrow">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="checkValidate"
+                    class="key-node"
+                >
+
+                    <i class="fa-solid fa-circle-check"></i>
+
+                    <strong>
+                        Validate
+                    </strong>
+
+                    <small>
+                        Confirm the control satisfies the scenario.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — SCENARIO MATCHING
+        ======================================= -->
+
+        <article
+            id="cryptoCheckMatching"
+            class="protection-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-arrows-to-circle"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        SCENARIO MATCHING
+                    </span>
+
+                    <strong>
+                        Connect common requirements to cryptographic controls
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protection-flow">
+
+                <div
+                    id="checkEncryptScenario"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-file-shield"></i>
+
+                    <span>
+                        SCENARIO
+                    </span>
+
+                    <strong>
+                        Protect stored data
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="checkEncryptControl"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+                        CONTROL
+                    </span>
+
+                    <strong>
+                        Encryption
+                    </strong>
+
+                </div>
+
+
+                <div class="protection-connector">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </div>
+
+
+                <div
+                    id="checkTrustControl"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <span>
+                        TRUST
+                    </span>
+
+                    <strong>
+                        Certificate Validation
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="checkReminder"
+                class="warning-strip"
+            >
+
+                <i class="fa-solid fa-lightbulb"></i>
+
+                <span>
+                    Do not choose a technology simply because it is
+                    cryptographic. Match the technology to the requirement.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — IMPLEMENTATION CHECK
+        ======================================= -->
+
+        <article
+            id="cryptoCheckImplementation"
+            class="comparison-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        IMPLEMENTATION CHECK
+                    </span>
+
+                    <strong>
+                        Strong cryptography can still fail through poor implementation
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="comparison-grid">
+
+                <div
+                    id="checkWeakImplementation"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </div>
+
+                    <span>
+                        RISK
+                    </span>
+
+                    <strong>
+                        Weak Implementation
+                    </strong>
+
+                    <small>
+                        Weak configurations, exposed keys, outdated protocols,
+                        or improper certificate validation can reduce protection.
+                    </small>
+
+                </div>
+
+
+                <div class="comparison-divider">
+
+                    <span>
+                        VS
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="checkSecureImplementation"
+                    class="comparison-node"
+                >
+
+                    <div class="comparison-icon">
+                        <i class="fa-solid fa-shield"></i>
+                    </div>
+
+                    <span>
+                        PROTECTION
+                    </span>
+
+                    <strong>
+                        Secure Implementation
+                    </strong>
+
+                    <small>
+                        Use appropriate algorithms, protect keys, validate trust,
+                        and maintain secure configurations.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — QUICK CHECKLIST
+        ======================================= -->
+
+        <article
+            id="cryptoCheckChecklist"
+            class="practice-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        QUICK CHECKLIST
+                    </span>
+
+                    <strong>
+                        Four questions to ask before selecting an answer
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="practice-grid">
+
+                <div
+                    id="checkQuestionOne"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-1"></i>
+
+                    <strong>
+                        What is protected?
+                    </strong>
+
+                    <small>
+                        Data, identity, communication, or trust?
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="checkQuestionTwo"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-2"></i>
+
+                    <strong>
+                        What is required?
+                    </strong>
+
+                    <small>
+                        Confidentiality, integrity, or authenticity?
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="checkQuestionThree"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-3"></i>
+
+                    <strong>
+                        Which control?
+                    </strong>
+
+                    <small>
+                        Encryption, hashing, signature, or PKI?
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="checkQuestionFour"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-4"></i>
+
+                    <strong>
+                        Is it secure?
+                    </strong>
+
+                    <small>
+                        Check keys, trust, configuration, and lifecycle.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Requirement → Objective → Control → Implementation
+                </h2>
+
+                <p>
+                    Start with what the scenario requires. Identify the
+                    security objective, select the matching cryptographic
+                    control, and then verify that the implementation is secure.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+                    <i class="fa-solid fa-check-double"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        KNOWLEDGE CHECK SUMMARY
+                    </span>
+
+                    <strong>
+                        The key ideas to remember
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+                        Encryption protects confidentiality.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-fingerprint"></i>
+
+                    <span>
+                        Hashing helps verify integrity.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-file-signature"></i>
+
+                    <span>
+                        Digital signatures support integrity and authenticity.
+                    </span>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-certificate"></i>
+
+                    <span>
+                        PKI establishes certificate-based trust.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <span>
+                MODULE 01 • LESSON 03 • KNOWLEDGE CHECK COMPLETE
+            </span>
+
+            <h2>
+                Choose the cryptographic control that solves the security requirement.
+            </h2>
+
+            <p>
+                Cryptography is not simply about choosing a strong algorithm.
+                Security+ requires you to understand the objective, select the
+                correct mechanism, protect the supporting keys and trust
+                relationships, and maintain the implementation securely.
+            </p>
+
+        </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-play"></i>
+
+            <span>
+                Start Scene
+            </span>
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fa-solid fa-rotate-right"></i>
+
+            <span>
+                Restart
+            </span>
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div class="timeline-track">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<script src="scene-24.js"></script>
+
+</body>
+
+</html>
