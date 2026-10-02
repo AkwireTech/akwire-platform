@@ -1,0 +1,1759 @@
+:root {
+
+    --accent: #55c8ff;
+
+    --background:
+        #050a10;
+
+    --panel:
+        rgba(9, 18, 28, 0.94);
+
+    --panel-light:
+        rgba(18, 32, 46, 0.92);
+
+    --border:
+        rgba(105, 160, 195, 0.22);
+
+    --text:
+        #e9f5ff;
+
+    --muted:
+        #8fa8ba;
+
+    --soft:
+        rgba(85, 200, 255, 0.10);
+
+}
+
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+
+    margin: 0;
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    background:
+        var(--background);
+
+    color:
+        var(--text);
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+body {
+
+    min-width: 320px;
+
+}
+
+
+.video-scene {
+
+    position: relative;
+
+    width: 100vw;
+    height: 100vh;
+
+    min-height: 620px;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 42%,
+            rgba(35, 105, 145, 0.08),
+            transparent 48%
+        ),
+        var(--background);
+
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.background-grid {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0.20;
+
+    background-image:
+
+        linear-gradient(
+            rgba(85, 200, 255, 0.055) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(85, 200, 255, 0.055) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        44px 44px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            transparent,
+            black 18%,
+            black 82%,
+            transparent
+        );
+
+}
+
+
+.background-glow {
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(85, 200, 255, 0.07);
+
+    filter:
+        blur(90px);
+
+    opacity: 0;
+
+    transition:
+        opacity 1.4s ease;
+
+}
+
+
+.background-glow.is-visible {
+    opacity: 1;
+}
+
+
+.glow-one {
+
+    top: -190px;
+    left: -150px;
+
+}
+
+
+.glow-two {
+
+    right: -160px;
+    bottom: -190px;
+
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.scene-brand {
+
+    position: absolute;
+
+    top: 28px;
+    left: 42px;
+
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    opacity: 0;
+
+    transform:
+        translateY(-10px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+}
+
+
+.scene-brand.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.brand-mark {
+
+    width: 34px;
+    height: 34px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(85, 200, 255, 0.5);
+
+    border-radius: 7px;
+
+    color:
+        var(--accent);
+
+    font-size: 18px;
+    font-weight: 800;
+
+    background:
+        rgba(85, 200, 255, 0.06);
+
+    box-shadow:
+        0 0 18px rgba(85, 200, 255, 0.10);
+
+}
+
+
+.brand-copy {
+
+    display: flex;
+    flex-direction: column;
+
+    line-height: 1.05;
+
+}
+
+
+.brand-copy strong {
+
+    font-size: 14px;
+
+    letter-spacing:
+        0.18em;
+
+}
+
+
+.brand-copy span {
+
+    margin-top: 4px;
+
+    color:
+        var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing:
+        0.18em;
+
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.scene-title {
+
+    position: absolute;
+
+    top: 92px;
+    left: 50%;
+
+    z-index: 20;
+
+    width:
+        min(900px, 80vw);
+
+    text-align: center;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+.scene-heading {
+
+    opacity: 0;
+
+    color:
+        var(--accent);
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing:
+        0.20em;
+
+    transform:
+        translateY(10px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+}
+
+
+.scene-heading.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.scene-title h1 {
+
+    margin:
+        10px 0 0;
+
+    opacity: 0;
+
+    font-size:
+        clamp(28px, 3vw, 46px);
+
+    line-height: 1.08;
+
+    letter-spacing:
+        -0.025em;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+
+}
+
+
+.scene-title h1.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+/* =========================================
+   STAGE
+========================================= */
+
+.algorithm-stage {
+
+    position: absolute;
+
+    inset:
+        205px 0 58px;
+
+    z-index: 10;
+
+}
+
+
+/* =========================================
+   SHARED CARDS
+========================================= */
+
+.intro-card,
+.types-card,
+.key-card,
+.protection-card,
+.comparison-card,
+.practice-card,
+.memory-card,
+.summary-card,
+.final-card {
+
+    position: absolute;
+
+    left: 50%;
+
+    width:
+        min(940px, 82vw);
+
+    opacity: 0;
+
+    transform:
+        translate(-50%, 18px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
+}
+
+
+.intro-card.is-visible,
+.types-card.is-visible,
+.key-card.is-visible,
+.protection-card.is-visible,
+.comparison-card.is-visible,
+.practice-card.is-visible,
+.memory-card.is-visible,
+.summary-card.is-visible,
+.final-card.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translate(-50%, 0);
+
+}
+
+
+.card-header {
+
+    margin-bottom: 25px;
+
+}
+
+
+.card-label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    color:
+        var(--accent);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing:
+        0.18em;
+
+}
+
+
+.card-header h2,
+.intro-content h2,
+.memory-card h2,
+.final-card h2 {
+
+    margin: 0;
+
+    font-size:
+        clamp(22px, 2.1vw, 32px);
+
+    line-height: 1.15;
+
+}
+
+
+.intro-content p,
+.final-card p,
+.memory-card p {
+
+    margin:
+        13px 0 0;
+
+    max-width: 760px;
+
+    color:
+        var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+
+}
+
+
+/* =========================================
+   ACT 01
+========================================= */
+
+.intro-card {
+
+    top: 18px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 28px;
+
+    padding:
+        32px 38px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(14, 29, 43, 0.96),
+            rgba(7, 15, 23, 0.96)
+        );
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.25);
+
+}
+
+
+.intro-icon {
+
+    flex:
+        0 0 68px;
+
+    width: 68px;
+    height: 68px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(85, 200, 255, 0.28);
+
+    border-radius: 14px;
+
+    color:
+        var(--accent);
+
+    font-size: 27px;
+
+    background:
+        rgba(85, 200, 255, 0.08);
+
+    box-shadow:
+        0 0 30px rgba(85, 200, 255, 0.08);
+
+}
+
+
+/* =========================================
+   ACT 02
+========================================= */
+
+.types-card {
+
+    top: 5px;
+
+    padding:
+        30px 34px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 16px;
+
+    background:
+        var(--panel);
+
+}
+
+
+.types-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+}
+
+
+.type-item {
+
+    min-height: 145px;
+
+    padding:
+        20px 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(105, 160, 195, 0.18);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+
+    opacity: 0;
+
+    transform:
+        translateY(14px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease,
+        border-color 0.3s ease;
+
+}
+
+
+.type-item.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.type-item i {
+
+    margin-bottom: 14px;
+
+    color:
+        var(--accent);
+
+    font-size: 22px;
+
+}
+
+
+.type-item strong {
+
+    font-size: 14px;
+
+}
+
+
+.type-item span {
+
+    margin-top: 8px;
+
+    color:
+        var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.45;
+
+}
+
+
+/* =========================================
+   ACT 03
+========================================= */
+
+.key-card {
+
+    top: 0;
+
+    padding:
+        28px 30px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 16px;
+
+    background:
+        var(--panel);
+
+}
+
+
+.key-flow {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+}
+
+
+.key-node {
+
+    position: relative;
+
+    width: 175px;
+    min-height: 145px;
+
+    padding:
+        18px 12px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(105, 160, 195, 0.20);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+
+    opacity: 0;
+
+    transform:
+        translateY(15px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+}
+
+
+.key-node.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.key-node i {
+
+    margin:
+        8px 0 10px;
+
+    color:
+        var(--accent);
+
+    font-size: 21px;
+
+}
+
+
+.key-node strong {
+
+    font-size: 13px;
+
+}
+
+
+.key-node span {
+
+    margin-top: 6px;
+
+    color:
+        var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.4;
+
+}
+
+
+.key-number {
+
+    position: absolute;
+
+    top: 10px;
+    right: 11px;
+
+    color:
+        rgba(85, 200, 255, 0.5);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+.key-arrow {
+
+    color:
+        rgba(85, 200, 255, 0.35);
+
+    font-size: 17px;
+
+    opacity: 0;
+
+    transform:
+        translateX(-5px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+
+}
+
+
+.key-arrow.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+
+}
+
+
+/* =========================================
+   ACT 04
+========================================= */
+
+.protection-card {
+
+    top: -4px;
+
+    padding:
+        28px 32px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 16px;
+
+    background:
+        var(--panel);
+
+}
+
+
+.protection-flow {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+}
+
+
+.protection-panel {
+
+    width: 250px;
+    min-height: 130px;
+
+    padding:
+        20px 18px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border:
+        1px solid rgba(105, 160, 195, 0.20);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+
+    opacity: 0;
+
+    transform:
+        translateY(14px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+}
+
+
+.protection-panel.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.protection-panel i {
+
+    margin-bottom: 11px;
+
+    color:
+        var(--accent);
+
+    font-size: 21px;
+
+}
+
+
+.protection-panel strong {
+
+    font-size: 13px;
+
+}
+
+
+.protection-panel span {
+
+    margin-top: 7px;
+
+    color:
+        var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.45;
+
+}
+
+
+.protection-connector {
+
+    color:
+        rgba(85, 200, 255, 0.35);
+
+    font-size: 16px;
+
+    opacity: 0;
+
+    transform:
+        translateX(-5px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+
+}
+
+
+.protection-connector.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+
+}
+
+
+.protection-warning {
+
+    margin:
+        18px auto 0;
+
+    width:
+        fit-content;
+
+    max-width: 800px;
+
+    padding:
+        10px 17px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+    border:
+        1px solid rgba(85, 200, 255, 0.16);
+
+    border-radius: 8px;
+
+    background:
+        rgba(85, 200, 255, 0.045);
+
+    color:
+        var(--muted);
+
+    font-size: 10px;
+
+    opacity: 0;
+
+    transform:
+        translateY(8px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+}
+
+
+.protection-warning.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.protection-warning i {
+
+    color:
+        var(--accent);
+
+}
+
+
+/* =========================================
+   ACT 05
+========================================= */
+
+.comparison-card {
+
+    top: 5px;
+
+    padding:
+        30px 34px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 16px;
+
+    background:
+        var(--panel);
+
+}
+
+
+.comparison-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap: 18px;
+
+}
+
+
+.comparison-item {
+
+    min-height: 180px;
+
+    padding:
+        25px;
+
+    border:
+        1px solid rgba(105, 160, 195, 0.18);
+
+    border-radius: 13px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+
+    opacity: 0;
+
+    transform:
+        translateY(14px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+}
+
+
+.comparison-item.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.comparison-icon {
+
+    width: 38px;
+    height: 38px;
+
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    color:
+        var(--accent);
+
+    background:
+        rgba(85, 200, 255, 0.08);
+
+}
+
+
+.comparison-item strong {
+
+    display: block;
+
+    font-size: 15px;
+
+}
+
+
+.comparison-item span {
+
+    display: block;
+
+    margin-top: 9px;
+
+    color:
+        var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.55;
+
+}
+
+
+/* =========================================
+   ACT 06
+========================================= */
+
+.practice-card {
+
+    top: 0;
+
+    padding:
+        28px 32px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 16px;
+
+    background:
+        var(--panel);
+
+}
+
+
+.practice-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 13px;
+
+}
+
+
+.practice-item {
+
+    min-height: 115px;
+
+    padding:
+        18px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border:
+        1px solid rgba(105, 160, 195, 0.18);
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.018);
+
+    opacity: 0;
+
+    transform:
+        translateY(12px);
+
+    transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+
+}
+
+
+.practice-item.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateY(0);
+
+}
+
+
+.practice-item span {
+
+    color:
+        var(--accent);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+}
+
+
+.practice-item strong {
+
+    margin-top: 15px;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+}
+
+
+/* =========================================
+   ACT 07
+========================================= */
+
+.memory-card {
+
+    top: 24px;
+
+    padding:
+        28px 34px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 24px;
+
+    border:
+        1px solid rgba(85, 200, 255, 0.22);
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(14, 34, 48, 0.96),
+            rgba(7, 16, 25, 0.96)
+        );
+
+}
+
+
+.memory-icon {
+
+    flex:
+        0 0 55px;
+
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(85, 200, 255, 0.3);
+
+    border-radius: 12px;
+
+    color:
+        var(--accent);
+
+    font-size: 21px;
+
+    background:
+        rgba(85, 200, 255, 0.07);
+
+}
+
+
+/* =========================================
+   ACT 08
+========================================= */
+
+.summary-card {
+
+    top: 0;
+
+    padding:
+        27px 32px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 16px;
+
+    background:
+        var(--panel);
+
+}
+
+
+.summary-list {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1fr;
+
+    gap:
+        10px 20px;
+
+}
+
+
+.summary-item {
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 11px;
+
+    padding:
+        11px 0;
+
+    color:
+        var(--muted);
+
+    font-size: 12px;
+
+    line-height: 1.5;
+
+    opacity: 0;
+
+    transform:
+        translateX(-8px);
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+
+}
+
+
+.summary-item.is-visible {
+
+    opacity: 1;
+
+    transform:
+        translateX(0);
+
+}
+
+
+.summary-item i {
+
+    margin-top: 3px;
+
+    color:
+        var(--accent);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================
+   ACT 09
+========================================= */
+
+.final-card {
+
+    top: 28px;
+
+    padding:
+        35px 40px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 25px;
+
+    border:
+        1px solid rgba(85, 200, 255, 0.28);
+
+    border-radius: 16px;
+
+    background:
+        radial-gradient(
+            circle at 10% 50%,
+            rgba(85, 200, 255, 0.09),
+            transparent 45%
+        ),
+        var(--panel);
+
+    box-shadow:
+        0 20px 70px rgba(0, 0, 0, 0.28);
+
+}
+
+
+.final-icon {
+
+    flex:
+        0 0 58px;
+
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid rgba(85, 200, 255, 0.32);
+
+    border-radius: 13px;
+
+    color:
+        var(--accent);
+
+    font-size: 23px;
+
+    background:
+        rgba(85, 200, 255, 0.07);
+
+}
+
+
+/* =========================================
+   CONTROLS
+========================================= */
+
+.scene-controls {
+
+    position: absolute;
+
+    right: 42px;
+    bottom: 27px;
+
+    z-index: 30;
+
+    display: flex;
+    align-items: center;
+
+    gap: 9px;
+
+}
+
+
+.scene-control {
+
+    padding:
+        7px 12px;
+
+    border:
+        1px solid rgba(105, 160, 195, 0.25);
+
+    border-radius: 7px;
+
+    background:
+        rgba(9, 18, 28, 0.88);
+
+    color:
+        var(--muted);
+
+    font-size: 10px;
+
+    cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+
+}
+
+
+.scene-control:hover {
+
+    color:
+        var(--accent);
+
+    border-color:
+        rgba(85, 200, 255, 0.45);
+
+    background:
+        rgba(85, 200, 255, 0.06);
+
+}
+
+
+.scene-control i {
+
+    margin-right: 5px;
+
+}
+
+
+/* =========================================
+   TIMELINE
+========================================= */
+
+.scene-timeline {
+
+    position: absolute;
+
+    left: 42px;
+    right: 42px;
+
+    bottom: 13px;
+
+    height: 3px;
+
+    z-index: 30;
+
+}
+
+
+.timeline-track {
+
+    width: 100%;
+    height: 100%;
+
+    background:
+        rgba(130, 160, 190, 0.13);
+
+    border-radius: 4px;
+
+    overflow: hidden;
+
+}
+
+
+.timeline-progress {
+
+    width: 0%;
+    height: 100%;
+
+    background:
+        var(--accent);
+
+    border-radius: 4px;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+    .types-grid,
+    .practice-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .key-flow {
+
+        gap: 6px;
+
+    }
+
+
+    .key-node {
+
+        width: 150px;
+
+    }
+
+
+    .protection-panel {
+
+        width: 220px;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .scene-brand {
+
+        left: 20px;
+
+    }
+
+
+    .scene-title {
+
+        width: 90vw;
+
+    }
+
+
+    .algorithm-stage {
+
+        inset:
+            190px 0 55px;
+
+    }
+
+
+    .types-grid,
+    .practice-grid,
+    .comparison-grid,
+    .summary-list {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .key-flow,
+    .protection-flow {
+
+        flex-direction: column;
+
+    }
+
+
+    .key-arrow,
+    .protection-connector {
+
+        transform:
+            rotate(90deg);
+
+    }
+
+
+    .key-arrow.is-visible,
+    .protection-connector.is-visible {
+
+        transform:
+            rotate(90deg);
+
+    }
+
+
+    .intro-card,
+    .memory-card,
+    .final-card {
+
+        flex-direction: column;
+
+        text-align: center;
+
+    }
+
+
+    .intro-content p,
+    .final-card p,
+    .memory-card p {
+
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+
+    .scene-controls {
+
+        right: 20px;
+
+    }
+
+
+    .scene-timeline {
+
+        left: 20px;
+        right: 20px;
+
+    }
+
+}
+
+
+@media (max-height: 720px) {
+
+    .scene-title {
+
+        top: 78px;
+
+    }
+
+
+    .algorithm-stage {
+
+        inset:
+            170px 0 50px;
+
+    }
+
+
+    .intro-card,
+    .types-card,
+    .key-card,
+    .protection-card,
+    .comparison-card,
+    .practice-card,
+    .summary-card {
+
+        transform:
+            translate(-50%, 12px)
+            scale(0.92);
+
+    }
+
+
+    .intro-card.is-visible,
+    .types-card.is-visible,
+    .key-card.is-visible,
+    .protection-card.is-visible,
+    .comparison-card.is-visible,
+    .practice-card.is-visible,
+    .summary-card.is-visible {
+
+        transform:
+            translate(-50%, 0)
+            scale(0.92);
+
+    }
+
+}
