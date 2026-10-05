@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Akwire Security+ Academy — Scene 35
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="scene-35.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+<body>
+
+    <main
+        id="securityScene35"
+        class="video-scene"
+    >
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-one"></div>
+        <div class="background-glow glow-two"></div>
+
+
+        <header class="scene-brand">
+
+            <div class="brand-mark">
+                A
+            </div>
+
+            <div class="brand-copy">
+
+                <strong>
+                    AKWIRE
+                </strong>
+
+                <span>
+                    SECURITY+ ACADEMY
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <section class="scene-title">
+
+            <div class="scene-heading">
+                MODULE 01 • LESSON 04 • SCENE 35
+            </div>
+
+            <h1>
+                Backup Strategies &amp; Recovery Methods
+            </h1>
+
+        </section>
+
+
+        <section class="algorithm-stage">
+
+
+            <!-- ACT 01 -->
+
+            <article
+                id="backupIntro"
+                class="intro-card"
+            >
+
+                <div class="intro-icon">
+                    <i class="fa-solid fa-database"></i>
+                </div>
+
+                <div class="intro-content">
+
+                    <span class="card-label">
+                        ACT 01 • BACKUP STRATEGIES
+                    </span>
+
+                    <h2>
+                        Backups provide a recovery path when data is lost
+                    </h2>
+
+                    <p>
+                        Backups protect organizations from data loss caused
+                        by hardware failure, accidental deletion, malware,
+                        disasters, and other disruptions. A strong backup
+                        strategy considers what is backed up, where it is
+                        stored, and how quickly it can be restored.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 02 -->
+
+            <article
+                id="backupTypes"
+                class="types-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 02 • BACKUP TYPES
+                    </span>
+
+                    <h2>
+                        Different backup methods capture data differently
+                    </h2>
+
+                </div>
+
+                <div class="types-grid">
+
+                    <div
+                        id="fullBackup"
+                        class="type-item"
+                    >
+
+                        <i class="fa-solid fa-database"></i>
+
+                        <strong>
+                            Full Backup
+                        </strong>
+
+                        <span>
+                            Copies all selected data
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="incrementalBackup"
+                        class="type-item"
+                    >
+
+                        <i class="fa-solid fa-arrow-up"></i>
+
+                        <strong>
+                            Incremental Backup
+                        </strong>
+
+                        <span>
+                            Copies changes since the last backup
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="differentialBackup"
+                        class="type-item"
+                    >
+
+                        <i class="fa-solid fa-layer-group"></i>
+
+                        <strong>
+                            Differential Backup
+                        </strong>
+
+                        <span>
+                            Copies changes since the last full backup
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="snapshotBackup"
+                        class="type-item"
+                    >
+
+                        <i class="fa-solid fa-camera"></i>
+
+                        <strong>
+                            Snapshot
+                        </strong>
+
+                        <span>
+                            Captures a point-in-time system state
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 03 -->
+
+            <article
+                id="backupProcess"
+                class="key-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 03 • BACKUP LIFECYCLE
+                    </span>
+
+                    <h2>
+                        A backup strategy follows a controlled lifecycle
+                    </h2>
+
+                </div>
+
+                <div class="key-flow">
+
+                    <div
+                        id="backupIdentify"
+                        class="key-node"
+                    >
+
+                        <div class="key-number">
+                            01
+                        </div>
+
+                        <i class="fa-solid fa-list-check"></i>
+
+                        <strong>
+                            Identify
+                        </strong>
+
+                        <span>
+                            Determine critical data
+                        </span>
+
+                    </div>
+
+                    <div class="key-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="backupProtect"
+                        class="key-node"
+                    >
+
+                        <div class="key-number">
+                            02
+                        </div>
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <strong>
+                            Protect
+                        </strong>
+
+                        <span>
+                            Create secure backup copies
+                        </span>
+
+                    </div>
+
+                    <div class="key-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="backupVerify"
+                        class="key-node"
+                    >
+
+                        <div class="key-number">
+                            03
+                        </div>
+
+                        <i class="fa-solid fa-circle-check"></i>
+
+                        <strong>
+                            Verify
+                        </strong>
+
+                        <span>
+                            Confirm backups are usable
+                        </span>
+
+                    </div>
+
+                    <div class="key-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="backupRestore"
+                        class="key-node"
+                    >
+
+                        <div class="key-number">
+                            04
+                        </div>
+
+                        <i class="fa-solid fa-rotate"></i>
+
+                        <strong>
+                            Restore
+                        </strong>
+
+                        <span>
+                            Recover data when needed
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 04 -->
+
+            <article
+                id="backupProtection"
+                class="protection-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 04 • BACKUP PROTECTION
+                    </span>
+
+                    <h2>
+                        Backups must also be protected
+                    </h2>
+
+                </div>
+
+                <div class="protection-flow">
+
+                    <div
+                        id="backupOffline"
+                        class="protection-panel"
+                    >
+
+                        <i class="fa-solid fa-hard-drive"></i>
+
+                        <strong>
+                            Offline Copies
+                        </strong>
+
+                        <span>
+                            Isolated backups reduce exposure to attacks
+                            affecting connected systems.
+                        </span>
+
+                    </div>
+
+                    <div class="protection-connector">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="backupOffsite"
+                        class="protection-panel"
+                    >
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        <strong>
+                            Offsite Copies
+                        </strong>
+
+                        <span>
+                            A separate location helps protect against
+                            physical disasters.
+                        </span>
+
+                    </div>
+
+                    <div class="protection-connector">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="backupImmutable"
+                        class="protection-panel"
+                    >
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <strong>
+                            Immutable Copies
+                        </strong>
+
+                        <span>
+                            Protected copies cannot be easily modified or
+                            deleted.
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="backupWarning"
+                    class="protection-warning"
+                >
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <span>
+                        A backup is only useful if it can be successfully
+                        restored when it is needed.
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 05 -->
+
+            <article
+                id="backupRisk"
+                class="comparison-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 05 • BACKUP RELIABILITY
+                    </span>
+
+                    <h2>
+                        Creating backups is not enough
+                    </h2>
+
+                </div>
+
+                <div class="comparison-grid">
+
+                    <div
+                        id="untestedBackup"
+                        class="comparison-item"
+                    >
+
+                        <div class="comparison-icon">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+
+                        <strong>
+                            Untested Backup
+                        </strong>
+
+                        <span>
+                            The organization assumes the backup works but
+                            discovers problems only after data loss occurs.
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="testedBackup"
+                        class="comparison-item"
+                    >
+
+                        <div class="comparison-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                        <strong>
+                            Tested Backup
+                        </strong>
+
+                        <span>
+                            Restoration is regularly tested so the
+                            organization knows the recovery process works.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 06 -->
+
+            <article
+                id="backupPractice"
+                class="practice-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 06 • PRACTICE
+                    </span>
+
+                    <h2>
+                        Security+ backup reminders
+                    </h2>
+
+                </div>
+
+                <div class="practice-grid">
+
+                    <div
+                        id="backupPracticeOne"
+                        class="practice-item"
+                    >
+
+                        <span>
+                            01
+                        </span>
+
+                        <strong>
+                            Identify critical data
+                        </strong>
+
+                    </div>
+
+                    <div
+                        id="backupPracticeTwo"
+                        class="practice-item"
+                    >
+
+                        <span>
+                            02
+                        </span>
+
+                        <strong>
+                            Choose an appropriate backup method
+                        </strong>
+
+                    </div>
+
+                    <div
+                        id="backupPracticeThree"
+                        class="practice-item"
+                    >
+
+                        <span>
+                            03
+                        </span>
+
+                        <strong>
+                            Protect and isolate backup copies
+                        </strong>
+
+                    </div>
+
+                    <div
+                        id="backupPracticeFour"
+                        class="practice-item"
+                    >
+
+                        <span>
+                            04
+                        </span>
+
+                        <strong>
+                            Test restoration regularly
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 07 -->
+
+            <article
+                id="examMemory"
+                class="memory-card"
+            >
+
+                <div class="memory-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+
+                <div>
+
+                    <span class="card-label">
+                        EXAM MEMORY
+                    </span>
+
+                    <h2>
+                        Backup + Protection + Testing = Recovery
+                    </h2>
+
+                    <p>
+                        Remember that backup strategies must protect the
+                        copies and verify that restoration actually works.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 08 -->
+
+            <article
+                id="sceneSummary"
+                class="summary-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        SCENE SUMMARY
+                    </span>
+
+                    <h2>
+                        What you should remember
+                    </h2>
+
+                </div>
+
+                <div class="summary-list">
+
+                    <div class="summary-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>
+                            Full backups copy all selected data.
+                        </span>
+                    </div>
+
+                    <div class="summary-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>
+                            Incremental and differential backups capture
+                            changes in different ways.
+                        </span>
+                    </div>
+
+                    <div class="summary-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>
+                            Offline, offsite, and immutable copies can
+                            improve backup protection.
+                        </span>
+                    </div>
+
+                    <div class="summary-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>
+                            Backups should be tested through actual
+                            restoration procedures.
+                        </span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 09 -->
+
+            <article
+                id="finalConcept"
+                class="final-card"
+            >
+
+                <div class="final-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+
+                    <span class="card-label">
+                        FINAL CONCEPT
+                    </span>
+
+                    <h2>
+                        A backup is only valuable when it can be restored
+                    </h2>
+
+                    <p>
+                        Effective backup strategies combine appropriate
+                        backup methods, secure storage, regular verification,
+                        and tested recovery procedures.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <div class="scene-controls">
+
+            <button
+                id="startSceneBtn"
+                class="scene-control"
+                type="button"
+            >
+                <i class="fa-solid fa-play"></i>
+                Start
+            </button>
+
+            <button
+                id="restartSceneBtn"
+                class="scene-control"
+                type="button"
+            >
+                <i class="fa-solid fa-rotate-right"></i>
+                Restart
+            </button>
+
+        </div>
+
+
+        <div class="scene-timeline">
+
+            <div class="timeline-track">
+
+                <div
+                    id="timelineProgress"
+                    class="timeline-progress"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="scene-35.js"></script>
+
+</body>
+
+</html>
