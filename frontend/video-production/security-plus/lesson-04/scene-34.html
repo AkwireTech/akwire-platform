@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Akwire Security+ Academy — Scene 34
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="scene-34.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+</head>
+
+<body>
+
+    <main
+        id="securityScene34"
+        class="video-scene"
+    >
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-one"></div>
+        <div class="background-glow glow-two"></div>
+
+
+        <header class="scene-brand">
+
+            <div class="brand-mark">
+                A
+            </div>
+
+            <div class="brand-copy">
+
+                <strong>
+                    AKWIRE
+                </strong>
+
+                <span>
+                    SECURITY+ ACADEMY
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <section class="scene-title">
+
+            <div class="scene-heading">
+                MODULE 01 • LESSON 04 • SCENE 34
+            </div>
+
+            <h1>
+                High Availability &amp; Fault Tolerance
+            </h1>
+
+        </section>
+
+
+        <section class="algorithm-stage">
+
+
+            <!-- ACT 01 -->
+
+            <article
+                id="availabilityIntro"
+                class="intro-card"
+            >
+
+                <div class="intro-icon">
+                    <i class="fa-solid fa-server"></i>
+                </div>
+
+                <div class="intro-content">
+
+                    <span class="card-label">
+                        ACT 01 • AVAILABILITY
+                    </span>
+
+                    <h2>
+                        Critical services should remain available
+                    </h2>
+
+                    <p>
+                        High availability reduces service interruptions by
+                        using redundancy, resilient architecture, and
+                        recovery mechanisms that keep critical systems
+                        operating when individual components fail.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 02 -->
+
+            <article
+                id="availabilityConcepts"
+                class="types-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 02 • AVAILABILITY CONCEPTS
+                    </span>
+
+                    <h2>
+                        Availability depends on multiple protective strategies
+                    </h2>
+
+                </div>
+
+                <div class="types-grid">
+
+                    <div
+                        id="redundancyConcept"
+                        class="type-item"
+                    >
+
+                        <i class="fa-solid fa-copy"></i>
+
+                        <strong>
+                            Redundancy
+                        </strong>
+
+                        <span>
+                            Additional components provide backup capacity
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="failoverConcept"
+                        class="type-item"
+                    >
+
+                        <i class="fa-solid fa-right-left"></i>
+
+                        <strong>
+                            Failover
+                        </strong>
+
+                        <span>
+                            Services move to an alternate system
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="loadBalancingConcept"
+                        class="type-item"
+                    >
+
+                        <i class="fa-solid fa-scale-balanced"></i>
+
+                        <strong>
+                            Load Balancing
+                        </strong>
+
+                        <span>
+                            Traffic is distributed across resources
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="faultToleranceConcept"
+                        class="type-item"
+                    >
+
+                        <i class="fa-solid fa-shield-halved"></i>
+
+                        <strong>
+                            Fault Tolerance
+                        </strong>
+
+                        <span>
+                            Systems continue operating after component failure
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 03 -->
+
+            <article
+                id="availabilityProcess"
+                class="key-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 03 • RESILIENT ARCHITECTURE
+                    </span>
+
+                    <h2>
+                        Build resilience across the service path
+                    </h2>
+
+                </div>
+
+                <div class="key-flow">
+
+                    <div
+                        id="availabilityDetect"
+                        class="key-node"
+                    >
+
+                        <div class="key-number">
+                            01
+                        </div>
+
+                        <i class="fa-solid fa-heart-pulse"></i>
+
+                        <strong>
+                            Detect
+                        </strong>
+
+                        <span>
+                            Identify a component failure
+                        </span>
+
+                    </div>
+
+                    <div class="key-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="availabilityFailover"
+                        class="key-node"
+                    >
+
+                        <div class="key-number">
+                            02
+                        </div>
+
+                        <i class="fa-solid fa-right-left"></i>
+
+                        <strong>
+                            Fail Over
+                        </strong>
+
+                        <span>
+                            Switch to an alternate resource
+                        </span>
+
+                    </div>
+
+                    <div class="key-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="availabilityContinue"
+                        class="key-node"
+                    >
+
+                        <div class="key-number">
+                            03
+                        </div>
+
+                        <i class="fa-solid fa-play"></i>
+
+                        <strong>
+                            Continue
+                        </strong>
+
+                        <span>
+                            Maintain essential service
+                        </span>
+
+                    </div>
+
+                    <div class="key-arrow">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="availabilityRestore"
+                        class="key-node"
+                    >
+
+                        <div class="key-number">
+                            04
+                        </div>
+
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+
+                        <strong>
+                            Restore
+                        </strong>
+
+                        <span>
+                            Repair the failed component
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 04 -->
+
+            <article
+                id="availabilityStrategies"
+                class="protection-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 04 • RESILIENCE STRATEGIES
+                    </span>
+
+                    <h2>
+                        Different technologies support availability
+                    </h2>
+
+                </div>
+
+                <div class="protection-flow">
+
+                    <div
+                        id="availabilityCluster"
+                        class="protection-panel"
+                    >
+
+                        <i class="fa-solid fa-server"></i>
+
+                        <strong>
+                            Clustering
+                        </strong>
+
+                        <span>
+                            Multiple systems work together to provide
+                            continued service.
+                        </span>
+
+                    </div>
+
+                    <div class="protection-connector">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="availabilityLoadBalance"
+                        class="protection-panel"
+                    >
+
+                        <i class="fa-solid fa-scale-balanced"></i>
+
+                        <strong>
+                            Load Balancing
+                        </strong>
+
+                        <span>
+                            Workloads are distributed across available
+                            resources.
+                        </span>
+
+                    </div>
+
+                    <div class="protection-connector">
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </div>
+
+                    <div
+                        id="availabilityStorage"
+                        class="protection-panel"
+                    >
+
+                        <i class="fa-solid fa-hard-drive"></i>
+
+                        <strong>
+                            Redundant Storage
+                        </strong>
+
+                        <span>
+                            Data remains available when a storage component
+                            fails.
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="availabilityWarning"
+                    class="protection-warning"
+                >
+
+                    <i class="fa-solid fa-circle-info"></i>
+
+                    <span>
+                        Redundancy is most effective when failure of one
+                        component does not become a single point of failure.
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 05 -->
+
+            <article
+                id="availabilityRisk"
+                class="comparison-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 05 • SINGLE POINT OF FAILURE
+                    </span>
+
+                    <h2>
+                        Resilience depends on eliminating critical weak points
+                    </h2>
+
+                </div>
+
+                <div class="comparison-grid">
+
+                    <div
+                        id="singlePointFailure"
+                        class="comparison-item"
+                    >
+
+                        <div class="comparison-icon">
+                            <i class="fa-solid fa-xmark"></i>
+                        </div>
+
+                        <strong>
+                            Single Point of Failure
+                        </strong>
+
+                        <span>
+                            One failed component can interrupt the entire
+                            service because no effective alternate path exists.
+                        </span>
+
+                    </div>
+
+                    <div
+                        id="redundantArchitecture"
+                        class="comparison-item"
+                    >
+
+                        <div class="comparison-icon">
+                            <i class="fa-solid fa-check"></i>
+                        </div>
+
+                        <strong>
+                            Redundant Architecture
+                        </strong>
+
+                        <span>
+                            Alternate components or paths allow services to
+                            continue when one resource fails.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 06 -->
+
+            <article
+                id="availabilityPractice"
+                class="practice-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        ACT 06 • PRACTICE
+                    </span>
+
+                    <h2>
+                        Security+ availability reminders
+                    </h2>
+
+                </div>
+
+                <div class="practice-grid">
+
+                    <div
+                        id="availabilityPracticeOne"
+                        class="practice-item"
+                    >
+
+                        <span>
+                            01
+                        </span>
+
+                        <strong>
+                            Identify critical services
+                        </strong>
+
+                    </div>
+
+                    <div
+                        id="availabilityPracticeTwo"
+                        class="practice-item"
+                    >
+
+                        <span>
+                            02
+                        </span>
+
+                        <strong>
+                            Remove single points of failure
+                        </strong>
+
+                    </div>
+
+                    <div
+                        id="availabilityPracticeThree"
+                        class="practice-item"
+                    >
+
+                        <span>
+                            03
+                        </span>
+
+                        <strong>
+                            Use redundancy and failover
+                        </strong>
+
+                    </div>
+
+                    <div
+                        id="availabilityPracticeFour"
+                        class="practice-item"
+                    >
+
+                        <span>
+                            04
+                        </span>
+
+                        <strong>
+                            Test resilience before failure occurs
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 07 -->
+
+            <article
+                id="examMemory"
+                class="memory-card"
+            >
+
+                <div class="memory-icon">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+
+                <div>
+
+                    <span class="card-label">
+                        EXAM MEMORY
+                    </span>
+
+                    <h2>
+                        Redundancy reduces the impact of failure
+                    </h2>
+
+                    <p>
+                        High availability uses resilient designs so a single
+                        component failure does not automatically cause a
+                        service outage.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 08 -->
+
+            <article
+                id="sceneSummary"
+                class="summary-card"
+            >
+
+                <div class="card-header">
+
+                    <span class="card-label">
+                        SCENE SUMMARY
+                    </span>
+
+                    <h2>
+                        What you should remember
+                    </h2>
+
+                </div>
+
+                <div class="summary-list">
+
+                    <div class="summary-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>
+                            High availability helps critical services remain
+                            operational.
+                        </span>
+                    </div>
+
+                    <div class="summary-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>
+                            Redundancy provides alternate resources when
+                            components fail.
+                        </span>
+                    </div>
+
+                    <div class="summary-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>
+                            Failover moves services to an available resource.
+                        </span>
+                    </div>
+
+                    <div class="summary-item">
+                        <i class="fa-solid fa-check"></i>
+                        <span>
+                            Single points of failure should be identified and
+                            reduced.
+                        </span>
+                    </div>
+
+                </div>
+
+            </article>
+
+
+            <!-- ACT 09 -->
+
+            <article
+                id="finalConcept"
+                class="final-card"
+            >
+
+                <div class="final-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+
+                <div>
+
+                    <span class="card-label">
+                        FINAL CONCEPT
+                    </span>
+
+                    <h2>
+                        Design for failure instead of assuming it will not happen
+                    </h2>
+
+                    <p>
+                        High availability and fault-tolerant designs prepare
+                        systems to continue operating when individual
+                        components fail.
+                    </p>
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+        <div class="scene-controls">
+
+            <button
+                id="startSceneBtn"
+                class="scene-control"
+                type="button"
+            >
+                <i class="fa-solid fa-play"></i>
+                Start
+            </button>
+
+            <button
+                id="restartSceneBtn"
+                class="scene-control"
+                type="button"
+            >
+                <i class="fa-solid fa-rotate-right"></i>
+                Restart
+            </button>
+
+        </div>
+
+
+        <div class="scene-timeline">
+
+            <div class="timeline-track">
+
+                <div
+                    id="timelineProgress"
+                    class="timeline-progress"
+                ></div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="scene-34.js"></script>
+
+</body>
+
+</html>
