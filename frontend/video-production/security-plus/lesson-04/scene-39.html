@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Akwire Security+ | Module 01 | Lesson 04 | Scene 39
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="scene-39.css"
+    >
+
+</head>
+
+
+<body>
+
+<main
+    id="securityScene39"
+    class="video-scene"
+>
+
+
+    <!-- ==========================================
+         BACKGROUND
+    =========================================== -->
+
+    <div class="scene-background">
+
+        <div class="background-grid"></div>
+
+        <div class="background-glow glow-left"></div>
+        <div class="background-glow glow-center"></div>
+        <div class="background-glow glow-right"></div>
+
+    </div>
+
+
+    <!-- ==========================================
+         BRAND
+    =========================================== -->
+
+    <header class="scene-brand">
+
+        <div class="brand-mark">
+            A
+        </div>
+
+        <div class="brand-copy">
+
+            <strong>
+                AKWIRE
+            </strong>
+
+            <span>
+                SECURITY+ ACADEMY
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         TITLE
+    =========================================== -->
+
+    <section class="scene-title">
+
+        <span class="scene-number">
+            MODULE 01 • LESSON 04 • SCENE 39
+        </span>
+
+        <h1>
+            Backup Strategies &amp; Recovery Planning
+        </h1>
+
+        <p>
+            Effective recovery depends on reliable backups, appropriate
+            backup methods, protected recovery copies, and regular testing
+            to ensure critical data can actually be restored.
+        </p>
+
+    </section>
+
+
+    <!-- ==========================================
+         MAIN STAGE
+    =========================================== -->
+
+    <section class="recovery-stage">
+
+
+        <!-- ======================================
+             ACT 01 — INTRO
+        ======================================= -->
+
+        <article
+            id="backupIntro"
+            class="intro-card"
+        >
+
+            <div class="intro-icon">
+
+                <div class="pulse-ring ring-1"></div>
+                <div class="pulse-ring ring-2"></div>
+                <div class="pulse-ring ring-3"></div>
+
+                <i class="fa-solid fa-database"></i>
+
+            </div>
+
+            <div class="intro-copy">
+
+                <span>
+                    THE RECOVERY FOUNDATION
+                </span>
+
+                <h2>
+                    Recovery begins with usable backups
+                </h2>
+
+                <p>
+                    A recovery plan is only effective when the organization
+                    has reliable copies of important data and can restore
+                    those copies within the required recovery objectives.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 02 — BACKUP TYPES
+        ======================================= -->
+
+        <article
+            id="backupTypes"
+            class="types-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-copy"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        BACKUP METHODS
+                    </span>
+
+                    <strong>
+                        Understand what each backup captures
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="backup-grid">
+
+                <div
+                    id="fullBackup"
+                    class="backup-node"
+                >
+
+                    <div class="backup-icon">
+                        <i class="fa-solid fa-database"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Full
+                        </strong>
+
+                        <small>
+                            Copies all selected data during the backup operation.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="incrementalBackup"
+                    class="backup-node"
+                >
+
+                    <div class="backup-icon">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Incremental
+                        </strong>
+
+                        <small>
+                            Copies data changed since the previous backup.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="differentialBackup"
+                    class="backup-node"
+                >
+
+                    <div class="backup-icon">
+                        <i class="fa-solid fa-code-branch"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Differential
+                        </strong>
+
+                        <small>
+                            Copies data changed since the last full backup.
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="snapshotBackup"
+                    class="backup-node"
+                >
+
+                    <div class="backup-icon">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Snapshot
+                        </strong>
+
+                        <small>
+                            Captures a point-in-time representation of a system or dataset.
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 03 — BACKUP PROCESS
+        ======================================= -->
+
+        <article
+            id="backupProcess"
+            class="process-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-arrows-rotate"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        RECOVERY WORKFLOW
+                    </span>
+
+                    <strong>
+                        A backup is useful only when it can be restored
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="process-flow">
+
+                <div
+                    id="processIdentify"
+                    class="process-node"
+                >
+
+                    <span>
+                        01
+                    </span>
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                    <strong>
+                        Identify
+                    </strong>
+
+                    <small>
+                        Determine critical systems and data.
+                    </small>
+
+                </div>
+
+
+                <i class="fa-solid fa-chevron-right process-arrow"></i>
+
+
+                <div
+                    id="processBackup"
+                    class="process-node"
+                >
+
+                    <span>
+                        02
+                    </span>
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <strong>
+                        Back Up
+                    </strong>
+
+                    <small>
+                        Create protected recovery copies.
+                    </small>
+
+                </div>
+
+
+                <i class="fa-solid fa-chevron-right process-arrow"></i>
+
+
+                <div
+                    id="processTest"
+                    class="process-node"
+                >
+
+                    <span>
+                        03
+                    </span>
+
+                    <i class="fa-solid fa-vial-circle-check"></i>
+
+                    <strong>
+                        Test
+                    </strong>
+
+                    <small>
+                        Verify that data can be restored.
+                    </small>
+
+                </div>
+
+
+                <i class="fa-solid fa-chevron-right process-arrow"></i>
+
+
+                <div
+                    id="processRestore"
+                    class="process-node"
+                >
+
+                    <span>
+                        04
+                    </span>
+
+                    <i class="fa-solid fa-server"></i>
+
+                    <strong>
+                        Restore
+                    </strong>
+
+                    <small>
+                        Recover systems when needed.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 04 — BACKUP PROTECTION
+        ======================================= -->
+
+        <article
+            id="backupProtection"
+            class="protection-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        BACKUP SECURITY
+                    </span>
+
+                    <strong>
+                        Protect recovery copies from the same threat
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="protection-flow">
+
+                <div
+                    id="protectionOffline"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-plug-circle-xmark"></i>
+
+                    <span>
+                        OFFLINE
+                    </span>
+
+                    <strong>
+                        Isolated Copies
+                    </strong>
+
+                </div>
+
+
+                <i class="fa-solid fa-plus protection-symbol"></i>
+
+
+                <div
+                    id="protectionImmutable"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-lock"></i>
+
+                    <span>
+                        IMMUTABLE
+                    </span>
+
+                    <strong>
+                        Protected Copies
+                    </strong>
+
+                </div>
+
+
+                <i class="fa-solid fa-plus protection-symbol"></i>
+
+
+                <div
+                    id="protectionOffsite"
+                    class="protection-panel"
+                >
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    <span>
+                        OFFSITE
+                    </span>
+
+                    <strong>
+                        Separate Location
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="backupWarning"
+                class="warning-strip"
+            >
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+                <span>
+                    If attackers can reach the backup system, they may be able
+                    to encrypt, delete, or corrupt the recovery copies as well.
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 05 — 3-2-1 STRATEGY
+        ======================================= -->
+
+        <article
+            id="backupStrategy"
+            class="strategy-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        BACKUP STRATEGY
+                    </span>
+
+                    <strong>
+                        Build multiple layers of recoverability
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="strategy-grid">
+
+                <div
+                    id="strategyThree"
+                    class="strategy-node"
+                >
+
+                    <strong>
+                        3
+                    </strong>
+
+                    <span>
+                        COPIES
+                    </span>
+
+                    <small>
+                        Maintain multiple copies of important data.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="strategyTwo"
+                    class="strategy-node"
+                >
+
+                    <strong>
+                        2
+                    </strong>
+
+                    <span>
+                        MEDIA TYPES
+                    </span>
+
+                    <small>
+                        Use different storage media or systems.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="strategyOne"
+                    class="strategy-node"
+                >
+
+                    <strong>
+                        1
+                    </strong>
+
+                    <span>
+                        OFFSITE
+                    </span>
+
+                    <small>
+                        Keep at least one copy separated from the primary location.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 06 — RECOVERY PRACTICE
+        ======================================= -->
+
+        <article
+            id="recoveryPractice"
+            class="practice-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-clipboard-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        RECOVERY PRACTICE
+                    </span>
+
+                    <strong>
+                        Validate the recovery process before an incident
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="practice-grid">
+
+                <div
+                    id="practiceOne"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                    <strong>
+                        Schedule
+                    </strong>
+
+                    <small>
+                        Define backup frequency and retention.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="practiceTwo"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-vial"></i>
+
+                    <strong>
+                        Test
+                    </strong>
+
+                    <small>
+                        Perform restoration tests regularly.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="practiceThree"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+
+                    <strong>
+                        Measure
+                    </strong>
+
+                    <small>
+                        Confirm recovery meets the required objectives.
+                    </small>
+
+                </div>
+
+
+                <div
+                    id="practiceFour"
+                    class="practice-node"
+                >
+
+                    <i class="fa-solid fa-file-shield"></i>
+
+                    <strong>
+                        Document
+                    </strong>
+
+                    <small>
+                        Record procedures and recovery results.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 07 — EXAM MEMORY
+        ======================================= -->
+
+        <article
+            id="examMemory"
+            class="memory-card"
+        >
+
+            <div class="memory-icon">
+
+                <i class="fa-solid fa-brain"></i>
+
+            </div>
+
+            <div class="memory-content">
+
+                <span>
+                    EXAM MEMORY
+                </span>
+
+                <h2>
+                    Backups are not recovery until restoration is proven.
+                </h2>
+
+                <p>
+                    Remember the difference between creating a backup and
+                    demonstrating that the organization can successfully
+                    restore the required data within its recovery objectives.
+                </p>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 08 — SUMMARY
+        ======================================= -->
+
+        <article
+            id="sceneSummary"
+            class="summary-card"
+        >
+
+            <header class="content-header">
+
+                <div class="detail-icon">
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                </div>
+
+                <div>
+
+                    <span>
+                        SCENE SUMMARY
+                    </span>
+
+                    <strong>
+                        Four ideas to remember
+                    </strong>
+
+                </div>
+
+            </header>
+
+
+            <div class="summary-grid">
+
+                <div>
+
+                    <i class="fa-solid fa-database"></i>
+
+                    <span>
+                        Backup Types
+                    </span>
+
+                    <strong>
+                        Full, incremental, differential, and snapshots serve different purposes.
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-arrows-rotate"></i>
+
+                    <span>
+                        Restoration
+                    </span>
+
+                    <strong>
+                        Backups must be tested to prove recovery works.
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+                    <span>
+                        Protection
+                    </span>
+
+                    <strong>
+                        Isolate and protect backups from the threats affecting production systems.
+                    </strong>
+
+                </div>
+
+
+                <div>
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+                    <span>
+                        Strategy
+                    </span>
+
+                    <strong>
+                        Multiple copies and locations improve recoverability.
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <!-- ======================================
+             ACT 09 — FINAL CONCEPT
+        ======================================= -->
+
+        <article
+            id="finalConcept"
+            class="final-concept"
+        >
+
+            <span>
+                AKWIRE SECURITY+ CORE CONCEPT
+            </span>
+
+            <h2>
+                A backup is valuable only when it can be trusted and restored.
+            </h2>
+
+            <p>
+                Build layered backups, protect recovery copies, test restoration,
+                and measure recovery against the organization's objectives.
+            </p>
+
+        </article>
+
+    </section>
+
+
+    <!-- ==========================================
+         CONTROLS
+    =========================================== -->
+
+    <div class="scene-controls">
+
+        <button
+            id="startSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-play"></i>
+
+            Start Scene
+
+        </button>
+
+
+        <button
+            id="restartSceneBtn"
+            type="button"
+        >
+
+            <i class="fas fa-rotate-right"></i>
+
+            Restart
+
+        </button>
+
+    </div>
+
+
+    <!-- ==========================================
+         TIMELINE
+    =========================================== -->
+
+    <div class="scene-timeline">
+
+        <div class="timeline-track">
+
+            <div
+                id="timelineProgress"
+                class="timeline-progress"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<script src="scene-39.js"></script>
+
+</body>
+
+</html>
