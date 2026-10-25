@@ -1,198 +1,194 @@
-// ============================================
-// AKWIRE LAB ENGINE v2
-// Virtual File System
-// ============================================
+
+/* ============================================
+   AKWIRE LAB ENGINE v2
+   Virtual File System
+============================================ */
 
 export class VirtualFileSystem {
-
     constructor() {
-
         this.currentPath = "/home/analyst";
-
         this.fs = {};
-
     }
-
-    // ----------------------------------------
-    // Load a filesystem for the current lab
-    // ----------------------------------------
 
     load(filesystem) {
-
-        this.fs = filesystem;
+        this.fs = filesystem || {};
         this.currentPath = "/home/analyst";
-
     }
 
-    // ----------------------------------------
-    // Current Working Directory
-    // ----------------------------------------
+    normalizePath(path) {
+        if (!path || path === ".") {
+            return this.currentPath;
+        }
 
-    pwd() {
+        const parts = path.startsWith("/")
+            ? []
+            : this.currentPath.split("/").filter(Boolean);
 
-        return this.currentPath;
+        const requestedParts = path.split("/").filter(Boolean);
 
+        for (const part of requestedParts) {
+            if (part === ".") continue;
+
+            if (part === "..") {
+                parts.pop();
+            } else {
+                parts.push(part);
+            }
+        }
+
+        return "/" + parts.join("/");
     }
 
-    // ----------------------------------------
-    // Resolve Current Directory Object
-    // ----------------------------------------
-
-    getCurrentDirectory() {
-
-        const parts = this.currentPath
-            .split("/")
-            .filter(Boolean);
+    getNode(path = this.currentPath) {
+        const normalized = this.normalizePath(path);
+        const parts = normalized.split("/").filter(Boolean);
 
         let node = this.fs;
 
         for (const part of parts) {
-
-            if (!node[part])
+            if (
+                node === null ||
+                typeof node !== "object" ||
+                !Object.prototype.hasOwnProperty.call(node, part)
+            ) {
                 return null;
+            }
 
             node = node[part];
-
         }
 
         return node;
-
     }
 
-    // ----------------------------------------
-    // List Files
-    // ----------------------------------------
-
-    ls() {
-
-        const dir = this.getCurrentDirectory();
-
-        if (!dir)
-            return "Directory not found.";
-
-        return Object.keys(dir).join("    ");
-
+    pwd() {
+        return this.currentPath;
     }
 
-    // ----------------------------------------
-    // Change Directory
-    // ----------------------------------------
+    getCurrentDirectory() {
+        return this.getNode(this.currentPath);
+    }
+
+    ls(path = this.currentPath) {
+        const target = this.getNode(path);
+
+        if (target === null) {
+            return `ls: cannot access '${path}': No such file or directory`;
+        }
+
+        if (typeof target === "string") {
+            return `ls: ${path}: Not a directory`;
+        }
+
+        const entries = Object.keys(target);
+
+        return entries.length
+            ? entries.join("    ")
+            : "Directory is empty.";
+    }
 
     cd(folder) {
-
-        if (!folder)
+        if (!folder || folder === ".") {
             return this.currentPath;
-
-        if (folder === "..") {
-
-            const parts = this.currentPath
-                .split("/")
-                .filter(Boolean);
-
-            if (parts.length > 1)
-                parts.pop();
-
-            this.currentPath = "/" + parts.join("/");
-
-            return this.currentPath;
-
         }
 
-        const dir = this.getCurrentDirectory();
+        const targetPath = this.normalizePath(folder);
+        const target = this.getNode(targetPath);
 
-        if (!dir[folder]) {
-
+        if (target === null) {
             return `cd: ${folder}: No such directory`;
-
         }
 
-        if (typeof dir[folder] === "string") {
-
+        if (typeof target === "string") {
             return `cd: ${folder}: Not a directory`;
-
         }
 
-        this.currentPath += "/" + folder;
-
+        this.currentPath = targetPath;
         return this.currentPath;
-
     }
-
-    // ----------------------------------------
-    // Read File
-    // ----------------------------------------
 
     cat(file) {
-
-        const dir = this.getCurrentDirectory();
-
-        if (!dir[file])
-            return `cat: ${file}: No such file`;
-
-        if (typeof dir[file] !== "string")
-            return `cat: ${file}: Is a directory`;
-
-        return dir[file];
-
-    }
-
-    // ----------------------------------------
-    // Search File
-    // ----------------------------------------
-
-    grep(keyword, file) {
-
-        const text = this.cat(file);
-
-        if (text.startsWith("cat:"))
-            return text;
-
-        const lines = text
-            .split("\n")
-            .filter(line =>
-                line.toLowerCase()
-                .includes(keyword.toLowerCase())
-            );
-
-        return lines.length
-            ? lines.join("\n")
-            : "No matches.";
-
-    }
-
-    // ----------------------------------------
-    // Recursive Find
-    // ----------------------------------------
-
-    find(name) {
-
-        const results = [];
-
-        function search(node, path) {
-
-            Object.keys(node).forEach(key => {
-
-                const nextPath = path + "/" + key;
-
-                if (key === name)
-                    results.push(nextPath);
-
-                if (typeof node[key] === "object") {
-
-                    search(node[key], nextPath);
-
-                }
-
-            });
-
+        if (!file) {
+            return "cat: missing file operand";
         }
 
-        search(this.fs, "");
+        const targetPath = this.normalizePath(file);
+        const target = this.getNode(targetPath);
+
+        if (target === null) {
+            return `cat: ${file}: No such file or directory`;
+        }
+
+        if (typeof target !== "string") {
+            return `cat: ${file}: Is a directory`;
+        }
+
+        return target;
+    }
+
+    grep(keyword, file) {
+        if (!keyword || !file) {
+            return "Usage: grep <keyword> <file>";
+        }
+
+        const content = this.cat(file);
+
+        if (
+            content.startsWith("cat:") ||
+            content.startsWith("Usage:")
+        ) {
+            return content;
+        }
+
+        const matches = content
+            .split("\n")
+            .filter(line =>
+                line.toLowerCase().includes(keyword.toLowerCase())
+            );
+
+        return matches.length
+            ? matches.join("\n")
+            : "No matches found.";
+    }
+
+    find(name, startPath = "/") {
+        if (!name) {
+            return "Usage: find <name>";
+        }
+
+        const results = [];
+        const startNode = this.getNode(startPath);
+
+        if (startNode === null || typeof startNode !== "object") {
+            return `find: '${startPath}': No such directory`;
+        }
+
+        const normalizedStart = this.normalizePath(startPath);
+
+        const search = (node, currentPath) => {
+            if (!node || typeof node !== "object") {
+                return;
+            }
+
+            for (const key of Object.keys(node)) {
+                const nextPath =
+                    currentPath === "/"
+                        ? `/${key}`
+                        : `${currentPath}/${key}`;
+
+                if (key === name) {
+                    results.push(nextPath);
+                }
+
+                if (typeof node[key] === "object" && node[key] !== null) {
+                    search(node[key], nextPath);
+                }
+            }
+        };
+
+        search(startNode, normalizedStart);
 
         return results.length
             ? results.join("\n")
-            : "No files found.";
-
+            : `find: '${name}': No matching files found`;
     }
-
 }

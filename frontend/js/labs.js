@@ -236,8 +236,15 @@ async function fetchLabFromBackend(labID) {
 // Initialize Lab Modules
 // ------------------------------
 
-    if (fileSystems[labID]) {
-        vfs.load(fileSystems[labID]);
+    // Load this lab's filesystem.
+    // Reset it when the lab has no configured filesystem.
+    vfs.load(fileSystems[labID] || {});
+
+    if (!terminalEngine) {
+        terminalEngine = new TerminalEngine(
+            vfs,
+            document.getElementById("lab-terminal")
+        );
     }
 
     mentor.loadLab(data);
@@ -610,6 +617,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     const hText = document.getElementById('hint-text');
     const tInput = document.getElementById('terminal-input');
     const tBody = document.getElementById('lab-terminal');
+    
+    // Initialize the terminal engine once
+    terminalEngine = new TerminalEngine(vfs, tBody);
 
     // Load labs
     const labs = await loadLabMenu();
@@ -673,83 +683,100 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     }
 
+
     // ==========================
     // TERMINAL ENGINE
     // ==========================
+
     if (tInput) {
+        tInput.addEventListener("keydown", (e) => {
+            if (e.key !== "Enter") return;
 
-        tInput.addEventListener('keydown', (e) => {
+            e.preventDefault();
 
-            if (e.key === 'Enter') {
-                console.log("ENTER PRESSED");
+            const cmd = tInput.value.trim();
+            if (!cmd) return;
 
-                const cmd = tInput.value.trim();
-                console.log(cmd);
+            const inputLine = tInput.parentElement;
+            const lab = masterLabs[currentLabID];
+            const clean = cmd.toLowerCase();
 
-            if (cmd) {
+            // Display the entered command safely.
+            const commandLine = document.createElement("div");
+            commandLine.className = "log-entry";
 
-                const line = document.createElement("div");
-                line.innerHTML = `<span class="prompt">#</span> ${cmd}`;
-                tBody.insertBefore(line, tInput.parentElement);
+            const prompt = document.createElement("span");
+            prompt.className = "prompt";
+            prompt.textContent = "# ";
 
-                console.log("currentLabID:", currentLabID);
-                console.log("masterLabs:", masterLabs);
-                console.log("masterLabs[currentLabID]:", masterLabs[currentLabID]);
+            commandLine.appendChild(prompt);
+            commandLine.appendChild(
+                document.createTextNode(cmd)
+            );
 
-                const lab = masterLabs[currentLabID];
-                const clean = cmd.toLowerCase();
+            tBody.insertBefore(commandLine, inputLine);
 
-                if (lab.scenarios && lab.scenarios[clean]) {
+            // Clear previous terminal output but preserve the input.
+            if (clean === "clear") {
+                Array.from(tBody.children).forEach((element) => {
+                    if (
+                        element !== inputLine &&
+                        !element.contains(inputLine)
+                    ) {
+                        element.remove();
+                    }
+                });
 
-                    const resp = document.createElement("div");
-                    resp.className = "log-entry";
-                    resp.innerHTML = lab.scenarios[clean].replace(/\n/g, "<br>");
+                tInput.value = "";
+                tBody.scrollTop = tBody.scrollHeight;
+                return;
+            }
 
-                    tBody.insertBefore(resp, tInput.parentElement);
+            // Preserve existing scenario-based lab behavior.
+            if (lab && lab.scenarios && lab.scenarios[clean]) {
+                const response = document.createElement("div");
+                response.className = "log-entry";
+                response.textContent = lab.scenarios[clean];
 
-                    lab.tasks.forEach(t => {
+                tBody.insertBefore(response, inputLine);
 
-                        console.log("Task:", t);
-                        console.log("Command(s):", t.cmd);
+                // Preserve existing objective completion checks.
+                if (Array.isArray(lab.tasks)) {
+                    lab.tasks.forEach((task) => {
+                        const commands = Array.isArray(task.cmd)
+                            ? task.cmd
+                            : [task.cmd];
 
-                        const commands = Array.isArray(t.cmd)
-                            ? t.cmd
-                            : [t.cmd];
-
-                        console.log("Normalized commands:", commands);
-
-                        const matched = commands.some(command => {
-                            console.log("Comparing:", `"${clean}"`, "==", `"${command.toLowerCase()}"`);
-                            return clean === command.toLowerCase();
-                        });
-
-                        console.log("Matched:", matched);
+                        const matched = commands.some((command) =>
+                            typeof command === "string" &&
+                            clean === command.toLowerCase()
+                        );
 
                         if (matched) {
-                            console.log(">>> markComplete called");
-                            markComplete(t);
+                            markComplete(task);
                         }
-
                     });
-
-                } else {
-
-                    const error = document.createElement("div");
-                    error.style.color = "#ef4444";
-                    error.innerText = `bash: ${cmd}: command not found`;
-
-                    tBody.insertBefore(error, tInput.parentElement);
-
                 }
+            } else {
+                // Run supported virtual terminal commands.
+                const output = terminalEngine
+                    ? terminalEngine.execute(cmd)
+                    : "Terminal engine is not initialized.";
 
-            }
-                
+                if (output) {
+                    const response = document.createElement("div");
+                    response.className = "log-entry";
+                    response.textContent = String(output);
 
-                tInput.value = '';
-                tBody.scrollTop = tBody.scrollHeight;
+                    tBody.insertBefore(response, inputLine);
+                }
             }
+
+            tInput.value = "";
+            tBody.scrollTop = tBody.scrollHeight;
         });
     }
+
 
 });
 
