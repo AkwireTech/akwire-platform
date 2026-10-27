@@ -454,26 +454,63 @@ function markComplete(task) {
 // ANSWER CHECK
 // ==============================
 
+
 window.checkAns = function(correct) {
+    const answerInput = document.getElementById("analysis-ans");
+    const feedback = document.getElementById("ans-feedback");
 
-    const val = document.getElementById('analysis-ans').value.toLowerCase().trim();
-    const fb = document.getElementById('ans-feedback');
+    if (!answerInput || !feedback) return;
 
-    if (val.includes(correct.toLowerCase())) {
+    const normalize = (value) =>
+        String(value || "")
+            .toLowerCase()
+            .trim()
+            .replace(/\s+/g, " ");
 
-        fb.innerHTML = "<span style='color:#22c55e;'>✓ Logic Confirmed.</span>";
+    const val = normalize(answerInput.value);
+    const expected = normalize(correct);
 
-        if (completedTasks === masterLabs[currentLabID].tasks.length) {
+    if (!val) {
+        feedback.textContent = "Please enter an answer.";
+        feedback.style.color = "#facc15";
+        return;
+    }
+
+    // Prevent repeated scoring for the same question.
+    if (answerInput.dataset.answered === "correct") {
+        feedback.textContent = "This question has already been answered correctly.";
+        feedback.style.color = "#22c55e";
+        return;
+    }
+
+    if (val === expected) {
+        answerInput.dataset.answered = "correct";
+        answerInput.disabled = true;
+
+        feedback.textContent = "✓ Correct. Analysis confirmed.";
+        feedback.style.color = "#22c55e";
+
+        const lab = masterLabs[currentLabID];
+
+        if (
+            lab &&
+            completedTasks === lab.tasks.length
+        ) {
             finalizeLab();
         }
-
     } else {
+        // Deduct points only once per incorrect submission
+        // for this question.
+        if (answerInput.dataset.penaltyApplied !== "true") {
+            score = Math.max(0, score - 5);
+            answerInput.dataset.penaltyApplied = "true";
+        }
 
-        fb.innerHTML = "<span style='color:#ef4444;'>✗ Incorrect. Examine data.</span>";
-        score -= 5;
-
+        feedback.textContent = "✗ Incorrect. Review the evidence and try again.";
+        feedback.style.color = "#ef4444";
     }
 };
+
 
 
 // ==============================
