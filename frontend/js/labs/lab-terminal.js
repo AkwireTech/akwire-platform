@@ -13,10 +13,10 @@ export class TerminalEngine {
     }
 
     print(text = "") {
+        if (!this.terminal) return;
+
         const line = document.createElement("div");
         line.className = "log-entry";
-
-        // Display output as text rather than interpreting it as HTML.
         line.textContent = String(text);
         line.style.whiteSpace = "pre-wrap";
 
@@ -57,8 +57,9 @@ export class TerminalEngine {
                     "ls [path]           List files and directories",
                     "cd <path>           Change directory",
                     "cat <file>          Display file contents",
-                    "grep <word> <file>  Search file contents",
+                    "grep [-i] <word> <file>  Search file contents",
                     "find <name>         Find a file or directory",
+                    "nmap -sv <target>   Simulated service scan",
                     "history             Show command history",
                     "clear               Clear terminal output",
                     "help                Show available commands"
@@ -76,12 +77,41 @@ export class TerminalEngine {
             case "cat":
                 return this.vfs.cat(params.join(" "));
 
-            case "grep":
-                if (params.length < 2) {
-                    return "Usage: grep <keyword> <file>";
+            case "grep": {
+                let ignoreCase = false;
+                let searchParams = [...params];
+
+                if (searchParams[0] === "-i") {
+                    ignoreCase = true;
+                    searchParams.shift();
                 }
 
-                return this.vfs.grep(params[0], params.slice(1).join(" "));
+                if (searchParams.length < 2) {
+                    return "Usage: grep [-i] <keyword> <file>";
+                }
+
+                const keyword = searchParams.shift();
+                const filename = searchParams.join(" ");
+                const content = this.vfs.cat(filename);
+
+                if (
+                    content.startsWith("cat:") ||
+                    content.startsWith("Usage:")
+                ) {
+                    return content;
+                }
+
+                const lines = content.split("\n");
+                const matches = lines.filter(line =>
+                    ignoreCase
+                        ? line.toLowerCase().includes(keyword.toLowerCase())
+                        : line.includes(keyword)
+                );
+
+                return matches.length
+                    ? matches.join("\n")
+                    : "No matches found.";
+            }
 
             case "find":
                 if (!params[0]) {
@@ -89,6 +119,30 @@ export class TerminalEngine {
                 }
 
                 return this.vfs.find(params[0]);
+
+            case "nmap": {
+                const target = params[params.length - 1];
+
+                if (!params.includes("-sv") || !target) {
+                    return "Usage: nmap -sv <target>";
+                }
+
+                // Simulated scan for this training lab only.
+                if (target === "localhost") {
+                    return [
+                        "Starting simulated service scan...",
+                        "Target: localhost",
+                        "",
+                        "PORT   STATE SERVICE",
+                        "21/tcp open  ftp",
+                        "22/tcp open  ssh",
+                        "",
+                        "Scan complete."
+                    ].join("\n");
+                }
+
+                return `Simulated scan: no scan data configured for ${target}.`;
+            }
 
             case "history":
                 return this.history.length
