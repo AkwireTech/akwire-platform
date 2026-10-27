@@ -517,129 +517,122 @@ window.checkAns = function(correct) {
 // FINAL RESULT
 // ==============================
 
+
 function finalizeLab() {
-
-    const tBody = document.getElementById('lab-terminal');
-
-    terminalEngine = new TerminalEngine(vfs, tBody);
-
+    const tBody = document.getElementById("lab-terminal");
     const lab = masterLabs[currentLabID];
-    const totalTasks = lab.tasks.length;
 
-    const res = document.createElement('div');
-
-    res.innerHTML = `
-        <div style="border:2px solid #22c55e; padding:20px; text-align:center; background: rgba(34,197,94,0.1);">
-            <h3 style="color:#22c55e">MISSION SUCCESS</h3>
-            <p>SCORE: ${score}%</p>
-            <button onclick="location.reload()">RESTART</button>
-        </div>`;
-
-    tBody.appendChild(res);
-
-    // SAVE RESULT (FIXED)
-    saveLabResult(totalTasks);
-    loadLabMenu(); // 🔥 refresh dropdown after completion
-}
-
-async function saveLabResult(totalTasks) {
-
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (!user || !user._id) {
-        window.location.href = "login.html";
+    if (!tBody || !lab || !Array.isArray(lab.tasks)) {
+        console.error("Cannot finalize lab: lab data is missing.");
         return;
     }
 
-    console.log("Saving lab result...");
-
-    try {
-
-        const res = await fetch(
-            "https://akwire-api.onrender.com/api/labs/complete",
-            {
-                method: "POST",
-                credentials: "include",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    labId: currentLabID,
-                    score: score,
-                    completedTasks: completedTasks,
-                    totalTasks: totalTasks
-                })
-            }
-        );
-
-        const data = await res.json();
-
-        console.log("Saved:", data);
-
-    } catch (err) {
-        console.error("Save failed:", err);
+    // Prevent duplicate completion and duplicate result submissions.
+    if (tBody.dataset.labFinalized === "true") {
+        return;
     }
-}
 
-async function loadDashboard(userId) {
-    try {
-        const res = await fetch(`https://akwire-api.onrender.com/api/dashboard/lab-dashboard/${userId}`)
-        const data = await res.json();
+    tBody.dataset.labFinalized = "true";
 
-        console.log("Dashboard data:", data);
+    const totalTasks = lab.tasks.length;
 
-        // 🔥 FORCE UPDATE (VISIBLE CHANGE)
-        const totalLabsEl = document.getElementById("totalLabs");
-        const avgScoreEl = document.getElementById("avgScore");
-        const completedLabsEl = document.getElementById("completedLabs");
-        const progressEl = document.getElementById("progress");
+    const report = currentLabID === "lab-04"
+        ? {
+            title: "INCIDENT REPORT",
+            findings: [
+                ["Incident", "Suspected SSH brute-force activity"],
+                ["Source IP", "192.168.15.201"],
+                ["Target service", "SSH (port 22)"],
+                ["Additional exposed service", "FTP (port 21), according to the simulated scan"],
+                ["Authentication evidence", "284 failed attempts reported in the lab evidence"],
+                ["Credential exposure", "A password entry was found in secret_notes.txt"]
+            ],
+            recommendations: [
+                "Restrict SSH access to authorized source addresses.",
+                "Disable root SSH login and review password-based authentication settings.",
+                "Disable FTP if it is not required and use a secure alternative where appropriate.",
+                "Remove exposed credentials, rotate affected passwords, and store secrets securely.",
+                "Review firewall rules and authentication logs for further suspicious activity."
+            ]
+        }
+        : null;
 
-        console.log({
-            totalLabsEl,
-            avgScoreEl,
-            completedLabsEl,
-            progressEl
+    const container = document.createElement("section");
+    container.className = "lab-final-report";
+    container.style.cssText = [
+        "border:2px solid #22c55e",
+        "padding:20px",
+        "margin:16px 0",
+        "background:rgba(34,197,94,0.08)",
+        "color:inherit",
+        "text-align:left"
+    ].join(";");
+
+    const heading = document.createElement("h3");
+    heading.textContent = "MISSION SUCCESS";
+    heading.style.color = "#22c55e";
+    container.appendChild(heading);
+
+    const scoreText = document.createElement("p");
+    scoreText.textContent = `FINAL SCORE: ${score}%`;
+    container.appendChild(scoreText);
+
+    if (report) {
+        const reportHeading = document.createElement("h4");
+        reportHeading.textContent = report.title;
+        container.appendChild(reportHeading);
+
+        const findingsList = document.createElement("ul");
+
+        report.findings.forEach(([label, detail]) => {
+            const item = document.createElement("li");
+            const strong = document.createElement("strong");
+
+            strong.textContent = `${label}: `;
+            item.appendChild(strong);
+            item.appendChild(document.createTextNode(detail));
+            findingsList.appendChild(item);
         });
 
-        if (totalLabsEl) {
-            totalLabsEl.textContent = data.totalLabs;
-        }
+        container.appendChild(findingsList);
 
-        if (avgScoreEl) {
-            avgScoreEl.textContent = data.avgScore.toFixed(1);
-        }
+        const recommendationHeading = document.createElement("h4");
+        recommendationHeading.textContent = "RECOMMENDED REMEDIATION";
+        container.appendChild(recommendationHeading);
 
-        if (completedLabsEl) {
-            completedLabsEl.textContent = data.completedLabs;
-        }
+        const recommendationsList = document.createElement("ol");
 
-        if (progressEl) {
-            progressEl.textContent =
-                data.progress.toFixed(1) + "%";
-        }
+        report.recommendations.forEach((recommendation) => {
+            const item = document.createElement("li");
+            item.textContent = recommendation;
+            recommendationsList.appendChild(item);
+        });
 
-        // 🔥 DEBUG (to prove it's working)
+        container.appendChild(recommendationsList);
 
-        if (
-            data.results &&
-            data.results.length > 0 &&
-            typeof renderCharts === "function"
-        ) {
-            renderCharts(data.results);
-        }
-
-        if (
-            data.results &&
-            data.results.length > 0 &&
-            typeof generateInsights === "function"
-        ) {
-            generateInsights(data.results);
-        }
-
-    } catch (err) {
-        console.error("Dashboard error:", err);
+        const note = document.createElement("p");
+        note.textContent =
+            "Training note: Port scan results are simulated. " +
+            "The lab evidence does not independently establish that encryption failed.";
+        note.style.color = "#facc15";
+        container.appendChild(note);
     }
+
+    const restartButton = document.createElement("button");
+    restartButton.type = "button";
+    restartButton.textContent = "RESTART";
+    restartButton.addEventListener("click", () => {
+        window.location.reload();
+    });
+
+    container.appendChild(restartButton);
+    tBody.appendChild(container);
+
+    // Preserve the existing backend save and lab menu refresh.
+    saveLabResult(totalTasks);
+    loadLabMenu();
 }
+
 
 // ==============================
 // MAIN INIT (FIXED + HINT FIX)
