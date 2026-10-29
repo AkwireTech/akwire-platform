@@ -3,9 +3,13 @@ import Lab from "../models/Lab.js";
 // =============================
 // GET ALL LABS (for dashboard)
 // =============================
+
 export const getLabs = async (req, res) => {
   try {
-    const labs = await Lab.find().sort({ order: 1 });
+    const labs = await Lab.find()
+      .sort({ order: 1 })
+      .select("-tasks.answer")
+      .lean();
 
     res.json(labs);
   } catch (err) {
@@ -13,25 +17,34 @@ export const getLabs = async (req, res) => {
   }
 };
 
+
 // =============================
 // GET SINGLE LAB (FOR TERMINAL ENGINE)
 // =============================
+
 export const getLabById = async (req, res, next) => {
   try {
     const { id } = req.params;
 
-    const lab = await Lab.findOne({ labId: id });
+    const lab = await Lab.findOne({ labId: id }).lean();
 
     if (!lab) {
       return res.status(404).json({ message: "Lab not found" });
     }
 
-    res.json(lab);
+    // Never send correct answers to the student browser.
+    const safeLab = {
+      ...lab,
+      tasks: (lab.tasks || []).map(({ answer, ...task }) => task)
+    };
+
+    res.json(safeLab);
 
   } catch (error) {
     next(error);
   }
 };
+
 
 // =============================
 // CREATE LAB (ADMIN)

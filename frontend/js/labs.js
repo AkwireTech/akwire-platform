@@ -439,7 +439,7 @@ function markComplete(task) {
                     padding:6px;
                 ">
 
-            <button onclick="checkAns('${task.answer}')">
+            <button onclick="checkAns('${task.id}')">
                 Submit
             </button>
 
@@ -454,62 +454,79 @@ function markComplete(task) {
 // ANSWER CHECK
 // ==============================
 
-
-window.checkAns = function(correct) {
+window.checkAns = async function(taskId) {
     const answerInput = document.getElementById("analysis-ans");
     const feedback = document.getElementById("ans-feedback");
 
     if (!answerInput || !feedback) return;
 
-    const normalize = (value) =>
-        String(value || "")
-            .toLowerCase()
-            .trim()
-            .replace(/\s+/g, " ");
+    const answer = answerInput.value.trim();
 
-    const val = normalize(answerInput.value);
-    const expected = normalize(correct);
-
-    if (!val) {
+    if (!answer) {
         feedback.textContent = "Please enter an answer.";
         feedback.style.color = "#facc15";
         return;
     }
 
-    // Prevent repeated scoring for the same question.
     if (answerInput.dataset.answered === "correct") {
         feedback.textContent = "This question has already been answered correctly.";
         feedback.style.color = "#22c55e";
         return;
     }
 
-    if (val === expected) {
-        answerInput.dataset.answered = "correct";
-        answerInput.disabled = true;
+    answerInput.disabled = true;
 
-        feedback.textContent = "✓ Correct. Analysis confirmed.";
-        feedback.style.color = "#22c55e";
+    try {
+        const response = await fetch(
+            `https://akwire-api.onrender.com/api/labs/${encodeURIComponent(currentLabID)}/validate-answer`,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    taskId,
+                    answer
+                })
+            }
+        );
 
-        const lab = masterLabs[currentLabID];
+        const result = await response.json();
 
-        if (
-            lab &&
-            completedTasks === lab.tasks.length
-        ) {
-            finalizeLab();
+        if (!response.ok) {
+            throw new Error(result.message || "Answer validation failed.");
         }
-    } else {
-        // Deduct points only once per incorrect submission
-        // for this question.
-        if (answerInput.dataset.penaltyApplied !== "true") {
-            score = Math.max(0, score - 5);
-            answerInput.dataset.penaltyApplied = "true";
-        }
 
-        feedback.textContent = "✗ Incorrect. Review the evidence and try again.";
+        if (result.correct) {
+            answerInput.dataset.answered = "correct";
+            feedback.textContent = "✓ Correct. Analysis confirmed.";
+            feedback.style.color = "#22c55e";
+
+            const lab = masterLabs[currentLabID];
+
+            if (lab && completedTasks === lab.tasks.length) {
+                finalizeLab();
+            }
+        } else {
+            if (answerInput.dataset.penaltyApplied !== "true") {
+                score = Math.max(0, score - 5);
+                answerInput.dataset.penaltyApplied = "true";
+            }
+
+            feedback.textContent =
+                result.message || "Incorrect. Review the evidence and try again.";
+            feedback.style.color = "#ef4444";
+            answerInput.disabled = false;
+        }
+    } catch (error) {
+        console.error("Answer validation failed:", error);
+        feedback.textContent = "Unable to validate your answer. Please try again.";
         feedback.style.color = "#ef4444";
+        answerInput.disabled = false;
     }
 };
+
 
 // ==============================
 // SAVE LAB RESULT

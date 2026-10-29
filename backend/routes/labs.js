@@ -13,6 +13,52 @@ import LabResult from "../models/LabResult.js";
 
 const router = express.Router();
 
+
+/* ============================
+   VALIDATE LAB ANSWER
+============================ */
+router.post("/:labId/validate-answer", protect, async (req, res) => {
+  try {
+    const { labId } = req.params;
+    const { taskId, answer } = req.body;
+
+    if (!taskId || typeof answer !== "string" || !answer.trim()) {
+      return res.status(400).json({
+        message: "Task ID and answer are required."
+      });
+    }
+
+    const lab = await Lab.findOne({ labId }).select("tasks");
+
+    if (!lab) {
+      return res.status(404).json({ message: "Lab not found." });
+    }
+
+    const task = lab.tasks.find(item => item.id === taskId);
+
+    if (!task) {
+      return res.status(404).json({ message: "Task not found." });
+    }
+
+    const normalize = value =>
+      String(value || "").trim().toLowerCase().replace(/\s+/g, " ");
+
+    const correct = normalize(answer) === normalize(task.answer);
+
+    return res.json({
+      correct,
+      message: correct
+        ? "Correct. Analysis confirmed."
+        : "Incorrect. Review the evidence and try again."
+    });
+
+  } catch (error) {
+    console.error("Answer validation failed:", error);
+    res.status(500).json({ message: "Unable to validate answer." });
+  }
+});
+
+
 /* ============================
    🔥 SAVE LAB RESULT (NEW)
 ============================ */
