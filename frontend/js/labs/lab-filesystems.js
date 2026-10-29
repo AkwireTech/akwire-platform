@@ -91,5 +91,42 @@ Recommended checks:
         `
                 }
             }
+        },
+
+    "lab-05": {
+    home: {
+        analyst: {
+            "suspicious.bin": `
+SIMULATED MALWARE SAMPLE
+wallet_address=abc123xyz
+mining_pool=darkpool.net
+cpu_usage=100%
+`,
+            "notes.txt": `
+Malware Investigation Notes
+
+A workstation has been flagged for suspicious activity.
+A process named cryptominer is consuming excessive CPU.
+Investigate possible cryptocurrency mining and persistence.
+`,
+            logs: {
+                "process.log": `
+root   1023  cryptominer --silent --cpu-max=100
+user   2045  firefox
+user   2101  ssh
+`,
+                "persistence.log": `
+Scheduled task detected:
+* * * * * root /usr/bin/suspicious.bin
+`
+            },
+            etc: {
+                crontab: `
+# Simulated scheduled tasks
+* * * * * root /usr/bin/suspicious.bin
+`
+            }
         }
+    }
+}
 };
