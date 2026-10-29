@@ -69,5 +69,27 @@ Recommended checks:
                 }
             }
         }
-    }
+    },
+
+    "SEC001": {
+            home: {
+                analyst: {
+                    "firewall.txt": `
+        Firewall Review
+        Network traffic filtering is enabled.
+        Control type: Technical
+        `,
+                    "password_policy.txt": `
+        Password Policy Review
+        Users must create strong passwords.
+        Control type: Administrative
+        `,
+                    "security_camera.txt": `
+        Security Camera Review
+        Cameras are installed at facility entrances.
+        Control type: Physical
+        `
+                }
+            }
+        }
 };
