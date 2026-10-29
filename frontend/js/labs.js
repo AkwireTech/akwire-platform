@@ -511,6 +511,60 @@ window.checkAns = function(correct) {
     }
 };
 
+// ==============================
+// SAVE LAB RESULT
+// ==============================
+
+async function saveLabResult(totalTasks) {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user || !user._id) {
+        console.error("Cannot save lab result: user not found.");
+        return;
+    }
+
+    const lab = masterLabs[currentLabID];
+
+    if (!lab) {
+        console.error("Cannot save lab result: lab data not found.");
+        return;
+    }
+
+    try {
+        const response = await fetch(
+            "https://akwire-api.onrender.com/api/labs/complete",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                credentials: "include",
+                body: JSON.stringify({
+                    labId: currentLabID,
+                    score: score,
+                    completedTasks: totalTasks,
+                    totalTasks: lab.tasks.length
+                })
+            }
+        );
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.error || result.message || "Failed to save lab result.");
+        }
+
+        console.log("Lab result saved:", result);
+
+        // Refresh the lab menu after the backend processes the unlock.
+        await loadLabMenu();
+
+    } catch (error) {
+        console.error("Lab result save failed:", error);
+    }
+}
+
+
 
 
 // ==============================
@@ -630,7 +684,6 @@ function finalizeLab() {
 
     // Preserve the existing backend save and lab menu refresh.
     saveLabResult(totalTasks);
-    loadLabMenu();
 }
 
 
