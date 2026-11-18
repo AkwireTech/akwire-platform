@@ -329,7 +329,16 @@ function loadLab(labID) {
     hintIndex = 0;
 
     document.getElementById('briefing-header').innerText = `OPERATION: ${lab.title.toUpperCase()}`;
-    document.getElementById('briefing-body').innerHTML = lab.briefing;
+    document.getElementById('briefing-body').innerHTML = `
+    <p>${lab.briefing}</p>
+    ${lab.tasks.length > 0 ? `
+        <div class="analysis-question">
+            <strong>ANALYSIS QUESTION</strong>
+            <br><br>
+            ${lab.tasks[0].question}
+        </div>
+    ` : ""}
+`;
     const objectiveText = document.getElementById("objective-text");
 
         if (objectiveText) {
