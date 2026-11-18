@@ -314,6 +314,59 @@ async function loadLabMenu() {
 }
 
 
+function renderAnalysisQuestion(task, showAnswerForm = false) {
+    const briefingBody = document.getElementById("briefing-body");
+
+    if (!briefingBody || !task) return;
+
+    const panel = document.createElement("div");
+    panel.className = "analysis-question";
+    panel.style.cssText = `
+        background: rgba(250,204,21,.1);
+        border: 1px solid #facc15;
+        padding: 12px;
+        margin-top: 10px;
+    `;
+
+    const heading = document.createElement("strong");
+    heading.textContent = "ANALYSIS QUESTION";
+    heading.style.color = "#facc15";
+    panel.appendChild(heading);
+
+    const question = document.createElement("p");
+    question.textContent = task.question || "No question provided.";
+    panel.appendChild(question);
+
+    if (showAnswerForm) {
+        const input = document.createElement("input");
+        input.id = "analysis-ans";
+        input.type = "text";
+        input.autocomplete = "off";
+        input.style.cssText = `
+            background: #000;
+            color: #fff;
+            border: 1px solid #555;
+            padding: 6px;
+            width: 100%;
+            box-sizing: border-box;
+        `;
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.textContent = "Submit";
+        button.addEventListener("click", () => checkAns(task.id));
+
+        const feedback = document.createElement("div");
+        feedback.id = "ans-feedback";
+
+        panel.append(input, button, feedback);
+    }
+
+    briefingBody.appendChild(panel);
+}
+
+
+
 // ==============================
 // LOAD LAB INTO UI
 // ==============================
@@ -329,16 +382,19 @@ function loadLab(labID) {
     hintIndex = 0;
 
     document.getElementById('briefing-header').innerText = `OPERATION: ${lab.title.toUpperCase()}`;
-    document.getElementById('briefing-body').innerHTML = `
-    <p>${lab.briefing}</p>
-    ${lab.tasks.length > 0 ? `
-        <div class="analysis-question">
-            <strong>ANALYSIS QUESTION</strong>
-            <br><br>
-            ${lab.tasks[0].question}
-        </div>
-    ` : ""}
-`;
+    const briefingBody = document.getElementById("briefing-body");
+
+    if (briefingBody) {
+        briefingBody.innerHTML = "";
+
+        const briefing = document.createElement("p");
+        briefing.textContent = lab.briefing || "";
+        briefingBody.appendChild(briefing);
+
+        if (lab.tasks.length > 0) {
+            renderAnalysisQuestion(lab.tasks[0], false);
+        }
+    }
     const objectiveText = document.getElementById("objective-text");
 
         if (objectiveText) {
@@ -426,44 +482,16 @@ function markComplete(task) {
 
     const briefingBody = document.getElementById("briefing-body");
 
-    briefingBody.innerHTML = `
-        <p>${lab.briefing}</p>
+    if (briefingBody) {
+        briefingBody.innerHTML = "";
 
-        <div style="
-            background: rgba(250,204,21,.1);
-            border:1px solid #facc15;
-            padding:10px;
-            margin-top:10px;
-        ">
+        const briefing = document.createElement("p");
+        briefing.textContent = lab.briefing || "";
+        briefingBody.appendChild(briefing);
 
-            <strong style="color:#facc15">
-                ANALYSIS QUESTION
-            </strong>
-
-            <br><br>
-
-            ${task.question}
-
-            <br><br>
-
-            <input
-                id="analysis-ans"
-                type="text"
-                style="
-                    background:#000;
-                    color:#fff;
-                    border:1px solid #555;
-                    padding:6px;
-                ">
-
-            <button onclick="checkAns('${task.id}')">
-                Submit
-            </button>
-
-            <div id="ans-feedback"></div>
-
-        </div>
-    `;
+        renderAnalysisQuestion(task, true);
+    }
+   
 }
 
 
@@ -778,13 +806,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (hintIndex >= lab.hints.length) {
                 hintIndex = 0;
 
-                // ===================================
-                // NEW LAB ENGINE MODULES
-                // ===================================
-
-                const vfs = new VirtualFileSystem();
-
-                let terminalEngine = null;
             }
 
             hText.innerHTML = `
