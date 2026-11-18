@@ -225,6 +225,10 @@ async function fetchLabFromBackend(labID) {
     const data = await res.json();
 
     console.log("LAB DATA:", data);
+    console.log("Loaded Lab:", data.labId);
+console.log("Loaded Title:", data.title);
+console.log("Loaded Tasks:", data.tasks);
+console.log("Task Questions:", data.tasks?.map(task => task.question));
 
     masterLabs[labID] = data;
     currentLabID = labID;

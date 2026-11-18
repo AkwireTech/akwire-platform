@@ -181,6 +181,14 @@ Attachment Investigation
 A suspicious attachment was identified.
 The attachment requires isolated malware analysis.
 Do not execute it.
+`,
+
+"sender_analysis.txt": `
+Sender Investigation
+
+The sender domain contains a spelling variation.
+The message requests sensitive account information.
+Potential phishing indicators identified.
 `
         }
     }
