@@ -156,6 +156,34 @@ Traffic: 500MB outbound
 `
         }
     }
+},
+
+"lab-07": {
+    home: {
+        analyst: {
+            "suspicious_email.txt": `
+From: support@micr0soft-support.com
+To: employee@company.com
+Subject: Urgent Account Verification
+
+Your account requires immediate verification.
+Please verify your credentials using the provided link.
+`,
+            "malicious_link.txt": `
+URL: http://micr0soft-support.com/verify
+Destination: Fake Microsoft login portal
+Purpose: Credential harvesting
+Risk: HIGH
+`,
+            "attachment_report.txt": `
+Attachment Investigation
+
+A suspicious attachment was identified.
+The attachment requires isolated malware analysis.
+Do not execute it.
+`
+        }
+    }
 }
 
 
