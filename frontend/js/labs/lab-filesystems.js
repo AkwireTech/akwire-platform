@@ -158,7 +158,7 @@ Traffic: 500MB outbound
     }
 },
 
-"lab-07": {
+"SEC002": {
     home: {
         analyst: {
             "suspicious_email.txt": `
