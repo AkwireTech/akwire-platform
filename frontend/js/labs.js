@@ -236,6 +236,10 @@ async function fetchLabFromBackend(labID) {
 // Initialize Lab Modules
 // ------------------------------
 
+console.log("Current Lab ID:", labID);
+console.log("Filesystem Found:", !!fileSystems[labID]);
+console.log("Available Filesystems:", Object.keys(fileSystems));
+
     // Load this lab's filesystem.
     // Reset it when the lab has no configured filesystem.
     vfs.load(fileSystems[labID] || {});
