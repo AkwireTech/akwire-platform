@@ -128,5 +128,35 @@ Scheduled task detected:
             }
         }
     }
+},
+
+
+"lab-06": {
+    home: {
+        analyst: {
+            "traffic.log": `
+192.168.1.10 -> 203.0.113.5 TCP 443
+192.168.1.10 -> 203.0.113.5 TCP 443
+DATA TRANSFER: 500MB outbound
+ALERT: Possible data exfiltration
+`,
+            "dns.log": `
+Query: google.com
+Query: microsoft.com
+Query: malicious-domain.com
+ALERT: Suspicious DNS activity detected
+`,
+            "capture.pcap": `
+SIMULATED PACKET CAPTURE
+Source: 192.168.1.10
+Destination: 203.0.113.5
+Protocol: TCP
+Port: 443
+Traffic: 500MB outbound
+`
+        }
+    }
 }
-};
+
+
+},
