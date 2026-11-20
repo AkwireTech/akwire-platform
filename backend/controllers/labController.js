@@ -60,7 +60,10 @@ export const createLab = async (req, res, next) => {
       tasks,
       scenarios,
       filesystem,
-      hints
+      hints,
+      order,
+      level,
+      isUnlocked
     } = req.body;
 
     const lab = await Lab.create({
@@ -72,7 +75,10 @@ export const createLab = async (req, res, next) => {
       tasks,
       scenarios,
       filesystem,
-      hints
+      hints,
+      order,
+      level,
+      isUnlocked
     });
 
     res.status(201).json(lab);

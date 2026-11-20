@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Management | Akwire</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="admin-page">
+
+<div class="dashboard-wrapper">
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            <img src="images/logo.png" alt="Akwire">
+            <h2>Administrator</h2>
+            <p>Control Panel</p>
+        </div>
+
+        <ul>
+            <li>
+                <a href="admin-dashboard.html">
+                    <i class="fas fa-chart-line"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="dashboard.html">
+                    <i class="fas fa-user-graduate"></i>
+                    Student Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-house"></i>
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="create-course.html">
+                    <i class="fas fa-book"></i>
+                    Course Management
+                </a>
+            </li>
+
+            <li>
+                <a href="create-exam.html">
+                    <i class="fas fa-file-pen"></i>
+                    Exam Management
+                </a>
+            </li>
+
+            <li>
+                <a href="create-lab.html" class="active">
+                    <i class="fas fa-flask"></i>
+                    Lab Management
+                </a>
+            </li>
+
+            <li>
+                <a href="admin-users.html">
+                    <i class="fas fa-users"></i>
+                    User Management
+                </a>
+            </li>
+
+            <li>
+                <a href="reports.html">
+                    <i class="fas fa-chart-column"></i>
+                    Reports
+                </a>
+            </li>
+
+            <li>
+                <a href="settings.html">
+                    <i class="fas fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+            <li class="logout-link">
+                <a href="#" onclick="logout()">
+                    <i class="fas fa-right-from-bracket"></i>
+                    Logout
+                </a>
+            </li>
+        </ul>
+
+    </aside>
+
+    <main class="main-content admin-main">
+
+        <div class="admin-header">
+            <div>
+                <h1>Lab Management</h1>
+                <p>Create, configure, and manage Akwire cybersecurity labs.</p>
+            </div>
+        </div>
+
+        <!-- CREATE LAB -->
+
+        <div class="admin-table-card builder-card">
+
+            <h2 class="section-title">Create New Lab</h2>
+
+            <form id="labForm" class="course-form">
+
+                <div class="form-group">
+                    <label for="labId">Lab ID</label>
+                    <input
+                        type="text"
+                        id="labId"
+                        class="admin-search-input"
+                        placeholder="e.g. SEC003"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="title">Lab Title</label>
+                    <input
+                        type="text"
+                        id="title"
+                        class="admin-search-input"
+                        placeholder="e.g. Network Traffic Investigation"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="clearance">Clearance</label>
+                    <input
+                        type="text"
+                        id="clearance"
+                        class="admin-search-input"
+                        placeholder="e.g. LEVEL 1"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="order">Lab Order</label>
+                    <input
+                        type="number"
+                        id="order"
+                        class="admin-search-input"
+                        min="1"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="level">Difficulty</label>
+                    <select id="level" class="admin-search-input">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="isUnlocked">Initial Access</label>
+                    <select id="isUnlocked" class="admin-search-input">
+                        <option value="false">Locked</option>
+                        <option value="true">Unlocked</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="briefing">Mission Briefing</label>
+                    <textarea
+                        id="briefing"
+                        class="course-textarea"
+                        placeholder="Describe the cybersecurity scenario..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="objective">Mission Objective</label>
+                    <textarea
+                        id="objective"
+                        class="course-textarea"
+                        placeholder="Explain what the student must accomplish..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="tasks">Tasks Configuration (JSON)</label>
+                    <textarea
+                        id="tasks"
+                        class="course-textarea"
+                        placeholder='[{"id":"task1","label":"Investigate evidence","cmd":"cat evidence.txt","question":"What did you find?","answer":"example"}]'
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="filesystem">Virtual Filesystem (JSON)</label>
+                    <textarea
+                        id="filesystem"
+                        class="course-textarea"
+                        placeholder='{"home":{"analyst":{"evidence.txt":"Sample evidence"}}}'
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="scenarios">Terminal Scenarios (JSON)</label>
+                    <textarea
+                        id="scenarios"
+                        class="course-textarea"
+                        placeholder='{"investigate":"Investigation results..."}'
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="hints">Hints (one per line)</label>
+                    <textarea
+                        id="hints"
+                        class="course-textarea"
+                        placeholder="Hint 1&#10;Hint 2&#10;Hint 3"
+                    ></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn" id="createLabBtn">
+                        Create Lab
+                    </button>
+
+                    <button type="reset" class="btn btn-secondary">
+                        Clear Form
+                    </button>
+                </div>
+
+                <p id="statusMessage" class="status-message"></p>
+
+            </form>
+
+        </div>
+
+        <!-- EXISTING LABS -->
+
+        <div class="admin-table-card builder-card course-list-card">
+
+            <div class="course-list-header">
+                <h2 class="section-title">Existing Labs</h2>
+
+                <button
+                    id="refreshLabsBtn"
+                    class="btn"
+                    type="button"
+                >
+                    Refresh
+                </button>
+            </div>
+
+            <div id="labsList" class="courses-list">
+                <p class="empty-state">Loading labs...</p>
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/admin.js"></script>
+<script src="js/create-lab.js"></script>
+
+</body>
+</html>
