@@ -354,7 +354,7 @@ function renderAnalysisQuestion(task, showAnswerForm = false) {
         const button = document.createElement("button");
         button.type = "button";
         button.textContent = "Submit";
-        button.addEventListener("click", () => checkAns(task.id));
+        button.addEventListener("click", () => window.checkAns(task.id));
 
         const feedback = document.createElement("div");
         feedback.id = "ans-feedback";
@@ -377,6 +377,13 @@ function loadLab(labID) {
     if (!lab) return;
 
     currentLabID = labID;
+
+    const terminalBody = document.getElementById("lab-terminal");
+
+    if (terminalBody) {
+        delete terminalBody.dataset.labFinalized;
+    }
+    
     score = 100;
     completedTasks = 0;
     hintIndex = 0;
