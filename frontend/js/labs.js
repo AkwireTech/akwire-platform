@@ -246,7 +246,7 @@ console.log("Available Filesystems:", Object.keys(fileSystems));
 
     // Load this lab's filesystem.
     // Reset it when the lab has no configured filesystem.
-    vfs.load(fileSystems[labID] || {});
+    vfs.load(data.filesystem || fileSystems[labID] || {});
 
     if (!terminalEngine) {
         terminalEngine = new TerminalEngine(
@@ -383,7 +383,7 @@ function loadLab(labID) {
     if (terminalBody) {
         delete terminalBody.dataset.labFinalized;
     }
-    
+
     score = 100;
     completedTasks = 0;
     hintIndex = 0;

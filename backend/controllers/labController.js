@@ -59,6 +59,7 @@ export const createLab = async (req, res, next) => {
       objective,
       tasks,
       scenarios,
+      filesystem,
       hints
     } = req.body;
 
@@ -70,6 +71,7 @@ export const createLab = async (req, res, next) => {
       objective,
       tasks,
       scenarios,
+      filesystem,
       hints
     });
 

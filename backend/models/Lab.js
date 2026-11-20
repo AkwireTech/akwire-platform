@@ -17,6 +17,10 @@ const labSchema = new mongoose.Schema({
   objective: String,
   tasks: [taskSchema],
   scenarios: Object,
+  filesystem: {
+    type: mongoose.Schema.Types.Mixed,
+    default: {}
+  },
   hints: [String],
   order: { type: Number, required: true },
   isUnlocked: { type: Boolean, default: false },
