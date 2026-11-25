@@ -3,7 +3,9 @@ const API_URL = "https://akwire-api.onrender.com/api/labs";
 
 let editingLabId = null;
 
+
 document.addEventListener("DOMContentLoaded", () => {
+
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (!user || user.role !== "admin") {
@@ -27,39 +29,82 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================================
 
 function getLabFormData() {
+
     const tasksText = document.getElementById("tasks").value.trim();
     const filesystemText = document.getElementById("filesystem").value.trim();
     const scenariosText = document.getElementById("scenarios").value.trim();
+
+    // NEW CONFIGURATION FIELDS
+    const networkText = document.getElementById("network").value.trim();
+    const scoringText = document.getElementById("scoring").value.trim();
+    const mentorText = document.getElementById("mentor").value.trim();
+    const completionText = document.getElementById("completion").value.trim();
+
 
     let tasks = [];
     let filesystem = {};
     let scenarios = {};
 
+    let network = {};
+    let scoring = {};
+    let mentor = {};
+    let completion = {};
+
+
+    // PARSE JSON CONFIGURATIONS
     try {
+
         tasks = tasksText ? JSON.parse(tasksText) : [];
         filesystem = filesystemText ? JSON.parse(filesystemText) : {};
         scenarios = scenariosText ? JSON.parse(scenariosText) : {};
-    } catch {
+
+        network = networkText ? JSON.parse(networkText) : {};
+        scoring = scoringText ? JSON.parse(scoringText) : {};
+        mentor = mentorText ? JSON.parse(mentorText) : {};
+        completion = completionText ? JSON.parse(completionText) : {};
+
+    } catch (error) {
+
         throw new Error("Please check your JSON configuration.");
+
     }
 
+
+    // VALIDATE TASKS
     if (!Array.isArray(tasks)) {
         throw new Error("Tasks must be a JSON array.");
     }
 
-    if (!filesystem || typeof filesystem !== "object" || Array.isArray(filesystem)) {
-        throw new Error("Filesystem must be a JSON object.");
+
+    // VALIDATE OBJECT CONFIGURATIONS
+    const objectConfigs = {
+        filesystem,
+        scenarios,
+        network,
+        scoring,
+        mentor,
+        completion
+    };
+
+    for (const [name, value] of Object.entries(objectConfigs)) {
+
+        if (!value || typeof value !== "object" || Array.isArray(value)) {
+
+            throw new Error(
+                `${name.charAt(0).toUpperCase() + name.slice(1)} must be a JSON object.`
+            );
+
+        }
+
     }
 
-    if (!scenarios || typeof scenarios !== "object" || Array.isArray(scenarios)) {
-        throw new Error("Scenarios must be a JSON object.");
-    }
 
     return {
+
         labId: document.getElementById("labId").value.trim(),
         title: document.getElementById("title").value.trim(),
 
-        // NEW: Lab classification
+        // LAB CLASSIFICATION
         category: document.getElementById("category").value,
         experienceType: document.getElementById("experienceType").value,
         environment: document.getElementById("environment").value,
@@ -68,18 +113,28 @@ function getLabFormData() {
         order: Number(document.getElementById("order").value),
         level: document.getElementById("level").value,
         isUnlocked: document.getElementById("isUnlocked").value === "true",
+
         briefing: document.getElementById("briefing").value.trim(),
         objective: document.getElementById("objective").value.trim(),
 
+        // EXISTING CONFIGURATIONS
         tasks,
         filesystem,
         scenarios,
+
+        // NEW ADVANCED CONFIGURATIONS
+        network,
+        scoring,
+        mentor,
+        completion,
 
         hints: document.getElementById("hints").value
             .split("\n")
             .map(hint => hint.trim())
             .filter(Boolean)
+
     };
+
 }
 
 
@@ -88,23 +143,34 @@ function getLabFormData() {
 // ==========================================
 
 async function saveLab(e) {
+
     e.preventDefault();
 
     const status = document.getElementById("statusMessage");
     const saveButton = document.getElementById("createLabBtn");
 
     try {
+
         const labData = getLabFormData();
 
-        if (!labData.labId || !labData.title || !labData.briefing ||
-            !labData.objective || !Number.isInteger(labData.order) ||
-            labData.order < 1) {
+        if (
+            !labData.labId ||
+            !labData.title ||
+            !labData.briefing ||
+            !labData.objective ||
+            !Number.isInteger(labData.order) ||
+            labData.order < 1
+        ) {
+
             throw new Error("Please complete all required fields.");
+
         }
 
         saveButton.disabled = true;
+
         status.textContent = "Saving lab...";
         status.style.color = "#64748b";
+
 
         const response = await fetch(
             editingLabId
@@ -120,11 +186,19 @@ async function saveLab(e) {
             }
         );
 
+
         const result = await response.json();
 
         if (!response.ok) {
-            throw new Error(result.message || result.error || "Unable to save lab.");
+
+            throw new Error(
+                result.message ||
+                result.error ||
+                "Unable to save lab."
+            );
+
         }
+
 
         status.textContent = editingLabId
             ? "Lab updated successfully."
@@ -132,17 +206,26 @@ async function saveLab(e) {
 
         status.style.color = "#22c55e";
 
+
         resetLabForm();
+
         await loadLabs();
 
+
     } catch (error) {
+
         console.error("SAVE LAB ERROR:", error);
+
         status.textContent = error.message;
         status.style.color = "#ef4444";
 
+
     } finally {
+
         saveButton.disabled = false;
+
     }
+
 }
 
 
@@ -151,6 +234,7 @@ async function saveLab(e) {
 // ==========================================
 
 async function loadLabs() {
+
     const labsList = document.getElementById("labsList");
 
     if (!labsList) return;
@@ -158,6 +242,7 @@ async function loadLabs() {
     labsList.innerHTML = '<p class="empty-state">Loading labs...</p>';
 
     try {
+
         const response = await fetch(API_URL, {
             credentials: "include"
         });
@@ -165,19 +250,29 @@ async function loadLabs() {
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(data.message || "Failed to load labs.");
+
+            throw new Error(
+                data.message || "Failed to load labs."
+            );
+
         }
 
-        const labs = Array.isArray(data) ? data : data.labs || [];
+        const labs = Array.isArray(data)
+            ? data
+            : data.labs || [];
 
         renderLabs(labs);
 
+
     } catch (error) {
+
         console.error("LOAD LABS ERROR:", error);
 
         labsList.innerHTML =
             '<p class="empty-state error-text">Failed to load labs.</p>';
+
     }
+
 }
 
 
@@ -186,19 +281,26 @@ async function loadLabs() {
 // ==========================================
 
 function renderLabs(labs) {
+
     const labsList = document.getElementById("labsList");
 
     if (!labs.length) {
+
         labsList.innerHTML =
             '<p class="empty-state">No labs created yet.</p>';
+
         return;
+
     }
 
+
     labsList.innerHTML = labs.map(lab => {
+
         const id = lab._id || "";
 
         return `
             <div class="course-item">
+
                 <div class="course-item-info">
 
                     <h3>${escapeHtml(lab.title || "Untitled Lab")}</h3>
@@ -206,16 +308,23 @@ function renderLabs(labs) {
                     <p>${escapeHtml(lab.briefing || "No briefing provided.")}</p>
 
                     <div class="course-meta">
+
                         <span><strong>ID:</strong> ${escapeHtml(lab.labId || "")}</span>
+
                         <span><strong>Order:</strong> ${Number(lab.order) || 0}</span>
+
                         <span><strong>Difficulty:</strong> ${escapeHtml(lab.level || "beginner")}</span>
+
                         <span><strong>Tasks:</strong> ${(lab.tasks || []).length}</span>
+
                         <span><strong>Access:</strong> ${lab.isUnlocked ? "Unlocked" : "Locked"}</span>
+
                     </div>
 
                 </div>
 
                 <div class="course-item-actions">
+
                     <button
                         class="btn btn-secondary edit-lab-btn"
                         type="button"
@@ -230,12 +339,16 @@ function renderLabs(labs) {
                         data-lab-title="${escapeHtml(lab.title || "Untitled Lab")}">
                         Delete Lab
                     </button>
+
                 </div>
+
             </div>
         `;
+
     }).join("");
 
     bindLabActions(labs);
+
 }
 
 
@@ -244,18 +357,28 @@ function renderLabs(labs) {
 // ==========================================
 
 function bindLabActions(labs) {
+
     document.querySelectorAll(".edit-lab-btn").forEach(button => {
+
         button.addEventListener("click", () => {
-            const lab = labs.find(item => item._id === button.dataset.labId);
+
+            const lab = labs.find(
+                item => item._id === button.dataset.labId
+            );
 
             if (lab) {
                 editLab(lab);
             }
+
         });
+
     });
 
+
     document.querySelectorAll(".delete-lab-btn").forEach(button => {
+
         button.addEventListener("click", async () => {
+
             const id = button.dataset.labId;
             const title = button.dataset.labTitle;
 
@@ -264,6 +387,7 @@ function bindLabActions(labs) {
             }
 
             try {
+
                 const response = await fetch(`${API_URL}/${id}`, {
                     method: "DELETE",
                     credentials: "include"
@@ -272,7 +396,11 @@ function bindLabActions(labs) {
                 const result = await response.json();
 
                 if (!response.ok) {
-                    throw new Error(result.message || "Failed to delete lab.");
+
+                    throw new Error(
+                        result.message || "Failed to delete lab."
+                    );
+
                 }
 
                 if (editingLabId === id) {
@@ -281,12 +409,18 @@ function bindLabActions(labs) {
 
                 await loadLabs();
 
+
             } catch (error) {
+
                 console.error("DELETE LAB ERROR:", error);
                 alert(error.message);
+
             }
+
         });
+
     });
+
 }
 
 
@@ -295,24 +429,36 @@ function bindLabActions(labs) {
 // ==========================================
 
 function editLab(lab) {
+
     editingLabId = lab._id;
 
     document.getElementById("labId").value = lab.labId || "";
     document.getElementById("labId").readOnly = true;
+
     document.getElementById("title").value = lab.title || "";
 
-    // NEW: Restore lab classification
-    document.getElementById("category").value = lab.category || "general";
-    document.getElementById("experienceType").value = lab.experienceType || "guided-lab";
-    document.getElementById("environment").value = lab.environment || "linux-terminal";
+
+    // RESTORE LAB CLASSIFICATION
+    document.getElementById("category").value =
+        lab.category || "general";
+
+    document.getElementById("experienceType").value =
+        lab.experienceType || "guided-lab";
+
+    document.getElementById("environment").value =
+        lab.environment || "linux-terminal";
+
 
     document.getElementById("clearance").value = lab.clearance || "";
     document.getElementById("order").value = lab.order ?? "";
     document.getElementById("level").value = lab.level || "beginner";
     document.getElementById("isUnlocked").value = String(!!lab.isUnlocked);
+
     document.getElementById("briefing").value = lab.briefing || "";
     document.getElementById("objective").value = lab.objective || "";
 
+
+    // RESTORE EXISTING CONFIGURATIONS
     document.getElementById("tasks").value =
         JSON.stringify(lab.tasks || [], null, 2);
 
@@ -322,19 +468,38 @@ function editLab(lab) {
     document.getElementById("scenarios").value =
         JSON.stringify(lab.scenarios || {}, null, 2);
 
+
+    // NEW: RESTORE ADVANCED CONFIGURATIONS
+    document.getElementById("network").value =
+        JSON.stringify(lab.network || {}, null, 2);
+
+    document.getElementById("scoring").value =
+        JSON.stringify(lab.scoring || {}, null, 2);
+
+    document.getElementById("mentor").value =
+        JSON.stringify(lab.mentor || {}, null, 2);
+
+    document.getElementById("completion").value =
+        JSON.stringify(lab.completion || {}, null, 2);
+
+
     document.getElementById("hints").value =
         (lab.hints || []).join("\n");
+
 
     document.getElementById("createLabBtn").textContent = "Save Changes";
 
     addCancelEditButton();
 
+
     document.getElementById("statusMessage").textContent =
         `Editing ${lab.title}`;
+
 
     document.getElementById("labForm").scrollIntoView({
         behavior: "smooth"
     });
+
 }
 
 
@@ -343,6 +508,7 @@ function editLab(lab) {
 // ==========================================
 
 function addCancelEditButton() {
+
     if (document.getElementById("cancelLabEditBtn")) return;
 
     const button = document.createElement("button");
@@ -354,7 +520,9 @@ function addCancelEditButton() {
 
     button.addEventListener("click", resetLabForm);
 
-    document.querySelector("#labForm .form-actions").appendChild(button);
+    document.querySelector("#labForm .form-actions")
+        .appendChild(button);
+
 }
 
 
@@ -363,6 +531,7 @@ function addCancelEditButton() {
 // ==========================================
 
 function resetLabForm() {
+
     editingLabId = null;
 
     const form = document.getElementById("labForm");
@@ -370,9 +539,13 @@ function resetLabForm() {
     form.reset();
 
     document.getElementById("labId").readOnly = false;
+
     document.getElementById("createLabBtn").textContent = "Create Lab";
+
     document.getElementById("cancelLabEditBtn")?.remove();
+
     document.getElementById("statusMessage").textContent = "";
+
 }
 
 
@@ -381,10 +554,12 @@ function resetLabForm() {
 // ==========================================
 
 function escapeHtml(value = "") {
+
     return String(value)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
+
 }
