@@ -63,7 +63,15 @@ export const createLab = async (req, res, next) => {
       hints,
       order,
       level,
-      isUnlocked
+      isUnlocked,
+      category,
+      experienceType,
+      environment,
+      network,
+      scoring,
+      mentor,
+      completion
+             
     } = req.body;
 
     const lab = await Lab.create({
@@ -78,7 +86,14 @@ export const createLab = async (req, res, next) => {
       hints,
       order,
       level,
-      isUnlocked
+      isUnlocked,
+      category,
+      experienceType,
+      environment,
+      network,
+      scoring,
+      mentor,
+      completion
     });
 
     res.status(201).json(lab);
