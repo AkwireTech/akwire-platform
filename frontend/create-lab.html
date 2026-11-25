@@ -269,6 +269,46 @@
                     ></textarea>
                 </div>
 
+                <!-- NEW: NETWORK CONFIGURATION -->
+                <div class="form-group">
+                    <label for="network">Network Configuration (JSON)</label>
+                    <textarea
+                        id="network"
+                        class="course-textarea"
+                        placeholder='{"enabled":true,"topology":"star","hosts":[],"connections":[]}'
+                    ></textarea>
+                </div>
+
+                <!-- NEW: SCORING CONFIGURATION -->
+                <div class="form-group">
+                    <label for="scoring">Scoring Configuration (JSON)</label>
+                    <textarea
+                        id="scoring"
+                        class="course-textarea"
+                        placeholder='{"totalPoints":100,"taskPoints":{},"penalties":{}}'
+                    ></textarea>
+                </div>
+
+                <!-- NEW: MENTOR CONFIGURATION -->
+                <div class="form-group">
+                    <label for="mentor">Mentor Configuration (JSON)</label>
+                    <textarea
+                        id="mentor"
+                        class="course-textarea"
+                        placeholder='{"enabled":true,"hintLevels":3,"guidanceMode":"progressive"}'
+                    ></textarea>
+                </div>
+
+                <!-- NEW: COMPLETION CONFIGURATION -->
+                <div class="form-group">
+                    <label for="completion">Completion Configuration (JSON)</label>
+                    <textarea
+                        id="completion"
+                        class="course-textarea"
+                        placeholder='{"requireAllTasks":true,"minimumScore":70,"requireEvidence":false}'
+                    ></textarea>
+                </div>
+
                 <div class="form-group">
                     <label for="hints">Hints (one per line)</label>
                     <textarea
