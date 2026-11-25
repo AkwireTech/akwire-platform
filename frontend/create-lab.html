@@ -26,6 +26,13 @@
 
         <ul>
             <li>
+                <a href="index.html">
+                    <i class="fas fa-house"></i>
+                    Home
+                </a>
+            </li>
+
+            <li>
                 <a href="admin-dashboard.html">
                     <i class="fas fa-chart-line"></i>
                     Dashboard
@@ -36,13 +43,6 @@
                 <a href="dashboard.html">
                     <i class="fas fa-user-graduate"></i>
                     Student Dashboard
-                </a>
-            </li>
-
-            <li>
-                <a href="index.html">
-                    <i class="fas fa-house"></i>
-                    Home
                 </a>
             </li>
 
@@ -135,6 +135,53 @@
                         placeholder="e.g. Network Traffic Investigation"
                         required
                     >
+                </div>
+
+                <!-- Lab Category -->
+                <div class="form-group">
+                    <label for="category">Lab Category</label>
+                    <select id="category" class="admin-search-input">
+                        <option value="general">General</option>
+                        <option value="linux-os">Linux / Operating Systems</option>
+                        <option value="networking">Networking</option>
+                        <option value="soc">Security Operations (SOC)</option>
+                        <option value="threat-intelligence">Threat Intelligence</option>
+                        <option value="incident-response">Incident Response</option>
+                        <option value="digital-forensics">Digital Forensics</option>
+                        <option value="penetration-testing">Penetration Testing</option>
+                        <option value="web-security">Web Application Security</option>
+                        <option value="cloud-security">Cloud Security</option>
+                        <option value="cryptography">Cryptography</option>
+                        <option value="malware-analysis">Malware Analysis</option>
+                        <option value="grc">Governance, Risk &amp; Compliance</option>
+                    </select>
+                </div>
+
+                <!-- Experience Type -->
+                <div class="form-group">
+                    <label for="experienceType">Experience Type</label>
+                    <select id="experienceType" class="admin-search-input">
+                        <option value="guided-lab">Guided Lab</option>
+                        <option value="practical-challenge">Practical Challenge</option>
+                        <option value="investigation">Investigation</option>
+                        <option value="scenario-simulation">Scenario Simulation</option>
+                        <option value="capstone-assessment">Capstone Assessment</option>
+                    </select>
+                </div>
+
+                <!-- Lab Environment -->
+                <div class="form-group">
+                    <label for="environment">Lab Environment</label>
+                    <select id="environment" class="admin-search-input">
+                        <option value="linux-terminal">Linux Terminal</option>
+                        <option value="network-simulator">Network Simulator</option>
+                        <option value="log-analysis">Log Analysis Workbench</option>
+                        <option value="phishing-investigation">Phishing Investigation Workbench</option>
+                        <option value="digital-forensics">Digital Forensics Workbench</option>
+                        <option value="browser-target">Browser-Based Target</option>
+                        <option value="virtual-machine">Virtual Machine</option>
+                        <option value="cloud-range">Cloud Range</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

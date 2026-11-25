@@ -58,15 +58,23 @@ function getLabFormData() {
     return {
         labId: document.getElementById("labId").value.trim(),
         title: document.getElementById("title").value.trim(),
+
+        // NEW: Lab classification
+        category: document.getElementById("category").value,
+        experienceType: document.getElementById("experienceType").value,
+        environment: document.getElementById("environment").value,
+
         clearance: document.getElementById("clearance").value.trim(),
         order: Number(document.getElementById("order").value),
         level: document.getElementById("level").value,
         isUnlocked: document.getElementById("isUnlocked").value === "true",
         briefing: document.getElementById("briefing").value.trim(),
         objective: document.getElementById("objective").value.trim(),
+
         tasks,
         filesystem,
         scenarios,
+
         hints: document.getElementById("hints").value
             .split("\n")
             .map(hint => hint.trim())
@@ -192,6 +200,7 @@ function renderLabs(labs) {
         return `
             <div class="course-item">
                 <div class="course-item-info">
+
                     <h3>${escapeHtml(lab.title || "Untitled Lab")}</h3>
 
                     <p>${escapeHtml(lab.briefing || "No briefing provided.")}</p>
@@ -203,6 +212,7 @@ function renderLabs(labs) {
                         <span><strong>Tasks:</strong> ${(lab.tasks || []).length}</span>
                         <span><strong>Access:</strong> ${lab.isUnlocked ? "Unlocked" : "Locked"}</span>
                     </div>
+
                 </div>
 
                 <div class="course-item-actions">
@@ -290,6 +300,12 @@ function editLab(lab) {
     document.getElementById("labId").value = lab.labId || "";
     document.getElementById("labId").readOnly = true;
     document.getElementById("title").value = lab.title || "";
+
+    // NEW: Restore lab classification
+    document.getElementById("category").value = lab.category || "general";
+    document.getElementById("experienceType").value = lab.experienceType || "guided-lab";
+    document.getElementById("environment").value = lab.environment || "linux-terminal";
+
     document.getElementById("clearance").value = lab.clearance || "";
     document.getElementById("order").value = lab.order ?? "";
     document.getElementById("level").value = lab.level || "beginner";
@@ -354,11 +370,8 @@ function resetLabForm() {
     form.reset();
 
     document.getElementById("labId").readOnly = false;
-
     document.getElementById("createLabBtn").textContent = "Create Lab";
-
     document.getElementById("cancelLabEditBtn")?.remove();
-
     document.getElementById("statusMessage").textContent = "";
 }
 
